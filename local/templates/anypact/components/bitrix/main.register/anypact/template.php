@@ -1,0 +1,44 @@
+<?
+/**
+ * Bitrix Framework
+ * @package bitrix
+ * @subpackage main
+ * @copyright 2001-2014 Bitrix
+ */
+
+/**
+ * Bitrix vars
+ * @global CMain $APPLICATION
+ * @global CUser $USER
+ * @param array $arParams
+ * @param array $arResult
+ * @param CBitrixComponentTemplate $this
+ */
+
+if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)
+	die();
+?>
+<div class="regpopup_content_form">
+	<!--Пользователь авторизован-->
+	<?if($USER->IsAuthorized()):?>
+		<p><?echo GetMessage("MAIN_REGISTER_AUTH")?></p>
+	<?else:?>
+	<!--/Пользователь авторизован-->
+	<form method="post" action="<?=POST_FORM_ACTION_URI?>" name="regform" enctype="multipart/form-data">
+		<div class="regpopup_content_form_fild">
+			<?foreach ($arResult["SHOW_FIELDS"] as $FIELD):?>
+				<?if($FIELD == 'PASSWORD' || $FIELD == 'CONFIRM_PASSWORD'):?>
+					<input size="30" class="regpopup_content_form_input" type="password" name="REGISTER[<?=$FIELD?>]" value="<?=$arResult["VALUES"][$FIELD]?>" autocomplete="off" placeholder="<?=GetMessage($FIELD)?>" />
+				<?else:?>
+					<input size="30" class="regpopup_content_form_input" name="REGISTER[<?=$FIELD?>]" value="<?=$arResult["VALUES"][$FIELD]?>" autocomplete="off" placeholder="<?=GetMessage($FIELD)?>" />
+				<?endif?>				
+			<?endforeach?>
+			<p class="regpopup_content_form_soglashenie">Регистрируясь, Вы подтверждаете, что принимаете 
+				<a href="#">Условия пользования</a> и <a href="#">Политику конфиденциальности</a>					
+			</p>
+			<input class="regpopup_content_form_submit" type="submit" name="register_submit_button" value="<?=GetMessage("AUTH_REGISTER")?>" />
+			<p class="text-center">Есть аккаунт? <a href="#" id="regpopup_btn_aut">Войти</a></p>
+		</div>
+	</form>
+	<?endif?>	
+</div>

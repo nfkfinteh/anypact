@@ -1,0 +1,1 @@
+<?echo $arParams["X"];?> в квадрате равно <?echo $arResult["Y"];?>
