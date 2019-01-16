@@ -11,13 +11,14 @@
 }
 
 .cardPact .cardPact-box-BoxPrewImg {
-    width: 100%;
+    width: 2500px;
     overflow: hidden;
 }
 
 .cardPact .cardPact-box-BoxPrewImg .cardPact-box-BoxPrewImg-img {
     width: 150px;
     float: left;
+    margin-right: 30px;
 }
 
 .cardPact-rightPanel .btn {

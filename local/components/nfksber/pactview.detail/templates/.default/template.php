@@ -1,5 +1,5 @@
 <? // print_r($arResult["PROPERTY"]) ;?>
-<? // print_r($arResult) ;?>
+<? //print_r($arResult) ;?>
 <h1><?=$arResult["ELEMENT"]["NAME"]?></h1>
  <div class="tender cardPact">
     <div class="row">
@@ -39,6 +39,10 @@
             <h1 style="color:#ff6416;"><?=$arResult["PROPERTY"]["SUMM_PACT"]["VALUE"]?> руб.</h1>
 
             <button class="btn btn-nfk">Посмотреть договор</button>
+            <div>Репутация</div>
+            <div>Количество сделок</div>
+            <div>Оценки</div>
+            <button class="btn btn-nfk">Написать сообщение</button>
         </div>            
     </div>
 </div>
