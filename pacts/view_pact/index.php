@@ -10,14 +10,15 @@ $APPLICATION->SetTitle("AnyPact");
     ?>
     <!--Созданные или подписанные пользователем документы-->   
     <h1>Просмотр объявления</h1>    
-    <?//компонент выводит детальный просмотр сделки
+    <?//компонент выводит детальный просмотр сделки    
     $APPLICATION->IncludeComponent("nfksber:pactview.detail", 
     "", 
         Array(
             "IBLOCK_ID" => "3",
             "SEF_MODE" => "N",
             "SEF_FOLDER" => "/pacts/view_pact/",
-            "SECTION_ID" => $Section,
+            "SECTION_ID" => $_GET['SECTION_ID'],
+            "ELEMENT_ID" => $_GET['ELEMENT_ID'],
             "SEF_URL_TEMPLATES" => array(                    
                     "list" => "",
                     "detail" => "#ID#"
