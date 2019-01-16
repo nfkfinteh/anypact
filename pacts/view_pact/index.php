@@ -8,8 +8,6 @@ $APPLICATION->SetTitle("AnyPact");
     global $USER;
     if ($USER->IsAuthorized()){
     ?>
-    <!--Созданные или подписанные пользователем документы-->   
-    <h1>Просмотр объявления</h1>    
     <?//компонент выводит детальный просмотр сделки    
     $APPLICATION->IncludeComponent("nfksber:pactview.detail", 
     "", 
