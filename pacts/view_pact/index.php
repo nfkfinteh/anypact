@@ -12,7 +12,7 @@ $APPLICATION->SetTitle("AnyPact");
     $APPLICATION->IncludeComponent("nfksber:pactview.detail", 
     "", 
         Array(
-            "IBLOCK_ID" => "3",
+            "IBLOCK_ID" => 3,
             "SEF_MODE" => "N",
             "SEF_FOLDER" => "/pacts/view_pact/",
             "SECTION_ID" => $_GET['SECTION_ID'],
