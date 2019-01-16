@@ -21,7 +21,7 @@
                     ?>
                     <div class="col-lg-4 col-md-6 col-sm-12">
                         <div class="tender-post">
-                            <a href="/my_pacts/?ELEMENT_ID=<?=$pact['ID']?>">
+                            <a href="/pacts/?ELEMENT_ID=<?=$pact['ID']?>">
                                 <div class="tender-img">
                                   <?if (!isset($pact['URL_IMG_PREVIEW'])){ ?>
                                     <img src="<?=SITE_TEMPLATE_PATH?>/img/no_img_pacts.jpg" alt="">
@@ -32,7 +32,7 @@
                                 </div>
                             </a>
                             <div class="tender-text">                            
-                                <a href="#">
+                                <a href="/pacts/?ELEMENT_ID=<?=$pact['ID']?>">
                                     <h3><?=$pact["NAME"]?></h3>
                                     <p><?=$pact['PREVIEW_TEXT']?></p>
                                     <span class="tender-price">до <?=$pact['PROPERTIES']['SUMM_PACT']['VALUE']?> руб.</span>
