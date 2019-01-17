@@ -122,13 +122,15 @@ if (!defined ("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse " id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-4">
-
+                <ul class="navbar-nav mr-4">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Главная</a>
+							<a class="nav-link" href="/">Главная</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Договорные отношения</a>
+                            <a class="nav-link" href="/my_pacts/">Личный кабинет</a>
+                        </li>
+						<li class="nav-item">
+                            <a class="nav-link " href="/profile/">Профиль</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link nav-link-activ" href="/pacts/">Заключение сделок</a>
