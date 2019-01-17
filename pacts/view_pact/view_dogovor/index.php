@@ -9,7 +9,7 @@ $APPLICATION->SetTitle("AnyPact");
     if ($USER->IsAuthorized()){
     ?>
     <?//компонент выводит детальный просмотр сделки    
-    $APPLICATION->IncludeComponent("nfksber:pactview.detail", 
+    $APPLICATION->IncludeComponent("nfksber:dogovorview.detail", 
     "", 
         Array(
             "IBLOCK_ID" => 3,

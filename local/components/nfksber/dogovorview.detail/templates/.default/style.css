@@ -1,0 +1,13 @@
+.cardDogovor .cardDogovor-boxTool .btn {
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.cardDogovor .cardDogovor-boxViewText {
+    max-height: 800px;
+    overflow-y: scroll;
+    background: #fdfdfd;
+    padding: 10px;
+}
+
+.disable_a {}
