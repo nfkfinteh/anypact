@@ -1,5 +1,9 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die();
 
+use Bitrix\Main\Loader; 
+use Bitrix\Highloadblock as HL; 
+use Bitrix\Main\Entity;
+
 class CDemoSqr extends CBitrixComponent
 {
     //Родительский метод проходит по всем параметрам переданным в $APPLICATION->IncludeComponent
@@ -37,6 +41,9 @@ class CDemoSqr extends CBitrixComponent
                 }             
                 
             }
+        if(Loader::includeModule("highloadblock")){
+            $arPact['HL'] = "Выборка ХЛ";
+        }
         return $arPact;
     }
 

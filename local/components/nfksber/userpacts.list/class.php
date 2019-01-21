@@ -1,5 +1,9 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die();
 
+use Bitrix\Main\Loader; 
+use Bitrix\Highloadblock as HL; 
+use Bitrix\Main\Entity;
+
 class CDemoSqr extends CBitrixComponent
 {
     //Родительский метод проходит по всем параметрам переданным в $APPLICATION->IncludeComponent
@@ -34,9 +38,29 @@ class CDemoSqr extends CBitrixComponent
                     }                    
                     $arPact[]   = $arFields;
                 }             
-                
+                $arPacts['ARR_SDELKI'] = $arPact;
             }
-        return $arPact;
+        if(CModule::IncludeModule("highloadblock")){
+            $arPacts['HL'] = array();
+            $hlbl = 2; // Указываем ID нашего highloadblock блока к которому будет делать запросы.
+            $hlblock = HL\HighloadBlockTable::getById($hlbl)->fetch(); 
+
+            $entity = HL\HighloadBlockTable::compileEntity($hlblock); 
+            $entity_data_class = $entity->getDataClass(); 
+
+            $rsData = $entity_data_class::getList(array(
+            "select" => array("*"),
+            "order" => array("ID" => "ASC"),
+            "filter" => array("UF_ID_USER"=> 1)  // Задаем параметры фильтра выборки
+            ));
+
+            while($arData = $rsData->Fetch()){
+                //var_dump($arRes);
+                $arPacts['HL'][]  = $arData; 
+            }
+
+        }
+        return $arPacts;
     }
 
     function paramsUser($arParams){
