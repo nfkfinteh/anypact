@@ -24,6 +24,7 @@ if ($USER->IsAuthorized()){
     
     $esia = new EsiaOmniAuth($config);
     print_r($esia);
+    echo "<br>========================";
     $info   = array();
     $token  = $esia->get_token($_GET['code']);
     $info   = $esia->get_info($token);
