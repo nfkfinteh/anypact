@@ -20,12 +20,12 @@ class CDemoSqr extends CBitrixComponent
         return $result;
     }
 
-    public function listPacts($id_iblock) {
+    public function listPacts($id_iblock, $id_user) {
         $arPact = array();        
         if(CModule::IncludeModule("iblock"))
             {
                 $arSelect = Array();
-                $arFilter = Array("IBLOCK_ID"=>IntVal($id_iblock));
+                $arFilter = Array("IBLOCK_ID"=>IntVal($id_iblock), "MODIFIED_USER_ID"=>$id_user);
                 $res = CIBlockElement::GetList(Array(), $arFilter, false, Array("nPageSize"=>50), $arSelect);                
                 while($ob = $res->GetNextElement())
                 {
@@ -51,7 +51,7 @@ class CDemoSqr extends CBitrixComponent
             $rsData = $entity_data_class::getList(array(
             "select" => array("*"),
             "order" => array("ID" => "ASC"),
-            "filter" => array("UF_ID_USER"=> 1)  // Задаем параметры фильтра выборки
+            "filter" => array("UF_ID_USER" => $id_user)  // Задаем параметры фильтра выборки
             ));
 
             while($arData = $rsData->Fetch()){
@@ -72,10 +72,11 @@ class CDemoSqr extends CBitrixComponent
     {
         if($this->startResultCache())
         {
+            $User_ID = CUser::GetID();
             $this->arResult = array_merge($this->arResult, $this->paramsUser($this->arParams));
-            $this->arResult["USER_ID"] = CUser::GetID();
-            $this->arResult["USER_LOGIN"] =CUser::GetLogin();                                  
-            $this->arResult["INFOBLOCK_LIST"] = $this->listPacts($this->arResult["INFOBLOCK_ID"]);
+            $this->arResult["USER_ID"] = $User_ID;
+            $this->arResult["USER_LOGIN"] =CUser::GetLogin();
+            $this->arResult["INFOBLOCK_LIST"] = $this->listPacts($this->arResult["INFOBLOCK_ID"], $User_ID);
             $this->includeComponentTemplate();
         }
         

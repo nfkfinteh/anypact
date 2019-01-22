@@ -1,9 +1,8 @@
 <?php 
 session_start();
 
-require_once $_SERVER['DOCUMENT_ROOT'] . '/esia/EsiaLogger.class.php';
-
-EsiaLogger::DumpEnviroment( 'open_gu' );
+//require_once $_SERVER['DOCUMENT_ROOT'] . '/esia/EsiaLogger.class.php';
+//EsiaLogger::DumpEnviroment( 'open_gu' );
 
 $_SESSION['id_esia']="";
 unset($_SESSION['id_esia']);

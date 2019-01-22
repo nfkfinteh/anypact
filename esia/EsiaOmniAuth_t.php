@@ -85,7 +85,7 @@ class EsiaOmniAuth {
 
     //signing params
     $client_secret = $this->sign( $params );
-
+    echo "fun creat";
     if($client_secret){
       $params["client_secret"] = $client_secret;
 

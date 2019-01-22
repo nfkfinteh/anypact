@@ -20,15 +20,15 @@ if ($USER->IsAuthorized()){
     "client_id" => "NFKS01211",
     "scope" => "openid fullname id_doc"
     );
-    //print_r($_GET);
+    print_r($_GET);
     
     $esia = new EsiaOmniAuth($config);
-    //print_r($esia);
+    print_r($esia);
     $info   = array();
     $token  = $esia->get_token($_GET['code']);
     $info   = $esia->get_info($token);
-    //print_r($info);
-    //echo "<br>========================";   
+    print_r($info);
+    echo "<br>========================";   
 }
 ?>
 	<div class="container">

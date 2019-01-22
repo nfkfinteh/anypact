@@ -41,9 +41,6 @@ class CDemoSqr extends CBitrixComponent
                 }             
                 
             }
-        if(Loader::includeModule("highloadblock")){
-            $arPact['HL'] = "Выборка ХЛ";
-        }
         return $arPact;
     }
 
@@ -81,6 +78,17 @@ class CDemoSqr extends CBitrixComponent
         }
     }
 
+    private function getUrlpacts($User_id){
+        $hesh_user_id = md5($User_id);
+        $arr_urlpacts = array();
+        $arr_urlpacts["USER_ID"] = $User_id;
+        $arr_urlpacts["HESH"] = $hesh_user_id;
+        $arr_urlpacts["GROUP"] = mb_strimwidth ($hesh_user_id, 0, 2);
+        $arr_urlpacts["USER_GROUP"] = mb_strimwidth ($hesh_user_id, 2, 4);        
+
+        return $arr_urlpacts;
+    }
+
     function paramsUser($arParams){
         $arResult["INFOBLOCK_ID"] = $arParams["IBLOCK_ID"];
         $arResult["ELEMENT_ID"] = $arParams["ELEMENT_ID"];
@@ -91,8 +99,8 @@ class CDemoSqr extends CBitrixComponent
     {
         if($this->startResultCache())
         {
-            $this->arResult = array_merge($this->arResult, $this->paramsUser($this->arParams));
-            $this->arResult["USER_ID"] = CUser::GetID();
+            $this->arResult = array_merge($this->arResult, $this->paramsUser($this->arParams));            
+            $this->arResult["USER_PROP"] = $this->getUrlpacts(CUser::GetID());
             $this->arResult["USER_LOGIN"] =CUser::GetLogin();                                  
             //$this->arResult["INFOBLOCK_LIST"] = $this->listPacts($this->arResult["INFOBLOCK_ID"]);
             $this->arResult["CONTENT"] = $this->getContentIem($this->arResult["INFOBLOCK_ID"], $this->arResult["ELEMENT_ID"]);
