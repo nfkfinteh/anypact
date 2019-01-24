@@ -11,7 +11,7 @@ if (!defined ("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title><? $APPLICATION->ShowTitle(); ?></title>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>   
 	
     <!-- Google Fonts -->
 	<link rel="preload" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'" data-font="g-font-open-sans" data-protected="true" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&subset=cyrillic">
@@ -102,7 +102,7 @@ if (!defined ("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
                     </div>
                     <div class="col-md-6">
                         <span class="location">Чебоксары и чувашская республика</span>
-                        <button class="btn btn-nfk btn-login">Регистрация / Вход</button>
+                        <button class="btn btn-nfk btn-login" id="reg_button">Регистрация / Вход</button>
                     </div>
                 </div>
             </header>

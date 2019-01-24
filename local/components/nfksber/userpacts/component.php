@@ -14,10 +14,13 @@ $arComponentVariables = array("ELEMENT_ID");
     CComponentEngine::InitComponentVariables(false , $arComponentVariables , $arVariableAliases ,  $arVariables);
 
     $componentPage = "";
-    if (IntVal($arVariables["ELEMENT_ID"]) > 0)
+    if (IntVal($arVariables["ELEMENT_ID"]) > 0){
         $componentPage = "detail";
-    else
+    }elseif(IntVal($arVariables["ELEMENT_ID"]) > 0 && $arVariables["EDIT"]=="Y"){
+        $componentPage = "edit_pact";
+    }else{
         $componentPage = "list";
+    }
 
 
 

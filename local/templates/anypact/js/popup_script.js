@@ -17,7 +17,7 @@ window.onload = function() {
     regpopup_open_btn.onclick = function(event) {
         regpopup_bg.style.display = 'block';
     };
-    // открываем форму авторизации
+    /*/ открываем форму авторизации
     regpopup_btn_open_aut.onclick = function() {
         console.log('открываем авторизацию');
         regpopup_form_autorisation.style.display = 'block';
@@ -30,5 +30,5 @@ window.onload = function() {
         regpopup_form_autorisation.style.display = 'none';
         regpopup_form_registration.style.display = 'block';
         return false;
-    };
+    };*/
 }
