@@ -14,5 +14,6 @@ if(!empty($arParams['ESIA_RESPONSE']['user_docs']['elements'][0]['type'])){
     $arResult["arUser"]["LAST_NAME"]        =  $arParams['ESIA_RESPONSE']['user_info']['lastName'];
     $arResult["arUser"]["NAME"]             =  $arParams['ESIA_RESPONSE']['user_info']['firstName'];
     $arResult["arUser"]["SECOND_NAME"]      =  $arParams['ESIA_RESPONSE']['user_info']['middleName'];
+
 }
 ?>

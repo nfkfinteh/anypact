@@ -27,7 +27,7 @@ if ($USER->IsAuthorized()){
     "client_id" => "NFKS01211",
     "scope" => "openid fullname id_doc"
     );
-
+    
     $esia = new EsiaOmniAuth($config);
     $esia->create();
 } else {

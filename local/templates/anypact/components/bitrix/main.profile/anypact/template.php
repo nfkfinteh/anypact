@@ -10,9 +10,6 @@
 2. Просто редактирование информации пользователем.
 Для пользователя недоступно редактирование некоторых полей
 */
-//echo "<br>========================";
-//print_r($arResult["esiaInfo"]);
-
 ?>
 <!--Профиль пользователя-->
 <div class="user_profile">
@@ -115,7 +112,18 @@
                         <label style="width: 100%;"><?=GetMessage("DATAR_POL")?></label>
                         <input type="text" name="PERSONAL_GENDER" maxlength="50" value="<?=$arResult["arUser"]["PERSONAL_GENDER"]?>" style="width: 40%; float: left; margin-right: 10%;" disabled>
                         <input type="text" name="PERSONAL_BIRTHDAY" maxlength="50" value="<?=$arResult["arUser"]["PERSONAL_BIRTHDAY"]?>" style="width: 50%;" disabled>
-                    </div>                                         
+                    </div>
+                    <div class="form-group">
+                        <? if (!empty($arResult['arUser']['UF_ETAG_ESIA']) && $arResult['arUser']['UF_ESIA_AUT']) {?>                                                
+                            <img src="<?=SITE_TEMPLATE_PATH?>/img/gos_usl.png" />
+                            <p>Данные подтверждены с помощью учетной записи портала госуслуг</p>                                                   
+                        <?}else {?>
+                            <a href="/profile/aut_esia.php">
+                                <img src="<?=SITE_TEMPLATE_PATH?>/img/gos_usl.png" />
+                                <p>Подтверждение данных с помощью учетной записи портала госуслуг</p>                                 
+                            </a>
+                        <?}?>
+                    </div>
                 </div>
                 <div class="col-xl-4 col-md-6 col-sm-12">
                     <div class="form-group left_blok_margin_ub">
