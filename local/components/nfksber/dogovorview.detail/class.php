@@ -47,7 +47,16 @@ class CDemoSqr extends CBitrixComponent
         
         $array_props["IMG_FILE"] = $array_img;
         return $array_props;
-    }    
+    }
+
+    private function getListCategory(){
+        $items = GetIBlockSectionList(5, 0, Array("sort"=>"asc"), 10);
+        $arr_sections = array();
+        while($arResult = $items->GetNext()){       
+            $arr_sections[] = array("NAME" => $arResult["NAME"], "ID" => $arResult["ID"]);
+        }
+        return $arr_sections;
+    }
 
     function paramsUser($arParams){
         $arResult["INFOBLOCK_ID"] = $arParams["IBLOCK_ID"];
@@ -65,6 +74,7 @@ class CDemoSqr extends CBitrixComponent
             $this->arResult["USER_LOGIN"] =CUser::GetLogin();            
             $this->arResult["ELEMENT"] = $this->getElement($this->arResult["ELEMENT_ID"]);
             $this->arResult["PROPERTY"] = $this->getProperty($this->arResult["INFOBLOCK_ID"], $this->arResult["ELEMENT_ID"]);
+            $this->arResult["LIST_CATEGORY"] = $this->getListCategory();
             $this->includeComponentTemplate();
         }
         

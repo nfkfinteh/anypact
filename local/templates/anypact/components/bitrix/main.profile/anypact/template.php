@@ -150,7 +150,7 @@
                 </div>
             </div>
         </div>
-        <div class="user_profile_form_editdata">
+        <div class="user_profile_form_editdata" style="margin-bottom:50px;">
             <div class="row">
                 <div class="col-xl-4 col-md-6 col-sm-12 offset-xl-3">
                     <h3 id="bankovskie_dannue">Банковские реквизиты</h3>
@@ -171,8 +171,9 @@
                     <div class="form-group">
                         <label><?=GetMessage("BANK_RS")?></label>
                         <input type="text" name="UF_RS_BANK" maxlength="50" value="<?=$arResult["arUser"]["UF_RS_BANK"]?>" >
-                    </div>                  
-                </div>
+                    </div>
+                    <button type="submit" class="btn btn-aut" id="save_profile_button">Сохранить</button>
+                </div>                
             </div>
         </div>
     </div>    

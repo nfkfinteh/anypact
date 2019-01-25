@@ -127,13 +127,13 @@ if (!defined ("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
 							<a class="nav-link" href="/">Главная</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/my_pacts/">Личный кабинет</a>
+                            <a class="nav-link" href="/my_pacts/">Мои сделки</a>
                         </li>
 						<li class="nav-item">
                             <a class="nav-link " href="/profile/">Профиль</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link nav-link-activ" href="/pacts/">Заключение сделок</a>
+                            <a class="nav-link nav-link-activ" href="/pacts/">Все сделки</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">О сервисе</a>

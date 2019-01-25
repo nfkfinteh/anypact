@@ -38,9 +38,9 @@ if ($USER->IsAuthorized()){
             "SECOND_NAME" => $info['user_info']['middleName'], // Отчество
             "UF_PASSPORT" => $number_pass
             );
-        echo "<pre>";    
+       /* echo "<pre>";    
         print_r($fields);    
-        echo "</pre>";
+        echo "</pre>";*/
         $USER->Update($USER->GetID(), $fields);        
     }
 

@@ -1,0 +1,9 @@
+h2.title_line_button {
+    float: left;
+    width: 77%;
+}
+
+#add_pact,
+#semd_mess {
+    width: 22%;
+}
