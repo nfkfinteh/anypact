@@ -5,13 +5,6 @@ CModule::IncludeModule('iblock');
 
 $el = new CIBlockElement;
 
-$db_props = CIBlockElement::GetProperty("3", "8", "sort", "asc", array());
-$ar_prop = array();
-while($ar_props = $db_props->Fetch()){
-    $ar_prop[] = $ar_props; 
-}
-print_r($db_prop);
-
 switch ($_POST['atrr_text']) {
     case 'descript':
         $arLoadProductArray = Array(
@@ -22,28 +15,35 @@ switch ($_POST['atrr_text']) {
         );        
         break;
     case 'conditions':
-        $PROP = array();    
-        $PROP[15] = html_entity_decode($_POST['text']);
-
+        
         $arLoadProductArray = Array(
-            "MODIFIED_BY"    => $USER->GetID(),
-            "PROPERTY_VALUES"=> $PROP            
+            "MODIFIED_BY"    => $USER->GetID()               
         );
+
+        $ELEMENT_ID = $_POST['id_element']; 
+        $PROPERTY_CODE = "CONDITIONS_PACT";
+        $PROPERTY_VALUE = html_entity_decode($_POST['text']);  // значение свойства
+
+        $value="text";
+        CIBlockElement::SetPropertyValueCode($ELEMENT_ID, $PROPERTY_CODE, array("VALUE"=>array("TEXT"=>$PROPERTY_VALUE, "TYPE"=>"html")));
 
         break;
     case 'summ':
-        $PROP = array();    
-        $PROP[14] = html_entity_decode($_POST['text']);
+        $ELEMENT_ID = $_POST['id_element']; 
+        $PROPERTY_CODE = "SUMM_PACT";
+        $PROPERTY_VALUE = html_entity_decode($_POST['text']);  // значение свойства
+
+        $value="text";
+        CIBlockElement::SetPropertyValueCode($ELEMENT_ID, $PROPERTY_CODE, $PROPERTY_VALUE);
 
         $arLoadProductArray = Array(
-            "MODIFIED_BY"    => $USER->GetID(),
-            "PROPERTY_VALUES"=> $PROP            
+            "MODIFIED_BY"    => $USER->GetID()            
         );        
         break;
 }
 
-
-$PRODUCT_ID = $_POST['id_element'];  
+// код свойства
+$PRODUCT_ID = $_POST['id_element'];
 $res = $el->Update($PRODUCT_ID, $arLoadProductArray);
 
 echo "обновили ".$_POST['atrr_text'];

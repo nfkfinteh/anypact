@@ -1,4 +1,4 @@
-<? print_r($arResult["INFOBLOCK_LIST"]["HL"]) ;?>
+<? //print_r($arResult["INFOBLOCK_LIST"]["HL"]) ;?>
 <h2>Опубликованные сделки</h2>
 <?  
   $count_pacts = count($arResult["INFOBLOCK_LIST"]["ARR_SDELKI"]);
@@ -21,7 +21,7 @@
                 <th scope="row"><?=$pact["NAME"]?></th>
                 <td><?=$pact["CREATED_DATE"]?></td>
                 <td><?=$pact["PROPERTIES"]["PACT_STATUS"]["VALUE_XML_ID"]?></td>
-                <td><a href="/my_pacts/?ELEMENT_ID=<?=$pact['ID']?>">Посмотреть</a></td>
+                <td><a href="/my_pacts/edit_my_pact/?ELEMENT_ID=<?=$pact['ID']?>&EDIT=Y" target="_blank">Посмотреть</a></td>
             </tr>   
             <?         
         }
