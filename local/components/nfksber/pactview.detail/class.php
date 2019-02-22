@@ -5,6 +5,7 @@
 
 class CDemoSqr extends CBitrixComponent
 {       
+    
     public function onPrepareComponentParams($arParams)
     {
         $result = array(
@@ -65,6 +66,17 @@ class CDemoSqr extends CBitrixComponent
             $this->arResult["USER_LOGIN"] =CUser::GetLogin();            
             $this->arResult["ELEMENT"] = $this->getElement($this->arResult["ELEMENT_ID"]);
             $this->arResult["PROPERTY"] = $this->getProperty($this->arResult["INFOBLOCK_ID"], $this->arResult["ELEMENT_ID"]);
+            
+            // данные владельца сделки           
+            $UserContractHolder = CUser::GetByID($this->arResult["PROPERTY"]["PACT_USER"]["VALUE"]);
+            $arrUserContractHolder = $UserContractHolder->Fetch();
+            $USER_CONTRACT_HOLDER = array(
+                "NAME" => $arrUserContractHolder["NAME"],
+                "LAST_NAME" => $arrUserContractHolder["LAST_NAME"],
+                "LOGIN" => $arrUserContractHolder["LOGIN"], 
+                "PERSONAL_PHOTO" => CFile::GetPath($arrUserContractHolder["PERSONAL_PHOTO"])
+            ); 
+            $this->arResult["CONTRACT_HOLDER"] = $USER_CONTRACT_HOLDER;
             $this->includeComponentTemplate();
         }
         
