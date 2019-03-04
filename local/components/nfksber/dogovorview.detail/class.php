@@ -5,6 +5,8 @@
 
 class CDemoSqr extends CBitrixComponent
 {       
+    private $ID_CONTRACT;
+    
     public function onPrepareComponentParams($arParams)
     {
         $result = array(
@@ -46,6 +48,10 @@ class CDemoSqr extends CBitrixComponent
         }
         
         $array_props["IMG_FILE"] = $array_img;
+        
+        if (!empty($array_props["ID_DOGOVORA"]["VALUE"])){
+            $this->ID_CONTRACT = $array_props["ID_DOGOVORA"]["VALUE"];
+        }
         return $array_props;
     }
 
@@ -58,12 +64,28 @@ class CDemoSqr extends CBitrixComponent
         return $arr_sections;
     }
 
+    private function getContractParams(){        
+        if(!empty($this->ID_CONTRACT)){            
+            if(CModule::IncludeModule("iblock"))
+            {
+                $res = CIBlockElement::GetByID($this->ID_CONTRACT);
+                if($ar_res = $res->GetNext()){
+                    return $ar_res['DETAIL_TEXT'];
+                }
+                
+            }
+        }else {
+            return $ID_CONTRACT;
+        }
+        
+    }
+
     function paramsUser($arParams){
         $arResult["INFOBLOCK_ID"] = $arParams["IBLOCK_ID"];
         $arResult["SECTION_ID"] = $arParams["SECTION_ID"];
         $arResult["ELEMENT_ID"] = $arParams["ELEMENT_ID"];
         return $arResult;
-    }
+    }    
 
     public function executeComponent()
     {
@@ -75,6 +97,7 @@ class CDemoSqr extends CBitrixComponent
             $this->arResult["ELEMENT"] = $this->getElement($this->arResult["ELEMENT_ID"]);
             $this->arResult["PROPERTY"] = $this->getProperty($this->arResult["INFOBLOCK_ID"], $this->arResult["ELEMENT_ID"]);
             $this->arResult["LIST_CATEGORY"] = $this->getListCategory();
+            $this->arResult["TEXT_CONTRACT"] = $this->getContractParams();
             $this->includeComponentTemplate();
         }
         

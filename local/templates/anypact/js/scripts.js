@@ -1,5 +1,4 @@
 $(document).ready(function() {
-    console.log("Сохранение на лету!");
 
     $("#save_descript").on('click', function() {
 

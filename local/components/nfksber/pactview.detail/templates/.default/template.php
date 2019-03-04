@@ -9,9 +9,9 @@
 <h1><?=$arResult["ELEMENT"]["NAME"]?></h1>
 <!---------------------------------------------------------------------------------------------------------->
 <div class="tender cardPact">
-        <div class="row">
-            <div class="col-md-7 col-lg-8">
-            <? if(!empty($arResult["ELEMENT"]["DETAIL_PICTURE"])){ ?>
+        <div class="row">            
+            <div class="col-md-8 mt-4">
+                <? if(!empty($arResult["ELEMENT"]["DETAIL_PICTURE"])){ ?>
                 <div class="cardPact-box">
                     <?                        
                             $resize_img = CFile::ResizeImageGet($arResult["ELEMENT"]["DETAIL_PICTURE"], array('width'=>'855', 'height'=>'460'),
@@ -37,8 +37,6 @@
                 <?
                         }
                     ?> 
-            </div>
-            <div class="col-md-8 mt-4">
                 <h5>Описание</h5>
                     <?=$arResult["ELEMENT"]["DETAIL_TEXT"]?>
                 <h5>Условия</h5>

@@ -65,13 +65,13 @@
                 $disable_a = "";
                 if (!empty($arResult["PROPERTY"]["ID_DOGOVORA"]["VALUE"])){                    
                     $text_btn_dogovor = 'редактировать договор';
-                    $action_dogovor = 'EDIT=Y';
+                    $action_dogovor = 'EDIT=EDIT';
                 } else {
                     $text_btn_dogovor = 'добавить договор';
                     $action_dogovor = 'EDIT=ADD';
                 }
             ?>            
-            <a class="btn btn-nfk" href="/my_pacts/add_my_dogovor/?ELEMENT_ID=<?=$arResult["PROPERTY"]["ID_DOGOVORA"]["VALUE"]?>&<?=$action_dogovor?>"><?=$text_btn_dogovor?></a>
+            <a class="btn btn-nfk" href="/my_pacts/add_my_dogovor/?ELEMENT_ID=<?=$arResult["ELEMENT"]["ID"]?>&<?=$action_dogovor?>"><?=$text_btn_dogovor?></a>
             <div id="select_spetification">
                 <a href="#" class="cardPact-rightPanel-url">Спецификация №1</a>
             </div>

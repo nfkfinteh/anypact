@@ -1,17 +1,17 @@
-<? // print_r($arResult["PROPERTY"]) ;?>
-<?// print_r($arResult) ;?>
+<?  //print_r($arResult["TEXT_CONTRACT"]) ;?>
+<? //print_r($arResult) ;?>
 <h1><?=$arResult["ELEMENT"]["NAME"]?></h1>
- <div class="tender cardDogovor">
+ <div class="tender cardDogovor" style="margin-bottom: 100px;">
     <div class="row">
-        <div class="col-lg-4 col-md-4 col-sm-4">
+        <div class="col-lg-3 col-md-3 col-sm-12">
+        <h4>Редактировать договор</h4>
             <div class="cardDogovor-boxTool">
-                <button class="btn btn-nfk">Подписать договор</button>
-                <button class="btn btn-nfk">Предложить свою редакцию</button>
+                <button class="btn btn-nfk">Сохранить изменения</button>                
             </div>
         </div>               
-        <div class="col-lg-8 col-md-8 col-sm-8"> 
+        <div class="col-lg-9 col-md-9 col-sm-12"> 
             <div class="cardDogovor-boxViewText">
-                <?=$arResult["ELEMENT"]["DETAIL_TEXT"]?>
+                <?=$arResult["TEXT_CONTRACT"]?>
             </div>
         </div>            
     </div>

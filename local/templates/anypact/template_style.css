@@ -4,6 +4,10 @@ body {
     font-weight: 300;
 }
 
+.bgpopup {
+    background: url(img/popup_bg.png);
+}
+
 .btn {
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
