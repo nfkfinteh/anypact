@@ -1,4 +1,4 @@
-<? //print_r($arResult["CONTRACT_HOLDER"]) ;?>
+<? //print_r($arResult["ELEMENT"]) ;?>
 <?  //print_r($arResult) ;?>
 <? 
     $disable_a = "";

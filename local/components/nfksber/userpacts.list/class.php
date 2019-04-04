@@ -106,8 +106,10 @@ class CDemoSqr extends CBitrixComponent
                 $arSend_Contract[$i]  = $arData; 
                 if($arData['UF_ID_USER_B']==$UserID){
                     $arSend_Contract[$i]['STATUS_NAME'] = 'Я подписал договор';
+                    $arSend_Contract[$i]['STATUS_ICON'] = 'send_one.png';
                 } else {                         
                     $arSend_Contract[$i]['STATUS_NAME'] = $arStatus[$arData['UF_STATUS']]['UF_NAME'];
+                    $arSend_Contract[$i]['STATUS_ICON'] = $arStatus[$arData['UF_STATUS']]['UF_STATUS_ICON'];
                 }
                 $arrID_Info_Contract[$i] =  $arData['UF_ID_CONTRACT'];
                 $i++;
