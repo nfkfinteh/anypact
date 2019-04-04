@@ -29,7 +29,7 @@
                                 <img src="https://shop.nfksber.ru/local/templates/main/images/card/clock.png" style = "width: 18px; margin: 0 5px 0 10px;" />
                                 <span id="timer" class=""><span id="timer_n" id-con="<?=$arResult['ELEMENT_ID']?>" id-cont="<?=$arResult['USER_ID']?>">80</span> сек.</span>
                             </label>                            
-		                    <input class="regpopup_content_form_submit" name="logout_butt" value="">
+		                    <input class="regpopup_content_form_submit" id="smscode" name="logout_butt" value="" maxlength="6">
 	                    </div>                        
                         </div>
                     </div>
