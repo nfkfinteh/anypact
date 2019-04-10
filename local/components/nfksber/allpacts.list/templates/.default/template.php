@@ -4,7 +4,12 @@
             <div class="col-lg-3 col-md-4 col-sm-12">
                 <div class="filter-tender">
                     <span>Ключевое слово</span>
-                    <input class="filter-key" type="text" placeholder="Например, продать автомобиль">
+                    <!--<input class="filter-key" type="text" placeholder="Например, продать автомобиль">-->
+                    <?$APPLICATION->IncludeComponent(
+                        "bitrix:search.form",
+                            "",
+                        Array()
+                    );?>
                     <span>Дата</span>
                     <input class="filter-date" type="text" name="min-date" placeholder="--/--/---"> -
                     <input class="filter-date" type="text" name="max-date" placeholder="--/--/---">

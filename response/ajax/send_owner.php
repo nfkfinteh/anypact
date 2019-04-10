@@ -19,8 +19,11 @@ $vf_code = $_POST['smscode'];
 $hlblock        = HL\HighloadBlockTable::getById(3)->fetch();
 $entity         = HL\HighloadBlockTable::compileEntity($hlblock); 
 $entityClass    = $entity->getDataClass();
+<<<<<<< HEAD
+=======
 $NewInfo = array('UF_PROPERTY2' => 7);
 
+>>>>>>> master
 $NewInfo = array('UF_VER_CODE_USER_A' => $vf_code, 'UF_TIME_SEND_USER_A' => ConvertTimeStamp(time(), 'FULL'), 'UF_STATUS' => 2);
 $result = $entityClass::update($id_send_item, $NewInfo);
 
