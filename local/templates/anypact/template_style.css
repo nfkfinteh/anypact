@@ -311,15 +311,6 @@ input {
     color: #ffffff;
 }
 
-.tender-post .tender-price {
-    font-size: 24px;
-    color: #fd6600;
-    font-weight: 700;
-    bottom: 33px;
-    left: 8px;
-    position: absolute;
-}
-
 .pagination {
     overflow: hidden;
 }
@@ -1398,16 +1389,6 @@ input::-webkit-input-placeholder {
     left: 16px;
     color: #ffffff;
 }
-
-.tender-post .tender-price {
-    font-size: 24px;
-    color: #fd6600;
-    font-weight: 700;
-    bottom: 33px;
-    left: 8px;
-    position: absolute;
-}
-
 .pagination {
     overflow: hidden;
 }
@@ -2737,14 +2718,19 @@ input::-webkit-input-placeholder {
 }
 
 .tender-post h3 {
-    font-size: 24px;
+    font-size: 21px;
     font-weight: 700;
-    margin-top: 20px;
+    margin-top: 17px;
+    line-height: 1.4;
+    height: 87px;
+    overflow: hidden;
 }
 
 .tender-post p {
     font-size: 16px;
-    margin-bottom: 87px;
+    margin-bottom: 15px;
+    overflow: hidden;
+    height: 80px;
 }
 
 .tender-img::before {
@@ -2773,9 +2759,8 @@ input::-webkit-input-placeholder {
     font-size: 24px;
     color: #fd6600;
     font-weight: 700;
-    bottom: 33px;
-    left: 8px;
-    position: absolute;
+    margin-bottom: 25px;
+    display: inline-block;
 }
 
 .pagination {
