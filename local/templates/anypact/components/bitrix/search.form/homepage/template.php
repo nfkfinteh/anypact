@@ -12,19 +12,12 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);?>
 
-<form action="<?=$arResult["FORM_ACTION"]?>">
-<?if($arParams["USE_SUGGEST"] === "Y"):?><?$APPLICATION->IncludeComponent(
-				"bitrix:search.suggest.input",
-				"",
-				array(
-					"NAME" => "q",
-					"VALUE" => "",
-					"INPUT_SIZE" => 15,
-					"DROPDOWN_SIZE" => 10,
-				),
-				$component, array("HIDE_ICONS" => "Y")
-			);?>
-<?else:?>
-<input type="text" name="q" value="" size="15" maxlength="50" class="filter-key" placeholder="Например, продать автомобиль" /><?endif;?>
-<input name="s" type="submit" class="btn btn-nfk" value="<?=GetMessage("BSF_T_SEARCH_BUTTON");?>" style="margin-top: 15px;"/>
-</form>
+<div class="search">
+        <form action="<?=$arResult["FORM_ACTION"]?>">
+            <span class="magnifier"></span>
+            <input type="text" name="q" placeholder="Поиск" value="">
+            <span class="region">Чебоксары</span>
+            <span class="deal-type">Вид сделки</span>
+            <input name="s" type="submit" class="btn btn-nfk btn-search" value="<?=GetMessage("BSF_T_SEARCH_BUTTON");?>" style="border: 1px solid #ff6416 !important;"/>
+        </form>
+    </div>

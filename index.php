@@ -10,17 +10,19 @@ $APPLICATION->SetTitle("AnyPact");
     ?>
 	<!--Форма поиска-->
 		<h2>Поиск контрагентов</h2>
-		<div class="search">
-			<form>
-				<span class="magnifier"></span>
-				<input type="text" name="fio" placeholder="ФИО / Логин">
-				<span class="region">Чебоксары</span>
-				<span class="deal-type">Вид сделки</span>
-				<button class="btn btn-nfk-invert btn-search" type="submit">Поиск</button>
-			</form>
-		</div>
-		<div class="map-space"></div>
+		<?// компонент поисковой строки
+		$APPLICATION->IncludeComponent(
+			"bitrix:search.form",
+			"homepage",
+			Array()
+		);?>		
 	</div>
+	<?// компонент поисковой строки
+		$APPLICATION->IncludeComponent(
+			"nfksber:yamap",
+			"",
+			Array()
+		);?>
 	<!--// Форма поиска-->
 		<div class="signature-container">
 		<div class="container">
@@ -86,6 +88,82 @@ $APPLICATION->SetTitle("AnyPact");
 			</div>
 		</div>
 	</div>
+	<div class="client-container">
+    <div class="container">
+        <h2>Стать клиентом</h2>
+        <div class="short-divider"></div>
+        <div class="row">
+            <div class="col-md-6">
+                Регистрация, авторизация и заключение договоров на площадке AnyPact проходят в режиме онлайн. Получить простую электронную подпись Вы можете в любом Многофункциональном центре Вашего города. Для этого Вам необходимо удостоверить свою личность с помощью данных всего трёх документов и оформить учётную запись на сайте www.gosuslugi.ru.
+            </div>
+        </div>
+    </div>
+</div>
+<div class="all-easy">
+    <div class="container">
+        <h4>Все просто</h4>
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                <span class="big-number">1.</span>
+                <div class="short-divider"></div>
+                <p>Предоставьте данные Вашего паспорта, ИНН и СНИЛС в МФЦ</p>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <span class="big-number">2.</span>
+                <div class="short-divider"></div>
+                <p>Получите уведомление с Вашим личным логином и паролем.</p>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <span class="big-number">3.</span>
+                <div class="short-divider"></div>
+                <p>Введите эти данные в личном кабинете на сайте Госуслуг.</p>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <span class="big-number">4.</span>
+                <div class="short-divider"></div>
+                <p>Зарегистрируйтесь на сайте AnyPact и заключайте сделки онлайн.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="contact-container">
+    <div class="container">
+        <h2>Контакты</h2>
+        <div class="short-divider"></div>
+        <div class="row">
+            <div class="col-lg-6">
+                <a href="tel:88000000000">
+                    <div class="contact-phone-icon">
+                        <i class="icon-main icon-11"></i>
+                    </div>
+                    <div class="contact-phone">
+                        <span class="contact-big-text">
+                            8 (800) 000-00-00
+                        </span>
+                        <span class="text-gray">
+                            Менеджер ответит на Ваши вопросы по телефону
+                        </span>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-6">
+                <a href="mailto:info@anypact.ru">
+                    <div class="contact-mail-icon">
+                        <i class="icon-main icon-12"></i>
+                    </div>
+                    <div class="contact-mail">
+                        <span class="contact-big-text">
+                            info@anypact.ru
+                        </span>
+                        <span class="text-gray">
+                            Свяжитесь с нами по электронной почте
+                        </span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
     <? }else { ?> 
 	<!--//-->
 	<!--Форма авторизации-->

@@ -132,12 +132,6 @@ input {
     margin-bottom: 20px;
 }
 
-.search>form>input {
-    width: calc(100% - 630px);
-    border: none;
-    height: 40px;
-}
-
 .search .btn-search {
     height: 45px;
     width: 163px;
@@ -818,12 +812,6 @@ input::-webkit-input-placeholder {
     margin-top: 43px;
     position: relative;
     z-index: 10;
-}
-
-.search>form>input {
-    width: calc(100% - 630px);
-    border: none;
-    height: 40px;
 }
 
 .search .btn-search {
@@ -2320,9 +2308,12 @@ input::-webkit-input-placeholder {
 /*TODO------style-index.pnp--------*/
 
 .map-space {
-    height: 544px;
+    height: 715px;
     position: relative;
     z-index: 1;
+    margin-top: -60px;
+    width: 100%;
+    background: url(img/map_bg.jpg) no-repeat;
 }
 
 .short-divider {

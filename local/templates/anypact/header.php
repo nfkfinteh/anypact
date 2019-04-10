@@ -93,7 +93,13 @@ if (!defined ("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
 <?
     if ($USER->IsAuthorized()){
 ?>
-    <div class="container bg-russia-face">
+    <?
+        $page = explode('/', $_SERVER['REQUEST_URI']);
+        $class_container = '';
+        if(!empty($page[1]) && $page[1] == 'pacts' ){ $class_container = 'bg-russia'; echo "++"; }
+        if(!empty($page[2]) && $page[2] == 'view_pact' ){ $class_container = ''; echo "--";}
+    ?>
+    <div class="container <?=$class_container?>">
             <header class="header">
                 <div class="row">
                     <div class="col-md-6">
