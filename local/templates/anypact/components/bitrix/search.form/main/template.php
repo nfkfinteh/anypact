@@ -23,6 +23,8 @@ $this->setFrameMode(true);?>
 					"DROPDOWN_SIZE" => 10,
 				),
 				$component, array("HIDE_ICONS" => "Y")
-			);?><?else:?><input type="text" name="q" value="" size="15" maxlength="50" /><?endif;?>
-			<input name="s" type="submit" value="<?=GetMessage("BSF_T_SEARCH_BUTTON");?>" />
+			);?>
+<?else:?>
+<input type="text" name="q" value="" size="15" maxlength="50" class="filter-key" placeholder="Например, продать автомобиль" /><?endif;?>
+<input name="s" type="submit" class="btn btn-nfk" value="<?=GetMessage("BSF_T_SEARCH_BUTTON");?>" style="margin-top: 15px;"/>
 </form>

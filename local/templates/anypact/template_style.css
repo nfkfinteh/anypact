@@ -1974,14 +1974,14 @@ body,
 }
 
 .btn-nfk {
-    color: #ff6416;
+    color: #ff6416 !important;
     background-color: #ffffff;
-    border-color: #ff6416;
+    border-color: #ff6416 !important;
 }
 
 .btn-nfk:hover {
-    color: #ffffff;
-    background-color: #ff6416;
+    color: #ffffff !important;
+    background-color: #ff6416 !important;
 }
 
 .btn-nfk-invert {
@@ -2815,10 +2815,12 @@ input::-webkit-input-placeholder {
 .filter-tender span {
     display: block;
     margin-top: 35px;
+    margin-bottom: 10px;
 }
 
 .filter-tender span:nth-child(1) {
     margin-top: 0;
+    margin-bottom: 10px;
 }
 
 .filter-tender .filter-date,

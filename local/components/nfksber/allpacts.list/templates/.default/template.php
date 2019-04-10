@@ -7,7 +7,7 @@
                     <!--<input class="filter-key" type="text" placeholder="Например, продать автомобиль">-->
                     <?$APPLICATION->IncludeComponent(
                         "bitrix:search.form",
-                            "",
+                            "main",
                         Array()
                     );?>
                     <span>Дата</span>
