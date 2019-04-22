@@ -17,12 +17,12 @@ $this->setFrameMode(true);
 
 <?
 
-$APPLICATION->IncludeComponent("nfksber:pactview.detail", 
+$APPLICATION->IncludeComponent("nfksber:userpacts.detail", 
 "", 
 	Array(
 		"IBLOCK_ID" => "3",
 		"SEF_MODE" => "N",
-		"SEF_FOLDER" => "/pacts/",
+		"SEF_FOLDER" => "/my_pacts/",
 		"ELEMENT_ID" => $arResult["VARIABLES"]["ELEMENT_ID"],
 		"SEF_URL_TEMPLATES" => array(                    
 				"list" => "",

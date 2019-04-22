@@ -29,12 +29,15 @@ if (!defined ("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
         <link data-font="g-font-open-sans" data-protected="true" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&subset=cyrillic" rel="stylesheet">
     </noscript>
 
-	<?
-    $APPLICATION->ShowHead();
+	<?    
     $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH.'/css/bootstrap.css'); 
-	$APPLICATION->ShowProperty('MetaOG');?>
-    <link rel="stylesheet" href="<?=SITE_TEMPLATE_PATH.'/css/bootstrap.css'?>" >
-    <link rel="stylesheet" href="<?=SITE_TEMPLATE_PATH.'/template_style.css'?>" >    
+    $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH.'/template_style.css'); 
+    $APPLICATION->SetAdditionalCSS('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'); 
+    $APPLICATION->ShowHead();
+    //$APPLICATION->ShowProperty('MetaOG');
+    ?>
+    <!--<link rel="stylesheet" href="<?=SITE_TEMPLATE_PATH.'/css/bootstrap.css'?>" >
+    <link rel="stylesheet" href="<?=SITE_TEMPLATE_PATH.'/template_style.css'?>" >    --->
 </head>
 <body>
 <div id="panel"><?$APPLICATION->ShowPanel();?></div>
@@ -96,8 +99,8 @@ if (!defined ("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
     <?
         $page = explode('/', $_SERVER['REQUEST_URI']);
         $class_container = '';
-        if(!empty($page[1]) && $page[1] == 'pacts' ){ $class_container = 'bg-russia'; echo "++"; }
-        if(!empty($page[2]) && $page[2] == 'view_pact' ){ $class_container = ''; echo "--";}
+        if(!empty($page[1]) && $page[1] == 'pacts' ){ $class_container = 'bg-russia';}
+        if(!empty($page[2]) && $page[2] == 'view_pact' ){ $class_container = '';}
     ?>
     <div class="container <?=$class_container?>">
             <header class="header">
@@ -114,8 +117,7 @@ if (!defined ("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
             </header>
             <nav class="navbar navbar-expand-lg">
                 <?
-                $Section = $_GET['SECTION_ID'];    
-                    
+                $Section = $_GET['SECTION_ID'];
                     $APPLICATION->IncludeComponent("nfksber:stepback", 
                     "", 
                         Array(
@@ -128,27 +130,23 @@ if (!defined ("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse " id="navbarSupportedContent">
-                <ul class="navbar-nav mr-4">
-                        <li class="nav-item">
-							<a class="nav-link" href="/">Главная</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/my_pacts/">Мои сделки</a>
-                        </li>
-						<li class="nav-item">
-                            <a class="nav-link " href="/profile/">Профиль</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link nav-link-activ" href="/pacts/">Все сделки</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">О сервисе</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Поддержка</a>
-                        </li>
-                    </ul>
+                    <? 
+                        $arUrlMenu = array(
+                            '/' => 'Главная',
+                            '/my_pacts/' => 'Мои сделки',
+                            '/profile/' => 'Профиль',
+                            '/pacts/' => 'Все сделки',
+                            '/service/' => 'О сервисе',
+                            '/help/' => 'Поддержка'
+                        );
 
+                        $APPLICATION->IncludeComponent("nfksber:navmenu.head", 
+                        "", 
+                            Array(
+                                "ArURL_MENU"         => $arUrlMenu,
+                                )
+                        );
+                    ?>
                 </div>
             </nav>
 

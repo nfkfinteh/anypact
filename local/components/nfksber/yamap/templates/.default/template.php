@@ -33,6 +33,7 @@
 									zoom: 7,
 									controls: []
 								});
+								myMap.behaviors.disable('scrollZoom');
 							}
 						</script>					
 			<!--//YM-->

@@ -9,3 +9,99 @@
     background: #fdfdfd;
     padding: 10px;
 }
+
+.cardDogovor-boxViewText {
+    min-height: 500px;
+}
+
+.cardDogovor-boxViewText span {
+    display: list-item;
+    text-align: left;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.cardDogovor-boxViewText span:hover {
+    color: #ff6416;
+}
+
+.cardDogovor-boxViewText span img {
+    width: 35px;
+    margin-right: 15px;
+}
+
+.cardDogovor-boxViewText spandoc {
+    display: list-item;
+    text-align: left;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.cardDogovor-boxViewText spandoc:hover {
+    color: #ff6416;
+}
+
+.cardDogovor-boxViewText spandoc img,
+.cardDogovor-boxViewText a img {
+    width: 35px;
+    margin-right: 15px;
+}
+
+.steps .t {
+    width: 94%;
+    border: 1px solid #ff6416;
+    margin: 10px;
+    padding: 15px;
+    cursor: pointer;
+    position: relative;
+    margin-left: 6%;
+    border-radius: 5px;
+}
+
+.steps .t .number {
+    position: absolute;
+    top: 30%;
+    left: -15px;
+    padding: 0 6px;
+    background: #ff6416;
+    color: #fff;
+    border-radius: 5px;
+}
+
+rededittext {
+    display: inline;
+    background-color: #ff641621;
+    position: relative;
+}
+
+edbox {
+    position: relative;
+}
+
+.btn-nfk span {
+    color: #ff6416;
+}
+
+.btn-nfk:hover span {
+    color: #ffF;
+}
+
+.tools_redactor {
+    padding: 8px;
+    background: #f1f4f4;
+}
+
+.space_right {
+    margin-right: 15px;
+}
+
+.input_text {
+    position: absolute;
+    top: -3px;
+    left: 0px;
+    width: 250px;
+    height: 24px;
+    background: white;
+    border: 1px solid #ff6416;
+    border-radius: 3px;
+}

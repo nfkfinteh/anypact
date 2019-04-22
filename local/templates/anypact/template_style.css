@@ -610,12 +610,6 @@ body,
     background-color: #ffffff;
 }
 
-.container.bg-russia {
-    background: url("image/bg.png") no-repeat fixed center center;
-    margin-top: 5px;
-    padding-top: 4px;
-}
-
 .header {
     margin-top: 30px;
     margin-bottom: 17px;
@@ -1377,6 +1371,7 @@ input::-webkit-input-placeholder {
     left: 16px;
     color: #ffffff;
 }
+
 .pagination {
     overflow: hidden;
 }
@@ -1966,8 +1961,6 @@ body,
 
 .container.bg-russia {
     background: url("image/bg.png") no-repeat fixed center center;
-    margin-top: 5px;
-    padding-top: 4px;
 }
 
 .header {
@@ -2004,8 +1997,8 @@ h5 {
     font-weight: 900;
 }
 
-a,
-a:hover {
+.container a,
+.container a:hover {
     color: #ff6416;
 }
 
@@ -2695,7 +2688,8 @@ input::-webkit-input-placeholder {
     color: #000000;
 }
 
-.tender-post a {
+.tender-post a,
+.tender-post a:hover {
     color: #000000;
     text-decoration: none;
 }

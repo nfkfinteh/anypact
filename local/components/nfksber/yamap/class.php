@@ -1,6 +1,6 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die();
 
-class CDemoSqr extends CBitrixComponent
+class ymMap extends CBitrixComponent
 {
     //Родительский метод проходит по всем параметрам переданным в $APPLICATION->IncludeComponent
     //и применяет к ним функцию htmlspecialcharsex. В данном случае такая обработка избыточна.
