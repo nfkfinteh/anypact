@@ -4,7 +4,7 @@
 <h1><?=$arResult["ELEMENT"]["NAME"]?></h1>
  <div class="tender cardDogovor">
     <div class="row">
-        <div class="col-lg-4 col-md-4 col-sm-4">
+        <div class="col-lg-3 col-md-3 col-sm-12">
             <div class="cardDogovor-boxTool">
                 <?if ($arResult["USER_ID"] == $arResult["PROPERTY"]["PACT_USER"]["VALUE"]){
                    ?>
@@ -17,8 +17,8 @@
                 <?}?>
             </div>
         </div>               
-        <div class="col-lg-8 col-md-8 col-sm-8"> 
-            <div class="cardDogovor-boxViewText">
+        <div class="col-lg-9 col-md-9 col-sm-12"> 
+            <div class="cardDogovor-boxViewText" id="canvas" contenteditable="false">
                 <?=$arResult["CONTRACT_PROPERTY"]["CONTRACT"]["DETAIL_TEXT"]?>
             </div>
         </div>            

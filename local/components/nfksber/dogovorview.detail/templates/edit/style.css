@@ -74,6 +74,12 @@ rededittext {
     position: relative;
 }
 
+nedittext {
+    display: inline;
+    background-color: #ff641621;
+    position: relative;
+}
+
 edbox {
     position: relative;
 }

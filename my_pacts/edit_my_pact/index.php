@@ -7,14 +7,15 @@ $APPLICATION->SetTitle("AnyPact");
     // проверяем авторизован ли пользователь
     global $USER;
     if ($USER->IsAuthorized()){
-    ?>
-    <?//компонент выводит детальный просмотр сделки для редактирования 
-    $Template = '';
-    if($_GET['EDIT'] == 'Y'){
-        $Template = 'edit';
-    }  
+    
+    //компонент выводит детальный просмотр сделки для редактирования     
+    $arTemplate = array(
+        'EDIT'  => 'edit',
+        'ADD'   => 'add'
+    );    
+ 
     $APPLICATION->IncludeComponent("nfksber:pactview.detail", 
-    $Template, 
+    $arTemplate[$_GET['ACTION']], 
         Array(
             "IBLOCK_ID" => 3,
             "SEF_MODE" => "N",

@@ -1,7 +1,7 @@
 <? //print_r($arResult["INFOBLOCK_LIST"]["HL"]) ;
   //print_r($arResult["SEND_CONTRACT"] );
 ?>
-<h2 class="title_line_button">Мои предложения</h2><a href="#" class="btn btn-nfk" id="add_pact">+ создать новое предложение</a>
+<h2 class="title_line_button">Мои предложения</h2><a href="/my_pacts/edit_my_pact/?ACTION=ADD" class="btn btn-nfk" id="add_pact">+ создать новое предложение</a>
 <?  
   $count_pacts = count($arResult["INFOBLOCK_LIST"]["ARR_SDELKI"]);
   if($count_pacts > 0 ){
@@ -23,7 +23,7 @@
                 <th scope="row"><?=$pact["NAME"]?></th>
                 <td><?=$pact["CREATED_DATE"]?></td>
                 <td><?=$pact["PROPERTIES"]["PACT_STATUS"]["VALUE_XML_ID"]?></td>
-                <td><a href="/my_pacts/edit_my_pact/?ELEMENT_ID=<?=$pact['ID']?>&EDIT=Y" target="_blank">Посмотреть</a></td>
+                <td><a href="/my_pacts/edit_my_pact/?ELEMENT_ID=<?=$pact['ID']?>&ACTION=EDIT" target="_blank">Посмотреть</a></td>
             </tr>   
             <?         
         }

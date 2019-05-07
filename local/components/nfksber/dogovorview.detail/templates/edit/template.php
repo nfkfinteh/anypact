@@ -1,5 +1,21 @@
-<?  //print_r($arResult["TEXT_CONTRACT"]) ;?>
-<? //print_r($arResult) ;?>
+<? // print_r($arResult["TEMPLATE_CONTENT_PROPERTY"]) ;?>
+<? //print_r($arResult) ;
+   $Name = $arResult["USER_PROP"]["NAME"];
+   $Surname = $arResult["USER_PROP"]["LAST_NAME"];
+   $Midlenmae = $arResult["USER_PROP"]["SECOND_NAME"];
+   $Phone = $arResult["USER_PROP"]["PERSONAL_PHONE"];
+   $Passport = $arResult["USER_PROP"]["UF_PASSPORT"].' '.$arResult["USER_PROP"]["UF_KEM_VPASSPORT"];
+
+?>
+<script>
+var full_name = {
+    name: '<?=$Name?>',
+    surname: '<?=$Surname?>',
+    midlname:'<?=$Midlenmae?>',
+    phone: '<?=$Phone?>',
+    passport: '<?=$Passport?>'
+}
+</script>
 <h1><?=$arResult["ELEMENT"]["NAME"]?></h1>
  <div class="tender cardDogovor" style="margin-bottom: 100px;">
     <div class="row">
@@ -8,18 +24,26 @@
                 <h5>Создать договор из наших шаблонов</h3>
                 <p>В правой части выберите тему договора:</p>
                 <button class="btn btn-nfk" id="template_con">Загрузить договор из шаблона</button>                
-                <?if(!empty($arResult["TEMPLATE_CONTENT"])){ ?>
-                    <div id="head_c">
-                        <select class="form-control form-control-lg">
-                            <option>Я Продавец</option>
-                            <option>Я Покупатель</option>
-                        </select>
-                    </div>
+                <?if(!empty($arResult["TEMPLATE_CONTENT"])){ ?>                    
                     <div class="steps">
-                        <div class="t" id="step1"><div class="number">1</div>Условия договора</div>
-                        <div class="t" id="step2"><div class="number">2</div>Информация о транспортном средстве</div>
-                        <div class="t" id="step3"><div class="number">3</div>Порядок оплаты</div>
-                        <div class="t" id="step4"><div class="number">4</div>Реквизиты договора</div>
+                        <?if(!empty($arResult["TEMPLATE_CONTENT_PROPERTY"])){?>
+                        <div class="t" id="step0"><div class="number">1</div>
+                            <div id="head_c">
+                                <select class="form-control form-control-lg" id="select_type_user">
+                                    <?
+                                        $type_user = explode(",", $arResult["TEMPLATE_CONTENT_PROPERTY"][0]);
+                                    ?>
+                                    <option value="seller">Я <?=$type_user[0]?></option>
+                                    <option value="customer">Я <?=$type_user[1]?></option>
+                                </select>
+                            </div>
+                        </div>
+                        <?     
+                            $arrCount = count($arResult["TEMPLATE_CONTENT_PROPERTY"]);?>
+                            <?for($x=1; $x<$arrCount; $x++){?>
+                                <div class="t" id="step<?=$x?>"><div class="number"><?=$x+1?></div><?=$arResult["TEMPLATE_CONTENT_PROPERTY"][$x]?></div>
+                            <?}?>
+                        <?}?>
                     </div>
                 <?}?>
                 <h5>Загрузить договор из вашего файла</h3>
@@ -46,8 +70,8 @@
                 <button type="button" class="btn btn-nfk btn-default form_text" id="btn-weight" data-toggle="tooltip" data-placement="left" title="Жирный текст" contenteditable="false"><span class="glyphicon glyphicon-bold"></span></button>
                 <button type="button" class="btn btn-nfk btn-default form_text space_right" id="btn-italic" data-toggle="tooltip" data-placement="left" title="Курсив" contenteditable="false"><span class="glyphicon glyphicon-italic"></span></button>
                 <button type="button" class="btn btn-nfk btn-default form_text" id="btn-question" data-toggle="tooltip" data-placement="left" title="Информация по инструментам" contenteditable="false"><span class="glyphicon glyphicon-question-sign"></span></button>
-            </div>
-            <div class="cardDogovor-boxViewText" id="canvas" contenteditable="false">
+        </div>
+        <div class="cardDogovor-boxViewText" id="canvas" contenteditable="false">
 
             <?if(!empty($arResult["TEMPLATE_CONTENT"])){ ?>                
                 <? echo $arResult["TEMPLATE_CONTENT"]["DETAIL_TEXT"] ;

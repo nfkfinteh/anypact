@@ -2,10 +2,12 @@
 /*
     Класс выводит информацию в карточку по сделке
 */
+include_once 'autoedittext.php';
 
 class CDemoSqr extends CBitrixComponent
 {       
     public $ID_CONTRACT;
+    public $USER_PROPERTY;
     
     public function onPrepareComponentParams($arParams)
     {
@@ -78,19 +80,22 @@ class CDemoSqr extends CBitrixComponent
         
         if($ar_res = $res->GetNext()){
             $array_props["CONTRACT"] = $ar_res;
-        }
-        
+        }        
         //подготовка текста
-        $array_props["CONTRACT"]["DETAIL_TEXT"] = $this->convertContent($array_props["CONTRACT"]["DETAIL_TEXT"]);
+        $Contract_template_Text = $this->convertContent($array_props["CONTRACT"]["DETAIL_TEXT"]);
 
+        $clear_text = new autoedittext();
+
+        $Contract_template_Text                 = $clear_text->replaceTag($Contract_template_Text, $this->USER_PROPERTY);
+        $array_props["CONTRACT"]["DETAIL_TEXT"] = str_replace("&nbsp;", "", $Contract_template_Text);
+        
         // свойства контракта
-        $db_props       = CIBlockElement::GetProperty($id_infobloc_contract, $this->ID_CONTRACT, "sort", "asc", array());               
-
+        $db_props       = CIBlockElement::GetProperty($id_infobloc_contract, $this->ID_CONTRACT, "sort", "asc", array());
+        
         while($ar_props = $db_props->Fetch()){ 
             $array_props["CONTRACT_PROPERTY"][] = $ar_props;
-        }      
-
-        //print_r($array_props["CONTRACT"]);
+        }
+        
         return $array_props;
     }
 
@@ -126,7 +131,15 @@ class CDemoSqr extends CBitrixComponent
         return $arThree;
     }
 
-    
+    private function getMultyProperty($ID_IBLOCK, $ID_EL){
+        $VALUES = array();
+        $res = CIBlockElement::GetProperty($ID_IBLOCK, $ID_EL, "sort", "asc", array("CODE" => "STEPS"));
+        while ($ob = $res->GetNext())
+        {
+            $VALUES[] = $ob['VALUE'];
+        }
+        return $VALUES;
+    }
 
     function paramsUser($arParams){        
         $arResult["INFOBLOCK_ID"]       = $arParams["IBLOCK_ID"];
@@ -143,8 +156,14 @@ class CDemoSqr extends CBitrixComponent
         {
             global $USER;
             $this->arResult                         = array_merge($this->arResult, $this->paramsUser($this->arParams));
-            $this->arResult["USER_ID"]              = CUser::GetID();
+            $this->arResult["USER_ID"]              = CUser::GetID();           
+            // данные владельца сделки           
+            $UserContractHolder                     = CUser::GetByID(CUser::GetID());
+            $arrUserContractHolder                  = $UserContractHolder->Fetch();
+            $this->USER_PROPERTY                    = $arrUserContractHolder;
+            $this->arResult["USER_PROP"]            = $arrUserContractHolder;
             $this->arResult["USER_LOGIN"]           = CUser::GetLogin();
+
             $this->arResult["ELEMENT"]              = $this->getElement($this->arResult["ELEMENT_ID"]);
             $this->arResult["PROPERTY"]             = $this->getProperty($this->arResult["INFOBLOCK_ID"], $this->arResult["ELEMENT_ID"]);
             $this->arResult["LIST_CATEGORY"]        = $this->getListCategory();
@@ -152,7 +171,8 @@ class CDemoSqr extends CBitrixComponent
             $this->arResult["THREE_TEMPLATE"]       = $this->getTemplateContractCategote();
             
             if(!empty($_GET["ID_TEMPLATE"])){                
-                $this->arResult["TEMPLATE_CONTENT"] = $this->getElement($_GET["ID_TEMPLATE"]); 
+                $this->arResult["TEMPLATE_CONTENT"] = $this->getElement($_GET["ID_TEMPLATE"]);
+                $this->arResult["TEMPLATE_CONTENT_PROPERTY"]    = $this->getMultyProperty(5, $_GET["ID_TEMPLATE"]);
             }
 
             $this->includeComponentTemplate();

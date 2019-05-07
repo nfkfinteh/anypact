@@ -40,8 +40,10 @@ window.onload = function() {
     var button_send_contract_owner = document.getElementById('send_contract_owner');
 
     smscode.value = null;
-
+    // подписывает сторона Б
     if (!!button_send_contract) {
+        let canvas = document.getElementById('canvas');
+        //console.log(contract_text);
         button_send_contract.onclick = function(e) {
             popup_send_sms.style.display = 'block';
             smscode.focus();
@@ -75,8 +77,10 @@ window.onload = function() {
                 if (valid_code == 777777) {
                     clearInterval(t);
                     smscode.blur();
+                    let contract_text = canvas.innerHTML;
+                    contract_text = contract_text.replace(/&/g, "%");
                     var xhr = new XMLHttpRequest();
-                    var params = 'id=' + encodeURIComponent(id_contract) + '&contr=' + encodeURIComponent(id_contraegent) + '&smscode=' + encodeURIComponent(valid_code);
+                    var params = 'id=' + encodeURIComponent(id_contract) + '&contr=' + encodeURIComponent(id_contraegent) + '&smscode=' + encodeURIComponent(valid_code) + '&text_contract=' + contract_text;
                     xhr.open('POST', '/response/ajax/send_contract.php', true);
                     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
                     xhr.onreadystatechange = function() {

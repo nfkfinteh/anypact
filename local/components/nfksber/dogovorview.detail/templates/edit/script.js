@@ -68,7 +68,88 @@ function formatSelectText(id_name) {
     };
 }
 
+function loadTextCanvas(text, canvas_name) {
+    let canvas = document.getElementById(canvas_name);
+    canvas.innerHTML = text;
+
+}
+
+// подстановка текста из всплывающего инпута
+function loadTextBox(el) {
+    let variable = $(el);
+    let parent_var = variable.parent('edbox');
+    let text_box = parent_var.children('rededittext')
+    let content_text_box = text_box.text();
+    let context_input = variable.val();
+    if (context_input == '') {
+        context_input = content_text_box;
+    }
+    text_box.text(context_input);
+    variable.remove();
+}
+
+// автоподстановка реквизитов пользователя
+function setHeaderFullName(idname) {
+    let seller = document.getElementsByClassName('fullnameseller');
+    let customer = document.getElementsByClassName('fullnamecustomer');
+    //let type_user = document.getElementById('step0_text');
+    switch (idname) {
+        case 'seller':
+            for (var i = 0; i < seller.length; i++) {
+                seller[i].innerText = full_name.surname + ' ' + full_name.name + ' ' + full_name.midlname;
+
+            }
+            for (var i = 0; i < customer.length; i++) {
+                customer[i].innerText = '[ФИО Покупателя]'
+
+            }
+            //type_user.setAttribute('type', 'seller');
+            break;
+        case 'customer':
+            for (var i = 0; i < seller.length; i++) {
+                seller[i].innerText = '[ФИО Продавца]';
+
+            }
+            for (var i = 0; i < customer.length; i++) {
+                customer[i].innerText = full_name.surname + ' ' + full_name.name + ' ' + full_name.midlname;
+
+            }
+            //type_user.setAttribute('type', 'customer');
+            break;
+
+        default:
+            for (var i = 0; i < seller.length; i++) {
+                seller[i].innerText = full_name.surname + ' ' + full_name.name + ' ' + full_name.midlname;
+            }
+            for (var i = 0; i < customer.length; i++) {
+                customer[i].innerText = '[ФИО Покупателя]';
+
+            }
+            //type_user.setAttribute('type', 'seller');
+            break;
+    }
+
+}
+
+function setBackgraundStepBox() {
+    let box = document.getElementsByClassName('t');
+    for (var i = 0; i < box.length; i++) {
+        box[i].style.backgroundColor = '#fff';
+
+    }
+}
+
+////////////////////////////////////////////////////////////////////////////////////////
+
 $(document).ready(function() {
+
+    setHeaderFullName();
+
+    $('#select_type_user').on('change', function() {
+        let value = $(this).val();
+        setHeaderFullName(value);
+    });
+
     $('.cardDogovor-boxViewText span').on('click', function() {
         var category = $(this);
         var id_category = category.attr('data-id');
@@ -110,15 +191,28 @@ $(document).ready(function() {
 
     });
 
-    function loadTextCanvas(text, canvas_name) {
-        let canvas = document.getElementById(canvas_name);
-        canvas.innerHTML = text;
+    $(document).on('click touchstart', '#save_btn', function() {
+        let canvas_contr = $('.cardDogovor-boxViewText');
+        let canvas_contr_context = String(canvas_contr.html());
+        // загружаем содержимое категории
+        $.post(
+            "/response/ajax/up_contract_text.php", {
+                contect: canvas_contr_context
+            },
+            onAjaxSuccess
+        );
 
-    }
+        function onAjaxSuccess(data) {
+            // Здесь мы получаем данные, отправленные сервером и выводим их на экран.             
+            console.log(data);
+        }
 
-    //$('.steps .t').on('click', function() {
+    });
+
+    // прыжки по шагам заполнения
     $(document).on('click touchstart', '.steps .t', function() {
         var box = $(this);
+        setBackgraundStepBox();
         box.css('backgroundColor', '#ff64160f');
         var text_box_id = box.attr("id");
         var text_box = $("#" + text_box_id + "_text");
@@ -165,17 +259,16 @@ $(document).ready(function() {
 
     });
 
+    // ввод текста во всплывающем окне
     $(document).on('focusout', '.input_text', function() {
         let variable = $(this);
-        let parent_var = variable.parent('edbox');
-        let text_box = parent_var.children('rededittext')
-        let content_text_box = text_box.text();
-        let context_input = variable.val();
-        if (context_input == '') {
-            context_input = content_text_box;
+        loadTextBox(variable);
+    });
+    $("body").keypress(function(e) {
+        if (e.which == 13) {
+            let variable = $('.input_text');
+            loadTextBox(variable);
         }
-        text_box.text(context_input);
-        variable.remove();
     });
 
     var form = document.forms.namedItem("loadcontract");

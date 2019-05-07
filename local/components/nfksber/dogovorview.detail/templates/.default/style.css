@@ -27,3 +27,27 @@
     position: fixed;
     margin-top: -80px;
 }
+
+
+/*----Редактор договора-----*/
+
+useredittext {
+    display: inline;
+    background-color: #ff641621;
+    position: relative;
+}
+
+.input_text {
+    position: absolute;
+    top: -3px;
+    left: 0px;
+    width: 250px;
+    height: 24px;
+    background: white;
+    border: 1px solid #ff6416;
+    border-radius: 3px;
+}
+
+edbox {
+    position: relative;
+}

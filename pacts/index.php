@@ -11,11 +11,12 @@ $APPLICATION->SetTitle("AnyPact");
     <!--Созданные или подписанные пользователем документы-->   
     <h1>Все сделки</h1>
     <?// компонент поисковой строки
-    $APPLICATION->IncludeComponent(
+    /*$APPLICATION->IncludeComponent(
         "bitrix:search.form",
         "homepage",
         Array()
-    );?>
+    );*/
+    ?>
     <?//компонент выводит список всех предложений
     $Section = $_GET['SECTION_ID'];    
     

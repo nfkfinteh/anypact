@@ -13,11 +13,9 @@ define("FORMAT_DATETIME", "DD.MM.YYYY HH:MI:SS");
 $id_contract    = $_POST['id'];
 $id_contragent  = $_POST['contr'];
 $sms_code       = $_POST['smscode'];
-<<<<<<< HEAD
+$Contract_text  =  str_replace('%nbsp', '&nbsp', $_POST['text_contract']);
+echo $_POST['text_contract'];
 $hash_Send      = md5($id_contract.$id_contragent.$sms_code); 
-=======
-$hash_Send      = md5($_POST['id'].$_POST['contr'].$_POST['smscode']); 
->>>>>>> master
 
 
 function getProperty($id_iblok, $id_element){        
@@ -78,13 +76,13 @@ $result = $entityClass::add(array(
 
 // создать запись в таблицу с текстом договора.
 
+// todo получить html со страницы подписания
 // получить по id  текст контракта,
-$res = CIBlockElement::GetByID($id_contract);
-$arrContractProperty = array();
-if($ar_res = $res->GetNext()){
-    $arrContractProperty = $ar_res;
-}
-<<<<<<< HEAD
+//$res = CIBlockElement::GetByID($id_contract);
+//$arrContractProperty = array();
+//if($ar_res = $res->GetNext()){
+//    $arrContractProperty = $ar_res;
+//}
 //
 // записать в файл
 $url_root           = $_SERVER['DOCUMENT_ROOT'].'/upload/private/contract/';
@@ -99,8 +97,8 @@ if (!file_exists($url_root_dir)) mkdir($url_root_dir, 0777, true);
 if (!file_exists($url_contract_dir)) mkdir($url_contract_dir, 0777, true);
 
 $file_contract_text = fopen($url_contract_dir.'/'.$hash_Send.'.txt', 'w');
-$text_contract = $arrContractProperty['DETAIL_TEXT'];
-fwrite($file_contract_text, $text_contract);
+//$text_contract = $arrContractProperty['DETAIL_TEXT'];
+fwrite($file_contract_text, $Contract_text);
 fclose($file_contract_text);
 
 // получить id записи с смс кодом
@@ -109,28 +107,6 @@ $arFilter           = Array(Array('UF_HASH_SEND' => $hash_Send));
 $Param_item_sendsms = $id_item_send_sms->get_item_filter(3, $arFilter);
 $id_send_item       = (int) $Param_item_sendsms['ID'];
 
-=======
-
-// записать в файл
-$url_root           = $_SERVER['DOCUMENT_ROOT'].'/upload/private/contract/';
-$name_root_dir      = substr($hash_Send, 0, 1);
-$name_reroot_dir    = substr($hash_Send, 2, 3);
-// урл новой папки
-$url_root_dir       = $url_root.'/'.$name_root_dir;
-$url_contract_dir   = '/'.$url_root.'/'.$name_reroot_dir;
-
-if (!file_exists($url_root_dir)) {
-    mkdir($url_contract_dir, 0777, true);
-}else {
-    mkdir($url_contract_dir, 0777, true);
-}
-
-$file_contract_text = fopen($url_contract_dir.'/'.$hash_Send.'.txt', 'w');
-$text_contract = $arrContractProperty['PREVIEW_TEXT'];
-fwrite($file_contract_text, $text_contract);
-fclose($file_contract_text);
-
->>>>>>> master
 
 // записать в таблицу SendContractText
 $hlblock        = HL\HighloadBlockTable::getById(7)->fetch();
@@ -140,12 +116,8 @@ $entityClass    = $entity->getDataClass();
 // Таблица СМС
 $result = $entityClass::add(array(
         'UF_ID_CONTRACT'    => ConvertTimeStamp(time(), 'FULL'),
-<<<<<<< HEAD
         'UF_ID_SEND_ITEM'   => $id_send_item,
-=======
-        'UF_ID_SEND_ITEM'   => 0,
->>>>>>> master
-        'UF_TEXT_CONTRACT'  => $text_contract,
+        'UF_TEXT_CONTRACT'  => $Contract_text,
         'UF_HASH'           => $hash_Send,
 
    ));

@@ -1,10 +1,39 @@
 var button_send_contract = document.getElementById('send_contract');
 
-window.onload = function() {
-    console.log('подпись!');
-
-    button_send_contract.onclick = function(e) {
-        console.log(e);
+function loadTextBox(el) {
+    let variable = $(el);
+    let parent_var = variable.parent('edbox');
+    let text_box = parent_var.children('useredittext')
+    let content_text_box = text_box.text();
+    let context_input = variable.val();
+    if (context_input == '') {
+        context_input = content_text_box;
     }
+    text_box.text(context_input);
+    variable.remove();
+}
 
-};
+$(document).ready(function() {
+
+
+    $('useredittext').on('click', function() {
+        let select_box = $(this);
+        let dom_nodes = $($.parseHTML('<input type="text" class="input_text" />'));
+        select_box.after(dom_nodes);
+        $(dom_nodes).focus();
+
+    });
+
+    // ввод текста во всплывающем окне
+    $(document).on('focusout', '.input_text', function() {
+        let variable = $(this);
+        loadTextBox(variable);
+    });
+    $("body").keypress(function(e) {
+        if (e.which == 13) {
+            let variable = $('.input_text');
+            loadTextBox(variable);
+        }
+    });
+
+});
