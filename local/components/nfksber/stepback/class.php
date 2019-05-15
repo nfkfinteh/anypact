@@ -30,8 +30,14 @@ class stepBack extends CBitrixComponent
     }
 
     function paramsUser($arParams){
-        $arResult["INFOBLOCK_ID"] = $arParams["IBLOCK_ID"];
-        $arResult["SECTION_ID"] = $arParams["SECTION_ID"];
+        $arResult["INFOBLOCK_ID"]   = $arParams["IBLOCK_ID"];
+        $arResult["SECTION_ID"]     = $arParams["SECTION_ID"];
+        $arResult["HTTP_REFERER"]   = $_SERVER["HTTP_REFERER"];        
+        $arResult["MAIN_PAGE"]      = true;
+        
+        if($_SERVER['REQUEST_URI'] == '/'){
+            $arResult["MAIN_PAGE"] = false;            
+        }
         return $arResult;
     }
 

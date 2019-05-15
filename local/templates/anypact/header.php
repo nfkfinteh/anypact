@@ -65,7 +65,7 @@ if (!defined ("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
                                     "REQUIRED_FIELDS" => Array(), 
                                     "AUTH" => "Y", 
                                     "USE_BACKURL" => "N", 
-                                    "SUCCESS_PAGE" => "informaciya_o_registracii",//$APPLICATION->GetCurPageParam('',array('backurl')), 
+                                    "SUCCESS_PAGE" => "/informaciya_o_registracii",//$APPLICATION->GetCurPageParam('',array('backurl')), 
                                     "SET_TITLE" => "N", 
                                     "USER_PROPERTY" => Array()
                                 ) 
@@ -93,9 +93,6 @@ if (!defined ("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
     </div>
 </noindex>
 <!--/Окно регистрации-->
-<?
-    if ($USER->IsAuthorized()){
-?>
     <?
         $page = explode('/', $_SERVER['REQUEST_URI']);
         $class_container = '';
@@ -117,7 +114,7 @@ if (!defined ("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
             </header>
             <nav class="navbar navbar-expand-lg">
                 <?
-                $Section = $_GET['SECTION_ID'];
+                    $Section = $_GET['SECTION_ID'];
                     $APPLICATION->IncludeComponent("nfksber:stepback", 
                     "", 
                         Array(
@@ -131,14 +128,22 @@ if (!defined ("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
                 </button>
                 <div class="collapse navbar-collapse " id="navbarSupportedContent">
                     <? 
-                        $arUrlMenu = array(
-                            '/' => 'Главная',
-                            '/my_pacts/' => 'Мои сделки',
-                            '/profile/' => 'Профиль',
-                            '/pacts/' => 'Все сделки',
-                            '/service/' => 'О сервисе',
-                            '/help/' => 'Поддержка'
-                        );
+                        if ($USER->IsAuthorized()){
+							$arUrlMenu = array(
+								'/' => 'Главная',
+								'/my_pacts/' => 'Мои сделки',
+								'/profile/' => 'Профиль',
+								'/pacts/' => 'Все сделки',
+								'/service/' => 'О сервисе',
+								'/help/' => 'Поддержка'
+							);
+						}else {
+							$arUrlMenu = array(
+								'/' => 'Главная',								
+								'/service/' => 'О сервисе',
+								'/help/' => 'Поддержка'
+							);
+						}
 
                         $APPLICATION->IncludeComponent("nfksber:navmenu.head", 
                         "", 
@@ -149,7 +154,3 @@ if (!defined ("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
                     ?>
                 </div>
             </nav>
-
-<?
-    }
-?>

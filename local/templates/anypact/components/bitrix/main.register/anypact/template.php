@@ -27,11 +27,22 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)
 	<form method="post" action="<?=POST_FORM_ACTION_URI?>" name="regform" enctype="multipart/form-data">
 		<div class="regpopup_content_form_fild">
 			<?foreach ($arResult["SHOW_FIELDS"] as $FIELD):?>
-				<?if($FIELD == 'PASSWORD' || $FIELD == 'CONFIRM_PASSWORD'):?>
-					<input size="30" class="regpopup_content_form_input" type="password" name="REGISTER[<?=$FIELD?>]" value="<?=$arResult["VALUES"][$FIELD]?>" autocomplete="off" placeholder="<?=GetMessage($FIELD)?>" />
-				<?else:?>
-					<input size="30" class="regpopup_content_form_input" name="REGISTER[<?=$FIELD?>]" value="<?=$arResult["VALUES"][$FIELD]?>" autocomplete="off" placeholder="<?=GetMessage($FIELD)?>" />
-				<?endif?>				
+				<?
+					switch ($FIELD) {
+						case 'PASSWORD':
+							?><input size="30" class="regpopup_content_form_input" type="password" name="REGISTER[<?=$FIELD?>]" value="<?=$arResult["VALUES"][$FIELD]?>" autocomplete="off" placeholder="<?=GetMessage($FIELD)?>" /><?
+						break;
+						case 'CONFIRM_PASSWORD':
+							?><input size="30" class="regpopup_content_form_input" type="password" name="REGISTER[<?=$FIELD?>]" value="<?=$arResult["VALUES"][$FIELD]?>" autocomplete="off" placeholder="<?=GetMessage($FIELD)?>" /><?
+						break;
+						case 'LOGIN':
+							?><input size="30" class="regpopup_content_form_input" id="user_login_fild" name="REGISTER[<?=$FIELD?>]" value="<?=$arResult["VALUES"][$FIELD]?>" autocomplete="off" placeholder="<?=GetMessage($FIELD)?>" /><?
+						break;
+						default:
+							?> <input size="30" class="regpopup_content_form_input" name="REGISTER[<?=$FIELD?>]" value="<?=$arResult["VALUES"][$FIELD]?>" autocomplete="off" placeholder="<?=GetMessage($FIELD)?>" /> <?
+						break;
+					}
+				?>						
 			<?endforeach?>
 			<p class="regpopup_content_form_soglashenie">Регистрируясь, Вы подтверждаете, что принимаете 
 				<a href="#">Условия пользования</a> и <a href="#">Политику конфиденциальности</a>					

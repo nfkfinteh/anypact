@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\local",
+    "\\local\\components",
+    "\\local\\components\\nfksber",
+    "\\local\\templates",
+    "\\local\\templates\\anypact",
+    "\\local\\templates\\anypact\\components",
+    "\\local\\templates\\anypact\\components\\bitrix",
+    "\\local\\templates\\anypact\\components\\bitrix\\search.form",
+    "\\local\\templates\\anypact\\components\\bitrix\\search.form\\homepage"
+  ],
+  "SelectedNode": "\\local\\templates\\anypact\\footer.php",
+  "PreviewInSolutionExplorer": false
+}

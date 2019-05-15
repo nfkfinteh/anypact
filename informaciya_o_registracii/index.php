@@ -1,6 +1,6 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$APPLICATION->SetTitle("AnyPact");
+$APPLICATION->SetTitle("Регистрация в сервисе AnyPact");
 ?>
 <div class="container">
 	<?
@@ -15,7 +15,7 @@ $APPLICATION->SetTitle("AnyPact");
             Для того, что бы пользоваться всеми предоставленными возможностями, Вам необходимо заполнить профиль и пройти подтверждение ваших регистрационных данных.
         </p>
         <p align="center" style="padding: 50px 0;">
-            <a href="<?=SITE_SERVER_NAME?>/esia/open_gu.php" class="btn btn-primary">Пройти регистрацию через портал "Госуслуг"</a>
+            <a href="<?=SITE_SERVER_NAME?>/profile/" class="btn btn-nfk">Пройти регистрацию через портал "Госуслуг"</a>
         </p>
         <p align="center" size="16">
             M-Group Investments Limited <br>
@@ -37,11 +37,12 @@ $APPLICATION->SetTitle("AnyPact");
             Contact us: <a href="mailto:mail@m-group.investments">mail@m-group.investments</a>
         </p>	 
         <p align="center">
-    <button type="button" class="btn btn-aut" id="reg_button">Зарегистрироваться</button>
+    <button type="button" class="btn btn-nfk" id="reg_button">Зарегистрироваться</button>
         </p>
         <p align="center">
             © 2018
         </p>
     <?}?>
 </div>
-<br><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
+</div>
+<?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

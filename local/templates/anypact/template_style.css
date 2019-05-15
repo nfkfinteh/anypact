@@ -135,8 +135,7 @@ input {
 .search .btn-search {
     height: 45px;
     width: 163px;
-    float: right;
-    margin-top: 5px;
+    margin-right: 28px;
 }
 
 .search .region,
@@ -806,13 +805,6 @@ input::-webkit-input-placeholder {
     margin-top: 43px;
     position: relative;
     z-index: 10;
-}
-
-.search .btn-search {
-    height: 45px;
-    width: 163px;
-    float: right;
-    margin-top: 5px;
 }
 
 .search .region,
@@ -2166,14 +2158,6 @@ input::-webkit-input-placeholder {
     border: none;
     height: 40px;
 }
-
-.search .btn-search {
-    height: 45px;
-    width: 163px;
-    float: right;
-    margin-top: 5px;
-}
-
 .search .region,
 .search .deal-type {
     border-left: 1px solid #dddddd;

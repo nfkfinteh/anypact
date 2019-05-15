@@ -16,8 +16,8 @@ $this->setFrameMode(true);?>
         <form action="<?=$arResult["FORM_ACTION"]?>">
             <span class="magnifier"></span>
             <input type="text" name="q" placeholder="Поиск" value="">
+			<input name="s" type="submit" class="btn btn-nfk btn-search" value="<?=GetMessage("BSF_T_SEARCH_BUTTON");?>" style="border: 1px solid #ff6416 !important;"/>
             <span class="region">Чебоксары</span>
-            <span class="deal-type">Вид сделки</span>
-            <input name="s" type="submit" class="btn btn-nfk btn-search" value="<?=GetMessage("BSF_T_SEARCH_BUTTON");?>" style="border: 1px solid #ff6416 !important;"/>
+            <span class="deal-type">Вид сделки</span>            
         </form>
     </div>

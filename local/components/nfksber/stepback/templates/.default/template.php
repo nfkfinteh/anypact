@@ -5,6 +5,7 @@ if($arResult['SECTION_INFO']['IBLOCK_SECTION_ID'] > 0){
 } else {
     $back_Url = 0 ;
 }
-
 ?>
-<a class="navbar-brand" href="/pacts/?SECTION_ID=<?=$back_Url?>">&larr;&emsp;Назад</a>
+<? if($arResult["MAIN_PAGE"]){ ?>
+    <a class="navbar-brand" href="/pacts/?SECTION_ID=<?=$arResult["HTTP_REFERER"]?>" >&larr;&emsp;Назад</a>
+<? } ?>

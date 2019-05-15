@@ -5,8 +5,8 @@ $APPLICATION->SetTitle("AnyPact");
 	<!---->
 	<?
     // проверяем авторизован ли пользователь
-    global $USER;
-    if ($USER->IsAuthorized()){
+    //global $USER;
+   //if ($USER->IsAuthorized()){
     ?>
 	<!--Форма поиска-->
 		<h2>Поиск контрагентов</h2>
@@ -164,9 +164,10 @@ $APPLICATION->SetTitle("AnyPact");
         </div>
     </div>
 </div>
-    <? }else { ?> 
+    <? //}else { ?> 
 	<!--//-->
 	<!--Форма авторизации-->
+		<!--
 		<p align="center" style="padding: 50px 0;">
 			<img src="<?=SITE_TEMPLATE_PATH.'/img/logo.png?ioi'?>" />
 		</p>
@@ -179,7 +180,7 @@ $APPLICATION->SetTitle("AnyPact");
 		</p>
 		<p align="center">
 			© 2018
-		</p>
-	<?}?>
-	</div>
+		</p>-->
+	<?//}?>
+	</div> 
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
