@@ -51,6 +51,7 @@ input {
     font-size: 14px;
     line-height: 2.5;
     text-decoration: underline;
+    float: left;
 }
 
 .location::after {
@@ -727,23 +728,6 @@ input::-webkit-input-placeholder {
     font-size: 24px;
     font-weight: normal;
     float: right;
-}
-
-.location {
-    font-size: 14px;
-    line-height: 2.5;
-    text-decoration: underline;
-    cursor: pointer;
-}
-
-.location::after {
-    content: "";
-    background: url(image/arrows_region.png);
-    width: 4px;
-    height: 9px;
-    display: inline-block;
-    position: relative;
-    left: 5px;
 }
 
 .nav-link {
@@ -2073,23 +2057,6 @@ input::-webkit-input-placeholder {
     font-size: 24px;
     font-weight: normal;
     float: right;
-}
-
-.location {
-    font-size: 14px;
-    line-height: 2.5;
-    text-decoration: underline;
-    cursor: pointer;
-}
-
-.location::after {
-    content: "";
-    background: url(image/arrows_region.png);
-    width: 4px;
-    height: 9px;
-    display: inline-block;
-    position: relative;
-    left: 5px;
 }
 
 .nav-link {

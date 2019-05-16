@@ -2,7 +2,9 @@
 if (!defined ("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
 {
     die();
-} ?>
+} 
+global $USER;
+?>
 <!DOCTYPE html>
 <html xml:lang="<?= LANGUAGE_ID ?>" lang="<?= LANGUAGE_ID ?>" class="<?$APPLICATION->ShowProperty('HtmlClass');?>">
 <head>
@@ -106,10 +108,26 @@ if (!defined ("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
                         <a href="#" class="logo"><img src="<?=SITE_TEMPLATE_PATH?>/img/logo.png" alt=""></a>
                         <span class="phone">8(800) 000-00-00</span>
                     </div>
-                    <div class="col-md-6">
-                        <span class="location">Чебоксары и чувашская республика</span>
-                        <button class="btn btn-nfk btn-login" id="reg_button">Регистрация / Вход</button>
-                    </div>
+                    <? if ($USER->IsAuthorized()){ ?>
+                        <div class="col-md-3">
+                            <span class="location">Чебоксары и чувашская республика</span>
+                        </div>
+
+                            <?                                
+                                $APPLICATION->IncludeComponent("nfksber:profile.widget",
+                                "head",
+                                Array(
+                                    
+                                    )
+                                );
+                            ?>
+
+                        <?}else {?>
+                            <div class="col-md-6">
+                                <span class="location">Чебоксары и чувашская республика</span>
+                                <button class="btn btn-nfk btn-login" id="reg_button">Регистрация / Вход</button>
+                            </div>
+                        <?}?>                    
                 </div>
             </header>
             <nav class="navbar navbar-expand-lg">
@@ -131,8 +149,7 @@ if (!defined ("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
                         if ($USER->IsAuthorized()){
 							$arUrlMenu = array(
 								'/' => 'Главная',
-								'/my_pacts/' => 'Мои сделки',
-								'/profile/' => 'Профиль',
+								'/my_pacts/' => 'Мои сделки',								
 								'/pacts/' => 'Все сделки',
 								'/service/' => 'О сервисе',
 								'/help/' => 'Поддержка'
