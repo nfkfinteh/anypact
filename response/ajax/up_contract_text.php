@@ -27,8 +27,6 @@ fclose($file_contract_text);
 
 */
 
-// очистить текст от &...
-
 $arLoadProductArray = Array(
     "MODIFIED_BY"    => $USER->GetID(),
     "DETAIL_TEXT_TYPE" =>"html",

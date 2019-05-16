@@ -1,14 +1,10 @@
 function getURLReport(url, params){
-    
+    let xhr = new XMLHttpRequest();    
     xhr.open('POST', url, true);
     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     xhr.send(params);
-
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
-            //console.log(xhr.responseText);
-        };
-    };
+    
+    return xhr.responseText;
 }
 window.onload = function() {
     /*Всплывающее окно регистрации*/
@@ -44,8 +40,21 @@ window.onload = function() {
         };
         // поверяем водимый логин на уникальность
         document.getElementById('user_login_fild').oninput = function(event){
-            let login = this.value;
-            console.log(login);
+            let login   = 'login='+this.value;
+            let url     = '/response/ajax/check_login.php'; 
+            //let resp    = getURLReport(url, login);
+            //console.log(resp);
+            /*
+            if (resp=='false'){
+                this.style = 'background-color: #ffd5d5'; 
+            }*/
+            let xhr = new XMLHttpRequest();    
+            xhr.open('POST', url, true);
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            xhr.send(login);
+            if(xhr.status == 200){
+               console.log(xhr.responseText);
+            }
         };
 
     }
