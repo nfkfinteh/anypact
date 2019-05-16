@@ -64,12 +64,25 @@ class sectionPacts extends CBitrixComponent
         return $arResult;
     }
 
+    private function getTreeCategory($id_iblock){
+        $tree = CIBlockSection::GetTreeList(
+            $arFilter=Array('IBLOCK_ID' => $id_iblock),
+            $arSelect=Array()
+        );
+        $arrTree = array();
+        while($section = $tree->GetNext()) {
+            $arrTree[] = $section;
+        }
+        return  $arrTree;
+    }
+
     public function executeComponent()
     {
         if($this->startResultCache())
         {
             $this->arResult = array_merge($this->arResult, $this->paramsUser($this->arParams));                                 
             $this->arResult["INFOBLOCK_SECTION_LIST"] = $this->listSection($this->arResult["INFOBLOCK_ID"], $this->arResult["SECTION_ID"]);
+            $this->arResult["TREE_CATEGORY"] = $this->getTreeCategory($this->arResult["INFOBLOCK_ID"]);
             $this->includeComponentTemplate();
         }
         

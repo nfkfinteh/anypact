@@ -1,0 +1,14 @@
+#select_category_main {
+    position: absolute;
+    background-color: #fff;
+    padding: 10px;
+    left: 100%;
+    margin-left: -244px;
+    box-shadow: 1px 9px 11px rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+}
+
+#select_category_main li{
+    list-style-type: none;
+    margin: 10px;
+}
