@@ -24,6 +24,7 @@
                   <div class="avatar_pact">
 
                   </div>
+                  <?//print_r($pact);?>
                 </td>
                 <td>
                   <?=$pact["NAME"]?>
