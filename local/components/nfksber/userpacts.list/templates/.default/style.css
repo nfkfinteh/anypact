@@ -1,9 +1,35 @@
 h2.title_line_button {
     float: left;
     width: 77%;
+    font-size: 25px;
 }
 
 #add_pact,
 #semd_mess {
     width: 22%;
+    padding: 10px;
+}
+
+table th {
+    color: #afafaf;
+    padding: 20px 0 !important;
+}
+
+table td {
+    color: #4f4f4f;
+}
+
+table th, table td {
+    font-weight: 200; 
+    vertical-align: middle !important; 
+}
+
+.avatar_pact {
+    width: 45px;
+    height: 45px;
+    float: left;
+    background: #ddd;
+    margin-right: 15px;
+    border-radius: 50%;
+    overflow: hidden;
 }
