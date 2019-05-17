@@ -6,9 +6,19 @@
     margin-left: -244px;
     box-shadow: 1px 9px 11px rgba(0, 0, 0, 0.15);
     border-radius: 5px;
+    top: 95px;
+    display: none;
 }
 
 #select_category_main li{
     list-style-type: none;
     margin: 10px;
+}
+
+.chevron-down::after {
+    content: ">";
+    display: inline-block;
+    position: relative;
+    left: 5px;
+    transform: rotate(90deg);
 }
