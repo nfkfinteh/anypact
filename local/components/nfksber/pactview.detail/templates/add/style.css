@@ -11,18 +11,22 @@
 }
 
 .cardPact .cardPact-box-BoxMainImg {
-    width: 100%;
-    max-height: 460px;
+    width: 150px;
+    height: 150px;
+    /*/max-height: 460px;*/
     overflow: hidden;
-    margin-bottom: 20px;
+    margin: 20px 20px 20px 0;
+    display: flex;
+    align-items: center;
+    position: relative;
+    float: left;
 }
 
 .cardPact .cardPact-box-BoxPrewImg {
     width: 2500px;
     overflow: hidden;
-    /*position: relative;*/
     position: absolute;
-    top: 20px;
+    top: 0;
     left: 170px;
     margin-left: 20px;
 }
@@ -109,7 +113,8 @@
 }
 
 .cardPact-box-edit #cardPact-box-edit-add_img,
-.cardPact-box-edit #cardPact-box-edit-rem_img {
+.cardPact-box-edit #cardPact-box-edit-rem_img,
+.cardPact-box-BoxMainImg .cardPact-box-edit-rem_img{
     border: 4px #fff dashed;
     width: 100px;
     height: 100px;
@@ -124,11 +129,21 @@
 }
 
 .cardPact-box-edit #cardPact-box-edit-add_img span,
-.cardPact-box-edit #cardPact-box-edit-rem_img span {
+.cardPact-box-edit #cardPact-box-edit-rem_img span,
+.cardPact-box-BoxMainImg .cardPact-box-edit-rem_img span {
     font-size: 50px;
     font-weight: 900;
     color: #fff;
 }
+
+.cardPact-box-BoxMainImg .cardPact-box-edit-rem_img{
+    display: none;
+}
+
+.cardPact-box-BoxMainImg:hover .cardPact-box-edit-rem_img{
+    display: block;
+}
+
 
 .cardPact-rightPanel a.cardPact-rightPanel-url {
     color: #ff6416;

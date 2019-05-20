@@ -4,13 +4,23 @@ $postData = $_POST['main'];
 $data = json_decode($postData, true);
 
 foreach ($data as $key => $value){
+    if($key=='DETAIL_TEXT') continue;
     $data[$key] = htmlspecialcharsEx($value);
 }
 
-if (!\Bitrix\Main\Loader::includeModule('iblock')) die();
+if (!\Bitrix\Main\Loader::includeModule('iblock')) {
+    echo json_encode([ 'VALUE'=>'Не подключен модуль инфоблоки', 'TYPE'=> 'ERROR']);
+    die();
+}
 #проверка на аторизацию
-if($USER->GetID() != $data['MODIFIED_BY']) die;
-if (!$USER->IsAuthorized()) die();
+if($USER->GetID() != $data['MODIFIED_BY']){
+    echo json_encode([ 'VALUE'=>'Вы не авторизваны', 'TYPE'=> 'ERROR']);
+    die;
+}
+if (!$USER->IsAuthorized()){
+    echo json_encode([ 'VALUE'=>'Вы не авторизваны', 'TYPE'=> 'ERROR']);
+    die();
+}
 
 #проверка доступа пользователя на создание объявления
 if(!empty($data['MODIFIED_BY'])){
@@ -24,16 +34,20 @@ if(!empty($data['MODIFIED_BY'])){
         $arUser = $obj;
     }
 
-    if($arUser['UF_ESIA_AUT'] != 1) die();
+    if($arUser['UF_ESIA_AUT'] != 1){
+        echo json_encode([ 'VALUE'=>'Нет доступа на создание объявлений', 'TYPE'=> 'ERROR']);
+        die();
+    }
 }
 
 $arGroups = $USER->GetUserGroupArray();
 
 #проверка на принадлежность пользователя к группам
 if(in_array( 1, $arGroups) || in_array( 6, $arGroups)){
-    $detailPicture = $_FILES[0];
+    $detailPicture = reset($_FILES);
+    $keyDetailPicture = key($_FILES);
     $dopPicture = $_FILES;
-    unset($dopPicture[0]);
+    unset($dopPicture[$keyDetailPicture]);
 
     if(count($dopPicture)>0){
         $data['PROPERTY_VALUES']['INPUT_FILES'] = $dopPicture;
@@ -53,7 +67,6 @@ if(in_array( 1, $arGroups) || in_array( 6, $arGroups)){
     $data['PROPERTY_VALUES']['PACT_USER'] = $data['MODIFIED_BY'];
 
     $el = new CIBlockElement;
-
     $arLoadProductArray = Array(
         "MODIFIED_BY"    => $data['MODIFIED_BY'],
         "IBLOCK_SECTION_ID" => $data['IBLOCK_SECTION_ID'],
@@ -62,25 +75,26 @@ if(in_array( 1, $arGroups) || in_array( 6, $arGroups)){
         "NAME"           => $data['NAME'],
         "CODE"           => $data['CODE'],
         "ACTIVE"         => $data['ACTIVE'],
-        "DETAIL_TEXT"    => $data['DETAIL_TEXT'],
+        "DETAIL_TEXT"    => $data['DETAIL_TEXT']['TEXT'],
+        "DETAIL_TEXT_TYPE" => $data['DETAIL_TEXT']['TYPE'],
         "DETAIL_PICTURE" => $detailPicture,
         "PREVIEW_PICTURE" => $detailPicture,
         "DATE_ACTIVE_FROM" => ConvertTimeStamp(time(), "SHORT"),
         "DATE_ACTIVE_TO" => ConvertTimeStamp(strtotime($data['DATE_ACTIVE_TO']), "SHORT")
     );
 
-    if($PRODUCT_ID = $el->Add($arLoadProductArray))
-        echo "New ID: ".$PRODUCT_ID;
-    else
-        echo "Error: ".$el->LAST_ERROR;
-
+    if($PRODUCT_ID = $el->Add($arLoadProductArray)){
+        echo json_encode([ 'VALUE'=>$PRODUCT_ID, 'TYPE'=> 'SUCCES']);
+    }
+    else{
+        echo json_encode([ 'VALUE'=>$el->LAST_ERROR, 'TYPE'=> 'ERROR']);
+        die();
+    }
 }
-
-
-
-
-
-
+else{
+    echo json_encode([ 'VALUE'=>'Вы не состоите в грппе пользователей разрешенным создавать объявленя', 'TYPE'=> 'ERROR']);
+    die();
+}
 
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/include/epilog_after.php");
 ?>

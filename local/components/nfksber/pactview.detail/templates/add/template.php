@@ -29,16 +29,17 @@
                     </div>
                     <input id='filePicture' type="file" multiple="multiple" accept=".txt,image/*" style="display: none">
                     <div class="cardPact-box-BoxPrewImg" id="cardPact-box-BoxPrewImg">
-                        <?
-                            // изображения 
+                        <?// изображения 
                             $arr_img = $arResult["PROPERTY"]["IMG_FILE"];                    
-                            /*if(!empty($arResult["PROPERTY"]["IMG_FILE"])){
-                                foreach ($arr_img as $url_img){
-                                    ?>
-                                    <img src="<?=$url_img["URL"]?>" class="cardPact-box-BoxPrewImg-img"/>
+                            if(!empty($arResult["PROPERTY"]["IMG_FILE"])){
+                                foreach ($arr_img as $url_img){?>
+                                    <?if($url_img["URL"]):?>
+                                        <img src="<?=$url_img["URL"]?>" class="cardPact-box-BoxPrewImg-img"/>
+                                    <?endif?>
+
                                     <?
                                 }
-                            }*/
+                            }
                         ?>
                     </div>  
                 </div>
