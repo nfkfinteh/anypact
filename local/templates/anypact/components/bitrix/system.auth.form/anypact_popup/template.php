@@ -13,7 +13,7 @@ CJSCore::Init();
             //print_r($arResult['ERROR_MESSAGE']);
             }
          ?>
-        <input type="hidden" name="logout" value="<?=$err_aut_user?> " />
+        <input type="hidden" name="logout" value="<?=$err_aut_user_type?>" id="err_user_avtorisation" />
         <form name="system_auth_form<?=$arResult["RND"]?>" method="post" target="_top" action="<?=$arResult["AUTH_URL"]?>">
             <?if($arResult["BACKURL"] <> ''):?>
                 <input type="hidden" name="backurl" value="<?=$arResult["BACKURL"]?>" />
@@ -37,11 +37,7 @@ CJSCore::Init();
                             });
                         </script>
                 <!--Пароль-->
-                <input type="password" name="USER_PASSWORD" class="regpopup_content_form_input"  autocomplete="off" />
-                <?
-                if ($arResult['SHOW_ERRORS'] == 'Y' && $arResult['ERROR'])
-                    ShowMessage($arResult['ERROR_MESSAGE']);    
-                ?>     
+                <input type="password" name="USER_PASSWORD" class="regpopup_content_form_input"  autocomplete="off" />  
             <?if ($arResult["STORE_PASSWORD"] == "Y"):?>
                     <input type="checkbox" id="USER_REMEMBER_frm" name="USER_REMEMBER" value="Y" /></td>
                     <label for="USER_REMEMBER_frm" title="<?=GetMessage("AUTH_REMEMBER_ME")?>"><?echo GetMessage("AUTH_REMEMBER_SHORT")?></label>

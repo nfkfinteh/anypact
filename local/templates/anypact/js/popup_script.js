@@ -56,7 +56,6 @@ window.onload = function() {
                console.log(xhr.responseText);
             }
         };
-
     }
     
     if(document.getElementById('send_contract')){
