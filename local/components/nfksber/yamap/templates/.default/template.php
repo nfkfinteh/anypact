@@ -1,3 +1,4 @@
+<? print_r($arResult['MAP_DATA']);?>
 <div class="map-space">
 			<!--YM-->
 				<!--YMap--->
@@ -16,24 +17,40 @@
 				</style>
 					<script src="https://api-maps.yandex.ru/2.1/?apikey=<ваш API-ключ>&lang=ru_RU" type="text/javascript">
 					</script>					
-						<div id="map" style="width: 100%; height: 635px">
+						<div id="map" style="width: <?=$arResult['MAP_WIDTH']?>; height: <?=$arResult['MAP_HEIGHT']?>">
 						</div>
 						<script type="text/javascript">
+                            var mapData = <?=CUtil::PhpToJSObject($arResult['MAP_DATA'])?>;
 							// Функция ymaps.ready() будет вызвана, когда
 							// загрузятся все компоненты API, а также когда будет готово DOM-дерево.
 							ymaps.ready(init);
 							function init(){ 
 								// Создание карты.    
 								var myMap = new ymaps.Map("map", {
-									// Координаты центра карты.
-									// Порядок по умолчанию: «широта, долгота».
-									center: [55.76, 37.64],
-									// Уровень масштабирования. Допустимые значения:
-									// от 0 (весь мир) до 19.
-									zoom: 7,
-									controls: []
+									center: [<?=$arResult['CENTER_MAP']?>],
+									zoom: 10,
+									controls: [],
+                                    width: 100,
+                                    height: 100
 								});
 								myMap.behaviors.disable('scrollZoom');
+
+								for(var data in mapData){
+
+                                    myPlacemark = new ymaps.Placemark(mapData[data].geometry.coordinates, {
+                                        balloonContent: mapData[data].properties.balloonContent,
+                                    }, {
+                                        iconLayout: 'default#imageWithContent',
+                                        iconImageHref: '<?=$this->__folder?>/img/map_icon.png',
+                                        iconImageSize: [30, 30],
+                                        iconImageOffset: [-15, -15],
+                                        iconContentOffset: [30, 30],
+                                    });
+
+                                    //Добавляем метки
+                                    myMap.geoObjects.add(myPlacemark);
+                                }
+
 							}
 						</script>					
 			<!--//YM-->

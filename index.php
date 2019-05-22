@@ -17,12 +17,20 @@ $APPLICATION->SetTitle("AnyPact");
 			Array()
 		);?>		
 	</div>
-	<?// компонент поисковой строки
-		$APPLICATION->IncludeComponent(
-			"nfksber:yamap",
-			"",
-			Array()
-		);?>
+<?$APPLICATION->IncludeComponent(
+	"nfksber:yamap",
+	"",
+	Array(
+		"CACHE_TIME" => 36000,
+		"CACHE_TYPE" => "A",
+		"COUNT_POINT" => "5",
+		"IBLOCK_ID" => "3",
+		"IBLOCK_TYPE" => "4",
+		"LOCATION" => "Чебоксары",
+		"MAP_HEIGHT" => "635px",
+		"MAP_WIDTH" => "100%"
+	)
+);?>
 	<!--// Форма поиска-->
 		<div class="signature-container">
 		<div class="container">

@@ -1,0 +1,14 @@
+#message_error_login{
+min-height: 25px;color: red;font-size: 14px;
+}
+#box_submit_button{
+    min-height: 97px;
+}
+input[disabled]{
+    background: #f8f9fa !important;    
+}
+input[disabled]::-webkit-input-placeholder { color: #d4d4d4; }
+
+#box_submit_button input[disabled]:hover{
+    color:#ff6416 !important;
+}

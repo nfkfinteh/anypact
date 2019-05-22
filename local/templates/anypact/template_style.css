@@ -440,7 +440,7 @@ select:-webkit-autofill:focus {
     border-radius: 5px;
 }
 
-#regpopup_bg .regpopup_win input.regpopup_content_form_submit {
+#regpopup_bg .regpopup_win input.regpopup_content_form_submit, #regpopup_bg .regpopup_win a.regpopup_content_form_submit {
     width: 100%;
     border: 1px solid #ff6416;
     color: #ff6416;
@@ -448,9 +448,11 @@ select:-webkit-autofill:focus {
     border-radius: 5px;
     padding: 10px 30px;
     margin: 25px 0;
+    display: inline-block;
+    text-align: center;
 }
 
-#regpopup_bg .regpopup_win input.regpopup_content_form_submit:hover {
+#regpopup_bg .regpopup_win input.regpopup_content_form_submit:hover, #regpopup_bg .regpopup_win a.regpopup_content_form_submit:hover {
     color: #fff;
     background: #ff6416;
 }

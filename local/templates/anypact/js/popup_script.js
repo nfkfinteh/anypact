@@ -6,6 +6,62 @@ function getURLReport(url, params){
     
     return xhr.responseText;
 }
+
+async function getAutorisation(login, password){
+    
+    var url = '/response/ajax/autorisation_user.php'
+    
+    var mainData = JSON.stringify({
+        LOGIN  : login,
+        PASSWORD : password,        
+    });
+
+    var formData = new FormData();
+        formData.append( 'main', mainData );
+
+    
+    const response = await fetch(url, {
+        method: 'post',
+        body:formData
+    });
+    const data = await response.text();
+    return data
+}
+
+async function getFree(strObject, type){
+    
+    var url = '/response/ajax/check_login.php'
+    
+    var mainData = JSON.stringify({
+        CHECK_TEXT  : strObject,
+        CHECK_TYPE  : type,
+    });
+
+    var formData = new FormData();
+        formData.append( 'checkin', mainData );
+
+    
+    const response = await fetch(url, {
+        method: 'post',
+        body:formData
+    });
+    const data = await response.text();
+    return data
+}
+
+function errBorder(errObject, type){  
+    switch (type) {
+        case 'error':
+            errObject.style.cssText = "border: solid 1px red;";
+            errObject.focus();                        
+        break;    
+        case 'succes':
+            errObject.style.cssText = "border: none;";            
+        break;
+    }
+    
+}
+
 window.onload = function() {
     /*Всплывающее окно регистрации*/
     if(document.getElementById('regpopup_registration')){
@@ -16,7 +72,10 @@ window.onload = function() {
         var regpopup_btn_open_aut = document.getElementById('regpopup_btn_aut');
         var regpopup_form_autorisation = document.getElementById('regpopup_autarisation');
         var regpopup_btn_open_reg = document.getElementById('regpopup_btn_reg');
-        var regpopup_form_registration = document.getElementById('regpopup_registration');
+        var regpopup_form_registration = document.getElementById('regpopup_registration');        
+        
+        document.getElementById('user_password_fild').value = '';
+        document.getElementById('user_login_fild').value = '';
 
         //Закрываем окно
         regpopup_btn_close_win.onclick = function(event) {
@@ -39,22 +98,99 @@ window.onload = function() {
             return false;
         };
         // поверяем водимый логин на уникальность
-        document.getElementById('user_login_fild').oninput = function(event){
-            let login   = 'login='+this.value;
-            let url     = '/response/ajax/check_login.php'; 
-            //let resp    = getURLReport(url, login);
-            //console.log(resp);
-            /*
-            if (resp=='false'){
-                this.style = 'background-color: #ffd5d5'; 
-            }*/
-            let xhr = new XMLHttpRequest();    
-            xhr.open('POST', url, true);
-            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-            xhr.send(login);
-            if(xhr.status == 200){
-               console.log(xhr.responseText);
+        document.getElementById('user_login_fild').onblur = function(event){
+            var fild_login  = this;
+            let login       = fild_login.value;            
+            let url         = '/response/ajax/check_login.php';
+            let type        = 'login';            
+            var pass_fild   = document.getElementById('user_password_fild');
+            
+            if(login.length > 0){                
+                var res = getFree(login, type).then(function(data) {
+                    $result = JSON.parse(data);
+                    if($result['TYPE']=='ERROR'){
+                        document.getElementById('message_error_login').innerHTML = '&#8226; Логин занят';
+                        errBorder(fild_login, 'error');
+                        pass_fild.disabled = true;                       
+                    }
+                    if($result['TYPE']=='SUCCES'){
+                        document.getElementById('message_error_login').innerHTML = '';
+                        errBorder(fild_login, 'succes');
+                        pass_fild.disabled = false;
+                        pass_fild.focus();                                             
+                    }
+                });
+            }            
+        };
+        
+        // проверяем пароль на длинну
+        document.getElementById('user_password_fild').onblur = function(event){
+            var conpass_fild    = this; 
+            window.value_fild  = this.value;
+            var con_pass_fild   = document.getElementById('user_con_password_fild');
+            if(value_fild.length > 6){
+                con_pass_fild.disabled = false;
+                con_pass_fild.focus();
+                errBorder(conpass_fild, 'succes');
+            }else {
+                errBorder(conpass_fild, 'error');
+                document.getElementById('message_error_login').innerHTML = 'Пароль должен быть более 6 символов';                  
             }
+        }
+
+        // проверяем пароль на повторение
+        document.getElementById('user_con_password_fild').onblur = function(event){
+            var conpass_fild    = this; 
+            var con_value_fild  = this.value;
+            var con_pass_fild   = document.getElementById('user_email_fild');
+
+            if(con_value_fild === value_fild){
+                con_pass_fild.disabled = false;
+                con_pass_fild.focus();
+                errBorder(conpass_fild, 'succes');
+            }else {
+                errBorder(conpass_fild, 'error');
+                document.getElementById('message_error_login').innerHTML = 'Пароль не совпадает';  
+            }
+        }
+
+        document.getElementById('user_email_fild').onblur = function(event){
+            var fild_email  = this;
+            let email       = fild_email.value;
+            let url         = '/response/ajax/check_login.php';
+            let type        = 'email';
+            var submit_button_aut_user = document.getElementById('submit_button_registration');
+            
+            if(email.length > 0){                
+                var res = getFree(email, type).then(function(data) {
+                    $result = JSON.parse(data);
+                    if($result['TYPE']=='ERROR'){                        
+                        document.getElementById('message_error_login').innerHTML = '&#8226; Почтовый ящик уже используется';
+                        errBorder(fild_email, 'error');
+                    }
+                    if($result['TYPE']=='SUCCES'){                        
+                        document.getElementById('message_error_login').innerHTML = '';
+                        errBorder(fild_email, 'succes');
+                        submit_button_aut_user.disabled = false;
+                        submit_button_aut_user.focus();                       
+                    }
+                });
+            }            
+        };
+
+        // авторизация пользователя и вывод ошибок
+        document.getElementById('submit_button_aut_user').onclick  = function(){
+          let login = document.getElementById('user_aut_login').value
+          let password  = document.getElementById('user_aut_pass').value          
+          var res = getAutorisation(login, password).then(function(data) {
+                $result = JSON.parse(data);
+                if($result['TYPE']=='ERROR'){
+                    document.getElementById('message_error_aut').innerHTML = '&#8226; '+$result['VALUE'];
+                }
+                if($result['TYPE']=='SUCCES'){
+                    location.reload();
+                }
+            });
         };
     }
     
