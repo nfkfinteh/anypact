@@ -1,4 +1,4 @@
-<? print_r($arResult['MAP_DATA']);?>
+<? //print_r($arResult['MAP_DATA']);?>
 <div class="map-space">
 			<!--YM-->
 				<!--YMap--->
@@ -28,7 +28,7 @@
 								// Создание карты.    
 								var myMap = new ymaps.Map("map", {
 									center: [<?=$arResult['CENTER_MAP']?>],
-									zoom: 10,
+									zoom: 13,
 									controls: [],
                                     width: 100,
                                     height: 100
@@ -41,7 +41,7 @@
                                         balloonContent: mapData[data].properties.balloonContent,
                                     }, {
                                         iconLayout: 'default#imageWithContent',
-                                        iconImageHref: '<?=$this->__folder?>/img/map_icon.png',
+                                        iconImageHref: '<?=SITE_TEMPLATE_PATH//$this->__folder?>/img/map_icon.png',
                                         iconImageSize: [30, 30],
                                         iconImageOffset: [-15, -15],
                                         iconContentOffset: [30, 30],
