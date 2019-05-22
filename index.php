@@ -27,7 +27,7 @@ $APPLICATION->SetTitle("AnyPact");
 		"IBLOCK_ID" => "3",
 		"IBLOCK_TYPE" => "4",
 		"LOCATION" => "Чебоксары",
-		"MAP_HEIGHT" => "635px",
+		"MAP_HEIGHT" => "715px",
 		"MAP_WIDTH" => "100%"
 	)
 );?>

@@ -2259,7 +2259,7 @@ input::-webkit-input-placeholder {
     z-index: 1;
     margin-top: -60px;
     width: 100%;
-    background: url(img/map_bg.jpg) no-repeat;
+    background: #eaeaea; /*url(img/map_bg.jpg) no-repeat;*/
 }
 
 .short-divider {
