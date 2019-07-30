@@ -2,11 +2,6 @@
 CJSCore::Init();
 ?>
 <div class="regpopup_content_auform">
-    <?if($USER->IsAuthorized()):?>
-        <p><?echo GetMessage("MAIN_REGISTER_AUTH")?></p>
-        <input type="hidden" name="logout" value="yes" />        
-		<input type="submit" class="regpopup_content_form_submit" name="logout_butt" value="<?=GetMessage("AUTH_LOGOUT_BUTTON")?>" />
-    <?else:?>
         <form name="system_auth_form<?=$arResult["RND"]?>" method="post" target="_top" action="<?=$arResult["AUTH_URL"]?>">
             <?if($arResult["BACKURL"] <> ''):?>
                 <input type="hidden" name="backurl" value="<?=$arResult["BACKURL"]?>" />
@@ -40,5 +35,5 @@ CJSCore::Init();
                     <a href="#" class="regpopup_content_form_submit" id="submit_button_aut_user"><?=GetMessage("AUTH_LOGIN_BUTTON")?></a>
         </form>
         <p class="text-center">Нет аккаунта? <a href="#" id="regpopup_btn_reg">Зарегистриуйтесь</a></p>
-    <?endif?>
+
 </div>

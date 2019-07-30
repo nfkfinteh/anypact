@@ -15,20 +15,19 @@
     height: 150px;
     /*/max-height: 460px;*/
     overflow: hidden;
-    margin: 20px 20px 20px 0;
+    margin: 20px;
     display: flex;
     align-items: center;
     position: relative;
-    float: left;
 }
 
 .cardPact .cardPact-box-BoxPrewImg {
     width: 2500px;
     overflow: hidden;
-    position: absolute;
-    top: 0;
-    left: 170px;
-    margin-left: 20px;
+    position: relative;
+    display: flex;
+
+
 }
 
 .cardPact .cardPact-box-BoxPrewImg .cardPact-box-BoxPrewImg-img {

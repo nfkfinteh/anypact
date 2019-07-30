@@ -19,11 +19,6 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)
 	die();
 ?>
 <div class="regpopup_content_form">
-	<!--Пользователь авторизован-->
-	<?if($USER->IsAuthorized()):?>
-		<p><?echo GetMessage("MAIN_REGISTER_AUTH")?></p>
-	<?else:?>
-	<!--/Пользователь авторизован-->
 	<form method="post" action="<?=POST_FORM_ACTION_URI?>" name="regform" enctype="multipart/form-data">
 		<div class="regpopup_content_form_fild">
 			<?foreach ($arResult["SHOW_FIELDS"] as $FIELD):?>
@@ -57,5 +52,4 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)
 			<p class="text-center">Есть аккаунт? <a href="#" id="regpopup_btn_aut">Войти</a></p>
 		</div>
 	</form>
-	<?endif?>	
 </div>

@@ -12,6 +12,12 @@
     max-height: 460px;
     overflow: hidden;
     margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+.cardPact .cardPact-box-BoxMainImg img{
+    width: 100%;
 }
 
 .cardPact .cardPact-box-BoxPrewImg {

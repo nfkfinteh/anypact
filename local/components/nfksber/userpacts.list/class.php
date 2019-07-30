@@ -65,6 +65,7 @@ class CDemoSqr extends CBitrixComponent
     }
 
     private function getSendContract($UserID){
+        $arSend_Contract = [];
         CModule::IncludeModule("highloadblock");
         CModule::IncludeModule("iblock");
             // получить статусы сделок
@@ -114,6 +115,9 @@ class CDemoSqr extends CBitrixComponent
                 $arrID_Info_Contract[$i] =  $arData['UF_ID_CONTRACT'];
                 $i++;
             }
+
+            #если нет подписаных договоров
+            if(empty($arrID_Info_Contract)) return $arSend_Contract;
 
             foreach($arrID_Info_Contract as $i=>$value ){
                 $res = CIBlockElement::GetList(array(), array("IBLOCK_ID" => 4, "ID" => $value), false, array(), array("ID", "NAME"));

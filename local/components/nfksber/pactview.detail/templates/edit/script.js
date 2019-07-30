@@ -1,11 +1,12 @@
 $(document).ready(function() {
+    var check = 0;
 
     $("#save_descript").on('click', function() {
 
         var text_descript = $(".cardPact-EditText-Descript .editbox").html();
         var id_element = $(".cardPact-box").attr("data");
         $.post(
-            "http://anypact.nfksber.ru/response/ajax/up_pact_text.php", {
+            "/response/ajax/up_pact_text.php", {
                 text: text_descript,
                 id_element: id_element,
                 atrr_text: 'descript'
@@ -22,7 +23,7 @@ $(document).ready(function() {
         var text_descript = $(".cardPact-EditText-Сonditions .editbox").html();
         var id_element = $(".cardPact-box").attr("data");
         $.post(
-            "http://anypact.nfksber.ru/response/ajax/up_pact_text.php", {
+            "/response/ajax/up_pact_text.php", {
                 text: text_descript,
                 id_element: id_element,
                 atrr_text: 'conditions'
@@ -38,7 +39,7 @@ $(document).ready(function() {
         var text_descript = $("#cardPact-EditText-Summ").text();
         var id_element = $(".cardPact-box").attr("data");
         $.post(
-            "http://anypact.nfksber.ru/response/ajax/up_pact_text.php", {
+            "/response/ajax/up_pact_text.php", {
                 text: text_descript,
                 id_element: id_element,
                 atrr_text: 'summ'
@@ -50,4 +51,163 @@ $(document).ready(function() {
 
         }
     });
+
+    var arFiles = [];
+
+    //добавление изображения
+    $('#filePicture').on('change', function () {
+        var files = this.files;
+
+        var id_element = $(".cardPact-box").attr("data");
+
+        // ничего не делаем если files пустой
+        if( typeof arFiles != 'undefined' ){
+            var mainData = JSON.stringify({
+                id_element: id_element,
+                atrr_text: 'add'
+            });
+
+            var formData = new FormData();
+
+            formData.append( 'arr', mainData );
+
+            // заполняем объект данных файлами в подходящем для отправки формате
+            for (var id in files) {
+                formData.append(id, files[id]);
+            }
+
+            updateImage(formData);
+        }
+        $('#cardPact-box-edit').empty();
+
+        for (var i = 0; i < files.length; i++) {
+            preview(files[i]);
+        }
+
+        this.value = '';
+    });
+
+    // Создание превью
+    function preview(file) {
+        var reader = new FileReader();
+
+        reader.addEventListener('load', function(e) {
+
+            if(check == 0){
+                var wrap = document.createElement('div');
+                var img = document.createElement('img');
+                var div = document.createElement('div');
+
+                wrap.setAttribute('class', 'cardPact-box-BoxMainImg');
+
+                //img.setAttribute('data-id', file.name);
+                img.setAttribute('src', e.target.result);
+
+                div.setAttribute('id', 'cardPact-box-edit-rem_img');
+                div.innerHTML = ['<span>-</span>'].join('');
+
+                wrap.insertBefore(img, null);
+                wrap.insertBefore(div, null);
+
+                document.getElementById('cardPact-box-edit').insertBefore(wrap, null);
+
+
+                arFiles[file.name] = file;
+            }
+            else{
+                var img = document.createElement('img');
+
+                //img.setAttribute('data-id', file.name);
+                img.setAttribute('src', e.target.result);
+                img.setAttribute('class', 'cardPact-box-BoxPrewImg-img');
+
+                document.getElementById('cardPact-box-BoxPrewImg').insertBefore(img, null);
+
+                arFiles[file.name] = file;
+            }
+
+            check++;
+
+        });
+        reader.readAsDataURL(file);
+    }
+
+
+    //добавление изображения
+    $(document).on( 'click', '#cardPact-box-edit-add_img', function( event ){
+        $('#filePicture').click();
+    });
+
+    //удаление изображения
+    $(document).on('click', '#cardPact-box-edit-rem_img',  function(){
+        var item = $(this).parents('.cardPact-box-BoxMainImg').eq(0).find('img');
+        var id = $(item).attr('data-id');
+        var newImg = document.createElement('img');
+        var ar_keys;
+        var addimg = "<div id='cardPact-box-edit-add_img'>" +
+            "<span>+</span>" +
+            "</div>";
+        var id_element = $(".cardPact-box").attr("data");
+
+        delete arImg[id];
+
+        ar_keys = Object.keys(arImg);
+
+        var mainData = JSON.stringify({
+            id_element: id_element,
+            atrr_text: 'delete',
+            detailUrl: arImg[ar_keys[0]],
+            detailID: ar_keys[0],
+        });
+
+        var formData = new FormData();
+
+        formData.append( 'arr', mainData );
+
+        updateImage(formData);
+
+
+        if(ar_keys.length > 0){
+            item.remove();
+            newImg.setAttribute('src', arImg[ar_keys[0]]);
+            newImg.setAttribute('data-id', ar_keys[0]);
+            $(newImg).prependTo('.cardPact-box-BoxMainImg');
+            let remImg = $('.cardPact-box-BoxPrewImg-img').filter(function(index){
+                let idImg = $(this).attr('data-id');
+                return idImg == ar_keys[0];
+            });
+            remImg.remove();
+        }
+        else{
+            $('.cardPact-box-BoxMainImg').remove();
+            $(addimg).prependTo('.cardPact-box-edit');
+        }
+
+    });
+
+    function updateImage(arData){
+        // var id_element = $(".cardPact-box").attr("data");
+        var res = getURLData().then(function(data) {
+            $result = JSON.parse(data);
+            if($result['TYPE']=='ERROR'){
+                console.log(data);
+            }
+            if($result['TYPE']=='SUCCES'){
+
+            }
+        });
+
+
+        async function getURLData() {
+            var url = '/response/ajax/up_pact_img.php'
+
+            const response = await fetch(url, {
+                method: 'post',
+                body:arData
+            });
+            const data = await response.text();
+            return data
+        }
+    }
+
 });

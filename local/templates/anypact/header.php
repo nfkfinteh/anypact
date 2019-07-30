@@ -34,7 +34,8 @@ global $USER;
 	<?    
     $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH.'/css/bootstrap.css'); 
     $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH.'/template_style.css'); 
-    $APPLICATION->SetAdditionalCSS('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'); 
+    $APPLICATION->SetAdditionalCSS('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css');
+    $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/bootstrap.min.js');
     $APPLICATION->ShowHead();
     //$APPLICATION->ShowProperty('MetaOG');
     ?>
@@ -150,6 +151,7 @@ global $USER;
 							$arUrlMenu = array(
 								'/' => 'Главная',
 								'/my_pacts/' => 'Мои сделки',								
+								'/pacts/' => 'Все сделки',
 								'/service/' => 'О сервисе',
 								'/help/' => 'Поддержка'
 							);

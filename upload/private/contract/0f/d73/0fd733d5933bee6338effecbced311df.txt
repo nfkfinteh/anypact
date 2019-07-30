@@ -1,0 +1,695 @@
+<p align="center">
+ <b><span style="font-family: &quot;Times New Roman&quot;, Times;">Договор</span></b>
+</p>
+ <b><span style="font-family: &quot;Times New Roman&quot;, Times;"> </span></b>
+<p align="center">
+ <b><span style="font-family: &quot;Times New Roman&quot;, Times;">
+	купли-продажи транспортного средства</span></b>
+</p>
+<p>
+	 &nbsp;
+</p>
+<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">г. ________________&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "___"__________ ____ г. </span>
+</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+	&nbsp; </span>
+</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+	_________________________, действующий (-ая) от собственного имени и в своих интересах, именуемый (-ая) в дальнейшем «Продавец», с одной стороны, и </span>
+</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+	_________________________, действующий (-ая) от собственного имени и в своих интересах, именуемый (-ая) в дальнейшем «Покупатель», с другой стороны, совместно именуемые «Стороны», заключили настоящий Договор о нижеследующем: </span>
+</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+	&nbsp; </span>
+</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+<p align="center">
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+	1. ПРЕДМЕТ ДОГОВОРА </span>
+</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+	&nbsp; </span>
+</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+	1.1.&nbsp;&nbsp; Продавец обязуется передать в собственность Покупателя, а Покупатель обязуется принять и оплатить следующее транспортное средство (далее также – «Транспортное средство»): </span>
+</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+	&nbsp; </span>
+</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span><br>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+<table border="1" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+	<td>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+		<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+			Марка, модель ТС, категория: </span>
+		</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+	</td>
+	<td>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+		<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+			&nbsp; </span>
+		</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+	</td>
+</tr>
+<tr>
+	<td>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+		<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+			Идентификационный номер (VIN): </span>
+		</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+	</td>
+	<td>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+		<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+			&nbsp; </span>
+		</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+	</td>
+</tr>
+<tr>
+	<td>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+		<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+			Год изготовления ТС: </span>
+		</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+	</td>
+	<td>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+		<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+			&nbsp; </span>
+		</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+	</td>
+</tr>
+<tr>
+	<td>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+		<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+			№ Кузова и цвет (кабины, прицепа): </span>
+		</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+	</td>
+	<td>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+		<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+			&nbsp; </span>
+		</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+	</td>
+</tr>
+<tr>
+	<td>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+		<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+			Модель, № двигателя, мощность л.с. (кВт) </span>
+		</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+	</td>
+	<td>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+		<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+			&nbsp; </span>
+		</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+	</td>
+</tr>
+<tr>
+	<td>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+		<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+			Рабочий объем двигателя, куб.см.: </span>
+		</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+	</td>
+	<td>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+		<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+			&nbsp; </span>
+		</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+	</td>
+</tr>
+<tr>
+	<td>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+		<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+			Тип двигателя: </span>
+		</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+	</td>
+	<td>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+		<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+			&nbsp; </span>
+		</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+	</td>
+</tr>
+<tr>
+	<td>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+		<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+			ПТС (серия, номер, дата) </span>
+		</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+	</td>
+	<td>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+		<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+			&nbsp; </span>
+		</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+	</td>
+</tr>
+</tbody>
+</table>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span><br>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+	&nbsp; </span>
+</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+	1.2.&nbsp;&nbsp; Покупатель осведомлен о том, что на момент заключения настоящего Договора Транспортное средство является бывшим в эксплуатации. Стороны соглашаются с тем, что Продавец не несет ответственности за какие бы то ни было скрытые недостатки, которые могут быть выявлены в Транспортном средстве при его эксплуатации Покупателем. Подписанием настоящего Договора Покупатель подтверждает следующее: </span>
+</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+	до заключения настоящего Договора Покупатель осведомлен о техническом состоянии Транспортного средства; </span>
+</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+	Транспортное средство осмотрено Покупателем без ограничения времени, не имеет неустранимых недостатков, препятствующих его эксплуатации. </span>
+</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+	&nbsp; </span>
+</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+<p align="center">
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+	2. ПРАВА И ОБЯЗАННОСТИ СТОРОН </span>
+</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+	&nbsp; </span>
+</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+	2.1. Продавец обязан: </span>
+</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+	2.1.1. Передать Покупателю Транспортное средство в порядке и в сроки, предусмотренные настоящим Договором. </span>
+</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+	2.1.2. Передать Транспортное средство свободным от прав третьих лиц. </span>
+</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+	2.1.3. Одновременно с передачей Транспортного средства передать Покупателю следующие относящиеся к нему документы и принадлежности: </span>
+</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+	______________________________ </span>
+</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+	______________________________ </span>
+</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+	______________________________. </span>
+</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+	2.2. Покупатель обязан: </span>
+</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+	2.2.1. Принять Транспортное средство от Продавца в порядке и в сроки, предусмотренные настоящим Договором. </span>
+</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+	2.2.2. Оплатить Транспортное средство в порядке и в сроки, предусмотренные настоящим Договором. </span>
+</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+	&nbsp; </span>
+</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+<p align="center">
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+	3. ЦЕНА ДОГОВОРА И ПОРЯДОК РАСЧЕТОВ </span>
+</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+	&nbsp; </span>
+</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+	3.1 Цена Транспортного средства определена по соглашению сторон в размере ___________________ (____________________________) рублей. </span>
+</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+	3.2. Покупатель оплачивает продавцу цену Транспортного средства, установленную пунктом 3.1 настоящего Договора в полном объеме в день заключения настоящего Договора. </span>
+</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+	3.3. Обязательство Продавца по передаче Товара является встречным по отношению к обязательству Покупателя по уплате денежных средств. </span>
+</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+	3.4. Уплата цены Договора производится путем передачи Покупателем наличных денежных средств Продавцу либо путем безналичного перечисления денежных средств на счет Продавца. </span>
+</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+	3.5. Датой оплаты считается дата передачи Покупателем наличных денежных средств Продавцу либо дата поступления денежных средств на счет Продавца. </span>
+</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+	&nbsp; </span>
+</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+<p align="center">
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+	5. ПЕРЕДАЧА И ПРИНЯТИЕ ТОВАРА </span>
+</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+	&nbsp; </span>
+</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+	5.1. Продавец передает Транспортное средство Покупателю по адресу: _____________________________________________________________________________________________________. </span>
+</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+	При этом расходы по доставке Транспортного средства до указанного адреса несет (отметить нужный вариант знаком «V»): </span>
+</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+	 Продавец; </span>
+</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+	 Покупатель; </span>
+</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+	 расходы распределяются между сторонами поровну. </span>
+</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+	5.2. Товар должен быть передан Покупателю в срок до "__"___________ ____ г., но не ранее дня уплаты Покупателем Продавцу цены Транспортного средства, предусмотренной настоящим Договором. </span>
+</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+	5.3. Покупатель обязан осмотреть Транспортное средство, проверить соответствие состояния Транспортного средства условиям настоящего Договора и принять Транспортное средство. </span>
+</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+	Принятие Транспортного средства Покупателем подтверждается подписанием </span><a href="consultantplus://offline/ref=D84792C1392AFD49E3F23AC2B459B351626642913FBAFC02A35B8F23n9T3O"><span style="font-family: &quot;Times New Roman&quot;, Times;">акта</span></a><span style="font-family: &quot;Times New Roman&quot;, Times;"> приема-передачи Транспортного средства (Приложение № 1 к настоящему Договору). </span>
+</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+	5.4. Право собственности на Транспортное средство, а также риск случайной гибели или повреждения Транспортного средства переходит от Продавца к Покупателю с даты подписания </span><a href="consultantplus://offline/ref=D84792C1392AFD49E3F23AC2B459B351626642913FBAFC02A35B8F23n9T3O"><span style="font-family: &quot;Times New Roman&quot;, Times;">акта</span></a><span style="font-family: &quot;Times New Roman&quot;, Times;"> приема-передачи Транспортного средства. </span>
+</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+	5.5. Продавец считается исполнившим свою обязанность по передаче Транспортного средства с даты подписания Сторонами </span><a href="consultantplus://offline/ref=D84792C1392AFD49E3F23AC2B459B351626642913FBAFC02A35B8F23n9T3O"><span style="font-family: &quot;Times New Roman&quot;, Times;">акта</span></a><span style="font-family: &quot;Times New Roman&quot;, Times;"> приема-передачи Транспортного средства. </span>
+</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+<p align="center">
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+	&nbsp; </span>
+</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+<p align="center">
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+	6. ОТВЕТСТВЕННОСТЬ СТОРОН </span>
+</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+	&nbsp; </span>
+</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+	6.1. За нарушение иных условий настоящего Договора Стороны несут ответственность, предусмотренную действующим законодательством Российской Федерации. </span>
+</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+	&nbsp; </span>
+</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+<p align="center">
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+	7. РАЗРЕШЕНИЕ СПОРОВ </span>
+</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+	&nbsp; </span>
+</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+	7.1. Все споры и разногласия, которые могут возникнуть между Сторонами по вопросам, не нашедшим своего разрешения в тексте настоящего Договора, будут разрешаться путем переговоров на основе действующего законодательства Российской Федерации. </span>
+</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+	7.2. При неурегулировании в процессе переговоров спорных вопросов споры разрешаются в суде в порядке, установленном действующим законодательством Российской Федерации. </span>
+</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+	&nbsp; </span>
+</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+<p align="center">
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+	8. ЗАКЛЮЧИТЕЛЬНЫЕ ПОЛОЖЕНИЯ </span>
+</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+	&nbsp; </span>
+</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+	8.1. Настоящий Договор вступает в силу с даты его подписания Сторонами и действует до полного исполнения ими обязательств по настоящему Договору. </span>
+</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+	8.2. Любые изменения и дополнения к настоящему Договору должны быть составлены в письменной форме и подписаны Сторонами или надлежаще уполномоченными на то представителями Сторон. </span>
+</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+	8.3. Настоящий Договор может быть расторгнут по соглашению Сторон, а также по иным основаниям, предусмотренным действующим законодательством Российской Федерации. </span>
+</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+	8.4. Во всем остальном, что не предусмотрено настоящим Договором, Стороны руководствуются действующим законодательством Российской Федерации. </span>
+</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+	8.5. Договор составлен в двух экземплярах, имеющих равную юридическую силу, по одному для каждой из Сторон. </span>
+</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+	&nbsp; </span>
+</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+<p align="center">
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+	9. РЕКВИЗИТЫ И ПОДПИСИ СТОРОН </span>
+</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+	&nbsp; </span>
+</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+<table cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+	<td colspan="2">
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+		<p align="center">
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+			ПОКУПАТЕЛЬ </span>
+		</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+	</td>
+	<td colspan="2">
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+		<p align="center">
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+			ПРОДАВЕЦ </span>
+		</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+	</td>
+</tr>
+<tr>
+	<td>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+		<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+			ФИО </span>
+		</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+	</td>
+	<td>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+		<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+			&nbsp; </span>
+		</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+	</td>
+	<td>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+		<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+			ФИО </span>
+		</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+	</td>
+	<td>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+		<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+			&nbsp; </span>
+		</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+	</td>
+</tr>
+<tr>
+	<td>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+		<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+			Адрес </span>
+		</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+	</td>
+	<td>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+		<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+			&nbsp; </span>
+		</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+	</td>
+	<td>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+		<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+			Адрес </span>
+		</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+	</td>
+	<td>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+		<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+			&nbsp; </span>
+		</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+	</td>
+</tr>
+<tr>
+	<td>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+		<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+			Телефон </span>
+		</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+	</td>
+	<td>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+		<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+			&nbsp; </span>
+		</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+	</td>
+	<td>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+		<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+			Телефон </span>
+		</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+	</td>
+	<td>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+		<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+			&nbsp; </span>
+		</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+	</td>
+</tr>
+<tr>
+	<td>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+		<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+			Расчетные реквизиты </span>
+		</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+	</td>
+	<td>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+		<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+			&nbsp; </span>
+		</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+	</td>
+	<td>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+		<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+			Расчетные реквизиты </span>
+		</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+	</td>
+	<td>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+		<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+			&nbsp; </span>
+		</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+	</td>
+</tr>
+</tbody>
+</table>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+	&nbsp; </span>
+</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+	&nbsp; </span>
+</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+	&nbsp; </span>
+</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+	&nbsp; </span>
+</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+	____________/______________&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; _____________/_______________ </span>
+</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;">
+	(подпись)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (Ф.И.О.)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (подпись)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (Ф.И.О.) </span>
+</p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span><br>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span><br>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+<hr align="left" size="1" width="33%">
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span>
+<p>
+ <span style="font-family: &quot;Times New Roman&quot;, Times;"> </span><a href="file:///C:/Users/User2ccm/Documents/Bitrix24-solovyow_iv@bitrix24.nfksber.ru/.tmp/1547724613/%D0%94%D0%BE%D0%B3%D0%BE%D0%B2%D0%BE%D1%80%20%D0%BA%D1%83%D0%BF%D0%BB%D0%B8-%D0%BF%D1%80%D0%BE%D0%B4%D0%B0%D0%B6%D0%B8_%D0%A2%D0%A1.docx#_ftnref1"><span style="font-family: &quot;Times New Roman&quot;, Times;">[1]</span></a><span style="font-family: &quot;Times New Roman&quot;, Times;">
+	Для целей государственной регистрации транспортного средства за новым владельцем может потребоваться договор купли-продажи, составленный в виде единого документа, подписанного сторонами собственноручно.</span>
+</p>
+ <br>
+ <br>
