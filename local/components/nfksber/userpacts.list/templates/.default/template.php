@@ -1,4 +1,7 @@
-<? //print_r($arResult["INFOBLOCK_LIST"]["HL"]) ;
+<?
+// echo "<pre>"; 
+// print_r($arResult["INFOBLOCK_LIST"]["ARR_SDELKI"]) ;
+// echo "</pre>"; 
 //print_r($arResult["SEND_CONTRACT"] );
 ?>
 <h2 class="title_line_button">Мои предложения</h2><a href="/my_pacts/edit_my_pact/?ACTION=ADD" class="btn btn-nfk"
@@ -23,7 +26,9 @@ if ($count_pacts > 0):?>
             <tr>
                 <td scope="row" style="width: 75px;">
                     <div class="avatar_pact">
-
+                        <? if(!empty($pact['URL_IMG_PREVIEW'])) {?>
+                            <img src="<?=$pact['URL_IMG_PREVIEW']?>" height="45" alt ="<?=$pact['NAME']?>" />
+                        <?}?>
                     </div>
                     <?//print_r($pact);
                     ?>

@@ -17,7 +17,11 @@
                 <?}?>
             </div>
         </div>               
-        <div class="col-lg-9 col-md-9 col-sm-12"> 
+        <div class="col-lg-9 col-md-9 col-sm-12">
+            <div class="tools_redactor">
+                <button type="button" class="btn btn-nfk btn-default" data-toggle="tooltip" data-placement="left" title="Сохранить" id="save_btn"><span class="glyphicon glyphicon-floppy-disk"></span></button>
+                <button type="button" class="btn btn-nfk btn-default space_right" id="btn-edit" data-toggle="tooltip" data-placement="left" title="Включить редактирование текста" contenteditable="false"><span class="glyphicon glyphicon-pencil"></span></button>                                    
+            </div> 
             <div class="cardDogovor-boxViewText" id="canvas" contenteditable="false">
                 <?=$arResult["CONTRACT_PROPERTY"]["CONTRACT"]["DETAIL_TEXT"]?>
             </div>
