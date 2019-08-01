@@ -9,8 +9,8 @@ if ($this->StartResultCache(false, array($arFilter))) {
         $this->abortResultCache();
     }
 
-    $items = GetIBlockElementList($arParams['IBLOCK_ID'], false, array("SORT"=>"ASC"), $arParams['COUNT_POINT'], $arFilter);
-
+    $items = GetIBlockElementList($arParams['IBLOCK_ID'], false, array("SORT"=>"ASC"), 0, $arFilter);
+    //print_r($items);
     $i=0;
     while($obj = $items->GetNextElement()){
         $arResult['ITEMS'][$i]['FIELDS'] = $obj->GetFields();
