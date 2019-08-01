@@ -8,6 +8,8 @@ class CDemoSqr extends CBitrixComponent
 {       
     public $ID_CONTRACT;
     public $USER_PROPERTY;
+    private $ID_BLOCK_OFFERS = 3; // ID Инфоблока с объявлениями Клиентов
+    private $ID_BLOCK_TEMPLATES_CONTRACTS = 5; // ID Инфоблока шаблона договоров
     
     public function onPrepareComponentParams($arParams)
     {
@@ -111,24 +113,18 @@ class CDemoSqr extends CBitrixComponent
     }
 
     private function getTemplateContractCategote(){
-        $IBLOCK_ID    = 5;
-        $arFilter    = Array(
-            'IBLOCK_ID'=>$IBLOCK_ID,
-            'GLOBAL_ACTIVE'=>'Y');
-        $obSection    = CIBlockSection::GetTreeList($arFilter);
-        $arThree = array();
-        while($arResult = $obSection->GetNext()){
-            /* print_r($arResult);
-            *
-             for($i=0; $i<=($arResult['DEPTH_LEVEL']-2); $i++){
-                 echo "..";
-             }
-
-             echo $arResult['NAME'].'<br>';
-             */
-            $arThree[]= $arResult;
+        $IBLOCK_ID    = $this->ID_BLOCK_TEMPLATES_CONTRACTS;
+        if(CModule::IncludeModule("iblock")){
+            $arFilter    = Array(
+                'IBLOCK_ID'=>$IBLOCK_ID,
+                'GLOBAL_ACTIVE'=>'Y');
+            $obSection    = CIBlockSection::GetTreeList($arFilter);
+            $arThree = array();
+            while($arResult = $obSection->GetNext()){
+                $arThree[]= $arResult;
+            }
+            return $arThree;
         }
-        return $arThree;
     }
 
     private function getMultyProperty($ID_IBLOCK, $ID_EL){

@@ -1,4 +1,4 @@
-<? // print_r($arResult["TEMPLATE_CONTENT_PROPERTY"]) ;?>
+<?  //print_r($arResult["LIST_CATEGORY"]) ;?>
 <? //print_r($arResult) ;
    $Name = $arResult["USER_PROP"]["NAME"];
    $Surname = $arResult["USER_PROP"]["LAST_NAME"];

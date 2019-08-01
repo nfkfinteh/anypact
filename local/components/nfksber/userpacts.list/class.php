@@ -5,10 +5,7 @@ use Bitrix\Highloadblock as HL;
 use Bitrix\Main\Entity;
 
 class CDemoSqr extends CBitrixComponent
-{
-    //Родительский метод проходит по всем параметрам переданным в $APPLICATION->IncludeComponent
-    //и применяет к ним функцию htmlspecialcharsex. В данном случае такая обработка избыточна.
-    //Переопределяем.    
+{   
     public function onPrepareComponentParams($arParams)
     {
         $result = array(
@@ -25,12 +22,15 @@ class CDemoSqr extends CBitrixComponent
         if(CModule::IncludeModule("iblock"))
             {
                 $arSelect = Array();
-                $arFilter = Array("IBLOCK_ID"=>IntVal($id_iblock), "MODIFIED_USER_ID"=>$id_user);
+                // выборку объявлений делаем по свойству "Владелец договора", так как создавать и модифицировать может администратор
+                $arFilter = Array("IBLOCK_ID"=>IntVal($id_iblock), "PROPERTY_PACT_USER"=>$id_user);
                 $res = CIBlockElement::GetList(Array(), $arFilter, false, Array("nPageSize"=>50), $arSelect);                
+                
                 while($ob = $res->GetNextElement())
                 {
                     $arFields   = $ob->GetFields();
-                    $id_element = $arFields["ID"];                    
+                    $id_element = $arFields["ID"];
+                    $arFields['URL_IMG_PREVIEW'] = CFile::GetPath($arFields['DETAIL_PICTURE']);                    
                     $db_props = CIBlockElement::GetProperty($id_iblock, $id_element);
                     while ($ar_props = $db_props->GetNext())
                     {
@@ -40,30 +40,10 @@ class CDemoSqr extends CBitrixComponent
                 }             
                 $arPacts['ARR_SDELKI'] = $arPact;
             }
-        /*
-        if(CModule::IncludeModule("highloadblock")){
-            $arPacts['HL'] = array();
-            $hlbl = 2; // Указываем ID нашего highloadblock блока к которому будет делать запросы.
-            $hlblock = HL\HighloadBlockTable::getById($hlbl)->fetch(); 
-
-            $entity = HL\HighloadBlockTable::compileEntity($hlblock); 
-            $entity_data_class = $entity->getDataClass(); 
-
-            $rsData = $entity_data_class::getList(array(
-            "select" => array("*"),
-            "order" => array("ID" => "ASC"),
-            "filter" => array("UF_ID_USER" => $id_user)  // Задаем параметры фильтра выборки
-            ));
-
-            while($arData = $rsData->Fetch()){
-                //var_dump($arRes);
-                $arPacts['HL'][]  = $arData; 
-            }
-        
-        }*/
         return $arPacts;
     }
 
+    // подписанные договора пользователей
     private function getSendContract($UserID){
         $arSend_Contract = [];
         CModule::IncludeModule("highloadblock");
@@ -133,6 +113,7 @@ class CDemoSqr extends CBitrixComponent
         
     }
 
+    // сообщения пользователей
     private function getMessageUser($UserID){
         CModule::IncludeModule("highloadblock");
         // получить все подписанны сделки
@@ -166,10 +147,13 @@ class CDemoSqr extends CBitrixComponent
             $this->arResult = array_merge($this->arResult, $this->paramsUser($this->arParams));
             $this->arResult["USER_ID"] = $User_ID;
             $this->arResult["USER_LOGIN"] =CUser::GetLogin();
+            
             // Все сделки созданные пользователем
             $this->arResult["INFOBLOCK_LIST"] = $this->listPacts($this->arResult["INFOBLOCK_ID"], $User_ID);
+            
             // подписанные договора
             $this->arResult["SEND_CONTRACT"] = $this->getSendContract($User_ID);
+            
             // сообщение пользователю
             $this->arResult["MESSAGE_USER"] = $this->getMessageUser($User_ID);
             $this->includeComponentTemplate();
