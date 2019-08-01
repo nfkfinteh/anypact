@@ -54,7 +54,7 @@ if($PRODUCT_ID = $el->Add($arLoadProductArray)) {
 
     CIBlockElement::SetPropertyValuesEx($arSdelka['ID'], '3', $prop);
 
-    echo json_encode(['VALUE' => "Новый договор: ".$PRODUCT_ID, 'TYPE' => 'SUCCESS']);
+    echo json_encode(['VALUE' => "Новый договор: ".$PRODUCT_ID, 'ID'=>$arSdelka['ID'], 'TYPE' => 'SUCCESS']);
 }
 else{
     echo json_encode([ 'VALUE'=>$el->LAST_ERROR, 'TYPE'=> 'ERROR']);

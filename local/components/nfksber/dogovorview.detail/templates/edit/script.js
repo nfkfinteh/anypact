@@ -214,8 +214,8 @@ $(document).ready(function() {
             }
             if(result['TYPE']=='SUCCESS'){
                 console.log(result['VALUE']);
-                alert(result['VALUE']);
-                //window.location.href = "/my_pacts/edit_my_pact/?ELEMENT_ID="+$result['VALUE']+"&ACTION=EDIT";
+                //alert(result['VALUE']);
+                window.location.href = "/my_pacts/edit_my_pact/?ELEMENT_ID="+result['ID']+"&ACTION=EDIT";
             }
 
         }
@@ -289,6 +289,7 @@ $(document).ready(function() {
         var oOutput = document.querySelector("div"),
             oData = new FormData(form);
 
+        $('.cardDogovor').prepend("<div class='document-load'></div>");
 
         oData.append("CustomField", "This is some extra data");
 
@@ -302,6 +303,7 @@ $(document).ready(function() {
             } else {
                 oOutput.innerHTML = "Error " + oReq.status + " occurred when trying to upload your file.<br \/>";
             }
+            $('.document-load').remove();
         };
 
         oReq.send(oData);

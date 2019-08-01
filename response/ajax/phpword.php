@@ -32,7 +32,6 @@ if( isset( $_GET['uploadfiles'] ) ){
 // Загрузка содержимого документа
 
 $ext_file = $DOCX->getExtension($UrlDocFile);
-echo '<pre>'.$ext_file.'</pre>';
 switch ($ext_file) {
     case 'docx':
         $content = $DOCX->readDOCX2($UrlDocFile);
