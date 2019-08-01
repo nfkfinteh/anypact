@@ -21,7 +21,7 @@ var full_name = {
     <div class="row">
         <div class="col-lg-3 col-md-3 col-sm-12">
             <div class="cardDogovor-boxTool cardPact">
-                <h5>Создать договор из наших шаблонов</h3>
+                <h5>Создать договор из наших шаблонов</h5>
                 <p>В правой части выберите тему договора:</p>
                 <button class="btn btn-nfk" id="template_con">Загрузить договор из шаблона</button>                
                 <?if(!empty($arResult["TEMPLATE_CONTENT"])){ ?>                    
@@ -46,7 +46,7 @@ var full_name = {
                         <?}?>
                     </div>
                 <?}?>
-                <h5>Загрузить договор из вашего файла</h3>
+                <h5>Загрузить договор из вашего файла</h5>
                 <p>поддерживаемые форматы(docx, rtf, txt)</p>
                 <form enctype="multipart/form-data" method="post" name="loadcontract"> 
                     <label for="uploadbtn" class="btn btn-nfk" id="">Выберите собственный файл</label>
@@ -58,18 +58,20 @@ var full_name = {
                 <p>Нажмите на кнопку "Создать договор в редакторе" и в поле справа наберайте текст используя инструменты для форматирования.</p>
                 <button class="btn btn-nfk" id="create_con">Создать договор в редакторе</button>
             </div>
-        </div>               
+        </div>
         <div class="col-lg-9 col-md-9 col-sm-12">
         <div class="tools_redactor">
-        <button type="button" class="btn btn-nfk btn-default" data-toggle="tooltip" data-placement="left" title="Сохранить" id="save_btn"><span class="glyphicon glyphicon-floppy-disk"></span></button>
-                <!--<button type="button" class="btn btn-nfk btn-default" data-toggle="tooltip" data-placement="left" title="Сохранить"><span class="glyphicon glyphicon-print"></span></button>-->
-                <button type="button" class="btn btn-nfk btn-default space_right" id="btn-edit" data-toggle="tooltip" data-placement="left" title="Включить редактирование текста" contenteditable="false"><span class="glyphicon glyphicon-pencil"></span></button>                
-                <button type="button" class="btn btn-nfk btn-default" data-toggle="tooltip" data-placement="left" title="Вставить изображение"><span class="glyphicon glyphicon-picture"></span></button>
-                <button type="button" class="btn btn-nfk btn-default form_text"  id="btn-noedit" data-toggle="tooltip" data-placement="left" title="Запретить редактирование выделенного текста"><span class="glyphicon glyphicon-ban-circle"></span></button>
-                <button type="button" class="btn btn-nfk btn-default space_right" id="btn-data" data-toggle="tooltip" data-placement="left" title="Вставить подстановку текущей даты"><span class="glyphicon glyphicon-calendar"></span></button>                
-                <button type="button" class="btn btn-nfk btn-default form_text" id="btn-weight" data-toggle="tooltip" data-placement="left" title="Жирный текст" contenteditable="false"><span class="glyphicon glyphicon-bold"></span></button>
-                <button type="button" class="btn btn-nfk btn-default form_text space_right" id="btn-italic" data-toggle="tooltip" data-placement="left" title="Курсив" contenteditable="false"><span class="glyphicon glyphicon-italic"></span></button>
-                <button type="button" class="btn btn-nfk btn-default form_text" id="btn-question" data-toggle="tooltip" data-placement="left" title="Информация по инструментам" contenteditable="false"><span class="glyphicon glyphicon-question-sign"></span></button>
+            <button type="button" class="btn btn-nfk btn-default" data-toggle="tooltip" data-placement="left" title="Сохранить" id="save_btn" data-id="<?=$arResult['ELEMENT_ID']?>">
+                <span class="glyphicon glyphicon-floppy-disk"></span>
+            </button>
+            <!--<button type="button" class="btn btn-nfk btn-default" data-toggle="tooltip" data-placement="left" title="Сохранить"><span class="glyphicon glyphicon-print"></span></button>-->
+            <button type="button" class="btn btn-nfk btn-default space_right" id="btn-edit" data-toggle="tooltip" data-placement="left" title="Включить редактирование текста" contenteditable="false"><span class="glyphicon glyphicon-pencil"></span></button>
+            <button type="button" class="btn btn-nfk btn-default" data-toggle="tooltip" data-placement="left" title="Вставить изображение"><span class="glyphicon glyphicon-picture"></span></button>
+            <button type="button" class="btn btn-nfk btn-default form_text"  id="btn-noedit" data-toggle="tooltip" data-placement="left" title="Запретить редактирование выделенного текста"><span class="glyphicon glyphicon-ban-circle"></span></button>
+            <button type="button" class="btn btn-nfk btn-default space_right" id="btn-data" data-toggle="tooltip" data-placement="left" title="Вставить подстановку текущей даты"><span class="glyphicon glyphicon-calendar"></span></button>
+            <button type="button" class="btn btn-nfk btn-default form_text" id="btn-weight" data-toggle="tooltip" data-placement="left" title="Жирный текст" contenteditable="false"><span class="glyphicon glyphicon-bold"></span></button>
+            <button type="button" class="btn btn-nfk btn-default form_text space_right" id="btn-italic" data-toggle="tooltip" data-placement="left" title="Курсив" contenteditable="false"><span class="glyphicon glyphicon-italic"></span></button>
+            <button type="button" class="btn btn-nfk btn-default form_text" id="btn-question" data-toggle="tooltip" data-placement="left" title="Информация по инструментам" contenteditable="false"><span class="glyphicon glyphicon-question-sign"></span></button>
         </div>
         <div class="cardDogovor-boxViewText" id="canvas" contenteditable="false">
 

@@ -194,17 +194,30 @@ $(document).ready(function() {
     $(document).on('click touchstart', '#save_btn', function() {
         let canvas_contr = $('.cardDogovor-boxViewText');
         let canvas_contr_context = String(canvas_contr.html());
+        let id = $(this).attr('data-id');
         // загружаем содержимое категории
         $.post(
             "/response/ajax/up_contract_text.php", {
-                contect: canvas_contr_context
+                contect: canvas_contr_context,
+                id: id
             },
             onAjaxSuccess
         );
 
         function onAjaxSuccess(data) {
-            // Здесь мы получаем данные, отправленные сервером и выводим их на экран.             
             console.log(data);
+            // Здесь мы получаем данные, отправленные сервером и выводим их на экран.
+            let result = JSON.parse(data);
+            if(result['TYPE']=='ERROR'){
+                console.log(result['VALUE']);
+                alert(result['VALUE']);
+            }
+            if(result['TYPE']=='SUCCESS'){
+                console.log(result['VALUE']);
+                alert(result['VALUE']);
+                //window.location.href = "/my_pacts/edit_my_pact/?ELEMENT_ID="+$result['VALUE']+"&ACTION=EDIT";
+            }
+
         }
 
     });
@@ -230,10 +243,10 @@ $(document).ready(function() {
         var span_icon = $(this).find('span');
 
         if (onof) {
-            $(this).css("backgroundColor", "#ff6416", );
+            $(this).css("backgroundColor", "#ff6416");
             $(span_icon).css("color", "#fff");
         } else {
-            $(this).css("backgroundColor", "#fff", );
+            $(this).css("backgroundColor", "#fff");
             $(span_icon).css("color", "#ff6416");
         }
 
