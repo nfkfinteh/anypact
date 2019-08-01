@@ -21,7 +21,7 @@ var full_name = {
     <div class="row">
         <div class="col-lg-3 col-md-3 col-sm-12">
             <div class="cardDogovor-boxTool cardPact">
-                <h5>Создать договор из наших шаблонов</h3>
+                <h5>Создать договор из наших шаблонов</h5>
                 <p>В правой части выберите тему договора:</p>
                 <button class="btn btn-nfk" id="template_con">Загрузить договор из шаблона</button>                
                 <?if(!empty($arResult["TEMPLATE_CONTENT"])){ ?>                    
@@ -46,7 +46,7 @@ var full_name = {
                         <?}?>
                     </div>
                 <?}?>
-                <h5>Загрузить договор из вашего файла</h3>
+                <h5>Загрузить договор из вашего файла</h5>
                 <p>поддерживаемые форматы(docx, rtf, txt)</p>
                 <form enctype="multipart/form-data" method="post" name="loadcontract"> 
                     <label for="uploadbtn" class="btn btn-nfk" id="">Выберите собственный файл</label>
@@ -61,7 +61,9 @@ var full_name = {
         </div>               
         <div class="col-lg-9 col-md-9 col-sm-12">
         <div class="tools_redactor">
-        <button type="button" class="btn btn-nfk btn-default" data-toggle="tooltip" data-placement="left" title="Сохранить" id="save_btn"><span class="glyphicon glyphicon-floppy-disk"></span></button>
+        <button type="button" class="btn btn-nfk btn-default" data-toggle="tooltip" data-placement="left" title="Сохранить" id="save_btn" data-id="<?=$arResult['ELEMENT_ID']?>">
+            <span class="glyphicon glyphicon-floppy-disk"></span>
+        </button>
                 <!--<button type="button" class="btn btn-nfk btn-default" data-toggle="tooltip" data-placement="left" title="Сохранить"><span class="glyphicon glyphicon-print"></span></button>-->
                 <button type="button" class="btn btn-nfk btn-default space_right" id="btn-edit" data-toggle="tooltip" data-placement="left" title="Включить редактирование текста" contenteditable="false"><span class="glyphicon glyphicon-pencil"></span></button>                
                 <button type="button" class="btn btn-nfk btn-default" data-toggle="tooltip" data-placement="left" title="Вставить изображение"><span class="glyphicon glyphicon-picture"></span></button>
