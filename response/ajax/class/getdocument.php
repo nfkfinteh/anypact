@@ -1,21 +1,24 @@
 <?php
+include_once $_SERVER['DOCUMENT_ROOT'].'/response/ajax/class/vendor/autoload.php';
+include_once $_SERVER['DOCUMENT_ROOT'].'/response/ajax/class/rtf_html.php';
+
 class getdocument{
     private function readFileDOCX($docxFile){
-        
+
         if (!file_exists($docxFile)) {
             die('File not found.');
         }
-         
+
         $zip = new ZipArchive();
-         
+
         if (!$zip->open($docxFile)) {
             die('File not open.');
         }
-         
+
         $documentXml = $zip->getFromName('word/document.xml');
-        
+
         $zip->deleteName('word/document.xml');
-        $zip->addFromString('word/document.xml', $documentXml);        
+        $zip->addFromString('word/document.xml', $documentXml);
         $zip->close();
         return $documentXml;
     }
@@ -25,13 +28,82 @@ class getdocument{
         return $documentXml;
     }
 
-    public function readFileTXT($txtFile){        
+    public function readDOCX2($docxFile)
+    {
+        $objReader = \PhpOffice\PhpWord\IOFactory::createReader('Word2007');
+
+        $phpWord = $objReader->load($docxFile);
+
+
+        $body = '';
+        foreach ($phpWord->getSections() as $section) {
+            $arrays = $section->getElements();
+
+            foreach ($arrays as $e) {
+                if (get_class($e) === 'PhpOffice\PhpWord\Element\TextRun') {
+                    foreach ($e->getElements() as $text) {
+
+                        $font = $text->getFontStyle();
+
+                        $size = $font->getSize();
+                        $bold = $font->isBold() ? 'font-weight:700;' : '';
+                        $color = $font->getColor();
+                        $fontFamily = $font->getName();
+
+                        $body .= '<span style="font-size:' . intval($size) . 'px;' . 'font-family:' . $fontFamily . '; ' . $bold . '; color:#' . $color . ';display:inline;">';
+                        $body .= $text->getText() . '</span>';
+
+                    }
+                } else if (get_class($e) === 'PhpOffice\PhpWord\Element\TextBreak') {
+                    $body .= '<br />';
+                } else if (get_class($e) === 'PhpOffice\PhpWord\Element\Table') {
+                    $body .= '<table border="2px">';
+
+                    $rows = $e->getRows();
+
+                    foreach ($rows as $row) {
+                        $body .= '<tr>';
+
+                        $cells = $row->getCells();
+                        foreach ($cells as $cell) {
+                            $body .= '<td style="width:' . $cell->getWidth() . '">';
+                            $celements = $cell->getElements();
+                            foreach ($celements as $celem) {
+                                if (get_class($celem) === 'PhpOffice\PhpWord\Element\Text') {
+                                    $body .= $celem->getText();
+                                } else if (get_class($celem) === 'PhpOffice\PhpWord\Element\TextRun') {
+                                    foreach ($celem->getElements() as $text) {
+                                        $body .= $text->getText();
+                                    }
+                                } else {
+                                    //$body .= get_class($celem);
+                                }
+                            }
+                            $body .= '</td>';
+                        }
+
+                        $body .= '</tr>';
+                    }
+
+
+                    $body .= '</table>';
+                } else {
+                    $body .= $e->getText();
+                }
+            }
+
+            break;
+        }
+        return $body;
+    }
+
+    public function readFileTXT($txtFile){
         $content = file_get_contents($txtFile);
         $content = iconv('windows-1251', 'UTF-8', $content);
         return $content;
     }
 
-    public function getExtension($filename) {        
+    public function getExtension($filename) {
         return substr(strrchr($filename, '.'), 1);
     }
 
@@ -54,19 +126,19 @@ class getdocument{
     # Mac Roman charset for czech layout
     public function from_macRoman($c) {
         $table = array(
-            0x83 => 0x00c9, 0x84 => 0x00d1, 0x87 => 0x00e1, 0x8e => 0x00e9, 0x92 => 0x00ed, 
-            0x96 => 0x00f1, 0x97 => 0x00f3, 0x9c => 0x00fa, 0xe7 => 0x00c1, 0xea => 0x00cd, 
+            0x83 => 0x00c9, 0x84 => 0x00d1, 0x87 => 0x00e1, 0x8e => 0x00e9, 0x92 => 0x00ed,
+            0x96 => 0x00f1, 0x97 => 0x00f3, 0x9c => 0x00fa, 0xe7 => 0x00c1, 0xea => 0x00cd,
             0xee => 0x00d3, 0xf2 => 0x00da
         );
         if (isset($table[$c]))
             $c = "&#x".sprintf("%04x", $table[$c]).";";
         return $c;
     }
-    
+
     public function readFileRTF($filename) {
         // Пытаемся прочить данные из переданного нам rtf-файла, в случае успеха -
         // продолжаем наше злобненькое дело.
-        $text = file_get_contents($filename);        
+        $text = file_get_contents($filename);
         if (!strlen($text))
             return "";
         # Speeding up via cutting binary data from large rtf's.
@@ -114,7 +186,7 @@ class getdocument{
                             #dump($fonts, false);
                             if (!empty($stack[$j]["mac"]) || @$fonts[$stack[$j]["f"]] == 77)
                                 $document .= $this->from_macRoman(hexdec($hex));
-                            elseif (@$stack[$j]["ansicpg"] == "1251" || @$stack[$j]["lang"] == "1029") 
+                            elseif (@$stack[$j]["ansicpg"] == "1251" || @$stack[$j]["lang"] == "1029")
                                 $document .= chr(hexdec($hex));
                             else
                                 $document .= "&#".hexdec($hex).";";
@@ -122,8 +194,8 @@ class getdocument{
                         #dump($stack[$j], false);
                         // Мы прочитали два лишних символа, должны сдвинуть указатель.
                         $i += 2;
-                    // Так перед нами буква, а это значит, что за \ идёт упраляющее слово
-                    // и возможно некоторый циферный параметр, которые мы должны прочитать.
+                        // Так перед нами буква, а это значит, что за \ идёт упраляющее слово
+                        // и возможно некоторый циферный параметр, которые мы должны прочитать.
                     } elseif ($nc >= 'a' && $nc <= 'z' || $nc >= 'A' && $nc <= 'Z') {
                         $word = "";
                         $param = null;
@@ -139,7 +211,7 @@ class getdocument{
                                     $word .= $nc;
                                 else
                                     break;
-                            // Если перед нами цифра, то начинаем записывать параметр слова.
+                                // Если перед нами цифра, то начинаем записывать параметр слова.
                             } elseif ($nc >= '0' && $nc <= '9')
                                 $param .= $nc;
                             // Минус может быть только перед цифровым параметром, поэтому
@@ -150,7 +222,7 @@ class getdocument{
                                     $param .= $nc;
                                 else
                                     break;
-                            // В любом другом случае - конец.
+                                // В любом другом случае - конец.
                             } else
                                 break;
                         }
@@ -183,14 +255,14 @@ class getdocument{
                                 #$i += $m - 2;
                                 if ($ucDelta > 0)
                                     $i += $ucDelta;
-                            break;
+                                break;
                             // Обработаем переводы строк, различные типы пробелов, а также символ
                             // табуляции.
                             case "par": case "page": case "column": case "line": case "lbr":
-                                $toText .= "\n"; 
+                            $toText .= "\n";
                             break;
                             case "emspace": case "enspace": case "qmspace":
-                                $toText .= " "; 
+                            $toText .= " ";
                             break;
                             case "tab": $toText .= "\t"; break;
                             // Добавим вместо соответствующих меток текущие дату или время.
@@ -209,22 +281,22 @@ class getdocument{
                             # Skipping binary data...
                             case "bin":
                                 $i += $param;
-                            break;
+                                break;
                             case "fcharset":
                                 $fonts[@$stack[$j]["f"]] = $param;
-                            break;
+                                break;
                             // Всё остальное добавим в текущий стек управляющих слов. Если у текущего
                             // слова нет параметров, то приравляем параметр true.
                             default:
                                 $stack[$j][strtolower($word)] = empty($param) ? true : $param;
-                            break;
+                                break;
                         }
                         // Если что-то требуется вывести в выходной поток, то выводим, если это требуется.
                         if ($this->rtf_isPlainText($stack[$j]))
                             $document .= $toText;
                     } else $document .= " ";
                     $i++;
-                break;
+                    break;
                 // Перед нами символ { - значит открывается новая подгруппа, поэтому мы должны завести
                 // новый уровень стека с переносом значений с предыдущих уровней.
                 case "{":
@@ -232,27 +304,40 @@ class getdocument{
                         $stack[++$j] = array();
                     else
                         array_push($stack, $stack[$j++]);
-                break;
+                    break;
                 // Закрывающаяся фигурная скобка, удаляем текущий уровень из стека. Группа закончилась.
                 case "}":
                     array_pop($stack);
                     $j--;
-                break;
+                    break;
                 // Всякие ненужности отбрасываем.
                 case "\0": case "\r": case "\f": case "\b": case "\t": break;
                 // Остальное, если требуется, отправляем на выход.
                 case "\n":
                     $document .= " ";
-                break;
+                    break;
                 default:
                     if ($this->rtf_isPlainText($stack[$j]))
                         $document .= $c;
-                break;
+                    break;
             }
         }
         //echo $document;
         // Возвращаем, что получили.
         return html_entity_decode(iconv("windows-1251", "utf-8", $document), ENT_QUOTES, "UTF-8");
+    }
+
+    public function readFileRTF2($filename) {
+        $reader = new RtfReader();
+        $rtf = file_get_contents($filename);
+        $result = $reader->Parse($rtf);
+        if($result){
+            $formatter = new RtfHtml();
+            return $formatter->Format($reader->root);
+        }
+        else{
+            return 'не удалось закачать файл';
+        }
     }
 
 }
