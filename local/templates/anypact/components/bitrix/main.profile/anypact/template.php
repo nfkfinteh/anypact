@@ -30,7 +30,7 @@
                             <div class="col-xl-5 col-md-6 col-sm-12">
                             <div class="user_profile_form_editdata_foto">
                                 <?if(!empty($arResult['arUser']['IMG_URL'])) {?>
-                                    <img src="<?=$arResult['arUser']['IMG_URL']?>" style="height: 165px;">
+                                    <img src="<?=$arResult['arUser']['IMG_URL']?>" style="height: 100%; width: 100%; object-fit: cover;">
                                     <img src="<?=SITE_TEMPLATE_PATH?>/img/edit_user_photo.png">
                                 <?}else {?>
                                     <img src="<?=SITE_TEMPLATE_PATH?>/img/user_profile_no_foto.png" id="edit_user_photo">

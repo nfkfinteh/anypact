@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<style>
+		body {
+			font-size: 12px;
+		}
+		h3.title{
+			text-align: center;
+		    font-weight: bold;
+		    line-height: 1;
+		    font-size: 12px;
+		}
+		p.title{
+			text-align: center;
+			line-height: 1;
+			font-size: 12px;
+		}
+		p {
+			text-align: justify;
+		}
+		.main_table, .main_table td {
+			border: solid 1px #000;			
+		}
+		.main_table td {
+			font-size: 10px;
+		}
+		.text-contract p {
+			text-align: justify;
+		}
+		.main_table thead td span{
+			background-color: #584485;
+		}
+
+			.contract-att{
+		font-size: 12px;
+		width: 100%;
+	}
+	.right-title {
+		width: 40%;
+		font-size: 12px;
+		float: right;  
+	}
+	.main_table, .main_table td {
+			border: solid 1px #000;			
+		}
+	</style>
+<h3 class="title">ПОРУЧЕНИЕ КЛИЕНТА</h3>
+<p class="title">на совершение сделки</p>
+<br>
+<br>
+<br>
+<br>
+<table style="width: 100%;">
+	<tr>
+		<td style="width: 50%;">№ Поручения</td>
+		<td style="width: 50%; text-align: right;">Дата поручения: %DATA%</td>
+	</tr>
+</table>
+<br>
+<br>
+<table style="width: 100%;">
+	<tr>
+		<td style="width: 20%;">Клиент:</td>
+		<td style="width: 80%;">%FIO_USER%</td>
+	</tr>
+	<tr>
+		<td style="width: 20%;">Договор, портфель:</td>
+		<td style="width: 80%;">%CONTRACT_USER%</td>
+	</tr>
+	<tr>
+		<td style="width: 20%;">Вид сделки:</td>
+		<td style="width: 80%;">%TYPE_TRADE%</td>
+	</tr>
+	<tr>
+		<td style="width: 20%;">Биржа:</td>
+		<td style="width: 80%;">%TRADE%</td>
+	</tr>
+</table>
+<br>
+<br>
+<table class="main_table">
+	<thead>
+		<tr>
+			<td style="font-size: 11px; width: 15%;"><span>Эмитент/ наименование (обозначение) фьючерсного контракта или опциона</span></td>
+			<td style="font-size: 11px; width: 25%;">Вид, категория (тип), выпуск, транш, серия ЦБ / вид и наименование ПФИ**</td>
+			<td style="font-size: 11px; width: 10%;">Дата погашения/ срок платежа по ценной бумаге/ПФИ*</td>
+			<td style="font-size: 11px; width: 12%;">Номинальная стоимость, руб.</td>
+			<td style="font-size: 11px; width: 10%;">Цена исполнения по опциону</td>
+			<td style="font-size: 11px; width: 13%;">Количество ЦБ/ПФИ (или однозначные условия определения количества ЦБ/ПФИ), шт.</td>
+			<td style="font-size: 11px; width: 15%;">Размер премии по опциону, руб.</td>		
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td style="font-size: 11px;width: 15%;">%EMITENT%</td>
+			<td style="font-size: 11px;width: 25%;">Опционный договор на право продажи биржевых облигаций ООО «Пионер-Лизинг» (ISIN: RU000A0ZZAT8) по цене 100% от номинала в количестве %COUNT_SP% штук, заключенный на условиях, указанных в разделе Дополнительная информация настоящего Поручения
+			</td>
+			<td style="text-align: center;width: 10%;">%END_DATE%</td>
+			<td style="text-align: center;width: 12%;">-</td>
+			<td style="text-align: center; font-size: 11px;width: 10%;">100% от номинала базового актива, действующего на дату исполнения Опциона Put</td>
+			<td style="text-align: center;width: 13%;">1</td>
+			<td style="text-align: center;width: 15%;">%SUMM%</td>
+		</tr>
+	</tbody>
+</table>
+<p>Срок действия поручения: 10 рабочих дней</p>

@@ -23,7 +23,7 @@ $APPLICATION->SetTitle("AnyPact");
 	Array(
 		"CACHE_TIME" => 36000,
 		"CACHE_TYPE" => "A",
-		"COUNT_POINT" => "5",
+		"COUNT_POINT" => "10",
 		"IBLOCK_ID" => "3",
 		"IBLOCK_TYPE" => "4",
 		"LOCATION" => "Чебоксары",
