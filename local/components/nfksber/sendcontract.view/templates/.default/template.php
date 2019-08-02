@@ -29,7 +29,7 @@
                     }
                 </style>
                 <div class="tools_view_contract">
-                    <div class="button_tool">
+                    <div class="button_tool" id="download_pdf">
                         <img src="<?=SITE_TEMPLATE_PATH?>/img/downloading-file.svg" alt="">
                     </div>
                     <div class="button_tool">
