@@ -2,15 +2,25 @@
 
 if (!CModule::IncludeModule("iblock")) return;
 
-$arFilter = ['PROPERTY_LOCATION_CITY'=>$arParams['LOCATION']];
+$arFilter = [
+    'IBLOCK_ID'=>$arParams['IBLOCK_ID'],
+    'ACTIVE'=>'Y',
+    'PROPERTY_LOCATION_CITY'=>$arParams['LOCATION']
+];
 
 if ($this->StartResultCache(false, array($arFilter))) {
     if (defined('ERROR_404') && ERROR_404=='Y' && !defined('ADMIN_SECTION')){
         $this->abortResultCache();
     }
 
-    $items = GetIBlockElementList($arParams['IBLOCK_ID'], false, array("SORT"=>"ASC"), 0, $arFilter);
+<<<<<<< HEAD
+    //$items = GetIBlockElementList($arParams['IBLOCK_ID'], false, array("SORT"=>"ASC"), 0, $arFilter);
     //print_r($items);
+=======
+    //$items = GetIBlockElementList($arParams['IBLOCK_ID'], false, array("SORT"=>"ASC"), $arParams['COUNT_POINT'], $arFilter);
+    $items = CIBlockElement::GetList(["SORT"=>"ASC"], $arFilter, false, ['nTopCount'=>$arParams['COUNT_POINT']], ['ID', 'IBLOCK_ID', '*']);
+
+>>>>>>> master
     $i=0;
     while($obj = $items->GetNextElement()){
         $arResult['ITEMS'][$i]['FIELDS'] = $obj->GetFields();
