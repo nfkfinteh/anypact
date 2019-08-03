@@ -1,37 +1,16 @@
 <? // print_r($arResult["PROPERTY"]) ;?>
 <? //print_r($arResult) ;?>
 <h4>Просмотр договора</h4>
-<style>
-    .view-pdf{
-        width:100%;
-    }
-</style>
  <div class="tender cardDogovor">
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12">
         <?=$arResult['SEND_BLOCK']['ID']?>
             <div class="cardDogovor-boxTool">
                 <a href="/my_pacts/"> << Назад</a>
-                <style>
-                    .tools_view_contract{
-                        width: 100%;
-                        height: 50px;
-                        border: 1px solid #607D8B;
-                    }
-
-                    .button_tool{
-                        float: left;                        
-                        margin: 5px;
-                        cursor: pointer;
-                    }
-                    .button_tool img{
-                        width: 38px;
-                    }
-                </style>
                 <div class="tools_view_contract">
-                    <div class="button_tool">
+                    <a href="contract_pdf.php?ID=<?=$_GET['ID']?>" target="_blank" class="button_tool" id="download_pdf">
                         <img src="<?=SITE_TEMPLATE_PATH?>/img/downloading-file.svg" alt="">
-                    </div>
+                    </a>
                     <div class="button_tool">
                         <img src="<?=SITE_TEMPLATE_PATH?>/img/printer.svg" alt="">
                     </div>
