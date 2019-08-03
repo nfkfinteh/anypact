@@ -27,3 +27,20 @@
     position: fixed;
     margin-top: -80px;
 }
+.view-pdf{
+    width:100%;
+}
+.tools_view_contract{
+    width: 100%;
+    height: 50px;
+    border: 1px solid #607D8B;
+}
+
+.button_tool{
+    float: left;
+    margin: 5px;
+    cursor: pointer;
+}
+.button_tool img{
+    width: 38px;
+}
