@@ -3,6 +3,7 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 
 $this->setFrameMode(true);
 ?>
+<?if($arResult['NavPageCount']>1):?>
 <ul class="pagination justify-content-center">
 <?
 $strNavQueryString = ($arResult["NavQueryString"] != "" ? $arResult["NavQueryString"]."&amp;" : "");
@@ -111,3 +112,4 @@ $strNavQueryStringFull = ($arResult["NavQueryString"] != "" ? "?".$arResult["Nav
     endif;
     ?>
 </ul>
+<?endif?>
