@@ -8,8 +8,8 @@ $APPLICATION->SetTitle("AnyPact");
     global $USER;
     if ($USER->IsAuthorized()){
     ?>
-    <!--Созданные или подписанные пользователем документы-->   
-    <h1>Личный кабинет</h1>
+    <!--Созданные или подписанные пользователем документы 
+    <h1>Личный кабинет</h1>-->  
     <?//компонент выводит список договоров пользователя
     $APPLICATION->IncludeComponent("nfksber:sendcontract.view", 
     "", 
