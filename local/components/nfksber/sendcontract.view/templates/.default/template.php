@@ -1,24 +1,39 @@
 <? // print_r($arResult["PROPERTY"]) ;?>
 <? //print_r($arResult) ;?>
-<<<<<<< HEAD
-=======
-<h4>Просмотр договора</h4>
- <div class="tender cardDogovor">
-    <div class="row">
-        <div class="col-lg-12 col-md-12 col-sm-12">
-        <?=$arResult['SEND_BLOCK']['ID']?>
-            <div class="cardDogovor-boxTool">
-                <a href="/my_pacts/"> << Назад</a>
-                <div class="tools_view_contract">
-                    <a href="contract_pdf.php?ID=<?=$_GET['ID']?>" target="_blank" class="button_tool" id="download_pdf">
-                        <img src="<?=SITE_TEMPLATE_PATH?>/img/downloading-file.svg" alt="">
-                    </a>
-                    <div class="button_tool">
-                        <img src="<?=SITE_TEMPLATE_PATH?>/img/printer.svg" alt="">
-                    </div>
->>>>>>> 8ed0ff2dc985b71f766965b870e38351975096d6
+<!--------------------------------------1-------------------------------------------------->
+<div>
+        <h1 class="mb-4">Подписанные договора</h1>
+        <div class="row pt-2 mb-5 pb-5">
+            <div class="col-md-4 col-sm-12">
+                <h3 class="font-weight-bold">Файлы</h3>
+                <ul class="list-document">
+                    <li class="icon-document">
+                        <span>Договор №1</span>
+                        <button class="btn btn-nfk-invert w-100">Подписан</button>
+                    </li>
+                    <!--
+                    <li class="icon-document">
+                        <span>Спецификация №1</span>
+                        <button class="btn btn-nfk-invert w-100">Подписан</button>
+                    </li>
+                    <li class="icon-document">
+                        <span>Спецификация №2</span>
+                        <button class="btn btn-nfk-invert w-100">Подписан</button>
+                    </li>
+                    <li class="icon-document">
+                        <span>Доп. соглашение</span>
+                        <button class="btn btn-nfk-invert w-100">Подписан</button>
+                    </li> -->
+                </ul>
+            </div>
+            <div class="col-md-8 col-sm-12">
+                <div class="d-flex">
+                    <h3 class="font-weight-bold flex-grow-1" style="flex-grow: 1!important;">Просмотр файла</h3>
+
+                    <a href="contract_pdf.php?ID=<?=$_GET['ID']?>" target="_blank" class="btn-img" id="download_pdf"><img src="<?=SITE_TEMPLATE_PATH?>/image/icon-pdf-gray.png" alt=""></a>
+                    <button class="btn-img"><img src="<?=SITE_TEMPLATE_PATH?>/image/icon-printer-gray.png" alt=""></button>
                 </div>
-                <!--Поле просомтра договора-->
+                <!--Поле просмотра договора-->
                 <div class="w-100 mt-4" style="height: 1000px; background-color: #f1f4f4">
                     <div style="wight:100%" id="canvas_view_text">
                         <?=$arResult['CONTRACT_TEXT']?>
