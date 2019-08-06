@@ -54,8 +54,8 @@
                         <div class="cardPact-person__avatar">
                             <span><?=substr($arResult["CONTRACT_HOLDER"]["NAME"], 0, 1)?></span>
                         </div>
-                    <?endif?>
-                    <span><?=$arResult["CONTRACT_HOLDER"]["LAST_NAME"]?> <?=$arResult["CONTRACT_HOLDER"]["NAME"]?></span><br>
+                    <?endif?>                    
+                    <span><a href="/profile_user/?ID=<?=$arResult["CONTRACT_HOLDER"]["ID"]?>"><?=$arResult["CONTRACT_HOLDER"]["LAST_NAME"]?> <?=$arResult["CONTRACT_HOLDER"]["NAME"]?></a></span><br>
                     <span class="text-gray">Неизвестно</span><br>
                 </div>
                 <div class="cardPact-info">

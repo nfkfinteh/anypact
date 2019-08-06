@@ -124,6 +124,7 @@ class CDemoSqr extends CBitrixComponent
             $UserContractHolder = CUser::GetByID($this->arResult["PROPERTY"]["PACT_USER"]["VALUE"]);
             $arrUserContractHolder = $UserContractHolder->Fetch();
             $USER_CONTRACT_HOLDER = array(
+                "ID" => $arrUserContractHolder["ID"],
                 "NAME" => $arrUserContractHolder["NAME"],
                 "LAST_NAME" => $arrUserContractHolder["LAST_NAME"],
                 "LOGIN" => $arrUserContractHolder["LOGIN"], 

@@ -15,7 +15,7 @@ if ($USER->IsAuthorized()):
                 "IBLOCK_ID" => 3,
                 "USER_ID" => $_REQUEST['ID'],
                 "CACHE_TIME"=>3600000,
-                "ITEM_COUNT"=>2,
+                "ITEM_COUNT"=> 9,
                 "PAGER_TEMPLATE"=>'anypact_pagination',
             )
         );?>
