@@ -5,6 +5,7 @@ $(document).ready(function(){
         let state = that.attr('data-state');
         let current_state = $('.btn-category.active').attr('data-state');
         let url = location.protocol + '//' + location.host + location.pathname;
+        console.log(url);
         let user_id = that.attr('data-user');
         let data = {
             'AJAX_SDEL': 'Y',

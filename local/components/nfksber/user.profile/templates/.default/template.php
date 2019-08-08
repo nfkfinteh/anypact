@@ -4,8 +4,7 @@
             <div class="col-lg-3 col-md-4 col-sm-12">
                 <div class="user-avatar">
                     <span class="user-first-letter"><?=$arResult['USER']['IN_NAME']?></span>
-                    <img src="<?=$arResult['USER']['IMG_URL']?>">
-                    <!--<img src="image/sample_face_150x150.png" alt="Васильев Александр Евгеньевич"> !--164px x 164px-->
+                    <img src="<?=$arResult['USER']['IMG_URL']?>">                    
                 </div>
                 <h3 class="font-weight-bold mt-4"><?=$arResult['USER']['LAST_NAME']?> <?=$arResult['USER']['NAME']?> <?=$arResult['USER']['SECOND_NAME']?></h3>
                 <a href="#" class="btn btn-nfk btn-uprofile" data-toggle="modal" data-target=".bd-comment-modal-sm">Оставить отзыв</a>
@@ -21,34 +20,38 @@
                 <button class="btn-category <?if($arResult['CURRENT_STATE']=='Y'):?>active<?endif?>" data-state="Y" data-user="<?=$arResult['USER']['ID']?>">Активные <span class="text-gray"><?=$arResult['ACTIVE_ITEMS']?></span></button>
                 <button class="btn-category <?if($arResult['CURRENT_STATE']=='N'):?>active<?endif?>" data-state="N" data-user="<?=$arResult['USER']['ID']?>">Завершенные <span class="text-black-50"><?=$arResult['COMPLETED_ITEMS']?></span></button>
                 <div class="row mt-4">
-                    <?foreach ($arResult['ITEMS'] as $item):?>
-                        <div class="col-lg-4 col-md-6 col-sm-12 tender-block">
-                            <div class="tender-post">
-                                <a href="/pacts/view_pact/?ELEMENT_ID=<?=$item['ID']?>">
-                                    <div class="tender-img">
-                                        <?if(!empty($item['PREVIEW_PICTURE'])):?>
-                                            <img src="<?=CFile::GetPath($item['PREVIEW_PICTURE'])?>">
-                                        <?else:?>
-                                            <img src="<?=CFile::GetPath($item['DETAIL_PICTURE'])?>">
-                                        <?endif?>
-                                        <span><?=$item['CREATED_DATE']?></span>
-                                    </div>
-                                </a>
-                                <div class="tender-text">
+                    <?if (!empty($arResult['ITEMS'])) { 
+                        foreach ($arResult['ITEMS'] as $item):?>
+                            <div class="col-lg-4 col-md-6 col-sm-12 tender-block">
+                                <div class="tender-post">
                                     <a href="/pacts/view_pact/?ELEMENT_ID=<?=$item['ID']?>">
-                                        <h3><?=$item['NAME']?></h3>
-                                        <?if(!empty($item['PREVIEW_TEXT'])):?>
-                                            <p><?=TruncateText($item['PREVIEW_TEXT'], 150)?></p>
-                                        <?else:?>
-                                            <p><?=TruncateText($item['DETAIL_TEXT'], 150)?></p>
-                                        <?endif?>
-
-                                        <span class="tender-price"><?=$item['SUMM_PACT']['VALUE'].' руб.'?></span>
+                                        <div class="tender-img">
+                                            <?if(!empty($item['PREVIEW_PICTURE'])):?>
+                                                <img src="<?=CFile::GetPath($item['PREVIEW_PICTURE'])?>">
+                                            <?else:?>
+                                                <img src="<?=CFile::GetPath($item['DETAIL_PICTURE'])?>">
+                                            <?endif?>
+                                            <span><?=$item['CREATED_DATE']?></span>
+                                        </div>
                                     </a>
+                                    <div class="tender-text">
+                                        <a href="/pacts/view_pact/?ELEMENT_ID=<?=$item['ID']?>">
+                                            <h3><?=$item['NAME']?></h3>
+                                            <?if(!empty($item['PREVIEW_TEXT'])):?>
+                                                <p><?=TruncateText($item['PREVIEW_TEXT'], 150)?></p>
+                                            <?else: ?>
+                                                <p><?=strip_tags(TruncateText($item['DETAIL_TEXT'], 150))?></p>
+                                            <?endif?>
+
+                                            <span class="tender-price"><?=$item['SUMM_PACT']['VALUE'].' руб.'?></span>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    <?endforeach?>
+                        <?endforeach?>
+                    <?}else {?>
+                        <h4>Записей нет</h4>
+                    <?}?>
                 </div>
             </div>
         </div>

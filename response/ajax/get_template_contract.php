@@ -22,7 +22,8 @@ if(CModule::IncludeModule("iblock"))
 foreach ($arr as $item) {
     ?>
     <a class="navbar-brand" href="/my_pacts/add_my_dogovor/?ELEMENT_ID=<?=$idSdelka?>&EDIT=EDIT" data-id="0">← Назад</a>
-    <a href="/my_pacts/add_my_dogovor/?EDIT=EDIT&ID_TEMPLATE=<?=$item["ID"]?>&ELEMENT_ID=<?=$idSdelka?>"><img src="<?=SITE_TEMPLATE_PATH?>/img/document_contract.png" /><?=$item["NAME"]?></a>
+    <a href="/my_pacts/add_my_dogovor/?EDIT=ADD&ID_TEMPLATE=<?=$item["ID"]?>&ELEMENT_ID=<?=$idSdelka?>" style="width:100%; display: inline-block;">
+        <img src="<?=SITE_TEMPLATE_PATH?>/img/document_contract.png" /><?=$item["NAME"]?></a>
     <?
 }
 ?>

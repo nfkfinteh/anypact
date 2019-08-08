@@ -1,0 +1,129 @@
+.message-list{
+    margin-top: -40px;
+}
+.message-block{
+    display: flex;
+}
+.message-block-right .message-person-photo{
+    order: 0;
+    margin-right: 30px;
+}
+.message-block-right .message-container{
+    order: 1;
+}
+.message-block-right .message-container time{
+    text-align: right;
+}
+.message-block-left .message-person-photo{
+    order: 1;
+    margin-left: 30px;
+}
+.message-block-left .message-container{
+    order: 0;
+}
+
+.message-block-left .message-container time{
+    text-align: left;
+}
+.message-person-photo{
+    margin-top: 86px;
+}
+.message-container{
+    margin-top: 25px;
+    max-width: calc(100% - 99px);
+}
+.message-message{
+    margin-top: 26px;
+}
+.message-message time{
+    display: block;
+    color: #a8a8a8;
+}
+.message-content{
+    background-color: #f1f4f4;
+    border-radius: 7px;
+    margin-top: 11px;
+    overflow: hidden;
+}
+.message-text{
+    padding: 20px;
+}
+.message-image img{
+    max-width: 100%;
+}
+.user-avatar{
+    width: 69px;
+    height: 69px;
+    background-color: #e8e8e8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+}
+.user-first-letter{
+    font-size: 41px;
+    text-transform: uppercase;
+    color: #c3c3c3;
+    font-weight: bold;
+}
+.user-avatar img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.message-chat-input{
+    display: flex;
+    align-items: flex-start;
+    margin-top: 61px;
+}
+.message-chat-input button{
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+.message-chat-input textarea{
+    border: 1px solid #e8e8e8;
+    border-radius: 7px;
+    height: 74px;
+    padding: 12px 18px;
+    overflow: hidden;
+    resize: none;
+    flex-grow: 1;
+}
+ul.list-person-conversation{
+    padding-left: 12px;
+}
+ul.list-person-conversation li.person-conversation{
+    list-style: none;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #f2f2f2;
+    height: 75px;
+}
+ul.list-person-conversation li.person-conversation:last-child{
+    border-bottom: none;
+}
+ul.list-person-conversation .person-conversation-photo{
+    width: 41px;
+    min-width: 41px;
+    height: 41px;
+    background-color: #e8e8e8;
+    border-radius: 50%;
+    margin-right: 15px;
+    overflow: hidden;
+}
+ul.list-person-conversation .person-conversation-photo img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.btn-add-person{
+    min-height: 46px;
+    margin-top: 4px;
+}

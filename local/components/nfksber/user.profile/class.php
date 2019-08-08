@@ -110,6 +110,7 @@ class CDemoSqr extends CBitrixComponent
 
 
             $arItems  =  $this->getUserSdel($ajaxData, $arNavParams);
+            // ошибка если нет записей поправка в шаблоне
             $arResult["ITEMS"] = $arItems['ITEMS'];
             $arResult["NAV_STRING"] = $arItems["NAV_STRING"];
             $arResult["NAV_CACHED_DATA"] = $arItems["NAV_CACHED_DATA"];

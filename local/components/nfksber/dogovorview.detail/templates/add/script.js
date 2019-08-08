@@ -154,7 +154,7 @@ $(document).ready(function() {
         var category = $(this);
         var id_category = category.attr('data-id');
         var canvas_contr = $('.cardDogovor-boxViewText');
-        let id_element = $('#save_btn').attr('data-id');
+        var id_element = $('#save_btn').attr('data-id');
 
         // загружаем содержимое категории
         $.post(
@@ -178,7 +178,7 @@ $(document).ready(function() {
         var category = $(this);
         var id_category = category.attr('data-id');
         var canvas_contr = $('.cardDogovor-boxViewText');
-        // загружаем содержимое категории
+        // загружаем содержимое шаблона договора
         $.post(
             "/response/ajax/get_template_text_contract.php", {
                 idcontract: id_category

@@ -165,7 +165,12 @@ class CDemoSqr extends CBitrixComponent
             $this->arResult["LIST_CATEGORY"]        = $this->getListCategory();
             $this->arResult["CONTRACT_PROPERTY"]    = $this->getPropertyContract($this->arResult["INFOBLOCK_C_ID"]);
             $this->arResult["THREE_TEMPLATE"]       = $this->getTemplateContractCategote();
-            
+
+            if(!empty($this->ID_CONTRACT)){                
+                $this->arResult["TEMPLATE_CONTENT"] = $this->getElement($this->ID_CONTRACT);
+                $this->arResult["TEMPLATE_CONTENT_PROPERTY"]    = $this->getMultyProperty(5, $_GET["ID_TEMPLATE"]);
+            }
+
             if(!empty($_GET["ID_TEMPLATE"])){                
                 $this->arResult["TEMPLATE_CONTENT"] = $this->getElement($_GET["ID_TEMPLATE"]);
                 $this->arResult["TEMPLATE_CONTENT_PROPERTY"]    = $this->getMultyProperty(5, $_GET["ID_TEMPLATE"]);

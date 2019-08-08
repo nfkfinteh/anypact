@@ -103,7 +103,7 @@ if ($count_pacts > 0):?>
             <tr>
                 <td scope="row"><?= $message["UF_TEXT_MESSAGE_USER"] ?></td>
                 <td><?= $message["UF_TIME_CREATE_MSG"]->toString() ?></td>
-                <td><a href="/my_pacts/view_my_pact/?id=<?= $pact["ID"] ?>" target="_blank">Посмотреть</a></td>
+                <td><a href="/my_pacts/view_message/?id=<?= $pact["ID"] ?>" target="_blank">Посмотреть</a></td>
             </tr>
             <?
         }

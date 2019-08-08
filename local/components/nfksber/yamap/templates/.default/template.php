@@ -28,8 +28,8 @@
 								// Создание карты.    
 								var myMap = new ymaps.Map("map", {
 									center: [<?=$arResult['CENTER_MAP']?>],
-									zoom: 13,
-									controls: [],
+									zoom: 11,
+									controls: ['zoomControl'],
                                     width: 100,
                                     height: 100
 								});
