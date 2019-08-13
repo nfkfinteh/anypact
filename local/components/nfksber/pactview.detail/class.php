@@ -1,4 +1,9 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die();
+use Bitrix\Main\Loader;
+Loader::includeModule("highloadblock");
+
+use Bitrix\Highloadblock as HL;
+use Bitrix\Main\Entity;
 /*
     Класс выводит информацию в карточку по сделке
 */
@@ -109,6 +114,31 @@ class CDemoSqr extends CBitrixComponent
         return $arTree;
     }
 
+    public function getCountDogovor($idUser){
+        $hlbl = 3;
+        $hlblock = HL\HighloadBlockTable::getById($hlbl)->fetch();
+
+        $entity = HL\HighloadBlockTable::compileEntity($hlblock);
+        $entity_data_class = $entity->getDataClass();
+
+        $rsData = $entity_data_class::getList(array(
+            "select" => array("ID"),
+            "filter" => array(
+                'LOGIC' => 'OR',
+                array(
+                    'UF_ID_USER_A'=>$idUser
+                ),
+                array(
+                    'UF_ID_USER_B'=>$idUser
+                )
+            )
+        ));
+
+        $result = $rsData->getSelectedRowsCount();
+
+        return $result;
+    }
+
     public function executeComponent()
     {
         if($this->startResultCache())
@@ -119,6 +149,7 @@ class CDemoSqr extends CBitrixComponent
             $this->arResult["ELEMENT"] = $this->getElement($this->arResult["ELEMENT_ID"]);
             $this->arResult["PROPERTY"] = $this->getProperty($this->arResult["INFOBLOCK_ID"], $this->arResult["ELEMENT_ID"]);
             $this->arResult["INFOBLOCK_SECTION_LIST"] = $this->getTreeCategory($this->arResult["INFOBLOCK_ID"]);
+            $this->arResult['DOGOVOR']['CNT'] =  $this->getCountDogovor($this->arResult["USER_ID"]);
             
             // данные владельца сделки           
             $UserContractHolder = CUser::GetByID($this->arResult["PROPERTY"]["PACT_USER"]["VALUE"]);
