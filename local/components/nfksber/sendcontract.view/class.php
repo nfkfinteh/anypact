@@ -111,7 +111,7 @@ class CDemoSqr extends CBitrixComponent
 
     public function executeComponent()
     {
-        if($this->startResultCache())
+        if($this->startResultCache($this->arParams['CACHE_TIME'], $_GET["ID"]))
         {
             $IDSendItem = $_GET['ID'];
             $this->arResult = array_merge($this->arResult, $this->paramsUser($this->arParams));
