@@ -34,27 +34,81 @@ class getdocument{
 
         $phpWord = $objReader->load($docxFile);
 
-
         $body = '';
         foreach ($phpWord->getSections() as $section) {
             $arrays = $section->getElements();
 
+            $block = true;
+
             foreach ($arrays as $e) {
+
+                //new dBug($e->getParagraphStyle());
+
                 if (get_class($e) === 'PhpOffice\PhpWord\Element\TextRun') {
+
+                    #выравнивание текста
+                    if($block){
+                        if(method_exists($e, 'getParagraphStyle') && method_exists($e->getParagraphStyle(), 'getAlign')){
+                            $alignParagraph = $e->getParagraphStyle()->getAlign();
+                        }
+                        else{
+                            $alignParagraph = NULL;
+                        }
+
+                        if(!empty($alignParagraph)){
+                            $align = $alignParagraph;
+                        }
+                        else{
+                            $align = 'justify';
+                        }
+
+                        $body .= '<div style="text-align:'. $align .'">';
+                        $block = false;
+                    }
+
+
+
                     foreach ($e->getElements() as $text) {
 
                         $font = $text->getFontStyle();
-
                         $size = $font->getSize();
-                        $bold = $font->isBold() ? 'font-weight:700;' : '';
+                        $bold = $font->isBold();
                         $color = $font->getColor();
                         $fontFamily = $font->getName();
 
-                        $body .= '<span style="font-size:' . intval($size) . 'px;' . 'font-family:' . $fontFamily . '; ' . $bold . '; color:#' . $color . ';display:inline;">';
-                        $body .= $text->getText() . '</span>';
+                        if(!empty($color)){
+                            $color = 'color:#'.$color.';';
+                        }
+                        else{
+                            $color = '';
+                        }
+
+
+                        //$body .= '<span style="font-size:' . intval($size) . 'px;' . 'font-family:' . $fontFamily . '; ' . $bold . '; color:#' . $color . ';display:inline;">';
+
+                        if(!empty($bold) || !empty($color) || $size>14){
+                            if($bold) {
+                                $tag = 'b';
+                            }
+                            else{
+                                $tag = 'span';
+                            }
+
+                            $body .= '<'. $tag .' style="font-size:' . intval($size) . 'px;' . $color . 'display:inline;">';
+                            $body .= $text->getText() . '</'. $tag .'>';
+
+                        }
+                        else{
+                            $body .= $text->getText();
+                        }
+
 
                     }
                 } else if (get_class($e) === 'PhpOffice\PhpWord\Element\TextBreak') {
+                    #выравнивание текста конец
+                    $block = true;
+                    $body .= '</div>';
+
                     $body .= '<br />';
                 } else if (get_class($e) === 'PhpOffice\PhpWord\Element\Table') {
                     $body .= '<table border="2px">';
@@ -66,7 +120,8 @@ class getdocument{
 
                         $cells = $row->getCells();
                         foreach ($cells as $cell) {
-                            $body .= '<td style="width:' . $cell->getWidth() . '">';
+                            //$body .= '<td style="width:' . $cell->getWidth() . '">';
+                            $body .= '<td>';
                             $celements = $cell->getElements();
                             foreach ($celements as $celem) {
                                 if (get_class($celem) === 'PhpOffice\PhpWord\Element\Text') {
@@ -85,11 +140,12 @@ class getdocument{
                         $body .= '</tr>';
                     }
 
-
                     $body .= '</table>';
                 } else {
                     $body .= $e->getText();
                 }
+
+
             }
 
             break;
@@ -98,9 +154,15 @@ class getdocument{
     }
 
     public function readFileTXT($txtFile){
-        $content = file_get_contents($txtFile);
-        $content = iconv('windows-1251', 'UTF-8', $content);
-        return $content;
+        $file = fopen($txtFile, "r");
+        $result = '';
+        while(!feof($file)){
+            $content = fgets($file);
+            $result .=  $content;
+            $result .= "<br>";
+        }
+        $result = iconv('windows-1251', 'UTF-8', $result);
+        return $result;
     }
 
     public function getExtension($filename) {
@@ -338,6 +400,11 @@ class getdocument{
         else{
             return 'не удалось закачать файл';
         }
+    }
+
+    public function getImg($filename){
+        $result = '<div style="text-align: center"><img src="'. $filename .'"></img></div>';
+        return $result;
     }
 
 }
