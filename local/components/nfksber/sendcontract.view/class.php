@@ -29,13 +29,14 @@ class CDemoSqr extends CBitrixComponent
         $entity = HL\HighloadBlockTable::compileEntity($hlblock); 
         $entity_data_class = $entity->getDataClass(); 
         $rsData = $entity_data_class::getList(array(
-            "select" => array("UF_TEXT_CONTRACT"),
+            "select" => array("UF_TEXT_CONTRACT", "UF_CANTRACT_IMG"),
             "order" => array("ID" => "ASC"),
             "filter" => array("UF_ID_SEND_ITEM" => $IDSendItem)
         ));
                   
         while($arData = $rsData->Fetch()){            
-            $arMesage_User  = $arData['UF_TEXT_CONTRACT'];
+            $arMesage_User['TEXT']  = $arData['UF_TEXT_CONTRACT'];
+            $arMesage_User['IMG']  = $arData['UF_CANTRACT_IMG'];
         }
         return $arMesage_User;
     }

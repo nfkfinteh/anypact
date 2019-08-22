@@ -38,9 +38,20 @@ var full_name = {
                 <button type="button" class="btn btn-nfk btn-default form_text space_right" id="btn-italic" data-toggle="tooltip" data-placement="left" title="Курсив" contenteditable="false"><span class="glyphicon glyphicon-italic"></span></button>
                 <button type="button" class="btn btn-nfk btn-default form_text" id="btn-question" data-toggle="tooltip" data-placement="left" title="Информация по инструментам" contenteditable="false"><span class="glyphicon glyphicon-question-sign"></span></button>
         </div>
-        <div class="cardDogovor-boxViewText" id="canvas" contenteditable="false">
-                <? echo $arResult["TEMPLATE_CONTENT"]["DETAIL_TEXT"] ;?>
-        </div>
+            <?if(!empty($arResult["DOGOVOR_IMG"][0]['URL'])):?>
+                <div class="cardDogovor-boxViewText">
+                    <?foreach ($arResult["DOGOVOR_IMG"] as $item):?>
+                        <div class="document-img" style="text-align: center">
+                            <img src="<?=$item['URL']?>">
+                        </div>
+                        <br>
+                    <?endforeach?>
+                </div>
+            <?else:?>
+                <div class="cardDogovor-boxViewText" id="canvas" contenteditable="false">
+                    <? echo $arResult["TEMPLATE_CONTENT"]["DETAIL_TEXT"] ;?>
+                </div>
+            <?endif?>
         </div>            
     </div>
 </div>

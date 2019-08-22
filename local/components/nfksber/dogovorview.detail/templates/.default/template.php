@@ -21,10 +21,21 @@
             <div class="tools_redactor">
                 <button type="button" class="btn btn-nfk btn-default" data-toggle="tooltip" data-placement="left" title="Сохранить" id="save_btn"><span class="glyphicon glyphicon-floppy-disk"></span></button>
                 <button type="button" class="btn btn-nfk btn-default space_right" id="btn-edit" data-toggle="tooltip" data-placement="left" title="Включить редактирование текста" contenteditable="false"><span class="glyphicon glyphicon-pencil"></span></button>                                    
-            </div> 
-            <div class="cardDogovor-boxViewText" id="canvas" contenteditable="false">
-                <?=$arResult["CONTRACT_PROPERTY"]["CONTRACT"]["DETAIL_TEXT"]?>
             </div>
+            <?if(!empty($arResult["DOGOVOR_IMG"][0]['URL'])):?>
+                <div class="cardDogovor-boxViewText">
+                    <?foreach ($arResult["DOGOVOR_IMG"] as $item):?>
+                        <div class="document-img" style="text-align: center">
+                            <img src="<?=$item['URL']?>">
+                        </div>
+                        <br>
+                    <?endforeach?>
+                </div>
+            <?else:?>
+                <div class="cardDogovor-boxViewText" id="canvas" contenteditable="false">
+                    <?=$arResult["CONTRACT_PROPERTY"]["CONTRACT"]["DETAIL_TEXT"]?>
+                </div>
+            <?endif?>
         </div>            
     </div>
 </div>

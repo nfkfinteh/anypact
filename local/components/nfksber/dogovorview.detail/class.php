@@ -51,10 +51,17 @@ class CDemoSqr extends CBitrixComponent
                 $file_path      = CFile::GetPath($ar_props["VALUE"]);
                 $array_img[]    = array("URL" => $file_path, "PROPERTY" => $ar_props);
             }
+
+            if ($ar_props["CODE"] == "DOGOVOR_IMG"){
+                $file_path      = CFile::GetPath($ar_props["VALUE"]);
+                $array_img_dogovor[]    = array("URL" => $file_path, "PROPERTY" => $ar_props);
+            }
+
         }
         
-        $array_props["IMG_FILE"] = $array_img;      
-        
+        $array_props["IMG_FILE"] = $array_img;
+        $array_props["DOGOVOR_IMG"] = $array_img_dogovor;
+
         if(!empty($array_props["ID_DOGOVORA"]["VALUE"])){
             $this->ID_CONTRACT = $array_props["ID_DOGOVORA"]["VALUE"];            
         }
@@ -169,11 +176,13 @@ class CDemoSqr extends CBitrixComponent
             if(!empty($this->ID_CONTRACT)){                
                 $this->arResult["TEMPLATE_CONTENT"] = $this->getElement($this->ID_CONTRACT);
                 $this->arResult["TEMPLATE_CONTENT_PROPERTY"]    = $this->getMultyProperty(5, $_GET["ID_TEMPLATE"]);
+                $this->arResult["DOGOVOR_IMG"] = $this->getProperty(4, $this->ID_CONTRACT)['DOGOVOR_IMG'];
             }
 
             if(!empty($_GET["ID_TEMPLATE"])){                
                 $this->arResult["TEMPLATE_CONTENT"] = $this->getElement($_GET["ID_TEMPLATE"]);
                 $this->arResult["TEMPLATE_CONTENT_PROPERTY"]    = $this->getMultyProperty(5, $_GET["ID_TEMPLATE"]);
+                $this->arResult["DOGOVOR_IMG"] = $this->getProperty(4, $this->arResult["ELEMENT_ID"])['DOGOVOR_IMG'];
             }
 
             $this->includeComponentTemplate();

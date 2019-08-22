@@ -50,7 +50,7 @@ var full_name = {
                 <p>поддерживаемые форматы(docx, rtf, txt)</p>
                 <form enctype="multipart/form-data" method="post" name="loadcontract"> 
                     <label for="uploadbtn" class="btn btn-nfk" id="">Выберите собственный файл</label>
-                    <input id="uploadbtn" type="file" name="file"  accept="docx/*" capture="camera" multiple="" required value="Сделать фото" style="display:none;"/>
+                    <input id="uploadbtn" type="file" name="file[]"  accept="docx/*" capture="camera" multiple required value="Сделать фото" style="display:none;"/>
                     <label for="load-contract" class="btn btn-nfk" id="btn-load">Загрузить в редактор</label>
                     <input type="submit" value="Обработать" id="load-contract" style="display:none;"/>
                 </form>
@@ -60,7 +60,7 @@ var full_name = {
             </div>
         </div>
         <div class="col-lg-9 col-md-9 col-sm-12">
-        <div class="tools_redactor">
+        <div class="tools_redactor" <?if(empty($_GET['ID_TEMPLATE'])):?>style="display: none"<?endif?>>
             <button type="button" class="btn btn-nfk btn-default" data-toggle="tooltip" data-placement="left" title="Сохранить" id="save_btn" data-id="<?=$arResult['ELEMENT_ID']?>">
                 <span class="glyphicon glyphicon-floppy-disk"></span>
             </button>
@@ -74,7 +74,6 @@ var full_name = {
             <button type="button" class="btn btn-nfk btn-default form_text" id="btn-question" data-toggle="tooltip" data-placement="left" title="Информация по инструментам" contenteditable="false"><span class="glyphicon glyphicon-question-sign"></span></button>
         </div>
         <div class="cardDogovor-boxViewText" id="canvas" contenteditable="false">
-
             <?if(!empty($arResult["TEMPLATE_CONTENT"])){ ?>                
                 <? echo $arResult["TEMPLATE_CONTENT"]["DETAIL_TEXT"] ;
             }else {?>            

@@ -36,7 +36,16 @@
                 <!--Поле просмотра договора-->
                 <div class="w-100 mt-4" style="height: 1000px; background-color: #f1f4f4">
                     <div style="wight:100%" id="canvas_view_text">
-                        <?=$arResult['CONTRACT_TEXT']?>
+                        <?if(!empty($arResult["CONTRACT_TEXT"]['IMG'])):?>
+                            <?foreach ($arResult["CONTRACT_TEXT"]['IMG'] as $item):?>
+                                <div class="document-img" style="text-align: center">
+                                    <img src="<?=CFile::GetPath($item)?>">
+                                </div>
+                                <br>
+                            <?endforeach?>
+                        <?else:?>
+                            <?=$arResult['CONTRACT_TEXT']['TEXT']?>
+                        <?endif?>
                         <?=$arResult['SEND_BLOCK']['TEXT']?>
                     </div>
                 </div>

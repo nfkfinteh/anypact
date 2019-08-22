@@ -5,7 +5,16 @@ require_once($_SERVER["DOCUMENT_ROOT"]."/response/ajax/class/get_pdf.php");
 $id = intval($_GET['ID']);
 #получаем текст контракта
 $contract = new GetPdf();
-$html .= $contract->getSendContractText($id)['UF_TEXT_CONTRACT'];
+$contractText =  $contract->getSendContractText($id);
+if(!empty($contractText['UF_CANTRACT_IMG'])){
+    foreach ($contractText['UF_CANTRACT_IMG'] as $img){
+        $arImgContract[] = CFile::GetPath($img);
+    }
+    $html .= $contract->getSendContractText($id);
+}
+else{
+    $html .= $contractText['UF_TEXT_CONTRACT'];
+}
 $signHtml = $contract->getSendContractItem($id)['TEXT'];
 
 class MYPDF extends TCPDF {
@@ -66,11 +75,28 @@ if (@file_exists(dirname(__FILE__).'/lang/eng.php')) {
 // set font
 $pdf->SetFont('dejavusans', '', 10);
 
-// add a page
-$pdf->AddPage();
 
-// output the HTML content
-$pdf->writeHTML($html, true, 0, true, 0);
+
+
+if(!empty($arImgContract)){
+    foreach ($arImgContract as $url){
+        //new dBug($url);
+        $arParmaImg = [
+            'EXTENSION' => pathinfo($_SERVER['DOCUMENT_ROOT'].$url, PATHINFO_EXTENSION),
+            'SIZE' => getimagesize($_SERVER['DOCUMENT_ROOT'].$url)
+        ];
+
+        // add a page
+        $pdf->AddPage();
+        $pdf->Image($_SERVER['DOCUMENT_ROOT'].$url, 15, 15, $arParmaImg['SIZE'][0], $arParmaImg['SIZE'][1], $arParmaImg['EXTENSION'], '', '', false, 300, '', false, false, 0, false, false, true);
+    }
+}
+else{
+    $pdf->AddPage();
+
+    // output the HTML content
+    $pdf->writeHTML($html, true, 0, true, 0);
+}
 
 // reset pointer to the last page
 $pdf->lastPage();

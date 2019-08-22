@@ -169,6 +169,10 @@ class getdocument{
         return substr(strrchr($filename, '.'), 1);
     }
 
+    public function getFileName($filename) {
+        return substr($filename, 0, strrpos($filename, '.'));
+    }
+
     // Чтение текста из RTF
     // Версия 0.2
     // Автор: Алексей Рембиш a.k.a Ramon
@@ -403,7 +407,7 @@ class getdocument{
     }
 
     public function getImg($filename){
-        $result = '<div style="text-align: center"><img src="'. $filename .'"></img></div>';
+        $result = '<div class="document-img" style="text-align: center"><img src="'. $filename .'"></img></div><br>';
         return $result;
     }
 
