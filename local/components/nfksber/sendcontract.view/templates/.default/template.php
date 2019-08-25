@@ -5,6 +5,12 @@
         <h1 class="mb-4">Подписанные договора</h1>
         <div class="row pt-2 mb-5 pb-5">
             <div class="col-md-4 col-sm-12">
+                <?if($arResult['USERS']['UF_ID_USER_A']==$USER->GetID()):?>
+                    <div>
+                        <?=$arResult['SEND_BLOCK']['ID']?>
+                    </div>
+                <?endif?>
+                <?/*
                 <h3 class="font-weight-bold">Файлы</h3>
                 <ul class="list-document">
                     <li class="icon-document">
@@ -25,6 +31,7 @@
                         <button class="btn btn-nfk-invert w-100">Подписан</button>
                     </li> -->
                 </ul>
+                */?>
             </div>
             <div class="col-md-8 col-sm-12">
                 <div class="d-flex">

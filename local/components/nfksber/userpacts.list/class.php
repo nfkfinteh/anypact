@@ -141,23 +141,25 @@ class CDemoSqr extends CBitrixComponent
 
     public function executeComponent()
     {
-        if($this->startResultCache())
-        {
-            $User_ID = CUser::GetID();
+        $User_ID = CUser::GetID();
+        $this->arResult["USER_ID"] = $User_ID;
+
+        // подписанные договора
+        $this->arResult["SEND_CONTRACT"] = $this->getSendContract($User_ID);
+
+        // сообщение пользователю
+        $this->arResult["MESSAGE_USER"] = $this->getMessageUser($User_ID);;
+
+        /*if($this->startResultCache($this->arParams['CACHE_TIME'], $User_ID))
+        {*/
             $this->arResult = array_merge($this->arResult, $this->paramsUser($this->arParams));
-            $this->arResult["USER_ID"] = $User_ID;
             $this->arResult["USER_LOGIN"] =CUser::GetLogin();
             
             // Все сделки созданные пользователем
             $this->arResult["INFOBLOCK_LIST"] = $this->listPacts($this->arResult["INFOBLOCK_ID"], $User_ID);
-            
-            // подписанные договора
-            $this->arResult["SEND_CONTRACT"] = $this->getSendContract($User_ID);
-            
-            // сообщение пользователю
-            $this->arResult["MESSAGE_USER"] = $this->getMessageUser($User_ID);
-            $this->includeComponentTemplate();
-        }
+        /*    $this->EndResultCache();
+        }*/
+        $this->includeComponentTemplate();
         
         return $this->arResult;
     }

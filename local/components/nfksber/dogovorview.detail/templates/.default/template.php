@@ -1,6 +1,3 @@
-<? //print_r($arResult["CONTRACT_PROPERTY"]["CONTRACT"]["ID"]) ;
-   
-?>
 <h1><?=$arResult["ELEMENT"]["NAME"]?></h1>
  <div class="tender cardDogovor">
     <div class="row">
@@ -12,7 +9,9 @@
                     <a herf="/my_pacts/" class="btn btn-nfk" > Внести изменения </a>
                    <?
                 }else {?>
-                    <button class="btn btn-nfk" id="send_contract" >Подписать договор</button>
+                    <?if($arResult["USER_ID"] != $arResult['SIGN_DOGOVOR']['UF_ID_USER_B']):?>
+                        <button class="btn btn-nfk" id="send_contract" >Подписать договор</button>
+                    <?endif?>
                     <button class="btn btn-nfk">Предложить свою редакцию</button>                    
                 <?}?>
             </div>

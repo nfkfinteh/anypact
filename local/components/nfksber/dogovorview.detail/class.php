@@ -1,4 +1,8 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die();
+use Bitrix\Main\Loader;
+use Bitrix\Highloadblock as HL;
+use Bitrix\Main\Entity;
+
 /*
     Класс выводит информацию в карточку по сделке
 */
@@ -151,15 +155,37 @@ class CDemoSqr extends CBitrixComponent
         $arResult["ELEMENT_ID"]         = $arParams["ELEMENT_ID"];
         
         return $arResult;
-    }    
+    }
+
+    public function getSendContractItem($IDContract, $userID){
+        global $USER;
+        CModule::IncludeModule("highloadblock");
+        // получить все подписанны сделки
+        $ID_hl_send_contract_text = 3;
+        $hlblock = HL\HighloadBlockTable::getById($ID_hl_send_contract_text)->fetch();
+        $entity = HL\HighloadBlockTable::compileEntity($hlblock);
+        $entity_data_class = $entity->getDataClass();
+        $rsData = $entity_data_class::getList(array(
+            "select" => array("*"),
+            "order" => array("ID" => "ASC"),
+            "filter" => array("UF_ID_CONTRACT" => $IDContract, "UF_ID_USER_B"=> $userID)
+        ));
+
+        while($arData = $rsData->Fetch()){
+            $arSendItem  = $arData;
+        }
+
+        return $arSendItem;
+    }
 
     public function executeComponent()
     {
-        if($this->startResultCache($this->arParams['CACHE_TIME'], $_GET['SECTION_ID'].$_GET['ELEMENT_ID'].$_GET['ID_TEMPLATE']))
+        global $USER;
+        $userId = CUser::GetID();
+        $this->arResult["USER_ID"] = $userId;
+        if($this->startResultCache($this->arParams['CACHE_TIME'], $_GET['SECTION_ID'].$_GET['ELEMENT_ID'].$_GET['ID_TEMPLATE'].$userId))
         {
-            global $USER;
             $this->arResult                         = array_merge($this->arResult, $this->paramsUser($this->arParams));
-            $this->arResult["USER_ID"]              = CUser::GetID();           
             // данные владельца сделки           
             $UserContractHolder                     = CUser::GetByID(CUser::GetID());
             $arrUserContractHolder                  = $UserContractHolder->Fetch();
@@ -185,8 +211,11 @@ class CDemoSqr extends CBitrixComponent
                 $this->arResult["DOGOVOR_IMG"] = $this->getProperty(4, $this->arResult["ELEMENT_ID"])['DOGOVOR_IMG'];
             }
 
-            $this->includeComponentTemplate();
+            $this->EndResultCache();
         }
+
+        $this->arResult["SIGN_DOGOVOR"] = $this->getSendContractItem($this->arResult['PROPERTY']['ID_DOGOVORA']['VALUE'], $this->arResult['USER_ID']);
+        $this->includeComponentTemplate();
         
         return $this->arResult;
     }

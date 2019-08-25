@@ -60,7 +60,7 @@ var full_name = {
             </div>
         </div>
         <div class="col-lg-9 col-md-9 col-sm-12">
-        <div class="tools_redactor" <?if(empty($_GET['ID_TEMPLATE'])):?>style="display: none"<?endif?>>
+        <div class="tools_redactor">
             <button type="button" class="btn btn-nfk btn-default" data-toggle="tooltip" data-placement="left" title="Сохранить" id="save_btn" data-id="<?=$arResult['ELEMENT_ID']?>">
                 <span class="glyphicon glyphicon-floppy-disk"></span>
             </button>
