@@ -197,18 +197,38 @@ $(document).ready(function() {
         let canvas_contr = $('.cardDogovor-boxViewText');
         let canvas_contr_context = String(canvas_contr.html());
         let id = $(this).attr('data-id');
+        let isImg = $(this).hasClass('canvas-img');
+
         // загружаем содержимое категории
-        $.post(
-            "/response/ajax/up_contract_text.php", {
-                contect: canvas_contr_context,
-                id: id
-            },
-            onAjaxSuccess
-        );
+        if(isImg){
+            let arImg = $('#canvas').find('.document-img img');
+            let arUrl = [];
+            arImg.each(function (index, value) {
+                arUrl[index] = $(value).attr('src');
+            });
+            $.post(
+                "/response/ajax/up_contract_img.php", {
+                    contect: arUrl,
+                    id: id
+                },
+                onAjaxSuccess
+            );
+        }
+        else{
+            console.log('test');
+            $.post(
+                "/response/ajax/up_contract_text.php", {
+                    contect: canvas_contr_context,
+                    id: id
+                },
+                onAjaxSuccess
+            );
+        }
+
 
         function onAjaxSuccess(data) {
-            console.log(data);
             // Здесь мы получаем данные, отправленные сервером и выводим их на экран.
+            console.log(data);
             let result = JSON.parse(data);
             if(result['TYPE']=='ERROR'){
                 console.log($result['VALUE']);
@@ -291,6 +311,8 @@ $(document).ready(function() {
         var oOutput = document.querySelector("div"),
             oData = new FormData(form);
 
+
+
         $('.cardDogovor').prepend("<div class='document-load'></div>");
 
         oData.append("CustomField", "This is some extra data");
@@ -300,8 +322,27 @@ $(document).ready(function() {
         oReq.onload = function(oEvent) {
             if (oReq.status == 200) {
                 let canvas = document.getElementById('canvas');
-                canvas.innerHTML = oEvent.srcElement.response;
+                let result = JSON.parse(oEvent.srcElement.response);
 
+                for(let i=0; i<result.length; i++){
+                    if(result[i].FORMAT=='png' || result[i].FORMAT=='jpg'){
+                        if(!$(canvas).hasClass('canvas-img')){
+                            $(canvas).addClass('canvas-img');
+                            $('#save_btn').addClass('canvas-img');
+                            //здесь блокирум инструменты при загрухке картинки. Пока только "редактирование"
+                            $('#btn-edit').attr('disabled', true);
+                            canvas.innerHTML = result[i].CONTENT;
+                        }
+                        else{
+                            canvas.insertAdjacentHTML('beforeend',result[i].CONTENT);
+                        }
+
+                        $('.tools_redactor').show();
+                    }
+                    else{
+                        canvas.innerHTML = result[i].CONTENT;
+                    }
+                }
             } else {
                 oOutput.innerHTML = "Error " + oReq.status + " occurred when trying to upload your file.<br \/>";
             }

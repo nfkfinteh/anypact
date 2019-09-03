@@ -1,30 +1,39 @@
 <?require_once $_SERVER['DOCUMENT_ROOT'].'/local/php_interface/libraries/libPDFgen/tcpdf.php';
 require_once($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/include/prolog_before.php");
-
-use Bitrix\Main\Loader;
-use Bitrix\Highloadblock as HL;
-use Bitrix\Main\Entity;
-
-Loader::includeModule("highloadblock");
+require_once($_SERVER["DOCUMENT_ROOT"]."/response/ajax/class/get_pdf.php");
 
 $id = intval($_GET['ID']);
-$hlbl = 7;
-$hlblock = HL\HighloadBlockTable::getById($hlbl)->fetch();
+#получаем текст контракта
+$contract = new GetPdf();
+$contractText =  $contract->getSendContractText($id);
+if(!empty($contractText['UF_CANTRACT_IMG'])){
+    foreach ($contractText['UF_CANTRACT_IMG'] as $img){
+        $arImgContract[] = CFile::GetPath($img);
+    }
+    $html .= $contract->getSendContractText($id);
+}
+else{
+    $html .= $contractText['UF_TEXT_CONTRACT'];
+}
+$signHtml = $contract->getSendContractItem($id)['TEXT'];
 
-$entity = HL\HighloadBlockTable::compileEntity($hlblock);
-$entity_data_class = $entity->getDataClass();
+class MYPDF extends TCPDF {
+    // Page footer
 
-$rsData = $entity_data_class::getList(array(
-    "select" => array("*"),
-    "order" => array("ID" => "ASC"),
-    "filter" => array("UF_ID_SEND_ITEM"=>$id)
-));
+    public function Footer() {
+        global $signHtml;
+        // Position at 15 mm from bottom
+        $this->SetY(-25);
+        // Set font
+        $this->SetFont('dejavusans', '', 10);
 
-if($obj = $rsData->Fetch()) $arContract = $obj;
+        $this->writeHTML($signHtml, true, false, true, 0);
+    }
+}
 
-$html .= $arContract['UF_TEXT_CONTRACT'];
 
-$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+
+$pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
 // set document information
 $pdf->SetCreator(PDF_CREATOR);
@@ -35,6 +44,7 @@ $pdf->SetKeywords('TCPDF, PDF, example, test, guide');*/
 
 // set default header data
 //$pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, 'Договор', PDF_HEADER_STRING);
+$pdf->SetPrintHeader(false);
 
 // set header and footer fonts
 $pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
@@ -65,11 +75,28 @@ if (@file_exists(dirname(__FILE__).'/lang/eng.php')) {
 // set font
 $pdf->SetFont('dejavusans', '', 10);
 
-// add a page
-$pdf->AddPage();
 
-// output the HTML content
-$pdf->writeHTML($html, true, 0, true, 0);
+
+
+if(!empty($arImgContract)){
+    foreach ($arImgContract as $url){
+        //new dBug($url);
+        $arParmaImg = [
+            'EXTENSION' => pathinfo($_SERVER['DOCUMENT_ROOT'].$url, PATHINFO_EXTENSION),
+            'SIZE' => getimagesize($_SERVER['DOCUMENT_ROOT'].$url)
+        ];
+
+        // add a page
+        $pdf->AddPage();
+        $pdf->Image($_SERVER['DOCUMENT_ROOT'].$url, 15, 15, $arParmaImg['SIZE'][0], $arParmaImg['SIZE'][1], $arParmaImg['EXTENSION'], '', '', false, 300, '', false, false, 0, false, false, true);
+    }
+}
+else{
+    $pdf->AddPage();
+
+    // output the HTML content
+    $pdf->writeHTML($html, true, 0, true, 0);
+}
 
 // reset pointer to the last page
 $pdf->lastPage();

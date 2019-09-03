@@ -29,13 +29,14 @@ class CDemoSqr extends CBitrixComponent
         $entity = HL\HighloadBlockTable::compileEntity($hlblock); 
         $entity_data_class = $entity->getDataClass(); 
         $rsData = $entity_data_class::getList(array(
-            "select" => array("UF_TEXT_CONTRACT"),
+            "select" => array("UF_TEXT_CONTRACT", "UF_CANTRACT_IMG"),
             "order" => array("ID" => "ASC"),
             "filter" => array("UF_ID_SEND_ITEM" => $IDSendItem)
         ));
                   
         while($arData = $rsData->Fetch()){            
-            $arMesage_User  = $arData['UF_TEXT_CONTRACT'];
+            $arMesage_User['TEXT']  = $arData['UF_TEXT_CONTRACT'];
+            $arMesage_User['IMG']  = $arData['UF_CANTRACT_IMG'];
         }
         return $arMesage_User;
     }
@@ -67,7 +68,7 @@ class CDemoSqr extends CBitrixComponent
             $status_send_a = '';
             $hash_A =md5($arSendItem['UF_VER_CODE_USER_A']);
         }else{
-            $status_send_a = '<button class="btn btn-nfk" id="send_contract_owner" data-id='.$arSendItem['ID'].'" data-user="'.$arSendItem['UF_ID_USER_A'].'" >Подписать</button>';            
+            $status_send_a = '<button class="btn btn-nfk" id="send_contract_owner" data-id="'.$arSendItem['ID'].'" data-user="'.$arSendItem['UF_ID_USER_A'].'" style="width:100%">Подписать договор</button>';
         }
 
         
@@ -93,6 +94,8 @@ class CDemoSqr extends CBitrixComponent
 
         $arSend['TEXT'] = $Send_text;
         $arSend['ID']   = $status_send_a;
+
+        $this->arResult['USERS'] = $arSendItem;
         
         return $arSend;
     }
@@ -111,17 +114,18 @@ class CDemoSqr extends CBitrixComponent
 
     public function executeComponent()
     {
-        if($this->startResultCache())
+        $IDSendItem = $_GET['ID'];
+        $this->arResult["CONTRACT_TEXT"] = $this->getSendContractText($IDSendItem);
+        $this->arResult["SEND_BLOCK"] = $this->getSendContractItem($IDSendItem);
+        $this->arResult["PDF"] = $this->getURLPDF();
+        $this->arResult = array_merge($this->arResult, $this->paramsUser($this->arParams));
+        $this->includeComponentTemplate();
+
+        /*if($this->startResultCache($this->arParams['CACHE_TIME'], $IDSendItem))
         {
-            $IDSendItem = $_GET['ID'];
-            $this->arResult = array_merge($this->arResult, $this->paramsUser($this->arParams));
-            $this->arResult["CONTRACT_TEXT"] = $this->getSendContractText($IDSendItem);
-            $this->arResult["SEND_BLOCK"] = $this->getSendContractItem($IDSendItem);
-            $this->arResult["PDF"] = $this->getURLPDF();
-            $this->includeComponentTemplate();
-        }
+        }*/
         
-        return $this->arResult;
+        //return $this->arResult;
     }
 };
 

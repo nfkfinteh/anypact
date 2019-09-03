@@ -1,3 +1,64 @@
+function setBlock(arData){
+    let url = '/response/ajax/send_block.php';
+    var check;
+
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: arData,
+        async: false,
+        success: function (result) {
+            $result = JSON.parse(result);
+            console.log($result);
+            if($result.STATUS=='ERROR'){
+                console.log($result.VALUE);
+                check =  true;
+            }
+            else if($result.STATUS=='SUCCESS'){
+                if($result.VALUE=='Y'){
+                    check =  true;
+                }
+                else{
+                    check =  false;
+                }
+
+            }
+            else{
+                console.log('Не получен статус выполнения блокировки');
+                check =  true;
+            }
+        }
+    });
+
+    return check;
+}
+
+function getStatusBlock(arData){
+    let url = '/response/ajax/send_block.php';
+    var check;
+
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: arData,
+        async: false,
+        success: function (result) {
+            $result = JSON.parse(result);
+            if ($result.STATUS == 'SUCCESS') {
+                if ($result.VALUE == 'Y') {
+                    check = true;
+                } else {
+                    check = false;
+                }
+            } else {
+                console.log('Не получен статус выполнения блокировки');
+                check = true;
+            }
+        }
+    });
+    return check;
+}
+
 function getURLReport(url, params){
     let xhr = new XMLHttpRequest();    
     xhr.open('POST', url, true);
@@ -195,22 +256,31 @@ window.onload = function() {
             });
         };
     }
-    
-    if(document.getElementById('send_contract')){
-        var button_send_contract = document.getElementById('send_contract');
-        var popup_send_sms = document.getElementById('send_sms');
-        var max_time = document.getElementById('timer_n');
-        var id_contract = max_time.getAttribute('id-con');
-        var id_contraegent = max_time.getAttribute('id-cont');
-        var button_send_contract_owner = document.getElementById('send_contract_owner');
-        var smscode = document.getElementById('smscode');
 
+    var button_send_contract = document.getElementById('send_contract');
+    var popup_send_sms = document.getElementById('send_sms');
+    var max_time = document.getElementById('timer_n');
+    var id_contract = max_time.getAttribute('id-con');
+    var id_contraegent = max_time.getAttribute('id-cont');
+    var button_send_contract_owner = document.getElementById('send_contract_owner');
+    var smscode = document.getElementById('smscode');
+    var break_sign = getStatusBlock({'contract':id_contract, 'contragent':id_contraegent, 'action':'get'});
+
+
+
+    if(document.getElementById('send_contract')){
         smscode.value = null;
         // подписывает сторона Б
         if (!!button_send_contract) {
             let canvas = document.getElementById('canvas');
-            //console.log(contract_text);
             button_send_contract.onclick = function(e) {
+
+                break_sign = getStatusBlock({'contract':id_contract, 'contragent':id_contraegent, 'action':'get'});
+                if(break_sign) {
+                    console.log('Подписывает другая сторона');
+                    return;
+                }
+
                 popup_send_sms.style.display = 'block';
                 smscode.focus();
 
@@ -232,6 +302,7 @@ window.onload = function() {
                         clearInterval(t);
                         //inner_sms_popap.innerHTML = '<h4 style="font-size: 16px;">Срок действия кода истек, повторите процедуру подписания</h4>';
                         setTimeout(function() {
+                            //setBlock({'contract':id_contract, 'contragent':id_contraegent, 'status':'', 'action':'set'});
                             popup_send_sms.style.display = 'none';
                         }, 3000);
                     }
@@ -240,7 +311,21 @@ window.onload = function() {
                     var input_sms_code = getValue();
                     var valid_code = Number(input_sms_code);
 
-                    if (valid_code == 777777) {
+                    break_sign = getStatusBlock({'contract':id_contract, 'contragent':id_contraegent, 'action':'get'});
+                    if(break_sign) {
+                        clearInterval(t);
+                        popup_send_sms.style.display = 'none';
+                        alert('Подписывает другая сторона');
+                        return false;
+                    }
+                    console.log(break_sign);
+
+
+                    if (valid_code == 777777 && !break_sign) {
+                        //блокируем действие над контрактом в момент его подписания
+                        break_sign = setBlock({'contract':id_contract, 'contragent':id_contraegent, 'status':'Y', 'action':'set'});
+                        console.log(break_sign);
+
                         clearInterval(t);
                         smscode.blur();
                         let contract_text = canvas.innerHTML;
@@ -255,8 +340,11 @@ window.onload = function() {
                             };
                         };
                         xhr.send(params);
+
+                        break_sign = setBlock({'contract':id_contract, 'contragent':id_contraegent, 'status':'', 'action':'set'});
+
                         popup_send_sms.style.display = 'none';
-                        document.location.href = 'http://anypact.nfksber.ru/my_pacts/';
+                        document.location.href = '/my_pacts/';
                     }
                 }, 1000);
 
@@ -265,7 +353,15 @@ window.onload = function() {
         }
     }
     if (!!button_send_contract_owner) {
+
         button_send_contract_owner.onclick = function(x) {
+
+            break_sign = getStatusBlock({'contract':id_contract, 'contragent':id_contraegent, 'action':'get'});
+            if(break_sign) {
+                console.log('Подписывает другая сторона');
+                return;
+            }
+
             popup_send_sms.style.display = 'block';
             smscode.focus();
 
@@ -288,6 +384,7 @@ window.onload = function() {
                     //inner_sms_popap.innerHTML = '<h4 style="font-size: 16px;">Срок действия кода истек, повторите процедуру подписания</h4>';
                     setTimeout(function() {
                         popup_send_sms.style.display = 'none';
+                        //setBlock({'contract':id_contract, 'contragent':id_contraegent, 'status':'', 'action':'set'});
                     }, 3000);
                 }
                 max_time.innerHTML = f(s);
@@ -295,7 +392,19 @@ window.onload = function() {
                 var input_sms_code = getValue();
                 var valid_code = Number(input_sms_code);
 
-                if (valid_code == 55555) {
+                break_sign = getStatusBlock({'contract':id_contract, 'contragent':id_contraegent, 'action':'get'});
+                if(break_sign) {
+                    clearInterval(t);
+                    popup_send_sms.style.display = 'none';
+                    alert('Подписывает другая сторона');
+                    return false;
+                }
+
+                if (valid_code == 55555 && !break_sign) {
+                    //блокируем действие над контрактом в момент его подписания
+                    break_sign = setBlock({'contract':id_contract, 'contragent':id_contraegent, 'status':'Y', 'action':'set'});
+                    console.log(break_sign);
+
                     clearInterval(t);
                     smscode.blur();
                     var id = button_send_contract_owner.getAttribute('data-id');
@@ -310,8 +419,11 @@ window.onload = function() {
                         };
                     };
                     xhr.send(params);
+                    console.log(break_sign);
+                    break_sign = setBlock({'contract':id_contract, 'contragent':id_contraegent, 'status':'', 'acttion':'get'});
+
                     popup_send_sms.style.display = 'none';
-                    document.location.href = 'http://anypact.nfksber.ru/my_pacts/';
+                    document.location.href = '/my_pacts/';
                 }
             }, 1000);
 
