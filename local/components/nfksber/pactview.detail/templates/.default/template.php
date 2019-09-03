@@ -1,48 +1,49 @@
 <? //print_r($arResult["ELEMENT"]) ;?>
 <?  //print_r($arResult) ;?>
-<?
-    $disable_a = "";
+<?    $disable_a = "";
     if (empty($arResult["PROPERTY"]["ID_DOGOVORA"]["VALUE"])){
         $disable_a = 'disabled';
     } 
 ?>
 <h1><?=$arResult["ELEMENT"]["NAME"]?></h1>
-<!---------------------------------------------------------------------------------------------------------->
+<!--Карточка сделки-->
 <div class="tender cardPact">
-        <div class="row">            
-            <div class="col-md-8 mt-4">
-                <? if(!empty($arResult["ELEMENT"]["DETAIL_PICTURE"])){ ?>
-                <div class="cardPact-box">
-                    <?                        
-                            $resize_img = CFile::ResizeImageGet($arResult["ELEMENT"]["DETAIL_PICTURE"], array('width'=>'855', 'height'=>'460'),
-                            BX_RESIZE_IMAGE_EXACT);
-                            ?>
-                            <div class="cardPact-box-BoxMainImg">
-                                <img src="<?=$resize_img["src"]?>" />
-                            </div>                    
-                        <div class="cardPact-box-BoxPrewImg">
-                        <?
-                            // изображения 
-                            $arr_img = $arResult["PROPERTY"]["IMG_FILE"];                    
-                            if(!empty($arResult["PROPERTY"]["IMG_FILE"])){
-                                foreach ($arr_img as $url_img){
-                                    ?>
-                                    <img src="<?=$url_img["URL"]?>" class="cardPact-box-BoxPrewImg-img"/>
-                                    <?
-                                }
-                            }
-                        ?>
-                    </div>                     
-                </div>
-                <?
-                        }
-                    ?> 
+        <div class="row">
+            <!-- Левая часть -->
+            <div class="col-md-7 col-lg-8">
+                <!-- Слайдер изображений-->
+                <div class="slider-sdelka" id="my-slider">
+                    <div class="sp-slides">
+                    <? if(!empty($arResult["ELEMENT"]["DETAIL_PICTURE"])){
+                        $resize_img = CFile::ResizeImageGet($arResult["ELEMENT"]["DETAIL_PICTURE"], array('width'=>'855', 'height'=>'460'), BX_RESIZE_IMAGE_EXACT);?>
+                        <div class="sp-slide">
+                            <img class="sp-image" src="<?=$resize_img["src"]?>">
+                            <img class="sp-thumbnail" src="<?=$resize_img["src"]?>">
+                        </div> 
+                    <?} ?>
+                    <?// изображения 
+                        $arr_img = $arResult["PROPERTY"]["IMG_FILE"];                    
+                        if(!empty($arResult["PROPERTY"]["IMG_FILE"])){
+                            foreach ($arr_img as $url_img){?>
+                                <div class="sp-slide">
+                                    <img class="sp-image" src="<?=$url_img["URL"]?>">
+                                    <img class="sp-thumbnail" src="<?=$url_img["URL"]?>">
+                                </div>                                
+                            <?}
+                        }?>                        
+                    </div>
+                </div>           
+            <!-- //Слайдер изображений-->
+                <!-- Описательная часть карточки -->
                 <h5>Описание</h5>
                     <?=$arResult["ELEMENT"]["DETAIL_TEXT"]?>
                 <h5>Условия</h5>
                     <?=$arResult["PROPERTY"]["CONDITIONS_PACT"]["VALUE"]["TEXT"]?>
                 <h5 class="mt-5">Комментарии</h5>
+                <!--//Описательная часть карточки -->
             </div>
+            <!--// Левая часть -->
+            <!--Правая часть карточки-->
             <div class="col-md-5 col-lg-4">
                 <span class="cardPact-price"><?=$arResult["PROPERTY"]["SUMM_PACT"]["VALUE"]?> руб.</span>
                 <a href="/pacts/view_pact/view_dogovor/?ELEMENT_ID=<?=$arResult["ELEMENT"]["ID"]?>" class="btn btn-nfk cardPact-bBtn <?=$disable_a?>">Посмотреть договор</a>
@@ -66,6 +67,7 @@
                 <button type="button" class="btn btn-nfk d-block cardPact-bBtn" data-toggle="modal" data-target=".bd-message-modal-sm">Написать сообщение</button>
             </div>
         </div>
+        <!--Комментарии сделки-->
         <div class="row align-items-center mt-4">
             <div class="col-3 col-sm-2  col-lg-1">
                 <img src="image/sample_face_150x150.png" class="cardPact-comment-avatar" alt="">
@@ -131,4 +133,22 @@
 
     </div>
 
-
+    <script type="text/javascript">
+    jQuery( document ).ready(function( $ ) {
+        $( '#my-slider' ).sliderPro({
+            width : "100%",
+            aspectRatio : 1.6, //соотношение сторон
+            loop : false,
+            autoplay : false,
+            fade : true,
+            thumbnailWidth : 164,
+            thumbnailHeight : 101,
+            breakpoints: {
+                450: {
+                    thumbnailWidth : 82,
+                    thumbnailHeight : 50
+                }
+            }
+        });
+    });
+</script>
