@@ -23,20 +23,4 @@ $(document).ready(function(){
         });
     });
 
-    $( '#my-slider' ).sliderPro({
-        width : "100%",
-        aspectRatio : 1.6, //соотношение сторон
-        loop : false,
-        autoplay : false,
-        fade : true,
-        thumbnailWidth : 164,
-        thumbnailHeight : 101,
-        breakpoints: {
-            450: {
-                thumbnailWidth : 82,
-                thumbnailHeight : 50
-            }
-        }
-    });
-
 });

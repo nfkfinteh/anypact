@@ -22,10 +22,13 @@
                     $arr_img = $arResult["PROPERTY"]["IMG_FILE"];
                     if(!empty($arResult["PROPERTY"]["IMG_FILE"])){
                         foreach ($arr_img as $url_img){
+                            /*$resize_img = CFile::ResizeImageGet($arResult["ELEMENT"]["DETAIL_PICTURE"], array('width'=>'855', 'height'=>'460'),
+                                BX_RESIZE_IMAGE_EXACT);*/
+                            //new dBug($resize_img);
                             ?>
                             <div class="sp-slide">
-                                <img class="sp-image" src="<?=$url_img["URL"]?>">
-                                <img class="sp-thumbnail" src="<?=$url_img["URL"]?>">
+                                <img class="sp-image" style="width: 100%" src="<?=$url_img["URL"]?>">
+                                <img class="sp-thumbnail" style="width: 100px" src="<?=$url_img["URL"]?>">
                             </div>
                             <?
                         }
@@ -92,7 +95,7 @@
         </div>
     </div>
 </div>
-<?/*
+
     <script type="text/javascript">
     jQuery( document ).ready(function( $ ) {
         $( '#my-slider' ).sliderPro({
@@ -112,4 +115,4 @@
         });
     });
 </script>
-*/?>
+
