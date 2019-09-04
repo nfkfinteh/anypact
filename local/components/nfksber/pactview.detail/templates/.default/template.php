@@ -3,9 +3,26 @@
 <?    $disable_a = "";
     if (empty($arResult["PROPERTY"]["ID_DOGOVORA"]["VALUE"])){
         $disable_a = 'disabled';
-    } 
-?>
+    }
 
+    $detail_img_thumb = CFile::ResizeImageGet($arResult["ELEMENT"]["DETAIL_PICTURE"], array('width'=>'180', 'height'=>'110'),
+        BX_RESIZE_IMAGE_EXACT);
+    // изображения
+
+    $arr_img[] = [
+        'URL' => CFile::GetPath($arResult["ELEMENT"]["DETAIL_PICTURE"]),
+        'THUMB_URL'=>$detail_img_thumb['src']
+    ];
+
+    foreach ($arResult["PROPERTY"]["IMG_FILE"] as $item){
+        $file =CFile::ResizeImageGet($item['PROPERTY']['VALUE'], array('width'=>'180', 'height'=>'110'), BX_RESIZE_IMAGE_EXACT);
+        $arr_img[] =[
+            'URL' => $item['URL'],
+            'THUMB_URL'=>$file['src']
+        ];
+    }
+
+?>
 
 <h1 class="d-inline-block"><?=$arResult["ELEMENT"]["NAME"]?></h1>
 <div class="row">
@@ -13,26 +30,15 @@
         <? if(!empty($arResult["ELEMENT"]["DETAIL_PICTURE"])){ ?>
         <div class="slider-sdelka" id="my-slider">
             <div class="sp-slides">
-                    <?
-                        $resize_img = CFile::ResizeImageGet($arResult["ELEMENT"]["DETAIL_PICTURE"], array('width'=>'855', 'height'=>'460'),
-                        BX_RESIZE_IMAGE_EXACT);
-                    ?>
                 <?
-                    // изображения
-                    $arr_img = $arResult["PROPERTY"]["IMG_FILE"];
-                    if(!empty($arResult["PROPERTY"]["IMG_FILE"])){
-                        foreach ($arr_img as $url_img){
-                            /*$resize_img = CFile::ResizeImageGet($arResult["ELEMENT"]["DETAIL_PICTURE"], array('width'=>'855', 'height'=>'460'),
-                                BX_RESIZE_IMAGE_EXACT);*/
-                            //new dBug($resize_img);
-                            ?>
-                            <div class="sp-slide">
-                                <img class="sp-image" style="width: 100%" src="<?=$url_img["URL"]?>">
-                                <img class="sp-thumbnail" style="width: 100px" src="<?=$url_img["URL"]?>">
-                            </div>
-                            <?
-                        }
-                    }
+                foreach ($arr_img as $url_img){
+                    ?>
+                    <div class="sp-slide">
+                        <img class="sp-image" src="<?=$url_img["URL"]?>">
+                        <img class="sp-thumbnail" src="<?=$url_img['THUMB_URL']?>">
+                    </div>
+                    <?
+                }
                 ?>
             </div>
         </div>
