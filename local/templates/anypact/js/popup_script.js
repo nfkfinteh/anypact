@@ -9,7 +9,6 @@ function setBlock(arData){
         async: false,
         success: function (result) {
             $result = JSON.parse(result);
-            console.log($result);
             if($result.STATUS=='ERROR'){
                 console.log($result.VALUE);
                 check =  true;
@@ -264,6 +263,7 @@ window.onload = function() {
     var id_contraegent = max_time.getAttribute('id-cont');
     var button_send_contract_owner = document.getElementById('send_contract_owner');
     var smscode = document.getElementById('smscode');
+    var idIblock = max_time.getAttribute('id-iblock');
     var break_sign = getStatusBlock({'contract':id_contract, 'contragent':id_contraegent, 'action':'get'});
 
 
@@ -419,7 +419,6 @@ window.onload = function() {
                         };
                     };
                     xhr.send(params);
-                    console.log(break_sign);
                     break_sign = setBlock({'contract':id_contract, 'contragent':id_contraegent, 'status':'', 'acttion':'get'});
 
                     popup_send_sms.style.display = 'none';

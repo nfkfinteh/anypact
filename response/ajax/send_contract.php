@@ -12,6 +12,7 @@ if(!CModule::IncludeModule("iblock")) return;
 define("FORMAT_DATETIME", "DD.MM.YYYY HH:MI:SS");
 $id_contract    = $_POST['id'];
 $id_contragent  = $_POST['contr'];
+$id_iblock = CIBlockElement::GetIBlockByID($id_contract);
 $sms_code       = $_POST['smscode'];
 $Contract_text  =  str_replace('%nbsp', '&nbsp', $_POST['text_contract']);
 echo $_POST['text_contract'];
@@ -32,7 +33,7 @@ if (empty($id_contract)){
     $id_contract = 18;
 }
 
-$arrProperty_contract = getProperty(4, $id_contract);
+$arrProperty_contract = getProperty($id_iblock, $id_contract);
 
 $idUser = $arrProperty_contract['USER_A']['VALUE']." | ".$id_contragent ;
 $id_owner_contract = $arrProperty_contract['USER_A']['VALUE']; 
@@ -121,6 +122,11 @@ $result = $entityClass::add(array(
         'UF_HASH'           => $hash_Send,
 
    ));
+
+//даективания своей редакиции если договор подписывается на ее онсове
+$el = new CIBlockElement;
+
+
 
 // сообщение пользователю
 $hlblock        = HL\HighloadBlockTable::getById(6)->fetch();

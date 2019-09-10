@@ -22,6 +22,25 @@ $entityClass    = $entity->getDataClass();
 $NewInfo = array('UF_VER_CODE_USER_A' => $vf_code, 'UF_TIME_SEND_USER_A' => ConvertTimeStamp(time(), 'FULL'), 'UF_STATUS' => 2);
 $result = $entityClass::update($id_send_item, $NewInfo);
 
+//получение данных по подписаннной сделке
+$rsData = $entityClass::getList(array(
+    "select" => array("ID", "UF_ID_CONTRACT"),
+    "order" => array("ID" => "ASC"),
+    "filter" => array("ID"=>$id_send_item)  // Задаем параметры фильтра выборки
+));
+
+if($obj = $rsData->Fetch()){
+    $arData=$obj;
+}
+$iblockId = CIBlockElement::GetIBlockByID($arData['UF_ID_CONTRACT']);
+
+//деактивируем кастомные редакции договоров подписанные обеими сторонами
+if($iblockId==6){
+    $el = new CIBlockElement;
+    $el->Update($arData['UF_ID_CONTRACT'], ['ACTIVE'=>'N']);
+}
+
+
 // сделать отправку на почтовый ящик
 
 ?>
