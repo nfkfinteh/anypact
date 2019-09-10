@@ -38,7 +38,7 @@ $(document).ready(function() {
 
     //своя редакция
     $(document).on('click', '#new_redaction', function(){
-        let url = '/response/ajax/new_redaction.php';
+        let url = '/response/ajax/new_redaction_prew_up.php';
         let id = $(this).attr('data-id_element');
         let data = {
             ELEMENT_ID: id

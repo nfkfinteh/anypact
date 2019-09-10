@@ -96,6 +96,7 @@ class CDemoSqr extends CBitrixComponent
         $arSend['ID']   = $status_send_a;
 
         $this->arResult['USERS'] = $arSendItem;
+        $this->arResult['DOGOVOR_ID'] = $arSendItem['UF_ID_CONTRACT'];
         
         return $arSend;
     }

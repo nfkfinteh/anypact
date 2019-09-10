@@ -1,9 +1,3 @@
-<?
-// echo "<pre>"; 
-// print_r($arResult["INFOBLOCK_LIST"]["ARR_SDELKI"]) ;
-// echo "</pre>"; 
-//print_r($arResult["SEND_CONTRACT"] );
-?>
 <h2 class="title_line_button">Мои предложения</h2><a href="/my_pacts/edit_my_pact/?ACTION=ADD" class="btn btn-nfk"
                                                      id="add_pact">+ создать новое предложение</a>
 <?
@@ -86,6 +80,44 @@ if ($count_pacts > 0):?>
 <?endif?>
 <div style="width: 100%; height: 100px;">
 </div>
+
+<h2 class="title_line_button">Предложенные редакции</h2>
+<?if(!empty($arResult["REDACTION"])):?>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Наименование</th>
+            <th scope="col">Пользователь</th>
+            <th scope="col">Дата изменеия</th>
+            <th scope="col">Статус</th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <? // выборка договоров
+        foreach ($arResult["REDACTION"] as $red) {
+            ?>
+            <?//if(empty($red['PROPERTY']['USER_A']['VALUE']) && empty($red['PROPERTY']['USER_B']['VALUE'])):?>
+                <tr>
+                    <td scope="row"><?= $red["NAME"] ?></td>
+                    <td><a href="<?=$red['USER_B']['LINK']?>"><?=$red['USER_B']['NAME']?></a></td>
+                    <td><?= $red['TIMESTAMP_X']?></td>
+                    <td>статус</td>
+                    <td><a href="/my_pacts/send_redaction/?ID=<?= $red["ID"] ?>" target="_blank">Посмотреть</a></td>
+                </tr>
+            <?//endif?>
+            <?
+        }
+        ?>
+        </tbody>
+    </table>
+<?else:?>
+    <div style="clear: both"></div>
+    <h3>У вас нет подписанных предложенных редакций</h3>
+<?endif?>
+<div style="width: 100%; height: 100px;">
+</div>
+
 <h2 class="title_line_button">Мои сообщения</h2> <a href="#" class="btn btn-nfk" id="semd_mess">Написать сообщение</a>
 <?if(!empty($arResult["MESSAGE_USER"])):?>
     <table class="table">
