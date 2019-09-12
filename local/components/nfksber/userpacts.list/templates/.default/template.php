@@ -70,6 +70,7 @@ if ($count_pacts > 0):?>
                 <td><a href="/my_pacts/send_contract/?ID=<?= $pact["ID"] ?>" target="_blank">Посмотреть</a></td>
             </tr>
             <?
+            $arIdContract[] = $pact["UF_ID_CONTRACT"];
         }
         ?>
         </tbody>
@@ -95,9 +96,10 @@ if ($count_pacts > 0):?>
         </thead>
         <tbody>
         <? // выборка договоров
+
         foreach ($arResult["REDACTION"] as $red) {
             ?>
-            <?//if(empty($red['PROPERTY']['USER_A']['VALUE']) && empty($red['PROPERTY']['USER_B']['VALUE'])):?>
+            <?if(in_array($red['ID'], $arIdContract)) continue;?>
                 <tr>
                     <td scope="row"><?= $red["NAME"] ?></td>
                     <td><a href="<?=$red['USER_B']['LINK']?>"><?=$red['USER_B']['NAME']?></a></td>
@@ -105,7 +107,6 @@ if ($count_pacts > 0):?>
                     <td>статус</td>
                     <td><a href="/my_pacts/send_redaction/?ID=<?= $red["ID"] ?>" target="_blank">Посмотреть</a></td>
                 </tr>
-            <?//endif?>
             <?
         }
         ?>

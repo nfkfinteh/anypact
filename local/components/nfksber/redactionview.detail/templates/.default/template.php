@@ -16,11 +16,10 @@ $compareDogovor = getTextDiff($arResult["ELEMENT"]["PREVIEW_TEXT"], $arResult["E
                    <?
                 }else {?>
                 */?>
-                    <?if($arResult["USER_ID"] != $arResult['SIGN_DOGOVOR']['UF_ID_USER_B']):?>
-                        <button class="btn btn-nfk" id="send_contract" >Подписать договор</button>
-                    <?endif?>
-
                     <?if($arResult["USER_ID"] != $arResult['PROPERTY']['USER_ID_INITIATOR']['VALUE']):?>
+                        <?//if($arResult["USER_ID"] != $arResult['SIGN_DOGOVOR']['UF_ID_USER_B']):?>
+                            <button class="btn btn-nfk" id="send_contract" >Подписать договор</button>
+                        <?//endif?>
                         <button class="btn btn-nfk" id="new_redaction" data-id_element="<?=$_GET['ID']?>">Изменить редакцию</button>
                     <?endif?>
 
