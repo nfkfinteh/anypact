@@ -1,158 +1,177 @@
 <?
-function GetLCSAlgoritm(&$_a, &$_b) {
-    $a = explode(" ",$_a);
-    $b = explode(" ",$_b);
-    $maxLen = array();
-    for($i=0, $x=count($a); $i<=$x; $i++) {
-        $maxLen[$i] = array();
-        for($j=0, $y=count($b); $j<=$y; $j++) $maxLen[$i][$j] = '';
-    }
-    for($i=count($a)-1; $i>=0; $i--) {
-        for($j=count($b)-1; $j>=0; $j--) {
-            if($a[$i] == $b[$j]) $maxLen[$i][$j] = 1+$maxLen[$i+1][$j+1];
-            else $maxLen[$i][$j] = max($maxLen[$i+1][$j],$maxLen[$i][$j+1]);
-        }
+/**
+ * Выделение различий в текстах (с точностью до строк или слов)
+ * Изменения оборачиваются в тег "span" с классами 'added', 'deleted', 'changed
+ * алгоритм: http://easywebscripts.net/php/php_text_differences.php
+ *
+ * @return array - тексты A и B
+ * @param string $textA
+ * @param string $textB
+ * @param string $delimeter - "пробел": будет искать изменения с точностью до слова, "\n": с точностью до строки
+ */
+include_once $_SERVER['DOCUMENT_ROOT'].'/local/php_interface/libraries/simple_html_dom/simple_html_dom.php';
+function getTextDiff($textA, $textB, $delimeter = "\n") {
+    if (!is_string($textA) || !is_string($textB) || !is_string($delimeter)) {
+        return FALSE;
     }
 
-    $rez = "";
-    for($i=0, $j=0; $maxLen[$i][$j]!=0 && $i<$x && $j<$y;) {
-        if($a[$i] == $b[$j]) {
-            $rez .= $a[$i]." ";
+    // Получение уникальных слов(строк)
+    /*$arrA = explode($delimeter, str_replace("\r", "", $textA));
+    $arrB = explode($delimeter, str_replace("\r", "", $textB));*/
+
+    function getPrserText($text){
+        $html = new simple_html_dom();
+        $html->load($text);
+        $tmpl = $html->find('*')[0]->childNodes()[0];
+        $tmpl = $tmpl->next_sibling();
+        new dBug($tmpl);
+    }
+
+
+    $arrB = getPrserText($textB);
+
+
+
+    $unickTable = array_unique(array_merge($arrA, $arrB));
+    $unickTableFlip = array_flip($unickTable);
+
+    // Приводим к тексту из идентификаторов
+    $arrAid = $arrBid = array();
+    foreach($arrA as $v) {
+        $arrAid[] = $unickTableFlip[$v];
+    }
+    foreach($arrB as $v) {
+        $arrBid[] = $unickTableFlip[$v];
+    }
+
+    // Выбор наибольшей общей последовательности
+    $maxLen = array();
+    for ($i = 0, $x = count($arrAid); $i <= $x; $i++) {
+        $maxLen[$i] = array();
+        for ($j = 0, $y = count($arrBid); $j <= $y; $j++) {
+            $maxLen[$i][$j] = '';
+        }
+    }
+    for ($i = count($arrAid) - 1; $i >= 0; $i--) {
+        for ($j = count($arrBid) - 1; $j >= 0; $j--) {
+            if ($arrAid[$i] == $arrBid[$j]) {
+                $maxLen[$i][$j] = 1 + $maxLen[$i+1][$j+1];
+            } else {
+                $maxLen[$i][$j] = max($maxLen[$i+1][$j], $maxLen[$i][$j+1]);
+            }
+        }
+    }
+    $longest = array();
+    for ($i = 0, $j = 0; $maxLen[$i][$j] != 0 && $i < $x && $j < $y;) {
+        if ($arrAid[$i] == $arrBid[$j]) {
+            $longest[] = $arrAid[$i];
             $i++;
             $j++;
+        } else {
+            if ($maxLen[$i][$j] == $maxLen[$i+1][$j]) {
+                $i++;
+            } else {
+                $j++;
+            }
         }
-        else {
-            if($maxLen[$i][$j] == $maxLen[$i+1][$j]) $i++;
-            else $j++;
-        }
     }
-    return trim($rez);
-}
 
-function GetUnickStr(&$arr, &$arrUnick) {
-    $s='';
-    $arrUnickFlip = array_flip($arrUnick);
-    foreach($arr as $v) {
-        $s .= $arrUnickFlip[$v].' ';
-    }
-    return trim($s);
-}
-
-function FromUnickToArr(&$arrStr, &$arrUnick) {
-    $r = array();
-    foreach($arrStr as $v) {
-        $buff   = array();
-        $buff[] = $arrUnick[$v[0]];
-        $buff[] = $v[1];
-        $r[]    = $buff;
-    }
-    return $r;
-}
-
-function SelDiffsStr(&$_a, &$_b, &$retA, &$retB) {
-    $_longest = GetLCSAlgoritm($_a,$_b);
-    $longest  = explode(" ",$_longest);
-
-    $a		  = explode(" ",$_a);
-    $b		  = explode(" ",$_b);
-    $rB		  = array();
-
+    // Сравниваем строки, ищем изменения
+    $arrBidDiff = array();
     $i1 = 0; $i2 = 0;
-    for($i=0, $iters = count($b); $i<$iters; $i++) {
+    for ($i = 0, $iters = count($arrBid); $i < $iters; $i++) {
         $simbol = array();
-        if(isset($longest[$i1]) && $longest[$i1] == $b[$i2]) {
+        if (isset($longest[$i1]) && $longest[$i1] == $arrBid[$i2]) {
             $simbol[] = $longest[$i1];
             $simbol[] = "*";
-            $rB[] 	  = $simbol;
+            $arrBidDiff[] = $simbol;
             $i1++;
             $i2++;
-        }
-        else {
-            $simbol[] = $b[$i2];
+        } else {
+            $simbol[] = $arrBid[$i2];
             $simbol[] = "+";
-            $rB[] 	  = $simbol;
+            $arrBidDiff[]     = $simbol;
             $i2++;
         }
     }
-    $retB = $rB;
-
+    $arrAidDiff = array();
     $i1 = 0; $i2 = 0;
-    for($i=0,$iters = count($a); $i<$iters; $i++) {
+    for ($i = 0, $iters = count($arrAid); $i < $iters; $i++) {
         $simbol = array();
-        if(isset($longest[$i1]) && $longest[$i1] == $a[$i2]) {
+        if (isset($longest[$i1]) && $longest[$i1] == $arrAid[$i2]) {
             $simbol[] = $longest[$i1];
             $simbol[] = "*";
-            $rA[] 	  = $simbol;
+            $arrAidDiff[] = $simbol;
             $i1++;
             $i2++;
-        }
-        else {
-            $simbol[] = $a[$i2];
+        } else {
+            $simbol[] = $arrAid[$i2];
             $simbol[] = "-";
-            $rA[] 	  = $simbol;
+            $arrAidDiff[] = $simbol;
             $i2++;
         }
     }
-    $retA = $rA;
-}
 
-function SelDiffsText(&$aText, &$bText, &$retAText, &$retBText) {
-    $arrA = str_replace("r","",$aText);
-    $arrB = str_replace("r","",$bText);
-    $arrA = explode("n",$arrA);
-    $arrB = explode("n",$arrB);
-    $unickTable = array_unique(array_merge($arrA,$arrB));
-
-    $strA = GetUnickStr($arrA,$unickTable);
-    $strB = GetUnickStr($arrB,$unickTable);
-
-    SelDiffsStr($strA,$strB,$retA,$retB);
-    $retAText = FromUnickToArr($retA,$unickTable);
-    $retBText = FromUnickToArr($retB,$unickTable);
-}
-
-function SelDiffsColor(&$rdyAText, &$rdyBText, &$strRetA, &$strRetB) {
-    $strRetA = "";
-    $strRetB = "";
-
-    foreach($rdyAText as $v) {
-        if($v[1] == "+") 		$strRetA.=''.$v[0].'';
-        elseif($v[1] == '-') 	$strRetA.=''.$v[0].'';
-        elseif($v[1] == 'm')	$strRetA.=''.$v[0].'';
-        elseif($v[1] == '*')	$strRetA.=$v[0];
+    // Меняем идентификаторы обратно на текст
+    $arrAdiff = array();
+    foreach($arrAidDiff as $v) {
+        $arrAdiff[] = array(
+            $unickTable[$v[0]],
+            $v[1],
+        );
+    }
+    $arrBdiff = array();
+    foreach($arrBidDiff as $v) {
+        $arrBdiff[] = array(
+            $unickTable[$v[0]],
+            $v[1],
+        );
     }
 
-    foreach($rdyBText as $v) {
-        if($v[1] == "+")		$strRetB.=''.$v[0].'';
-        elseif($v[1] == '-')	$strRetB.=''.$v[0].'';
-        elseif($v[1] == 'm')	$strRetB.=''.$v[0].'';
-        elseif($v[1] == '*')	$strRetB.=$v[0];
-    }
-}
-
-function MergeInsertAndDelete(&$rdyAText, &$rdyBText) {
-    $max = count($rdyAText)>count($rdyBText)?count($rdyAText):count($rdyBText);
-
-    for($i1=0,$i2=0; $i1<$max && $i2<$max; ) 	{
-        if($rdyAText[$i1][1]=="-" && $rdyBText[$i2][1]=="+" && $rdyBText[$i2][0]!="") {
-            $rdyAText[$i1][1]="*";
-            $rdyBText[$i2][1]="m";
+    // Если на одной и той же позиции у текста A "добавлено" а у B "удалено" - меняем метку на "изменено"
+    $max = max(count($arrAdiff), count($arrBdiff));
+    for ($i1 = 0, $i2 = 0; $i1 < $max && $i2 < $max;) {
+        if (!isset($arrAdiff[$i1]) || !isset($arrBdiff[$i2])) {
+            // no action
+        } elseif ($arrAdiff[$i1][1] == "-" && $arrBdiff[$i2][1] == "+" && $arrBdiff[$i2][0] != "") {
+            $arrAdiff[$i1][1] = "*";
+            $arrBdiff[$i2][1] = "m";
+        } elseif ($arrAdiff[$i1][1] != "-" && $arrBdiff[$i2][1] == "+") {
+            $i2++;
+        } elseif ($arrAdiff[$i1][1] == "-" && $arrBdiff[$i2][1] != "+") {
+            $i1++;
         }
-        elseif($rdyAText[$i1][1]!="-" && $rdyBText[$i2][1]=="+") $i2++;
-        elseif($rdyAText[$i1][1]=="-" && $rdyBText[$i2][1]!="+") $i1++;
-
         $i1++;
         $i2++;
     }
-}
 
-// ***********************************************************
-// 					Main function
-// ***********************************************************
-// string  $sA, $sB 	= 	strings where try find differences
-// string  $retA, $retB	=	strings for return result of work
-function SelectedDiffs(&$sA, &$sB, &$retA, &$retB) {
-    SelDiffsText($sA,$sB,$retAText,$retBText);
-    MergeInsertAndDelete($retAText,$retBText);
-    SelDiffsColor($retAText,$retBText,$retA,$retB);
+    // Оборачиваем изменения в теги для последующей стилизации
+    $textA = array();
+    foreach($arrAdiff as $v) {
+        if ('+' == $v[1]) {
+            $textA[] = '<span class="added">' . $v[0] . '</span>';
+        } elseif ('-' == $v[1]) {
+            $textA[] = '<span class="deleted">' . $v[0] . '</span>';
+        } elseif ('m' == $v[1]) {
+            $textA[] = '<span class="changed">' . $v[0] . '</span>';
+        } else {
+            $textA[] =$v[0];
+        }
+    }
+    $textA = implode($delimeter, $textA);
+    $textB = array();
+    foreach($arrBdiff as $v) {
+        if ('+' == $v[1]) {
+            $textB[] = '<span class="added">' . $v[0] . '</span>';
+        } elseif ('-' == $v[1]) {
+            $textB[] = '<span class="deleted">' . $v[0] . '</span>';
+        } elseif ('m' == $v[1]) {
+            $textB[] = '<span class="changed">' . $v[0] . '</span>';
+        } else {
+            $textB[] =$v[0];
+        }
+    }
+    $textB = implode($delimeter, $textB);
+
+    return array($textA, $textB);
 }
