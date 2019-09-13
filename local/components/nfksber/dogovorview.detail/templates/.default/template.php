@@ -10,7 +10,12 @@
                    <?
                 }else {?>
                     <?if($arResult["USER_ID"] != $arResult['SIGN_DOGOVOR']['UF_ID_USER_B']):?>
-                        <button class="btn btn-nfk" id="send_contract" >Подписать договор</button>
+                        <button class="btn btn-nfk
+                        <?if(!empty($arResult["DOGOVOR_IMG"][0]['URL'])):?>canvas-img<?endif?>"
+                                id="send_contract"
+                        >
+                            Подписать договор
+                        </button>
                     <?endif?>
 
                     <?if(empty($arResult['NEW_REDACTION'])):?>
@@ -28,7 +33,7 @@
             </div>
               */?>
             <?if(!empty($arResult["DOGOVOR_IMG"][0]['URL'])):?>
-                <div class="cardDogovor-boxViewText">
+                <div class="cardDogovor-boxViewText" id="canvas" contenteditable="false">
                     <?foreach ($arResult["DOGOVOR_IMG"] as $item):?>
                         <div class="document-img" style="text-align: center">
                             <img src="<?=$item['URL']?>">
