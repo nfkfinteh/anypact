@@ -99,7 +99,7 @@ if ($count_pacts > 0):?>
 
         foreach ($arResult["REDACTION"] as $red) {
             ?>
-            <?if(in_array($red['ID'], $arIdContract)) continue;?>
+            <?if(!empty($arIdContract) && in_array($red['ID'], $arIdContract)) continue;?>
                 <tr>
                     <td scope="row"><?= $red["NAME"] ?></td>
                     <td><a href="<?=$red['USER_B']['LINK']?>"><?=$red['USER_B']['NAME']?></a></td>

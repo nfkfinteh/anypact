@@ -328,10 +328,27 @@ window.onload = function() {
 
                         clearInterval(t);
                         smscode.blur();
-                        let contract_text = canvas.innerHTML;
-                        contract_text = contract_text.replace(/&/g, "%");
+
+                        //дополнение для загрузки договора в виде картинки
+                        let isImg = $('#send_contract').hasClass('canvas-img');
+                        var contract_text;
+
+                        if(isImg){
+                            let arImg = $(canvas).find('.document-img img');
+                            contract_text = [];
+                            arImg.each(function (index, value) {
+                                contract_text[index] = $(value).attr('src');
+                            });
+                        }
+                        else{
+                            contract_text = canvas.innerHTML;
+                            contract_text = contract_text.replace(/&/g, "%");
+                        }
+
+
                         var xhr = new XMLHttpRequest();
-                        var params = 'id=' + encodeURIComponent(id_contract) + '&contr=' + encodeURIComponent(id_contraegent) + '&smscode=' + encodeURIComponent(valid_code) + '&text_contract=' + contract_text;
+                        var params = 'id=' + encodeURIComponent(id_contract) + '&contr=' + encodeURIComponent(id_contraegent) +
+                            '&smscode=' + encodeURIComponent(valid_code) + '&text_contract=' + contract_text + '&isImg=' + isImg;
                         xhr.open('POST', '/response/ajax/send_contract.php', true);
                         xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
                         xhr.onreadystatechange = function() {
