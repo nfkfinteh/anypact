@@ -1,6 +1,7 @@
 <?
 /*include_once $_SERVER['DOCUMENT_ROOT'].'/local/php_interface/libraries/compareFile/compare.php';
-$compareDogovor = SelectedDiffs($arResult["ELEMENT"]["PREVIEW_TEXT"], $arResult["ELEMENT"]["DETAIL_TEXT"], $text1, $text2);*/
+$compareDogovor = getTextDiff($arResult["ELEMENT"]["PREVIEW_TEXT"], $arResult["ELEMENT"]["DETAIL_TEXT"], ' ');*/
+//new dBug($compareDogovor);
 ?>
 <h1><?=$arResult["ELEMENT"]["NAME"]?></h1>
  <div class="tender cardDogovor">
@@ -15,11 +16,10 @@ $compareDogovor = SelectedDiffs($arResult["ELEMENT"]["PREVIEW_TEXT"], $arResult[
                    <?
                 }else {?>
                 */?>
-                    <?if($arResult["USER_ID"] != $arResult['SIGN_DOGOVOR']['UF_ID_USER_B']):?>
-                        <button class="btn btn-nfk" id="send_contract" >Подписать договор</button>
-                    <?endif?>
-
                     <?if($arResult["USER_ID"] != $arResult['PROPERTY']['USER_ID_INITIATOR']['VALUE']):?>
+                        <?//if($arResult["USER_ID"] != $arResult['SIGN_DOGOVOR']['UF_ID_USER_B']):?>
+                            <button class="btn btn-nfk" id="send_contract" >Подписать договор</button>
+                        <?//endif?>
                         <button class="btn btn-nfk" id="new_redaction" data-id_element="<?=$_GET['ID']?>">Изменить редакцию</button>
                     <?endif?>
 
