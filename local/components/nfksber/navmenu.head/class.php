@@ -47,7 +47,7 @@ class navmenu extends CBitrixComponent
 
     public function executeComponent()
     {
-        if($this->startResultCache())
+        if($this->startResultCache($this->arParams['CACHE_TIME'], $_SERVER['REQUEST_URI']))
         {
             $this->arResult = array_merge($this->arResult, $this->paramsUser($this->arParams));            
             $this->arResult["ARR_ITEM_MENU"] = $this->getNavMenu($this->arResult["ArURL_MENU"]);

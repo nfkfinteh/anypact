@@ -85,59 +85,6 @@ class CDemoSqr extends CBitrixComponent
         return $Content;
     }
 
-    //Cвойства контракта
-    private function getPropertyContract($id_infobloc_contract){        
-        // объект
-        $array_props    = array(); 
-        $res            = CIBlockElement::GetByID($this->ID_CONTRACT);
-        
-        if($ar_res = $res->GetNext()){
-            $array_props["CONTRACT"] = $ar_res;
-        }        
-        //подготовка текста
-        $Contract_template_Text = $this->convertContent($array_props["CONTRACT"]["DETAIL_TEXT"]);
-
-        $clear_text = new autoedittext();
-
-        $Contract_template_Text                 = $clear_text->replaceTag($Contract_template_Text, $this->USER_PROPERTY);
-        $array_props["CONTRACT"]["DETAIL_TEXT"] = str_replace("&nbsp;", "", $Contract_template_Text);
-        
-        // свойства контракта
-        $db_props       = CIBlockElement::GetProperty($id_infobloc_contract, $this->ID_CONTRACT, "sort", "asc", array());
-        
-        while($ar_props = $db_props->Fetch()){ 
-            $array_props["CONTRACT_PROPERTY"][] = $ar_props;
-        }
-        
-        return $array_props;
-    }
-
-    private function getListCategory(){
-        $items          = GetIBlockSectionList(5, 0, Array("sort"=>"asc"), 10);
-        $arr_sections   = array();
-
-        while($arResult = $items->GetNext()){       
-            $arr_sections[] = array("NAME" => $arResult["NAME"], "ID" => $arResult["ID"]);
-        }
-
-        return $arr_sections;
-    }
-
-    private function getTemplateContractCategote(){
-        $IBLOCK_ID    = $this->ID_BLOCK_TEMPLATES_CONTRACTS;
-        if(CModule::IncludeModule("iblock")){
-            $arFilter    = Array(
-                'IBLOCK_ID'=>$IBLOCK_ID,
-                'GLOBAL_ACTIVE'=>'Y');
-            $obSection    = CIBlockSection::GetTreeList($arFilter);
-            $arThree = array();
-            while($arResult = $obSection->GetNext()){
-                $arThree[]= $arResult;
-            }
-            return $arThree;
-        }
-    }
-
     private function getMultyProperty($ID_IBLOCK, $ID_EL){
         $VALUES = array();
         $res = CIBlockElement::GetProperty($ID_IBLOCK, $ID_EL, "sort", "asc", array("CODE" => "STEPS"));
@@ -179,6 +126,8 @@ class CDemoSqr extends CBitrixComponent
     }
 
     private function getNewRedaction($userId, $arSdelka){
+        new dBug($arSdelka);
+        new dBug($userId);
         $arFilter = [
             'IBLOCK_ID'=>6,
             'CODE'=>$arSdelka['CODE'].'_'.$arSdelka['ID'].'_user_'.$userId,
@@ -203,7 +152,7 @@ class CDemoSqr extends CBitrixComponent
         global $USER;
         $userId = CUser::GetID();
         $this->arResult["USER_ID"] = $userId;
-        if($this->startResultCache($this->arParams['CACHE_TIME'], $_GET['SECTION_ID'].$_GET['ELEMENT_ID'].$_GET['ID_TEMPLATE'].$userId))
+        if($this->startResultCache($this->arParams['CACHE_TIME'], $_GET['SECTION_ID'].$_GET['ELEMENT_ID'].$userId))
         {
             $this->arResult                         = array_merge($this->arResult, $this->paramsUser($this->arParams));
             // данные владельца сделки           
@@ -215,11 +164,8 @@ class CDemoSqr extends CBitrixComponent
 
             $this->arResult["ELEMENT"]              = $this->getElement($this->arResult["ELEMENT_ID"]);
             $this->arResult["PROPERTY"]             = $this->getProperty($this->arResult["INFOBLOCK_ID"], $this->arResult["ELEMENT_ID"]);
-            $this->arResult["LIST_CATEGORY"]        = $this->getListCategory();
-            $this->arResult["CONTRACT_PROPERTY"]    = $this->getPropertyContract($this->arResult["INFOBLOCK_C_ID"]);
-            $this->arResult["THREE_TEMPLATE"]       = $this->getTemplateContractCategote();
 
-            if(!empty($this->ID_CONTRACT)){                
+            /*if(!empty($this->ID_CONTRACT)){
                 $this->arResult["TEMPLATE_CONTENT"] = $this->getElement($this->ID_CONTRACT);
                 $this->arResult["TEMPLATE_CONTENT_PROPERTY"]    = $this->getMultyProperty(5, $_GET["ID_TEMPLATE"]);
                 $this->arResult["DOGOVOR_IMG"] = $this->getProperty(4, $this->ID_CONTRACT)['DOGOVOR_IMG'];
@@ -229,10 +175,10 @@ class CDemoSqr extends CBitrixComponent
                 $this->arResult["TEMPLATE_CONTENT"] = $this->getElement($_GET["ID_TEMPLATE"]);
                 $this->arResult["TEMPLATE_CONTENT_PROPERTY"]    = $this->getMultyProperty(5, $_GET["ID_TEMPLATE"]);
                 $this->arResult["DOGOVOR_IMG"] = $this->getProperty(4, $this->arResult["ELEMENT_ID"])['DOGOVOR_IMG'];
-            }
+            }*/
 
             #поиск имеющихся своих редакций для этой сделки по пользователю
-            $this->arResult['NEW_REDACTION'] = $this->getNewRedaction($userId, $this->arResult["ELEMENT"]);
+            //$this->arResult['NEW_REDACTION'] = $this->getNewRedaction($userId, $this->arResult["ELEMENT"]);
 
             $this->EndResultCache();
         }

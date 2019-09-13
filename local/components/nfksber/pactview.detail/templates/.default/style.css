@@ -49,3 +49,12 @@
 .cardPact .modal-content textarea{
     margin-top: 0;
 }
+
+.sp-image{
+
+}
+.sp-thumbnail{
+    width: 150px;
+    float: left;
+    margin-right: 30px;
+}

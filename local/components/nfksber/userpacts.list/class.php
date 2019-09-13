@@ -100,7 +100,8 @@ class CDemoSqr extends CBitrixComponent
             if(empty($arrID_Info_Contract)) return $arSend_Contract;
 
             foreach($arrID_Info_Contract as $i=>$value ){
-                $res = CIBlockElement::GetList(array(), array("IBLOCK_ID" => 4, "ID" => $value), false, array(), array("ID", "NAME"));
+                $iblockId = CIBlockElement::GetIBlockByID($value);
+                $res = CIBlockElement::GetList(array(), array("IBLOCK_ID" => $iblockId, "ID" => $value), false, array(), array("ID", "NAME"));
                 while($ob = $res->GetNextElement())
                 {
                     $arInfo_Contract = $ob->GetFields();                    
@@ -139,25 +140,64 @@ class CDemoSqr extends CBitrixComponent
         return $arResult;
     }
 
+    private function getRedaction($userId){
+        $arFilter = [
+            'IBLOCK_ID'=>6,
+            'ACTIVE'=>'Y',
+            [
+                'LOGIC'=> 'OR',
+                ['=PROPERTY_USER_A'=> $userId],
+                ['=PROPERTY_USER_B'=> $userId]
+            ]
+        ];
+        $arSelect = [
+            'IBLOCK_ID',
+            'ID',
+            'NAME',
+            'TIMESTAMP_X'
+        ];
+        $res = CIBlockElement::GetList([], $arFilter, false, false, $arSelect);
+        while($obj = $res->GetNextElement(true, false)){
+            $arFields = $obj->GetFields();
+            $arRedaction[$arFields['ID']] = $arFields;
+            $arRedaction[$arFields['ID']]['PROPERTY'] = $obj->GetProperties();
+
+            $dbUser = CUser::GetByID($arRedaction[$arFields['ID']]['PROPERTY']['USER_B']['VALUE']);
+            $arRedaction[$arFields['ID']]['USER_B'] = [
+                'NAME' => $dbUser->GetNext()['LOGIN'],
+                'LINK' => '/profile_user/?ID='.$arRedaction[$arFields['ID']]['PROPERTY']['USER_B']['VALUE']
+            ];
+
+        }
+
+        return $arRedaction;
+    }
+
     public function executeComponent()
     {
-        if($this->startResultCache())
-        {
-            $User_ID = CUser::GetID();
+        $User_ID = CUser::GetID();
+        $this->arResult["USER_ID"] = $User_ID;
+
+        // подписанные договора
+        $this->arResult["SEND_CONTRACT"] = $this->getSendContract($User_ID);
+
+        // сообщение пользователю
+        $this->arResult["MESSAGE_USER"] = $this->getMessageUser($User_ID);;
+
+        /*if($this->startResultCache($this->arParams['CACHE_TIME'], $User_ID))
+        {*/
             $this->arResult = array_merge($this->arResult, $this->paramsUser($this->arParams));
-            $this->arResult["USER_ID"] = $User_ID;
             $this->arResult["USER_LOGIN"] =CUser::GetLogin();
             
             // Все сделки созданные пользователем
             $this->arResult["INFOBLOCK_LIST"] = $this->listPacts($this->arResult["INFOBLOCK_ID"], $User_ID);
-            
-            // подписанные договора
-            $this->arResult["SEND_CONTRACT"] = $this->getSendContract($User_ID);
-            
-            // сообщение пользователю
-            $this->arResult["MESSAGE_USER"] = $this->getMessageUser($User_ID);
-            $this->includeComponentTemplate();
-        }
+
+            //редакции
+            $this->arResult["REDACTION"] = $this->getRedaction($User_ID);
+
+        /*    $this->EndResultCache();
+        }*/
+        $this->includeComponentTemplate();
         
         return $this->arResult;
     }

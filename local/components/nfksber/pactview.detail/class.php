@@ -162,6 +162,10 @@ class CDemoSqr extends CBitrixComponent
                 "PERSONAL_PHOTO" => CFile::GetPath($arrUserContractHolder["PERSONAL_PHOTO"])
             ); 
             $this->arResult["CONTRACT_HOLDER"] = $USER_CONTRACT_HOLDER;
+
+            $GLOBALS['CACHE_MANAGER']->StartTagCache("/".SITE_ID.$this->GetRelativePath());
+            $GLOBALS['CACHE_MANAGER']->RegisterTag('iblock_id_4');//Кеш будет зависить от изменений инфоблока 9
+            $GLOBALS['CACHE_MANAGER']->EndTagCache();
             $this->includeComponentTemplate();
         }
         
