@@ -37,9 +37,60 @@
                         <img class="sp-image" src="<?=$url_img["URL"]?>">
                         <img class="sp-thumbnail" src="<?=$url_img['THUMB_URL']?>">
                     </div>
-                    <?
-                }
-                ?>
+                </div>
+                <? } ?>
+            </div>
+            <div class="col-md-5 col-lg-4">
+                <span class="cardPact-price">800 000 руб.</span>
+                <a href="#" class="btn btn-nfk cardPact-bBtn">Посмотреть договор</a>
+                <a href="#" class="btn btn-nfk cardPact-bBtn">Посмотреть спецификацию</a>
+                <div class="cardPact-person">
+                    <?if(!empty($arResult["CONTRACT_HOLDER"]["PERSONAL_PHOTO"])):?>
+                        <img src="<?=$arResult["CONTRACT_HOLDER"]["PERSONAL_PHOTO"]?>">
+                    <?else:?>
+                        <div class="cardPact-person__avatar">
+                            <span><?=substr($arResult["CONTRACT_HOLDER"]["NAME"], 0, 1)?></span>
+                        </div>
+                    <?endif?>                    
+                    <span><a href="/profile_user/?ID=<?=$arResult["CONTRACT_HOLDER"]["ID"]?>"><?=$arResult["CONTRACT_HOLDER"]["LAST_NAME"]?> <?=$arResult["CONTRACT_HOLDER"]["NAME"]?></a></span><br>
+                    <span class="text-gray">Неизвестно</span><br>
+                </div>
+                <div class="cardPact-info">
+                    <span class="float-left">Репутация</span><span class="float-right cardPact-rating">&#9733; 3,9</span><br>
+                    <span class="float-left">Выполненных сделок</span><span class="float-right "><?=$arResult['DOGOVOR']['CNT']?></span><br>
+                    <span>9 оценок</span>
+                </div>  
+                <button class="btn btn-nfk d-block cardPact-bBtn">Написать сообщение</button>
+            </div>
+            <div class="modal fade bd-message-modal-sm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="modal-title">Новое сообщение</div>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="message_user" action="/response/ajax/add_new_messag_user.php">
+                            <input type="hidden" name="login" value="<?=$arResult['CONTRACT_HOLDER']['LOGIN']?>">
+                            <div class="form-group">
+                                <textarea class="form-control " name="message-text"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-nfk d-block cardPact-bBtn submit_message">Отправить</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <div class="col-md-8 mt-4">
+                <h5>Описание</h5>
+                <?=$arResult["ELEMENT"]["DETAIL_TEXT"]?>
+                <h5>Условия</h5>
+                <?=$arResult["PROPERTY"]["CONDITIONS_PACT"]["VALUE"]["TEXT"]?>
+                <h5 class="mt-5">Комментарии</h5>
             </div>
         </div>
         <? } ?>
