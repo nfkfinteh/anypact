@@ -168,3 +168,15 @@ edbox {
     border: 1px solid #ff6416;
     border-radius: 3px;
 }
+.added{
+    background: rgba(255, 100, 22, 0.35);
+    font-weight: unset;
+}
+.deleted{
+    background: rgba(255, 0, 0, 0.35);
+    font-weight: unset;
+}
+.changed{
+    background: rgba(255, 100, 22, 0.35);
+    font-weight: unset;
+}

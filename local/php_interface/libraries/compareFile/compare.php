@@ -1,36 +1,22 @@
 <?
-/**
- * Выделение различий в текстах (с точностью до строк или слов)
- * Изменения оборачиваются в тег "span" с классами 'added', 'deleted', 'changed
- * алгоритм: http://easywebscripts.net/php/php_text_differences.php
- *
- * @return array - тексты A и B
- * @param string $textA
- * @param string $textB
- * @param string $delimeter - "пробел": будет искать изменения с точностью до слова, "\n": с точностью до строки
- */
-include_once $_SERVER['DOCUMENT_ROOT'].'/local/php_interface/libraries/simple_html_dom/simple_html_dom.php';
+function getParserHtml($text){
+    $ar = preg_split('/\s*(<[^>]*>)/i', $text, null, PREG_SPLIT_NO_EMPTY | PREG_SPLIT_DELIM_CAPTURE);
+    return $ar;
+}
+
+function getParserText($text){
+    $ar = preg_split('/\s*(<[^>]*>)/i', $text, null, PREG_SPLIT_NO_EMPTY | PREG_SPLIT_DELIM_CAPTURE);
+    return $ar;
+}
+
 function getTextDiff($textA, $textB, $delimeter = "\n") {
     if (!is_string($textA) || !is_string($textB) || !is_string($delimeter)) {
         return FALSE;
     }
 
     // Получение уникальных слов(строк)
-    /*$arrA = explode($delimeter, str_replace("\r", "", $textA));
-    $arrB = explode($delimeter, str_replace("\r", "", $textB));*/
-
-    function getPrserText($text){
-        $html = new simple_html_dom();
-        $html->load($text);
-        $tmpl = $html->find('*')[0]->childNodes()[0];
-        $tmpl = $tmpl->next_sibling();
-        new dBug($tmpl);
-    }
-
-
-    $arrB = getPrserText($textB);
-
-
+    $arrA = getParserHtml($textA);
+    $arrB = getParserHtml($textB);
 
     $unickTable = array_unique(array_merge($arrA, $arrB));
     $unickTableFlip = array_flip($unickTable);
@@ -120,6 +106,7 @@ function getTextDiff($textA, $textB, $delimeter = "\n") {
             $v[1],
         );
     }
+
     $arrBdiff = array();
     foreach($arrBidDiff as $v) {
         $arrBdiff[] = array(
@@ -149,24 +136,27 @@ function getTextDiff($textA, $textB, $delimeter = "\n") {
     $textA = array();
     foreach($arrAdiff as $v) {
         if ('+' == $v[1]) {
-            $textA[] = '<span class="added">' . $v[0] . '</span>';
+            $textA[] = '<b class="added">' . $v[0] . '</b>';
         } elseif ('-' == $v[1]) {
-            $textA[] = '<span class="deleted">' . $v[0] . '</span>';
+            $textA[] = '<b class="deleted">' . $v[0] . '</b>';
         } elseif ('m' == $v[1]) {
-            $textA[] = '<span class="changed">' . $v[0] . '</span>';
+            $textA[] = '<b class="changed">' . $v[0] . '</b>';
         } else {
             $textA[] =$v[0];
         }
     }
     $textA = implode($delimeter, $textA);
     $textB = array();
+
+    new dBug($arrAdiff);
+    new dBug($arrBdiff);
     foreach($arrBdiff as $v) {
         if ('+' == $v[1]) {
-            $textB[] = '<span class="added">' . $v[0] . '</span>';
+            $textB[] = '<b class="added">' . $v[0] . '</b>';
         } elseif ('-' == $v[1]) {
-            $textB[] = '<span class="deleted">' . $v[0] . '</span>';
+            $textB[] = '<b class="deleted">' . $v[0] . '</b>';
         } elseif ('m' == $v[1]) {
-            $textB[] = '<span class="changed">' . $v[0] . '</span>';
+            $textB[] = '<b class="changed">' . $v[0] . '</b>';
         } else {
             $textB[] =$v[0];
         }

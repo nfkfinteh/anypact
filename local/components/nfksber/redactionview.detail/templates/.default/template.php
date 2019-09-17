@@ -1,7 +1,7 @@
 <?
-/*include_once $_SERVER['DOCUMENT_ROOT'].'/local/php_interface/libraries/compareFile/compare.php';
-$compareDogovor = getTextDiff($arResult["ELEMENT"]["PREVIEW_TEXT"], $arResult["ELEMENT"]["DETAIL_TEXT"], ' ');*/
-//new dBug($compareDogovor);
+include_once $_SERVER['DOCUMENT_ROOT'].'/local/php_interface/libraries/compareFile/compare.php';
+$compareDogovor = getTextDiff($arResult["ELEMENT"]["PREVIEW_TEXT"], $arResult["ELEMENT"]["DETAIL_TEXT"], ' ');
+$dogovorDisplayChange = $compareDogovor[1];
 ?>
 <h1><?=$arResult["ELEMENT"]["NAME"]?></h1>
  <div class="tender cardDogovor">
@@ -38,7 +38,7 @@ $compareDogovor = getTextDiff($arResult["ELEMENT"]["PREVIEW_TEXT"], $arResult["E
                 </div>
             <?else:?>
                 <div class="cardDogovor-boxViewText" id="canvas" contenteditable="false">
-                    <?=$arResult["ELEMENT"]["DETAIL_TEXT"]?>
+                    <?=$dogovorDisplayChange?>
                 </div>
             <?endif?>
         </div>            
