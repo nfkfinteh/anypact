@@ -35,19 +35,24 @@ switch ($arData->atrr_text) {
         echo json_encode([ 'VALUE'=>"обновили ".$_POST['atrr_text'], 'TYPE'=> 'SUCCES']);
         break;
     case 'add':
-        $detailImg = array_shift($arFiles);
-        $arLoadProductArray = Array(
-            "MODIFIED_BY"    => $USER->GetID(),
-            "DETAIL_PICTURE" =>$detailImg,
-            "PROPERTY_VALUES"=> array(
-                'INPUT_FILES'=>$arFiles
-            )
-        );
 
         // код свойства
         $PRODUCT_ID = $arData->id_element;
 
+        $arLoadProductArray = Array(
+            "MODIFIED_BY"    => $USER->GetID(),
+        );
+
+        $dbSdelka = CIBlockElement::GetByID($PRODUCT_ID);
+        if($obj = $dbSdelka->GetNext()) $arElement = $obj;
+
+        if(empty($arElement['DETAIL_PICTURE'])){
+            $detailImg = array_shift($arFiles);
+            $arLoadProductArray['DETAIL_PICTURE'] = $detailImg;
+        }
+
         if($res = $el->Update($PRODUCT_ID, $arLoadProductArray)){
+            CIBlockElement::SetPropertyValueCode($PRODUCT_ID, "INPUT_FILES", $arFiles);
             echo json_encode([ 'VALUE'=>$PRODUCT_ID, 'TYPE'=> 'SUCCES']);
         }
         else{
