@@ -259,13 +259,14 @@ window.onload = function() {
     var button_send_contract = document.getElementById('send_contract');
     var popup_send_sms = document.getElementById('send_sms');
     var max_time = document.getElementById('timer_n');
-    var id_contract = max_time.getAttribute('id-con');
-    var id_contraegent = max_time.getAttribute('id-cont');
-    var button_send_contract_owner = document.getElementById('send_contract_owner');
-    var smscode = document.getElementById('smscode');
-    var idIblock = max_time.getAttribute('id-iblock');
-    var break_sign = getStatusBlock({'contract':id_contract, 'contragent':id_contraegent, 'action':'get'});
-
+    if(document.getElementById('send_contract')){
+        var id_contract = max_time.getAttribute('id-con');
+        var id_contraegent = max_time.getAttribute('id-cont');
+        var button_send_contract_owner = document.getElementById('send_contract_owner');
+        var smscode = document.getElementById('smscode');
+        var idIblock = max_time.getAttribute('id-iblock');
+        var break_sign = getStatusBlock({'contract':id_contract, 'contragent':id_contraegent, 'action':'get'});
+    }
 
 
     if(document.getElementById('send_contract')){

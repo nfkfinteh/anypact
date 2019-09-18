@@ -32,7 +32,7 @@ $APPLICATION->SetTitle("AnyPact");
 	)
 );?>
 	<!--// Форма поиска-->
-		<div class="signature-container">
+	<!--div class="signature-container">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-5">
@@ -45,9 +45,9 @@ $APPLICATION->SetTitle("AnyPact");
 				</div>
 			</div>
 		</div>
-	</div>
+	</div>-->
 	<div class="container">
-		<h4>Об электронной подписи</h4>
+		<!--<h4>Об электронной подписи</h4>
 		<div class="row">
 			<div class="col-md-6">
 				<p>
@@ -60,11 +60,10 @@ $APPLICATION->SetTitle("AnyPact");
 				</p>
 			</div>
 		</div>
-		<div class="long-divider"></div>
-		<h2>С сервисом AnyPact</h2>
+		<div class="long-divider"></div>-->
+		<h2 style="margin-top:80px;">С сервисом AnyPact</h2>
 		<div class="short-divider"></div>
-		<p>Вы решаете свои повседневные задачи без визита в различные<br>
-			госорганы, тем самым экономя время, силы и средства!</p>
+		<p>С сервисом AnyPact Вы решаете свои повседневные задачи без визита в различные госорганы, тем самым экономя время, силы и средства!</p>
 		<div class="row cards-how">
 			<div class="col-md-6 col-lg-3">
 				<div class="card-how">
@@ -84,7 +83,7 @@ $APPLICATION->SetTitle("AnyPact");
 				<div class="card-how">
 					<i class="icon-main icon-3"></i>
 					<h5>БЕЗОПАСНО</h5>
-					<p>Для заключения электронного договора Вам достаточно иметь подтверждённую учётную запись на портале Госуслуг.</p>
+					<p>Система обеспечивает защиту размещённой в ней информации в соответствии с законодательством Российской Федерации.</p>
 				</div>
 			</div>
 			<div class="col-md-6 col-lg-3">
@@ -96,13 +95,76 @@ $APPLICATION->SetTitle("AnyPact");
 			</div>
 		</div>
 	</div>
+	<div class="deal-container">
+    <div class="container">
+        <h2>Заключить сделку</h2>
+        <div class="short-divider"></div>
+		<style>
+		.owl-carousel .card-deal {
+			width: 23%;
+    		float: left;
+    		margin-left: 22px;
+		}
+		</style>
+        <div class="owl-carousel owl-theme">
+            <div class="item card-deal">
+                <i class="icon-main icon-5"></i>
+                <h5>Купля-продажа</h5>
+                <ul>
+                    <li>Для заключения</li>
+                    <li>Электронного договора</li>
+                    <li>Вам достаточно иметь</li>
+                    <li>Подтвержденную учетную</li>
+                    <li>Запись на портале</li>
+                </ul>
+                <button>Перейти</button>
+            </div>
+            <div class="item card-deal">
+                <i class="icon-main icon-6"></i>
+                <h5>Аренда</h5>
+                <ul>
+                    <li>Для заключения</li>
+                    <li>Электронного договора</li>
+                    <li>Вам достаточно иметь</li>
+                    <li>Подтвержденную учетную</li>
+                    <li>Запись на портале</li>
+                </ul>
+                <button>Перейти</button>
+            </div>
+            <div class="item card-deal">
+                <i class="icon-main icon-7"></i>
+                <h5>Мена</h5>
+                <ul>
+                    <li>Для заключения</li>
+                    <li>Электронного договора</li>
+                    <li>Вам достаточно иметь</li>
+                    <li>Подтвержденную учетную</li>
+                    <li>Запись на портале</li>
+                </ul>
+                <button>Перейти</button>
+            </div>
+            <div class="item card-deal">
+                <i class="icon-main icon-8"></i>
+                <h5>Заём</h5>
+                <ul>
+                    <li>Для заключения</li>
+                    <li>Электронного договора</li>
+                    <li>Вам достаточно иметь</li>
+                    <li>Подтвержденную учетную</li>
+                    <li>Запись на портале</li>
+                </ul>
+                <button>Перейти</button>
+            </div>           
+        </div>
+    </div>
+</div>
 	<div class="client-container">
     <div class="container">
         <h2>Стать клиентом</h2>
         <div class="short-divider"></div>
         <div class="row">
             <div class="col-md-6">
-                Регистрация, авторизация и заключение договоров на площадке AnyPact проходят в режиме онлайн. Получить простую электронную подпись Вы можете в любом Многофункциональном центре Вашего города. Для этого Вам необходимо удостоверить свою личность с помощью данных всего трёх документов и оформить учётную запись на сайте www.gosuslugi.ru.
+				Регистрация, авторизация и заключение договоров на площадке AnyPact проходят в режиме онлайн. Получить простую электронную подпись Вы можете в любом Многофункциональном центре Вашего города. Для этого Вам необходимо удостоверить свою личность с помощью данных всего трёх документов и оформить учётную запись на сайте www.gosuslugi.ru.
             </div>
         </div>
     </div>
@@ -191,4 +253,32 @@ $APPLICATION->SetTitle("AnyPact");
 		</p>-->
 	<?//}?>
 	</div> 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script type="text/javascript" src="<?=SITE_TEMPLATE_PATH?>/js/slider/range_prices.js"></script>
+<script src="<?=SITE_TEMPLATE_PATH?>/js/owl.carousel.min.js"></script>
+<script>
+$(document).ready(function() {
+    var owl = $('.owl-carousel');
+    owl.owlCarousel({
+        dotsEach: true,
+        //dotsData: true,
+        margin: 30,
+        stagePadding: 5,
+        //nav: true,
+        responsive: {
+            0: {
+                items: 1
+            },
+            768: {
+                items: 2
+            },
+            992: {
+                items: 4
+            }
+        }
+    });
+    $('[data-toggle="tooltip"]').tooltip();
+})
+
+</script>
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

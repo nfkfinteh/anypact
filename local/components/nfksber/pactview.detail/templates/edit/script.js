@@ -1,14 +1,14 @@
 $(document).ready(function() {
     var check = 0;
+    var ID_Object = $("#params_object").attr("data")
 
     $("#save_descript").on('click', function() {
 
-        var text_descript = $(".cardPact-EditText-Descript .editbox").html();
-        var id_element = $(".cardPact-box").attr("data");
+        var text_descript = $(".cardPact-EditText-Descript .editbox").html();        
         $.post(
             "/response/ajax/up_pact_text.php", {
                 text: text_descript,
-                id_element: id_element,
+                id_element: ID_Object,
                 atrr_text: 'descript'
             },
             onAjaxSuccess
@@ -20,12 +20,11 @@ $(document).ready(function() {
     });
 
     $("#save_conditions").on('click', function() {
-        var text_descript = $(".cardPact-EditText-Сonditions .editbox").html();
-        var id_element = $(".cardPact-box").attr("data");
+        var text_descript = $(".cardPact-EditText-Сonditions .editbox").html();        
         $.post(
             "/response/ajax/up_pact_text.php", {
                 text: text_descript,
-                id_element: id_element,
+                id_element: ID_Object,
                 atrr_text: 'conditions'
             },
             onAjaxSuccess
@@ -36,12 +35,11 @@ $(document).ready(function() {
         }
     });
     $("#save_summ").on('click', function() {
-        var text_descript = $("#cardPact-EditText-Summ").text();
-        var id_element = $(".cardPact-box").attr("data");
+        var text_descript = $("#cardPact-EditText-Summ").text();        
         $.post(
             "/response/ajax/up_pact_text.php", {
                 text: text_descript,
-                id_element: id_element,
+                id_element: ID_Object,
                 atrr_text: 'summ'
             },
             onAjaxSuccess
@@ -57,13 +55,12 @@ $(document).ready(function() {
     //добавление изображения
     $('#filePicture').on('change', function () {
         var files = this.files;
-
-        var id_element = $(".cardPact-box").attr("data");
-
+        console.log(files)        
+        console.log('ИД Об '+ID_Object)
         // ничего не делаем если files пустой
         if( typeof arFiles != 'undefined' ){
             var mainData = JSON.stringify({
-                id_element: id_element,
+                id_element: ID_Object,
                 atrr_text: 'add'
             });
 
@@ -78,10 +75,11 @@ $(document).ready(function() {
 
             updateImage(formData);
         }
+        console.log(formData)
         $('#cardPact-box-edit').empty();
 
         for (var i = 0; i < files.length; i++) {
-            preview(files[i]);
+            //preview(files[i]);
         }
 
         this.value = '';
@@ -109,7 +107,7 @@ $(document).ready(function() {
                 wrap.insertBefore(img, null);
                 wrap.insertBefore(div, null);
 
-                document.getElementById('cardPact-box-edit').insertBefore(wrap, null);
+                //document.getElementById('cardPact-box-edit').insertBefore(wrap, null);
 
 
                 arFiles[file.name] = file;
@@ -121,7 +119,7 @@ $(document).ready(function() {
                 img.setAttribute('src', e.target.result);
                 img.setAttribute('class', 'cardPact-box-BoxPrewImg-img');
 
-                document.getElementById('cardPact-box-BoxPrewImg').insertBefore(img, null);
+                //document.getElementById('cardPact-box-BoxPrewImg').insertBefore(img, null);
 
                 arFiles[file.name] = file;
             }
@@ -187,6 +185,7 @@ $(document).ready(function() {
 
     function updateImage(arData){
         // var id_element = $(".cardPact-box").attr("data");
+        console.log(arData);
         var res = getURLData().then(function(data) {
             $result = JSON.parse(data);
             if($result['TYPE']=='ERROR'){

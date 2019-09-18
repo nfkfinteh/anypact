@@ -34,13 +34,18 @@ global $USER;
 	<?    
     $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH.'/css/bootstrap.css'); 
     $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH.'/template_style.css'); 
+    $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH.'/css/slider-pro.min.css'); 
     $APPLICATION->SetAdditionalCSS('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css');
     $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/bootstrap.min.js');
+    $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/jquery.sliderPro.min.js');
     $APPLICATION->ShowHead();
     //$APPLICATION->ShowProperty('MetaOG');
     ?>
-    <!--<link rel="stylesheet" href="<?=SITE_TEMPLATE_PATH.'/css/bootstrap.css'?>" >
-    <link rel="stylesheet" href="<?=SITE_TEMPLATE_PATH.'/template_style.css'?>" >    --->
+    <?/*
+   <link rel="stylesheet" href="<?=SITE_TEMPLATE_PATH.'/css/slider-pro.min.css'?>" >
+    <link rel="stylesheet" href="<?=SITE_TEMPLATE_PATH.'/css/bootstrap.css'?>" >
+    <link rel="stylesheet" href="<?=SITE_TEMPLATE_PATH.'/template_style.css'?>" >
+*/?>
 </head>
 <body>
 <div id="panel"><?$APPLICATION->ShowPanel();?></div>
