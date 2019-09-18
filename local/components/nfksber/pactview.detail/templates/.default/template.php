@@ -45,6 +45,10 @@ foreach ($arResult["PROPERTY"]["IMG_FILE"] as $item){
                 </div>
             </div>
         <? } ?>
+        <h5>Описание</h5>
+        <?=$arResult["ELEMENT"]["DETAIL_TEXT"]?>
+        <h5>Условия</h5>
+        <?=$arResult["PROPERTY"]["CONDITIONS_PACT"]["VALUE"]["TEXT"]?>
     </div>
     <div class="col-md-5 col-lg-4">
         <span class="cardPact-price"><?=$arResult["PROPERTY"]["SUMM_PACT"]["VALUE"]?> руб.</span>
@@ -71,12 +75,6 @@ foreach ($arResult["PROPERTY"]["IMG_FILE"] as $item){
             <span>9 оценок</span>
         </div>
         <button type="button" class="btn btn-nfk d-block cardPact-bBtn" data-toggle="modal" data-target=".bd-message-modal-sm">Написать сообщение</button>
-    </div>
-    <div class="col-md-8 mt-4">
-        <h5>Описание</h5>
-        <?=$arResult["ELEMENT"]["DETAIL_TEXT"]?>
-        <h5>Условия</h5>
-        <?=$arResult["PROPERTY"]["CONDITIONS_PACT"]["VALUE"]["TEXT"]?>
     </div>
 </div>
 
