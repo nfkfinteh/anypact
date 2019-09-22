@@ -123,6 +123,7 @@ function getTextDiff($textA, $textB, $delimeter = "\n") {
         } elseif ($arrAdiff[$i1][1] == "-" && $arrBdiff[$i2][1] == "+" && $arrBdiff[$i2][0] != "") {
             $arrAdiff[$i1][1] = "*";
             $arrBdiff[$i2][1] = "m";
+            $arrBdiff[$i2][2] = $arrAdiff[$i1][0];
         } elseif ($arrAdiff[$i1][1] != "-" && $arrBdiff[$i2][1] == "+") {
             $i2++;
         } elseif ($arrAdiff[$i1][1] == "-" && $arrBdiff[$i2][1] != "+") {
@@ -148,15 +149,27 @@ function getTextDiff($textA, $textB, $delimeter = "\n") {
     $textA = implode($delimeter, $textA);
     $textB = array();
 
-    new dBug($arrAdiff);
-    new dBug($arrBdiff);
     foreach($arrBdiff as $v) {
         if ('+' == $v[1]) {
             $textB[] = '<b class="added">' . $v[0] . '</b>';
         } elseif ('-' == $v[1]) {
             $textB[] = '<b class="deleted">' . $v[0] . '</b>';
         } elseif ('m' == $v[1]) {
-            $textB[] = '<b class="changed">' . $v[0] . '</b>';
+            $arA = explode(" ", $v[2]);
+            $arB = explode(" ", $v[0]);
+            $str = '';
+
+            foreach ($arB as $key=>$item){
+                if($arA[$key]==$item){
+                    $str .= $item.' ';
+                }
+                else{
+                    $str .= '<b class="changed">' . $item . '</b>'.' ';
+                }
+            }
+
+            //$textB[] = '<b class="changed">' . $v[0] . '</b>';
+            $textB[] = $str;
         } else {
             $textB[] =$v[0];
         }
