@@ -58,17 +58,18 @@ else
 $arResult['CURENT_USER'] = $this::GetAuthor($GLOBALS["USER"]->GetID());
 $arResult['IBLOCK_ID'] = $arParams['IBLOCK_ID'];
 $arResult['ID_SDELKA'] = $arParams['ELEMENT_ID'];
+$arResult['USER_CREATE_SDELKA'] = $this::getAuthorSdelka($arResult['ID_SDELKA']);
+
 $arResult['JS_DATA'] = [
     'CURENT_USER'=>$arResult['CURENT_USER'],
     'IBLOCK_ID'=>$arResult['IBLOCK_ID'],
     'ID_SDELKA'=>$arResult['ID_SDELKA']
 ];
 
-if ($this->StartResultCache(false, array($arNavigation))) {
+/*if ($this->StartResultCache(false, array($arNavigation))) {
     if (defined('ERROR_404') && ERROR_404=='Y' && !defined('ADMIN_SECTION')){
         $this->abortResultCache();
-    }
-    if (!CModule::IncludeModule("iblock")) die();
+    }*/
 
     $arResult["ITEMS"] = array();
     $arResult["ELEMENTS"] = array();
@@ -91,7 +92,8 @@ if ($this->StartResultCache(false, array($arNavigation))) {
         $arResult['ITEMS'][] = $arData;
     }
 
-    $this->EndResultCache();
-}
+ /*   $this->EndResultCache();
+}*/
+$arResult['EDIT_COMMENT'] = $this::getEditSdelka($_POST['EDIT_ID'], $arResult['IBLOCK_ID']);
 $this->IncludeComponentTemplate();
 ?>
