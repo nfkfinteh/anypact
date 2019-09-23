@@ -1,4 +1,4 @@
-<form action="<?=$arResult["FORM_ACTION"]?>">
+<form action="<?=$arResult["FORM_ACTION"]?>" class="form-filter__user">
     <label>
         Имя
         <input type="text" name="NAME" value="<?=$arResult['POST']['NAME']?>" maxlength="50" class="filter-key" placeholder="Введите имя" />
