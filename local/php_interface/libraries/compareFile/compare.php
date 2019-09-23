@@ -41,7 +41,7 @@ function getTextDiff($textA, $textB, $delimeter = "\n") {
     for ($i = count($arrAid) - 1; $i >= 0; $i--) {
         for ($j = count($arrBid) - 1; $j >= 0; $j--) {
             if ($arrAid[$i] == $arrBid[$j]) {
-                $maxLen[$i][$j] = 1 + $maxLen[$i+1][$j+1];
+                $maxLen[$i][$j] = 1 + intval($maxLen[$i+1][$j+1]);
             } else {
                 $maxLen[$i][$j] = max($maxLen[$i+1][$j], $maxLen[$i][$j+1]);
             }
