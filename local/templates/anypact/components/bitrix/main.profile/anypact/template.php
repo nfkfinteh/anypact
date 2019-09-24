@@ -60,6 +60,11 @@
                                     <label><?=GetMessage("USER_CITY")?></label>
                                     <input type="text" name="PERSONAL_CITY" maxlength="50" value="<?=$arResult["arUser"]["PERSONAL_CITY"]?>">
                                 </div>
+                                <div class="form-group form-checkbox">
+                                    <input type="checkbox" <?if($arResult["arUser"]["UF_HIDE_PROFILE"]):?>checked<?endif?> id="hide_profile" name="hide_profile">
+                                    <label for="hide_profile">не показывать в поиске</label>
+                                    <input type="hidden" name="UF_HIDE_PROFILE" value="<?=$arResult["arUser"]["UF_HIDE_PROFILE"]?>" class="hide_profile_input">
+                                </div>
                             </div>
                         </div>
                     </div>
