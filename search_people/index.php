@@ -15,6 +15,9 @@ $APPLICATION->SetTitle("Поиск людей");
 			</div>
 		</div>
 		<div class="col-lg-9 col-md-8 col-sm-12">
+            <?
+                $GLOBALS['arrFilter']['UF_HIDE_PROFILE'] = 0;
+            ?>
             <? $APPLICATION->IncludeComponent(
                 "nfksber:user.list",
                 "",

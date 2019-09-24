@@ -93,4 +93,14 @@ $(document).ready(function() {
         const data = await response.text();
         return data
     }
+
+    $(document).on('change', '#hide_profile', function(){
+        let input = $('.hide_profile_input');
+        if($(this).prop('checked')){
+            input.val(1);
+        }
+        else{
+            input.val(0);
+        }
+    });
 });
