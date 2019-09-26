@@ -109,7 +109,7 @@ $APPLICATION->SetTitle("AnyPact");
                     "SECTION_CODE" => "",
                     "SECTION_URL" => "",
                     "COUNT_ELEMENTS" => "Y",
-                    "TOP_DEPTH" => "2",
+                    "TOP_DEPTH" => "1",
                     "SECTION_FIELDS" => "",
                     "SECTION_USER_FIELDS" => "",
                     "ADD_SECTIONS_CHAIN" => "Y",
