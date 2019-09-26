@@ -1,36 +1,22 @@
 <?
-/**
- * Выделение различий в текстах (с точностью до строк или слов)
- * Изменения оборачиваются в тег "span" с классами 'added', 'deleted', 'changed
- * алгоритм: http://easywebscripts.net/php/php_text_differences.php
- *
- * @return array - тексты A и B
- * @param string $textA
- * @param string $textB
- * @param string $delimeter - "пробел": будет искать изменения с точностью до слова, "\n": с точностью до строки
- */
-include_once $_SERVER['DOCUMENT_ROOT'].'/local/php_interface/libraries/simple_html_dom/simple_html_dom.php';
+function getParserHtml($text){
+    $ar = preg_split('/\s*(<[^>]*>)/i', $text, null, PREG_SPLIT_NO_EMPTY | PREG_SPLIT_DELIM_CAPTURE);
+    return $ar;
+}
+
+function getParserText($text){
+    $ar = preg_split('/\s*(<[^>]*>)/i', $text, null, PREG_SPLIT_NO_EMPTY | PREG_SPLIT_DELIM_CAPTURE);
+    return $ar;
+}
+
 function getTextDiff($textA, $textB, $delimeter = "\n") {
     if (!is_string($textA) || !is_string($textB) || !is_string($delimeter)) {
         return FALSE;
     }
 
     // Получение уникальных слов(строк)
-    /*$arrA = explode($delimeter, str_replace("\r", "", $textA));
-    $arrB = explode($delimeter, str_replace("\r", "", $textB));*/
-
-    function getPrserText($text){
-        $html = new simple_html_dom();
-        $html->load($text);
-        $tmpl = $html->find('*')[0]->childNodes()[0];
-        $tmpl = $tmpl->next_sibling();
-        new dBug($tmpl);
-    }
-
-
-    $arrB = getPrserText($textB);
-
-
+    $arrA = getParserHtml($textA);
+    $arrB = getParserHtml($textB);
 
     $unickTable = array_unique(array_merge($arrA, $arrB));
     $unickTableFlip = array_flip($unickTable);
@@ -55,7 +41,7 @@ function getTextDiff($textA, $textB, $delimeter = "\n") {
     for ($i = count($arrAid) - 1; $i >= 0; $i--) {
         for ($j = count($arrBid) - 1; $j >= 0; $j--) {
             if ($arrAid[$i] == $arrBid[$j]) {
-                $maxLen[$i][$j] = 1 + $maxLen[$i+1][$j+1];
+                $maxLen[$i][$j] = 1 + intval($maxLen[$i+1][$j+1]);
             } else {
                 $maxLen[$i][$j] = max($maxLen[$i+1][$j], $maxLen[$i][$j+1]);
             }
@@ -120,6 +106,7 @@ function getTextDiff($textA, $textB, $delimeter = "\n") {
             $v[1],
         );
     }
+
     $arrBdiff = array();
     foreach($arrBidDiff as $v) {
         $arrBdiff[] = array(
@@ -136,6 +123,7 @@ function getTextDiff($textA, $textB, $delimeter = "\n") {
         } elseif ($arrAdiff[$i1][1] == "-" && $arrBdiff[$i2][1] == "+" && $arrBdiff[$i2][0] != "") {
             $arrAdiff[$i1][1] = "*";
             $arrBdiff[$i2][1] = "m";
+            $arrBdiff[$i2][2] = $arrAdiff[$i1][0];
         } elseif ($arrAdiff[$i1][1] != "-" && $arrBdiff[$i2][1] == "+") {
             $i2++;
         } elseif ($arrAdiff[$i1][1] == "-" && $arrBdiff[$i2][1] != "+") {
@@ -149,24 +137,39 @@ function getTextDiff($textA, $textB, $delimeter = "\n") {
     $textA = array();
     foreach($arrAdiff as $v) {
         if ('+' == $v[1]) {
-            $textA[] = '<span class="added">' . $v[0] . '</span>';
+            $textA[] = '<b class="added">' . $v[0] . '</b>';
         } elseif ('-' == $v[1]) {
-            $textA[] = '<span class="deleted">' . $v[0] . '</span>';
+            $textA[] = '<b class="deleted">' . $v[0] . '</b>';
         } elseif ('m' == $v[1]) {
-            $textA[] = '<span class="changed">' . $v[0] . '</span>';
+            $textA[] = '<b class="changed">' . $v[0] . '</b>';
         } else {
             $textA[] =$v[0];
         }
     }
     $textA = implode($delimeter, $textA);
     $textB = array();
+
     foreach($arrBdiff as $v) {
         if ('+' == $v[1]) {
-            $textB[] = '<span class="added">' . $v[0] . '</span>';
+            $textB[] = '<b class="added">' . $v[0] . '</b>';
         } elseif ('-' == $v[1]) {
-            $textB[] = '<span class="deleted">' . $v[0] . '</span>';
+            $textB[] = '<b class="deleted">' . $v[0] . '</b>';
         } elseif ('m' == $v[1]) {
-            $textB[] = '<span class="changed">' . $v[0] . '</span>';
+            $arA = explode(" ", $v[2]);
+            $arB = explode(" ", $v[0]);
+            $str = '';
+
+            foreach ($arB as $key=>$item){
+                if($arA[$key]==$item){
+                    $str .= $item.' ';
+                }
+                else{
+                    $str .= '<b class="changed">' . $item . '</b>'.' ';
+                }
+            }
+
+            //$textB[] = '<b class="changed">' . $v[0] . '</b>';
+            $textB[] = $str;
         } else {
             $textB[] =$v[0];
         }

@@ -15,8 +15,7 @@ class UserProfile extends CBitrixComponent
         return $result;
     }
 
-    private function getUserInfo(){
-        global $USER;
+    private function getUserInfo($USER){
         $arrUserInfo["ID"] = $USER->GetID();
         $arrUserInfo["NAME"] = $USER->GetFirstName(); 
         $arrUserInfo["IN_NAME"] = substr($USER->GetFirstName(), 0, 1); 
@@ -29,10 +28,11 @@ class UserProfile extends CBitrixComponent
 
     public function executeComponent()
     {
-        if($this->startResultCache())
+        global $USER;
+        if($this->startResultCache($USER))
         {
             //$this->arResult = array_merge($this->arResult, $this->paramsUser($this->arParams));
-            $this->arResult = $this->getUserInfo();            
+            $this->arResult = $this->getUserInfo($USER);
             $this->includeComponentTemplate();
         }
         

@@ -1,0 +1,8 @@
+.cardPact-comment-edit, .cardPact-comment-delete{
+    font-size: 14px;
+    color: #c1c1c1;
+    cursor: pointer;
+}
+.cardPact-comment-edit:hover, .cardPact-comment-delete:hover{
+    color: #ff6416;
+}

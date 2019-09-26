@@ -148,6 +148,18 @@ input:disabled {
     margin-top: 54px;
 }
 
+.form-checkbox{
+    display: flex;
+    align-items: center;
+}
+
+.form-checkbox input{
+    width: 20px;
+    height: 20px;
+}
+.form-checkbox label{
+    margin-bottom: 0;
+}
 
 /*@media (min-width: 1201px) {}
 

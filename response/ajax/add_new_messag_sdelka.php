@@ -52,7 +52,7 @@ $entity_data_class = $entity->getDataClass();
 $data = array(
     "UF_ID_USER"=>$idUser,
     "UF_TEXT_MESSAGE"=>$messageText,
-    "UF_STATUS"=>0,
+    "UF_STATUS"=>1,
     "UF_TIME_CREATE_MSG"=>ConvertTimeStamp(time(), "FULL"),
     "UF_ID_SLEKA"=>$data['object']
 );

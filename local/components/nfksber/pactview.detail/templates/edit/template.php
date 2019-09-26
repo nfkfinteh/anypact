@@ -16,13 +16,15 @@
                         </div> 
                     <?} ?>
                     <?// изображения 
-                        $arr_img = $arResult["PROPERTY"]["IMG_FILE"];                    
+                        $arr_img = $arResult["PROPERTY"]["IMG_FILE"];
                         if(!empty($arResult["PROPERTY"]["IMG_FILE"])){
                             foreach ($arr_img as $url_img){?>
-                                <div class="sp-slide">
-                                    <img class="sp-image" src="<?=$url_img["URL"]?>">
-                                    <img class="sp-thumbnail" src="<?=$url_img["URL"]?>">
-                                </div>                                
+                                <?if(!empty($url_img["URL"])):?>
+                                    <div class="sp-slide">
+                                        <img class="sp-image" src="<?=$url_img["URL"]?>">
+                                        <img class="sp-thumbnail" src="<?=$url_img["URL"]?>">
+                                    </div>
+                                <?endif?>
                             <?}
                         }?>
                     <div class="sp-slide">
