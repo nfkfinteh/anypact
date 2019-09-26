@@ -13,7 +13,7 @@ global $USER;
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title><? $APPLICATION->ShowTitle(); ?></title>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>   
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	
     <!-- Google Fonts -->
 	<link rel="preload" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'" data-font="g-font-open-sans" data-protected="true" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&subset=cyrillic">
@@ -36,8 +36,11 @@ global $USER;
     $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH.'/template_style.css'); 
     $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH.'/css/slider-pro.min.css'); 
     $APPLICATION->SetAdditionalCSS('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css');
+    $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH.'/css/owl.carousel.min.css');
+    $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH.'/css/owl.theme.default.css');
     $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/bootstrap.min.js');
     $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/jquery.sliderPro.min.js');
+    $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/owl.carousel.min.js');
     $APPLICATION->ShowHead();
     //$APPLICATION->ShowProperty('MetaOG');
     ?>

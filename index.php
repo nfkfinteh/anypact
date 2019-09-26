@@ -95,69 +95,32 @@ $APPLICATION->SetTitle("AnyPact");
 			</div>
 		</div>
 	</div>
-	<div class="deal-container">
-    <div class="container">
-        <h2>Заключить сделку</h2>
-        <div class="short-divider"></div>
-		<style>
-		.owl-carousel .card-deal {
-			width: 23%;
-    		float: left;
-    		margin-left: 22px;
-		}
-		</style>
-        <div class="owl-carousel owl-theme">
-            <div class="item card-deal">
-                <i class="icon-main icon-5"></i>
-                <h5>Купля-продажа</h5>
-                <ul>
-                    <li>Для заключения</li>
-                    <li>Электронного договора</li>
-                    <li>Вам достаточно иметь</li>
-                    <li>Подтвержденную учетную</li>
-                    <li>Запись на портале</li>
-                </ul>
-                <button>Перейти</button>
-            </div>
-            <div class="item card-deal">
-                <i class="icon-main icon-6"></i>
-                <h5>Аренда</h5>
-                <ul>
-                    <li>Для заключения</li>
-                    <li>Электронного договора</li>
-                    <li>Вам достаточно иметь</li>
-                    <li>Подтвержденную учетную</li>
-                    <li>Запись на портале</li>
-                </ul>
-                <button>Перейти</button>
-            </div>
-            <div class="item card-deal">
-                <i class="icon-main icon-7"></i>
-                <h5>Мена</h5>
-                <ul>
-                    <li>Для заключения</li>
-                    <li>Электронного договора</li>
-                    <li>Вам достаточно иметь</li>
-                    <li>Подтвержденную учетную</li>
-                    <li>Запись на портале</li>
-                </ul>
-                <button>Перейти</button>
-            </div>
-            <div class="item card-deal">
-                <i class="icon-main icon-8"></i>
-                <h5>Заём</h5>
-                <ul>
-                    <li>Для заключения</li>
-                    <li>Электронного договора</li>
-                    <li>Вам достаточно иметь</li>
-                    <li>Подтвержденную учетную</li>
-                    <li>Запись на портале</li>
-                </ul>
-                <button>Перейти</button>
-            </div>           
+    <div class="deal-container">
+        <div class="container">
+            <h2>Заключить сделку</h2>
+            <div class="short-divider"></div>
+            <?$APPLICATION->IncludeComponent("bitrix:catalog.section.list","sdelki_main",
+                Array(
+                    "VIEW_MODE" => "TEXT",
+                    "SHOW_PARENT_NAME" => "Y",
+                    "IBLOCK_TYPE" => "",
+                    "IBLOCK_ID" => "3",
+                    "SECTION_ID" => '',
+                    "SECTION_CODE" => "",
+                    "SECTION_URL" => "",
+                    "COUNT_ELEMENTS" => "Y",
+                    "TOP_DEPTH" => "2",
+                    "SECTION_FIELDS" => "",
+                    "SECTION_USER_FIELDS" => "",
+                    "ADD_SECTIONS_CHAIN" => "Y",
+                    "CACHE_TYPE" => "A",
+                    "CACHE_TIME" => "36000000",
+                    "CACHE_NOTES" => "",
+                    "CACHE_GROUPS" => "Y"
+                )
+            );?>
         </div>
     </div>
-</div>
 	<div class="client-container">
     <div class="container">
         <h2>Стать клиентом</h2>
@@ -252,33 +215,30 @@ $APPLICATION->SetTitle("AnyPact");
 			© 2018
 		</p>-->
 	<?//}?>
-	</div> 
+	</div>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script type="text/javascript" src="<?=SITE_TEMPLATE_PATH?>/js/slider/range_prices.js"></script>
-<script src="<?=SITE_TEMPLATE_PATH?>/js/owl.carousel.min.js"></script>
-<script>
-$(document).ready(function() {
-    var owl = $('.owl-carousel');
-    owl.owlCarousel({
-        dotsEach: true,
-        //dotsData: true,
-        margin: 30,
-        stagePadding: 5,
-        //nav: true,
-        responsive: {
-            0: {
-                items: 1
-            },
-            768: {
-                items: 2
-            },
-            992: {
-                items: 4
+    <script type="text/javascript" src="<?=SITE_TEMPLATE_PATH?>/js/slider/range_prices.js"></script>
+    <script>
+        var owl = $('.main-carousel_sdel');
+        owl.owlCarousel({
+            dotsEach: true,
+            //dotsData: true,
+            margin: 30,
+            stagePadding: 5,
+            //nav: true,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                768: {
+                    items: 2
+                },
+                992: {
+                    items: 4
+                }
             }
-        }
-    });
-    $('[data-toggle="tooltip"]').tooltip();
-})
+        });
+        //$('[data-toggle="tooltip"]').tooltip();
+    </script>
 
-</script>
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
