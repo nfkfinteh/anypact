@@ -18,7 +18,7 @@
                         <div class="col-sm-4">                            
                             <a href="/pacts/?SECTION_ID=<?=$arResult['INFOBLOCK_SECTION_LIST']['ARR_ONE_ITEM']['ID']?>">
                                 <?=$arResult['INFOBLOCK_SECTION_LIST']['ARR_ONE_ITEM']['NAME']?>
-                                <span>(<?=$item_section['COUNT_IN_ITEM']?>)</span>
+                                <span><?=$item_section['COUNT_IN_ITEM']?></span>
                             </a>
                         </div>
                     <?}?>

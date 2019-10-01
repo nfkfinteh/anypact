@@ -35,11 +35,61 @@ $this->setFrameMode(true);
             $value = $arResult['ITEMS']['PROPERTY_14']['INPUT_VALUES'][$key];
         }
         ?>
-        <input class="filter-price" type="text" id="<?=$input?>" name="<?=$input?>" value="<?=$value?>">
+        <input class="filter-price" type="text" id="minmax<?=$key?>" name="<?=$input?>" value="<?=$value?>">
         <?if($key==0) echo '-';?>
     <?endforeach?>
-
+    <div id="slider"></div>
     <input type="submit" name="set_filter" class="btn btn-nfk" value="<?=GetMessage("IBLOCK_SET_FILTER")?>" style="margin-top: 15px;"/>
     <input type="hidden" name="set_filter" value="Y" />&nbsp;&nbsp;
 </form>
-<div id="slider"></div>
+<script>
+    $(document).ready(function(){
+        var minCost2 = '#minmax0'
+        var maxCost2 = '#minmax1'
+        $("#slider").slider({
+            min: 0,
+            max: 30000,
+            values: [0,30000],
+            range: true
+        });
+
+        $("#slider").slider({
+            min: 0,
+            max: 1000000,
+            values: [100000,700000],
+            range: true,
+            stop: function(event, ui) {
+                $(minCost2).val($("#slider").slider("values",0));
+                $(maxCost2).val($("#slider").slider("values",1));
+            },
+            slide: function(event, ui){
+                $(minCost2).val($("#slider").slider("values",0));
+                $(maxCost2).val($("#slider").slider("values",1));
+            }
+        });
+
+        $(minCost2).change(function(){
+            var value1=$(minCost2).val();
+            var value2=$(maxCost2).val();
+
+            if(parseInt(value1) > parseInt(value2)){
+                value1 = value2;
+                $(minCost2).val(value1);
+            }
+            $("#slider").slider("values",0,value1);
+        });
+
+        $(maxCost2).change(function(){
+            var value1=$(minCost2).val();
+            var value2=$(maxCost2).val();
+
+            if (value2 > 30000) { value2 = 30000; $(maxCost2).val(30000)}
+
+            if(parseInt(value1) > parseInt(value2)){
+                value2 = value1;
+                $(maxCost2).val(value2);
+            }
+            $("#slider").slider("values",1,value2);
+        });
+    });
+</script>
