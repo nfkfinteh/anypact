@@ -34,9 +34,12 @@ $this->setFrameMode(true);
         if(!empty($arResult['ITEMS']['PROPERTY_14']['INPUT_VALUES'])){
             $value = $arResult['ITEMS']['PROPERTY_14']['INPUT_VALUES'][$key];
         }
-        ?>
-        <input class="filter-price" type="text" id="minmax<?=$key?>" name="<?=$input?>" value="<?=$value?>">
-        <?if($key==0) echo '-';?>
+        ?>        
+        <? if($key==0){?>
+            <input class="filter-price" type="text" id="minmax<?=$key?>" name="<?=$input?>" value="0"> -
+        <?}else {?>
+            <input class="filter-price" type="text" id="minmax<?=$key?>" name="<?=$input?>" value="<?=$value?>" >
+        <?}?>
     <?endforeach?>
     <div id="slider"></div>
     <input type="submit" name="set_filter" class="btn btn-nfk" value="<?=GetMessage("IBLOCK_SET_FILTER")?>" style="margin-top: 15px;"/>
@@ -46,17 +49,17 @@ $this->setFrameMode(true);
     $(document).ready(function(){
         var minCost2 = '#minmax0'
         var maxCost2 = '#minmax1'
-        $("#slider").slider({
+        /*$("#slider").slider({
             min: 0,
             max: 30000,
             values: [0,30000],
             range: true
-        });
+        });*/
 
         $("#slider").slider({
             min: 0,
             max: 1000000,
-            values: [100000,700000],
+            values: [0,700000],
             range: true,
             stop: function(event, ui) {
                 $(minCost2).val($("#slider").slider("values",0));
