@@ -1,0 +1,147 @@
+
+                <div class="row">
+                    <div class="col-lg-4 col-sm-6 col-12 mt-4 pb-3">
+                        <div class="people-s-photo">
+                            <a href="#">
+                                <div class="people-s-photo-img">
+                                    <img src="<?=SITE_TEMPLATE_PATH?>/image/people-search-no-phpto.png" alt="">
+                                    <img class="people-s-user-photo" src="<?=SITE_TEMPLATE_PATH?>/image/sample_face_150x150.png" alt="">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="people-s-photo-text">
+                            <h6>Игорь Соловьев Эдуардович</h6>
+                            <button class="btn btn-clean"><img src="<?=SITE_TEMPLATE_PATH?>/image/people-search-message.png" alt=""></button>
+                            <button class="btn btn-clean"><img src="<?=SITE_TEMPLATE_PATH?>/image/people-search-document.png" alt=""></button>
+                            <button class="btn btn-clean"><img src="<?=SITE_TEMPLATE_PATH?>/image/people-search-add-people.png" alt=""></button>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 col-12 mt-4 pb-3">
+                        <div class="people-s-photo">
+                            <a href="#">
+                                <div class="people-s-photo-img">
+                                    <img src="image/people-search-no-phpto.png" alt="">
+                                    <img class="people-s-user-photo" src="image/sample_face_150x150.png" alt="">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="people-s-photo-text">
+                            <h6>Игорь Соловьев Эдуардович</h6>
+                            <button class="btn btn-clean"><img src="image/people-search-message.png" alt=""></button>
+                            <button class="btn btn-clean"><img src="image/people-search-document.png" alt=""></button>
+                            <button class="btn btn-clean"><img src="image/people-search-add-people.png" alt=""></button>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 col-12 mt-4 pb-3">
+                        <div class="people-s-photo">
+                            <a href="#">
+                                <div class="people-s-photo-img">
+                                    <img src="image/people-search-no-phpto.png" alt="">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="people-s-photo-text">
+                            <h6>Игорь Соловьев Эдуардович</h6>
+                            <button class="btn btn-clean"><img src="image/people-search-message.png" alt=""></button>
+                            <button class="btn btn-clean"><img src="image/people-search-document.png" alt=""></button>
+                            <button class="btn btn-clean"><img src="image/people-search-add-people.png" alt=""></button>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 col-12 mt-4 pb-3">
+                        <div class="people-s-photo">
+                            <a href="#">
+                                <div class="people-s-photo-img">
+                                    <img src="image/people-search-no-phpto.png" alt="">
+                                    <img class="people-s-user-photo" src="image/sample_face_150x150.png" alt="">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="people-s-photo-text">
+                            <h6>Игорь Соловьев Эдуардович</h6>
+                            <button class="btn btn-clean"><img src="image/people-search-message.png" alt=""></button>
+                            <button class="btn btn-clean"><img src="image/people-search-document.png" alt=""></button>
+                            <button class="btn btn-clean"><img src="image/people-search-add-people.png" alt=""></button>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 col-12 mt-4 pb-3">
+                        <div class="people-s-photo">
+                            <a href="#">
+                                <div class="people-s-photo-img">
+                                    <img src="image/people-search-no-phpto.png" alt="">
+                                    <img class="people-s-user-photo" src="image/sample_face_150x150.png" alt="">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="people-s-photo-text">
+                            <h6>Игорь Соловьев Эдуардович</h6>
+                            <button class="btn btn-clean"><img src="image/people-search-message.png" alt=""></button>
+                            <button class="btn btn-clean"><img src="image/people-search-document.png" alt=""></button>
+                            <button class="btn btn-clean"><img src="image/people-search-add-people.png" alt=""></button>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 col-12 mt-4 pb-3">
+                        <div class="people-s-photo">
+                            <a href="#">
+                                <div class="people-s-photo-img">
+                                    <img src="image/people-search-no-phpto.png" alt="">
+                                    <img class="people-s-user-photo" src="image/sample_face_150x150.png" alt="">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="people-s-photo-text">
+                            <h6>Игорь Соловьев Эдуардович</h6>
+                            <button class="btn btn-clean"><img src="image/people-search-message.png" alt=""></button>
+                            <button class="btn btn-clean"><img src="image/people-search-document.png" alt=""></button>
+                            <button class="btn btn-clean"><img src="image/people-search-add-people.png" alt=""></button>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 col-12 mt-4 pb-3">
+                        <div class="people-s-photo">
+                            <a href="#">
+                                <div class="people-s-photo-img">
+                                    <img src="image/people-search-no-phpto.png" alt="">
+                                    <img class="people-s-user-photo" src="image/sample_face_150x150.png" alt="">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="people-s-photo-text">
+                            <h6>Игорь Соловьев Эдуардович</h6>
+                            <button class="btn btn-clean"><img src="image/people-search-message.png" alt=""></button>
+                            <button class="btn btn-clean"><img src="image/people-search-document.png" alt=""></button>
+                            <button class="btn btn-clean"><img src="image/people-search-add-people.png" alt=""></button>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 col-12 mt-4 pb-3">
+                        <div class="people-s-photo">
+                            <a href="#">
+                                <div class="people-s-photo-img">
+                                    <img src="image/people-search-no-phpto.png" alt="">
+                                    <img class="people-s-user-photo" src="image/sample_face_150x150.png" alt="">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="people-s-photo-text">
+                            <h6>Игорь Соловьев Эдуардович</h6>
+                            <button class="btn btn-clean"><img src="image/people-search-message.png" alt=""></button>
+                            <button class="btn btn-clean"><img src="image/people-search-document.png" alt=""></button>
+                            <button class="btn btn-clean"><img src="image/people-search-add-people.png" alt=""></button>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 col-12 mt-4 pb-3">
+                        <div class="people-s-photo">
+                            <a href="#">
+                                <div class="people-s-photo-img">
+                                    <img src="image/people-search-no-phpto.png" alt="">
+                                    <img class="people-s-user-photo" src="image/sample_face_150x150.png" alt="">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="people-s-photo-text">
+                            <h6>Игорь Соловьев Эдуардович</h6>
+                            <button class="btn btn-clean"><img src="image/people-search-message.png" alt=""></button>
+                            <button class="btn btn-clean"><img src="image/people-search-document.png" alt=""></button>
+                            <button class="btn btn-clean"><img src="image/people-search-add-people.png" alt=""></button>
+                        </div>
+                    </div>
+                </div>
+            </div>

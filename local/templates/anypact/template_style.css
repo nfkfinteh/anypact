@@ -2287,9 +2287,9 @@ input::-webkit-input-placeholder {
 }
 
 .deal-container {
-    background: url(image/bg-points.png) no-repeat;
-    background-position-x: -51vw;
-    background-position-y: calc(100% - 29px);
+    background: url(/local/templates/anypact/image/bg-points.png) no-repeat;
+    background-position-x: -16vw;
+    background-position-y: calc(100% - 5px);
     margin-bottom: 172px;
     margin-top: 106px;
 }
@@ -2303,8 +2303,8 @@ input::-webkit-input-placeholder {
 }
 
 .contact-container {
-    background: url(image/bg-points.png) no-repeat;
-    background-position-x: 75vw;
+    background: url(/local/templates/anypact/image/bg-points.png) no-repeat;
+    background-position-x: 62vw;
     background-position-y: 100%;
     padding-bottom: 81px;
 }
