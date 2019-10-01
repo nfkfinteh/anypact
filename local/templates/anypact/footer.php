@@ -3,7 +3,7 @@
 <footer class="footer">
     <div class="container-fluid">
 		<p align="center" style="padding: 50px 0;">
-			<img src="<?=SITE_TEMPLATE_PATH.'/img/logo.png?ioi'?>" />
+			<img src="<?=SITE_TEMPLATE_PATH.'/img/logo2.png?ioi'?>" />
 		</p>
 		<p align="center" size="16">
 			M-Group Investments Limited <br>

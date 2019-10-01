@@ -10,7 +10,7 @@
                         <div class="col-sm-4">
                             <a href="/pacts/?SECTION_ID=<?=$item_section['ID']?>">
                                 <?=$item_section['NAME']?>
-                                <span>(<?=$item_section['COUNT_IN_ITEM']?>)</span>
+                                <span><?=$item_section['COUNT_IN_ITEM']?></span>
                             </a>                            
                         </div>  
                   <?    } 
