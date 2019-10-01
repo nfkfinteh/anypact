@@ -1,0 +1,8 @@
+.page-link {
+    background: none !important;
+    border: none !important;
+}
+
+.page-link:hover {
+    color: #fd6600 !important;
+}

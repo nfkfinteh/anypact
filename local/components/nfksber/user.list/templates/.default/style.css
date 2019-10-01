@@ -38,6 +38,7 @@
     font-weight: 600;
     line-height: 1.6;
     flex-grow: 1;
+    font-size: 1.5rem;
 }
 .people-s-photo-text .btn-clean{
     background: none;
