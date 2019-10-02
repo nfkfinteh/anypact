@@ -220,3 +220,11 @@
         font-size: 16px;
     }
 }
+
+.btn-tiled {
+    background-image: url(http://anypact.nfksber.ru/local/templates/anypact/image/sprite.png) !important;
+}
+
+.btn-list {
+    background-image: url(/local/templates/anypact/image/sprite.png) !important;
+}

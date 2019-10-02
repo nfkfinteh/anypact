@@ -30,8 +30,8 @@ $APPLICATION->SetTitle("AnyPact");
     ?>
     <div class="ads-type d-flex justify-content-end align-middle">
         <span class="ads-type-name">Вид обьявлений</span>
-        <button class="btn btn-nfk btn-tiled active"></button>
-        <button class="btn btn-nfk btn-list"></button>
+        <button class="btn btn-tiled active"></button>
+        <button class="btn btn-list"></button>
     </div>
     <?//компонент выводит список всех предложений
     $APPLICATION->IncludeComponent("nfksber:pacts", 
