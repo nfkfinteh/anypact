@@ -35,7 +35,7 @@
                 );?>
             </div>
         </div>
-        <div class="col-lg-9 col-md-8 col-sm-12">
+        <div class="col-lg-9 col-md-8 col-sm-12 tenders-list">
             <?$APPLICATION->IncludeComponent("nfksber:allpacts.list",
             "",
                 Array(

@@ -1,7 +1,7 @@
 <div class="text-right btn-view mt-3">
     <span>Вид списка</span>
-    <button class="btn btn-nfk btn-tiled active"></button>
-    <button class="btn btn-nfk btn-list"></button>
+    <button class="btn btn-tiled active"></button>
+    <button class="btn btn-list"></button>
 </div>
 <div class="row grid-view">
     <?foreach($arResult["USER"] as $user):?>   

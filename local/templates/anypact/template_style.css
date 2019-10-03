@@ -265,8 +265,8 @@ input {
 
 .tender-post .tender-img {
     position: relative;
-    overflow: hidden;
-    height: 174px;
+   /* overflow: hidden;
+    height: 174px;*/
 }
 
 .tender-post .tender-text {
@@ -2661,7 +2661,7 @@ input::-webkit-input-placeholder {
     font-weight: 700;
     margin-top: 17px;
     line-height: 1.4;
-    height: 87px;
+    /* height: 87px; */
     overflow: hidden;
 }
 
@@ -2669,7 +2669,7 @@ input::-webkit-input-placeholder {
     font-size: 16px;
     margin-bottom: 15px;
     overflow: hidden;
-    height: 80px;
+    /* height: 80px; */
 }
 
 .tender-img::before {
