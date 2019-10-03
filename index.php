@@ -14,7 +14,9 @@ $APPLICATION->SetTitle("AnyPact");
 		$APPLICATION->IncludeComponent(
 			"bitrix:search.form",
 			"homepage",
-			Array()
+			Array(
+                "LOCATION" => $getGeo['cityName']
+            )
 		);?>		
 	</div>
 <?$APPLICATION->IncludeComponent(
@@ -26,7 +28,7 @@ $APPLICATION->SetTitle("AnyPact");
 		"COUNT_POINT" => "10",
 		"IBLOCK_ID" => "3",
 		"IBLOCK_TYPE" => "4",
-		"LOCATION" => "Чебоксары",
+		"LOCATION" => $getGeo['cityName'],
 		"MAP_HEIGHT" => "715px",
 		"MAP_WIDTH" => "100%"
 	)

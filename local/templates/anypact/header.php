@@ -52,6 +52,9 @@ global $USER;
 </head>
 <body>
 <div id="panel"><?$APPLICATION->ShowPanel();?></div>
+<?$getGeo = $APPLICATION->IncludeComponent("nfksber:location","",Array(
+        'CACHE_TYPE'=>'Y'
+));?>
 <!--Окно регистрации-->
 <noindex>
     <div id="regpopup_bg">
@@ -119,7 +122,12 @@ global $USER;
                     </div>
                     <? if ($USER->IsAuthorized()){ ?>
                         <div class="col-md-3">
-                            <span class="location">Чебоксары и чувашская республика</span>
+                            <?if(!empty($getGeo['cityName'])):?>
+                                <span class="location"><?=$getGeo['cityName']?></span>
+                            <?else:?>
+                                <span class="location">Выберите город</span>
+                            <?endif?>
+
                         </div>
 
                             <?                                

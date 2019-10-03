@@ -52,6 +52,7 @@ input {
     line-height: 2.5;
     text-decoration: underline;
     float: left;
+    cursor:pointer;
 }
 
 .location::after {
