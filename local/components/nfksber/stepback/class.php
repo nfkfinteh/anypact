@@ -30,12 +30,13 @@ class stepBack extends CBitrixComponent
     }
 
     function paramsUser($arParams){
+        global  $APPLICATION;
         $arResult["INFOBLOCK_ID"]   = $arParams["IBLOCK_ID"];
         $arResult["SECTION_ID"]     = $arParams["SECTION_ID"];
         $arResult["HTTP_REFERER"]   = $_SERVER["HTTP_REFERER"];        
         $arResult["MAIN_PAGE"]      = true;
-        
-        if($_SERVER['REQUEST_URI'] == '/'){
+
+        if ($APPLICATION->GetCurPage(false) === '/'){
             $arResult["MAIN_PAGE"] = false;            
         }
         return $arResult;
@@ -43,12 +44,13 @@ class stepBack extends CBitrixComponent
 
     public function executeComponent()
     {
-        if($this->startResultCache())
-        {
+
+      /*  if($this->startResultCache())
+        {*/
             $this->arResult = array_merge($this->arResult, $this->paramsUser($this->arParams));                                 
             $this->arResult["SECTION_INFO"] = $this->listSection($this->arResult["INFOBLOCK_ID"], $this->arResult["SECTION_ID"]);
             $this->includeComponentTemplate();
-        }
+        //}
         
         return $this->arResult;
     }
