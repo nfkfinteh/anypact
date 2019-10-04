@@ -6,6 +6,9 @@ use Bitrix\Main\Entity;
 
 class CDemoSqr extends CBitrixComponent
 {
+    private $ID_Message;
+    private $ID_HL;
+
     public function onPrepareComponentParams($arParams)
     {
         $result = array(
@@ -26,13 +29,42 @@ class CDemoSqr extends CBitrixComponent
         return $arResult;
     }
 
+    private function getMessage(){
+        
+        CModule::IncludeModule("highloadblock");
+        // получить все подписанны сделки        
+        $hlblock = HL\HighloadBlockTable::getById($this->ID_HL)->fetch();
+        $entity = HL\HighloadBlockTable::compileEntity($hlblock);
+        $entity_data_class = $entity->getDataClass();
+        $rsData = $entity_data_class::getList(array(
+            "select" => array("*"),
+            "order" => array("ID" => "ASC"),
+            "filter" => array("ID" => $this->ID_Message)
+        ));
+
+        while($arData = $rsData->Fetch()){
+            $arSendItem  = $arData;
+        }
+
+        return $arSendItem;
+    }
+
     public function executeComponent()
     {
-        if($this->startResultCache())
+        /*if($this->startResultCache())
         {
-            $this->arResult = array_merge($this->arResult, $this->paramsUser($this->arParams));  
+            $this->arResult = array_merge($this->arResult, $this->paramsUser($this->arParams));              
             $this->includeComponentTemplate();
+        }*/
+        
+        $this->arResult = array_merge($this->arResult, $this->paramsUser($this->arParams));              
+        // получить сообщения
+        if(!empty($_GET['id'])){
+            $this->ID_Message = $_GET['id'];
         }
+        $this->ID_HL    = 6;
+        $this->arResult['MESSAGES'] = $this->getMessage();
+        $this->includeComponentTemplate();
         
         return $this->arResult;
     }
