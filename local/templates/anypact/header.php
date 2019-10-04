@@ -141,7 +141,11 @@ global $USER;
 
                         <?}else {?>
                             <div class="col-md-6">
-                                <span class="location">Чебоксары и чувашская республика</span>
+                                <?if(!empty($getGeo['cityName'])):?>
+                                    <span class="location"><?=$getGeo['cityName']?></span>
+                                <?else:?>
+                                    <span class="location">Выберите город</span>
+                                <?endif?>
                                 <button class="btn btn-nfk btn-login" id="reg_button">Регистрация / Вход</button>
                             </div>
                         <?}?>                    
