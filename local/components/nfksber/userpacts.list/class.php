@@ -125,7 +125,7 @@ class CDemoSqr extends CBitrixComponent
         $rsData = $entity_data_class::getList(array(
             "select" => array("*"),
             "order" => array("ID" => "ASC"),
-            "filter" => array("UF_ID_USER" => $UserID)
+            "filter" => array("UF_USERS_ID" => $UserID)
         ));
         
         $arMesage_User = array();           

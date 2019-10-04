@@ -18,10 +18,12 @@
     order: 1;
     margin-left: 30px;
 }
+.message-block-left{
+    justify-content: flex-end;
+}
 .message-block-left .message-container{
     order: 0;
 }
-
 .message-block-left .message-container time{
     text-align: left;
 }
@@ -34,6 +36,7 @@
 }
 .message-message{
     margin-top: 26px;
+    display: inline-block;
 }
 .message-message time{
     display: block;

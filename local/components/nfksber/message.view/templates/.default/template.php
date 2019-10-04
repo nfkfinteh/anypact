@@ -32,7 +32,7 @@
 
     //echo json_encode($arMessage);
     $arMessage  =  json_decode($arResult['MESSAGES']['UF_TEXT_MESSAGE_USER'], true);
-    print_r($arMessage);
+    print_r($arResult['MESSAGES']);
 
 ?>
 </pre>
