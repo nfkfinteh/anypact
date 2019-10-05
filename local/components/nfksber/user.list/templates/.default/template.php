@@ -31,7 +31,11 @@
             <div class="people-s-photo-btn-block">
                 <button class="btn btn-clean"><img src="<?=SITE_TEMPLATE_PATH?>/image/people-search-message.png" alt=""></button>
                 <button class="btn btn-clean"><img src="<?=SITE_TEMPLATE_PATH?>/image/people-search-document.png" alt=""></button>
-                <button class="btn btn-clean"><img src="<?=SITE_TEMPLATE_PATH?>/image/people-search-add-people.png" alt=""></button>
+                <?if(!in_array($user['ID'], $arResult['FRENDS'])):?>
+                    <button class="btn btn-clean js-add-frends" data-login="<?=$user['LOGIN']?>">
+                        <img src="<?=SITE_TEMPLATE_PATH?>/image/people-search-add-people.png" alt="">
+                    </button>
+                <?endif?>
             </div>
         </div>    
     </div>
