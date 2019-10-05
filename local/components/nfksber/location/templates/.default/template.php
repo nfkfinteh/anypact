@@ -17,7 +17,7 @@
         <span class="city-choose-form-header">Или введите в поле</span>
             <form class="sity-submit">
                 <div class="row">
-                    <div class="col-md-6"><input type="text" class="sity-submit_input" placeholder="Введите город (например &quot;Санкт-Петербугрг&quot;"></div>
+                    <div class="col-md-6"><input type="text" class="sity-submit_input" placeholder="Введите город (например &quot;Санкт-Петербург&quot;)"></div>
                     <div class="col-md-6"><button class="btn btn-nfk-invert city-choose-btn-choose">Выбрать</button></div>
                 </div>
             </form>

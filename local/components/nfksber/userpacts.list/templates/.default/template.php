@@ -134,9 +134,9 @@ if ($count_pacts > 0):?>
         foreach ($arResult["MESSAGE_USER"] as $message) {
             ?>
             <tr>
-                <td scope="row"><?= $message["UF_TEXT_MESSAGE_USER"] ?></td>
+                <td scope="row"><?= $message["UF_TITLE_MESSAGE"] ?></td>
                 <td><?= $message["UF_TIME_CREATE_MSG"]->toString() ?></td>
-                <td><a href="/my_pacts/view_message/?id=<?= $pact["ID"] ?>" target="_blank">Посмотреть</a></td>
+                <td><a href="/my_pacts/view_message/?id=<?= $message["ID"] ?>" target="_blank">Посмотреть</a></td>
             </tr>
             <?
         }
