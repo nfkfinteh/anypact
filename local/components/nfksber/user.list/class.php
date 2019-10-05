@@ -56,6 +56,26 @@ class CDemoSqr extends CBitrixComponent
         return $arUser;
     }
 
+    public function getFrends(){
+        global $USER;
+        $current_user = $USER->GetID();
+        $arFilter = array("ID" => $current_user);
+        $arParams["SELECT"] = array("ID", "UF_FRENDS");
+        $res = CUser::GetList($by ="timestamp_x", $order = "desc", $arFilter, $arParams);
+        $result = [];
+        if($obj=$res->GetNext()){
+            if(!empty($obj['UF_FRENDS'])){
+               $result = json_decode($obj['~UF_FRENDS']);
+            }
+        }
+
+        if(empty($result)){
+            $result = [];
+        }
+
+        return $result;
+    }
+
 
     public function executeComponent()
     {
@@ -70,6 +90,7 @@ class CDemoSqr extends CBitrixComponent
 
         if($this->startResultCache(false, array($arrFilter, $arNavigation)))
         {*/
+            $this->arResult["FRENDS"] = $this->getFrends();
             $this->arResult["USER"] = $this->listAllUser($arNavParams);
             $this->includeComponentTemplate();
         //}

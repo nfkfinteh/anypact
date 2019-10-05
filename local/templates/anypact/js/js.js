@@ -7,6 +7,29 @@ $(document).ready(function(){
         $('.grid-view').addClass("list-view").removeClass("grid-view");
     }
 
+    $(document).on('click', '.js-add-frends', function(){
+        let that = $(this);
+        let login = $(this).attr('data-login');
+        let data = {
+            'login':login,
+            'action':'add'
+        };
+        $.ajax({
+            url: '/response/ajax/add_frends.php',
+            data: data,
+            type: 'POST',
+            success: function(data){
+                result = JSON.parse(data);
+                if(result.TYPE == 'SUCCESS'){
+                    that.hide();
+                }
+                else{
+                    console.log(result.VALUE);
+                }
+            }
+        });
+
+    });
 
 });
 
