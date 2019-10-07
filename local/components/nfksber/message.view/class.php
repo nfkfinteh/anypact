@@ -8,6 +8,7 @@ class CDemoSqr extends CBitrixComponent
 {
     private $ID_Message;
     private $ID_HL;
+    private $arIDUsers;
 
     public function onPrepareComponentParams($arParams)
     {
@@ -44,9 +45,22 @@ class CDemoSqr extends CBitrixComponent
 
         while($arData = $rsData->Fetch()){
             $arSendItem  = $arData;
+            $this->arIDUsers = $arData['UF_USERS_ID'];
         }
 
         return $arSendItem;
+    }
+
+    private function listUsers(){
+       // global $USER;
+        $arUserParams = Array();
+        foreach ($this->arIDUsers as $IDUser) {
+                $ObjUser = CUser::GetByID($IDUser);
+                $arUserParams = $ObjUser->Fetch();
+                $arUserParams['PERSONAL_PHOTO'] = CFile::GetPath($arUserParams['PERSONAL_PHOTO']);
+                $arParams[$arUserParams['ID']]  = $arUserParams;
+        }
+        return $arParams;
     }
 
     public function executeComponent()
@@ -64,6 +78,10 @@ class CDemoSqr extends CBitrixComponent
         }
         $this->ID_HL    = 6;
         $this->arResult['MESSAGES'] = $this->getMessage();
+        $this->arResult['UsersChart'] = $this->listUsers();
+        foreach($this->arResult['UsersChart'] as $user){
+            $this->arResult['FastUserParams'][$user['ID']]['FIO'] = $user['LAST_NAME'] .' '.$user['NAME'].' '. $user['SECOND_NAME'] ;
+        }
         $this->includeComponentTemplate();
         
         return $this->arResult;

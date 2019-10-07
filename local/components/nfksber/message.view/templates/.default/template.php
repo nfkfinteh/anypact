@@ -3,27 +3,27 @@
     //print_r($arResult['MESSAGES']);     
     $arMessage = array(
         array(
-            'user' => 'userA',
+            'user' => 1,
             'data' => '2019.10.25 07:22',
             'message' => 'Участник системы Anypact подписал ваш договор <a href=\"http://anypact.nfksber.ru/my_pacts/send_contract/?ID=18\">ссылка на договор</a>'
         ),
         array(
-            'user' => 'userB',
+            'user' => 9,
             'data' => '2019.10.25 07:24',
             'message' => 'Как я могу связаться с Вами?'
         ),
         array(
-            'user' => 'userA',
+            'user' => 1,
             'data' => '2019.10.25 07:22',
             'message' => 'Позвоните по телефону 893738888'
         ),
         array(
-            'user' => 'userB',
+            'user' => 10,
             'data' => '2019.10.25 07:22',
             'message' => 'Хорошо'
         ),
         array(
-            'user' => 'userA',
+            'user' => 1,
             'data' => '2019.10.25 07:22',
             'message' => '!'
         )
@@ -32,7 +32,9 @@
 
     //echo json_encode($arMessage);
     $arMessage  =  json_decode($arResult['MESSAGES']['UF_TEXT_MESSAGE_USER'], true);
-    print_r($arResult['MESSAGES']);
+    //print_r($arResult['MESSAGES']['UF_USERS_ID']);
+    print_r($arResult['FastUserParams']);
+    $UserID = CUser::GetID();
 
 ?>
 </pre>
@@ -42,20 +44,15 @@
             <div class="col-md-4 col-sm-12">
                 <h3 class="font-weight-bold">Участники</h3>
                 <ul class="list-person-conversation">
-                    <li class="person-conversation">
-                        <div class="person-conversation-photo">
-                            <img src="<?=SITE_TEMPLATE_PATH?>/image/sample_face_150x150.png" alt="Васильев Александр Евгеньевич"><!--41px x 41px-->
-                        </div>
-                        <div class="person-conversation-name">Васильев Александр Евгеньевич</div>
-                    </li>
-                    <li class="person-conversation">
-                        <div class="person-conversation-photo"></div>
-                        <div class="person-conversation-name">Васильев Александр Евгеньевич</div>
-                    </li>
-                    <li class="person-conversation">
-                        <div class="person-conversation-photo"></div>
-                        <div class="person-conversation-name">Васильев Александр Евгеньевич</div>
-                    </li>
+                    <? foreach($arResult['UsersChart'] as $user){ ?>
+                        <li class="person-conversation">
+                            <div class="person-conversation-photo">                                
+                                <img src="<?=$user['PERSONAL_PHOTO']?>" alt="Васильев Александр Евгеньевич">
+                                <!--<img src="<?=SITE_TEMPLATE_PATH?>/image/sample_face_150x150.png" alt="Васильев Александр Евгеньевич">-->
+                            </div>
+                            <div class="person-conversation-name"><?=$user['LAST_NAME']?> <?=$user['NAME']?> <?=$user['SECOND_NAME']?></div>
+                        </li>
+                    <?}?>
                 </ul>
                 <button class="btn btn-nfk btn-add-person w-100">+ добавить участника</button>
             </div>
@@ -63,7 +60,7 @@
                 <h3 class="font-weight-bold">Обсуждение условий договора №56465465</h3>
                 <div class="message-list">
                     <? foreach($arMessage as $Message){?>
-                        <?if($Message['user'] == 'userA'){?>
+                        <?if($Message['user'] == $UserID){?>
                             <div class="message-block message-block-left">
                                 <div class="message-person-photo">
                                     <div class="user-avatar">
@@ -75,7 +72,10 @@
                                     <div class="message-message">
                                         <time datetime="2019-03-01T15:12:13+03:00"><?=$Message['data']?></time>
                                         <div class="message-content">
-                                            <div class="message-text"><?=$Message['message']?></div>
+                                            <div class="message-text">
+                                                <p style="font-weight: 400;"><?=$arResult['FastUserParams'][$Message['user']]['FIO']?>:</p>
+                                                <p><?=$Message['message']?></p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -91,7 +91,10 @@
                                     <div class="message-message">
                                         <time datetime="2019-03-01T15:12:13+03:00"><?=$Message['data']?></time>
                                         <div class="message-content">
-                                            <div class="message-text"><?=$Message['message']?></div>
+                                            <div class="message-text">
+                                                <p style="font-weight: 400;"><?=$arResult['FastUserParams'][$Message['user']]['FIO']?>:</p>
+                                                <p><?=$Message['message']?></p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
