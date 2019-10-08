@@ -41,6 +41,7 @@
 .message-message time{
     display: block;
     color: #a8a8a8;
+    font-size: 14px;
 }
 .message-content{
     background-color: #f1f4f4;
@@ -129,4 +130,14 @@ ul.list-person-conversation .person-conversation-photo img{
 .btn-add-person{
     min-height: 46px;
     margin-top: 4px;
+}
+
+p.user-name-left{
+    text-align: left;
+    font-weight: 500;
+}
+
+p.user-name-right{
+    text-align: right;
+    font-weight: 500;
 }

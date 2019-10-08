@@ -16,17 +16,27 @@ async function responseRoute(arrParams){
 
 $(document).ready(function() {   
 
-    let url = new URL(window.location.href)
+    let url     = new URL(window.location.href)
     let searchParams = new URLSearchParams(url.search.substring(1))        
-    let id = searchParams.get("id")
+    let id      = searchParams.get("id")    
+    let TextMes = document.getElementById('textMessage')
 
-    let Params       = new Object()        
-        Params.route    = 'signCompany'
+    // нажатие кнопки отправки сообщения 
+    let ButtonSendMessage = document.getElementById('sendMessage')
+
+    ButtonSendMessage.onclick = function(){
+        console.log('Отправка сообщения')        
+        let Params      = new Object()        
         Params.IDMess   = id
+        Params.message  = TextMes.value
         let arrParams   = JSON.stringify(Params)
-    
-    var res = responseRoute(arrParams).then(function(data) {
-        console.log(data)
-        //$result = JSON.parse(data);
-    });
+
+        var res = responseRoute(arrParams).then(function(data) {
+            console.log(data)
+            location.reload()
+        });
+        
+    }   
+
+
 });

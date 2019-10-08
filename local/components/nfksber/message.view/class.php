@@ -80,7 +80,8 @@ class CDemoSqr extends CBitrixComponent
         $this->arResult['MESSAGES'] = $this->getMessage();
         $this->arResult['UsersChart'] = $this->listUsers();
         foreach($this->arResult['UsersChart'] as $user){
-            $this->arResult['FastUserParams'][$user['ID']]['FIO'] = $user['LAST_NAME'] .' '.$user['NAME'].' '. $user['SECOND_NAME'] ;
+            $this->arResult['FastUserParams'][$user['ID']]['FIO'] = $user['LAST_NAME'] .' '.$user['NAME'] ;
+            $this->arResult['FastUserParams'][$user['ID']]['InitialName'] = substr($user['NAME'], 1);
         }
         $this->includeComponentTemplate();
         
