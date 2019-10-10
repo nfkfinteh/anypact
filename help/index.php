@@ -20,25 +20,44 @@ h3 {
 		</div>
 	</div>
 	<div class="long-divider"></div>
-	<h3>Как это работает:</h3>
-	<div class="row">		
-		<div class="col-md-6">
-			<ul>
-				<li>1. Пункт</li>
-				<li>2. Пункт</li>
-			</ul>
-		</div>
-		<div class="col-md-6">
-			
-		</div>
-	</div>
-	<div class="long-divider"></div>
-	<h3>Видео </h3>
-	<div class="row">		
-		<div class="col-md-12">
-		<iframe width="560" height="315" src="https://www.youtube.com/embed/qGGEOOEM6zc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
-		</div>		
-	</div>
+</div>
+<div class="contact-container">
+    <div class="container">
+        <h2>Контакты</h2>
+        <div class="short-divider"></div>
+        <div class="row">
+            <div class="col-lg-6">
+                <a href="tel:88000000000">
+                    <div class="contact-phone-icon">
+                        <i class="icon-main icon-11"></i>
+                    </div>
+                    <div class="contact-phone">
+                        <span class="contact-big-text">
+                            8 (800) 200-84-84
+                        </span>
+                        <span class="text-gray">
+                            Менеджер ответит на Ваши вопросы по телефону
+                        </span>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-6">
+                <a href="mailto:info@anypact.ru">
+                    <div class="contact-mail-icon">
+                        <i class="icon-main icon-12"></i>
+                    </div>
+                    <div class="contact-mail">
+                        <span class="contact-big-text">
+                            info@anypact.ru
+                        </span>
+                        <span class="text-gray">
+                            Свяжитесь с нами по электронной почте
+                        </span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
 </div>
 </div>
 <div style="width: 100%; height: 80px;"></div>

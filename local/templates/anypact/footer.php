@@ -6,11 +6,11 @@
 			<img src="<?=SITE_TEMPLATE_PATH.'/img/logo2.png?ioi'?>" />
 		</p>
 		<p align="center" size="16">
-			M-Group Investments Limited <br>
-			Contact us: <a href="mailto:mail@m-group.investments">mail@m-group.investments</a>
+			&copy; 2019 АО «НФК-Сбережения», ООО «НФК-ФинТех», ООО «Пионер-Лизинг»<br>
+			электронная почта: <a href="mailto:info@anypact.ru">info@anypact.ru</a>
 		</p>
 		<p align="center">
-			&copy; 2018
+			
 		</p>
 	</div>
 </footer>

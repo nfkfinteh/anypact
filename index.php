@@ -176,7 +176,7 @@ $APPLICATION->SetTitle("AnyPact");
                     </div>
                     <div class="contact-phone">
                         <span class="contact-big-text">
-                            8 (800) 000-00-00
+                            8 (800) 200-84-84
                         </span>
                         <span class="text-gray">
                             Менеджер ответит на Ваши вопросы по телефону
