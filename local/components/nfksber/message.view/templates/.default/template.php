@@ -19,8 +19,11 @@
                 <ul class="list-person-conversation">
                     <? foreach($arResult['UsersChart'] as $user){ ?>
                         <li class="person-conversation">
-                            <div class="person-conversation-photo">                                
-                                <img src="<?=$user['PERSONAL_PHOTO']?>" alt="Васильев Александр Евгеньевич">
+                            <div class="person-conversation-photo">
+                                <span class="user-first-letter"><?=$user['FastUserParams'][$UserID]['InitialName']?></span>
+                                <?if ($user['PERSONAL_PHOTO'] !=''){?>                               
+                                    <img src="<?=$user['PERSONAL_PHOTO']?>" alt="Васильев Александр Евгеньевич">
+                                <?}?>
                                 <!--<img src="<?=SITE_TEMPLATE_PATH?>/image/sample_face_150x150.png" alt="Васильев Александр Евгеньевич">-->
                             </div>
                             <div class="person-conversation-name"><?=$user['LAST_NAME']?> <?=$user['NAME']?> <?=$user['SECOND_NAME']?></div>
