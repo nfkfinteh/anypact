@@ -1,7 +1,7 @@
 <?
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die();
 $rsSections = CIBlockSection::GetList(
-    array(),
+    array("CODE"=>"DESC"),
     array(
         "IBLOCK_ID" => $arParams["IBLOCK_ID"],
         "DEPTH_LEVEL"=>1
