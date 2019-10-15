@@ -2297,16 +2297,16 @@ input::-webkit-input-placeholder {
 
 .client-container {
     background: url(image/bg-points.png) no-repeat;
-    background-position-x: 67vw;
-    background-position-y: 100%;
+    background-position-x: 64vw;
+    background-position-y: 60%;
     margin-bottom: 25px;
     min-height: 432px;
 }
 
 .contact-container {
     background: url(/local/templates/anypact/image/bg-points.png) no-repeat;
-    background-position-x: 62vw;
-    background-position-y: 100%;
+    background-position-x: 64vw;
+    background-position-y: 60%;
     padding-bottom: 81px;
 }
 

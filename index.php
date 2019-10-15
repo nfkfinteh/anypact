@@ -133,7 +133,7 @@ $APPLICATION->SetTitle("AnyPact");
     </div>
     <div class="client-container">
         <div class="container">
-            <h2>Стать участником</h2>
+            <h2>Стать клиентом</h2>
             <div class="short-divider"></div>
         <div class="row">
             <div class="col-md-6">
@@ -141,7 +141,7 @@ $APPLICATION->SetTitle("AnyPact");
             </div>
 			<div class="col-md-6 text-center">
                 <a href="#">
-                    <img src="<?=SITE_TEMPLATE_PATH?>/image/desctop.png" alt="Подпись" style="margin-top:-50px;">
+                    <img src="<?=SITE_TEMPLATE_PATH?>/image/FX.png" alt="Подпись" style="margin-top:-170px;margin-left: -140px;">
                 </a>
             </div>
         </div>
@@ -240,7 +240,7 @@ $APPLICATION->SetTitle("AnyPact");
             //dotsData: true,
             margin: 30,
             stagePadding: 5,
-            //nav: true,
+            nav: true,
             responsive: {
                 0: {
                     items: 1
