@@ -9,7 +9,7 @@ $APPLICATION->SetTitle("AnyPact");
    //if ($USER->IsAuthorized()){
     ?>
 	<!--Форма поиска-->
-		<h2>Поиск контрагентов и сделок</h2>
+	<h2>Поиск контрагентов и сделок</h2>
 		<?// компонент поисковой строки
 		$APPLICATION->IncludeComponent(
 			"bitrix:search.form",
@@ -19,50 +19,21 @@ $APPLICATION->SetTitle("AnyPact");
             )
 		);?>		
 	</div>
-<?$APPLICATION->IncludeComponent(
-	"nfksber:yamap",
-	"",
-	Array(
-		"CACHE_TIME" => 36000,
-		"CACHE_TYPE" => "A",
-		"COUNT_POINT" => "10",
-		"IBLOCK_ID" => "3",
-		"IBLOCK_TYPE" => "4",
-		"LOCATION" => $getGeo['cityName'],
-		"MAP_HEIGHT" => "715px",
-		"MAP_WIDTH" => "100%"
-	)
-);?>
-	<!--// Форма поиска-->
-	<!--div class="signature-container">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-5">
-					<h1>AnyPact - Ваш <br>личный сервис</h1>
-					<div class="short-divider"></div>
-					<h3>Для дистанционного заключения сделок с использованием простой электронной подписи</h3>
-				</div>
-				<div class="col-md-7 signature text-center">
-					<img src="<?=SITE_TEMPLATE_PATH ?>/image/signature.png" alt="Подпись">
-				</div>
-			</div>
-		</div>
-	</div>-->
+    <?$APPLICATION->IncludeComponent(
+        "nfksber:yamap",
+        "",
+        Array(
+            "CACHE_TIME" => 36000,
+            "CACHE_TYPE" => "A",
+            "COUNT_POINT" => "10",
+            "IBLOCK_ID" => "3",
+            "IBLOCK_TYPE" => "4",
+            "LOCATION" => $getGeo['cityName'],
+            "MAP_HEIGHT" => "715px",
+            "MAP_WIDTH" => "100%"
+        )
+    );?>
 	<div class="container">
-		<!--<h4>Об электронной подписи</h4>
-		<div class="row">
-			<div class="col-md-6">
-				<p>
-					Электронная подпись подтверждает авторство электронного документа, обеспечивает его подлинность, конфиденциальность и юридическую значимость. Она обладает полной юридической силой согласно законодательству Российской Федерации. Таким образом, договор, заключённый в системе AnyPact, создаёт права и обязанности для подписавших его сторон, а также служит доказательством осуществления сделки в государственных органах, в том числе и в судебных инстанциях.
-				</p>
-			</div>
-			<div class="col-md-6">
-				<p>
-					Простая электронная подпись является цифровым аналогом подписи, написанной от руки, и представляет собой комбинацию из логина и пароля. В отличие от рукописной, электронной подписью Вы можете пользоваться удалённо, не выходя из дома. Изменить или подделать её невозможно, так как вся информация о её владельце представлена в зашифрованном виде. Благодаря этому электронная подпись гарантирует достоверность документа и безопасность обмена данными между участниками сделки.
-				</p>
-			</div>
-		</div>
-		<div class="long-divider"></div>-->
 		<h2 style="margin-top:80px;">С сервисом AnyPact</h2>
 		<div class="short-divider"></div>
 		<p>Вы можете заключить договор в Сети прямо сейчас! Anypact позволяет найти контрагента, сформировать условия договора, подписать его и приобрести по нему все права и обязанности. Что бы Вы ни делали, покупали или продавали имущество, искали для себя надежного исполнителя работ или сами оказывали услуги - теперь Вам не нужно волноваться о том, будет ли исполнена сделка, которую Вы заключили через Интернет. Ваше соглашение приобретает юридическую силу.</p>
@@ -140,7 +111,7 @@ $APPLICATION->SetTitle("AnyPact");
             Регистрация, авторизация и заключение договоров на площадке AnyPact проходят в режиме онлайн. Для заключения сделок вам понадобится подтвержденная учетная запись на портале Госуслуг. Подтвердить учетную запись портала Госуслуг можно в любом Многофункциональном центре Вашего города.
             </div>
 			<div class="col-md-6 text-center">
-                <a href="#">
+                <a href="#" id="open_reg_form">
                     <img src="<?=SITE_TEMPLATE_PATH?>/image/FX.png" alt="Подпись" style="margin-top:-170px;margin-left: -140px;">
                 </a>
             </div>
@@ -212,57 +183,38 @@ $APPLICATION->SetTitle("AnyPact");
         </div>
     </div>
 </div>
-    <? //}else { ?> 
-	<!--//-->
-	<!--Форма авторизации-->
-		<!--
-		<p align="center" style="padding: 50px 0;">
-			<img src="<?=SITE_TEMPLATE_PATH.'/img/logo.png?ioi'?>" />
-		</p>
-		<p align="center" size="16">
-			M-Group Investments Limited <br>
-			Contact us: <a href="mailto:mail@m-group.investments">mail@m-group.investments</a>
-		</p>	 
-		<p align="center">
-		<button type="button" class="btn btn-aut" id="reg_button">Войти</button>
-		</p>
-		<p align="center">
-			© 2018
-		</p>-->
-	<?//}?>
-	</div>
+</div>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="<?=SITE_TEMPLATE_PATH?>/js/slider/range_prices.js"></script>
     <script>
-        $(document).ready(function() {
-            var owl = $('.owl-carousel');
-            owl.owlCarousel({
-                dotsEach: true,
-                //dotsData: true,
-                margin: 30,
-                stagePadding: 5,
-                responsive: {
-                    0: {
-                        items: 1,
-                        nav: false
-                    },
-                    590: {
-                        items: 2,
-                        nav: true
-                    },
-                    768: {
-                        nav: true,
-                        items: 2
-                    },
-                    992: {
-                        nav: true,
-                        items: 4
-                    }
+    $(document).ready(function() {
+        var owl = $('.owl-carousel');
+        owl.owlCarousel({
+            dotsEach: true,
+            //dotsData: true,
+            margin: 30,
+            stagePadding: 5,
+            responsive: {
+                0: {
+                    items: 1,
+                    nav: false
+                },
+                590: {
+                    items: 2,
+                    nav: true
+                },
+                768: {
+                    nav: true,
+                    items: 2
+                },
+                992: {
+                    nav: true,
+                    items: 4
                 }
-            });
-            $('[data-toggle="tooltip"]').tooltip();
-        })
+            }
+        });
+        $('[data-toggle="tooltip"]').tooltip();
+    })
 
-        </script>
+    </script>
 
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

@@ -132,7 +132,8 @@ window.onload = function() {
         var regpopup_btn_open_aut = document.getElementById('regpopup_btn_aut');
         var regpopup_form_autorisation = document.getElementById('regpopup_autarisation');
         var regpopup_btn_open_reg = document.getElementById('regpopup_btn_reg');
-        var regpopup_form_registration = document.getElementById('regpopup_registration');        
+        var regpopup_form_registration = document.getElementById('regpopup_registration');
+        var open_reg_form = document.getElementById('open_reg_form');        
         
         document.getElementById('user_password_fild').value = '';
         document.getElementById('user_login_fild').value = '';
@@ -159,6 +160,16 @@ window.onload = function() {
             regpopup_form_registration.style.display = 'block';
             return false;
         };
+
+        if(document.getElementById('open_reg_form')){
+            open_reg_form.onclick = function(event) {
+                console.log("Форма регистрации");
+                regpopup_bg.style.display = 'block';
+                regpopup_form_autorisation.style.display = 'none';
+                regpopup_form_registration.style.display = 'block';
+                return false;
+            };
+        }
         // поверяем водимый логин на уникальность
         document.getElementById('user_login_fild').onblur = function(event){
             var fild_login  = this;

@@ -86,14 +86,24 @@ $("button.btn-list").click(function () {
     document.cookie = "list_style=1";
 });
 
+
 $("button.city-choose-btn-close").click(function () {
     $("div.city-choose").slideUp(600);
 });
 // геолокация открытия окна
+function openCloseWin(){
+    let statusWin = $(".city-choose").css('display');    
+    if(statusWin == 'none'){
+        $("div.city-choose").slideDown(600);
+    }else {
+        $("div.city-choose").slideUp(600);
+    }
+}
+
 $("span.location").click(function () {
-    $("div.city-choose").slideDown(600);
+    openCloseWin()
 });
 
 $("span.region").click(function () {
-    $("div.city-choose").slideDown(600);
+    openCloseWin()
 });
