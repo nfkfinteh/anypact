@@ -37,7 +37,7 @@ $APPLICATION->SetTitle("AnyPact");
     <p>Вы можете заключить договор в Сети прямо сейчас! Anypact позволяет найти контрагента, сформировать условия договора, подписать его и приобрести по нему все права и обязанности. Что бы Вы ни делали, покупали или продавали имущество, искали для себя надежного исполнителя работ или сами оказывали услуги - теперь Вам не нужно волноваться о том, будет ли исполнена сделка, которую Вы заключили через Интернет. Ваше соглашение приобретает юридическую силу.</p>
     <div class="row cards-how">
         <div class="col-md-6 col-lg-3">
-            <a href="/service/" style="color: #333;text-decoration: none;">
+            <a href="/service/#prosto" style="color: #333;text-decoration: none;">
                 <div class="card-how">
                     <i class="icon-main icon-1"></i>
                     <h5>ПРОСТО</h5>
@@ -46,7 +46,7 @@ $APPLICATION->SetTitle("AnyPact");
             </a>
         </div>
         <div class="col-md-6 col-lg-3">
-            <a href="/service/" style="color: #333;text-decoration: none;">
+            <a href="/service/#nadezhno" style="color: #333;text-decoration: none;">
                 <div class="card-how">
                     <i class="icon-main icon-2"></i>
                     <h5>НАДЁЖНО</h5>
@@ -55,7 +55,7 @@ $APPLICATION->SetTitle("AnyPact");
             </a>
         </div>
         <div class="col-md-6 col-lg-3">
-            <a href="/service/" style="color: #333;text-decoration: none;">
+            <a href="/service/#bezopasno" style="color: #333;text-decoration: none;">
                 <div class="card-how">
                     <i class="icon-main icon-3"></i>
                     <h5>БЕЗОПАСНО</h5>
@@ -64,7 +64,7 @@ $APPLICATION->SetTitle("AnyPact");
             </a>
         </div>
         <div class="col-md-6 col-lg-3">
-            <a href="/service/" style="color: #333;text-decoration: none;">
+            <a href="/service/#udobno" style="color: #333;text-decoration: none;">
                 <div class="card-how">
                     <i class="icon-main icon-4"></i>
                     <h5>УДОБНО</h5>
@@ -104,23 +104,24 @@ $APPLICATION->SetTitle("AnyPact");
 <!-- Описание и регистрация -->
 <div class="client-container">
     <div class="container">
-        <h2>Стать клиентом</h2>
+        <h2>Стать участником</h2>
         <div class="short-divider"></div>
-    <div class="row">
-        <div class="col-md-6">
-            Регистрация, авторизация и заключение договоров на площадке AnyPact проходят в режиме онлайн. Для заключения сделок вам понадобится подтвержденная учетная запись на портале Госуслуг. Подтвердить учетную запись портала Госуслуг можно в любом Многофункциональном центре Вашего города.
-        </div>
-        <div class="col-md-6 text-center">
-            <a href="#" id="open_reg_form">
-                <img src="<?=SITE_TEMPLATE_PATH?>/image/FX.png" alt="Подпись" style="margin-top:-170px;margin-left: -140px;">
-            </a>
+        <div class="row">
+            <div class="col-md-6">
+                Регистрация, авторизация и заключение договоров на площадке AnyPact проходят в режиме онлайн. Для заключения сделок вам понадобится подтвержденная учетная запись на портале Госуслуг. Подтвердить учетную запись портала Госуслуг можно в любом Многофункциональном центре Вашего города.
+            </div>
+            <div class="col-md-6 text-center">
+                <a href="#" id="open_reg_form">
+                    <img src="<?=SITE_TEMPLATE_PATH?>/image/FX.png" alt="Подпись" style="margin-top:-170px;margin-left: -140px;">
+                </a>
+            </div>
         </div>
     </div>
 </div>
 <!-- Пошаговая инструкция -->
 <div class="all-easy">
     <div class="container">
-        <h4>Все просто</h4>
+        <h2>Все просто</h2>
         <div class="row">
             <div class="col-md-3 col-sm-6">
                 <span class="big-number">1.</span>

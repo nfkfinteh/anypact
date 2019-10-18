@@ -14,4 +14,15 @@ while ($obj = $rsSections->GetNext(true, false)){
     unset($obj['ID']);
     $arResult['UF_FIELDS'][$id ] = $obj;
 }
+
+foreach($arResult['SECTIONS'] as $k => $v){
+    $subArr[$k] = $v["SORT"];
+}
+natsort($subArr);
+$subArrTmp = $arResult['SECTIONS'];
+unset($arResult['SECTIONS']);
+foreach($subArr as $k => $v) {
+    $arResult['SECTIONS'][$k] = $subArrTmp[$k];
+}
+
 ?>

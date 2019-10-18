@@ -56,22 +56,31 @@ $APPLICATION->SetTitle("AnyPact");
             <div class="col-12 col-lg-6">
                 <form action="">
                     <div class="row">
-                        <div class="col-10 col-md-5 col-lg-6 offset-1 offset-lg-0">
-                            <input type="text" placeholder="ФИО">
-                        </div>
-                        <div class="col-10 col-md-5 col-lg-6 offset-1 offset-md-0 mt-4 mt-md-0">
-                            <input type="email" placeholder="E-mail">
-                        </div>
+                        <? if($USER->IsAuthorized()){ ?>                        
+                            <div style="display:none;">
+                                <input type="text" value="">
+                                <input type="email" placeholder="E-mail">
+                            </div>
+                        <?}else {?>
+                            <div class="col-10 col-md-5 col-lg-6 offset-1 offset-lg-0">
+                                <input type="text" placeholder="ФИО">
+                            </div>
+                            <div class="col-10 col-md-5 col-lg-6 offset-1 offset-md-0 mt-4 mt-md-0">
+                                <input type="email" placeholder="E-mail">
+                            </div>
+                        <?}?>
                         <div class="col-10 col-lg-12 mt-4 offset-1 offset-lg-0">
                             <textarea name="" id="" rows="4"></textarea>
                         </div>
-                        <div class="col-10 col-lg-12 mt-3 offset-1 offset-lg-0">
+                        <? if(!$USER->IsAuthorized()){ ?>
+                        <div class="col-10 col-lg-12 mt-3 offset-1 offset-lg-0">                            
                             <label for="empty" class="radio-transform">
                                 <input type="checkbox" class="radio__input" name="template_type" value="empty" id="empty">
                                 <span class="radio__label">Нажимая на кнопку, вы даете согласие на обработку персональных данных и соглашаетесь с <a
                                         href="#" target="_blank">Политикой конфиденциальности</a></span>
                             </label>
                         </div>
+                        <? } ?>
                         <div class="col-10 col-lg-12 mt-2 offset-1 offset-lg-0">
                             <button class="btn btn-nfk send-btn">Отправить</button>
                         </div>

@@ -20,7 +20,14 @@ $this->setFrameMode(true);
             <?endif?>
             <h5><?=$section['NAME']?></h5>
             <?=$section['DESCRIPTION']?>
-            <button class="card-deal__button" href="/pacts/?SECTION_ID=<?=$section['ID']?>">Перейти</button>
+            <?
+                $URL_Section = '/pacts/?SECTION_ID='.$section['ID'];
+                // частный случай
+                if($section['ID'] == "29"){
+                    $URL_Section = 'https://nfksber.ru/open_account/';
+                }
+            ?>
+            <button class="card-deal__button" href="<?=$URL_Section?>">Перейти</button>
         </div>
     <?endforeach?>
 </div>
