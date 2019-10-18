@@ -234,26 +234,35 @@ $APPLICATION->SetTitle("AnyPact");
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script type="text/javascript" src="<?=SITE_TEMPLATE_PATH?>/js/slider/range_prices.js"></script>
     <script>
-        var owl = $('.main-carousel_sdel');
-        owl.owlCarousel({
-            dotsEach: true,
-            //dotsData: true,
-            margin: 30,
-            stagePadding: 5,
-            nav: true,
-            responsive: {
-                0: {
-                    items: 1
-                },
-                768: {
-                    items: 2
-                },
-                992: {
-                    items: 4
+        $(document).ready(function() {
+            var owl = $('.owl-carousel');
+            owl.owlCarousel({
+                dotsEach: true,
+                //dotsData: true,
+                margin: 30,
+                stagePadding: 5,
+                responsive: {
+                    0: {
+                        items: 1,
+                        nav: false
+                    },
+                    590: {
+                        items: 2,
+                        nav: true
+                    },
+                    768: {
+                        nav: true,
+                        items: 2
+                    },
+                    992: {
+                        nav: true,
+                        items: 4
+                    }
                 }
-            }
-        });
-        //$('[data-toggle="tooltip"]').tooltip();
-    </script>
+            });
+            $('[data-toggle="tooltip"]').tooltip();
+        })
+
+        </script>
 
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

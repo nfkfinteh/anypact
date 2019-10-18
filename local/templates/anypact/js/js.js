@@ -89,6 +89,11 @@ $("button.btn-list").click(function () {
 $("button.city-choose-btn-close").click(function () {
     $("div.city-choose").slideUp(600);
 });
+// геолокация открытия окна
 $("span.location").click(function () {
+    $("div.city-choose").slideDown(600);
+});
+
+$("span.region").click(function () {
     $("div.city-choose").slideDown(600);
 });
