@@ -2,24 +2,20 @@
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("AnyPact");
 ?>
-	<!---->
-	<?
-    // проверяем авторизован ли пользователь
-    //global $USER;
-   //if ($USER->IsAuthorized()){
-    ?>
 	<!--Форма поиска-->
 	<h2>Поиск контрагентов и сделок</h2>
 		<?// компонент поисковой строки
-		$APPLICATION->IncludeComponent(
-			"bitrix:search.form",
-			"homepage",
-			Array(
-                "LOCATION" => $getGeo['cityName']
-            )
-		);?>		
-	</div>
-    <?$APPLICATION->IncludeComponent(
+            $APPLICATION->IncludeComponent(
+                "bitrix:search.form",
+                "homepage",
+                Array(
+                    "LOCATION" => $getGeo['cityName']
+                )
+            );
+        ?>		
+</div>
+<? // вывод карты и поинтов на ней
+    $APPLICATION->IncludeComponent(
         "nfksber:yamap",
         "",
         Array(
@@ -32,92 +28,96 @@ $APPLICATION->SetTitle("AnyPact");
             "MAP_HEIGHT" => "715px",
             "MAP_WIDTH" => "100%"
         )
-    );?>
-	<div class="container">
-		<h2 style="margin-top:80px;">С сервисом AnyPact</h2>
-		<div class="short-divider"></div>
-		<p>Вы можете заключить договор в Сети прямо сейчас! Anypact позволяет найти контрагента, сформировать условия договора, подписать его и приобрести по нему все права и обязанности. Что бы Вы ни делали, покупали или продавали имущество, искали для себя надежного исполнителя работ или сами оказывали услуги - теперь Вам не нужно волноваться о том, будет ли исполнена сделка, которую Вы заключили через Интернет. Ваше соглашение приобретает юридическую силу.</p>
-		<div class="row cards-how">
-			<div class="col-md-6 col-lg-3">
-                <a href="/service/" style="color: #333;text-decoration: none;">
-                    <div class="card-how">
-                        <i class="icon-main icon-1"></i>
-                        <h5>ПРОСТО</h5>
-                        <p>Для заключения электронного договора Вам достаточно иметь подтверждённую учётную запись на портале Госуслуг.</p>
-                    </div>
-                </a>
-			</div>
-			<div class="col-md-6 col-lg-3">
-                <a href="/service/" style="color: #333;text-decoration: none;">
-                    <div class="card-how">
-                        <i class="icon-main icon-2"></i>
-                        <h5>НАДЁЖНО</h5>
-                        <p>Договора с электронной подписью имеют такую же юридическую силу, как и бумажные, собственноручно подписанные документы.</p>
-                    </div>
-                </a>
-			</div>
-			<div class="col-md-6 col-lg-3">
-                <a href="/service/" style="color: #333;text-decoration: none;">
-                    <div class="card-how">
-                        <i class="icon-main icon-3"></i>
-                        <h5>БЕЗОПАСНО</h5>
-                        <p>Система обеспечивает защиту размещённой в ней информации в соответствии с законодательством Российской Федерации.</p>
-                    </div>
-                </a>
-			</div>
-			<div class="col-md-6 col-lg-3">
-                <a href="/service/" style="color: #333;text-decoration: none;">
-                    <div class="card-how">
-                        <i class="icon-main icon-4"></i>
-                        <h5>УДОБНО</h5>
-                        <p>Вы можете использовать готовый шаблон документа или изменить его согласно Вашим пожеланиям и требованиям.</p>
-                    </div>
-                </a>
-			</div>
-		</div>
-	</div>
-    <div class="deal-container">
-        <div class="container">
-            <h2>Заключить сделку</h2>
-            <div class="short-divider"></div>
-            <?$APPLICATION->IncludeComponent("bitrix:catalog.section.list","sdelki_main",
-                Array(
-                    "VIEW_MODE" => "TEXT",
-                    "SHOW_PARENT_NAME" => "Y",
-                    "IBLOCK_TYPE" => "",
-                    "IBLOCK_ID" => "3",
-                    "SECTION_ID" => '',
-                    "SECTION_CODE" => "",
-                    "SECTION_URL" => "",
-                    "COUNT_ELEMENTS" => "Y",
-                    "TOP_DEPTH" => "1",
-                    "SECTION_FIELDS" => "",
-                    "SECTION_USER_FIELDS" => "",
-                    "ADD_SECTIONS_CHAIN" => "Y",
-                    "CACHE_TYPE" => "A",
-                    "CACHE_TIME" => "36000000",
-                    "CACHE_NOTES" => "",
-                    "CACHE_GROUPS" => "Y"
-                )
-            );?>
+    );
+?>
+<!-- О сервисе -->
+<div class="container">
+    <h2 style="margin-top:80px;">С сервисом AnyPact</h2>
+    <div class="short-divider"></div>
+    <p>Вы можете заключить договор в Сети прямо сейчас! Anypact позволяет найти контрагента, сформировать условия договора, подписать его и приобрести по нему все права и обязанности. Что бы Вы ни делали, покупали или продавали имущество, искали для себя надежного исполнителя работ или сами оказывали услуги - теперь Вам не нужно волноваться о том, будет ли исполнена сделка, которую Вы заключили через Интернет. Ваше соглашение приобретает юридическую силу.</p>
+    <div class="row cards-how">
+        <div class="col-md-6 col-lg-3">
+            <a href="/service/" style="color: #333;text-decoration: none;">
+                <div class="card-how">
+                    <i class="icon-main icon-1"></i>
+                    <h5>ПРОСТО</h5>
+                    <p>Для заключения электронного договора Вам достаточно иметь подтверждённую учётную запись на портале Госуслуг.</p>
+                </div>
+            </a>
         </div>
-    </div>
-    <div class="client-container">
-        <div class="container">
-            <h2>Стать клиентом</h2>
-            <div class="short-divider"></div>
-        <div class="row">
-            <div class="col-md-6">
-            Регистрация, авторизация и заключение договоров на площадке AnyPact проходят в режиме онлайн. Для заключения сделок вам понадобится подтвержденная учетная запись на портале Госуслуг. Подтвердить учетную запись портала Госуслуг можно в любом Многофункциональном центре Вашего города.
-            </div>
-			<div class="col-md-6 text-center">
-                <a href="#" id="open_reg_form">
-                    <img src="<?=SITE_TEMPLATE_PATH?>/image/FX.png" alt="Подпись" style="margin-top:-170px;margin-left: -140px;">
-                </a>
-            </div>
+        <div class="col-md-6 col-lg-3">
+            <a href="/service/" style="color: #333;text-decoration: none;">
+                <div class="card-how">
+                    <i class="icon-main icon-2"></i>
+                    <h5>НАДЁЖНО</h5>
+                    <p>Договора с электронной подписью имеют такую же юридическую силу, как и бумажные, собственноручно подписанные документы.</p>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-6 col-lg-3">
+            <a href="/service/" style="color: #333;text-decoration: none;">
+                <div class="card-how">
+                    <i class="icon-main icon-3"></i>
+                    <h5>БЕЗОПАСНО</h5>
+                    <p>Система обеспечивает защиту размещённой в ней информации в соответствии с законодательством Российской Федерации.</p>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-6 col-lg-3">
+            <a href="/service/" style="color: #333;text-decoration: none;">
+                <div class="card-how">
+                    <i class="icon-main icon-4"></i>
+                    <h5>УДОБНО</h5>
+                    <p>Вы можете использовать готовый шаблон документа или изменить его согласно Вашим пожеланиям и требованиям.</p>
+                </div>
+            </a>
         </div>
     </div>
 </div>
+<!-- Список категорий -->
+<div class="deal-container">
+    <div class="container">
+        <h2>Заключить сделку</h2>
+        <div class="short-divider"></div>
+        <?$APPLICATION->IncludeComponent("bitrix:catalog.section.list","sdelki_main",
+            Array(
+                "VIEW_MODE" => "TEXT",
+                "SHOW_PARENT_NAME" => "Y",
+                "IBLOCK_TYPE" => "",
+                "IBLOCK_ID" => "3",
+                "SECTION_ID" => '',
+                "SECTION_CODE" => "",
+                "SECTION_URL" => "",
+                "COUNT_ELEMENTS" => "Y",
+                "TOP_DEPTH" => "1",
+                "SECTION_FIELDS" => "",
+                "SECTION_USER_FIELDS" => "",
+                "ADD_SECTIONS_CHAIN" => "Y",
+                "CACHE_TYPE" => "A",
+                "CACHE_TIME" => "36000000",
+                "CACHE_NOTES" => "",
+                "CACHE_GROUPS" => "Y"
+            )
+        );?>
+    </div>
+</div>
+<!-- Описание и регистрация -->
+<div class="client-container">
+    <div class="container">
+        <h2>Стать клиентом</h2>
+        <div class="short-divider"></div>
+    <div class="row">
+        <div class="col-md-6">
+            Регистрация, авторизация и заключение договоров на площадке AnyPact проходят в режиме онлайн. Для заключения сделок вам понадобится подтвержденная учетная запись на портале Госуслуг. Подтвердить учетную запись портала Госуслуг можно в любом Многофункциональном центре Вашего города.
+        </div>
+        <div class="col-md-6 text-center">
+            <a href="#" id="open_reg_form">
+                <img src="<?=SITE_TEMPLATE_PATH?>/image/FX.png" alt="Подпись" style="margin-top:-170px;margin-left: -140px;">
+            </a>
+        </div>
+    </div>
+</div>
+<!-- Пошаговая инструкция -->
 <div class="all-easy">
     <div class="container">
         <h4>Все просто</h4>
@@ -145,6 +145,7 @@ $APPLICATION->SetTitle("AnyPact");
         </div>
     </div>
 </div>
+<!-- Контакты -->
 <div class="contact-container">
     <div class="container">
         <h2>Контакты</h2>
@@ -183,9 +184,7 @@ $APPLICATION->SetTitle("AnyPact");
         </div>
     </div>
 </div>
-</div>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script>
+<script>
     $(document).ready(function() {
         var owl = $('.owl-carousel');
         owl.owlCarousel({
@@ -214,7 +213,5 @@ $APPLICATION->SetTitle("AnyPact");
         });
         $('[data-toggle="tooltip"]').tooltip();
     })
-
-    </script>
-
+</script>
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
