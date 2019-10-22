@@ -13,10 +13,12 @@ if (!\Bitrix\Main\Loader::includeModule('iblock')) {
     die();
 }
 #проверка на аторизацию
+/*
 if($USER->GetID() != $data['MODIFIED_BY']){
     echo json_encode([ 'VALUE'=>'Вы не авторизваны', 'TYPE'=> 'ERROR']);
     die;
 }
+*/
 if (!$USER->IsAuthorized()){
     echo json_encode([ 'VALUE'=>'Вы не авторизваны', 'TYPE'=> 'ERROR']);
     die();
