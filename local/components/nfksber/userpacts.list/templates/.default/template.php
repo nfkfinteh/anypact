@@ -43,11 +43,11 @@ if ($count_pacts > 0):?>
         </tbody>
     </table>
 <?else:?>
-    <h3>У вас нет сделок</h3>
+    <h3>У Вас нет предложений</h3>
 <?endif?>
 <div style="width: 100%; height: 100px;">
 </div>
-<h2 class="title_line_button">Мои подписанные договора</h2>
+<h2 class="title_line_button">Заключенные договоры</h2>
 <?if(!empty($arResult["SEND_CONTRACT"])):?>
     <table class="table">
         <thead>
@@ -77,12 +77,12 @@ if ($count_pacts > 0):?>
     </table>
 <?else:?>
     <div style="clear: both"></div>
-    <h3>У вас нет подписанных договоров</h3>
+    <h3>У Вас нет подписанных договоров</h3>
 <?endif?>
 <div style="width: 100%; height: 100px;">
 </div>
 
-<h2 class="title_line_button">Предложенные редакции</h2>
+<h2 class="title_line_button">Предложенные редакции договоров</h2>
 <?if(!empty($arResult["REDACTION"])):?>
     <table class="table">
         <thead>
@@ -114,7 +114,7 @@ if ($count_pacts > 0):?>
     </table>
 <?else:?>
     <div style="clear: both"></div>
-    <h3>У вас нет подписанных предложенных редакций</h3>
+    <h3>У Вас нет подписанных предложенных редакций</h3>
 <?endif?>
 <div style="width: 100%; height: 100px;">
 </div>
@@ -144,7 +144,7 @@ if ($count_pacts > 0):?>
         </tbody>
     </table>
 <?else:?>
-    <h3>У вас нет сообщений</h3>
+    <h3>У Вас нет сообщений</h3>
 <?endif?>
 
 <div class="modal fade bd-message-modal-sm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

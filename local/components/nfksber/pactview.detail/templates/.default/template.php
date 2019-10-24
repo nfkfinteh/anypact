@@ -71,7 +71,7 @@ foreach ($arResult["PROPERTY"]["IMG_FILE"] as $item){
         </div>
         <div class="cardPact-info">
             <span class="float-left">Репутация</span><span class="float-right cardPact-rating">&#9733; 3,9</span><br>
-            <span class="float-left">Выполненных сделок</span><span class="float-right "><?=$arResult['DOGOVOR']['CNT']?></span><br>
+            <span class="float-left">Заключенных сделок</span><span class="float-right "><?=$arResult['DOGOVOR']['CNT']?></span><br>
             <span>9 оценок</span>
         </div>
         <button type="button" class="btn btn-nfk d-block cardPact-bBtn" data-toggle="modal" data-target=".bd-message-modal-sm">Написать сообщение</button>
