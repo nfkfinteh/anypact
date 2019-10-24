@@ -41,7 +41,7 @@ $MESS["USER_MOBILE"] = "Мобильный:";
 $MESS["USER_PAGER"] = "Пейджер:";
 $MESS["USER_PHONES"] = "Телефоны";
 $MESS["USER_POST_ADDRESS"] = "Почтовый адрес";
-$MESS["USER_CITY"] = "Город:";
+$MESS["USER_CITY"] = "Город/населенный пункт:";
 $MESS["USER_STREET"] = "Улица:";
 $MESS["USER_HOUSE"] = "Дом, корпус, квартира:";
 $MESS["USER_STATE"] = "Область / край /Республика:";
@@ -94,4 +94,5 @@ $MESS["BANK_NAME"] = "Наименование Банка:";
 $MESS["BANK_BIC"] = "БИК Банка:";
 $MESS["BANK_KS"] = "Кор\счет Банка:";
 $MESS["BANK_RS"] = "Расчетный счет:";
+$MESS["UF_INN_BANK"] = "ИНН Банка:";
 ?>

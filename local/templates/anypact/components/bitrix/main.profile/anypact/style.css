@@ -80,7 +80,7 @@ div.bx-auth-profile div.bx-auth-secure-unlock {
 }
 
 .user_profile_form_editdata_foto img#edit_user_photo {
-    position: absolute;
+    /* position: absolute; */
 }
 
 .user_profile_form_editdata_foto img {
@@ -94,7 +94,7 @@ div.bx-auth-profile div.bx-auth-secure-unlock {
     padding-bottom: 4px;
 }
 
-.user_profile_form_editdata input,
+.user_profile_form_editdata input,.user_profile_form_editdata select,
 .user_profile_form_fixdata input {
     padding: 14px 18px;
     margin-bottom: 6px;

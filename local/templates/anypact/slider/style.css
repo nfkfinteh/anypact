@@ -1,0 +1,76 @@
+/*start reset*/
+body, div, dl, dt,dd, ul,ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, hr, td {
+margin:0; padding:0;
+}	
+table {
+	border-collapse:collapse; border-spacing:0;
+}
+fieldset, img {
+	border:0;
+}
+address, caption, cite, code, dfn, em, strong, th, var {
+	font-style:normal; font-weight:normal;
+}
+ol, ul {
+	list-style:none;
+}
+caption, th {
+	text-align:left;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-size:100%; font-weight:normal;
+}
+q:before, q:after {
+	content:'';
+}
+abbr, acronum {
+	border:0;
+}
+/*end reset*/
+
+html, body {
+	height:100%;
+	font:normal 12px/18px Arial, san-serif;
+}
+.slider_wrap {
+margin:100px auto 0;
+width:680px;
+height:400px;
+position:relative;
+overflow:hidden;
+}
+.slider_wrap img {
+width:640px;
+height:auto;
+display:none;
+position:absolute;
+top:0;
+left:20px;	
+}
+.slider_wrap img:first-child {
+display:block;
+}
+.slider_wrap span {
+margin-top:-13px;
+width:15px;
+height:26px;
+display:block;
+position:absolute;
+top:50%;
+cursor:pointer;
+background:url(slider2_arrow.png) no-repeat;
+}
+.slider_wrap span.next {
+right:0;
+background-position:-15px 0;
+}
+.slider_wrap span.next:hover {
+background-position:-15px -26px;
+}
+.slider_wrap span.prev {
+left:0;
+background-position: 0 0;
+}
+.slider_wrap span.prev:hover {
+background-position: 0 -26px;
+}
