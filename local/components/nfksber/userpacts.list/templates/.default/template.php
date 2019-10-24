@@ -52,6 +52,7 @@ if ($count_pacts > 0):?>
     <table class="table">
         <thead>
         <tr>
+            <th scope="col">Контрагент</th>
             <th scope="col">Наименование</th>
             <th scope="col">Дата подписания контрагентом</th>
             <th scope="col">Статус</th>
@@ -63,6 +64,11 @@ if ($count_pacts > 0):?>
         foreach ($arResult["SEND_CONTRACT"] as $pact) {
             ?>
             <tr>
+                <td scope="row" style="width: 130px;">
+                    <div class="avatar_pact">
+                        <a href="#"><img src="/upload/main/736/7365360e2272c6c979cbc3c2be73dd89.jpg" height="60" alt="Спил деревьев, расчистка участков, кронирование"></a>
+                    </div>
+                </td>
                 <td scope="row"><?= $pact["NAME_CONTRACT"]["NAME"] ?></td>
                 <td><?= $pact['UF_TIME_SEND_USER_A']->toString(); ?></td>
                 <!--<td><a href="/upload/private/userfiles/<?= $pact["UF_ID_GROUP"] ?>/<?= $pact["UF_ID_USER_GROUP"] ?>/pact/<?= $pact["ID"] ?>/pact/dog_21_01_2019.pdf?" target="_blank">Посмотреть</a></td>-->
@@ -82,11 +88,12 @@ if ($count_pacts > 0):?>
 <div style="width: 100%; height: 100px;">
 </div>
 
-<h2 class="title_line_button">Предложенные редакции договоров</h2>
+<h2 class="title_line_button">Договоры, ожидающие подписания с моей стороны</h2>
 <?if(!empty($arResult["REDACTION"])):?>
     <table class="table">
         <thead>
         <tr>
+            <th scope="col">Контрагент</th>
             <th scope="col">Наименование</th>
             <th scope="col">Пользователь</th>
             <th scope="col">Дата изменеия</th>
@@ -101,6 +108,11 @@ if ($count_pacts > 0):?>
             ?>
             <?if(!empty($arIdContract) && in_array($red['ID'], $arIdContract)) continue;?>
                 <tr>
+                    <td scope="row" style="width: 130px;">
+                        <div class="avatar_pact">
+                            <a href="#"><img src="/upload/iblock/5e8/5e8f1da9ee8faa14d442cd6af0763859.jpg" height="60" alt="Спил деревьев, расчистка участков, кронирование"></a>
+                        </div>
+                    </td>
                     <td scope="row"><?= $red["NAME"] ?></td>
                     <td><a href="<?=$red['USER_B']['LINK']?>"><?=$red['USER_B']['NAME']?></a></td>
                     <td><?= $red['TIMESTAMP_X']?></td>

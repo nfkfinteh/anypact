@@ -162,7 +162,7 @@ global $USER;
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse " id="navbarSupportedContent">
+            <div class="collapse navbar-collapse " id="navbarSupportedContent" style="padding-right: 0;">
                 <? // навигационное меню для разных типов пользователей
                     if ($USER->IsAuthorized()){
                         $arUrlMenu = array(
@@ -171,7 +171,8 @@ global $USER;
                             '/pacts/' => 'Все сделки',
                             '/search_people/' => 'Поиск людей',
                             '/service/' => 'О сервисе',
-                            '/help/' => 'Поддержка'
+                            '/help/' => 'Поддержка',
+                            '/contacts/' => 'Контакты'
                         );
                     }else {
                         $arUrlMenu = array(

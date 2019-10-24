@@ -62,7 +62,7 @@
 
 .login-information{
     display: inline-block;
-    float: right;
+    /* float: right; */
 }
 .login-information .login-information-container{
     display: flex;
