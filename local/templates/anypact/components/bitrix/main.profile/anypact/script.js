@@ -35,8 +35,8 @@ $(document).ready(function() {
         e.preventDefault();
         let that = $(this);
 
-        var res = getURLData(that).then(function(data) {
-
+        var res = getURLData(that).then(function(data) {          
+            console.log(data);
             $result = JSON.parse(data);
 
             if($result['TYPE']=='ERROR'){

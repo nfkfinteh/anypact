@@ -9,7 +9,7 @@ $APPLICATION->SetTitle("AnyPact");
     if ($USER->IsAuthorized()){
     ?>
     <!--Созданные или подписанные пользователем документы-->   
-    <h1>Личный кабинет</h1>
+    <h1>Мои сделки</h1>
     <?//компонент выводит список договоров пользователя
     $APPLICATION->IncludeComponent("nfksber:userpacts", 
     "", 

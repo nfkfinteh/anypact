@@ -38,14 +38,9 @@ $rsData = $entity_data_class::getList(array(
     "filter" => array("ID"=>$IDMessage)  // Задаем параметры фильтра выборки
 ));
 
-// полученные поля выборки
 $arData = $rsData->Fetch();
 $arrMessages =  json_decode($arData['UF_TEXT_MESSAGE_USER'], true);
 
-// проверить пользователя может ли он писать сообщения
-
-
-// обновление сообщений
 $arrMessage = array(
   'user' => $IDUser,
   'data' => date("m.d.y H:m"),

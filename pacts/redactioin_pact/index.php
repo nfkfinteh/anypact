@@ -28,24 +28,13 @@ $APPLICATION->SetTitle("AnyPact");
 
     <!--//-->
     <?} else {?>
-        <div class="container">
-            <p align="center" style="padding: 50px 0;">
-                <img src="<?=SITE_TEMPLATE_PATH.'/img/logo.png?ioi'?>" />
-            </p>
-            <p align="center" style="padding: 50px 0;">
-                Вам необходимо Зарегистрироваться.
-            </p>
-            <p align="center" size="16">
-                M-Group Investments Limited <br>
-                Contact us: <a href="mailto:mail@m-group.investments">mail@m-group.investments</a>
-            </p>	 
-            <p align="center">
-        <button type="button" class="btn btn-aut" id="reg_button">Зарегистрироваться</button>
-            </p>
-            <p align="center">
-                © 2018
-            </p>
+        <div class="d-flex flex-column align-items-center text-center mt-5 pt-5 mb-5" >
+            <img src="<?=SITE_TEMPLATE_PATH?>/image/forbidden.png" alt="Необходима регистрация">
+            <h3 class="text-uppercase font-weight-bold mt-3" style="max-width: 550px">Вам необходимо зарегистрироваться, чтобы увидеть данную страницу</h3>
+            <!--<a href="#" class="btn btn-nfk mt-4" style="width: 262px; height: 46px; padding-top: 10px;">Региcтрация</a>-->
+            <a href="/" class="mt-3">Вернуться на главную страницу</a>
+        </div>
     <?}?>
-</div>
+    </div>
 </div>
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

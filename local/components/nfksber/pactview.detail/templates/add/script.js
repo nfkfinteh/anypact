@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    // Выбор категории
     $('#choice_category li a').on('click', function() {
         let selected_item = $(this);
         let selected_item_text = selected_item.text();
@@ -9,10 +10,19 @@ $(document).ready(function() {
         return false;
     });
 
+    // открытие списка категорий
     $('#param_selected_category').on('click', function() {
-
-        $('.select_category').css({ 'display': 'table', 'height': '0px' });
-        $('.select_category').animate({ 'height': '100%' }, 500);
+        let status = $(this).attr("data");
+        if(status == 'close'){
+            // открытие списка
+            $('.select_category').css({ 'display': 'table', 'height': '0px' });
+            $(this).attr("data", "open");
+        }else {
+            // закрытие списка
+            $('.select_category').css({ 'display': 'none', 'height': '0px' });            
+            $(this).attr("data", "close");
+        }
+        
     });
 
 

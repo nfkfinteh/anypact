@@ -6,7 +6,7 @@
  */
 /*
 задача: профиль пользователя существует для нескольких ситуаций
-1. Это перехот от страницы авторизации с ЕСИА
+1. Это переход от страницы авторизации с ЕСИА
 2. Просто редактирование информации пользователем.
 Для пользователя недоступно редактирование некоторых полей
 */
@@ -46,8 +46,20 @@
                                 </div>
                                 <div class="form-group">
                                     <label><?=GetMessage("USER_COUNTRY")?></label>
-                                    <input type="text" name="PERSONAL_COUNTRY" maxlength="50" value="<?=$arResult["arUser"]["PERSONAL_COUNTRY"]?>">
+                                    <select name="PERSONAL_COUNTRY">                                    
+                                        <option value="<?=$arResult["arUser"]["PERSONAL_COUNTRY"]?>"><?=GetCountryByID($arResult["arUser"]["PERSONAL_COUNTRY"])?></option>    
+                                        <option value="1">Россия</option>
+                                        <option value="4">Беларусь</option>
+                                        <option value="6">Казахстан</option>
+                                        <option value="7">Киргизия</option>
+                                        <option value="76">Китай</option>
+                                    </select>
+                                    <!-- <input type="text" name="PERSONAL_COUNTRY" maxlength="50" value="<?=$arResult["arUser"]["PERSONAL_COUNTRY"]?>"> -->
                                 </div>
+                                <!-- <div class="form-group">
+                                    <label><?=GetMessage("USER_COUNTRY")?></label>
+                                    <input type="text" name="PERSONAL_COUNTRY" maxlength="50" value="<?=$arResult["arUser"]["PERSONAL_COUNTRY"]?>">
+                                </div> -->
                                 <div class="form-group">
                                     <label><?=GetMessage("USER_STATE")?></label>
                                     <input type="text" name="PERSONAL_STATE" maxlength="50" value="<?=$arResult["arUser"]["PERSONAL_STATE"]?>">
@@ -56,23 +68,27 @@
                                     <label><?=GetMessage("USER_REGION")?></label>
                                     <input type="text" name="UF_REGION" maxlength="50" value="<?=$arResult["arUser"]["UF_REGION"]?>">
                                 </div>
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <label><?=GetMessage("USER_CITY")?></label>
                                     <input type="text" name="PERSONAL_CITY" maxlength="50" value="<?=$arResult["arUser"]["PERSONAL_CITY"]?>">
-                                </div>
-                                <div class="form-group form-checkbox">
+                                </div> -->
+                                <div class="form-group form-checkbox" style="padding-left: 21px;">
                                     <input type="checkbox" <?if($arResult["arUser"]["UF_HIDE_PROFILE"]):?>checked<?endif?> id="hide_profile" name="hide_profile">
-                                    <label for="hide_profile">не показывать в поиске</label>
+                                    <label for="hide_profile" style="padding: 44px 20px;">не показывать меня в поиске</label>
                                     <input type="hidden" name="UF_HIDE_PROFILE" value="<?=$arResult["arUser"]["UF_HIDE_PROFILE"]?>" class="hide_profile_input">
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-xl-4 col-md-6 col-sm-12">
-                        <div class="form-group left_blok_margin_first">
+                            <div class="form-group left_blok_margin_first">
+                                    <label><?=GetMessage("USER_CITY")?></label>
+                                    <input type="text" name="PERSONAL_CITY" maxlength="50" value="<?=$arResult["arUser"]["PERSONAL_CITY"]?>">
+                                </div>
+                        <!--<div class="form-group left_blok_margin_first">
                             <label><?=GetMessage("USER_NPUNKT")?></label>
                             <input type="text" name="UF_N_PUNKT" maxlength="50" value="<?=$arResult["arUser"]["UF_N_PUNKT"]?>">
-                            </div>
+                            </div>-->
                         <div class="form-group">
                             <label><?=GetMessage("USER_STREET")?></label>
                             <input type="text" name="UF_STREET" maxlength="50" value="<?=$arResult["arUser"]["UF_STREET"]?>">
@@ -93,7 +109,7 @@
                         </div>
                         <button type="submit" class="btn btn-aut edit-profile__btn" id="save_profile_button">Сохранить</button>
                     </div>
-                </form>
+                
             </div>
         </div>
         <div class="user_profile_form_fixdata">
@@ -118,9 +134,9 @@
                     </div>
                     <div class="form-group">
                         <label style="width: 100%;"><?=GetMessage("DATAR_POL")?></label>
-                        <input type="text" name="PERSONAL_GENDER" maxlength="50" value="<?=$arResult["arUser"]["PERSONAL_GENDER"]?>" style="width: 40%; float: left; margin-right: 10%;" disabled>
-                        <input type="text" name="PERSONAL_BIRTHDAY" maxlength="50" value="<?=$arResult["arUser"]["PERSONAL_BIRTHDAY"]?>" style="width: 50%;" disabled>
-                    </div>
+                        <input type="text" name="PERSONAL_GENDER" maxlength="50" value="<?=$arResult["arUser"]["PERSONAL_GENDER"]?>" style="width: 40%; float: left; margin-right: 10%;" >
+                        <input type="text" name="PERSONAL_BIRTHDAY" maxlength="50" value="<?=$arResult["arUser"]["PERSONAL_BIRTHDAY"]?>" style="width: 50%;">
+                    </div>                    
                     <div class="form-group">
                         <? if (!empty($arResult['arUser']['UF_ETAG_ESIA']) && $arResult['arUser']['UF_ESIA_AUT']) {?>                                                
                             <img src="<?=SITE_TEMPLATE_PATH?>/img/gos_usl.png" />
@@ -136,11 +152,11 @@
                 <div class="col-xl-4 col-md-6 col-sm-12">
                     <div class="form-group left_blok_margin_ub">
                         <label><?=GetMessage("SNILS")?></label>
-                        <input type="text" name="LAST_NAME" maxlength="50" value="<?=$arResult["arUser"]["UF_SNILS"]?>" disabled>
+                        <input type="text" name="UF_SNILS" maxlength="50" value="<?=$arResult["arUser"]["UF_SNILS"]?>" >
                     </div>
                     <div class="form-group">
                         <label><?=GetMessage("INN")?></label>
-                        <input type="text" name="LAST_NAME" maxlength="50" value="<?=$arResult["arUser"]["UF_INN"]?>" disabled>
+                        <input type="text" name="UF_INN" maxlength="50" value="<?=$arResult["arUser"]["UF_INN"]?>" >
                     </div>
                     <div class="form-group">
                         <label style="width: 100%;"><?=GetMessage("SN_PASSPORT")?></label>
@@ -154,8 +170,12 @@
                     <div class="form-group">
                         <label><?=GetMessage("KEM_V_PASSPORT")?></label>
                         <input type="text" name="LAST_NAME" maxlength="50" value="<?=$arResult["arUser"]["UF_KEM_VPASSPORT"]?>" disabled>
-                    </div>                    
-                </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-aut edit-profile__btn" id="save_profile_button">Сохранить</button>
+                    </div>    
+                </div>                
+                </form>
             </div>
         </div>
         <div class="user_profile_form_editdata" style="margin-bottom:50px;">
@@ -170,6 +190,10 @@
                         <div class="form-group">
                             <label><?=GetMessage("BANK_BIC")?></label>
                             <input type="text" name="UF_BIC_BANK" maxlength="50" value="<?=$arResult["arUser"]["UF_BIC_BANK"]?>" >
+                        </div>
+                        <div class="form-group">
+                            <label><?=GetMessage("UF_INN_BANK")?></label>
+                            <input type="text" name="UF_INN_BANK" maxlength="50" value="<?=$arResult["arUser"]["UF_INN_BANK"]?>" >
                         </div>
                     </div>
                     <div class="col-xl-4 col-md-6 col-sm-12">

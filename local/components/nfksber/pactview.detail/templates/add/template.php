@@ -1,6 +1,6 @@
 <? //print_r($arResult["INFOBLOCK_SECTION_LIST"]) ;?>
 <? //print_r($arResult) ;?>
-<h1>Новое объявление</h1>
+<h1>Новое предложение</h1>
 <div class="tender cardPact">
     <div class="row">
             <div class="col-lg-8 col-md-8 col-sm-8">            
@@ -50,19 +50,19 @@
                             <?=$arResult["ELEMENT"]["DETAIL_TEXT"]?>
                         </div>                        
                     </div>
-                    <h3>Название</h3><span>(режим редактирования)</span>           
+                    <h3>Название</h3><span>(введите описание сделки и/или предмета сделки)</span>           
                     <div class="cardPact-EditText-Descript">                        
                         <div class="editbox" contenteditable="true" id="ad_descript">
                             <?=$arResult["ELEMENT"]["DETAIL_TEXT"]?>
                         </div>                        
                     </div>
-                    <h3>Описание</h3><span>(режим редактирования)</span>
+                    <h3>Описание</h3><span>(добавьте краткое описание сделки или предмета сделки в произвольной форме)</span>
                     <div class="cardPact-EditText-Сonditions">
                         <div class="editbox" contenteditable="true" id="ad_condition" data-code="<?=$arResult['PROPERTY']['CONDITIONS_PACT']['CODE']?>">
                             <?=$arResult["PROPERTY"]["CONDITIONS_PACT"]["VALUE"]["TEXT"]?>
                         </div>                        
                     </div>
-                    <h3>Условия</h3><span>(режим редактирования)</span>
+                    <h3>Условия</h3><span>(добавьте описание любых важных для вас Условий совершения сделки, например, необходима ли предоплата и т.п.)</span>
                 </div>
             </div>
         <div class="col-lg-4 col-md-4 col-sm-4 cardPact-rightPanel">
@@ -74,7 +74,10 @@
             </h1>
             <h3>Сумма</h3><span>(укажите единицы)</span>
             <div class="selectbox">
-                <div id="param_selected_category" class="view_text">Выбор категории <span class="glyphicon glyphicon-chevron-down"></span></div>
+                <div id="param_selected_category" class="view_text" data="close">
+                    Выбор категории 
+                    <span class="glyphicon glyphicon-chevron-down"></span>
+                </div>
                 <div class="select_category">                    
                     <ul id="choice_category">
                     <? foreach($arResult["INFOBLOCK_SECTION_LIST"] as $item){

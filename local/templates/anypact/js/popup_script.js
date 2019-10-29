@@ -132,7 +132,8 @@ window.onload = function() {
         var regpopup_btn_open_aut = document.getElementById('regpopup_btn_aut');
         var regpopup_form_autorisation = document.getElementById('regpopup_autarisation');
         var regpopup_btn_open_reg = document.getElementById('regpopup_btn_reg');
-        var regpopup_form_registration = document.getElementById('regpopup_registration');        
+        var regpopup_form_registration = document.getElementById('regpopup_registration');
+        var open_reg_form = document.getElementById('open_reg_form');        
         
         document.getElementById('user_password_fild').value = '';
         document.getElementById('user_login_fild').value = '';
@@ -159,6 +160,16 @@ window.onload = function() {
             regpopup_form_registration.style.display = 'block';
             return false;
         };
+
+        if(document.getElementById('open_reg_form')){
+            open_reg_form.onclick = function(event) {
+                console.log("Форма регистрации");
+                regpopup_bg.style.display = 'block';
+                regpopup_form_autorisation.style.display = 'none';
+                regpopup_form_registration.style.display = 'block';
+                return false;
+            };
+        }
         // поверяем водимый логин на уникальность
         document.getElementById('user_login_fild').onblur = function(event){
             var fild_login  = this;
@@ -166,7 +177,7 @@ window.onload = function() {
             let url         = '/response/ajax/check_login.php';
             let type        = 'login';            
             var pass_fild   = document.getElementById('user_password_fild');
-            
+            /*
             if(login.length > 0){                
                 var res = getFree(login, type).then(function(data) {
                     $result = JSON.parse(data);
@@ -182,7 +193,7 @@ window.onload = function() {
                         pass_fild.focus();                                             
                     }
                 });
-            }            
+            }  */          
         };
         
         // проверяем пароль на длинну
@@ -190,13 +201,15 @@ window.onload = function() {
             var conpass_fild    = this; 
             window.value_fild  = this.value;
             var con_pass_fild   = document.getElementById('user_con_password_fild');
-            if(value_fild.length > 6){
+            let length_pass = 8;
+            if(value_fild.length > length_pass){
                 con_pass_fild.disabled = false;
                 con_pass_fild.focus();
                 errBorder(conpass_fild, 'succes');
+                document.getElementById('message_error_login').innerHTML = '<div style="color:green"">&#10004; Отлично</div>';
             }else {
                 errBorder(conpass_fild, 'error');
-                document.getElementById('message_error_login').innerHTML = 'Пароль должен быть более 6 символов';                  
+                document.getElementById('message_error_login').innerHTML = '&#9888; Пароль должен быть более '+length_pass+' символов';
             }
         }
 
@@ -205,23 +218,30 @@ window.onload = function() {
             var conpass_fild    = this; 
             var con_value_fild  = this.value;
             var con_pass_fild   = document.getElementById('user_email_fild');
+            var submit_button_aut_user = document.getElementById('submit_button_registration');
 
             if(con_value_fild === value_fild){
                 con_pass_fild.disabled = false;
-                con_pass_fild.focus();
+                submit_button_aut_user.disabled = false;
+                //con_pass_fild.focus();
+                submit_button_aut_user.focus(); 
                 errBorder(conpass_fild, 'succes');
+                document.getElementById('message_error_login').innerHTML = '<div style="color:green"">&#10004; Пароль совпадает</div>';
             }else {
                 errBorder(conpass_fild, 'error');
-                document.getElementById('message_error_login').innerHTML = 'Пароль не совпадает';  
+                document.getElementById('message_error_login').innerHTML = '&#9888; Пароль не совпадает';  
             }
         }
 
+        // проверка почты 
         document.getElementById('user_email_fild').onblur = function(event){
             var fild_email  = this;
             let email       = fild_email.value;
             let url         = '/response/ajax/check_login.php';
             let type        = 'email';
             var submit_button_aut_user = document.getElementById('submit_button_registration');
+            var pass_fild   = document.getElementById('user_password_fild');
+            var fild_login  = document.getElementById('user_login_fild');
             
             if(email.length > 0){                
                 var res = getFree(email, type).then(function(data) {
@@ -229,12 +249,16 @@ window.onload = function() {
                     if($result['TYPE']=='ERROR'){                        
                         document.getElementById('message_error_login').innerHTML = '&#8226; Почтовый ящик уже используется';
                         errBorder(fild_email, 'error');
+                        pass_fild.disabled = true;
                     }
                     if($result['TYPE']=='SUCCES'){                        
-                        document.getElementById('message_error_login').innerHTML = '';
+                        document.getElementById('message_error_login').innerHTML = '<div style="color:green"">&#10004; Почтовый ящик не зарегистрирован</div>';
                         errBorder(fild_email, 'succes');
-                        submit_button_aut_user.disabled = false;
-                        submit_button_aut_user.focus();                       
+                        //submit_button_aut_user.disabled = false;
+                        pass_fild.disabled = false;
+                        pass_fild.focus();
+                        fild_login.value = fild_email.value                                          
+                        //submit_button_aut_user.focus();                       
                     }
                 });
             }            

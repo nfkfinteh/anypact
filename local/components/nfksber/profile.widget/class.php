@@ -22,7 +22,9 @@ class UserProfile extends CBitrixComponent
         $arrUserInfo["SECOND_NAME"] = $USER->GetSecondName(); // отчество
         $arrUserInfo["LAST_NAME"] = $USER->GetLastName(); // фамилия
         $arrUserInfo["IN_NAMES"] = substr($USER->GetFirstName(), 0, 1).'.'.substr($USER->GetSecondName(), 0, 1).'.'; // Инициалы
-        
+        $UserParams = $USER->GetByID($arrUserInfo["ID"]);
+        $UserParams = $UserParams->Fetch();
+        $arrUserInfo["PERSONAL_PHOTO"] = CFile::GetPath($UserParams["PERSONAL_PHOTO"]);
         return $arrUserInfo;
     }
 

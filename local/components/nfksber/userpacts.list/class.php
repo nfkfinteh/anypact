@@ -43,74 +43,23 @@ class CDemoSqr extends CBitrixComponent
         return $arPacts;
     }
 
-    // подписанные договора пользователей
+    // подписанные договора пользователей с двух сторон
     private function getSendContract($UserID){
-        $arSend_Contract = [];
-        CModule::IncludeModule("highloadblock");
-        CModule::IncludeModule("iblock");
-            // получить статусы сделок
-            $ID_hl_status_name_send_contract = 5;
-            $hlblock = HL\HighloadBlockTable::getById($ID_hl_status_name_send_contract)->fetch(); 
-            $entity = HL\HighloadBlockTable::compileEntity($hlblock); 
-            $entity_data_class = $entity->getDataClass();
-            $rsData = $entity_data_class::getList();
-            while($arData = $rsData->Fetch()){                
-                $arStatus[$arData['ID']]  = $arData; 
-            }
-
-            // получить все подписанные сделки
-            $ID_hl_send_contract = 3;
-            $hlblock = HL\HighloadBlockTable::getById($ID_hl_send_contract)->fetch(); 
-            $entity = HL\HighloadBlockTable::compileEntity($hlblock); 
-            $entity_data_class = $entity->getDataClass();
-            
-            $arFilter = Array(
-                Array(
-                   "LOGIC"=>"OR",
-                   Array(
-                    "UF_ID_USER_A"=> $UserID
-                   ),
-                   Array(
-                    "UF_ID_USER_B" => $UserID
-                   )
-                )
-             );
-            
-            $rsData = $entity_data_class::getList(array(
-                "select" => array("*"),
-                "order"  => array("ID" => "ASC"),
-                "filter" => $arFilter
-            ));            
-
-            $i=0;            
-            while($arData = $rsData->Fetch()){                 
-                $arSend_Contract[$i]  = $arData; 
-                if($arData['UF_ID_USER_B']==$UserID){
-                    $arSend_Contract[$i]['STATUS_NAME'] = 'Я подписал договор';
-                    $arSend_Contract[$i]['STATUS_ICON'] = 'send_one.png';
-                } else {                         
-                    $arSend_Contract[$i]['STATUS_NAME'] = $arStatus[$arData['UF_STATUS']]['UF_NAME'];
-                    $arSend_Contract[$i]['STATUS_ICON'] = $arStatus[$arData['UF_STATUS']]['UF_STATUS_ICON'];
-                }
-                $arrID_Info_Contract[$i] =  $arData['UF_ID_CONTRACT'];
-                $i++;
-            }
-
-            #если нет подписаных договоров
-            if(empty($arrID_Info_Contract)) return $arSend_Contract;
-
-            foreach($arrID_Info_Contract as $i=>$value ){
-                $iblockId = CIBlockElement::GetIBlockByID($value);
-                $res = CIBlockElement::GetList(array(), array("IBLOCK_ID" => $iblockId, "ID" => $value), false, array(), array("ID", "NAME"));
-                while($ob = $res->GetNextElement())
-                {
-                    $arInfo_Contract = $ob->GetFields();                    
-                }
-                $arSend_Contract[$i]['NAME_CONTRACT'] = $arInfo_Contract;
-
-            }
-
-            return $arSend_Contract;
+        $arFilter = Array(
+            Array(
+               "LOGIC" => "OR",
+               Array(
+                "UF_STATUS" => 2,
+                "UF_ID_USER_A"=> $UserID
+               ),
+               Array(
+                "UF_STATUS" => 2,
+                "UF_ID_USER_B" => $UserID
+               )                   
+            )
+         );
+        $arSend_Contract = $this->getSendContracts($UserID, $arFilter); 
+        return $arSend_Contract;
         
     }
 
@@ -141,6 +90,25 @@ class CDemoSqr extends CBitrixComponent
     }
 
     private function getRedaction($userId){
+        /* Договора подписанные с одной стороны храняться в HL блоке со статусом 1 
+            договора пользователя ожидающие акцепта
+        */
+        $arFilter = Array(
+            Array(
+                "LOGIC" => "AND",
+                Array(
+                 "UF_STATUS" => 1,
+                 
+                ),
+                Array(                 
+                 "UF_ID_USER_A" => $userId
+                )                   
+             )
+         );
+        $arSend_Contract = $this->getSendContracts($UserID, $arFilter);
+
+        /* договора имеющие редакцию подписантов храняться в отдельнов инфоблоке
+        выборка  данных договоров*/
         $arFilter = [
             'IBLOCK_ID'=>6,
             'ACTIVE'=>'Y',
@@ -170,7 +138,103 @@ class CDemoSqr extends CBitrixComponent
 
         }
 
-        return $arRedaction;
+        $returnArray = array_merge($arSend_Contract, $arRedaction);
+        return $returnArray;
+    }
+
+    private function getSendUserContract($userId){
+        /* Договора подписанные текущим пользователем
+        */
+        $arFilter = Array(
+            Array(
+                "LOGIC" => "AND",
+                Array(
+                 "UF_STATUS" => 1,
+                 
+                ),
+                Array(                 
+                 "UF_ID_USER_B" => $userId
+                )                   
+             )
+         );
+        $arSend_Contract = $this->getSendContracts($UserID, $arFilter);
+
+        return $arSend_Contract;
+    }
+
+    /* 
+        Выборка договоров из HL блока по статусу 
+    */
+    private function getSendContracts($UserID, $arFilter){
+        $arSend_Contract = [];
+        CModule::IncludeModule("highloadblock");
+        CModule::IncludeModule("iblock");
+            
+            // получить статусы сделок
+            $ID_hl_status_name_send_contract = 5;
+            $hlblock = HL\HighloadBlockTable::getById($ID_hl_status_name_send_contract)->fetch(); 
+            $entity = HL\HighloadBlockTable::compileEntity($hlblock); 
+            $entity_data_class = $entity->getDataClass();
+            $rsData = $entity_data_class::getList();
+            
+            while($arData = $rsData->Fetch()){                
+                $arStatus[$arData['ID']]  = $arData; 
+            }
+
+            // получить все подписанные сделки
+            $ID_hl_send_contract = 3;
+            $hlblock = HL\HighloadBlockTable::getById($ID_hl_send_contract)->fetch(); 
+            $entity = HL\HighloadBlockTable::compileEntity($hlblock); 
+            $entity_data_class = $entity->getDataClass();            
+            $rsData = $entity_data_class::getList(array(
+                "select" => array("*"),
+                "order"  => array("ID" => "ASC"),
+                "filter" => $arFilter
+            ));            
+
+            $i=0;            
+            while($arData = $rsData->Fetch()){                 
+                $arSend_Contract[$i]  = $arData;                
+                if($arData['UF_ID_USER_B']==$UserID){                    
+                    $arSend_Contract[$i]['STATUS_NAME'] = 'Я подписал договор';
+                    $arSend_Contract[$i]['STATUS_ICON'] = 'send_one.png';
+                    // параметры пользователя подписавшего договор
+                    $ParamsSendUser = CUser::GetByID($arData['UF_ID_USER_A']);
+                    $ParamsSendUser = $ParamsSendUser->Fetch();
+                    $arSend_Contract[$i]['PARAMS_SEND_USER']  = $ParamsSendUser;
+                    $arSend_Contract[$i]['PARAMS_SEND_USER']['IN'] = substr($ParamsSendUser["LAST_NAME"], 0, 1);
+                    $arSend_Contract[$i]['PERSONAL_PHOTO_SEND_USER']  = CFile::GetPath($ParamsSendUser['PERSONAL_PHOTO']);
+                } else {                         
+                    $arSend_Contract[$i]['STATUS_NAME'] = $arStatus[$arData['UF_STATUS']]['UF_NAME'];
+                    $arSend_Contract[$i]['STATUS_ICON'] = $arStatus[$arData['UF_STATUS']]['UF_STATUS_ICON'];
+                    // параметры пользователя подписавшего договор
+                    $ParamsSendUser = CUser::GetByID($arData['UF_ID_USER_B']);
+                    $ParamsSendUser = $ParamsSendUser->Fetch();
+                    $arSend_Contract[$i]['PARAMS_SEND_USER']  = $ParamsSendUser;
+                    $arSend_Contract[$i]['PARAMS_SEND_USER']['IN'] = substr($ParamsSendUser["LAST_NAME"], 0, 1);
+                    $arSend_Contract[$i]['PERSONAL_PHOTO_SEND_USER']  = CFile::GetPath($ParamsSendUser['PERSONAL_PHOTO']);      
+
+                }
+
+                $arrID_Info_Contract[$i] =  $arData['UF_ID_CONTRACT'];
+                $i++;
+            }
+
+            #если нет подписаных договоров
+            if(empty($arrID_Info_Contract)) return $arSend_Contract;
+
+            foreach($arrID_Info_Contract as $i=>$value ){
+                $iblockId = CIBlockElement::GetIBlockByID($value);
+                $res = CIBlockElement::GetList(array(), array("IBLOCK_ID" => $iblockId, "ID" => $value), false, array(), array("ID", "NAME"));
+                while($ob = $res->GetNextElement())
+                {
+                    $arInfo_Contract = $ob->GetFields();                    
+                }
+                $arSend_Contract[$i]['NAME_CONTRACT'] = $arInfo_Contract;
+
+            }
+
+            return $arSend_Contract;
     }
 
     public function executeComponent()
@@ -184,6 +248,7 @@ class CDemoSqr extends CBitrixComponent
         // сообщение пользователю
         $this->arResult["MESSAGE_USER"] = $this->getMessageUser($User_ID);;
 
+        // кэш отключен
         /*if($this->startResultCache($this->arParams['CACHE_TIME'], $User_ID))
         {*/
             $this->arResult = array_merge($this->arResult, $this->paramsUser($this->arParams));
@@ -194,6 +259,9 @@ class CDemoSqr extends CBitrixComponent
 
             //редакции
             $this->arResult["REDACTION"] = $this->getRedaction($User_ID);
+
+            //Подписанные пользователем договора
+            $this->arResult["SEND_USER_PACT"] = $this->getSendUserContract($User_ID);
 
         /*    $this->EndResultCache();
         }*/

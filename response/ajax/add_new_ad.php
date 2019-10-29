@@ -13,10 +13,12 @@ if (!\Bitrix\Main\Loader::includeModule('iblock')) {
     die();
 }
 #проверка на аторизацию
+/*
 if($USER->GetID() != $data['MODIFIED_BY']){
     echo json_encode([ 'VALUE'=>'Вы не авторизваны', 'TYPE'=> 'ERROR']);
     die;
 }
+*/
 if (!$USER->IsAuthorized()){
     echo json_encode([ 'VALUE'=>'Вы не авторизваны', 'TYPE'=> 'ERROR']);
     die();
@@ -67,6 +69,9 @@ if(in_array( 1, $arGroups) || in_array( 6, $arGroups)){
     $data['PROPERTY_VALUES']['PACT_USER'] = $data['MODIFIED_BY'];
 
     $el = new CIBlockElement;
+    /*
+        TODO: задавать параметры активности объявления начало активности текущая дата, окончание активности по умолчанию +7 дней
+    */
     $arLoadProductArray = Array(
         "MODIFIED_BY"    => $data['MODIFIED_BY'],
         "IBLOCK_SECTION_ID" => $data['IBLOCK_SECTION_ID'],

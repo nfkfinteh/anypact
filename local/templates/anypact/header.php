@@ -44,11 +44,6 @@ global $USER;
     $APPLICATION->ShowHead();
     //$APPLICATION->ShowProperty('MetaOG');
     ?>
-    <?/*
-   <link rel="stylesheet" href="<?=SITE_TEMPLATE_PATH.'/css/slider-pro.min.css'?>" >
-    <link rel="stylesheet" href="<?=SITE_TEMPLATE_PATH.'/css/bootstrap.css'?>" >
-    <link rel="stylesheet" href="<?=SITE_TEMPLATE_PATH.'/template_style.css'?>" >
-*/?>
 </head>
 <body>
 <div id="panel"><?$APPLICATION->ShowPanel();?></div>
@@ -113,83 +108,87 @@ global $USER;
         if(!empty($page[1]) && $page[1] == 'pacts' ){ $class_container = 'bg-russia';}
         if(!empty($page[2]) && $page[2] == 'view_pact' ){ $class_container = '';}
     ?>
-    <div class="container <?=$class_container?>">
-            <header class="header">
-                <div class="row">
-                    <div class="col-md-6">
-                        <a href="/" class="logo"><img src="<?=SITE_TEMPLATE_PATH?>/img/logo2.png" alt=""></a>
-                        <span class="phone">8(800) 000-00-00</span>
+<div class="container <?=$class_container?>">
+        <!--Шапка-->
+        <header class="header">
+            <div class="row">
+                <div class="col-md-6">
+                    <a href="/" class="logo"><img src="<?=SITE_TEMPLATE_PATH?>/img/logo2.png" alt=""></a>
+                    <span class="phone">8(800) 200-84-84</span>
+                </div>
+                <? if ($USER->IsAuthorized()){ ?>
+                    <div class="col-md-3">
+                        <?if(!empty($getGeo['cityName'])):?>
+                            <span class="location"><?=$getGeo['cityName']?></span>
+                        <?else:?>
+                            <span class="location">Выберите город</span>
+                        <?endif?>
+
                     </div>
-                    <? if ($USER->IsAuthorized()){ ?>
-                        <div class="col-md-3">
+
+                        <?                                
+                            $APPLICATION->IncludeComponent("nfksber:profile.widget",
+                            "head",
+                            Array(
+                                
+                                )
+                            );
+                        ?>
+
+                    <?}else {?>
+                        <div class="col-md-6">
                             <?if(!empty($getGeo['cityName'])):?>
                                 <span class="location"><?=$getGeo['cityName']?></span>
                             <?else:?>
                                 <span class="location">Выберите город</span>
                             <?endif?>
-
+                            <button class="btn btn-nfk btn-login" id="reg_button">Регистрация / Вход</button>
                         </div>
-
-                            <?                                
-                                $APPLICATION->IncludeComponent("nfksber:profile.widget",
-                                "head",
-                                Array(
-                                    
-                                    )
-                                );
-                            ?>
-
-                        <?}else {?>
-                            <div class="col-md-6">
-                                <?if(!empty($getGeo['cityName'])):?>
-                                    <span class="location"><?=$getGeo['cityName']?></span>
-                                <?else:?>
-                                    <span class="location">Выберите город</span>
-                                <?endif?>
-                                <button class="btn btn-nfk btn-login" id="reg_button">Регистрация / Вход</button>
-                            </div>
-                        <?}?>                    
-                </div>
-            </header>
-            <nav class="navbar navbar-expand-lg">
-                <?
-                    $Section = $_GET['SECTION_ID'];
-                    $APPLICATION->IncludeComponent("nfksber:stepback", 
+                    <?}?>                    
+            </div>
+        </header>
+        <!--Меню навигации-->
+        <nav class="navbar navbar-expand-lg">
+            <?
+                $Section = $_GET['SECTION_ID'];
+                $APPLICATION->IncludeComponent("nfksber:stepback", 
+                "", 
+                    Array(
+                        "IBLOCK_ID" => "3",
+                        "SECTION_ID" => $Section,   
+                        )
+                );
+            ?>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse " id="navbarSupportedContent" style="padding-right: 0;">
+                <? // навигационное меню для разных типов пользователей
+                    if ($USER->IsAuthorized()){
+                        $arUrlMenu = array(
+                            '/' => 'Главная',
+                            '/my_pacts/' => 'Мои сделки',								
+                            '/pacts/' => 'Все сделки',
+                            '/search_people/' => 'Поиск людей',
+                            '/service/' => 'О сервисе',
+                            '/help/' => 'Поддержка',
+                            '/contacts/' => 'Контакты'
+                        );
+                    }else {
+                        $arUrlMenu = array(
+                            '/' => 'Главная',								
+                            '/service/' => 'О сервисе',
+                            '/help/' => 'Поддержка'
+                        );
+                    }
+                    $APPLICATION->IncludeComponent("nfksber:navmenu.head", 
                     "", 
                         Array(
-                            "IBLOCK_ID" => "3",
-                            "SECTION_ID" => $Section,   
+                            "ArURL_MENU"         => $arUrlMenu,
                             )
                     );
-                    ?>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse " id="navbarSupportedContent">
-                    <? 
-                        if ($USER->IsAuthorized()){
-							$arUrlMenu = array(
-								'/' => 'Главная',
-								'/my_pacts/' => 'Мои сделки',								
-                                '/pacts/' => 'Все сделки',
-                                '/search_people/' => 'Поиск людей',
-								'/service/' => 'О сервисе',
-								'/help/' => 'Поддержка'
-							);
-						}else {
-							$arUrlMenu = array(
-								'/' => 'Главная',								
-								'/service/' => 'О сервисе',
-								'/help/' => 'Поддержка'
-							);
-						}
-
-                        $APPLICATION->IncludeComponent("nfksber:navmenu.head", 
-                        "", 
-                            Array(
-                                "ArURL_MENU"         => $arUrlMenu,
-                                )
-                        );
-                    ?>
-                </div>
-            </nav>
+                ?>
+            </div>
+        </nav>
+        <!--//Меню навигации-->
+        <!--//Шапка-->
