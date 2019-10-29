@@ -32,4 +32,39 @@ $(document).ready(function(){
 
         });
     });
+    // переключить активность объявления
+    $(document).on('click', '.onActive', function(e){
+        console.log('Активность кнопки');
+        var buttonActive = $(this).attr('active');
+        var buttonIDPact = $(this).attr('iditem');
+        var activeStatus = 'Y';
+        
+        if(buttonActive == 'Y'){
+            activeStatus = 'N';
+            $(this).attr('active', 'N');
+        }else{
+            activeStatus = 'Y';
+            $(this).attr('active', 'Y');
+        }
+        
+        e.preventDefault();
+        let url = '/response/ajax/active_pact.php';        
+        let data = {
+            IDElement: buttonIDPact,
+            Active: activeStatus
+        };
+
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: data,
+            success: function(result){
+                console.log(result);
+                if(result==1){
+                    location.reload()
+                }
+            },
+
+        });
+    });
 });

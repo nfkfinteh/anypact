@@ -69,6 +69,9 @@ if(in_array( 1, $arGroups) || in_array( 6, $arGroups)){
     $data['PROPERTY_VALUES']['PACT_USER'] = $data['MODIFIED_BY'];
 
     $el = new CIBlockElement;
+    /*
+        TODO: задавать параметры активности объявления начало активности текущая дата, окончание активности по умолчанию +7 дней
+    */
     $arLoadProductArray = Array(
         "MODIFIED_BY"    => $data['MODIFIED_BY'],
         "IBLOCK_SECTION_ID" => $data['IBLOCK_SECTION_ID'],

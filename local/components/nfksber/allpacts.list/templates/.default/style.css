@@ -228,3 +228,8 @@
 .btn-list {
     background-image: url(/local/templates/anypact/image/sprite.png) !important;
 }
+
+.tender-block .tender-post .tender-img {        
+    overflow: hidden;
+    height: 165px;
+}

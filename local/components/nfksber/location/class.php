@@ -49,7 +49,7 @@ class Location extends \CBitrixComponent
     public function getLocation($ipAddress)
     {
         $obj = GeoIp\Manager::getDataResult($ipAddress, "ru", array('cityName', 'zipCode'));
-        $geoData = $obj->getGeoData();
+        $geoData = ''; //$obj->getGeoData();
         return $geoData;
     }
 

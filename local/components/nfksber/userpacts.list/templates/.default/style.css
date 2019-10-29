@@ -29,7 +29,29 @@ table th, table td {
     height: 45px;
     float: left;
     background: #ddd;
-    margin-right: 15px;
+    margin-right: 5px;
     border-radius: 50%;
     overflow: hidden;
 }
+
+.avatar_pact a{
+    text-decoration: none;
+}
+
+.avatar_pact a:hover{
+    text-decoration: none;
+}
+
+.avatar_pact h3{
+    text-align: center;
+    height: 45px;
+    padding: 5px;
+    font-weight: 700;
+    color: #fff;
+    text-decoration: none;
+}
+
+button.onActive {
+    border: none;
+    background: #fff;
+ }
