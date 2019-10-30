@@ -33,23 +33,9 @@ $APPLICATION->SetTitle("AnyPact");
 
     <!--//-->
     <?} else {?>
-        <div class="container">
-            <p align="center" style="padding: 50px 0;">
-                <img src="<?=SITE_TEMPLATE_PATH.'/img/logo.png?ioi'?>" />
-            </p>
-            <p align="center" style="padding: 50px 0;">
-                Вам необходимо Зарегистрироваться.
-            </p>
-            <p align="center" size="16">
-                M-Group Investments Limited <br>
-                Contact us: <a href="mailto:mail@m-group.investments">mail@m-group.investments</a>
-            </p>	 
-            <p align="center">
-        <button type="button" class="btn btn-aut" id="reg_button">Зарегистрироваться</button>
-            </p>
-            <p align="center">
-                © 2018
-            </p>
+        <?  // заглушка на авторизацию доступа
+            $APPLICATION->IncludeFile(SITE_TEMPLATE_PATH."/not_access.php", Array());            
+        ?>
     <?}?>
 </div>
 </div>

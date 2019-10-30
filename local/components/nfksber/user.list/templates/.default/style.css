@@ -94,6 +94,14 @@
     height: 13px;
     margin-right: 13px;
 }
+textarea.message-textarea{
+    width: 100%;
+    border: 1px solid #e8e8e8;
+    border-radius: 5px;
+    height: 90px;
+    padding: 10px 20px;
+    resize: none;
+}
 @media screen and (max-width: 520px){
     .list-view .view-item .people-s-photo {
         width: 100px;

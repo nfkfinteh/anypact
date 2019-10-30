@@ -9,15 +9,15 @@
                     <a herf="/my_pacts/" class="btn btn-nfk" > Внести изменения </a>
                    <?
                 }else {?>
-                    <?if($arResult["USER_ID"] != $arResult['SIGN_DOGOVOR']['UF_ID_USER_B']):?>
+                    <? // блокировка кнопки от повторного подписания темже пользователем
+                    if($arResult["USER_ID"] != $arResult['SIGN_DOGOVOR']['UF_ID_USER_B']):?>
                         <button class="btn btn-nfk
                         <?if(!empty($arResult["DOGOVOR_IMG"][0]['URL'])):?>canvas-img<?endif?>"
                                 id="send_contract"
                         >
                             Подписать договор
                         </button>
-                    <?endif?>
-
+                    <?endif?>                    
                     <?if(empty($arResult['NEW_REDACTION'])):?>
                         <button class="btn btn-nfk" id="new_redaction" data-id_element="<?=$_GET['ELEMENT_ID']?>">Предложить свою редакцию</button>
                     <?endif?>

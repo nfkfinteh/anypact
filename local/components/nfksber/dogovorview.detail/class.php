@@ -75,12 +75,12 @@ class CDemoSqr extends CBitrixComponent
 
     private function convertContent($Content){
         
-        $regexp 		= "/%DATE%/ui";
-        $replacement 	= date("d m Y") ;
+        $regexp         = "/%DATE%/ui";
+        $replacement    = date("d m Y") ;
         $Content = preg_replace($regexp, $replacement, $Content);
 
-        $regexp 		= '/<recont fio.*recont>/ui';
-        $replacement 	= 'Соловьёв Игорь Владимирович' ;
+        $regexp         = '/<recont fio.*recont>/ui';
+        $replacement    = 'Соловьёв Игорь Владимирович' ;
         $Content = preg_replace($regexp, $replacement, $Content);
         return $Content;
     }

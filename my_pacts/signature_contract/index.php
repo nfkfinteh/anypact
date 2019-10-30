@@ -12,7 +12,7 @@ $APPLICATION->SetTitle("AnyPact");
     <h1>Личный кабинет</h1>-->  
     <?//компонент выводит список договоров пользователя
     $APPLICATION->IncludeComponent("nfksber:sendcontract.view", 
-    "", 
+    "signature", 
         Array(
             "IBLOCK_ID" => "3",
             "SEF_MODE" => "N",
@@ -31,4 +31,5 @@ $APPLICATION->SetTitle("AnyPact");
         ?>
     <?}?>
 </div>
-</div><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
+</div>
+<?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

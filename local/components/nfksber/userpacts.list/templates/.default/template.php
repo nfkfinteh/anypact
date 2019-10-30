@@ -98,7 +98,7 @@ if ($count_pacts > 0):?>
                 <td scope="row">
                     <?=$pact['PARAMS_SEND_USER']['LAST_NAME']?> <?=$pact['PARAMS_SEND_USER']['NAME']?>
                 </td>
-                <td scope="row">#<?=$pact['ID']?> <?= $pact["NAME_CONTRACT"]["NAME"] ?> s <?=$pact['UF_STATUS']?></td>
+                <td scope="row">#<?=$pact['ID']?> <?= $pact["NAME_CONTRACT"]["NAME"] ?></td>
                 <td><?= $pact['UF_TIME_SEND_USER_A']->toString(); ?></td>
                 <!--<td><a href="/upload/private/userfiles/<?= $pact["UF_ID_GROUP"] ?>/<?= $pact["UF_ID_USER_GROUP"] ?>/pact/<?= $pact["ID"] ?>/pact/dog_21_01_2019.pdf?" target="_blank">Посмотреть</a></td>-->
                 <td><img src="<?= SITE_TEMPLATE_PATH ?>/img/<?= $pact["STATUS_ICON"] ?>"></td>
@@ -133,9 +133,7 @@ if ($count_pacts > 0):?>
         <tbody>
         <? // выборка договоров
 
-        foreach ($arResult["REDACTION"] as $red) {
-            echo '<br>'.$red['ID'];
-            ?>
+        foreach ($arResult["REDACTION"] as $red) {?>
             <?//if(!empty($arIdContract) && in_array($red['ID'], $arIdContract)) continue;?>
                 <tr>
                     <td scope="row" style="width: 130px;">
@@ -157,7 +155,7 @@ if ($count_pacts > 0):?>
                     <td><a href="<?=$red['USER_B']['LINK']?>"><?=$red['USER_B']['NAME']?></a></td>
                     <td><?= $red['TIMESTAMP_X']?></td>
                     <td><?if(!empty($red['PARAMS_SEND_USER'])){ echo "Подписан";}else { echo "Изменения";}?></td>
-                    <td><a href="/my_pacts/send_redaction/?ID=<?= $red["ID"] ?>" target="_blank">Посмотреть</a></td>
+                    <td><a href="/my_pacts/send_contract/?ID=<?= $red["ID"] ?>" target="_blank">Посмотреть</a></td>
                 </tr>
             <?
         }
@@ -179,21 +177,19 @@ if ($count_pacts > 0):?>
             <th scope="col">Контрагент</th>
             <th scope="col"></th>
             <th scope="col">Наименование</th>
-            <th scope="col">Пользователь</th>
-            <th scope="col">Дата изменеия</th>
+            <th scope="col">Дата подписания</th>
             <th scope="col">Статус</th>
+            <th scope="col"></th>
             <th scope="col"></th>
         </tr>
         </thead>
         <tbody>
         <? // выборка договоров
 
-        foreach ($arResult["SEND_USER_PACT"] as $red) {
-            echo '<br>'.$red['ID'];
-            ?>
+        foreach ($arResult["SEND_USER_PACT"] as $red) {?>
             <?//if(!empty($arIdContract) && in_array($red['ID'], $arIdContract)) continue;?>
                 <tr>
-                    <td scope="row" style="width: 130px;">
+                    <td scope="row" style="width: 65px;">
                         <div class="avatar_pact">
                             <a href="#"><img src="<?=$red['PERSONAL_PHOTO_SEND_USER']?>" height="60" alt="Спил деревьев, расчистка участков, кронирование"></a>
                         </div>
@@ -202,10 +198,10 @@ if ($count_pacts > 0):?>
                         <?=$red['PARAMS_SEND_USER']['LAST_NAME']?> <?=$red['PARAMS_SEND_USER']['NAME']?>
                     </td>
                     <td scope="row"><?= $red["NAME"] ?><?if(!empty($red['NAME_CONTRACT'])) echo '#'.$red['NAME_CONTRACT']['ID'].' '.$red['NAME_CONTRACT']['NAME']; ?></td>
-                    <td><a href="<?=$red['USER_B']['LINK']?>"><?=$red['USER_B']['NAME']?></a></td>
-                    <td><?= $red['TIMESTAMP_X']?></td>
-                    <td><?if(!empty($red['PARAMS_SEND_USER'])){ echo "Подписан";}else { echo "Изменения";}?></td>
-                    <td><a href="/my_pacts/send_redaction/?ID=<?= $red["ID"] ?>" target="_blank">Посмотреть</a></td>
+                    <td><?= $red['UF_TIME_SEND_USER_B']?></td>
+                    <td>Ожидает подписи</td>
+                    <td><a href="#" data="<?=$red["ID"]?>" class="recall_send">Отозвать подпись</a></td>
+                    <td><a href="/my_pacts/signature_contract/?ID=<?= $red["ID"] ?>" target="_blank">Посмотреть</a></td>
                 </tr>
             <?
         }

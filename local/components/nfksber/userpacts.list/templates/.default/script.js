@@ -33,8 +33,7 @@ $(document).ready(function(){
         });
     });
     // переключить активность объявления
-    $(document).on('click', '.onActive', function(e){
-        console.log('Активность кнопки');
+    $(document).on('click', '.onActive', function(e){        
         var buttonActive = $(this).attr('active');
         var buttonIDPact = $(this).attr('iditem');
         var activeStatus = 'Y';
@@ -66,5 +65,31 @@ $(document).ready(function(){
             },
 
         });
+    });
+    // отозвать подпись
+    $('.recall_send').on('click', function(e){
+        console.log('Отзыв подписи')
+        let id = $(this).attr('data');
+        
+        e.preventDefault();
+        let url = '/response/ajax/deactive_send.php';        
+        let data = {
+            IDItem: id            
+        };
+
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: data,
+            success: function(result){
+                console.log(result);
+                if(result==1){
+                    location.reload()
+                }
+            },
+
+        });
+
+        return false;
     });
 });

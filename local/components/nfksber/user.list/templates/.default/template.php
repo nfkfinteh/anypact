@@ -29,7 +29,9 @@
                 </div>
             </div>
             <div class="people-s-photo-btn-block">
-                <button class="btn btn-clean"><img src="<?=SITE_TEMPLATE_PATH?>/image/people-search-message.png" alt=""></button>
+                <button class="btn btn-clean search-peaople__button" data-toggle="modal" data-target=".bd-message-modal-sm" data-login="<?=$user['LOGIN']?>">
+                    <img src="<?=SITE_TEMPLATE_PATH?>/image/people-search-message.png" alt="">
+                </button>
                 <button class="btn btn-clean"><img src="<?=SITE_TEMPLATE_PATH?>/image/people-search-document.png" alt=""></button>
                 <?if(!in_array($user['ID'], $arResult['FRENDS'])):?>
                     <button class="btn btn-clean js-add-frends" data-login="<?=$user['LOGIN']?>">
@@ -42,5 +44,29 @@
     <?endforeach?>
   </div>
 <?=$arResult["NAV_STRING"]?>
+
+<div class="modal fade bd-message-modal-sm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">Новое сообщение</div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="message_user" action="/response/ajax/add_new_messag_user.php">
+                    <input class="login__input" type="hidden" name="login" value="">
+                    <div class="form-group">
+                        <textarea class="form-control message-textarea" name="message-text"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-nfk d-block cardPact-bBtn submit_message">Отправить</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 

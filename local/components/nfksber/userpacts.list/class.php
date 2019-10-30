@@ -97,8 +97,7 @@ class CDemoSqr extends CBitrixComponent
             Array(
                 "LOGIC" => "AND",
                 Array(
-                 "UF_STATUS" => 1,
-                 
+                 "UF_STATUS" => 1,                 
                 ),
                 Array(                 
                  "UF_ID_USER_A" => $userId
@@ -157,15 +156,14 @@ class CDemoSqr extends CBitrixComponent
                 )                   
              )
          );
-        $arSend_Contract = $this->getSendContracts($UserID, $arFilter);
-
+        $arSend_Contract = $this->getSendContracts($UserID, $arFilter, false);        
         return $arSend_Contract;
     }
 
     /* 
         Выборка договоров из HL блока по статусу 
     */
-    private function getSendContracts($UserID, $arFilter){
+    private function getSendContracts($UserID, $arFilter, $sideA = true){
         $arSend_Contract = [];
         CModule::IncludeModule("highloadblock");
         CModule::IncludeModule("iblock");
@@ -194,27 +192,28 @@ class CDemoSqr extends CBitrixComponent
 
             $i=0;            
             while($arData = $rsData->Fetch()){                 
-                $arSend_Contract[$i]  = $arData;                
+                $arSend_Contract[$i]  = $arData;
+
                 if($arData['UF_ID_USER_B']==$UserID){                    
                     $arSend_Contract[$i]['STATUS_NAME'] = 'Я подписал договор';
-                    $arSend_Contract[$i]['STATUS_ICON'] = 'send_one.png';
-                    // параметры пользователя подписавшего договор
-                    $ParamsSendUser = CUser::GetByID($arData['UF_ID_USER_A']);
-                    $ParamsSendUser = $ParamsSendUser->Fetch();
-                    $arSend_Contract[$i]['PARAMS_SEND_USER']  = $ParamsSendUser;
-                    $arSend_Contract[$i]['PARAMS_SEND_USER']['IN'] = substr($ParamsSendUser["LAST_NAME"], 0, 1);
-                    $arSend_Contract[$i]['PERSONAL_PHOTO_SEND_USER']  = CFile::GetPath($ParamsSendUser['PERSONAL_PHOTO']);
+                    $arSend_Contract[$i]['STATUS_ICON'] = 'send_one.png';                    
                 } else {                         
                     $arSend_Contract[$i]['STATUS_NAME'] = $arStatus[$arData['UF_STATUS']]['UF_NAME'];
                     $arSend_Contract[$i]['STATUS_ICON'] = $arStatus[$arData['UF_STATUS']]['UF_STATUS_ICON'];
-                    // параметры пользователя подписавшего договор
-                    $ParamsSendUser = CUser::GetByID($arData['UF_ID_USER_B']);
-                    $ParamsSendUser = $ParamsSendUser->Fetch();
-                    $arSend_Contract[$i]['PARAMS_SEND_USER']  = $ParamsSendUser;
-                    $arSend_Contract[$i]['PARAMS_SEND_USER']['IN'] = substr($ParamsSendUser["LAST_NAME"], 0, 1);
-                    $arSend_Contract[$i]['PERSONAL_PHOTO_SEND_USER']  = CFile::GetPath($ParamsSendUser['PERSONAL_PHOTO']);      
-
                 }
+
+                // параметры пользователя подписавшего договор
+                if($sideA){
+                    $UserSending = $arData['UF_ID_USER_B'];
+                }else {
+                    $UserSending = $arData['UF_ID_USER_A'];
+                }
+
+                $ParamsSendUser = CUser::GetByID($UserSending);
+                $ParamsSendUser = $ParamsSendUser->Fetch();
+                $arSend_Contract[$i]['PARAMS_SEND_USER']  = $ParamsSendUser;
+                $arSend_Contract[$i]['PARAMS_SEND_USER']['IN'] = substr($ParamsSendUser["LAST_NAME"], 0, 1);
+                $arSend_Contract[$i]['PERSONAL_PHOTO_SEND_USER']  = CFile::GetPath($ParamsSendUser['PERSONAL_PHOTO']);
 
                 $arrID_Info_Contract[$i] =  $arData['UF_ID_CONTRACT'];
                 $i++;

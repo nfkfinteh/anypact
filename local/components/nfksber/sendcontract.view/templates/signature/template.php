@@ -10,12 +10,12 @@
                         <?=$arResult['SEND_BLOCK']['ID']?>
                     </div>
                 <?endif?>
-                <?/*
+                
                 <h3 class="font-weight-bold">Файлы</h3>
                 <ul class="list-document">
                     <li class="icon-document">
                         <span>Договор №1</span>
-                        <button class="btn btn-nfk-invert w-100">Подписан</button>
+                        <button class="btn btn-nfk-invert w-100" id="recall_sign" data="<?=$_GET['ID']?>">Отозвать подпись</button>
                     </li>
                     <!--
                     <li class="icon-document">
@@ -31,11 +31,11 @@
                         <button class="btn btn-nfk-invert w-100">Подписан</button>
                     </li> -->
                 </ul>
-                */?>
+                
             </div>
             <div class="col-md-8 col-sm-12">
                 <div class="d-flex">
-                    <h3 class="font-weight-bold flex-grow-1" style="flex-grow: 1!important;">Просмотр файла</h3>
+                    <h3 class="font-weight-bold flex-grow-1" style="flex-grow: 1!important;">Просмотр договора:</h3>
 
                     <a href="contract_pdf.php?ID=<?=$_GET['ID']?>" target="_blank" class="btn-img" id="download_pdf"><img src="<?=SITE_TEMPLATE_PATH?>/image/icon-pdf-gray.png" alt=""></a>
                     <button class="btn-img"><img src="<?=SITE_TEMPLATE_PATH?>/image/icon-printer-gray.png" alt=""></button>
