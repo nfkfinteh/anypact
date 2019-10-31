@@ -1,7 +1,7 @@
 <div class="tools_redactor">
-    <button type="button" class="btn btn-nfk btn-default" data-toggle="tooltip" data-placement="left" title="Сохранить" id="save_btn" data-id="<?=$arResult['ELEMENT_ID']?>">
+    <!--<button type="button" class="btn btn-nfk btn-default" data-toggle="tooltip" data-placement="left" title="Сохранить" id="save_btn" data-id="<?=$arResult['ELEMENT_ID']?>">
         <span class="glyphicon glyphicon-floppy-disk"></span>
-    </button>
+    </button>-->
     <button type="button" class="btn btn-nfk btn-default space_right" id="btn-edit" data-toggle="tooltip" data-placement="left" title="Включить редактирование текста" contenteditable="false">
         <span class="glyphicon glyphicon-pencil"></span>
     </button>

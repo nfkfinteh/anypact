@@ -40,6 +40,7 @@ $(document).ready(function() {
     $(document).on('click', '#new_redaction', function(){
         let url = '/response/ajax/new_redaction.php';
         let id = $(this).attr('data-id_element');
+        $('#send_contract').attr('data', 'edit')
         let data = {
             ELEMENT_ID: id
         };

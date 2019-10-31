@@ -24,7 +24,8 @@ if (!$USER->IsAuthorized()){
     die();
 }
 
-#проверка доступа пользователя на создание объявления
+#проверка доступа пользователя на создание объявления не дает создавать объявления
+/*
 if(!empty($data['MODIFIED_BY'])){
     $filter = [ 'ID' =>  intval($data['MODIFIED_BY']) ];
     $select = [
@@ -36,11 +37,12 @@ if(!empty($data['MODIFIED_BY'])){
         $arUser = $obj;
     }
 
-    if($arUser['UF_ESIA_AUT'] != 1){
+    if(!$arUser['UF_ESIA_AUT']){
         echo json_encode([ 'VALUE'=>'Нет доступа на создание объявлений', 'TYPE'=> 'ERROR']);
         die();
     }
 }
+*/
 
 $arGroups = $USER->GetUserGroupArray();
 

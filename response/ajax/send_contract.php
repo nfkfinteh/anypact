@@ -13,6 +13,16 @@ define("FORMAT_DATETIME", "DD.MM.YYYY HH:MI:SS");
 $id_contract    = $_POST['id'];
 $id_contragent  = $_POST['contr'];
 $sms_code       = $_POST['smscode'];
+
+// статус подписания
+switch ($_POST['status']) {
+    case 'sign':
+        $status = 1;
+        break;
+    case 'edit':
+        $status = 3;
+        break;
+}
 $Contract_text  =  str_replace('%nbsp', '&nbsp', $_POST['text_contract']);
 echo $_POST['text_contract'];
 $hash_Send      = md5($id_contract.$id_contragent.$sms_code); 
@@ -70,8 +80,9 @@ $result = $entityClass::add(array(
         'UF_TEL_CODE_USER_A' => $arUser[$id_owner_contract]['PERSONAL_PHONE'], 
         'UF_ID_USER_A' => $id_owner_contract,
         'UF_VER_CODE_USER_A' => '',
-        'UF_STATUS' => 1,
-        'UF_HASH_SEND' => $hash_Send
+        'UF_STATUS' => $status,
+        'UF_HASH_SEND' => $hash_Send,
+        'UF_ID_SEND_USER' => $id_contragent
    ));
 
 // создать запись в таблицу с текстом договора.

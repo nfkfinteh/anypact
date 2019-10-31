@@ -164,7 +164,7 @@ if ($count_pacts > 0):?>
     </table>
 <?else:?>
     <div style="clear: both"></div>
-    <h3>У Вас нет подписанных предложенных редакций</h3>
+    <h3>У Вас нет договоров, ожидающих подписания с Вашей стороны</h3>
 <?endif?>
 <div style="width: 100%; height: 100px;">
 </div>
@@ -210,7 +210,7 @@ if ($count_pacts > 0):?>
     </table>
 <?else:?>
     <div style="clear: both"></div>
-    <h3>У Вас нет подписанных предложенных редакций</h3>
+    <h3>У Вас нет подписанных договоров</h3>
 <?endif?>
 <div style="width: 100%; height: 100px;">
 </div>

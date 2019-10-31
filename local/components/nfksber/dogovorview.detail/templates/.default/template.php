@@ -13,7 +13,7 @@
                     if($arResult["USER_ID"] != $arResult['SIGN_DOGOVOR']['UF_ID_USER_B']):?>
                         <button class="btn btn-nfk
                         <?if(!empty($arResult["DOGOVOR_IMG"][0]['URL'])):?>canvas-img<?endif?>"
-                                id="send_contract"
+                                id="send_contract" data="signed"
                         >
                             Подписать договор
                         </button>

@@ -104,6 +104,7 @@ class CDemoSqr extends CBitrixComponent
                 )                   
              )
          );
+        $arSend_Contract = array();
         $arSend_Contract = $this->getSendContracts($UserID, $arFilter);
 
         /* договора имеющие редакцию подписантов храняться в отдельнов инфоблоке
@@ -123,6 +124,9 @@ class CDemoSqr extends CBitrixComponent
             'NAME',
             'TIMESTAMP_X'
         ];
+
+        $arRedaction = array();
+
         $res = CIBlockElement::GetList([], $arFilter, false, false, $arSelect);
         while($obj = $res->GetNextElement(true, false)){
             $arFields = $obj->GetFields();
