@@ -102,7 +102,7 @@ if ($count_pacts > 0):?>
                 <td><?= $pact['UF_TIME_SEND_USER_A']->toString(); ?></td>
                 <!--<td><a href="/upload/private/userfiles/<?= $pact["UF_ID_GROUP"] ?>/<?= $pact["UF_ID_USER_GROUP"] ?>/pact/<?= $pact["ID"] ?>/pact/dog_21_01_2019.pdf?" target="_blank">Посмотреть</a></td>-->
                 <td><img src="<?= SITE_TEMPLATE_PATH ?>/img/<?= $pact["STATUS_ICON"] ?>"></td>
-                <td><a href="/my_pacts/send_contract/?ID=<?= $pact["ID"] ?>" target="_blank">Посмотреть</a></td>
+                <td><a href="/my_pacts/sign_contract/?ID=<?= $pact["ID"] ?>" target="_blank">Посмотреть</a></td>
             </tr>
             <?
             $arIdContract[] = $pact["UF_ID_CONTRACT"];

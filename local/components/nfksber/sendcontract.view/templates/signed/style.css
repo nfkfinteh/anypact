@@ -25,9 +25,7 @@
     padding: 20px;
     top: 50%;
     position: fixed;
-    margin-top: -180px;
-    height: 360px;
-    width: 550px;
+    margin-top: -80px;
 }
 .view-pdf{
     width:100%;
@@ -106,9 +104,4 @@ ul.list-document li:hover button{
     padding: 20px 10px 10px 30px;
     overflow: hidden auto;
     height: 100%;
-}
-
-#signpopup_close{
-    cursor: pointer;
-    text-align: right;
 }
