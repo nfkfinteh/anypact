@@ -4,6 +4,10 @@ $PactStatus = array(
     'Y' => 'Active.png',
     'N' => 'DontActive.png'
 );
+// статус договоров
+$arrStatus = array(
+    'отменен', 'подписан контрагентом', '', 'изменен контрагентом'
+);
 ?>
 <h2 class="title_line_button">Мои предложения</h2>
 <a href="/my_pacts/edit_my_pact/?ACTION=ADD" class="btn btn-nfk" id="add_pact">+ создать новое предложение</a>
@@ -116,7 +120,11 @@ if ($count_pacts > 0):?>
 <?endif?>
 <div style="width: 100%; height: 100px;">
 </div>
-<h2 class="title_line_button">Договоры, ожидающие подписания с моей стороны</h2>
+<div class="d-flex flex-wrap align-items-center position-relative">
+    <h5>Договоры, ожидающие подписания с моей стороны</h5>
+    <button class="info-btn">?</button>
+    <div class="info-content">В данном разделе содержатся Договоры, которые уже подписаны контрагентом и ожидают подписания с Вашей стороны.</div>
+</div>
 <?if(!empty($arResult["REDACTION"])):?>
     <table class="table">
         <thead>
@@ -154,14 +162,52 @@ if ($count_pacts > 0):?>
                     <td scope="row"><?= $red["NAME"] ?><?if(!empty($red['NAME_CONTRACT'])) echo '#'.$red['NAME_CONTRACT']['ID'].' '.$red['NAME_CONTRACT']['NAME']; ?></td>
                     <td><a href="<?=$red['USER_B']['LINK']?>"><?=$red['USER_B']['NAME']?></a></td>
                     <td><?= $red['TIMESTAMP_X']?></td>
-                    <td><?if(!empty($red['PARAMS_SEND_USER'])){ echo "Подписан";}else { echo "Изменения";}?></td>
-                    <td><a href="/my_pacts/send_contract/?ID=<?= $red["ID"] ?>" target="_blank">Посмотреть</a></td>
+                    <td><?=$arrStatus[$red['UF_STATUS']]?></td>
+                    <td><a href="/my_pacts/send_contract/?ID=<?= $red["ID"]?>" target="_blank">Посмотреть</a></td>
                 </tr>
             <?
         }
         ?>
         </tbody>
     </table>
+   <!--Адаптивная табличка--->
+   <div class="d-md-table">
+        <div class="d-none d-md-table-row t-head">
+            <div class="d-md-table-cell">Контрагент</div>
+            <div class="d-md-table-cell">Наименование</div>
+            <div class="d-md-table-cell">Дата подписания</div>
+            <div class="d-md-table-cell">Статус</div>            
+            <div class="d-md-table-cell"></div>
+        </div>
+        <? foreach ($arResult["REDACTION"] as $red) { // выборка договоров?>
+        <!--Запись в таблице--->
+            <div class="d-flex d-md-none justify-content-between collapse-header">
+                <div><?if(!empty($red['NAME_CONTRACT'])) echo '#'.$red['NAME_CONTRACT']['ID'].' '.$red['NAME_CONTRACT']['NAME']; ?></div>
+                <div class="collapse-arrow position-relative"></div>
+            </div>
+            <div class="d-md-table-row collapse-body">
+                <div class="d-md-none text-gray"><?=$red['PARAMS_SEND_USER']['IN']?></div>
+                <div class="first-face d-md-table-cell">
+                    <a class="d-flex align-items-center" href="/profile_user/?ID=<?=$red['PARAMS_SEND_USER']['ID']?>">
+                        <?if(!empty($red['PERSONAL_PHOTO_SEND_USER'])){?>
+                            <img src="<?=$red['PERSONAL_PHOTO_SEND_USER']?>" height="60" alt="">
+                        <?}else {?>
+                            <h3>?</h3>
+                        <?}?>
+                        <span style="margin-left: 10px;"><?=$red['PARAMS_SEND_USER']['LAST_NAME']?> <?=$red['PARAMS_SEND_USER']['NAME']?></span>
+                    </a>
+                </div>
+                <div class="d-md-table-cell d-none"><?if(!empty($red['NAME_CONTRACT'])) echo '#'.$red['NAME_CONTRACT']['ID'].' '.$red['NAME_CONTRACT']['NAME']; ?></div>
+                <div class="d-md-none text-gray">Дата подписания</div>
+                <div class="d-md-table-cell"><?=$red['UF_TIME_SEND_USER_B']?></div>
+                <div class="d-md-none text-gray">Статус</div>
+                <div class="d-md-table-cell"><?=$arrStatus[$red['UF_STATUS']]?></div>                
+                <div class="d-md-table-cell"><a class="button-link" href="/my_pacts/send_contract/?ID=<?=$red["ID"]?>">Посмотреть</a></div>
+            </div>
+        <!--//Запись в таблице--->
+        <? } ?>
+    </div>
+    <!------------------------>
 <?else:?>
     <div style="clear: both"></div>
     <h3>У Вас нет договоров, ожидающих подписания с Вашей стороны</h3>
@@ -260,3 +306,21 @@ if ($count_pacts > 0):?>
         </div>
     </div>
 </div>
+
+
+<script>
+    $(".collapse-header").click(function () {
+        $(".collapse-header").removeClass("open");
+        $(".collapse-body").removeClass("open");
+        $(this).addClass("open");
+        $(this).next().addClass("open");
+    });
+    $(".info-btn").click(function () {
+        if (window.innerWidth <= 767)
+            $(this).next().slideToggle();
+    });
+    $(".info-btn").hover(function () {
+        if (window.innerWidth > 767)
+            $(this).next().fadeToggle();
+    });
+</script>

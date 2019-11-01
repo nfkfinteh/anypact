@@ -2,7 +2,7 @@
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("AnyPact");
 ?>
-<div class="container">
+<div class="container lk-contracts">
 	<?
     // проверяем авторизован ли пользователь
     global $USER;

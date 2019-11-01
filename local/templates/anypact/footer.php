@@ -6,7 +6,7 @@
 			<img src="<?=SITE_TEMPLATE_PATH.'/img/logo2.png?ioi'?>" />
 		</p>
 		<p align="center" size="16">
-			&copy; 2019 АО «НФК-Сбережения», ООО «НФК-ФинТех», ООО «Пионер-Лизинг»<br>
+			&copy; 2019 АО «НФК-Сбережения», ООО «НФК - Структурные инвестиции», ООО «Пионер-Лизинг»<br>
 			электронная почта: <a href="mailto:info@anypact.ru">info@anypact.ru</a>
 		</p>		
 	</div>

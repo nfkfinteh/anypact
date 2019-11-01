@@ -292,20 +292,14 @@ window.onload = function() {
         var break_sign = getStatusBlock({'contract':id_contract, 'contragent':id_contraegent, 'action':'get'});
     }
 
-
+    // подписание контракта
     if(document.getElementById('send_contract')){
         smscode.value = null;
         // подписывает сторона Б
         if (!!button_send_contract) {
-            let canvas = document.getElementById('canvas');
-            button_send_contract.onclick = function(e) {
-
-                break_sign = getStatusBlock({'contract':id_contract, 'contragent':id_contraegent, 'action':'get'});
-                if(break_sign) {
-                    console.log('Подписывает другая сторона');
-                    return;
-                }
-
+                          
+            // нажатие на кнопку подписания
+            button_send_contract.onclick = function(e) {                
                 popup_send_sms.style.display = 'block';
                 smscode.focus();
 
@@ -332,47 +326,17 @@ window.onload = function() {
                         }, 3000);
                     }
                     max_time.innerHTML = f(s);
-
                     var input_sms_code = getValue();
                     var valid_code = Number(input_sms_code);
 
-                    break_sign = getStatusBlock({'contract':id_contract, 'contragent':id_contraegent, 'action':'get'});
-                    if(break_sign) {
+                    if (valid_code == 777777) {                        
                         clearInterval(t);
-                        popup_send_sms.style.display = 'none';
-                        alert('Подписывает другая сторона');
-                        return false;
-                    }
-                    console.log(break_sign);
-
-
-                    if (valid_code == 777777 && !break_sign) {
-                        //блокируем действие над контрактом в момент его подписания
-                        break_sign = setBlock({'contract':id_contract, 'contragent':id_contraegent, 'status':'Y', 'action':'set'});
-                        console.log(break_sign);
-
-                        clearInterval(t);
-                        smscode.blur();
-
-                        //дополнение для загрузки договора в виде картинки
-                        let isImg = $('#send_contract').hasClass('canvas-img');
-                        var contract_text;                        
+                        smscode.blur();                        
+                        // получаем текст договора (возможно с изменениями)
+                        let canvas = document.getElementById('canvas'); 
+                        contract_text = canvas.innerHTML;    
+                        let isImg = '';
                         
-                        if(isImg){
-                            let arImg = $(canvas).find('.document-img img');
-                            contract_text = [];
-                            arImg.each(function (index, value) {
-                                contract_text[index] = $(value).attr('src');
-                            });
-                        }
-                        else{
-                            contract_text = canvas.innerHTML;
-                            contract_text = contract_text.replace(/&/g, "%");
-                        }
-                        
-                        contract_text = canvas.innerHTML;
-                        console.log(contract_text)
-                        /*
                         // запрос на сервер
                         var xhr = new XMLHttpRequest();
                         var params = 'id=' + encodeURIComponent(id_contract) + '&contr=' + encodeURIComponent(id_contraegent) +
@@ -388,9 +352,8 @@ window.onload = function() {
                         xhr.send(params);
 
                         break_sign = setBlock({'contract':id_contract, 'contragent':id_contraegent, 'status':'', 'action':'set'});
-
                         popup_send_sms.style.display = 'none';
-                        document.location.href = '/my_pacts/';*/
+                        document.location.href = '/my_pacts/';
                     }
                 }, 1000);
 
