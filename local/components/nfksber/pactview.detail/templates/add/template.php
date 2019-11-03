@@ -90,7 +90,7 @@
             <div class="selectbox">
                 <div id="param_selected_activ_date" class="view_text">Активно до: <input type="text" id="param_selected_activ_date_input" name="ACTIVE_DATE" value="" disabled ><span class="glyphicon glyphicon-calendar"></span></div>
             </div>
-            <h3>Дата активности объявления</h3><span>(По умолчанию 10дней)</span>
+            <h3>Дата активности объявления</h3><span>(По умолчанию 10 дней)</span>
             <button class="btn btn-nfk" id="save_ad" style="margin-top:50px;">Сохранить</button>         
             
             

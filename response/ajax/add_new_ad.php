@@ -87,7 +87,7 @@ if(in_array( 1, $arGroups) || in_array( 6, $arGroups)){
         "DETAIL_PICTURE" => $detailPicture,
         "PREVIEW_PICTURE" => $detailPicture,
         "DATE_ACTIVE_FROM" => ConvertTimeStamp(time(), "SHORT"),
-        "DATE_ACTIVE_TO" => ConvertTimeStamp(strtotime($data['DATE_ACTIVE_TO']), "SHORT")
+        "DATE_ACTIVE_TO" => ConvertTimeStamp(time()+(86400*10), "SHORT")
     );
 
     if($PRODUCT_ID = $el->Add($arLoadProductArray)){

@@ -1571,7 +1571,8 @@ input::-webkit-input-placeholder {
     height: 47px;
 }
 .lk-contracts .btn-add-contract{
-    width: 212px;
+    /*width: 212px;*/
+    padding: 10px;
 }
 .lk-contracts .btn-db{
     width: 324px;

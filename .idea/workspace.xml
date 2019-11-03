@@ -1,0 +1,530 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="095c6364-006c-4512-9344-8361d6fd3db8" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local/components/nfksber/pactview.detail/templates/add/template.php" afterPath="$PROJECT_DIR$/local/components/nfksber/pactview.detail/templates/add/template.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local/templates/anypact/template_style.css" afterPath="$PROJECT_DIR$/local/templates/anypact/template_style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/add_new_ad.php" afterPath="$PROJECT_DIR$/response/ajax/add_new_ad.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/add_new_comment.php" afterPath="$PROJECT_DIR$/response/ajax/add_new_comment.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/add_new_messag_user.php" afterPath="$PROJECT_DIR$/response/ajax/add_new_messag_user.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/getdocument.php" afterPath="$PROJECT_DIR$/response/ajax/class/getdocument.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/rtf_html.php" afterPath="$PROJECT_DIR$/response/ajax/class/rtf_html.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/autoload.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/autoload.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/composer/ClassLoader.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/composer/ClassLoader.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/composer/LICENSE" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/composer/LICENSE" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/composer/autoload_classmap.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/composer/autoload_classmap.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/composer/autoload_namespaces.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/composer/autoload_namespaces.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/composer/autoload_psr4.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/composer/autoload_psr4.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/composer/autoload_real.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/composer/autoload_real.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/composer/installed.json" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/composer/installed.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Autoloader.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Autoloader.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Collection/AbstractCollection.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Collection/AbstractCollection.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Collection/Bookmarks.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Collection/Bookmarks.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Collection/Charts.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Collection/Charts.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Collection/Endnotes.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Collection/Endnotes.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Collection/Footnotes.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Collection/Footnotes.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Collection/Titles.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Collection/Titles.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Element/AbstractContainer.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Element/AbstractContainer.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Element/AbstractElement.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Element/AbstractElement.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Element/Bookmark.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Element/Bookmark.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Element/Cell.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Element/Cell.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Element/Chart.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Element/Chart.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Element/CheckBox.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Element/CheckBox.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Element/Endnote.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Element/Endnote.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Element/Field.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Element/Field.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Element/Footer.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Element/Footer.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Element/Footnote.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Element/Footnote.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Element/FormField.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Element/FormField.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Element/Header.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Element/Header.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Element/Image.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Element/Image.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Element/Line.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Element/Line.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Element/Link.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Element/Link.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Element/ListItem.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Element/ListItem.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Element/ListItemRun.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Element/ListItemRun.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Element/Object.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Element/Object.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Element/PageBreak.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Element/PageBreak.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Element/PreserveText.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Element/PreserveText.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Element/Row.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Element/Row.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Element/SDT.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Element/SDT.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Element/Section.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Element/Section.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Element/Shape.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Element/Shape.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Element/TOC.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Element/TOC.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Element/Table.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Element/Table.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Element/Text.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Element/Text.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Element/TextBox.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Element/TextBox.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Element/TextBreak.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Element/TextBreak.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Element/TextRun.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Element/TextRun.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Element/Title.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Element/Title.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Exception/CopyFileException.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Exception/CopyFileException.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Exception/CreateTemporaryFileException.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Exception/CreateTemporaryFileException.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Exception/Exception.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Exception/Exception.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Exception/InvalidImageException.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Exception/InvalidImageException.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Exception/InvalidObjectException.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Exception/InvalidObjectException.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Exception/InvalidStyleException.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Exception/InvalidStyleException.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Exception/UnsupportedImageTypeException.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Exception/UnsupportedImageTypeException.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/IOFactory.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/IOFactory.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Media.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Media.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Metadata/Compatibility.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Metadata/Compatibility.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Metadata/DocInfo.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Metadata/DocInfo.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Metadata/Protection.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Metadata/Protection.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/PhpWord.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/PhpWord.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Reader/AbstractReader.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Reader/AbstractReader.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Reader/HTML.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Reader/HTML.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Reader/MsDoc.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Reader/MsDoc.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Reader/ODText.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Reader/ODText.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Reader/ODText/AbstractPart.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Reader/ODText/AbstractPart.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Reader/ODText/Content.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Reader/ODText/Content.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Reader/ODText/Meta.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Reader/ODText/Meta.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Reader/RTF.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Reader/RTF.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Reader/RTF/Document.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Reader/RTF/Document.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Reader/ReaderInterface.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Reader/ReaderInterface.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Reader/Word2007.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Reader/Word2007.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Reader/Word2007/AbstractPart.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Reader/Word2007/AbstractPart.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Reader/Word2007/DocPropsApp.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Reader/Word2007/DocPropsApp.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Reader/Word2007/DocPropsCore.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Reader/Word2007/DocPropsCore.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Reader/Word2007/DocPropsCustom.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Reader/Word2007/DocPropsCustom.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Reader/Word2007/Document.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Reader/Word2007/Document.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Reader/Word2007/Endnotes.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Reader/Word2007/Endnotes.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Reader/Word2007/Footnotes.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Reader/Word2007/Footnotes.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Reader/Word2007/Numbering.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Reader/Word2007/Numbering.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Reader/Word2007/Styles.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Reader/Word2007/Styles.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Settings.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Settings.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Shared/Converter.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Shared/Converter.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Shared/Drawing.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Shared/Drawing.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Shared/Font.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Shared/Font.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Shared/Html.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Shared/Html.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Shared/OLERead.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Shared/OLERead.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Shared/PCLZip/pclzip.lib.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Shared/PCLZip/pclzip.lib.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Shared/String.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Shared/String.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Shared/XMLReader.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Shared/XMLReader.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Shared/XMLWriter.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Shared/XMLWriter.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Shared/ZipArchive.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Shared/ZipArchive.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Style.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Style.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Style/AbstractStyle.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Style/AbstractStyle.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Style/Alignment.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Style/Alignment.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Style/Border.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Style/Border.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Style/Cell.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Style/Cell.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Style/Chart.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Style/Chart.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Style/Extrusion.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Style/Extrusion.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Style/Fill.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Style/Fill.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Style/Font.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Style/Font.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Style/Frame.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Style/Frame.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Style/Image.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Style/Image.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Style/Indentation.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Style/Indentation.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Style/Line.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Style/Line.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Style/LineNumbering.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Style/LineNumbering.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Style/ListItem.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Style/ListItem.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Style/Numbering.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Style/Numbering.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Style/NumberingLevel.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Style/NumberingLevel.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Style/Outline.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Style/Outline.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Style/Paper.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Style/Paper.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Style/Paragraph.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Style/Paragraph.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Style/Row.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Style/Row.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Style/Section.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Style/Section.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Style/Shading.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Style/Shading.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Style/Shadow.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Style/Shadow.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Style/Shape.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Style/Shape.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Style/Spacing.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Style/Spacing.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Style/TOC.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Style/TOC.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Style/Tab.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Style/Tab.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Style/Table.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Style/Table.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Style/TextBox.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Style/TextBox.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Template.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Template.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/TemplateProcessor.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/TemplateProcessor.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/AbstractWriter.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/AbstractWriter.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/HTML.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/HTML.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/HTML/Element/AbstractElement.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/HTML/Element/AbstractElement.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/HTML/Element/Container.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/HTML/Element/Container.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/HTML/Element/Endnote.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/HTML/Element/Endnote.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/HTML/Element/Footnote.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/HTML/Element/Footnote.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/HTML/Element/Image.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/HTML/Element/Image.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/HTML/Element/Link.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/HTML/Element/Link.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/HTML/Element/ListItem.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/HTML/Element/ListItem.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/HTML/Element/PageBreak.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/HTML/Element/PageBreak.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/HTML/Element/Table.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/HTML/Element/Table.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/HTML/Element/Text.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/HTML/Element/Text.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/HTML/Element/TextBreak.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/HTML/Element/TextBreak.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/HTML/Element/TextRun.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/HTML/Element/TextRun.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/HTML/Element/Title.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/HTML/Element/Title.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/HTML/Part/AbstractPart.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/HTML/Part/AbstractPart.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/HTML/Part/Body.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/HTML/Part/Body.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/HTML/Part/Head.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/HTML/Part/Head.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/HTML/Style/AbstractStyle.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/HTML/Style/AbstractStyle.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/HTML/Style/Font.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/HTML/Style/Font.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/HTML/Style/Generic.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/HTML/Style/Generic.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/HTML/Style/Image.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/HTML/Style/Image.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/HTML/Style/Paragraph.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/HTML/Style/Paragraph.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/ODText.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/ODText.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/ODText/Element/AbstractElement.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/ODText/Element/AbstractElement.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/ODText/Element/Container.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/ODText/Element/Container.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/ODText/Element/Image.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/ODText/Element/Image.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/ODText/Element/Link.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/ODText/Element/Link.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/ODText/Element/Table.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/ODText/Element/Table.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/ODText/Element/Text.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/ODText/Element/Text.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/ODText/Element/TextBreak.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/ODText/Element/TextBreak.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/ODText/Element/TextRun.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/ODText/Element/TextRun.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/ODText/Element/Title.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/ODText/Element/Title.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/ODText/Part/AbstractPart.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/ODText/Part/AbstractPart.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/ODText/Part/Content.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/ODText/Part/Content.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/ODText/Part/Manifest.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/ODText/Part/Manifest.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/ODText/Part/Meta.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/ODText/Part/Meta.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/ODText/Part/Mimetype.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/ODText/Part/Mimetype.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/ODText/Part/Styles.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/ODText/Part/Styles.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/ODText/Style/AbstractStyle.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/ODText/Style/AbstractStyle.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/ODText/Style/Font.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/ODText/Style/Font.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/ODText/Style/Image.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/ODText/Style/Image.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/ODText/Style/Paragraph.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/ODText/Style/Paragraph.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/ODText/Style/Section.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/ODText/Style/Section.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/ODText/Style/Table.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/ODText/Style/Table.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/PDF.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/PDF.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/PDF/AbstractRenderer.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/PDF/AbstractRenderer.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/PDF/DomPDF.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/PDF/DomPDF.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/PDF/MPDF.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/PDF/MPDF.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/PDF/TCPDF.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/PDF/TCPDF.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/RTF.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/RTF.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/RTF/Element/AbstractElement.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/RTF/Element/AbstractElement.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/RTF/Element/Container.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/RTF/Element/Container.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/RTF/Element/Image.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/RTF/Element/Image.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/RTF/Element/Link.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/RTF/Element/Link.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/RTF/Element/ListItem.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/RTF/Element/ListItem.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/RTF/Element/PageBreak.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/RTF/Element/PageBreak.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/RTF/Element/Table.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/RTF/Element/Table.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/RTF/Element/Text.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/RTF/Element/Text.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/RTF/Element/TextBreak.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/RTF/Element/TextBreak.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/RTF/Element/TextRun.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/RTF/Element/TextRun.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/RTF/Element/Title.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/RTF/Element/Title.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/RTF/Part/AbstractPart.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/RTF/Part/AbstractPart.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/RTF/Part/Document.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/RTF/Part/Document.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/RTF/Part/Header.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/RTF/Part/Header.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/RTF/Style/AbstractStyle.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/RTF/Style/AbstractStyle.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/RTF/Style/Border.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/RTF/Style/Border.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/RTF/Style/Font.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/RTF/Style/Font.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/RTF/Style/Paragraph.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/RTF/Style/Paragraph.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/RTF/Style/Section.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/RTF/Style/Section.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Element/AbstractElement.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Element/AbstractElement.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Element/Bookmark.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Element/Bookmark.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Element/Chart.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Element/Chart.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Element/CheckBox.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Element/CheckBox.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Element/Container.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Element/Container.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Element/Endnote.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Element/Endnote.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Element/Field.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Element/Field.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Element/Footnote.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Element/Footnote.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Element/FormField.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Element/FormField.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Element/Image.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Element/Image.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Element/Line.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Element/Line.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Element/Link.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Element/Link.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Element/ListItem.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Element/ListItem.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Element/ListItemRun.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Element/ListItemRun.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Element/Object.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Element/Object.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Element/PageBreak.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Element/PageBreak.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Element/PreserveText.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Element/PreserveText.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Element/SDT.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Element/SDT.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Element/Shape.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Element/Shape.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Element/TOC.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Element/TOC.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Element/Table.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Element/Table.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Element/Text.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Element/Text.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Element/TextBox.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Element/TextBox.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Element/TextBreak.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Element/TextBreak.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Element/TextRun.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Element/TextRun.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Element/Title.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Element/Title.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Part/AbstractPart.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Part/AbstractPart.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Part/Chart.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Part/Chart.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Part/ContentTypes.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Part/ContentTypes.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Part/DocPropsApp.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Part/DocPropsApp.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Part/DocPropsCore.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Part/DocPropsCore.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Part/DocPropsCustom.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Part/DocPropsCustom.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Part/Document.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Part/Document.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Part/Endnotes.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Part/Endnotes.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Part/FontTable.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Part/FontTable.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Part/Footer.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Part/Footer.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Part/Footnotes.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Part/Footnotes.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Part/Header.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Part/Header.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Part/Numbering.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Part/Numbering.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Part/Rels.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Part/Rels.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Part/RelsDocument.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Part/RelsDocument.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Part/RelsPart.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Part/RelsPart.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Part/Settings.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Part/Settings.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Part/Styles.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Part/Styles.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Part/Theme.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Part/Theme.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Part/WebSettings.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Part/WebSettings.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Style/AbstractStyle.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Style/AbstractStyle.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Style/Alignment.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Style/Alignment.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Style/Cell.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Style/Cell.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Style/Extrusion.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Style/Extrusion.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Style/Fill.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Style/Fill.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Style/Font.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Style/Font.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Style/Frame.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Style/Frame.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Style/Image.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Style/Image.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Style/Indentation.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Style/Indentation.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Style/Line.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Style/Line.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Style/LineNumbering.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Style/LineNumbering.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Style/MarginBorder.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Style/MarginBorder.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Style/Outline.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Style/Outline.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Style/Paragraph.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Style/Paragraph.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Style/Row.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Style/Row.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Style/Section.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Style/Section.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Style/Shading.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Style/Shading.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Style/Shadow.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Style/Shadow.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Style/Shape.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Style/Shape.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Style/Spacing.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Style/Spacing.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Style/Tab.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Style/Tab.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Style/Table.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Style/Table.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Style/TextBox.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/Word2007/Style/TextBox.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/WriterInterface.php" afterPath="$PROJECT_DIR$/response/ajax/class/vendor/phpoffice/phpword/src/PhpWord/Writer/WriterInterface.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/delete_item.php" afterPath="$PROJECT_DIR$/response/ajax/delete_item.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/edit_personal.php" afterPath="$PROJECT_DIR$/response/ajax/edit_personal.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/get_template_contract.php" afterPath="$PROJECT_DIR$/response/ajax/get_template_contract.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/phpword.php" afterPath="$PROJECT_DIR$/response/ajax/phpword.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/send_contract.php" afterPath="$PROJECT_DIR$/response/ajax/send_contract.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/up_contract_text.php" afterPath="$PROJECT_DIR$/response/ajax/up_contract_text.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/up_message_user.php" afterPath="$PROJECT_DIR$/response/ajax/up_message_user.php" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="add_new_ad.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/response/ajax/add_new_ad.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="89" column="61" lean-forward="false" selection-start-line="89" selection-start-column="61" selection-end-line="89" selection-end-column="61" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="template.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/local/components/nfksber/pactview.detail/templates/add/template.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="646">
+              <caret line="92" column="70" lean-forward="false" selection-start-line="92" selection-start-column="70" selection-end-line="92" selection-end-column="70" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="template_style.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/local/templates/anypact/template_style.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="155">
+              <caret line="1573" column="4" lean-forward="false" selection-start-line="1573" selection-start-column="6" selection-end-line="1573" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/local/templates/anypact/template_style.css" />
+        <option value="$PROJECT_DIR$/response/ajax/add_new_ad.php" />
+        <option value="$PROJECT_DIR$/local/components/nfksber/pactview.detail/templates/add/template.php" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-51" />
+    <option name="y" value="79" />
+    <option name="width" value="1616" />
+    <option name="height" value="916" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="anypactbitrix" type="b2602c69:ProjectViewProjectNode" />
+              <item name="anypactbitrix" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="anypactbitrix" type="b2602c69:ProjectViewProjectNode" />
+              <item name="anypactbitrix" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="local" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="anypactbitrix" type="b2602c69:ProjectViewProjectNode" />
+              <item name="anypactbitrix" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="local" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="components" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="anypactbitrix" type="b2602c69:ProjectViewProjectNode" />
+              <item name="anypactbitrix" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="local" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="components" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="nfksber" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="anypactbitrix" type="b2602c69:ProjectViewProjectNode" />
+              <item name="anypactbitrix" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="local" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="components" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="nfksber" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="pactview.detail" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="anypactbitrix" type="b2602c69:ProjectViewProjectNode" />
+              <item name="anypactbitrix" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="local" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="components" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="nfksber" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="pactview.detail" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="templates" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="anypactbitrix" type="b2602c69:ProjectViewProjectNode" />
+              <item name="anypactbitrix" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="local" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="components" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="nfksber" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="pactview.detail" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="templates" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="add" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="anypactbitrix" type="b2602c69:ProjectViewProjectNode" />
+              <item name="anypactbitrix" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="local" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="templates" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="anypactbitrix" type="b2602c69:ProjectViewProjectNode" />
+              <item name="anypactbitrix" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="local" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="templates" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="anypact" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="095c6364-006c-4512-9344-8361d6fd3db8" name="Default" comment="" />
+      <created>1572720274302</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1572720274302</updated>
+      <workItem from="1572720276782" duration="2535000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="2535000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/local/templates/anypact/template_style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="1573" column="4" lean-forward="false" selection-start-line="1573" selection-start-column="6" selection-end-line="1573" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/response/ajax/add_new_ad.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="89" column="61" lean-forward="false" selection-start-line="89" selection-start-column="61" selection-end-line="89" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/local/components/nfksber/pactview.detail/templates/add/template.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="92" column="70" lean-forward="false" selection-start-line="92" selection-start-column="70" selection-end-line="92" selection-end-column="70" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

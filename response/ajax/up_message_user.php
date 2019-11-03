@@ -37,7 +37,7 @@ $rsData = $entity_data_class::getList(array(
     "order" => array("ID" => "ASC"),
     "filter" => array("ID"=>$IDMessage)  // Задаем параметры фильтра выборки
 ));
-
+ 
 $arData = $rsData->Fetch();
 $arrMessages =  json_decode($arData['UF_TEXT_MESSAGE_USER'], true);
 
