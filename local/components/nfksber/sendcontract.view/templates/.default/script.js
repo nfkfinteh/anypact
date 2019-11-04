@@ -28,9 +28,7 @@ $(document).ready(function(){
 
     // подписать
     $('#sign_contract').on('click', function(e){
-        console.log('Отзыв подписи')
-        let id = $(this).attr('data');
-        
+        let id = $(this).attr('data-id');
         e.preventDefault();
         let url = '/response/ajax/quiq_sign.php';        
         let data = {
@@ -43,9 +41,10 @@ $(document).ready(function(){
             data: data,
             success: function(result){
                 console.log(result);
+                /*
                 if(result==1){
                     document.location.replace('/my_pacts/')
-                }
+                }*/
             },
 
         });

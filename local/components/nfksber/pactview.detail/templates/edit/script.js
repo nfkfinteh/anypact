@@ -50,6 +50,33 @@ $(document).ready(function() {
         }
     });
 
+    // автоматическое удаление объявления
+    $("#avtomatic_delete").on('click', function(){
+        console.log("удалять автоматом")
+        let auto_delete_button = $(this).prop("checked");
+        console.log(auto_delete_button)
+        let auto_delete_params
+
+        if(auto_delete_button){
+            auto_delete_params = 'Y'
+        }else{
+            auto_delete_params = 'N'
+        }
+
+        $.post(
+            "/response/ajax/up_pact_text.php", {
+                text: auto_delete_params,
+                id_element: ID_Object,
+                atrr_text: 'aut_delete'
+            },
+            onAjaxSuccess
+        );
+
+        function onAjaxSuccess(data) {
+            location.reload();
+        }
+
+    });
     var arFiles = [];
 
     //добавление изображения

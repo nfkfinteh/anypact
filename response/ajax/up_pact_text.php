@@ -40,6 +40,19 @@ switch ($_POST['atrr_text']) {
             "MODIFIED_BY"    => $USER->GetID()            
         );        
         break;
+
+    case 'aut_delete':
+        $ELEMENT_ID = $_POST['id_element'];
+        $PROPERTY_CODE = "AV_DELETE";
+        $PROPERTY_VALUE = html_entity_decode($_POST['text']);  // значение свойства
+
+        $value="text";
+        CIBlockElement::SetPropertyValueCode($ELEMENT_ID, $PROPERTY_CODE, $PROPERTY_VALUE);
+
+        $arLoadProductArray = Array(
+            "MODIFIED_BY"    => $USER->GetID()
+        );
+        break;
 }
 
 // код свойства

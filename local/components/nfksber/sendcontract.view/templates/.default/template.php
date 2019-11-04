@@ -2,7 +2,7 @@
 <? //print_r($arResult) ;?>
 <!--------------------------------------1-------------------------------------------------->
 <div>
-        <h1 class="mb-4">Подписанные договора</h1>
+        <h1 class="mb-4">Договор ожидающий моей подписи</h1>
         <div class="row pt-2 mb-5 pb-5">
             <div class="col-md-4 col-sm-12">
                 <h3 class="font-weight-bold">Файлы</h3>
@@ -12,7 +12,7 @@
                         <?if($arResult['USERS']['UF_ID_USER_A']==$USER->GetID()):?>
                             <?=$arResult['SEND_BLOCK']['ID']?>
                         <?endif?>
-                        <button class="btn btn-nfk" id="send_" data-id="49" data-user="1" style="width:100%">Предложить изменения</button>
+                        <button class="btn btn-nfk" id="sign_contract" data-id="<?=$_GET['ID']?>" data-user="1" style="width:100%">Предложить изменения</button>
                         <button class="btn btn-nfk" id="recall_sign" data="<?=$_GET['ID']?>" data-user="1" style="width:100%">Отклонить</button>
                     </li>
                     <!--

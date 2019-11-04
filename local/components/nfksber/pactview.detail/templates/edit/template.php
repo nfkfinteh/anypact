@@ -68,6 +68,16 @@
                 }
                 ?>
             <a class="btn btn-nfk" href="/my_pacts/add_my_dogovor/?ELEMENT_ID=<?=$arResult["ELEMENT"]["ID"]?>&<?=$action_dogovor?>"><?=$text_btn_dogovor?></a>
+            <!--Автоматическое удаление объявления-->
+            <div class="form-group form-checkbox" style="padding-left: 21px;">
+                <? if($arResult["PROPERTY"]["AV_DELETE"]["VALUE"] == "N"){ ?>
+                    <input type="checkbox" id="avtomatic_delete" name="hide_profile" style="width: 19px;height: 26px;float: left">
+                <?}else {?>
+                    <input checked type="checkbox" id="avtomatic_delete" name="hide_profile" style="width: 19px;height: 26px;float: left">
+                <?}?>
+                <label for="hide_profile" style="padding: 0 0 44px 20px;float: left; width: 94%;">автоматически удалить предложение после заключения сделки</label>
+                <input type="hidden" name="UF_HIDE_PROFILE" value="0" class="hide_profile_input">
+            </div>
             <div id="select_spetification">
                     <a href="#" class="cardPact-rightPanel-url">Спецификация №1</a>
             </div>
