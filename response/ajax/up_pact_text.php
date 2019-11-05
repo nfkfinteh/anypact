@@ -28,6 +28,7 @@ switch ($_POST['atrr_text']) {
         CIBlockElement::SetPropertyValueCode($ELEMENT_ID, $PROPERTY_CODE, array("VALUE"=>array("TEXT"=>$PROPERTY_VALUE, "TYPE"=>"html")));
 
         break;
+    // обновление суммы
     case 'summ':
         $ELEMENT_ID = $_POST['id_element']; 
         $PROPERTY_CODE = "SUMM_PACT";
@@ -40,7 +41,7 @@ switch ($_POST['atrr_text']) {
             "MODIFIED_BY"    => $USER->GetID()            
         );        
         break;
-
+    // автоматическое удаление объявления
     case 'aut_delete':
         $ELEMENT_ID = $_POST['id_element'];
         $PROPERTY_CODE = "AV_DELETE";
@@ -53,12 +54,17 @@ switch ($_POST['atrr_text']) {
             "MODIFIED_BY"    => $USER->GetID()
         );
         break;
+    // продление срока объявления
+    case 'up_date_active':        
+        $arLoadProductArray = Array(
+            "MODIFIED_BY"    => $USER->GetID(),
+            "DATE_ACTIVE_TO" => ConvertTimeStamp(time()+(86400*10), "SHORT")
+        );
+        break;        
 }
 
 // код свойства
 $PRODUCT_ID = $_POST['id_element'];
 $res = $el->Update($PRODUCT_ID, $arLoadProductArray);
-
-echo "обновили ".$_POST['atrr_text'];
 
 ?>

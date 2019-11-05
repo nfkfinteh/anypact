@@ -28,27 +28,19 @@ while($arData = $rsData->Fetch()){
     $Send_item  = $arData;
 }
 
-print_r($Send_item);
-
 // ид контракта, выбираем объявления с ид
 $ID_Contract = (int) $Send_item["UF_ID_CONTRACT"];
 
-/*
- *
 // обновление статуса подписания
 $result = $entity_data_class::update($idForUpdate, array(
   'UF_STATUS'   => '2'
 ));
 
-// проверяем если у элемента есть автоматическое удаление, то удаляем запись.
-*/
-
+////// проверяем если у элемента есть автоматическое удаление, то удаляем запись.///
 if (!\Bitrix\Main\Loader::includeModule('iblock')) {
     echo json_encode([ 'VALUE'=>'Не подключен модуль инфоблоки', 'TYPE'=> 'ERROR']);
     die();
 }
-
-echo "ID_CONTR".$Send_item["UF_ID_CONTRACT"];
 
 $IBlock_id = 3;
 
@@ -65,7 +57,6 @@ $arElements = Array();
 while($element = $result->GetNextElement()) {
     // поля элемента
     $arFields = $element->GetFields();
-    echo "<br>".$arFields['ID'];
     // пользовательские свойства элемента
     $UserProperty = CIBlockElement::GetProperty($IBlock_id, $arFields['ID']);
     // если нужно получить значения без ~ (без тильды к значенинию применено htmlspecialcharsEx) ->GetNext(true, false)
@@ -75,22 +66,17 @@ while($element = $result->GetNextElement()) {
     }
 }
 
-//print_r($arFields);
-echo 'ID_'.$arFields['NAME'];
-//print_r($arFields['USER_PROPERTY']['ID_DOGOVORA']);
-print_r($arFields['USER_PROPERTY']['AV_DELETE']);
+$ID_AD = $arFields['ID'];
 
-/*
-if(CIBlockElement::Delete($ELEMENT_ID))
-{
-    echo json_encode([ 'VALUE'=>'Элемент удален', 'TYPE'=> 'SUCCESS']);
-}
-else{
-    echo json_encode([ 'VALUE'=>'Ошибка при удалении', 'TYPE'=> 'ERROR']);
-    die();
-}
-
-//print_r($_POST['IDItem']);
-echo "1";
-
-*/
+// если у объявления есть признак автоматического удаления то удаляем его
+if(!empty($arFields['USER_PROPERTY']['AV_DELETE']) && $arFields['USER_PROPERTY']['AV_DELETE']['VALUE'] == 'Y' ) {
+  
+  if(CIBlockElement::Delete($ID_AD))
+  {
+      echo json_encode([ 'VALUE'=>'Элемент удален', 'TYPE'=> 'SUCCESS']);
+  }
+  else{
+      echo json_encode([ 'VALUE'=>'Ошибка при удалении', 'TYPE'=> 'ERROR']);
+      die();
+  }
+} 

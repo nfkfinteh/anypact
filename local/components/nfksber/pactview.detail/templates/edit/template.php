@@ -1,5 +1,7 @@
+<!-- <pre>
 <? //print_r($arResult["PROPERTY"]["ID_DOGOVORA"]) ;?>
 <? //print_r($arResult) ;?>
+</pre> -->
 <div id="params_object" style="display:none" data="<?=$arResult["ELEMENT"]["ID"]?>"></div>
 <h1><?=$arResult["ELEMENT"]["NAME"]?></h1>
 <div class="tender cardPact">
@@ -56,7 +58,12 @@
         <!-- Правая часть карточки -->
         <div class="col-lg-4 col-md-4 col-sm-4 cardPact-rightPanel">
             <h1><span id="cardPact-EditText-Summ" contenteditable="true"><?=$arResult["PROPERTY"]["SUMM_PACT"]["VALUE"]?></span> руб.</h1>
-            <button class="btn btn-nfk save" id="save_summ">Сохранить</button>
+            <button class="btn btn-nfk " id="save_summ" style="margin-top:30px;">Сохранить</button>
+            <!--Срок объявления -->
+            <h4>Объявление активно до: <? print_r($arResult["ELEMENT"]["DATE_ACTIVE_TO"]); ?></h4>
+            <button class="btn btn-nfk" id="up_date_active">Продлить на 10 дней</button>
+            <!-- Добавление договора -->
+            <h4>Вы можете добавить договор из шаблона или загрузить свой</h4>
                 <?
                 $disable_a = "";
                 if (!empty($arResult["PROPERTY"]["ID_DOGOVORA"]["VALUE"])){
@@ -67,29 +74,23 @@
                     $action_dogovor = 'EDIT=ADD';
                 }
                 ?>
-            <a class="btn btn-nfk" href="/my_pacts/add_my_dogovor/?ELEMENT_ID=<?=$arResult["ELEMENT"]["ID"]?>&<?=$action_dogovor?>"><?=$text_btn_dogovor?></a>
+            <a class="btn btn-nfk" href="/my_pacts/add_my_dogovor/?ELEMENT_ID=<?=$arResult["ELEMENT"]["ID"]?>&<?=$action_dogovor?>"><?=$text_btn_dogovor?></a>            
             <!--Автоматическое удаление объявления-->
-            <div class="form-group form-checkbox" style="padding-left: 21px;">
-                <? if($arResult["PROPERTY"]["AV_DELETE"]["VALUE"] == "N"){ ?>
-                    <input type="checkbox" id="avtomatic_delete" name="hide_profile" style="width: 19px;height: 26px;float: left">
+            <div class="form-group form-checkbox" style="padding-left: 21px;">            
+                <? if($arResult["PROPERTY"]["AV_DELETE"]["VALUE"] == "Y"){ ?>
+                    <input checked type="checkbox" id="avtomatic_delete" name="hide_profile" style="width: 19px;height: 26px;float: left">                    
                 <?}else {?>
-                    <input checked type="checkbox" id="avtomatic_delete" name="hide_profile" style="width: 19px;height: 26px;float: left">
+                    <input type="checkbox" id="avtomatic_delete" name="hide_profile" style="width: 19px;height: 26px;float: left">
                 <?}?>
                 <label for="hide_profile" style="padding: 0 0 44px 20px;float: left; width: 94%;">автоматически удалить предложение после заключения сделки</label>
                 <input type="hidden" name="UF_HIDE_PROFILE" value="0" class="hide_profile_input">
             </div>
+            <!--Приложения к договору-->
+            <h4>Добавить приложение в виде файла(опционально)</h4>
+            <button class="btn btn-nfk">Загрузить файл</button>            
             <div id="select_spetification">
                     <a href="#" class="cardPact-rightPanel-url">Спецификация №1</a>
             </div>
-            <button class="btn btn-nfk">Добавить спецификацию</button>
-            <div id="select_spetification">
-                    <a href="#" class="cardPact-rightPanel-url">Приложение №1</a>
-            </div>
-            <button class="btn btn-nfk">Добавит приложение</button>
-            <div id="select_spetification">
-                    <a href="#" class="cardPact-rightPanel-url">Файл/скан документа №1</a>
-            </div>
-            <button class="btn btn-nfk">Добавит документ</button>
         </div>
     </div>
 </div>

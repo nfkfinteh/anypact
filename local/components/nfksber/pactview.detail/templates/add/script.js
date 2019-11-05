@@ -25,7 +25,6 @@ $(document).ready(function() {
         
     });
 
-
     var arFiles = [];
 
 
@@ -152,8 +151,6 @@ $(document).ready(function() {
             if($.trim(adSum).length != 0){
                 prop['SUMM_PACT'] = $.trim(adSum);
             }
-
-
             // ничего не делаем если files пустой
             if( typeof arFiles != 'undefined' ){
 

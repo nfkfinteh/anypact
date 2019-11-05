@@ -51,8 +51,7 @@ $(document).ready(function() {
     });
 
     // автоматическое удаление объявления
-    $("#avtomatic_delete").on('click', function(){
-        console.log("удалять автоматом")
+    $("#avtomatic_delete").on('click', function(){        
         let auto_delete_button = $(this).prop("checked");
         console.log(auto_delete_button)
         let auto_delete_params
@@ -77,6 +76,26 @@ $(document).ready(function() {
         }
 
     });
+
+        // Продление срока объявления
+        $("#up_date_active").on('click', function(){
+            console.log("Продление срока публикации")          
+
+            $.post(
+                "/response/ajax/up_pact_text.php", {                    
+                    id_element: ID_Object,
+                    atrr_text: 'up_date_active'
+                },
+                onAjaxSuccess
+            );
+    
+            function onAjaxSuccess(data) {
+                console.log(data)
+                //location.reload();
+            }
+    
+        });
+
     var arFiles = [];
 
     //добавление изображения

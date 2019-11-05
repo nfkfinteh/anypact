@@ -52,7 +52,7 @@ foreach ($arResult["PROPERTY"]["IMG_FILE"] as $item){
     </div>
     <div class="col-md-5 col-lg-4">
         <span class="cardPact-price"><?=$arResult["PROPERTY"]["SUMM_PACT"]["VALUE"]?> руб.</span>
-        <a href="/pacts/view_pact/view_dogovor/?ELEMENT_ID=<?=$arResult["ELEMENT"]["ID"]?>" class="btn btn-nfk cardPact-bBtn <?=$disable_a?>">Посмотреть договор</a>
+        <a href="/pacts/view_pact/view_dogovor/?ELEMENT_ID=<?=$arResult["ELEMENT"]["ID"]?>" class="btn btn-nfk cardPact-bBtn <?=$disable_a?>">Посмотреть или подписать договор</a>
         <a href="#" class="btn btn-nfk cardPact-bBtn">Посмотреть спецификацию</a>
         <div class="cardPact-person">
             <?if(!empty($arResult["CONTRACT_HOLDER"]["PERSONAL_PHOTO"])):?>
