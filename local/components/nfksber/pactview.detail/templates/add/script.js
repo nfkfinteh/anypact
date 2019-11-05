@@ -160,7 +160,7 @@ $(document).ready(function() {
                     IBLOCK_ID : 3,
                     PROPERTY_VALUES : prop,
                     NAME : adName,
-                    ACTIVE : "Y",
+                    ACTIVE : "N",
                     DETAIL_TEXT : arAdDescript,
                     DATE_ACTIVE_TO : date,
                 });

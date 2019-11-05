@@ -49,9 +49,14 @@ class CDemoSqr extends CBitrixComponent
                 $file_path = CFile::GetPath($ar_props["VALUE"]);
                 $array_img[] = array("URL" => $file_path, "PROPERTY" => $ar_props);
             }
+            if ($ar_props["CODE"] == "MAIN_FILES"){
+                $file_path = CFile::GetPath($ar_props["VALUE"]);
+                $array_incl[] = array("URL" => $file_path, "ID" => $ar_props["PROPERTY_VALUE_ID"], "ID_FILE" => $ar_props["VALUE"]);
+            }
         }
         
         $array_props["IMG_FILE"] = $array_img;
+        $array_props["UNCLUDE_FILE"] = $array_incl;
         return $array_props;
     }    
 
@@ -154,11 +159,13 @@ class CDemoSqr extends CBitrixComponent
             // данные владельца сделки           
             $UserContractHolder = CUser::GetByID($this->arResult["PROPERTY"]["PACT_USER"]["VALUE"]);
             $arrUserContractHolder = $UserContractHolder->Fetch();
+            //print_r($arrUserContractHolder);
             $USER_CONTRACT_HOLDER = array(
-                "ID" => $arrUserContractHolder["ID"],
-                "NAME" => $arrUserContractHolder["NAME"],
+                "ID"    => $arrUserContractHolder["ID"],
+                "NAME"  => $arrUserContractHolder["NAME"],
                 "LAST_NAME" => $arrUserContractHolder["LAST_NAME"],
-                "LOGIN" => $arrUserContractHolder["LOGIN"], 
+                "LOGIN" => $arrUserContractHolder["LOGIN"],
+                "CITY"  => $arrUserContractHolder["PERSONAL_CITY"],
                 "PERSONAL_PHOTO" => CFile::GetPath($arrUserContractHolder["PERSONAL_PHOTO"])
             ); 
             $this->arResult["CONTRACT_HOLDER"] = $USER_CONTRACT_HOLDER;

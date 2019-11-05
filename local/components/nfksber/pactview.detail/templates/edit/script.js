@@ -77,24 +77,43 @@ $(document).ready(function() {
 
     });
 
-        // Продление срока объявления
-        $("#up_date_active").on('click', function(){
-            console.log("Продление срока публикации")          
+    // Продление срока объявления
+    $("#up_date_active").on('click', function(){      
+        $.post(
+            "/response/ajax/up_pact_text.php", {                    
+                id_element: ID_Object,
+                atrr_text: 'up_date_active'
+            },
+            onAjaxSuccess
+        );
 
-            $.post(
-                "/response/ajax/up_pact_text.php", {                    
-                    id_element: ID_Object,
-                    atrr_text: 'up_date_active'
-                },
-                onAjaxSuccess
-            );
-    
-            function onAjaxSuccess(data) {
-                console.log(data)
-                //location.reload();
-            }
-    
-        });
+        function onAjaxSuccess(data) {
+            console.log(data)
+            //location.reload();
+        }
+
+    });
+
+    // удаление загруженных файлов
+    $('.delete_unclude_file').on('click', function(){      
+        let id_value_el = $(this).attr('data');
+        let id_file = $(this).attr('data-file');
+        $.post(
+            "/response/ajax/up_pact_text.php", {                    
+                id_file: id_file,
+                id_value: id_value_el,
+                id_element: ID_Object,
+                atrr_text: 'delete_incl_file'
+            },
+            onAjaxSuccess
+        );
+
+        function onAjaxSuccess(data) {
+            //console.log(data)
+            location.reload();
+        }
+
+    });
 
     var arFiles = [];
 

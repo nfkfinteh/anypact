@@ -60,7 +60,25 @@ switch ($_POST['atrr_text']) {
             "MODIFIED_BY"    => $USER->GetID(),
             "DATE_ACTIVE_TO" => ConvertTimeStamp(time()+(86400*10), "SHORT")
         );
-        break;        
+        break;   
+    
+    // Удаление прикрепленного файла
+    case 'delete_incl_file':
+        print_r($_POST);
+        // Удаление свойства
+        $ELEMENT_ID = $_POST['id_element'];
+        $PROPERTY_CODE  = "MAIN_FILES";
+        $PROPERTY_VALUE = Array(
+            "del" => "Y",
+            "MODULE_ID" => "additionFiles"
+        );         
+        CIBlockElement::SetPropertyValueCode($ELEMENT_ID, $PROPERTY_CODE, Array ($_POST['id_value'] => $PROPERTY_VALUE) );
+        // Удаление файла
+        CFile::Delete($_POST['id_file']);
+        $arLoadProductArray = Array(
+            "MODIFIED_BY"    => $USER->GetID()        
+        );
+    break;        
 }
 
 // код свойства

@@ -47,32 +47,40 @@ foreach ($arResult["PROPERTY"]["IMG_FILE"] as $item){
         <? } ?>
         <h5>Описание</h5>
         <?=$arResult["ELEMENT"]["DETAIL_TEXT"]?>
-        <h5>Условия</h5>
-        <?=$arResult["PROPERTY"]["CONDITIONS_PACT"]["VALUE"]["TEXT"]?>
+        <? if(isset($arResult["PROPERTY"]["CONDITIONS_PACT"]["VALUE"]["TEXT"])){ ?>
+            <h5>Условия</h5>
+            <?=$arResult["PROPERTY"]["CONDITIONS_PACT"]["VALUE"]["TEXT"]?>
+        <? } ?>        
     </div>
     <div class="col-md-5 col-lg-4">
         <span class="cardPact-price"><?=$arResult["PROPERTY"]["SUMM_PACT"]["VALUE"]?> руб.</span>
         <a href="/pacts/view_pact/view_dogovor/?ELEMENT_ID=<?=$arResult["ELEMENT"]["ID"]?>" class="btn btn-nfk cardPact-bBtn <?=$disable_a?>">Посмотреть или подписать договор</a>
-        <a href="#" class="btn btn-nfk cardPact-bBtn">Посмотреть спецификацию</a>
+        <!-- <a href="#" class="btn btn-nfk cardPact-bBtn">Посмотреть спецификацию</a> -->
         <div class="cardPact-person">
-            <?if(!empty($arResult["CONTRACT_HOLDER"]["PERSONAL_PHOTO"])):?>
-                <img src="<?=$arResult["CONTRACT_HOLDER"]["PERSONAL_PHOTO"]?>">
-            <?else:?>
-                <div class="cardPact-person__avatar">
-                    <span><?=substr($arResult["CONTRACT_HOLDER"]["NAME"], 0, 1)?></span>
-                </div>
-            <?endif?>
-            <span><?=$arResult['CONTRACT_HOLDER']['LOGIN']?></span><br>
-            <span>
-                <a href="/profile_user/?ID=<?=$arResult["CONTRACT_HOLDER"]["ID"]?>"><?=$arResult["CONTRACT_HOLDER"]["LAST_NAME"]?> <?=$arResult["CONTRACT_HOLDER"]["NAME"]?></a>
-            </span>
+            <a href="/profile_user/?ID=<?=$arResult["CONTRACT_HOLDER"]["ID"]?>">
+                <?if(!empty($arResult["CONTRACT_HOLDER"]["PERSONAL_PHOTO"])):?>
+                    <img src="<?=$arResult["CONTRACT_HOLDER"]["PERSONAL_PHOTO"]?>">
+                <?else:?>
+                    <div class="cardPact-person__avatar">
+                        <span><?=substr($arResult["CONTRACT_HOLDER"]["NAME"], 0, 1)?></span>
+                    </div>
+                <?endif?>
+                <!-- <span><?=$arResult['CONTRACT_HOLDER']['LOGIN']?></span><br> -->            
+                <span>
+                    <?=$arResult["CONTRACT_HOLDER"]["LAST_NAME"]?>
+                </span>
+                <br>
+                <span>
+                    <?=$arResult["CONTRACT_HOLDER"]["NAME"]?>
+                </span>
+            </a>
             <br>
-            <span class="text-gray">Неизвестно</span><br>
+            <span class="text-gray"><?=$arResult["CONTRACT_HOLDER"]["CITY"]?></span><br>
         </div>
         <div class="cardPact-info">
             <span class="float-left">Репутация</span><span class="float-right cardPact-rating">&#9733; 3,9</span><br>
             <span class="float-left">Заключенных сделок</span><span class="float-right "><?=$arResult['DOGOVOR']['CNT']?></span><br>
-            <span>9 оценок</span>
+            <!-- <span>9 оценок</span> -->
         </div>
         <button type="button" class="btn btn-nfk d-block cardPact-bBtn" data-toggle="modal" data-target=".bd-message-modal-sm">Написать сообщение</button>
     </div>

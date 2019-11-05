@@ -1,7 +1,7 @@
-<!-- <pre>
+<pre>
 <? //print_r($arResult["PROPERTY"]["ID_DOGOVORA"]) ;?>
-<? //print_r($arResult) ;?>
-</pre> -->
+<? print_r($arResult["PROPERTY"]["UNCLUDE_FILE"]) ;?>
+</pre>
 <div id="params_object" style="display:none" data="<?=$arResult["ELEMENT"]["ID"]?>"></div>
 <h1><?=$arResult["ELEMENT"]["NAME"]?></h1>
 <div class="tender cardPact">
@@ -87,10 +87,53 @@
             </div>
             <!--Приложения к договору-->
             <h4>Добавить приложение в виде файла(опционально)</h4>
-            <button class="btn btn-nfk">Загрузить файл</button>            
-            <div id="select_spetification">
-                    <a href="#" class="cardPact-rightPanel-url">Спецификация №1</a>
-            </div>
+            <!-- <button class="btn btn-nfk">Загрузить файл</button>             -->
+            <?if(!empty($arResult["PROPERTY"]["UNCLUDE_FILE"])){?>
+                <? foreach($arResult["PROPERTY"]["UNCLUDE_FILE"] as $Item){?>
+                    <a href="<?=$Item["URL"]?>" class="cardPact-rightPanel-url" target="_blank" style="float: left;width: 74%;">
+                        <img src="<?=SITE_TEMPLATE_PATH?>/image/icon-contract.png" > Дополнительный файл
+                    </a> 
+                    <button class="btn btn-nfk delete_unclude_file" style="float: left;width: 25%;" data="<?=$Item["ID"]?>" data-file ="<?=$Item["ID"]?>">Удалить</button>
+                <?}?>
+            <?}?>
+            <form method = "post" enctype = 'multipart/form-data' action="<?=$_SERVER['REQUEST_URI']?>&nonsense=1" >
+            <?echo CFile::InputFile("IMAGE_ID", 20, $str_IMAGE_ID);?>
+            <input class="btn btn-nfk" type="submit" value="Сохранить">
+            </form>
+
+            <?
+
+            $testiruem = Array(
+                "name" => $_FILES["IMAGE_ID"]["name"],
+                "size" => $_FILES["IMAGE_ID"]["size"],
+                "tmp_name" => $_FILES["IMAGE_ID"]["tmp_name"],
+                "type" => "",
+                "old_file" => "",
+                "del" => "Y",
+                "MODULE_ID" => "iblock"
+            );
+            $poluchaem_adress = CFile::SaveFile($testiruem, "dopfile");
+
+            
+            $ELEMENT_ID     = $arResult["ELEMENT"]["ID"];
+            $PROPERTY_CODE  = "MAIN_FILES";
+            $PROPERTY_VALUE = $testiruem;
+            CIBlockElement::SetPropertyValueCode($ELEMENT_ID, $PROPERTY_CODE, $PROPERTY_VALUE);
+
+            if (!empty($_FILES)) {
+                header("Refresh:0");
+            }
+
+            // if ($poluchaem_adress>0):
+            //print_r ('<br/>ID файла: '.$poluchaem_adress.'<br/>');
+            // echo CFile::ShowImage($poluchaem_adress, 200, 200, "border=0", "", true);
+            // дальше уменьшим картинку до 50 на 50
+            //$photosmall = CFile::ResizeImageGet($poluchaem_adress, array('width'=>'50', 'height' => '50'), BX_RESIZE_IMAGE_PROPORTIONAL, true); // получится пропорциональна оригиналу
+            //print_r ('<img border="0" src="'.$photosmall["src"].'"/><br/>');
+            //print_r ('ссылка на файл: <input value="'.$photosmall["src"].'"/>');
+            //endif;
+            ?>
+
         </div>
     </div>
 </div>
