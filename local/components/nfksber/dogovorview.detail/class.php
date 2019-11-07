@@ -105,7 +105,9 @@ class CDemoSqr extends CBitrixComponent
         $Contract_template_Text = $this->convertContent($array_props["CONTRACT"]["DETAIL_TEXT"]);
 
         $clear_text = new autoedittext();
-
+        // echo '<pre>';
+        // print_r($this->USER_PROPERTY);
+        // echo '</pre>';
         $Contract_template_Text                 = $clear_text->replaceTag($Contract_template_Text, $this->USER_PROPERTY);
         $array_props["CONTRACT"]["DETAIL_TEXT"] = str_replace("&nbsp;", "", $Contract_template_Text);
         
