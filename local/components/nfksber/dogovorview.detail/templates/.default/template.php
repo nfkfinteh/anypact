@@ -39,6 +39,7 @@
                 <button type="button" class="btn btn-nfk btn-default space_right" id="btn-edit" data-toggle="tooltip" data-placement="left" title="Включить редактирование текста" contenteditable="false"><span class="glyphicon glyphicon-pencil"></span></button>                                    
             </div>
               */?>
+            <? // если договор в сканах или файлах изображений ?>
             <?if(!empty($arResult["DOGOVOR_IMG"][0]['URL'])):?>
                 <div class="cardDogovor-boxViewText" id="canvas" contenteditable="false">
                     <?foreach ($arResult["DOGOVOR_IMG"] as $item):?>

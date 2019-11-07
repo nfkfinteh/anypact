@@ -92,7 +92,7 @@ class CDemoSqr extends CBitrixComponent
         return $Content;
     }
 
-    //Cвойства контракта
+    //Cвойства контракта текст контаракта
     private function getPropertyContract($id_infobloc_contract){        
         // объект
         $array_props    = array(); 

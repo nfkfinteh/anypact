@@ -87,7 +87,7 @@
             </div>
             <!--Приложения к договору-->
             <h4>Добавить приложение в виде файла(опционально)</h4>
-            <!-- <button class="btn btn-nfk">Загрузить файл</button>             -->
+            <!-- <button class="btn btn-nfk">Загрузить файл</button>-->
             <?if(!empty($arResult["PROPERTY"]["UNCLUDE_FILE"])){?>
                 <? foreach($arResult["PROPERTY"]["UNCLUDE_FILE"] as $Item){?>
                     <a href="<?=$Item["URL"]?>" class="cardPact-rightPanel-url" target="_blank" style="float: left;width: 74%;">
