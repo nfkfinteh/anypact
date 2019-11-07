@@ -22,6 +22,10 @@ switch ($_POST['status']) {
     case 'edit':
         $status = 3;
         break;
+    
+    default:
+        $status = 1;
+        break;
 }
 $Contract_text  =  str_replace('%nbsp', '&nbsp', $_POST['text_contract']);
 echo $_POST['text_contract'];

@@ -11,7 +11,7 @@
                         <span>Договор №1</span>                        
                         <?if($arResult['USERS']['UF_ID_USER_A']==$USER->GetID()):?>
                             <?=$arResult['SEND_BLOCK']['ID']?>
-                        <?endif?>
+                        <?endif?>                        
                         <button class="btn btn-nfk" id="sign_contract" data-id="<?=$_GET['ID']?>" data-user="1" style="width:100%">Предложить изменения</button>
                         <button class="btn btn-nfk" id="recall_sign" data="<?=$_GET['ID']?>" data-user="1" style="width:100%">Отклонить</button>
                     </li>

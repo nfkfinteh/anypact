@@ -152,7 +152,7 @@ class CDemoSqr extends CBitrixComponent
             Array(
                 "LOGIC" => "AND",
                 Array(
-                 "UF_STATUS" => 1,
+                 "UF_STATUS" => array(1, 3),
                  
                 ),
                 Array(                 

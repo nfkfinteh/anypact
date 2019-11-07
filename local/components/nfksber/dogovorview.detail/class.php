@@ -43,9 +43,10 @@ class CDemoSqr extends CBitrixComponent
 
     // Все свойства элемента
     private function getProperty($id_iblok, $id_element){        
-        $db_props       = CIBlockElement::GetProperty($id_iblok, $id_element, "sort", "asc", array());         
-        $array_props    = array();        
-        $array_img      = array();
+        $db_props           = CIBlockElement::GetProperty($id_iblok, $id_element, "sort", "asc", array());         
+        $array_props        = array();        
+        $array_img          = array();
+        $array_unclude_file = array();
 
         while($ar_props = $db_props->Fetch()){ 
             
@@ -61,10 +62,16 @@ class CDemoSqr extends CBitrixComponent
                 $array_img_dogovor[]    = array("URL" => $file_path, "PROPERTY" => $ar_props);
             }
 
+            if ($ar_props["CODE"] == "MAIN_FILES"){
+                $file_path = CFile::GetPath($ar_props["VALUE"]);
+                $array_unclude_file[] = array("URL" => $file_path, "PROPERTY" => $ar_props);
+            }
+
         }
         
-        $array_props["IMG_FILE"] = $array_img;
-        $array_props["DOGOVOR_IMG"] = $array_img_dogovor;
+        $array_props["IMG_FILE"]        = $array_img;
+        $array_props["DOGOVOR_IMG"]     = $array_img_dogovor;
+        $array_props["INCLUDE_FILES"]   = $array_unclude_file;
 
         if(!empty($array_props["ID_DOGOVORA"]["VALUE"])){
             $this->ID_CONTRACT = $array_props["ID_DOGOVORA"]["VALUE"];            
@@ -203,8 +210,8 @@ class CDemoSqr extends CBitrixComponent
         global $USER;
         $userId = CUser::GetID();
         $this->arResult["USER_ID"] = $userId;
-        if($this->startResultCache($this->arParams['CACHE_TIME'], $_GET['SECTION_ID'].$_GET['ELEMENT_ID'].$_GET['ID_TEMPLATE'].$userId))
-        {
+        //if($this->startResultCache($this->arParams['CACHE_TIME'], $_GET['SECTION_ID'].$_GET['ELEMENT_ID'].$_GET['ID_TEMPLATE'].$userId))
+        //{
             $this->arResult                         = array_merge($this->arResult, $this->paramsUser($this->arParams));
             // данные владельца сделки           
             $UserContractHolder                     = CUser::GetByID(CUser::GetID());
@@ -235,7 +242,7 @@ class CDemoSqr extends CBitrixComponent
             $this->arResult['NEW_REDACTION'] = $this->getNewRedaction($userId, $this->arResult["ELEMENT"]);
 
             $this->EndResultCache();
-        }
+        //}
 
         $this->arResult["SIGN_DOGOVOR"] = $this->getSendContractItem($this->arResult['PROPERTY']['ID_DOGOVORA']['VALUE'], $this->arResult['USER_ID']);
         $this->includeComponentTemplate();

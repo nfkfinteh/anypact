@@ -1,3 +1,6 @@
+<!-- <pre>
+<? // print_r($arResult['PROPERTY']["INCLUDE_FILES"]);?>
+</pre> -->
 <h1><?=$arResult["ELEMENT"]["NAME"]?></h1>
  <div class="tender cardDogovor">
     <div class="row">
@@ -10,20 +13,24 @@
                    <?
                 }else {?>
                     <? // блокировка кнопки от повторного подписания темже пользователем
-                    if($arResult["USER_ID"] != $arResult['SIGN_DOGOVOR']['UF_ID_USER_B']):?>
-                        <button class="btn btn-nfk
-                        <?if(!empty($arResult["DOGOVOR_IMG"][0]['URL'])):?>canvas-img<?endif?>"
-                                id="send_contract" data="signed"
-                        >
+                    //if($arResult["USER_ID"] != $arResult['SIGN_DOGOVOR']['UF_ID_USER_B']):?>
+                        <? if(isset($arResult['PROPERTY']["INCLUDE_FILES"])){?>
+                            <? foreach($arResult['PROPERTY']["INCLUDE_FILES"] as $Unclude_file){?>
+                                <a href="<?=$Unclude_file["URL"]?>" class="cardPact-rightPanel-url" target="_blank" style="padding: 20px 0; display:block;">
+                                    <img src="<?=SITE_TEMPLATE_PATH?>/image/icon-contract.png"> Дополнительный файл
+                                </a>
+                            <?}?>
+                        <? }?>
+                        <button class="btn btn-nfk <?if(!empty($arResult["DOGOVOR_IMG"][0]['URL'])):?>canvas-img<?endif?>" id="send_contract" data="signed">
                             Подписать договор
                         </button>
-                    <?endif?>                    
+                    <? // endif?>                    
                     <?if(empty($arResult['NEW_REDACTION'])):?>
                         <button class="btn btn-nfk" id="new_redaction" data-id_element="<?=$_GET['ELEMENT_ID']?>">Предложить свою редакцию</button>
                     <?endif?>
 
                 <?}?>
-            </div>
+            </div>            
         </div>               
         <div class="col-lg-9 col-md-9 col-sm-12 js-dogovor">
             <?/*
