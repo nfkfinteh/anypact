@@ -1,5 +1,24 @@
+<?
+/*
+    $SendUserProperty  данные ползователя еоторый подписывает договор
+*/
+
+$SendUserProperty = $arResult["USER_PROP"];
+
+/*
+    $arrayNameParams массив подстановки названий в реквизиты таблицы
+*/
+
+$arrayNameParams = array(
+    "fio" => "ФИО",
+    "adress" => "Адрес",
+    "phone" => "Телефон",
+    "passport" => "Паспорт",
+    "pay_params" => "Платежные реквизиты"
+);
+?>
 <!-- <pre>
-<? // print_r($arResult['PROPERTY']["INCLUDE_FILES"]);?>
+<? print_r($arResult["USER_PROP"]);?>
 </pre> -->
 <h1><?=$arResult["ELEMENT"]["NAME"]?></h1>
  <div class="tender cardDogovor">
@@ -13,7 +32,8 @@
                    <?
                 }else {?>
                     <? // блокировка кнопки от повторного подписания темже пользователем
-                    //if($arResult["USER_ID"] != $arResult['SIGN_DOGOVOR']['UF_ID_USER_B']):?>
+                    //if($arResult["USER_ID"] != $arResult['SIGN_DOGOVOR']['UF_ID_USER_B']):                    
+                    ?>
                         <? if(isset($arResult['PROPERTY']["INCLUDE_FILES"])){?>
                             <? foreach($arResult['PROPERTY']["INCLUDE_FILES"] as $Unclude_file){?>
                                 <a href="<?=$Unclude_file["URL"]?>" class="cardPact-rightPanel-url" target="_blank" style="padding: 20px 0; display:block;">
@@ -52,6 +72,41 @@
             <?else:?>
                 <div class="cardDogovor-boxViewText" id="canvas" contenteditable="false">
                     <?=$arResult["CONTRACT_PROPERTY"]["CONTRACT"]["DETAIL_TEXT"]?>
+                    <?
+                    // вывод видимых реквизитов пользователя
+                    $userProperty = json_decode($arResult["CONTRACT_PROPERTY"]["CONTRACT_PROPERTY"]["USER_PROPERTY"]["VALUE"], true);
+                    
+                    ?>
+                    <table cellpadding="5" border="1" bordercolor="#cecece" cellspacing="0" width="100%">
+                        <? 
+                        foreach($userProperty as $key => $Item){
+                            if($Item["view"] == "Y"){	
+                            ?>
+                                <tr>
+                                    <td style="width: 20%;padding: 5px;"><b><?=$arrayNameParams[$key]?></b></td>
+                                    <td style="width: 30%;padding: 5px;">
+                                        <?
+                                            foreach ($Item["params"] as $value) {
+                                                echo $value.", ";
+                                            }
+                                        ?>
+                                    </td>
+                                    <td style="width: 20%;padding: 5px;"><b><?=$arrayNameParams[$key]?></b></td>
+                                    <td style="width: 30%;padding: 5px;"></td>
+                                </tr>
+                            <? 
+                            }else { ?>
+                                <tr>
+                                    <td style="width: 20%;padding: 5px;"><b><?=$arrayNameParams[$key]?></b></td>
+                                    <td style="width: 30%;padding: 5px;">
+                                    {данные будут доступны после подписания договора}
+                                    </td>
+                                    <td style="width: 20%;padding: 5px;"><b><?=$arrayNameParams[$key]?></b></td>
+                                    <td style="width: 30%;padding: 5px;"></td>
+                                </tr>
+                            <? }
+                        }?>
+                    </table>
                 </div>
             <?endif?>
         </div>            

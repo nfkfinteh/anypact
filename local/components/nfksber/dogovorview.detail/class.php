@@ -115,7 +115,7 @@ class CDemoSqr extends CBitrixComponent
         $db_props       = CIBlockElement::GetProperty($id_infobloc_contract, $this->ID_CONTRACT, "sort", "asc", array());
         
         while($ar_props = $db_props->Fetch()){ 
-            $array_props["CONTRACT_PROPERTY"][] = $ar_props;
+            $array_props["CONTRACT_PROPERTY"][$ar_props["CODE"]] = $ar_props;
         }
         
         return $array_props;
