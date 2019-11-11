@@ -117,9 +117,12 @@ class CDemoSqr extends CBitrixComponent
     public function executeComponent()
     {
         $IDSendItem = $_GET['ID'];
+        $this->arResult["ID"] = $_GET['ID'];
+        global $USER;
+        $this->arResult["ID_USER"] =$USER->GetID();
         $this->arResult["CONTRACT_TEXT"] = $this->getSendContractText($IDSendItem);
         $this->arResult["SEND_BLOCK"] = $this->getSendContractItem($IDSendItem);
-        $this->arResult["PDF"] = $this->getURLPDF();
+        $this->arResult["PDF"] = $this->getURLPDF();        
         $this->arResult = array_merge($this->arResult, $this->paramsUser($this->arParams));
         $this->includeComponentTemplate();
 

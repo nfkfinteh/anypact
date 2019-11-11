@@ -183,7 +183,7 @@ $arrStatus = array(
             <div class="d-md-table-cell">Контрагент</div>
             <div class="d-md-table-cell">Наименование</div>
             <div class="d-md-table-cell">Дата подписания</div>
-            <!-- <div class="d-md-table-cell">Статус</div>             -->
+            <div class="d-md-table-cell">Статус</div>
             <div class="d-md-table-cell"></div>
             <div class="d-md-table-cell"></div>
         </div>
@@ -209,7 +209,7 @@ $arrStatus = array(
                 <div class="d-md-none text-gray">Дата подписания</div>
                 <div class="d-md-table-cell"><?=$red['UF_TIME_SEND_USER_B']?></div>
                 <div class="d-md-none text-gray">Статус</div>
-                <!-- <div class="d-md-table-cell">Ожидает подписи</div>                -->
+                <div class="d-md-table-cell">Ожидает подписи контрагентом <?=$red['UF_STATUS']?></div>
                 <div class="d-md-table-cell">
                 <a href="#" data="<?=$red["ID"]?>" class="recall_send">Отозвать подпись</a>
                 </div>

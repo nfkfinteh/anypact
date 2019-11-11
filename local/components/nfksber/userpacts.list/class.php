@@ -97,7 +97,7 @@ class CDemoSqr extends CBitrixComponent
             Array(
                 "LOGIC" => "AND",
                 Array(
-                 "UF_STATUS" => array(1, 3),                 
+                 "UF_STATUS" => array(1),                 
                 ),
                 Array(                 
                  "UF_ID_USER_A" => $userId
@@ -141,7 +141,27 @@ class CDemoSqr extends CBitrixComponent
 
         }
 
-        $returnArray = array_merge($arSend_Contract, $arRedaction);
+        // договора изменные несколько раз
+        $arFilter = Array(
+            Array(
+                "LOGIC" => "OR",
+                Array(                 
+                    "UF_ID_USER_A" => $userId,
+                    "UF_STATUS" => array(3),
+                    "!UF_ID_SEND_USER" => $userId
+                ),
+                Array(                 
+                    "UF_ID_USER_B" => $userId,
+                    "UF_STATUS" => array(3),
+                    "!UF_ID_SEND_USER" => $userId
+                   )                  
+             )
+         );
+        $arEditSend_Contract = array();
+        $arEditSend_Contract = $this->getSendContracts($UserID, $arFilter);
+
+
+        $returnArray = array_merge($arSend_Contract, $arRedaction, $arEditSend_Contract);
         return $returnArray;
     }
 
@@ -152,16 +172,36 @@ class CDemoSqr extends CBitrixComponent
             Array(
                 "LOGIC" => "AND",
                 Array(
-                 "UF_STATUS" => array(1, 3),
-                 
+                 "UF_STATUS" => array(1),                 
                 ),
                 Array(                 
                  "UF_ID_USER_B" => $userId
                 )                   
              )
          );
-        $arSend_Contract = $this->getSendContracts($UserID, $arFilter, false);        
-        return $arSend_Contract;
+        $arSend_Contract = $this->getSendContracts($UserID, $arFilter, false); 
+        
+        // договора измененные и ожидающие подписания
+
+        $arFilter = Array(
+            Array(
+                "LOGIC" => "OR",
+                Array(                 
+                    "UF_ID_USER_A" => $userId,
+                    "UF_STATUS" => array(3),
+                    "UF_ID_SEND_USER" => $userId
+                ),
+                Array(                 
+                    "UF_ID_USER_B" => $userId,
+                    "UF_STATUS" => array(3),
+                    "UF_ID_SEND_USER" => $userId
+                   )                   
+             )
+         );
+        $arEdit_Send_Contract = $this->getSendContracts($UserID, $arFilter, false);        
+        
+        $return_array = array_merge($arSend_Contract, $arEdit_Send_Contract);
+        return $return_array;
     }
 
     /* 
