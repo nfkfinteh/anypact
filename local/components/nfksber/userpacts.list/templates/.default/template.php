@@ -6,7 +6,11 @@ $PactStatus = array(
 );
 // статус договоров
 $arrStatus = array(
-    'отменен', 'подписан контрагентом', '', 'изменен контрагентом'
+    'Отменен', 'Подписан контрагентом', '', 'Изменен контрагентом'
+);
+// статусы договоров ожидающих подписи контрагентов
+$arrStatusAwait = array(
+    '', 'Ожидает подписи контрагентом', '', 'Изменен и ожидает подписи контрагентом'
 );
 ?>
 <div class="d-flex flex-wrap align-items-center position-relative">
@@ -209,7 +213,7 @@ $arrStatus = array(
                 <div class="d-md-none text-gray">Дата подписания</div>
                 <div class="d-md-table-cell"><?=$red['UF_TIME_SEND_USER_B']?></div>
                 <div class="d-md-none text-gray">Статус</div>
-                <div class="d-md-table-cell">Ожидает подписи контрагентом <?=$red['UF_STATUS']?></div>
+                <div class="d-md-table-cell"><?=$arrStatusAwait[$red['UF_STATUS']]?></div>
                 <div class="d-md-table-cell">
                 <a href="#" data="<?=$red["ID"]?>" class="recall_send">Отозвать подпись</a>
                 </div>

@@ -11,13 +11,14 @@
                     </div>
                 <?endif?>
                 
-                <h3 class="font-weight-bold">Файлы</h3>
+                <h3 class="font-weight-bold"></h3>
                 <ul class="list-document">
-                    <li class="icon-document">
-                        <span>Договор №1</span>
-                        <button class="btn btn-nfk-invert w-100" id="recall_sign" data="<?=$_GET['ID']?>">Отозвать подпись</button>
-                    </li>
+                    <button class="btn btn-nfk-invert w-100" id="recall_sign" data="<?=$_GET['ID']?>">Отозвать подпись</button>
                     <!--
+                    <li class="icon-document">
+                         <span>Договор №1</span>
+                        
+                    </li>                    
                     <li class="icon-document">
                         <span>Спецификация №1</span>
                         <button class="btn btn-nfk-invert w-100">Подписан</button>

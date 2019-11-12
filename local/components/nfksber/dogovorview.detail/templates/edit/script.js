@@ -139,6 +139,26 @@ function setBackgraundStepBox() {
     }
 }
 
+function addRow(thisBtn, n){
+    let tbody = thisBtn.parentElement.previousElementSibling.tBodies[0];
+    let tr = document.createElement('tr');
+    const num = tbody.rows.length + 1;
+    const numTextNode = document.createTextNode(num);
+    const td = document.createElement('td');
+    td.append(numTextNode);
+    tr.append(td);
+    for (var i = 1; i < n; i++) {
+        const td = document.createElement('td');
+        tr.append(td);
+    }
+    tbody.append(tr);
+}
+function deleteRow(thisBtn){
+    let collection = thisBtn.parentElement.previousElementSibling.tBodies[0].rows;
+    console.log(collection);
+    collection[collection.length-1].remove();
+}
+
 ////////////////////////////////////////////////////////////////////////////////////////
 
 $(document).ready(function() {

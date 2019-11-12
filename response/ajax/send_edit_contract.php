@@ -7,7 +7,7 @@ use Bitrix\Highloadblock as HL;
 use Bitrix\Main\Entity;
 CModule::IncludeModule('highloadblock');
 
-print_r($_POST);
+//print_r($_POST);
 
 // todo  проверки 
 
@@ -21,6 +21,23 @@ $NewInfo = array(
 
 $result = $entityClass::update($_POST["IDItem"], $NewInfo);
 
+//обновление текста договора  
+$hlblock        = HL\HighloadBlockTable::getById(7)->fetch();
+$entity         = HL\HighloadBlockTable::compileEntity($hlblock); 
+$entityClass    = $entity->getDataClass();
+
+$rsData = $entityClass::getList(array(
+    "select" => array("ID"),    
+    "filter" => array("UF_ID_SEND_ITEM" => $_POST["IDItem"])
+));
+$arData = $rsData->Fetch();
+print_r($arData);
+$NewInfo = array(
+    "UF_TEXT_CONTRACT" => $_POST["Text"]
+);
+
+$result = $entityClass::update($arData["ID"], $NewInfo);
+//UF_ID_SEND_ITEM
 // сделать отправку на почтовый ящик
 
 ?>

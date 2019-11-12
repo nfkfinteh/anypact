@@ -52,7 +52,6 @@
 	transform: translate(-50%, -50%);
 }
 </style>
-/*----------Стили кнопок-------------*/
 <script type="text/javascript">
 	function addRow(thisBtn, n){
 		let tbody = thisBtn.parentElement.previousElementSibling.tBodies[0];

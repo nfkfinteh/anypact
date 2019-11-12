@@ -98,7 +98,7 @@ class CDemoSqr extends CBitrixComponent
         $array_props    = array(); 
         $res            = CIBlockElement::GetByID($this->ID_CONTRACT);
         
-        if($ar_res = $res->GetNext()){
+        if($ar_res = $res->GetNext(true, false)){
             $array_props["CONTRACT"] = $ar_res;
         }        
         //подготовка текста
