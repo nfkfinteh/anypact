@@ -7,6 +7,73 @@
    $Passport = $arResult["USER_PROP"]["UF_PASSPORT"].' '.$arResult["USER_PROP"]["UF_KEM_VPASSPORT"];
 
 ?>
+<style>
+/*----------Стили кнопок-------------*/
+#canvas .edit-buttons-container{
+	display: none;
+}
+#canvas[contenteditable="true"] .edit-buttons-container{
+	display: block;
+}
+.add-row, .delete-row{
+	color: #ff6416 !important;
+	background-color: #ffffff;
+	border-color: #ff6416 !important;
+	border-radius: .25rem;
+	cursor: pointer;
+	width: 20px;
+	height: 20px;
+	margin-top: 3px;
+	position: relative;
+	opacity: .3;
+	transition: opacity .3s;
+}
+.add-row:hover, .delete-row:hover{
+	opacity: 1;
+}
+.add-row::before, .delete-row::before{
+	content: "";
+	width: 10px;
+	height: 2px;
+	background-color: #ff6416;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+.add-row::after{
+	content: "";
+	width: 2px;
+	height: 10px;
+	background-color: #ff6416;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+</style>
+/*----------Стили кнопок-------------*/
+<script type="text/javascript">
+	function addRow(thisBtn, n){
+		let tbody = thisBtn.parentElement.previousElementSibling.tBodies[0];
+		let tr = document.createElement('tr');
+		const num = tbody.rows.length + 1;
+		const numTextNode = document.createTextNode(num);
+		const td = document.createElement('td');
+		td.append(numTextNode);
+		tr.append(td);
+		for (var i = 1; i < n; i++) {
+			const td = document.createElement('td');
+			tr.append(td);
+		}
+		tbody.append(tr);
+	}
+	function deleteRow(thisBtn){
+		let collection = thisBtn.parentElement.previousElementSibling.tBodies[0].rows;
+		console.log(collection);
+		collection[collection.length-1].remove();
+	}
+</script>
 <script>
 var full_name = {
     name: '<?=$Name?>',

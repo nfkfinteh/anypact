@@ -19,7 +19,7 @@ $NewInfo = array(
     'UF_STATUS' => 3
     );
 
-//$result = $entityClass::update($_POST["IDItem"], $NewInfo);
+$result = $entityClass::update($_POST["IDItem"], $NewInfo);
 
 // сделать отправку на почтовый ящик
 

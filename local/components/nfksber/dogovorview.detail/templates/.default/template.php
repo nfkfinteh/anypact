@@ -18,7 +18,7 @@ $arrayNameParams = array(
 );
 ?>
 <!-- <pre>
-<? print_r($arResult["USER_PROP"]);?>
+<? //print_r($arResult["USER_PROP"]);?>
 </pre> -->
 <h1><?=$arResult["ELEMENT"]["NAME"]?></h1>
  <div class="tender cardDogovor">

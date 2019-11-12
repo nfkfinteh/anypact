@@ -36,7 +36,7 @@ $(document).ready(function() {
         }
     });
 
-    //своя редакция
+    //своя редакция (подгрузка доски с интрументами)
     $(document).on('click', '#new_redaction', function(){
         let url = '/response/ajax/new_redaction.php';
         let id = $(this).attr('data-id_element');

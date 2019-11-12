@@ -292,6 +292,7 @@ $(document).ready(function() {
             data: data,
             success: function(result){
                 console.log(result);
+                document.location.replace('/my_pacts/')
                 // if(result==1){
                 //     document.location.replace('/my_pacts/')
                 // }
