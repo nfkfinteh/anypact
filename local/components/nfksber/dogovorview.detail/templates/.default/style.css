@@ -26,8 +26,8 @@
 .regpopup_win {
     background: #fff;
     padding: 20px;
-    top: 50%;
-    position: fixed;
+    top: 200px;
+    position: absolute;
     margin-top: -80px;
 }
 

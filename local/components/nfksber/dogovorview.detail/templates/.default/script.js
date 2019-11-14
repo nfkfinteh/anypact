@@ -44,6 +44,11 @@ $(document).ready(function() {
 
     });
 
+    // попап с подписанием
+    $('#popup_send_contract').on('click', function(){
+        $('#send_sms').css('display', 'block');
+    });
+
     // ввод текста во всплывающем окне
     $(document).on('focusout', '.input_text', function() {
         let variable = $(this);
