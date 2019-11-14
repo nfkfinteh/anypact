@@ -6,7 +6,7 @@ $PactStatus = array(
 );
 // статус договоров
 $arrStatus = array(
-    'Отменен', 'Подписан контрагентом', '', 'Изменен контрагентом'
+    'Отменен', 'Подписан контрагентом', '', 'Изменен и подписан контрагентом'
 );
 // статусы договоров ожидающих подписи контрагентов
 $arrStatusAwait = array(
@@ -104,7 +104,7 @@ $arrStatusAwait = array(
                     <span style="margin-left: 10px;"><?=$red['PARAMS_SEND_USER']['LAST_NAME']?> <?=$red['PARAMS_SEND_USER']['NAME']?></span>
                 </a>
             </div>
-            <div class="d-md-table-cell d-none"><?if(!empty($red['NAME_CONTRACT'])) echo '#'.$red['NAME_CONTRACT']['ID'].' '.$red['NAME_CONTRACT']['NAME']; ?></div>
+            <div class="d-md-table-cell d-none"><?if(!empty($red['NAME_CONTRACT'])) echo $red['NAME_CONTRACT']['NAME']; ?></div>
             <div class="d-md-none text-gray">Дата подписания</div>
             <div class="d-md-table-cell"><?=$red['UF_TIME_SEND_USER_B']?></div>
             <!-- <div class="d-md-none text-gray">Статус</div> -->
@@ -119,8 +119,7 @@ $arrStatusAwait = array(
     <div style="clear: both"></div>
     <h3>У Вас нет подписанных договоров</h3>
 <?endif?>
-<div style="width: 100%; height: 100px;">
-</div
+<div style="width: 100%; height: 100px;"></div
 >
 <!-- Договора которые подписал контрагент -->
 <div class="d-flex flex-wrap align-items-center position-relative">
@@ -156,7 +155,7 @@ $arrStatusAwait = array(
                         <span style="margin-left: 10px;"><?=$red['PARAMS_SEND_USER']['LAST_NAME']?> <?=$red['PARAMS_SEND_USER']['NAME']?></span>
                     </a>
                 </div>
-                <div class="d-md-table-cell d-none"><?if(!empty($red['NAME_CONTRACT'])) echo '#'.$red['NAME_CONTRACT']['ID'].' '.$red['NAME_CONTRACT']['NAME']; ?></div>
+                <div class="d-md-table-cell d-none"><?if(!empty($red['NAME_CONTRACT'])) echo $red['NAME_CONTRACT']['NAME']; ?></div>
                 <div class="d-md-none text-gray">Дата подписания</div>
                 <div class="d-md-table-cell"><?=$red['UF_TIME_SEND_USER_B']?></div>
                 <div class="d-md-none text-gray">Статус</div>
@@ -169,16 +168,15 @@ $arrStatusAwait = array(
     <!------------------------>
 <?else:?>
     <div style="clear: both"></div>
-    <h3>У Вас нет договоров, ожидающих подписания с Вашей стороны</h3>
+    <h3>У вас нет договоров, ожидающих подписания с Вашей стороны</h3>
 <?endif?>
-<div style="width: 100%; height: 100px;">
-</div>
+<div style="width: 100%; height: 100px;"></div>
 
 <!-- Подписанные договоры -->
 <div class="d-flex flex-wrap align-items-center position-relative">
     <h5>Договоры, подписанные с моей стороны и ожидающие подписания контрагентом</h5>
     <button class="info-btn">?</button>
-    <div class="info-content">В данном разделе содержатся Договоры, которые Вы подписали и ожидают подписания со стороны контрагента.</div>
+    <div class="info-content">В данном разделе содержатся Договоры, которые подписаны с Вашей стороны и ожидающие подписания со стороны контрагента.</div>
 </div>
 <?if(!empty($arResult["SEND_USER_PACT"])):?>
     <!--Адаптивная табличка--->
@@ -209,11 +207,11 @@ $arrStatusAwait = array(
                         <span style="margin-left: 10px;"><?=$red['PARAMS_SEND_USER']['LAST_NAME']?> <?=$red['PARAMS_SEND_USER']['NAME']?></span>
                     </a>
                 </div>
-                <div class="d-md-table-cell d-none"><?if(!empty($red['NAME_CONTRACT'])) echo '#'.$red['NAME_CONTRACT']['ID'].' '.$red['NAME_CONTRACT']['NAME']; ?></div>
+                <div class="d-md-table-cell d-none" style="width: 24%;"><?if(!empty($red['NAME_CONTRACT'])) echo $red['NAME_CONTRACT']['NAME']; ?></div>
                 <div class="d-md-none text-gray">Дата подписания</div>
                 <div class="d-md-table-cell"><?=$red['UF_TIME_SEND_USER_B']?></div>
                 <div class="d-md-none text-gray">Статус</div>
-                <div class="d-md-table-cell"><?=$arrStatusAwait[$red['UF_STATUS']]?></div>
+                <div class="d-md-table-cell" style="width: 18%;"><?=$arrStatusAwait[$red['UF_STATUS']]?></div>
                 <div class="d-md-table-cell">
                 <a href="#" data="<?=$red["ID"]?>" class="recall_send">Отозвать подпись</a>
                 </div>
@@ -229,8 +227,7 @@ $arrStatusAwait = array(
     <div style="clear: both"></div>
     <h3>У Вас нет подписанных договоров</h3>
 <?endif?>
-<div style="width: 100%; height: 100px;">
-</div>
+<div style="width: 100%; height: 100px;"></div>
 
 <!--Блок с сообщениями --->
 <div class="d-flex flex-wrap align-items-center position-relative">
@@ -282,7 +279,6 @@ $arrStatusAwait = array(
         </div>
     </div>
 </div>
-
 
 <script>
     $(".collapse-header").click(function () {

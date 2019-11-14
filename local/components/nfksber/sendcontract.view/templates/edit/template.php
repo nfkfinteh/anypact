@@ -14,7 +14,7 @@ var Contract = {
     <div class="row">
         <div class="col-lg-3 col-md-3 col-sm-12">
             <div class="cardDogovor-boxTool" style="margin: 8px 0;">
-                <button class="btn btn-nfk" id="send_edit_contract" data="">Подписать договор</button>
+                <button class="btn btn-nfk" id="send_edit_contract" data="">Направить контрагенту</button>
             </div>
         </div>               
         <div class="col-lg-9 col-md-9 col-sm-12">

@@ -73,38 +73,40 @@ $arrayNameParams = array(
                 <div class="cardDogovor-boxViewText" id="canvas" contenteditable="false">
                     <?=$arResult["CONTRACT_PROPERTY"]["CONTRACT"]["DETAIL_TEXT"]?>
                     <?
-                    // вывод видимых реквизитов пользователя
-                    $userProperty = json_decode($arResult["CONTRACT_PROPERTY"]["CONTRACT_PROPERTY"]["USER_PROPERTY"]["VALUE"], true);
-                    
+                    // вывод видимых реквизитов пользователя                    
+                    $userProperty = json_decode($arResult["CONTRACT_PROPERTY"]["CONTRACT_PROPERTY"]["USER_PROPERTY"]["VALUE"], true);                    
                     ?>
                     <table cellpadding="5" border="1" bordercolor="#cecece" cellspacing="0" width="100%">
-                        <? 
-                        foreach($userProperty as $key => $Item){
-                            if($Item["view"] == "Y"){	
-                            ?>
-                                <tr>
-                                    <td style="width: 20%;padding: 5px;"><b><?=$arrayNameParams[$key]?></b></td>
-                                    <td style="width: 30%;padding: 5px;">
-                                        <?
-                                            foreach ($Item["params"] as $value) {
-                                                echo $value.", ";
-                                            }
-                                        ?>
-                                    </td>
-                                    <td style="width: 20%;padding: 5px;"><b><?=$arrayNameParams[$key]?></b></td>
-                                    <td style="width: 30%;padding: 5px;"></td>
-                                </tr>
-                            <? 
-                            }else { ?>
-                                <tr>
-                                    <td style="width: 20%;padding: 5px;"><b><?=$arrayNameParams[$key]?></b></td>
-                                    <td style="width: 30%;padding: 5px;">
-                                    {данные будут доступны после подписания договора}
-                                    </td>
-                                    <td style="width: 20%;padding: 5px;"><b><?=$arrayNameParams[$key]?></b></td>
-                                    <td style="width: 30%;padding: 5px;"></td>
-                                </tr>
-                            <? }
+                        <?
+                        if(!empty($userProperty)) {
+                            print_r($userProperty);
+                            foreach($userProperty as $key => $Item){
+                                if($Item["view"] == "Y"){	
+                                    ?>
+                                        <tr>
+                                            <td style="width: 20%;padding: 5px;"><b><?=$arrayNameParams[$key]?></b></td>
+                                            <td style="width: 30%;padding: 5px;">
+                                                <?
+                                                    foreach ($Item["params"] as $value) {
+                                                        echo $value.", ";
+                                                    }
+                                                ?>
+                                            </td>
+                                            <td style="width: 20%;padding: 5px;"><b><?=$arrayNameParams[$key]?></b></td>
+                                            <td style="width: 30%;padding: 5px;"></td>
+                                        </tr>
+                                    <? 
+                                }else { ?>
+                                    <tr>
+                                        <td style="width: 20%;padding: 5px;"><b><?=$arrayNameParams[$key]?></b></td>
+                                        <td style="width: 30%;padding: 5px;">
+                                        {данные будут доступны после подписания договора}
+                                        </td>
+                                        <td style="width: 20%;padding: 5px;"><b><?=$arrayNameParams[$key]?></b></td>
+                                        <td style="width: 30%;padding: 5px;"></td>
+                                    </tr>
+                                <? }
+                            }
                         }?>
                     </table>
                 </div>
