@@ -48,6 +48,10 @@ $(document).ready(function() {
     $('#popup_send_contract').on('click', function(){
         $('#send_sms').css('display', 'block');
     });
+    // закрытие попапа с подписанием
+    $('#close_sign_popup, #signpopup_close').on('click', function(){
+        $('#send_sms').css('display', 'none');
+    });
 
     // ввод текста во всплывающем окне
     $(document).on('focusout', '.input_text', function() {
@@ -64,7 +68,8 @@ $(document).ready(function() {
     //своя редакция (подгрузка доски с интрументами)
     $(document).on('click', '#new_redaction', function(){
         let url = '/response/ajax/new_redaction.php';
-        let id = $(this).attr('data-id_element');
+        let id = $(this).attr('data-id_element');        
+        $('#new_redaction').attr('href', '/'); 
         $('#send_contract').attr('data', 'edit')
         let data = {
             ELEMENT_ID: id

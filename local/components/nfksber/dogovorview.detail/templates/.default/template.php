@@ -45,10 +45,11 @@ switch ($arResult['SEND_CONTRACT']) {
                             <button class="btn btn-nfk <?if(!empty($arResult["DOGOVOR_IMG"][0]['URL'])):?>canvas-img<?endif?>" id="popup_send_contract" data="signed">
                                 Подписать договор
                             </button>
-                            <a href="http://anypact.nfksber.ru/profile/aut_esia.php" class="btn btn-nfk" >Подписать через ЕСИА</a>
+                            <a href="/pacts/view_pact/edit_dogovor/?ELEMENT_ID=<?=$_GET['ELEMENT_ID']?>" class="btn btn-nfk" >Предложить свою редакцию</a>
+                            <!-- <a href="http://anypact.nfksber.ru/profile/aut_esia.php" class="btn btn-nfk" >Подписать через ЕСИА</a> -->
                         <? // endif?>                    
                         <?if(empty($arResult['NEW_REDACTION'])):?>
-                            <button class="btn btn-nfk" id="new_redaction" data-id_element="<?=$_GET['ELEMENT_ID']?>">Предложить свою редакцию</button>
+                            <!--<button class="btn btn-nfk" id="new_redaction" data-id_element="<?=$_GET['ELEMENT_ID']?>">Предложить свою редакцию</button>-->
                         <?endif?>
 
                     <?}?>
@@ -133,8 +134,8 @@ switch ($arResult['SEND_CONTRACT']) {
                                         <p>Успешная авторизация на сайте Госуслуг будет означать выражение Вашей воли на подписание Документов и совершение указанной в них сделки (сделок) в понимании ст. 160 ГК РФ.</p>
                                     </span>
                                 </label>
-                                <a href="http://anypact.nfksber.ru/profile/aut_esia.php" class="btn btn-nfk" style="width:45%;margin-right: 30px;">Подписать через ЕСИА</a>                                
-                                <button class="btn btn-nfk" id="recall_sign" data="<?=$_GET['ID']?>" data-user="1" style="width:45%">Отклонить</button>
+                                <a href="http://anypact.nfksber.ru/profile/aut_esia.php" class="btn btn-nfk" id="ref_esia" style="width:45%;margin-right: 30px;">Подписать</a>                                
+                                <button class="btn btn-nfk" id="close_sign_popup" style="width:45%">Отклонить</button>
                             </div>                        
                             </div>
                         </div>

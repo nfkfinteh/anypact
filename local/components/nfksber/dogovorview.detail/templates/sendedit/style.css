@@ -1,60 +1,3 @@
-.cardDogovor {
-    margin-bottom: 150px;
-}
-.cardDogovor .cardDogovor-boxTool .btn {
-    width: 100%;
-    margin-bottom: 30px;
-}
-
-.cardDogovor .cardDogovor-boxViewText {
-    max-height: 800px;
-    overflow-y: scroll;
-    background: #fdfdfd;
-    padding: 10px;
-}
-
-#send_sms {
-    height: 100%;
-    position: fixed;
-    z-index: 1000;
-    width: 100%;
-    display: none;
-    left: 0;
-    top: 0;
-}
-
-.regpopup_win {
-    background: #fff;
-    padding: 20px;
-    top: 200px;
-    position: absolute;
-    margin-top: -80px;
-}
-
-
-/*----Редактор договора-----*/
-
-useredittext {
-    display: inline;
-    background-color: #ff641621;
-    position: relative;
-}
-
-.input_text {
-    position: absolute;
-    top: -3px;
-    left: 0px;
-    width: 250px;
-    height: 24px;
-    background: white;
-    border: 1px solid #ff6416;
-    border-radius: 3px;
-}
-
-edbox {
-    position: relative;
-}
-
 .cardDogovor .cardDogovor-boxTool .btn {
     width: 100%;
     margin-bottom: 30px;
@@ -210,6 +153,24 @@ edbox {
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
+}
+
+#send_sms {
+    height: 100%;
+    position: fixed;
+    z-index: 1000;
+    width: 100%;
+    display: none;
+    left: 0;
+    top: 0;
+}
+
+.regpopup_win {
+    background: #fff;
+    padding: 20px;
+    top: 200px;
+    position: absolute;
+    margin-top: -80px;
 }
 
 #signpopup_close {

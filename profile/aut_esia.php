@@ -4,7 +4,12 @@ $APPLICATION->SetTitle("AnyPact");
 // проверяем авторизован ли пользователь
 global $USER;
 // урл по которому пригол пользователь
-$URL_REF = $_SERVER['HTTP_REFERER'];
+// если пользователь пришел с редактированя контракта нужно ID записи добавить в GET
+if(!empty($_GET['ID_SENDITEM'])){
+    $URL_REF = $_SERVER['HTTP_REFERER'].'&ID_SENDITEM='.$_GET['ID_SENDITEM'];    
+}else {
+    $URL_REF = $_SERVER['HTTP_REFERER'];
+}
 //echo "<br> пришли с этого адреса ".$URL_REF;
 
 if ($USER->IsAuthorized()){

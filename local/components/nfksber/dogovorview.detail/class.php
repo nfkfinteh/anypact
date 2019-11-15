@@ -188,12 +188,20 @@ class CDemoSqr extends CBitrixComponent
     }
 
     // подписание контракта
-    private function sendContract($Params){
-        $hlbl = 3;
+    private function sendContract($hlbl, $Params){
+
         $hlblock = HL\HighloadBlockTable::getById($hlbl)->fetch();
         $entity = HL\HighloadBlockTable::compileEntity($hlblock);
         $entity_data_class = $entity->getDataClass();
-        $result = $entity_data_class::add($Params);        
+        $result = $entity_data_class::add($Params);  
+        // возвращаем id записи
+        if (!$result->isSuccess()) {
+            $errors = $result->getErrorMessages();
+        } else {
+            $id = $result->getId();
+        }
+
+        return $id;
     }
 
     private function getNewRedaction($userId, $arSdelka){
@@ -256,7 +264,7 @@ class CDemoSqr extends CBitrixComponent
         //}
         // статус подписанного контракта
         $this->arResult['SEND_CONTRACT'] = 'N';
-        // если пользователь вернулся после авторизации ЕСИА
+        // если пользователь вернулся после авторизации ЕСИА        
         if($_GET['code']){
             $urlEsia = $_SERVER['DOCUMENT_ROOT']."/esia";
             include $urlEsia."/Esia.php";
@@ -278,22 +286,41 @@ class CDemoSqr extends CBitrixComponent
                 /*
                     подписываем контракт
                     статусы подписания 1-подписан с одной стороны, 2- подписан с двух сторон, 3- изменен
+                    контракт может подписываться с измененым текстом процедура подписания немного другая, в этом случае ЕСИА возвращает
+                    GET - ID_SEND уже созданной записи с измененным текстом
                 */
-                $Params = array(
-                    'UF_VER_CODE_USER_A'    => '',
-                    'UF_ID_USER_A'          => $this->arResult["CONTRACT_PROPERTY"]["CONTRACT_PROPERTY"]["USER_A"]["VALUE"], // владелец договора
-                    'UF_TEL_CODE_USER_A'    => '', //пока не заполняем авторизация через ЕСИА
-                    'UF_TIME_SEND_USER_A'   => ConvertTimeStamp(time(), "FULL"),
-                    'UF_ID_CONTRACT'        => '',
-                    'UF_ID_USER_B'          => $userId, // подписавшая сторона
-                    'UF_VER_CODE_USER_B'    => $info['user_info']['eTag'],
-                    'UF_TEL_CODE_USER_B'    => '',
-                    'UF_TIME_SEND_USER_B'   => ConvertTimeStamp(time(), "FULL"),
-                    'UF_STATUS'             => 1,
-                    'UF_HASH_SEND'          => '',
-                    'UF_ID_SEND_USER'       => $userId 
-                );
-                $this->sendContract($Params);
+                if(!empty($_GET['ID_SEND'])){
+                    echo "Договор подписан с изменениями".$_GET['ID_SEND'] ;
+                }else {
+                    $hash_key = hash('md5', $info['user_info']['eTag'].time());
+                    $Params = array(
+                        'UF_VER_CODE_USER_A'    => '',
+                        'UF_ID_USER_A'          => $this->arResult["CONTRACT_PROPERTY"]["CONTRACT_PROPERTY"]["USER_A"]["VALUE"], // владелец договора
+                        'UF_TEL_CODE_USER_A'    => '', //пока не заполняем авторизация через ЕСИА
+                        'UF_TIME_SEND_USER_A'   => ConvertTimeStamp(time(), "FULL"),
+                        'UF_ID_CONTRACT'        => $this->ID_CONTRACT,
+                        'UF_ID_USER_B'          => $userId, // подписавшая сторона
+                        'UF_VER_CODE_USER_B'    => $info['user_info']['eTag'],
+                        'UF_TEL_CODE_USER_B'    => '',
+                        'UF_TIME_SEND_USER_B'   => ConvertTimeStamp(time(), "FULL"),
+                        'UF_STATUS'             => 1,
+                        'UF_HASH_SEND'          => $hash_key,
+                        'UF_ID_SEND_USER'       => $userId 
+                    );
+                    // создание записи подписания контрака
+                    $id_add_item = $this->sendContract(3, $Params);
+                    // создание записи с текстом
+                    $Contract_params = array(
+                        'UF_ID_CONTRACT'    => $this->ID_CONTRACT,	
+                        'UF_ID_SEND_ITEM'   => $id_add_item,	
+                        'UF_TEXT_CONTRACT'  => $this->arResult["CONTRACT_PROPERTY"]["CONTRACT"]["DETAIL_TEXT"],
+                        'UF_HASH'           => $hash_key,
+                        'UF_CANTRACT_IMG'   => '',                    
+                        'UF_ID_USER_SEND'   => $userId,
+                    );
+                    $id_add_item = $this->sendContract(7, $Contract_params);
+                    // получи
+                }
                 $this->arResult['SEND_CONTRACT'] = 'Y';
             }else{
                 // выводим ошибку
