@@ -2,7 +2,7 @@
 <? //print_r($arResult) ;?>
 <!--------------------------------------1-------------------------------------------------->
 <div>
-        <h1 class="mb-4">Подписанные договора</h1>
+        <h3 class="mb-4" style="padding: 0 0 30px 0;font-weight: 600;">Договор, подписанный с моей стороны и ожидающие подписания контрагентом</h3>
         <div class="row pt-2 mb-5 pb-5">
             <div class="col-md-4 col-sm-12">
                 <?if($arResult['USERS']['UF_ID_USER_A']==$USER->GetID()):?>
@@ -11,13 +11,14 @@
                     </div>
                 <?endif?>
                 
-                <h3 class="font-weight-bold">Файлы</h3>
+                <h3 class="font-weight-bold"></h3>
                 <ul class="list-document">
-                    <li class="icon-document">
-                        <span>Договор №1</span>
-                        <button class="btn btn-nfk-invert w-100" id="recall_sign" data="<?=$_GET['ID']?>">Отозвать подпись</button>
-                    </li>
+                    <button class="btn btn-nfk-invert w-100" id="recall_sign" data="<?=$_GET['ID']?>">Отозвать подпись</button>
                     <!--
+                    <li class="icon-document">
+                         <span>Договор №1</span>
+                        
+                    </li>                    
                     <li class="icon-document">
                         <span>Спецификация №1</span>
                         <button class="btn btn-nfk-invert w-100">Подписан</button>

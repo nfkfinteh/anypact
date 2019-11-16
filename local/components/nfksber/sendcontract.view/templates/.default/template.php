@@ -1,5 +1,5 @@
 <? // print_r($arResult["PROPERTY"]) ;?>
-<? //print_r($arResult) ;?>
+<?// print_r($arResult) ;?>
 <!--------------------------------------1-------------------------------------------------->
 <div>
         <h1 class="mb-4">Договор ожидающий моей подписи</h1>
@@ -9,32 +9,15 @@
                 <ul class="list-document">
                     <li class="icon-document">
                         <span>Договор №1</span>                        
-                        <?if($arResult['USERS']['UF_ID_USER_A']==$USER->GetID()):?>
-                            <?=$arResult['SEND_BLOCK']['ID']?>
-                        <?endif?>
-                        <button class="btn btn-nfk" id="sign_contract" data-id="<?=$_GET['ID']?>" data-user="1" style="width:100%">Предложить изменения</button>
+                        <button class="btn btn-nfk" id="sign_contract" data-id="<?=$_GET['ID']?>" data-user="<?=$arResult["ID_USER"]?>" style="width:100%">Подписать договор</button>
+                        <a class="btn btn-nfk" href="/my_pacts/send_contract/edit/?ID=<?=$arResult["ID"]?>" style="width:100%; min-height: 47px; margin-top: 26px; padding: 10px;">Внести изменения</a>
                         <button class="btn btn-nfk" id="recall_sign" data="<?=$_GET['ID']?>" data-user="1" style="width:100%">Отклонить</button>
                     </li>
-                    <!--
-                    <li class="icon-document">
-                        <span>Спецификация №1</span>
-                        <button class="btn btn-nfk-invert w-100">Подписан</button>
-                    </li>
-                    <li class="icon-document">
-                        <span>Спецификация №2</span>
-                        <button class="btn btn-nfk-invert w-100">Подписан</button>
-                    </li>
-                    <li class="icon-document">
-                        <span>Доп. соглашение</span>
-                        <button class="btn btn-nfk-invert w-100">Подписан</button>
-                    </li> -->
                 </ul>
-
             </div>
             <div class="col-md-8 col-sm-12">
                 <div class="d-flex">
                     <h3 class="font-weight-bold flex-grow-1" style="flex-grow: 1!important;">Просмотр файла</h3>
-
                     <a href="contract_pdf.php?ID=<?=$_GET['ID']?>" target="_blank" class="btn-img" id="download_pdf"><img src="<?=SITE_TEMPLATE_PATH?>/image/icon-pdf-gray.png" alt=""></a>
                     <button class="btn-img"><img src="<?=SITE_TEMPLATE_PATH?>/image/icon-printer-gray.png" alt=""></button>
                 </div>

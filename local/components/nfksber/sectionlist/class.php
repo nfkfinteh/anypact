@@ -67,7 +67,7 @@ class sectionPacts extends CBitrixComponent
     private function getTreeCategory($id_iblock){
         $tree = CIBlockSection::GetTreeList(
             $arFilter=Array('IBLOCK_ID' => $id_iblock),
-            $arSelect=Array('LEFT_MARGIN')
+            $arSelect=Array('LEFT_MARGIN', 'NAME', 'DEPTH_LEVEL', 'ID')
         );
         $arrTree = array();
         while($section = $tree->GetNext()) {

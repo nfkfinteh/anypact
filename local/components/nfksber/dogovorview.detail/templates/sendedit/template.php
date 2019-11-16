@@ -86,23 +86,18 @@ var full_name = {
  <div class="tender cardDogovor" style="margin-bottom: 100px;">
     <div class="row">
         <div class="col-lg-3 col-md-3 col-sm-12">
-            <div class="cardDogovor-boxTool cardPact">
+            <div class="cardDogovor-boxTool cardPact" style="margin-top: 8px;">
+				<button class="btn btn-nfk <?if(!empty($arResult["DOGOVOR_IMG"][0]['URL'])):?>canvas-img<?endif?>" id="popup_send_contract" data="signed">
+                	Подписать договор
+                </button>
                 <h5>Вставить в договор:</h5>
             </div>
         </div>               
         <div class="col-lg-9 col-md-9 col-sm-12">
-        <div class="tools_redactor">
-        <button type="button" class="btn btn-nfk btn-default" data-toggle="tooltip" data-placement="left" title="Сохранить" id="save_btn" data-id="<?=$arResult['ELEMENT_ID']?>">
-            <span class="glyphicon glyphicon-floppy-disk"></span>
-        </button>
-                <!--<button type="button" class="btn btn-nfk btn-default" data-toggle="tooltip" data-placement="left" title="Сохранить"><span class="glyphicon glyphicon-print"></span></button>-->
+        <div class="tools_redactor">                
                 <button type="button" class="btn btn-nfk btn-default space_right" id="btn-edit" data-toggle="tooltip" data-placement="left" title="Включить редактирование текста" contenteditable="false"><span class="glyphicon glyphicon-pencil"></span></button>                
-                <button type="button" class="btn btn-nfk btn-default" data-toggle="tooltip" data-placement="left" title="Вставить изображение"><span class="glyphicon glyphicon-picture"></span></button>
-                <button type="button" class="btn btn-nfk btn-default form_text"  id="btn-noedit" data-toggle="tooltip" data-placement="left" title="Запретить редактирование выделенного текста"><span class="glyphicon glyphicon-ban-circle"></span></button>
-                <button type="button" class="btn btn-nfk btn-default space_right" id="btn-data" data-toggle="tooltip" data-placement="left" title="Вставить подстановку текущей даты"><span class="glyphicon glyphicon-calendar"></span></button>                
                 <button type="button" class="btn btn-nfk btn-default form_text" id="btn-weight" data-toggle="tooltip" data-placement="left" title="Жирный текст" contenteditable="false"><span class="glyphicon glyphicon-bold"></span></button>
-                <button type="button" class="btn btn-nfk btn-default form_text space_right" id="btn-italic" data-toggle="tooltip" data-placement="left" title="Курсив" contenteditable="false"><span class="glyphicon glyphicon-italic"></span></button>
-                <button type="button" class="btn btn-nfk btn-default form_text" id="btn-question" data-toggle="tooltip" data-placement="left" title="Информация по инструментам" contenteditable="false"><span class="glyphicon glyphicon-question-sign"></span></button>
+                <button type="button" class="btn btn-nfk btn-default form_text space_right" id="btn-italic" data-toggle="tooltip" data-placement="left" title="Курсив" contenteditable="false"><span class="glyphicon glyphicon-italic"></span></button>                
         </div>
             <?if(!empty($arResult["DOGOVOR_IMG"][0]['URL'])):?>
                 <div class="cardDogovor-boxViewText">
@@ -121,3 +116,32 @@ var full_name = {
         </div>            
     </div>
 </div>
+<!-- окно предупреждения подписания по ЕСИА -- -->
+<noindex>
+	<div id="send_sms" class="bgpopup" >
+		<div class="container">
+		<div class="row align-items-center justify-content-center">            
+			<div class="col-sm-12 col-md-8 col-lg-6 col-xl-6">
+				<div class="regpopup_win">     
+				<div id="signpopup_close">Х</div>                                       
+						<!--форма подписания-->
+						<div class="regpopup_autorisation" id="regpopup_autarisation">
+							<label for="smscode" style="margin-bottom: 1.5rem;">
+								<span>Внимание!
+									<p>Удостоверьтесь в том, что Вам полностью понятны условия, подписываемых Вами Документов.</p> 
+									<p>При нажатии на кнопку «Подписать» Вы будете перенаправлены на сайт Госуслуг.</p> 
+									<p>Успешная авторизация на сайте Госуслуг будет означать выражение Вашей воли на подписание Документов и совершение указанной в них сделки (сделок) в понимании ст. 160 ГК РФ.</p>
+								</span>
+							</label>
+							<!-- <a href="http://anypact.nfksber.ru/profile/aut_esia.php" class="btn btn-nfk" id="ref_esia" style="width:45%;margin-right: 30px;">Подписать</a>-->
+							<button class="btn btn-nfk" id="sign_edit_contract" style="width:45%;margin-right: 30px;">Подписать</button>
+							<button class="btn btn-nfk" id="close_sign_popup" style="width:45%">Отклонить</button>
+						</div>                        
+						</div>
+					</div>
+				</div>
+			</div>            
+		</div>
+	</div>
+</noindex>
+<!-- \\окно предупреждения подписания по ЕСИА -->

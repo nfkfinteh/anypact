@@ -89,6 +89,7 @@ function loadTextBox(el) {
 }
 
 // автоподстановка реквизитов пользователя
+/*
 function setHeaderFullName(idname) {
     let seller = document.getElementsByClassName('fullnameseller');
     let customer = document.getElementsByClassName('fullnamecustomer');
@@ -129,7 +130,7 @@ function setHeaderFullName(idname) {
             break;
     }
 
-}
+} */
 
 function setBackgraundStepBox() {
     let box = document.getElementsByClassName('t');
@@ -163,7 +164,7 @@ function deleteRow(thisBtn){
 
 $(document).ready(function() {
 
-    setHeaderFullName();
+    //setHeaderFullName();
 
     $('#select_type_user').on('change', function() {
         let value = $(this).val();
@@ -241,27 +242,13 @@ $(document).ready(function() {
         }
 
     });
-
-    // прыжки по шагам заполнения
-    $(document).on('click touchstart', '.steps .t', function() {
-        var box = $(this);
-        setBackgraundStepBox();
-        box.css('backgroundColor', '#ff64160f');
-        var text_box_id = box.attr("id");
-        var text_box = $("#" + text_box_id + "_text");
-        var text_box_js = document.getElementById(text_box_id + "_text");
-        var canvas_contr = $('.cardDogovor-boxViewText');
-        var scroll_position = text_box_js.offsetTop;
-        canvas_contr.scrollTop(scroll_position - 60);
-        text_box.css('backgroundColor', '#ff64160f');
-    });
-
+    
     // разрешение редактирование текста
     $('#btn-edit').on('click', function() {
         var canvas = $('#canvas');
         var onof = on_contenteditable(canvas);
         var span_icon = $(this).find('span');
-
+        console.log('edit')
         if (onof) {
             $(this).css("backgroundColor", "#ff6416");
             $(span_icon).css("color", "#fff");
@@ -304,32 +291,36 @@ $(document).ready(function() {
         }
     });
 
-    var form = document.forms.namedItem("loadcontract");
-    form.addEventListener('submit', function(ev) {
-        var oOutput = document.querySelector("div"),
-            oData = new FormData(form);
+    // подписание текста
+    $('#send_edit_contract').on('click', function(e){
+        console.log('Подписание!');
+        console.log(Contract);
 
-        $('.cardDogovor').prepend("<div class='document-load'></div>");
-
-        oData.append("CustomField", "This is some extra data");
-
-        var oReq = new XMLHttpRequest();
-        oReq.open("POST", "/response/ajax/phpword.php?uploadfiles", true);
-        oReq.onload = function(oEvent) {
-            if (oReq.status == 200) {
-                let canvas = document.getElementById('canvas');
-                canvas.innerHTML = oEvent.srcElement.response;
-
-            } else {
-                oOutput.innerHTML = "Error " + oReq.status + " occurred when trying to upload your file.<br \/>";
-            }
-            $('.document-load').remove();
+        e.preventDefault();
+        let url = '/response/ajax/send_edit_contract.php';
+        let canvas_contr = $('.cardDogovor-boxViewText'); 
+        let canvas_contr_context = String(canvas_contr.html());       
+        let data = {
+            IDItem: Contract.idItem,
+            IDUser: Contract.idUser,
+            Text: canvas_contr_context
         };
 
-        oReq.send(oData);
-        ev.preventDefault();
-    }, false);
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: data,
+            success: function(result){
+                console.log(result);
+                document.location.replace('/my_pacts/')
+                // if(result==1){
+                //     document.location.replace('/my_pacts/')
+                // }
+            },
 
+        });
+
+    });
 
 
 });

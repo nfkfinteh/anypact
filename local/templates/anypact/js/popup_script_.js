@@ -370,9 +370,8 @@ window.onload = function() {
                             contract_text = contract_text.replace(/&/g, "%");
                         }
                         
-                        contract_text = canvas.innerHTML;
-                        console.log(contract_text)
-                        /*
+                        contract_text = canvas.innerHTML;                        
+                        
                         // запрос на сервер
                         var xhr = new XMLHttpRequest();
                         var params = 'id=' + encodeURIComponent(id_contract) + '&contr=' + encodeURIComponent(id_contraegent) +
@@ -390,7 +389,7 @@ window.onload = function() {
                         break_sign = setBlock({'contract':id_contract, 'contragent':id_contraegent, 'status':'', 'action':'set'});
 
                         popup_send_sms.style.display = 'none';
-                        document.location.href = '/my_pacts/';*/
+                        document.location.href = '/my_pacts/';
                     }
                 }, 1000);
 

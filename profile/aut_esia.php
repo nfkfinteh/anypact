@@ -3,6 +3,14 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("AnyPact");
 // проверяем авторизован ли пользователь
 global $USER;
+// урл по которому пригол пользователь
+// если пользователь пришел с редактированя контракта нужно ID записи добавить в GET
+if(!empty($_GET['ID_SENDITEM'])){
+    $URL_REF = $_SERVER['HTTP_REFERER'].'&ID_SENDITEM='.$_GET['ID_SENDITEM'];    
+}else {
+    $URL_REF = $_SERVER['HTTP_REFERER'];
+}
+//echo "<br> пришли с этого адреса ".$URL_REF;
 
 if ($USER->IsAuthorized()){
     session_start();
@@ -19,13 +27,12 @@ if ($USER->IsAuthorized()){
 
     $keys_dir = $_SERVER['DOCUMENT_ROOT'] . '/esia/sert';    
     $config = array(
-    "site" => "https://esia.gosuslugi.ru/", //esia portal
-    "redirect_uri" => "http://anypact.nfksber.ru/profile/",  //callback url
-    //"redirect_uri" => "http://nfksber.game-server.xyz:789/esia/work1.php",  //callback url
-    "pkey_path"  => $keys_dir."/secret_NFKS01211.key",
-    "cert_path"  => $keys_dir."/cert_NFKS01211.crt",
-    "client_id" => "NFKS01211",
-    "scope" => "openid fullname id_doc"
+        "site"          => "https://esia.gosuslugi.ru/", //esia portal
+        "redirect_uri"  => $URL_REF,  //callback url
+        "pkey_path"     => $keys_dir."/secret_NFKS01211.key",
+        "cert_path"     => $keys_dir."/cert_NFKS01211.crt",
+        "client_id"     => "NFKS01211",
+        "scope"         => "openid fullname id_doc"
     );
     
     $esia = new EsiaOmniAuth($config);
@@ -33,4 +40,5 @@ if ($USER->IsAuthorized()){
 } else {
     echo "редирект на ..";
 }
+
 ?>

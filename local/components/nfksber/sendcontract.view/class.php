@@ -8,6 +8,8 @@ use Bitrix\Main\Entity;
 
 class CDemoSqr extends CBitrixComponent
 {       
+    private $ID_Item; // ID  записи подписанния контракта в журнале
+    
     public function onPrepareComponentParams($arParams)
     {
         $result = array(
@@ -102,6 +104,15 @@ class CDemoSqr extends CBitrixComponent
         return $arSend;
     }
 
+    // подписание контракта владельцем
+    private function sendContract($Params){
+        $hlbl = 3;
+        $hlblock = HL\HighloadBlockTable::getById($hlbl)->fetch();
+        $entity = HL\HighloadBlockTable::compileEntity($hlblock);
+        $entity_data_class = $entity->getDataClass();
+        $result = $entity_data_class::update($this->ID_Item, $Params);        
+    }
+
     private function getURLPDF(){
         $URL_PDF = '/upload/dogovor_test.pdf';
         return  $URL_PDF;
@@ -117,10 +128,60 @@ class CDemoSqr extends CBitrixComponent
     public function executeComponent()
     {
         $IDSendItem = $_GET['ID'];
+        $this->arResult["ID"] = $_GET['ID'];
+        global $USER;
+        $this->arResult["ID_USER"] =$USER->GetID();
         $this->arResult["CONTRACT_TEXT"] = $this->getSendContractText($IDSendItem);
         $this->arResult["SEND_BLOCK"] = $this->getSendContractItem($IDSendItem);
-        $this->arResult["PDF"] = $this->getURLPDF();
+        $this->arResult["PDF"] = $this->getURLPDF();        
         $this->arResult = array_merge($this->arResult, $this->paramsUser($this->arParams));
+
+        /*
+            подписание контракта через ЕСИА
+        */
+        $this->arResult['SEND_CONTRACT'] = 'N';
+        $this->ID_Item = $_GET['ID'];
+        // если пользователь вернулся после авторизации ЕСИА
+        if($_GET['code']){
+            $urlEsia = $_SERVER['DOCUMENT_ROOT']."/esia";
+            include $urlEsia."/Esia.php";
+            include $urlEsia."/EsiaOmniAuth_t.php";
+            include $urlEsia."/config_esia.php";
+
+            $config_esia = new ConfigESIA();
+
+            $esia = new EsiaOmniAuth($config_esia->config);
+            $info   = array();
+            $token  = $esia->get_token($_GET['code']);
+            $info   = $esia->get_info($token);
+
+            $rsUser = CUser::GetByID($userId);
+            $UserParams = $rsUser->Fetch();
+            $ESIA_ID = $UserParams['UF_ESIA_ID'];
+            // проверим идентификаторы из есиа и из профиля пользователя
+            if($info['user_id'] == $ESIA_ID){                                 
+                /*
+                    подписываем контракт
+                    Нужно найти запись
+                    статусы подписания 1-подписан с одной стороны, 2- подписан с двух сторон, 3- изменен
+                */
+                $Params = array(
+                    'UF_VER_CODE_USER_A'    => '',
+                    'UF_ID_USER_A'          => $this->arResult["CONTRACT_PROPERTY"]["CONTRACT_PROPERTY"]["USER_A"]["VALUE"], // владелец договора
+                    'UF_TEL_CODE_USER_A'    => '', //пока не заполняем авторизация через ЕСИА
+                    'UF_TIME_SEND_USER_A'   => ConvertTimeStamp(time(), "FULL"),                                        
+                    'UF_STATUS'             => 2, // статус подписанного с двух сторон контракта                    
+                    'UF_ID_SEND_USER'       => $userId // кто подписал последним
+                );
+                $this->sendContract($Params);
+                $this->arResult['SEND_CONTRACT'] = 'Y';
+            }else{
+                // выводим ошибку
+                $this->arResult['SEND_CONTRACT'] = 'ERR_ID';
+            }
+        }
+
+
         $this->includeComponentTemplate();
 
         /*if($this->startResultCache($this->arParams['CACHE_TIME'], $IDSendItem))

@@ -1,4 +1,4 @@
-<?// print_r($arResult['TREE_CATEGORY']);?>
+<? //print_r($arResult['TREE_CATEGORY']);?>
 <ul id="select_category_main">
     <li><a href="/pacts/">Все категории</a></li>
     <? foreach ($arResult['TREE_CATEGORY'] as $item_category){?>

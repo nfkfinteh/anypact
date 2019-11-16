@@ -333,8 +333,10 @@ window.onload = function() {
                         clearInterval(t);
                         smscode.blur();                        
                         // получаем текст договора (возможно с изменениями)
-                        let canvas = document.getElementById('canvas'); 
-                        contract_text = canvas.innerHTML;    
+                        let canvas = document.getElementById('canvas');
+                        //нужно очистить от & и спец символов 
+                        let contract_text_f = canvas.innerHTML;
+                        contract_text = contract_text_f.replace(/&nbsp;/gi,'');    
                         let isImg = '';
                         
                         // запрос на сервер

@@ -27,7 +27,9 @@ $(document).ready(function(){
     });
 
     // подписать
+    
     $('#sign_contract').on('click', function(e){
+        console.log('Подписание')
         let id = $(this).attr('data-id');
         e.preventDefault();
         let url = '/response/ajax/quiq_sign.php';        
@@ -41,13 +43,11 @@ $(document).ready(function(){
             data: data,
             success: function(result){
                 console.log(result);
-                /*
-                if(result==1){
-                    document.location.replace('/my_pacts/')
-                }*/
+                document.location.replace('/my_pacts/')                
             },
 
         });
+        
 
         return false;
     });

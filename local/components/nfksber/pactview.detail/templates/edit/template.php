@@ -1,7 +1,7 @@
-<pre>
+<!-- <pre>
 <? //print_r($arResult["PROPERTY"]["ID_DOGOVORA"]) ;?>
-<? print_r($arResult["PROPERTY"]["UNCLUDE_FILE"]) ;?>
-</pre>
+<? //print_r($arResult["PROPERTY"]["UNCLUDE_FILE"]) ;?>
+</pre> -->
 <div id="params_object" style="display:none" data="<?=$arResult["ELEMENT"]["ID"]?>"></div>
 <h1><?=$arResult["ELEMENT"]["NAME"]?></h1>
 <div class="tender cardPact">
@@ -87,7 +87,7 @@
             </div>
             <!--Приложения к договору-->
             <h4>Добавить приложение в виде файла(опционально)</h4>
-            <!-- <button class="btn btn-nfk">Загрузить файл</button>             -->
+            <!-- <button class="btn btn-nfk">Загрузить файл</button>-->
             <?if(!empty($arResult["PROPERTY"]["UNCLUDE_FILE"])){?>
                 <? foreach($arResult["PROPERTY"]["UNCLUDE_FILE"] as $Item){?>
                     <a href="<?=$Item["URL"]?>" class="cardPact-rightPanel-url" target="_blank" style="float: left;width: 74%;">
@@ -96,6 +96,13 @@
                     <button class="btn btn-nfk delete_unclude_file" style="float: left;width: 25%;" data="<?=$Item["ID"]?>" data-file ="<?=$Item["ID"]?>">Удалить</button>
                 <?}?>
             <?}?>
+            <style>
+               .typefile {
+                border: none;
+                padding: 0;
+                height: 60px;
+                }
+            </style>
             <form method = "post" enctype = 'multipart/form-data' action="<?=$_SERVER['REQUEST_URI']?>&nonsense=1" >
             <?echo CFile::InputFile("IMAGE_ID", 20, $str_IMAGE_ID);?>
             <input class="btn btn-nfk" type="submit" value="Сохранить">

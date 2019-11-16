@@ -171,8 +171,7 @@ global $USER;
                             '/pacts/' => 'Все сделки',
                             '/search_people/' => 'Поиск людей',
                             '/service/' => 'О сервисе',
-                            '/help/' => 'Поддержка',
-                            '/contacts/' => 'Контакты'
+                            '/help/' => 'Контакты'                            
                         );
                     }else {
                         $arUrlMenu = array(

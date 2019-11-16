@@ -13,6 +13,26 @@ function loadTextBox(el) {
     variable.remove();
 }
 
+function addRow(thisBtn, n){
+    let tbody = thisBtn.parentElement.previousElementSibling.tBodies[0];
+    let tr = document.createElement('tr');
+    const num = tbody.rows.length + 1;
+    const numTextNode = document.createTextNode(num);
+    const td = document.createElement('td');
+    td.append(numTextNode);
+    tr.append(td);
+    for (var i = 1; i < n; i++) {
+        const td = document.createElement('td');
+        tr.append(td);
+    }
+    tbody.append(tr);
+}
+function deleteRow(thisBtn){
+    let collection = thisBtn.parentElement.previousElementSibling.tBodies[0].rows;
+    console.log(collection);
+    collection[collection.length-1].remove();
+}
+
 $(document).ready(function() {
 
 
@@ -22,6 +42,15 @@ $(document).ready(function() {
         select_box.after(dom_nodes);
         $(dom_nodes).focus();
 
+    });
+
+    // попап с подписанием
+    $('#popup_send_contract').on('click', function(){
+        $('#send_sms').css('display', 'block');
+    });
+    // закрытие попапа с подписанием
+    $('#close_sign_popup, #signpopup_close').on('click', function(){
+        $('#send_sms').css('display', 'none');
     });
 
     // ввод текста во всплывающем окне
@@ -36,10 +65,11 @@ $(document).ready(function() {
         }
     });
 
-    //своя редакция
+    //своя редакция (подгрузка доски с интрументами)
     $(document).on('click', '#new_redaction', function(){
         let url = '/response/ajax/new_redaction.php';
-        let id = $(this).attr('data-id_element');
+        let id = $(this).attr('data-id_element');        
+        $('#new_redaction').attr('href', '/'); 
         $('#send_contract').attr('data', 'edit')
         let data = {
             ELEMENT_ID: id

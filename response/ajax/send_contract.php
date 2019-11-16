@@ -17,12 +17,18 @@ $sms_code       = $_POST['smscode'];
 // статус подписания
 switch ($_POST['status']) {
     case 'sign':
-        $status = 1;
+        $status = 1; // контракт подписан одной стороной
         break;
     case 'edit':
-        $status = 3;
+        $status = 3; // контракт изменен
+        break;
+    
+    default:
+        $status = 1;
         break;
 }
+
+// обработка текста контракта
 $Contract_text  =  str_replace('%nbsp', '&nbsp', $_POST['text_contract']);
 echo $_POST['text_contract'];
 $hash_Send      = md5($id_contract.$id_contragent.$sms_code); 
@@ -42,6 +48,7 @@ if (empty($id_contract)){
     $id_contract = 18;
 }
 
+// свойства контракта
 $arrProperty_contract = getProperty(4, $id_contract);
 
 $idUser = $arrProperty_contract['USER_A']['VALUE']." | ".$id_contragent ;
