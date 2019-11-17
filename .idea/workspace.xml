@@ -2,49 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="095c6364-006c-4512-9344-8361d6fd3db8" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/local/components/nfksber/sendcontract.view/templates/edit/img/icon-document-sprite.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/local/components/nfksber/sendcontract.view/templates/edit/img/icon-pdf-gray.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/local/components/nfksber/sendcontract.view/templates/edit/img/icon-printer-gray.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/local/components/nfksber/sendcontract.view/templates/edit/img/popup_bg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/local/templates/anypact/image/err_send.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/local/templates/anypact/image/ok_send.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/local/components/nfksber/dogovorview.detail/templates/sendedit/script.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/local/components/nfksber/dogovorview.detail/templates/sendedit/style.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/local/components/nfksber/dogovorview.detail/templates/sendedit/template.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/local/components/nfksber/sendcontract.view/templates/edit/script.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/local/components/nfksber/sendcontract.view/templates/edit/style.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/local/components/nfksber/sendcontract.view/templates/edit/template.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/my_pacts/send_contract/edit/index.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pacts/view_pact/edit_dogovor/index.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/response/ajax/send_edit_contract.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local/components/nfksber/dogovorview.detail/autoedittext.php" afterPath="$PROJECT_DIR$/local/components/nfksber/dogovorview.detail/autoedittext.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local/components/nfksber/dogovorview.detail/class.php" afterPath="$PROJECT_DIR$/local/components/nfksber/dogovorview.detail/class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local/components/nfksber/dogovorview.detail/templates/.default/script.js" afterPath="$PROJECT_DIR$/local/components/nfksber/dogovorview.detail/templates/.default/script.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local/components/nfksber/dogovorview.detail/templates/.default/style.css" afterPath="$PROJECT_DIR$/local/components/nfksber/dogovorview.detail/templates/.default/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local/components/nfksber/dogovorview.detail/templates/.default/template.php" afterPath="$PROJECT_DIR$/local/components/nfksber/dogovorview.detail/templates/.default/template.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local/components/nfksber/dogovorview.detail/templates/add/script.js" afterPath="$PROJECT_DIR$/local/components/nfksber/dogovorview.detail/templates/add/script.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local/components/nfksber/dogovorview.detail/templates/add/style.css" afterPath="$PROJECT_DIR$/local/components/nfksber/dogovorview.detail/templates/add/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local/components/nfksber/dogovorview.detail/templates/edit/script.js" afterPath="$PROJECT_DIR$/local/components/nfksber/dogovorview.detail/templates/edit/script.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local/components/nfksber/dogovorview.detail/templates/edit/style.css" afterPath="$PROJECT_DIR$/local/components/nfksber/dogovorview.detail/templates/edit/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local/components/nfksber/dogovorview.detail/templates/edit/template.php" afterPath="$PROJECT_DIR$/local/components/nfksber/dogovorview.detail/templates/edit/template.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local/components/nfksber/pactview.detail/class.php" afterPath="$PROJECT_DIR$/local/components/nfksber/pactview.detail/class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local/components/nfksber/pactview.detail/templates/edit/template.php" afterPath="$PROJECT_DIR$/local/components/nfksber/pactview.detail/templates/edit/template.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local/components/nfksber/sectionlist/class.php" afterPath="$PROJECT_DIR$/local/components/nfksber/sectionlist/class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local/components/nfksber/sectionlist/templates/homepage/template.php" afterPath="$PROJECT_DIR$/local/components/nfksber/sectionlist/templates/homepage/template.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local/components/nfksber/sendcontract.view/class.php" afterPath="$PROJECT_DIR$/local/components/nfksber/sendcontract.view/class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local/components/nfksber/sendcontract.view/templates/.default/script.js" afterPath="$PROJECT_DIR$/local/components/nfksber/sendcontract.view/templates/.default/script.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local/components/nfksber/sendcontract.view/templates/.default/template.php" afterPath="$PROJECT_DIR$/local/components/nfksber/sendcontract.view/templates/.default/template.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local/components/nfksber/sendcontract.view/templates/signature/style.css" afterPath="$PROJECT_DIR$/local/components/nfksber/sendcontract.view/templates/signature/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local/components/nfksber/sendcontract.view/templates/signature/template.php" afterPath="$PROJECT_DIR$/local/components/nfksber/sendcontract.view/templates/signature/template.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local/components/nfksber/sendcontract.view/templates/signed/style.css" afterPath="$PROJECT_DIR$/local/components/nfksber/sendcontract.view/templates/signed/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local/components/nfksber/userpacts.list/class.php" afterPath="$PROJECT_DIR$/local/components/nfksber/userpacts.list/class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local/components/nfksber/userpacts.list/templates/.default/style.css" afterPath="$PROJECT_DIR$/local/components/nfksber/userpacts.list/templates/.default/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local/components/nfksber/userpacts.list/templates/.default/template.php" afterPath="$PROJECT_DIR$/local/components/nfksber/userpacts.list/templates/.default/template.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local/templates/anypact/header.php" afterPath="$PROJECT_DIR$/local/templates/anypact/header.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local/templates/anypact/js/popup_script.js" afterPath="$PROJECT_DIR$/local/templates/anypact/js/popup_script.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local/templates/anypact/js/popup_script_.js" afterPath="$PROJECT_DIR$/local/templates/anypact/js/popup_script_.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/profile/aut_esia.php" afterPath="$PROJECT_DIR$/profile/aut_esia.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/response/ajax/send_contract.php" afterPath="$PROJECT_DIR$/response/ajax/send_contract.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -54,38 +12,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="site_closed.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/local/php_interface/unclude/site_closed.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="278">
-              <caret line="36" column="28" lean-forward="false" selection-start-line="36" selection-start-column="28" selection-end-line="36" selection-end-column="28" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="class.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/local/components/nfksber/dogovorview.detail/class.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-5111">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/local/php_interface/unclude/index.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1054">
-              <caret line="62" column="7" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="62" selection-end-column="7" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -306,18 +233,18 @@
       <workItem from="1572979294863" duration="665000" />
       <workItem from="1573075340906" duration="2183000" />
       <workItem from="1573361181120" duration="649000" />
-      <workItem from="1573907597004" duration="32000" />
+      <workItem from="1573907597004" duration="660000" />
+      <workItem from="1573981703704" duration="869000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21378000" />
+    <option name="totallyTimeSpent" value="22875000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26285347" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26606685" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -349,6 +276,30 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/local/php_interface/unclude/site_closed.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="36" column="28" lean-forward="false" selection-start-line="36" selection-start-column="28" selection-end-line="36" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/local/php_interface/unclude/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1054">
+          <caret line="62" column="7" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="62" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/local/components/nfksber/dogovorview.detail/class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/local/php_interface/unclude/site_closed.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -413,7 +364,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="14" column="96" lean-forward="false" selection-start-line="14" selection-start-column="96" selection-end-line="14" selection-end-column="96" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -456,7 +406,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="14" column="96" lean-forward="false" selection-start-line="14" selection-start-column="96" selection-end-line="14" selection-end-column="96" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -590,7 +539,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="14" column="96" lean-forward="false" selection-start-line="14" selection-start-column="96" selection-end-line="14" selection-end-column="96" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -601,10 +549,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/local/php_interface/unclude/index.php">
+    <entry file="file://$PROJECT_DIR$/local/components/nfksber/dogovorview.detail/class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1054">
-          <caret line="62" column="7" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="62" selection-end-column="7" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -617,9 +565,35 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/local/components/nfksber/dogovorview.detail/class.php">
+    <entry file="file://$PROJECT_DIR$/local/php_interface/unclude/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-5111">
+        <state relative-caret-position="635">
+          <caret line="62" column="7" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="62" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/local/components/nfksber/dogovorview.detail/templates/edit/script.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2833">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!block;n#on_contenteditable#0" expanded="false" />
+            <element signature="n#!!block;n#insertTextAtCursor#0" expanded="false" />
+            <element signature="n#!!block;n#insertBoldAtCursor#0" expanded="false" />
+            <element signature="n#!!block;n#formatSelectText#0" expanded="false" />
+            <element signature="n#!!block;n#loadTextCanvas#0" expanded="false" />
+            <element signature="n#!!block;n#loadTextBox#0" expanded="false" />
+            <element signature="n#!!block;n#setHeaderFullName#0" expanded="false" />
+            <element signature="n#!!block;n#setBackgraundStepBox#0" expanded="false" />
+            <element signature="n#!!block;n#addRow#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/local/components/nfksber/dogovorview.detail/templates/edit/template.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
