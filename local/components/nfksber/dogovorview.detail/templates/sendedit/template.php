@@ -1,12 +1,5 @@
 <? // print_r($arResult["TEMPLATE_CONTENT_PROPERTY"]) ;?>
-<? //print_r($arResult) ;
-   $Name = $arResult["USER_PROP"]["NAME"];
-   $Surname = $arResult["USER_PROP"]["LAST_NAME"];
-   $Midlenmae = $arResult["USER_PROP"]["SECOND_NAME"];
-   $Phone = $arResult["USER_PROP"]["PERSONAL_PHONE"];
-   $Passport = $arResult["USER_PROP"]["UF_PASSPORT"].' '.$arResult["USER_PROP"]["UF_KEM_VPASSPORT"];
-
-?>
+<?// print_r($arResult["TEMPLATE_CONTENT"]) ;?>
 <style>
 /*----------Стили кнопок-------------*/
 #canvas .edit-buttons-container{
@@ -52,36 +45,10 @@
 	transform: translate(-50%, -50%);
 }
 </style>
-<script type="text/javascript">
-	function addRow(thisBtn, n){
-		let tbody = thisBtn.parentElement.previousElementSibling.tBodies[0];
-		let tr = document.createElement('tr');
-		const num = tbody.rows.length + 1;
-		const numTextNode = document.createTextNode(num);
-		const td = document.createElement('td');
-		td.append(numTextNode);
-		tr.append(td);
-		for (var i = 1; i < n; i++) {
-			const td = document.createElement('td');
-			tr.append(td);
-		}
-		tbody.append(tr);
-	}
-	function deleteRow(thisBtn){
-		let collection = thisBtn.parentElement.previousElementSibling.tBodies[0].rows;
-		console.log(collection);
-		collection[collection.length-1].remove();
-	}
-</script>
-<script>
-var full_name = {
-    name: '<?=$Name?>',
-    surname: '<?=$Surname?>',
-    midlname:'<?=$Midlenmae?>',
-    phone: '<?=$Phone?>',
-    passport: '<?=$Passport?>'
-}
-</script>
+<?
+switch ($arResult['SEND_CONTRACT']) {
+// Процедура подписания
+case 'N': ?>
 <h1><?=$arResult["ELEMENT"]["NAME"]?></h1>
  <div class="tender cardDogovor" style="margin-bottom: 100px;">
     <div class="row">
@@ -134,7 +101,11 @@ var full_name = {
 								</span>
 							</label>
 							<!-- <a href="http://anypact.nfksber.ru/profile/aut_esia.php" class="btn btn-nfk" id="ref_esia" style="width:45%;margin-right: 30px;">Подписать</a>-->
-							<button class="btn btn-nfk" id="sign_edit_contract" style="width:45%;margin-right: 30px;">Подписать</button>
+                            <?
+                            $DATA_SER = $arResult["CONTRACT_PROPERTY"]["CONTRACT_PROPERTY"]["USER_A"]["VALUE"].','.$arResult["TEMPLATE_CONTENT"]["ID"].','.$arResult["USER_ID"];
+                            $DATA_SER = base64_encode($DATA_SER);
+                            ?>
+							<button class="btn btn-nfk" id="sign_edit_contract" style="width:45%;margin-right: 30px;" data="<?=$DATA_SER?>">Подписать</button>
 							<button class="btn btn-nfk" id="close_sign_popup" style="width:45%">Отклонить</button>
 						</div>                        
 						</div>
@@ -145,3 +116,42 @@ var full_name = {
 	</div>
 </noindex>
 <!-- \\окно предупреждения подписания по ЕСИА -->
+    <?break;
+    // контракт подписан
+    case 'Y':
+        ?>
+        <noindex>
+        <div class="d-flex flex-column align-items-center text-center mt-5 pt-5 mb-5">
+            <img src="<?=SITE_TEMPLATE_PATH?>/image/ok_send.png" alt="Необходима регистрация">
+            <h3 class="text-uppercase font-weight-bold mt-3" style="max-width: 550px">Ваша подпись поставлена!</h3>
+            <p>Сейчас автоматически откроется страница с вашими договорами.</p>
+            <p>Если страница не открылась перейдите самостоятельно по ссылке <a href="/my_pacts/">/my_pacts/</a></p>
+        </div>
+        <script>
+            $(document).ready(function() {
+                console.log('Редирект начало');
+                setTimeout(function () {
+                    replaceMypact();
+                }, 7000);
+
+                function replaceMypact(){
+                    console.log('Редирект');
+                    location.replace('/my_pacts/');
+                }
+            });
+        </script>
+        <noindex>
+        <?break;
+    // ошибка ид ЕСИА несовпадает с ИД в профиле
+    case 'ERR_ID':
+        ?>
+        <noindex>
+        <div class="d-flex flex-column align-items-center text-center mt-5 pt-5 mb-5">
+            <img src="<?=SITE_TEMPLATE_PATH?>/image/err_send.png" alt="Необходима регистрация">
+            <h3 class="text-uppercase font-weight-bold mt-3" style="max-width: 550px">Ошибка подписания!</h3>
+            <p>Учетная запись на «Госуслугах» не совпадает с вашим профилем.</p>
+        </div>
+        <noindex>
+        <? break;
+}
+?>

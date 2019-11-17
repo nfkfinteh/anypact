@@ -30,24 +30,7 @@ $(document).ready(function(){
     
     $('#sign_contract').on('click', function(e){
         console.log('Подписание')
-        let id = $(this).attr('data-id');
-        e.preventDefault();
-        let url = '/response/ajax/quiq_sign.php';        
-        let data = {
-            IDItem: id            
-        };
-
-        $.ajax({
-            type: 'POST',
-            url: url,
-            data: data,
-            success: function(result){
-                console.log(result);
-                document.location.replace('/my_pacts/')                
-            },
-
-        });
-        
+        $('#send_sms').css('display', 'block')
 
         return false;
     });

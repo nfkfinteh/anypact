@@ -2,7 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="095c6364-006c-4512-9344-8361d6fd3db8" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/response/ajax/send_edit_contract_esia.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local/components/nfksber/dogovorview.detail/class.php" afterPath="$PROJECT_DIR$/local/components/nfksber/dogovorview.detail/class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local/components/nfksber/dogovorview.detail/templates/sendedit/script.js" afterPath="$PROJECT_DIR$/local/components/nfksber/dogovorview.detail/templates/sendedit/script.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local/components/nfksber/dogovorview.detail/templates/sendedit/template.php" afterPath="$PROJECT_DIR$/local/components/nfksber/dogovorview.detail/templates/sendedit/template.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local/components/nfksber/sendcontract.view/class.php" afterPath="$PROJECT_DIR$/local/components/nfksber/sendcontract.view/class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local/components/nfksber/sendcontract.view/templates/.default/script.js" afterPath="$PROJECT_DIR$/local/components/nfksber/sendcontract.view/templates/.default/script.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local/components/nfksber/sendcontract.view/templates/.default/template.php" afterPath="$PROJECT_DIR$/local/components/nfksber/sendcontract.view/templates/.default/template.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -12,11 +19,52 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/my_pacts/send_contract/index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="class.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/local/components/nfksber/dogovorview.detail/class.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="278">
+              <caret line="208" column="0" lean-forward="true" selection-start-line="206" selection-start-column="0" selection-end-line="222" selection-end-column="0" />
+              <folding>
+                <element signature="e#11262#16824#0#PHP" expanded="false" />
+                <element signature="e#14455#16594#0#PHP" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="class.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/local/components/nfksber/sendcontract.view/class.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="78">
+              <caret line="105" column="4" lean-forward="false" selection-start-line="105" selection-start-column="4" selection-end-line="105" selection-end-column="4" />
+              <folding>
+                <element signature="e#9922#11945#0#PHP" expanded="false" />
+                <marker date="1574018431987" expanded="true" signature="3537:3563" ph="..." />
+                <marker date="1574018431987" expanded="true" signature="3632:3641" ph="..." />
+                <marker date="1574018431987" expanded="true" signature="3896:3905" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
       <find>send_contract_owner</find>
+      <find>getMultyProperty</find>
+      <find>sendContract</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -31,11 +79,17 @@
         <option value="$PROJECT_DIR$/response/ajax/up_pact_text.php" />
         <option value="$PROJECT_DIR$/local/components/nfksber/pactview.detail/templates/edit/template.php" />
         <option value="$PROJECT_DIR$/local/components/nfksber/pactview.detail/templates/edit/script.js" />
-        <option value="$PROJECT_DIR$/local/components/nfksber/sendcontract.view/class.php" />
-        <option value="$PROJECT_DIR$/local/components/nfksber/sendcontract.view/templates/.default/template.php" />
-        <option value="$PROJECT_DIR$/local/components/nfksber/sendcontract.view/templates/.default/script.js" />
         <option value="$PROJECT_DIR$/response/ajax/quiq_sign.php" />
         <option value="$PROJECT_DIR$/local/php_interface/unclude/site_closed.php" />
+        <option value="$PROJECT_DIR$/response/ajax/class/send_edit_contract_esia.php" />
+        <option value="$PROJECT_DIR$/local/components/nfksber/dogovorview.detail/templates/sendedit/script.js" />
+        <option value="$PROJECT_DIR$/profile/aut_esia.php" />
+        <option value="$PROJECT_DIR$/response/ajax/send_edit_contract_esia.php" />
+        <option value="$PROJECT_DIR$/local/components/nfksber/dogovorview.detail/class.php" />
+        <option value="$PROJECT_DIR$/local/components/nfksber/dogovorview.detail/templates/sendedit/template.php" />
+        <option value="$PROJECT_DIR$/local/components/nfksber/sendcontract.view/templates/.default/script.js" />
+        <option value="$PROJECT_DIR$/local/components/nfksber/sendcontract.view/templates/.default/template.php" />
+        <option value="$PROJECT_DIR$/local/components/nfksber/sendcontract.view/class.php" />
       </list>
     </option>
   </component>
@@ -126,6 +180,26 @@
               <item name="nfksber" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="dogovorview.detail" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="templates" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name=".default" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="anypactbitrix" type="b2602c69:ProjectViewProjectNode" />
+              <item name="anypactbitrix" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="local" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="components" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="nfksber" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="dogovorview.detail" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="templates" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="add" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="anypactbitrix" type="b2602c69:ProjectViewProjectNode" />
+              <item name="anypactbitrix" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="local" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="components" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="nfksber" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="dogovorview.detail" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="templates" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="edit" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
@@ -196,6 +270,40 @@
               <item name="php_interface" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="unclude" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
+            <path>
+              <item name="anypactbitrix" type="b2602c69:ProjectViewProjectNode" />
+              <item name="anypactbitrix" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="my_pacts" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="anypactbitrix" type="b2602c69:ProjectViewProjectNode" />
+              <item name="anypactbitrix" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="my_pacts" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="send_contract" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="anypactbitrix" type="b2602c69:ProjectViewProjectNode" />
+              <item name="anypactbitrix" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="pacts" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="anypactbitrix" type="b2602c69:ProjectViewProjectNode" />
+              <item name="anypactbitrix" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="pacts" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="view_pact" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="anypactbitrix" type="b2602c69:ProjectViewProjectNode" />
+              <item name="anypactbitrix" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="pacts" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="view_pact" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="edit_dogovor" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="anypactbitrix" type="b2602c69:ProjectViewProjectNode" />
+              <item name="anypactbitrix" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="profile" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -234,17 +342,18 @@
       <workItem from="1573075340906" duration="2183000" />
       <workItem from="1573361181120" duration="649000" />
       <workItem from="1573907597004" duration="660000" />
-      <workItem from="1573981703704" duration="869000" />
+      <workItem from="1573981703704" duration="17325000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22875000" />
+    <option name="totallyTimeSpent" value="39331000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26606685" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26606685" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -276,38 +385,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/local/php_interface/unclude/site_closed.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="36" column="28" lean-forward="false" selection-start-line="36" selection-start-column="28" selection-end-line="36" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/local/php_interface/unclude/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1054">
-          <caret line="62" column="7" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="62" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/local/components/nfksber/dogovorview.detail/class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/local/php_interface/unclude/site_closed.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/local/php_interface/unclude/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1054">
@@ -364,6 +441,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="14" column="96" lean-forward="false" selection-start-line="14" selection-start-column="96" selection-end-line="14" selection-end-column="96" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -406,6 +484,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="14" column="96" lean-forward="false" selection-start-line="14" selection-start-column="96" selection-end-line="14" selection-end-column="96" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -427,13 +506,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-510">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/response/ajax/add_new_ad.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="89" column="61" lean-forward="false" selection-start-line="89" selection-start-column="61" selection-end-line="89" selection-end-column="61" />
         </state>
       </provider>
     </entry>
@@ -462,13 +534,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="45" column="35" lean-forward="false" selection-start-line="45" selection-start-column="26" selection-end-line="45" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/response/ajax/send_contract.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1275">
-          <caret line="82" column="30" lean-forward="false" selection-start-line="82" selection-start-column="23" selection-end-line="82" selection-end-column="30" />
         </state>
       </provider>
     </entry>
@@ -507,53 +572,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/response/ajax/quiq_sign.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="567">
-          <caret line="82" column="0" lean-forward="true" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/local/components/nfksber/userpacts.list/class.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="635">
           <caret line="82" column="9" lean-forward="false" selection-start-line="79" selection-start-column="8" selection-end-line="82" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/local/components/nfksber/sendcontract.view/class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="635">
-          <caret line="71" column="75" lean-forward="false" selection-start-line="71" selection-start-column="75" selection-end-line="71" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/local/components/nfksber/sendcontract.view/templates/.default/script.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="30" column="38" lean-forward="false" selection-start-line="30" selection-start-column="38" selection-end-line="30" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/local/components/nfksber/sendcontract.view/templates/.default/template.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="96" lean-forward="false" selection-start-line="14" selection-start-column="96" selection-end-line="14" selection-end-column="96" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/my_pacts/send_contract/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/local/components/nfksber/dogovorview.detail/class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -591,11 +613,193 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/local/components/nfksber/dogovorview.detail/templates/edit/template.php">
+    <entry file="file://$PROJECT_DIR$/local/components/nfksber/dogovorview.detail/templates/add/script.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3417">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/response/ajax/quiq_sign.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="567">
+          <caret line="82" column="0" lean-forward="true" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/response/ajax/class/send_contract.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/response/ajax/class/send_edit_contract_esia.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/response/ajax/send_contract.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="17" column="22" lean-forward="false" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pacts/view_pact/edit_dogovor/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/response/ajax/add_new_ad.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1360">
+          <caret line="89" column="61" lean-forward="false" selection-start-line="89" selection-start-column="61" selection-end-line="89" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/response/ajax/add_new_messag_user.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="64" column="0" lean-forward="false" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/response/ajax/send_edit_contract.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="7" selection-end-column="40" />
+          <folding>
+            <element signature="e#226#257#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/profile/aut_esia.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="10" lean-forward="true" selection-start-line="7" selection-start-column="10" selection-end-line="7" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/response/ajax/send_edit_contract_esia.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="499">
+          <caret line="68" column="30" lean-forward="false" selection-start-line="68" selection-start-column="30" selection-end-line="68" selection-end-column="30" />
+          <folding>
+            <element signature="e#513#544#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/local/components/nfksber/dogovorview.detail/templates/sendedit/script.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="524">
+          <caret line="46" column="76" lean-forward="false" selection-start-line="46" selection-start-column="76" selection-end-line="46" selection-end-column="76" />
+          <folding>
+            <element signature="e#1592#1980#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/local/components/nfksber/dogovorview.detail/templates/edit/template.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-247">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#588#832#0#HTML" expanded="false" />
+            <element signature="e#920#1072#0#HTML" expanded="false" />
+            <element signature="e#1088#1240#0#HTML" expanded="false" />
+            <element signature="n#script#0;n#!!top" expanded="false" />
+            <element signature="e#1940#2086#0#HTML" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/local/components/nfksber/dogovorview.detail/templates/.default/script.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-663">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/local/components/nfksber/dogovorview.detail/templates/sendedit/template.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1267">
+          <caret line="156" column="2" lean-forward="false" selection-start-line="156" selection-start-column="2" selection-end-line="156" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/local/components/nfksber/dogovorview.detail/templates/.default/template.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="136" column="32" lean-forward="true" selection-start-line="136" selection-start-column="32" selection-end-line="136" selection-end-column="174" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/local/components/nfksber/sendcontract.view/templates/.default/template.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="59" column="36" lean-forward="false" selection-start-line="59" selection-start-column="36" selection-end-line="59" selection-end-column="36" />
+          <folding>
+            <element signature="n#style#0;n#a#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#noindex#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/local/components/nfksber/sendcontract.view/templates/.default/script.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="227">
+          <caret line="32" column="46" lean-forward="false" selection-start-line="32" selection-start-column="46" selection-end-line="32" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my_pacts/send_contract/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/local/components/nfksber/dogovorview.detail/class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="278">
+          <caret line="208" column="0" lean-forward="true" selection-start-line="206" selection-start-column="0" selection-end-line="222" selection-end-column="0" />
+          <folding>
+            <element signature="e#11262#16824#0#PHP" expanded="false" />
+            <element signature="e#14455#16594#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/local/components/nfksber/sendcontract.view/class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="78">
+          <caret line="105" column="4" lean-forward="false" selection-start-line="105" selection-start-column="4" selection-end-line="105" selection-end-column="4" />
+          <folding>
+            <element signature="e#9922#11945#0#PHP" expanded="false" />
+            <marker date="1574018431987" expanded="true" signature="3537:3563" ph="..." />
+            <marker date="1574018431987" expanded="true" signature="3632:3641" ph="..." />
+            <marker date="1574018431987" expanded="true" signature="3896:3905" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
