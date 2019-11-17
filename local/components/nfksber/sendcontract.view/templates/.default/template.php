@@ -1,5 +1,9 @@
 <? // print_r($arResult["PROPERTY"]) ;?>
-<?// print_r($arResult) ;?>
+<? // print_r($arResult["ID_USER"]) ;?>
+<?
+switch ($arResult['SEND_CONTRACT']) {
+// Процедура подписания
+    case 'N': ?>
 <!--------------------------------------1-------------------------------------------------->
 <div>
         <h1 class="mb-4">Договор ожидающий моей подписи</h1>
@@ -68,26 +72,42 @@
         </div>
     </div>
 </noindex>
-<!--
+<?break;
+// контракт подписан
+case 'Y':
+        ?>
 <noindex>
-    <div id="send_sms" class="bgpopup" >
-        <div class="container">
-        <div class="row align-items-center justify-content-center">            
-            <div class="col-sm-12 col-md-8 col-lg-6 col-xl-6">
-                <div class="regpopup_win">                        
-                        <div class="regpopup_autorisation" id="regpopup_autarisation">
-                            <label for="smscode">
-                                <span>Вам отправлен sms-код</span>
-                                <img src="https://shop.nfksber.ru/local/templates/main/images/card/clock.png" style = "width: 18px; margin: 0 5px 0 10px;" />
-                                <span id="timer" class=""><span id="timer_n" id-con="<?=$arResult['DOGOVOR_ID']?>" id-cont="<?=$arResult['USER_ID']?>">80</span> сек.</span>
-                            </label>                            
-                            <input class="regpopup_content_form_submit" id="smscode" name="logout_butt" value="" maxlength="6">
-                        </div>                        
-                        </div>
-                    </div>
-                </div>
-            </div>            
-        </div>
+    <div class="d-flex flex-column align-items-center text-center mt-5 pt-5 mb-5">
+        <img src="<?=SITE_TEMPLATE_PATH?>/image/ok_send.png" alt="Необходима регистрация">
+        <h3 class="text-uppercase font-weight-bold mt-3" style="max-width: 550px">Ваша подпись поставлена!</h3>
+        <p>Сейчас автоматически откроется страница с вашими договорами.</p>
+        <p>Если страница не открылась перейдите самостоятельно по ссылке <a href="/my_pacts/">/my_pacts/</a></p>
     </div>
-</noindex>
--->
+    <script>
+        $(document).ready(function() {
+            console.log('Редирект начало');
+            setTimeout(function () {
+                replaceMypact();
+            }, 7000);
+
+            function replaceMypact(){
+                console.log('Редирект');
+                location.replace('/my_pacts/');
+            }
+        });
+    </script>
+    <noindex>
+        <?break;
+        // ошибка ид ЕСИА несовпадает с ИД в профиле
+        case 'ERR_ID':
+        ?>
+        <noindex>
+            <div class="d-flex flex-column align-items-center text-center mt-5 pt-5 mb-5">
+                <img src="<?=SITE_TEMPLATE_PATH?>/image/err_send.png" alt="Необходима регистрация">
+                <h3 class="text-uppercase font-weight-bold mt-3" style="max-width: 550px">Ошибка подписания!</h3>
+                <p>Учетная запись на «Госуслугах» не совпадает с вашим профилем.</p>
+            </div>
+            <noindex>
+<? break;
+}
+?>

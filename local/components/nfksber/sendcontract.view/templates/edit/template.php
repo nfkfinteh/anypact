@@ -9,6 +9,10 @@ var Contract = {
     idUser: '<?=$ID_USER?>'    
 }
 </script>
+<?
+switch ($arResult['SEND_CONTRACT']) {
+// Процедура подписания
+    case 'N': ?>
 <h1><?=$arResult["ELEMENT"]["NAME"]?></h1>
  <div class="tender cardDogovor" style="margin-bottom: 100px;">
     <div class="row">
@@ -48,3 +52,75 @@ var Contract = {
         </div>            
     </div>
 </div>
+    <!-- окно предупреждения подписания по ЕСИА -- -->
+    <noindex>
+        <div id="send_sms" class="bgpopup" >
+            <div class="container">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-sm-12 col-md-8 col-lg-6 col-xl-6">
+                        <div class="regpopup_win">
+                            <div id="signpopup_close">Х</div>
+                            <!--форма подписания-->
+                            <div class="regpopup_autorisation" id="regpopup_autarisation">
+                                <label for="smscode" style="margin-bottom: 1.5rem;">
+								<span>Внимание!
+									<p>Удостоверьтесь в том, что Вам полностью понятны условия, подписываемых Вами Документов.</p>
+									<p>При нажатии на кнопку «Подписать» Вы будете перенаправлены на сайт Госуслуг.</p>
+									<p>Успешная авторизация на сайте Госуслуг будет означать выражение Вашей воли на подписание Документов и совершение указанной в них сделки (сделок) в понимании ст. 160 ГК РФ.</p>
+								</span>
+                                </label>
+                                <!-- <a href="http://anypact.nfksber.ru/profile/aut_esia.php" class="btn btn-nfk" id="ref_esia" style="width:45%;margin-right: 30px;">Подписать</a>-->
+                                <?
+                                $DATA_SER = $arResult["CONTRACT_PROPERTY"]["CONTRACT_PROPERTY"]["USER_A"]["VALUE"].','.$arResult["TEMPLATE_CONTENT"]["ID"].','.$arResult["USER_ID"];
+                                $DATA_SER = base64_encode($DATA_SER);
+                                ?>
+                                <button class="btn btn-nfk" id="sign_edit_contract" style="width:45%;margin-right: 30px;" data="<?=$DATA_SER?>">Подписать</button>
+                                <button class="btn btn-nfk" id="close_sign_popup" style="width:45%">Отклонить</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </noindex>
+    <!-- \\окно предупреждения подписания по ЕСИА -->
+<?break;
+// контракт подписан
+case 'Y':
+        ?>
+<noindex>
+    <div class="d-flex flex-column align-items-center text-center mt-5 pt-5 mb-5">
+        <img src="<?=SITE_TEMPLATE_PATH?>/image/ok_send.png" alt="Необходима регистрация">
+        <h3 class="text-uppercase font-weight-bold mt-3" style="max-width: 550px">Ваша подпись поставлена!</h3>
+        <p>Сейчас автоматически откроется страница с вашими договорами.</p>
+        <p>Если страница не открылась перейдите самостоятельно по ссылке <a href="/my_pacts/">/my_pacts/</a></p>
+    </div>
+    <script>
+        $(document).ready(function() {
+            console.log('Редирект начало');
+            setTimeout(function () {
+                replaceMypact();
+            }, 7000);
+
+            function replaceMypact(){
+                console.log('Редирект');
+                location.replace('/my_pacts/');
+            }
+        });
+    </script>
+    <noindex>
+        <?break;
+        // ошибка ид ЕСИА несовпадает с ИД в профиле
+        case 'ERR_ID':
+        ?>
+        <noindex>
+            <div class="d-flex flex-column align-items-center text-center mt-5 pt-5 mb-5">
+                <img src="<?=SITE_TEMPLATE_PATH?>/image/err_send.png" alt="Необходима регистрация">
+                <h3 class="text-uppercase font-weight-bold mt-3" style="max-width: 550px">Ошибка подписания!</h3>
+                <p>Учетная запись на «Госуслугах» не совпадает с вашим профилем.</p>
+            </div>
+            <noindex>
+<? break;
+}
+?>

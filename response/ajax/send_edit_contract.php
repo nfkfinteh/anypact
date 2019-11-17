@@ -16,7 +16,7 @@ $entity         = HL\HighloadBlockTable::compileEntity($hlblock);
 $entityClass    = $entity->getDataClass();
 $NewInfo = array(
     'UF_ID_SEND_USER' => $_POST["IDUser"], 
-    'UF_STATUS' => 3
+    'UF_STATUS' => 0
     );
 
 $result = $entityClass::update($_POST["IDItem"], $NewInfo);
@@ -31,12 +31,14 @@ $rsData = $entityClass::getList(array(
     "filter" => array("UF_ID_SEND_ITEM" => $_POST["IDItem"])
 ));
 $arData = $rsData->Fetch();
-print_r($arData);
 $NewInfo = array(
     "UF_TEXT_CONTRACT" => $_POST["Text"]
 );
 
 $result = $entityClass::update($arData["ID"], $NewInfo);
+
+echo $arData["ID"];
+
 //UF_ID_SEND_ITEM
 // сделать отправку на почтовый ящик
 

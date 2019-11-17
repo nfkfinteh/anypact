@@ -292,9 +292,11 @@ $(document).ready(function() {
     });
 
     // подписание текста
-    $('#send_edit_contract').on('click', function(e){
+
+    $('#sign_edit_contract').on('click', function(e){
         console.log('Подписание!');
         console.log(Contract);
+
 
         e.preventDefault();
         let url = '/response/ajax/send_edit_contract.php';
@@ -312,7 +314,7 @@ $(document).ready(function() {
             data: data,
             success: function(result){
                 console.log(result);
-                document.location.replace('/my_pacts/')
+                document.location.replace('/profile/aut_esia.php?ID_SENDITEM='+result)
                 // if(result==1){
                 //     document.location.replace('/my_pacts/')
                 // }
@@ -322,5 +324,14 @@ $(document).ready(function() {
 
     });
 
+    // попап с подписанием
+    $('#send_edit_contract').on('click', function(){
+        console.log('окно для подписания')
+        $('#send_sms').css('display', 'block');
+    });
+    // закрытие попапа с подписанием
+    $('#close_sign_popup, #signpopup_close').on('click', function(){
+        $('#send_sms').css('display', 'none');
+    });
 
 });
