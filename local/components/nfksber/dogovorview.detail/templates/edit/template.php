@@ -88,6 +88,13 @@ var full_name = {
         <div class="col-lg-3 col-md-3 col-sm-12">
             <div class="cardDogovor-boxTool cardPact">
                 <h5>Вставить в договор:</h5>
+				<p>Вы можете вставить в текст договора автоподстановку следующих реквизитов:</p>
+				<button class="btn btn-nfk" data="signed">Таблица с реквизитами</button>
+				<button class="btn btn-nfk" data="signed">Моё ФИО</button>
+				<button class="btn btn-nfk" data="signed">Мой Адрес</button>
+				<button class="btn btn-nfk" data="signed">Текущую дату</button>
+				<button class="btn btn-nfk" data="signed">ФИО Контрагента</button>
+				<button class="btn btn-nfk" data="signed">Адрес Контрагента</button>
             </div>
         </div>               
         <div class="col-lg-9 col-md-9 col-sm-12">
