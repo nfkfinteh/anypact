@@ -54,8 +54,8 @@ class GetPdf{
         $Send_text .= '<b>Подписано простой электронной подписью:</b>';
         $Send_text .= '<br>'.$arUser_B['LAST_NAME'].' '.$arUser_B['NAME'].' '.$arUser_B['SECOND_NAME'];
         $Send_text .= '<br>#'.$arUser_B['UF_PASSPORT'];
-        $Send_text .= '<br>'.$arSendItem["UF_TIME_SEND_USER_A"]->format("Y-m-d H:i:s");
-        $Send_text .= '<br>'.$hash_B;
+        $Send_text .= '<br>'.$arSendItem["UF_TIME_SEND_USER_B"]->format("Y-m-d H:i:s");
+        $Send_text .= '<br>'.$arSendItem['UF_VER_CODE_USER_B'];
         $Send_text .= '</td>';
         $Send_text .= '</tr>';
         $Send_text .= '</table>';
