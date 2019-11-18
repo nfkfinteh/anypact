@@ -40,17 +40,21 @@ class GetPdf{
         $arUser_B = $rsUser->Fetch();
         $hash_B = md5($arSendItem['UF_VER_CODE_USER_B']);
 
-        $Send_text = '<hr><br>';
-        $Send_text .= '<table style="width:100%; margin 50px 0;">';
+        $Send_text = '<table style="width:100%; border-top: 1px solid #9E9E9E; margin: 50px 0; font-size:8px;">';
         $Send_text .= '<tr>';
-        $Send_text .= '<td style="width:50%">';
+        $Send_text .= '<td style="width:44%">';
         $Send_text .= '<b>Подписано простой электронной подписью:</b>';
-        $Send_text .= '<br>'.$arUser_A['LAST_NAME'].' '.$arUser_A['NAME'];
+        $Send_text .= '<br>'.$arUser_A['LAST_NAME'].' '.$arUser_A['NAME'].' '.$arUser_A['SECOND_NAME'];
+        $Send_text .= '<br>#'.$arUser_A['UF_PASSPORT'];
+        $Send_text .= '<br>'.$arSendItem["UF_TIME_SEND_USER_A"]->format("Y-m-d H:i:s");
         $Send_text .= '<br>'.$hash_A;
         $Send_text .= '</td>';
-        $Send_text .= '<td style="width:50%">';
+        $Send_text .= '<td style="width:2%"></td>';
+        $Send_text .= '<td style="width:44%">';
         $Send_text .= '<b>Подписано простой электронной подписью:</b>';
         $Send_text .= '<br>'.$arUser_B['LAST_NAME'].' '.$arUser_B['NAME'].' '.$arUser_B['SECOND_NAME'];
+        $Send_text .= '<br>#'.$arUser_B['UF_PASSPORT'];
+        $Send_text .= '<br>'.$arSendItem["UF_TIME_SEND_USER_A"]->format("Y-m-d H:i:s");
         $Send_text .= '<br>'.$hash_B;
         $Send_text .= '</td>';
         $Send_text .= '</tr>';
