@@ -76,8 +76,7 @@ $APPLICATION->SetTitle("AnyPact");
                         <div class="col-10 col-lg-12 mt-3 offset-1 offset-lg-0">                            
                             <label for="empty" class="radio-transform">
                                 <input type="checkbox" class="radio__input" name="template_type" value="empty" id="empty">
-                                <span class="radio__label">Нажимая на кнопку, вы даете согласие на обработку персональных данных и соглашаетесь с <a
-                                        href="#" target="_blank">Политикой конфиденциальности</a></span>
+                                <span class="radio__label">Нажимая на кнопку, вы даете <a href="/upload/rules/noreg_user_rules.pdf" target="_blank">согласие на обработку персональных данных</a></span>
                             </label>
                         </div>
                         <? } ?>

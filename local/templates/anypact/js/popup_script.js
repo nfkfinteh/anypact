@@ -141,6 +141,14 @@ window.onload = function() {
         //Закрываем окно
         regpopup_btn_close_win.onclick = function(event) {
             regpopup_bg.style.display = 'none';
+            console.log('Закрытие окна регистрации')
+            let clear_input = document.forms.regform
+            let i = 0
+            while (i<4) {
+                clear_input.elements[i].value = ''
+                i++
+            }            
+            location.reload()
         };
         // открываем окно
         if(document.getElementById('reg_button')){
@@ -201,7 +209,7 @@ window.onload = function() {
             var conpass_fild    = this; 
             window.value_fild  = this.value;
             var con_pass_fild   = document.getElementById('user_con_password_fild');
-            let length_pass = 8;
+            let length_pass = 9;
             if(value_fild.length > length_pass){
                 con_pass_fild.disabled = false;
                 con_pass_fild.focus();
@@ -209,7 +217,7 @@ window.onload = function() {
                 document.getElementById('message_error_login').innerHTML = '<div style="color:green"">&#10004; Отлично</div>';
             }else {
                 errBorder(conpass_fild, 'error');
-                document.getElementById('message_error_login').innerHTML = '&#9888; Пароль должен быть более '+length_pass+' символов';
+                document.getElementById('message_error_login').innerHTML = '&#9888; Пароль должен быть не менее '+length_pass+' символов';
             }
         }
 

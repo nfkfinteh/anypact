@@ -32,7 +32,8 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)
 				<?
 					switch ($FIELD) {
 						case 'PASSWORD':
-							?><input size="30" class="regpopup_content_form_input" id="user_password_fild"  type="password" name="REGISTER[<?=$FIELD?>]" value="<?=$arResult["VALUES"][$FIELD]?>" autocomplete="off" placeholder="<?=GetMessage($FIELD)?>" disabled/><?
+							?><input size="30" class="regpopup_content_form_input" id="user_password_fild"  type="password" 
+							name="REGISTER[<?=$FIELD?>]" value="<?=$arResult["VALUES"][$FIELD]?>" autocomplete="off" placeholder="Введите пароль не менее 9 символов" disabled/><?
 						break;
 						case 'CONFIRM_PASSWORD':
 							?><input size="30" class="regpopup_content_form_input" id="user_con_password_fild" type="password" name="REGISTER[<?=$FIELD?>]" value="<?=$arResult["VALUES"][$FIELD]?>" autocomplete="off" placeholder="<?=GetMessage($FIELD)?>" disabled/><?
@@ -51,7 +52,7 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)
 			<?endforeach?>
 			<div id="message_error_login"></div>
 			<p class="regpopup_content_form_soglashenie">Регистрируясь, Вы подтверждаете, что принимаете 
-				<a href="#">Условия пользования</a> и <a href="#">Политику конфиденциальности</a>					
+				<a href="/upload/rules/user_rules.pdf" target="_blank">Пользовательское соглашение</a>					
 			</p>
 					<div id="box_submit_button">
 						<input class="regpopup_content_form_submit" type="submit" name="register_submit_button" id="submit_button_registration" value="<?=GetMessage("AUTH_REGISTER")?>" disabled/>
