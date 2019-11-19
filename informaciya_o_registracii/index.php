@@ -15,33 +15,15 @@ $APPLICATION->SetTitle("Регистрация в сервисе AnyPact");
             Для того, что бы пользоваться всеми предоставленными возможностями, Вам необходимо заполнить профиль и пройти подтверждение ваших регистрационных данных.
         </p>
         <p align="center" style="padding: 50px 0;">
-            <a href="<?=SITE_SERVER_NAME?>/profile/" class="btn btn-nfk">Пройти регистрацию через портал "Госуслуг"</a>
-        </p>
-        <p align="center" size="16">
-            M-Group Investments Limited <br>
-            Contact us: <a href="mailto:mail@m-group.investments">mail@m-group.investments</a>
+            <a href="/profile/" class="btn btn-nfk">Пройти регистрацию через портал "Госуслуг"</a>
         </p>        
         <p align="center">
-            © 2018
+            © 2019
         </p>
     <?} else {?>
-        <div class="container">
-        <p align="center" style="padding: 50px 0;">
-            <img src="<?=SITE_TEMPLATE_PATH.'/img/logo.png?ioi'?>" />
-        </p>
-        <p align="center" style="padding: 50px 0;">
-            Вам необходимо Зарегистрироваться.
-        </p>
-        <p align="center" size="16">
-            M-Group Investments Limited <br>
-            Contact us: <a href="mailto:mail@m-group.investments">mail@m-group.investments</a>
-        </p>	 
-        <p align="center">
-    <button type="button" class="btn btn-nfk" id="reg_button">Зарегистрироваться</button>
-        </p>
-        <p align="center">
-            © 2018
-        </p>
+        <?  // заглушка на авторизацию доступа
+            $APPLICATION->IncludeFile(SITE_TEMPLATE_PATH."/not_access.php", Array());            
+        ?>
     <?}?>
 </div>
 </div>
