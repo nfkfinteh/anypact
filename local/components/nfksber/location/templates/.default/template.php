@@ -3,10 +3,10 @@
         <button class="city-choose-btn-close">Закрыть&nbsp;&nbsp;&nbsp;х</button>
         <h2>Выберите город</h2>
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <div class="row">
                     <?foreach ($arResult['CITY'] as $city):?>
-                        <div class="col-6 col-sm-4 col-md-6 col-xl-4">
+                        <div class="col-6 col-sm-4 col-md-6 col-xl-2">
                             <button class="city-choose-btn-city <?if($city['PROPERTY_BOLD_VALUE']=='Y'):?>font-weight-bold<?endif?>"><?=$city['NAME']?></button>
                         </div>
                     <?endforeach?>

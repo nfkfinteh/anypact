@@ -65,7 +65,10 @@ class Location extends \CBitrixComponent
             'NAME',
             'PROPERTY_BOLD'
         ];
-        $res = CIBlockElement::GetList([], $arFilter, false, false, $arSelect);
+        $arOrder = [
+            "NAME" => "ASC"
+        ];
+        $res = CIBlockElement::GetList($arOrder, $arFilter, false, false, $arSelect);
         while($obj = $res->GetNext(true, false)){
             $result[$obj['ID']] = $obj;
         }
