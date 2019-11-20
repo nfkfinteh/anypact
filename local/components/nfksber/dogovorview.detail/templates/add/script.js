@@ -181,7 +181,8 @@ $(document).ready(function() {
         $.post(
             "/response/ajax/get_template_contract.php", {
                 idcontract: id_category,
-                id_element: id_element
+                id_element: id_element,
+                return_url: re_url
             },
             onAjaxSuccess
         );

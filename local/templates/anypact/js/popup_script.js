@@ -227,7 +227,7 @@ window.onload = function() {
                 con_pass_fild.disabled = false;
                 //con_pass_fild.focus();
                 errBorder(conpass_fild, 'succes');
-                document.getElementById('message_error_login').innerHTML = '<div style="color:green"">&#10004; Отлично пароль нужной длинны</div>';
+                document.getElementById('message_error_login').innerHTML = '<div style="color:green"">&#10004; Отлично! Пароль нужной длинны</div>';
             }else {
                 errBorder(conpass_fild, 'error');
                 document.getElementById('message_error_login').innerHTML = '&#9888; Пароль должен быть не менее '+length_pass+' символов';

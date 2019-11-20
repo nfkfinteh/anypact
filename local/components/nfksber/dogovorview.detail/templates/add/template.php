@@ -8,6 +8,7 @@
 
 ?>
 <script>
+var re_url = '<?=$_SERVER['REQUEST_URI']?>'
 var full_name = {
     name: '<?=$Name?>',
     surname: '<?=$Surname?>',
