@@ -81,7 +81,7 @@ $APPLICATION->SetTitle("AnyPact");
                         </div>
                         <? } ?>
                         <div class="col-10 col-lg-12 mt-2 offset-1 offset-lg-0">
-                            <button class="btn btn-nfk send-btn">Отправить</button>
+                            <button class="btn btn-nfk send-btn" disabled>Отправить</button>
                         </div>
                     </div>
                 </form>

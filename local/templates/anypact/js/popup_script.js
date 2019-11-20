@@ -122,6 +122,19 @@ function errBorder(errObject, type){
     
 }
 
+function errBorderNoBlock(errObject, type){  
+    switch (type) {
+        case 'error':
+            errObject.style.cssText = "border: solid 1px red;";
+            //errObject.focus();                        
+        break;    
+        case 'succes':
+            errObject.style.cssText = "border: none;";            
+        break;
+    }
+    
+}
+
 window.onload = function() {
     /*Всплывающее окно регистрации*/
     if(document.getElementById('regpopup_registration')){
@@ -212,9 +225,9 @@ window.onload = function() {
             let length_pass = 9;
             if(value_fild.length > length_pass){
                 con_pass_fild.disabled = false;
-                con_pass_fild.focus();
+                //con_pass_fild.focus();
                 errBorder(conpass_fild, 'succes');
-                document.getElementById('message_error_login').innerHTML = '<div style="color:green"">&#10004; Отлично</div>';
+                document.getElementById('message_error_login').innerHTML = '<div style="color:green"">&#10004; Отлично пароль нужной длинны</div>';
             }else {
                 errBorder(conpass_fild, 'error');
                 document.getElementById('message_error_login').innerHTML = '&#9888; Пароль должен быть не менее '+length_pass+' символов';
@@ -232,11 +245,11 @@ window.onload = function() {
                 con_pass_fild.disabled = false;
                 submit_button_aut_user.disabled = false;
                 //con_pass_fild.focus();
-                submit_button_aut_user.focus(); 
+                //submit_button_aut_user.focus(); 
                 errBorder(conpass_fild, 'succes');
                 document.getElementById('message_error_login').innerHTML = '<div style="color:green"">&#10004; Пароль совпадает</div>';
             }else {
-                errBorder(conpass_fild, 'error');
+                errBorderNoBlock(conpass_fild, 'error');
                 document.getElementById('message_error_login').innerHTML = '&#9888; Пароль не совпадает';  
             }
         }
