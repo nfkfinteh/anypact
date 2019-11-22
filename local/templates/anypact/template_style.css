@@ -2347,7 +2347,7 @@ input::-webkit-input-placeholder {
 /*TODO------style-index.pnp--------*/
 
 .map-space {
-    height: 715px;
+    height: 500px;
     position: relative;
     z-index: 1;
     margin-top: -60px;

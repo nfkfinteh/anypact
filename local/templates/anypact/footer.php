@@ -3,7 +3,7 @@
 <footer class="footer">
     <div class="container-fluid">
 		<p align="center" style="padding: 50px 0;">
-			<img src="<?=SITE_TEMPLATE_PATH.'/img/logo2.png?ioi'?>" />
+			<img src="<?=SITE_TEMPLATE_PATH.'/image/logo_ap.svg'?>"  style="width: 166px;"/>
 		</p>
 		<p align="center" size="16">
 			&copy; 2019 АО «НФК-Сбережения», ООО «НФК - Структурные инвестиции», ООО «Пионер-Лизинг»<br>

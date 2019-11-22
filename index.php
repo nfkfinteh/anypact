@@ -25,14 +25,14 @@ $APPLICATION->SetTitle("AnyPact");
             "IBLOCK_ID" => "3",
             "IBLOCK_TYPE" => "4",
             "LOCATION" => $getGeo['cityName'],
-            "MAP_HEIGHT" => "715px",
+            "MAP_HEIGHT" => "500px",
             "MAP_WIDTH" => "100%"
         )
     );
 ?>
 <!-- О сервисе -->
 <div class="container">
-    <h2 style="margin-top:80px;">С сервисом AnyPact</h2>
+    <h2 style="margin-top:30px;">С сервисом AnyPact</h2>
     <div class="short-divider"></div>
     <p>Вы можете заключить договор в Сети прямо сейчас! Anypact позволяет найти контрагента, сформировать условия договора, подписать его и приобрести по нему все права и обязанности. Что бы Вы ни делали, покупали или продавали имущество, искали для себя надежного исполнителя работ или сами оказывали услуги - теперь Вам не нужно волноваться о том, будет ли исполнена сделка, которую Вы заключили через Интернет. Ваше соглашение приобретает юридическую силу.</p>
     <div class="row cards-how">
@@ -112,7 +112,7 @@ $APPLICATION->SetTitle("AnyPact");
             </div>
             <div class="col-md-6 text-center">
                 <a href="#" id="open_reg_form">
-                    <img src="<?=SITE_TEMPLATE_PATH?>/image/FX.png" alt="Подпись" style="margin-top:-170px;margin-left: -140px;">
+                    <img src="<?=SITE_TEMPLATE_PATH?>/image/img_reg_us.png" alt="Подпись" style="margin-top:-170px;margin-left: -140px;">
                 </a>
             </div>
         </div>

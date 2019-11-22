@@ -113,7 +113,7 @@ global $USER;
         <header class="header">
             <div class="row">
                 <div class="col-md-6">
-                    <a href="/" class="logo"><img src="<?=SITE_TEMPLATE_PATH?>/img/logo2.png" alt=""></a>
+                    <a href="/" class="logo"><img src="<?=SITE_TEMPLATE_PATH?>/image/logo_ap.svg" alt="" style="width: 166px;"></a>
                     <span class="phone">8(800) 200-84-84</span>
                 </div>
                 <? if ($USER->IsAuthorized()){ ?>
