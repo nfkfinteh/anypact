@@ -1,2 +1,6 @@
 .idea/*
+.idea/**
+.idea/*.xml
 /.idea/*
+/.idea/**
+/.idea/*.xml

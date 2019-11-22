@@ -223,7 +223,7 @@ window.onload = function() {
             window.value_fild  = this.value;
             var con_pass_fild   = document.getElementById('user_con_password_fild');
             let length_pass = 9;
-            if(value_fild.length > length_pass){
+            if(value_fild.length >= length_pass){
                 con_pass_fild.disabled = false;
                 //con_pass_fild.focus();
                 errBorder(conpass_fild, 'succes');

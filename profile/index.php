@@ -36,11 +36,12 @@ if ($USER->IsAuthorized()){
             "LAST_NAME" => $info['user_info']['lastName'], // Фамилия
             "NAME" => $info['user_info']['firstName'], // Имя
             "SECOND_NAME" => $info['user_info']['middleName'], // Отчество
-            "UF_PASSPORT" => $number_pass
+            "UF_PASSPORT" => $number_pass,
+            "UF_ESIA_ID" => $info['user_id']
         );
-        /* echo "<pre>";
-         print_r($fields);
-         echo "</pre>";*/
+        //echo "<pre>";
+        //print_r($info);
+        //echo "</pre>";
         $USER->Update($USER->GetID(), $fields);
     }
 
