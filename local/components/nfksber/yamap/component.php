@@ -27,26 +27,28 @@ if ($this->StartResultCache(false, array($arFilter))) {
     $arResult['CENTER_MAP'] = $arResult['ITEMS'][0]['PROPERTY']['COORDINATES_AD']['VALUE'];
 
     $DOTS_ARR = array();
-    $cnt = 0;
-    foreach($arResult['ITEMS'] as $value) {
-        $coordinates = explode(',', $value['PROPERTY']['COORDINATES_AD']['VALUE']);
-        $DOTS_ARR[$cnt] = array(
-            "type" => "Feature",
-            "id" => $cnt,
-            "geometry" => array(
-                "type" => "Point",
-                "coordinates" => array(
-                    "0" => (double) $coordinates[0],
-                    "1" => (double) $coordinates[1]
+    $cnt = 0;    
+    if($arResult['ITEMS']){
+        foreach($arResult['ITEMS'] as $value) {
+            $coordinates = explode(',', $value['PROPERTY']['COORDINATES_AD']['VALUE']);
+            $DOTS_ARR[$cnt] = array(
+                "type" => "Feature",
+                "id" => $cnt,
+                "geometry" => array(
+                    "type" => "Point",
+                    "coordinates" => array(
+                        "0" => (double) $coordinates[0],
+                        "1" => (double) $coordinates[1]
+                    )
+                ),
+                "properties" => array(
+                //'balloonContent' => '<div class="baloon-content"><a href="'.$value['FIELDS']['DETAIL_PAGE_URL'].'">'.$value['FIELDS']['NAME'].'</a></div>',
+                'balloonContent' => '<div class="baloon-content"><a href="/pacts/view_pact/?ELEMENT_ID='.$value['FIELDS']['ID'].'">'.$value['FIELDS']['NAME'].'</a></div>',
+                
                 )
-            ),
-            "properties" => array(
-               //'balloonContent' => '<div class="baloon-content"><a href="'.$value['FIELDS']['DETAIL_PAGE_URL'].'">'.$value['FIELDS']['NAME'].'</a></div>',
-               'balloonContent' => '<div class="baloon-content"><a href="/pacts/view_pact/?ELEMENT_ID='.$value['FIELDS']['ID'].'">'.$value['FIELDS']['NAME'].'</a></div>',
-               
-            )
-        );
-        $cnt++;
+            );
+            $cnt++;
+        }
     }
 
     $arResult['MAP_DATA'] = $DOTS_ARR;

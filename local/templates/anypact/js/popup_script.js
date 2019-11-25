@@ -273,7 +273,7 @@ window.onload = function() {
                         pass_fild.disabled = true;
                     }
                     if($result['TYPE']=='SUCCES'){                        
-                        document.getElementById('message_error_login').innerHTML = '<div style="color:green"">&#10004; Почтовый ящик не зарегистрирован</div>';
+                        document.getElementById('message_error_login').innerHTML = '<div style="color:green"">&#10004; Почтовый ящик доступен для регистрации</div>';
                         errBorder(fild_email, 'succes');
                         //submit_button_aut_user.disabled = false;
                         pass_fild.disabled = false;
