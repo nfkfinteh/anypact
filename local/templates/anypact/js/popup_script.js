@@ -135,6 +135,39 @@ function errBorderNoBlock(errObject, type){
     
 }
 
+function checkMail(){
+    var fild_email  = document.getElementById('user_email_fild'); 
+    let email       = fild_email.value;
+    let url         = '/response/ajax/check_login.php';
+    let type        = 'email';
+    var submit_button_aut_user = document.getElementById('submit_button_registration');
+    var pass_fild   = document.getElementById('user_password_fild');
+    var fild_login  = document.getElementById('user_login_fild');
+    
+    if(email.length > 0){                
+        var res = getFree(email, type).then(function(data) {
+            $result = JSON.parse(data);
+            if($result['TYPE']=='ERROR'){                        
+                document.getElementById('message_error_login').innerHTML = '&#8226; Почтовый ящик уже используется';
+                errBorder(fild_email, 'error');
+                pass_fild.disabled = true;
+                return false
+            }
+            if($result['TYPE']=='SUCCES'){                        
+                document.getElementById('message_error_login').innerHTML = '<div style="color:green"">&#10004; Почтовый ящик доступен для регистрации</div>';
+                errBorder(fild_email, 'succes');
+                //submit_button_aut_user.disabled = false;
+                pass_fild.disabled = false;
+                pass_fild.focus();
+                fild_login.value = fild_email.value                                          
+                //submit_button_aut_user.focus(); 
+                return true                      
+            }
+        });
+    }
+}
+
+
 window.onload = function() {
     /*Всплывающее окно регистрации*/
     if(document.getElementById('regpopup_registration')){
@@ -235,7 +268,7 @@ window.onload = function() {
         }
 
         // проверяем пароль на повторение
-        document.getElementById('user_con_password_fild').onblur = function(event){
+        document.getElementById('user_con_password_fild').oninput = function(event){
             var conpass_fild    = this; 
             var con_value_fild  = this.value;
             var con_pass_fild   = document.getElementById('user_email_fild');
@@ -250,7 +283,8 @@ window.onload = function() {
                 document.getElementById('message_error_login').innerHTML = '<div style="color:green"">&#10004; Пароль совпадает</div>';
             }else {
                 errBorderNoBlock(conpass_fild, 'error');
-                document.getElementById('message_error_login').innerHTML = '&#9888; Пароль не совпадает';  
+                document.getElementById('message_error_login').innerHTML = '&#9888; Пароль не совпадает'; 
+                submit_button_aut_user.disabled = true; 
             }
         }
 

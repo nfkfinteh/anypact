@@ -21,7 +21,7 @@ $APPLICATION->SetTitle("Регистрация в сервисе AnyPact");
         <div class="d-flex flex-column align-items-center text-center mt-5 pt-5 mb-5" >
             <img src="<?=SITE_TEMPLATE_PATH?>/image/forbidden.png" alt="Необходима регистрация">
             <h3 class="text-uppercase font-weight-bold mt-3" style="max-width: 550px">Для завершения регистрации</h3>
-            <p>нужно пройти по ссылке в приланном письме на электронный ящик, который вы указали при регистрации.</p>
+            <p>нужно пройти по ссылке в приcланном письме на электронный ящик, который вы указали при регистрации.</p>
             <!--<a href="#" class="btn btn-nfk mt-4" style="width: 262px; height: 46px; padding-top: 10px;">Региcтрация</a>-->
             <a href="/" class="mt-3">Вернуться на главную страницу</a>
         </div>
