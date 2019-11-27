@@ -228,39 +228,86 @@ $arrStatusAwait = array(
     <h3>У Вас нет подписанных договоров</h3>
 <?endif?>
 <div style="width: 100%; height: 100px;"></div>
-
+<div style="clear: both"></div>
 <!--Блок с сообщениями --->
 <div class="d-flex flex-wrap align-items-center position-relative">
     <h5>Мои сообщения</h5>
     <!-- <a href="#" class="btn btn-nfk btn-add-contract ml-auto">Написать сообщение</a> -->
 </div>
+<div style="display:none;">
+    <pre>
+        <? print_r($arResult["MESSAGE_USER"]);?>
+    </pre>
+</div>
 <?if(!empty($arResult["MESSAGE_USER"])):?>
-    <table class="table">
-        <thead>
-        <tr>
-            <th scope="col">Тема</th>
-            <th scope="col">Дата</th>
-            <th scope="col"></th>
-        </tr>
-        </thead>
-        <tbody>
-        <? // выборка договоров
-        foreach ($arResult["MESSAGE_USER"] as $message) {
-            ?>
-            <tr>
-                <td scope="row"><?= $message["UF_TITLE_MESSAGE"] ?></td>
-                <td><?= $message["UF_TIME_CREATE_MSG"]->toString() ?></td>
-                <td><a href="/my_pacts/view_message/?id=<?= $message["ID"] ?>" target="_blank">Посмотреть</a></td>
-            </tr>
-            <?
-        }
-        ?>
-        </tbody>
-    </table>
+    <!--Адаптивная табличка--->
+    <div class="d-md-table">
+        <div class="d-md-table-row t-head">
+            <div class="d-md-table-cell">От</div>
+            <div class="d-md-table-cell">Тема</div>
+            <div class="d-md-table-cell">Дата</div>
+            <div class="d-md-table-cell">Статус</div>
+            <div class="d-md-table-cell"></div>
+        </div>
+        <? foreach ($arResult["MESSAGE_USER"] as $message) { // выборка сообщений?>
+            <!--Запись в таблице--->
+            <div class="d-md-table-row collapse-body">
+                <div class="d-md-none text-gray"><?=$red['PARAMS_SEND_USER']['IN']?></div>
+                <div class="first-face d-md-table-cell">
+                    <a class="d-flex align-items-center" href="/profile_user/?ID=<?=$message["PARAMS_SENDER_USER"]["ID"]?>" target="_blank" style="text-decoration: none;">
+                        <?if(!empty($message["PARAMS_SENDER_USER"]["PERSONAL_PHOTO"])){?>
+                            <? $renderImage = CFile::ResizeImageGet($message["PARAMS_SENDER_USER"]["PERSONAL_PHOTO"], Array("width" => 261, "height" => 261), BX_RESIZE_IMAGE_EXACT, false); ?>
+                            <img src="<?=$renderImage["src"]?>" height="60" alt="">
+                        <?}else {?>
+                            <h3><?=$message["PARAMS_SENDER_USER"]["IN"]?></h3>
+                        <?}?>
+                        <span style="margin-left: 10px;"><?=$message["PARAMS_SENDER_USER"]["FIO"]?></span>
+                    </a>
+                </div>
+                <div class="d-md-table-cell d-none" style="width: 24%;"><?= $message["UF_TITLE_MESSAGE"] ?></div>
+                <div class="d-md-none text-gray">Дата подписания</div>
+                <div class="d-md-table-cell"><?= $message["UF_TIME_CREATE_MSG"]->toString() ?></div>
+                <div class="d-md-none text-gray">Статус</div>
+                <div class="d-md-table-cell" style="width: 18%;">xx</div>
+                <div class="d-md-table-cell">
+                <a href="/my_pacts/view_message/?id=<?= $message["ID"] ?>" target="_blank">Посмотреть</a>
+                </div>
+            </div>
+        <!--//Запись в таблице--->
+        <? } ?>
+    </div>
 <?else:?>
     <h3>У Вас нет сообщений</h3>
 <?endif?>
-
+<table class="table">
+        <thead>
+            <tr>
+                <th class="d-none d-sm-table-cell" scope="col" colspan="2">Отправитель</th>
+                <th class="d-none d-lg-table-cell" scope="col"></th>
+                <th class="d-none d-sm-table-cell text-right" scope="col">Время</th>
+            </tr>
+        </thead>
+        <tbody>
+            <? foreach ($arResult["MESSAGE_USER"] as $message) { // выборка сообщений?>
+                <tr>
+                    <td class="first-face">
+                            <?if(!empty($message["PARAMS_SENDER_USER"]["PERSONAL_PHOTO"])){?>
+                                <? $renderImage = CFile::ResizeImageGet($message["PARAMS_SENDER_USER"]["PERSONAL_PHOTO"], Array("width" => 261, "height" => 261), BX_RESIZE_IMAGE_EXACT, false); ?>
+                                <img src="<?=$renderImage["src"]?>" height="60" alt="">
+                            <?}else {?>
+                                <h3><?=$message["PARAMS_SENDER_USER"]["IN"]?></h3>
+                            <?}?>                    
+                    </td>
+                    <td><?=$message["PARAMS_SENDER_USER"]["FIO"]?><br>
+                        <span class="text-gray d-lg-none"><?= $message["UF_TITLE_MESSAGE"] ?></span>
+                    </td>
+                    <td class="text-gray d-none d-lg-table-cell"><?= $message["UF_TITLE_MESSAGE"] ?></td>
+                    <td class="text-right"><?= $message["UF_TIME_CREATE_MSG"]->toString() ?></td>
+                </tr>
+            <?}?>       
+        </tbody>
+    </table>
+<div style="clear: both"></div>
 <div class="modal fade bd-message-modal-sm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">

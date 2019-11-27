@@ -81,9 +81,18 @@ class CDemoSqr extends CBitrixComponent
                 )
         ));
         
-        $arMesage_User = array();           
+        $arMesage_User = array();
+        $i = 0 ;          
         while($arData = $rsData->Fetch()){                                
-            $arMesage_User[]  = $arData;
+            $arMesage_User[$i]  = $arData;
+            $rsUser = CUser::GetByID($arData["UF_ID_SENDER"]);
+            $arUser = $rsUser->Fetch();
+            $arMesage_User[$i]["PARAMS_SENDER_USER"]["FIO"]  = $arUser['LAST_NAME'] .' '. $arUser['NAME'] .' '. $arUser['SECOND_NAME'];
+            $arMesage_User[$i]["PARAMS_SENDER_USER"]["PERSONAL_PHOTO"]  = $arUser["PERSONAL_PHOTO"];
+            $arMesage_User[$i]["PARAMS_SENDER_USER"]["ID"]  = $arUser['ID'];
+            $arMesage_User[$i]["PARAMS_SENDER_USER"]["IN"]  = substr($arUser['NAME'], 0, 1);
+            
+            $i++;
         }
         return $arMesage_User;
     }
