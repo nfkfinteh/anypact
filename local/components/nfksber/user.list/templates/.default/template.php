@@ -5,14 +5,18 @@
 </div>
 <div class="row grid-view">
     <?foreach($arResult["USER"] as $user):?>   
-    <!------------------------------------>
+    <!-----------------!------------------->
     <div class="view-item col-lg-3 col-sm-6 col-12 mt-4 pb-3">
         <div class="people-s-photo">
             <a href="/profile_user/?ID=<?=$user['ID']?>">
                 <div class="people-s-photo-img">
                     <? if(!empty($user['PERSONAL_PHOTO'])){ ?>
                         <img src="<?=SITE_TEMPLATE_PATH?>/image/people-search-no-phpto.png" alt="">
-                        <img class="people-s-user-photo" src="<?=CFile::GetPath($user['PERSONAL_PHOTO'])?>" alt="">
+                        <img class="people-s-user-photo" src="<?
+                            $USER_AV = CFile::GetPath($user['PERSONAL_PHOTO']);
+                            $renderImage = CFile::ResizeImageGet($user['PERSONAL_PHOTO'], Array("width" => 261, "height" => 261), BX_RESIZE_IMAGE_EXACT, false);                      
+                            echo $renderImage["src"];
+                        ?>" alt="">
                     <?}else {?>
                         <img src="<?=SITE_TEMPLATE_PATH?>/image/people-search-no-phpto.png" alt="">                
                     <? } ?>
@@ -32,7 +36,7 @@
                 <button class="btn btn-clean search-peaople__button" data-toggle="modal" data-target=".bd-message-modal-sm" data-login="<?=$user['LOGIN']?>">
                     <img src="<?=SITE_TEMPLATE_PATH?>/image/people-search-message.png" alt="">
                 </button>
-                <button class="btn btn-clean"><img src="<?=SITE_TEMPLATE_PATH?>/image/people-search-document.png" alt=""></button>
+                <!-- <button class="btn btn-clean"><img src="<?=SITE_TEMPLATE_PATH?>/image/people-search-document.png" alt=""></button> -->
                 <?if(!in_array($user['ID'], $arResult['FRENDS'])):?>
                     <button class="btn btn-clean js-add-frends" data-login="<?=$user['LOGIN']?>">
                         <img src="<?=SITE_TEMPLATE_PATH?>/image/people-search-add-people.png" alt="">
@@ -58,6 +62,11 @@
                 <form id="message_user" action="/response/ajax/add_new_messag_user.php">
                     <input class="login__input" type="hidden" name="login" value="">
                     <div class="form-group">
+                        <label for="">Тема сообщения</label>
+                        <input class="form-control" name="title" value="">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Текст сообщения</label>
                         <textarea class="form-control message-textarea" name="message-text"></textarea>
                     </div>
                 </form>

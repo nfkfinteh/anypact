@@ -32,8 +32,7 @@ class CDemoSqr extends CBitrixComponent
 
     private function getMessage(){
         
-        CModule::IncludeModule("highloadblock");
-        // получить все подписанны сделки        
+        CModule::IncludeModule("highloadblock");             
         $hlblock = HL\HighloadBlockTable::getById($this->ID_HL)->fetch();
         $entity = HL\HighloadBlockTable::compileEntity($hlblock);
         $entity_data_class = $entity->getDataClass();
@@ -45,9 +44,9 @@ class CDemoSqr extends CBitrixComponent
 
         while($arData = $rsData->Fetch()){
             $arSendItem  = $arData;
-            $this->arIDUsers = $arData['UF_USERS_ID'];
+            $this->arIDUsers[] = $arData['UF_ID_USER'];
+            $this->arIDUsers[] = $arData['UF_ID_SENDER'];
         }
-
         return $arSendItem;
     }
 
@@ -57,7 +56,7 @@ class CDemoSqr extends CBitrixComponent
         foreach ($this->arIDUsers as $IDUser) {
                 $ObjUser = CUser::GetByID($IDUser);
                 $arUserParams = $ObjUser->Fetch();
-                $arUserParams['PERSONAL_PHOTO'] = CFile::GetPath($arUserParams['PERSONAL_PHOTO']);
+                //$arUserParams['PERSONAL_PHOTO'] = CFile::GetPath($arUserParams['PERSONAL_PHOTO']);
                 $arParams[$arUserParams['ID']]  = $arUserParams;
         }
         return $arParams;
@@ -81,7 +80,7 @@ class CDemoSqr extends CBitrixComponent
         $this->arResult['UsersChart'] = $this->listUsers();
         foreach($this->arResult['UsersChart'] as $user){
             $this->arResult['FastUserParams'][$user['ID']]['FIO'] = $user['LAST_NAME'] .' '.$user['NAME'] ;
-            $this->arResult['FastUserParams'][$user['ID']]['InitialName'] = substr($user['NAME'], 1);
+            $this->arResult['FastUserParams'][$user['ID']]['InitialName'] = substr($user['NAME'], 0, 1);
         }
         $this->includeComponentTemplate();
         

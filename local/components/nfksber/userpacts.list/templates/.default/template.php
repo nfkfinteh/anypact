@@ -232,7 +232,7 @@ $arrStatusAwait = array(
 <!--Блок с сообщениями --->
 <div class="d-flex flex-wrap align-items-center position-relative">
     <h5>Мои сообщения</h5>
-    <a href="#" class="btn btn-nfk btn-add-contract ml-auto">Написать сообщение</a>
+    <!-- <a href="#" class="btn btn-nfk btn-add-contract ml-auto">Написать сообщение</a> -->
 </div>
 <?if(!empty($arResult["MESSAGE_USER"])):?>
     <table class="table">

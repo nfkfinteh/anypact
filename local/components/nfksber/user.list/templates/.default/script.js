@@ -12,7 +12,7 @@ $(document).ready(function(){
             type: 'POST',
             url: url,
             data: data,
-            success: function(result){
+            success: function(result){                
                 $result = JSON.parse(result);
                 if($result['TYPE']=='ERROR'){
                     console.log($result['VALUE']);

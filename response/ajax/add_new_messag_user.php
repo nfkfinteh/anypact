@@ -48,6 +48,15 @@ $messageText = 'Cообщение от :'.$curentUser['DATA']['NAME'].' '.$curen
     .' <a href="'.$urlProfile.'"ссылка на профиль</a> <br>'
     .$data['message-text'];
 
+$message[] = array(
+    'user' => $curentUser["ID"],
+    'data' => date("m.d.y H:m"),
+    'message' => $data['message-text']
+);
+
+$JsonMess = json_encode($message);
+$title = htmlspecialchars($data['title']);
+
 $hlbl = 6;
 $hlblock = HL\HighloadBlockTable::getById($hlbl)->fetch();
 
@@ -55,12 +64,12 @@ $entity = HL\HighloadBlockTable::compileEntity($hlblock);
 $entity_data_class = $entity->getDataClass();
 
 $data = array(
-    "UF_ID_USER"=>$idUser,
-    "UF_TEXT_MESSAGE_USER"=>$messageText,
-    "UF_STATUS"=>1,
-    "UF_TIME_CREATE_MSG"=>ConvertTimeStamp(time(), "FULL"),
-    "UF_TITLE_MESSAGE"=>"Сообщение от пользователя"
+    "UF_ID_USER"            => $idUser,
+    "UF_ID_SENDER"          => $curentUser["ID"],
+    "UF_TEXT_MESSAGE_USER"  => $JsonMess,
+    "UF_STATUS"             => 1,
+    "UF_TIME_CREATE_MSG"    => ConvertTimeStamp(time(), "FULL"),
+    "UF_TITLE_MESSAGE"      => $title    
 );
-
 $result = $entity_data_class::add($data);
 echo json_encode([ 'VALUE'=>'', 'TYPE'=> 'SUCCESS']);
