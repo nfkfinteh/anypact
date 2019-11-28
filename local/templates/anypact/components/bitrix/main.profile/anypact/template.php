@@ -20,7 +20,7 @@ if (!empty($arResult['arUser']['UF_ESIA_ID']) && $arResult['arUser']['UF_ESIA_AU
     <div class="user_profile_header">
         <div class="row">
             <div class="col">
-                <h1>Личный кабинет</h1>
+                <h1>Профиль</h1>
             </div>
         </div>
     </div>

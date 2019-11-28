@@ -1,4 +1,4 @@
-<div>
+<div style="padding-bottom: 50px;">
     <?if(empty($arResult['ERROR'])):?>
         <div class="row pt-2">
             <div class="col-lg-3 col-md-4 col-sm-12">
@@ -68,13 +68,17 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <div class="modal-title">Новое сообщение</div>
+                <div class="modal-title">Новое сообщение пользователю</div>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 <form action="/response/ajax/add_new_messag_user.php">
+                    <div class="form-group">
+                        <label for="">Тема сообщения</label>
+                        <input class="form-control" name="title" value="">
+                    </div>
                     <input type="hidden" name="login" value="<?=$arResult['USER']['LOGIN']?>">
                     <div class="form-group">
                         <textarea class="form-control " name="message-text"></textarea>
@@ -97,7 +101,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body">                
                 <form action="/response/ajax/add_new_comment.php">
                     <input type="hidden" name="login" value="<?=$arResult['USER']['LOGIN']?>">
                     <div class="form-group">
