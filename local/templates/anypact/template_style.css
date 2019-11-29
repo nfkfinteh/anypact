@@ -24,11 +24,20 @@ body {
 
 .header {
     margin-top: 30px;
-    margin-bottom: 10px;
+    margin-bottom: 17px;
 }
 
 .navbar {
-    margin-bottom: 40px;
+    margin-bottom: 43px;
+}
+.navbar:before {
+    content: none;
+}
+.navbar .wclassget_user_profile_name{
+    margin-bottom: 43px;
+}
+.navbar .logo, .navbar .wclassget_user_profile{
+    display:none;
 }
 
 h1 {
@@ -67,8 +76,8 @@ input {
 
 .btn-login {
     float: right;
-    width: 200px;
-    height: 37px;
+    width: 212px;
+    height: 39px;
 }
 
 .btn-nfk {
@@ -585,12 +594,6 @@ body,
     box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.2);
 }
 
-.btn-login {
-    float: right;
-    width: 212px;
-    height: 39px;
-}
-
 .btn-nfk {
     color: #ff6416;
     background-color: #ffffff;
@@ -613,14 +616,6 @@ body,
     background-color: #ffffff;
 }
 
-.header {
-    margin-top: 30px;
-    margin-bottom: 17px;
-}
-
-.navbar {
-    margin-bottom: 43px;
-}
 
 h1,
 h2 {
@@ -765,6 +760,12 @@ input::-webkit-input-placeholder {
 
 .navbar-toggler {
     background: #fff !important;
+}
+
+.navbar-toggler span{
+    width: 35px;
+    height: 14px;
+    background-image: url(image/burger-icon.png);
 }
 
 .lk-navigation a {
@@ -2002,12 +2003,6 @@ body,
     box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.2);
 }
 
-.btn-login {
-    float: right;
-    width: 212px;
-    height: 39px;
-}
-
 .btn-nfk {
     color: #ff6416 !important;
     background-color: #ffffff;
@@ -2032,40 +2027,6 @@ body,
 
 .container.bg-russia {
     background: url("image/bg.png") no-repeat fixed center center;
-}
-
-.header {
-    margin-top: 30px;
-    margin-bottom: 17px;
-}
-
-.navbar {
-    margin-bottom: 43px;
-}
-
-h1,
-h2 {
-    font-size: 48px;
-    font-weight: 600;
-}
-
-h3 {
-    font-weight: 300;
-    font-size: 24px;
-    line-height: 1.5;
-}
-
-h4 {
-    font-weight: 300;
-    color: #a6a6a6;
-    margin-bottom: 28px;
-}
-
-h5 {
-    margin-top: 10px;
-    margin-bottom: 17px;
-    font-size: 23px;
-    font-weight: 900;
 }
 
 .container a,
@@ -3269,6 +3230,12 @@ input::-webkit-input-placeholder {
     }
     .phone {
         float: right;
+    }
+    .navbar .logo, .navbar .wclassget_user_profile{
+        display:block;
+    }
+    header.header{
+        display: none;
     }
 }
 

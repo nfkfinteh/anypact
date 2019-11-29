@@ -125,7 +125,7 @@ global $USER;
                         <?endif?>
 
                     </div>
-
+                    <div class="col-md-3">
                         <?                                
                             $APPLICATION->IncludeComponent("nfksber:profile.widget",
                             "head",
@@ -134,7 +134,7 @@ global $USER;
                                 )
                             );
                         ?>
-
+                    </div>
                     <?}else {?>
                         <div class="col-md-6">
                             <?if(!empty($getGeo['cityName'])):?>
@@ -148,7 +148,7 @@ global $USER;
             </div>
         </header>
         <!--Меню навигации-->
-        <nav class="navbar navbar-expand-lg">
+        <nav class="navbar navbar-expand-md">
             <?
                 $Section = $_GET['SECTION_ID'];
                 $APPLICATION->IncludeComponent("nfksber:stepback", 
@@ -162,6 +162,18 @@ global $USER;
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            <a href="/" class="logo"><img src="/local/templates/anypact/image/logo_ap.svg" alt="" style="width: 150px;"></a>
+            <div>
+            <? if ($USER->IsAuthorized()){ ?>
+                <?
+                $APPLICATION->IncludeComponent("nfksber:profile.widget",
+                    "head",
+                    Array(
+
+                    )
+                );}
+                ?>
+            </div>
             <div class="collapse navbar-collapse " id="navbarSupportedContent" style="padding-right: 0;">
                 <? // навигационное меню для разных типов пользователей
                     if ($USER->IsAuthorized()){

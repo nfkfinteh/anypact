@@ -1,4 +1,4 @@
-<div class="col-md-3">
+<div class="wclassget_user_profile">
     <? // если есть фото 
     if($arResult["PERSONAL_PHOTO"] != ""){
     ?>
@@ -8,10 +8,10 @@
                 <img src="<?=$arResult["PERSONAL_PHOTO"]?>" alt="Васильев Александр Евгеньевич">
                 <!-- <a href="#" class="login-information-message-counter">4</a> -->
             </div>
-            <div class="login-information-text" id="widget_user_profile_name">
+            <div class="login-information-text wclassget_user_profile_name">
                 <a href="#"><?=$arResult["LAST_NAME"]?> <?=$arResult["IN_NAMES"]?></a>
-                <span id="widget_user_profile_url_profile">Профиль</span>
-                <div id="widget_user_profile_select">
+                <span class="wclassget_user_profile_url_profile">Профиль</span>
+                <div class="wclassget_user_profile_select">
                     <ul>
                         <li><a href="/profile/">Редактировать профиль</a></li>
                         <li><a href="<?echo $APPLICATION->GetCurPageParam("logout=yes", 
@@ -28,13 +28,13 @@
     </div>
     <?}else {?>
     <? // если нет фото ?>
-    <div id="widget_user_profile_avatar">
+    <div class="wclassget_user_profile_avatar">
         <span><?=$arResult["IN_NAME"]?></span>
     </div>
-    <div id="widget_user_profile_name">
-        <span id="widget_user_profile_fio"><?=$arResult["LAST_NAME"]?> <?=$arResult["IN_NAMES"]?></span>
-        <span id="widget_user_profile_url_profile">Профиль</span>
-        <div id="widget_user_profile_select">
+    <div class="wclassget_user_profile_name">
+        <span class="wclassget_user_profile_fio"><?=$arResult["LAST_NAME"]?> <?=$arResult["IN_NAMES"]?></span>
+        <span class="wclassget_user_profile_url_profile">Профиль</span>
+        <div class="wclassget_user_profile_select">
             <ul>
                 <li><a href="/profile/">Редактировать профиль</a></li>
                 <li><a href="<?echo $APPLICATION->GetCurPageParam("logout=yes", 
