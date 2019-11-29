@@ -1,5 +1,5 @@
 
-#widget_user_profile_avatar {
+.widget_user_profile_avatar {
     width: 45px;
     height: 45px;
     float: left;
@@ -9,27 +9,27 @@
     position: relative;
 }
 
-#widget_user_profile_name {
+.widget_user_profile_name {
     float: left;
     margin-left: 10px;
     max-width: 78%;
     /*overflow: hidden;*/
 }
 
-#widget_user_profile_fio {
+.widget_user_profile_fio {
     display: inline-block;
     width: 100%;
     color: #ff6416;
 }
-#widget_user_profile_name {
+.widget_user_profile_name {
     cursor: pointer;
 }
 
-#widget_user_profile_name:hover  #widget_user_profile_select{
+.widget_user_profile_name:hover  .widget_user_profile_select{
     display: block;
 }
 
-#widget_user_profile_avatar span{
+.widget_user_profile_avatar span{
     font-weight: bold;
     font-size: 25px;
     position: absolute;
@@ -39,17 +39,17 @@
     color: #ffffff;
 }
 
-#widget_user_profile_select ul {
+.widget_user_profile_select ul {
     padding: 10px;
     margin: 0;
 }
 
-#widget_user_profile_select ul li{
+.widget_user_profile_select ul li{
     list-style-type: none;
     margin: 10px;
 }
 
-#widget_user_profile_select{    
+.widget_user_profile_select{
     box-shadow: 1px 3px 11px rgba(0, 0, 0, 0.15);
     border-radius: 5px;
     width: 78%;
@@ -99,4 +99,12 @@
 }
 .login-information .login-information-text a, .login-information .login-information-text span{
     display: block;
+}
+@media screen and (max-width: 767px) {
+    .login-information .login-information-photo {
+        margin-right: 0;
+    }
+    .navbar .logo, .navbar .widget_user_profile{
+        display:block;
+    }
 }

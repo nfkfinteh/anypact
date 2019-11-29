@@ -30,14 +30,18 @@ body {
 .navbar {
     margin-bottom: 43px;
 }
-.navbar:before {
+.navbar:before, .navbar:after {
     content: none;
 }
-.navbar .wclassget_user_profile_name{
-    margin-bottom: 43px;
-}
-.navbar .logo, .navbar .wclassget_user_profile{
+
+.navbar .logo, .navbar .widget_user_profile{
     display:none;
+}
+.navbar .widget_user_profile_name{
+    display: none;
+}
+.navbar .widget_user_profile_avatar:hover {
+    display: none;
 }
 
 h1 {
@@ -3218,6 +3222,9 @@ input::-webkit-input-placeholder {
 }
 
 @media screen and (max-width: 767px) {
+    h2{
+        font-size: 24px;
+    }
     .map-space {
         height: 220px;
     }
@@ -3230,9 +3237,6 @@ input::-webkit-input-placeholder {
     }
     .phone {
         float: right;
-    }
-    .navbar .logo, .navbar .wclassget_user_profile{
-        display:block;
     }
     header.header{
         display: none;
