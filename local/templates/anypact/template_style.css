@@ -40,9 +40,6 @@ body {
 .navbar .widget_user_profile_name{
     display: none;
 }
-.navbar .widget_user_profile_avatar:hover {
-    display: none;
-}
 
 h1 {
     font-size: 48px;
@@ -3240,6 +3237,9 @@ input::-webkit-input-placeholder {
     }
     header.header{
         display: none;
+    }
+    .navbar .logo {
+        display:block;
     }
 }
 

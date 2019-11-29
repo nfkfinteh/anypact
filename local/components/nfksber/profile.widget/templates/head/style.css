@@ -104,7 +104,7 @@
     .login-information .login-information-photo {
         margin-right: 0;
     }
-    .navbar .logo, .navbar .widget_user_profile{
+    .navbar .widget_user_profile{
         display:block;
     }
 }
