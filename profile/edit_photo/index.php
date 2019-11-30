@@ -1,0 +1,9 @@
+<?
+require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
+$APPLICATION->SetTitle("AnyPact");
+?>
+<?$APPLICATION->IncludeComponent("nfksber:resizeimg",
+    "",
+    Array()
+);?>
+<?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
