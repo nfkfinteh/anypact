@@ -57,7 +57,7 @@ $(document).ready(function(){
             imageSection = new Cropper( $('.resize-img')[0], {
                 dragMode: 'none',
                 zoomable: false,
-                cropBoxResizable: false,
+                /*cropBoxResizable: false,*/
                 aspectRatio: 1,
                 autoCropArea:0.1,
                 minCropBoxWidth: 300,
@@ -110,7 +110,7 @@ $(document).ready(function(){
                     '</div>';
         var id = $('.cart-tab').attr('data-id');
 
-        imageSection.cancelSelection();
+        //imageSection.cancelSelection();
         $('.cardPact-box').html(div);
         $('.cart-tab').hide();
         $('.cart-tab').attr('data-id', '');

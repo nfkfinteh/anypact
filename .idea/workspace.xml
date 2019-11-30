@@ -2,19 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="095c6364-006c-4512-9344-8361d6fd3db8" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/local/components/nfksber/resizeimg/.description.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/components/nfksber/resizeimg/.parameters.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/components/nfksber/resizeimg/class.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/components/nfksber/resizeimg/component.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/components/nfksber/resizeimg/templates/.default/script.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/components/nfksber/resizeimg/templates/.default/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/components/nfksber/resizeimg/templates/.default/template.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/templates/anypact/module/cropper/cropper.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/templates/anypact/module/cropper/cropper.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/profile/edit_photo/index.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/response/ajax/resizeimg.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/templates/anypact/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/templates/anypact/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local/components/nfksber/resizeimg/templates/.default/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/local/components/nfksber/resizeimg/templates/.default/script.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -58,13 +47,13 @@
     <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\OpenServer\domains\anypact_dev\local\templates\anypact\module\imgareaselect" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\OpenServer\domains\anypact_dev\local\templates\anypact\module\cropper" />
       <recent name="D:\OpenServer\domains\anypact_dev" />
       <recent name="D:\OpenServer\domains\anypact_dev\local\components\nfksber" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\OpenServer\domains\anypact_dev\local\templates\anypact\module\imgareaselect" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -108,17 +97,62 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
+  </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
             <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
               <option name="COLUMN_ORDER" />
             </State>
           </value>
         </entry>
       </map>
     </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="master" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="origin/master" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Обрезка фото профиля пользователя" />
+    <option name="LAST_COMMIT_MESSAGE" value="Обрезка фото профиля пользователя" />
   </component>
 </project>
