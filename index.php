@@ -2,41 +2,41 @@
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("AnyPact");
 ?>
-	<!--Форма поиска-->
-	<h2>Поиск людей и сделок</h2>
-		<?// компонент поисковой строки
-            $APPLICATION->IncludeComponent(
-                "bitrix:search.form",
-                "homepage",
-                Array(
-                    "LOCATION" => $getGeo['cityName']
-                )
-            );
-        ?>		
+<!--Форма поиска-->
+<h2>Поиск людей и сделок</h2>
+<?// компонент поисковой строки
+$APPLICATION->IncludeComponent(
+    "bitrix:search.form",
+    "homepage",
+    Array(
+        "LOCATION" => $getGeo['cityName']
+    )
+);
+?>
 </div>
 <? // вывод карты и поинтов на ней
-    $APPLICATION->IncludeComponent(
-        "nfksber:yamap",
-        "",
-        Array(
-            "CACHE_TIME" => 36000,
-            "CACHE_TYPE" => "A",
-            "COUNT_POINT" => "10",
-            "IBLOCK_ID" => "3",
-            "IBLOCK_TYPE" => "4",
-            "LOCATION" => $getGeo['cityName'],
-            "MAP_HEIGHT" => "500px",
-            "MAP_WIDTH" => "100%"
-        )
-    );
+$APPLICATION->IncludeComponent(
+    "nfksber:yamap",
+    "",
+    Array(
+        "CACHE_TIME" => 36000,
+        "CACHE_TYPE" => "A",
+        "COUNT_POINT" => "10",
+        "IBLOCK_ID" => "3",
+        "IBLOCK_TYPE" => "4",
+        "LOCATION" => $getGeo['cityName'],
+        "MAP_HEIGHT" => "500px",
+        "MAP_WIDTH" => "100%"
+    )
+);
 ?>
 <!-- О сервисе -->
 <div class="container">
     <h2 style="margin-top:30px;">С сервисом AnyPact</h2>
     <div class="short-divider"></div>
     <p>Вы можете заключить договор в Сети прямо сейчас! Anypact позволяет найти контрагента, сформировать условия договора, подписать его и приобрести по нему все права и обязанности. Что бы Вы ни делали, покупали или продавали имущество, искали для себя надежного исполнителя работ или сами оказывали услуги - теперь Вам не нужно волноваться о том, будет ли исполнена сделка, которую Вы заключили через Интернет. Ваше соглашение приобретает юридическую силу.</p>
-    <div class="row cards-how">
-        <div class="col-md-6 col-lg-3">
+    <div class="owl-carousel owl-theme cards-how">
+        <div>
             <a href="/service/#prosto" style="color: #333;text-decoration: none;">
                 <div class="card-how">
                     <i class="icon-main icon-1"></i>
@@ -45,7 +45,7 @@ $APPLICATION->SetTitle("AnyPact");
                 </div>
             </a>
         </div>
-        <div class="col-md-6 col-lg-3">
+        <div>
             <a href="/service/#nadezhno" style="color: #333;text-decoration: none;">
                 <div class="card-how">
                     <i class="icon-main icon-2"></i>
@@ -54,7 +54,7 @@ $APPLICATION->SetTitle("AnyPact");
                 </div>
             </a>
         </div>
-        <div class="col-md-6 col-lg-3">
+        <div>
             <a href="/service/#bezopasno" style="color: #333;text-decoration: none;">
                 <div class="card-how">
                     <i class="icon-main icon-3"></i>
@@ -63,7 +63,7 @@ $APPLICATION->SetTitle("AnyPact");
                 </div>
             </a>
         </div>
-        <div class="col-md-6 col-lg-3">
+        <div>
             <a href="/service/#udobno" style="color: #333;text-decoration: none;">
                 <div class="card-how">
                     <i class="icon-main icon-4"></i>
@@ -107,12 +107,12 @@ $APPLICATION->SetTitle("AnyPact");
         <h2>Стать участником</h2>
         <div class="short-divider"></div>
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6 order-2 order-md-1">
                 Регистрация, авторизация и заключение договоров на площадке AnyPact проходят в режиме онлайн. Для заключения сделок вам понадобится подтвержденная учетная запись на портале Госуслуг. Подтвердить учетную запись портала Госуслуг можно в любом Многофункциональном центре Вашего города.
             </div>
-            <div class="col-md-6 text-center">
+            <div class="col-md-6 order-1 order-md-2 text-center">
                 <a href="#" id="open_reg_form">
-                    <img src="<?=SITE_TEMPLATE_PATH?>/image/img_reg_us.png" alt="Подпись" style="margin-top:-170px;margin-left: -140px;">
+                    <img src="<?=SITE_TEMPLATE_PATH?>/image/img_reg_us.png" alt="Подпись" style="max-width: 100%">
                 </a>
             </div>
         </div>
@@ -167,7 +167,7 @@ $APPLICATION->SetTitle("AnyPact");
                     </div>
                 </a>
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-6 mt-3 mt-lg-0">
                 <a href="mailto:info@anypact.ru">
                     <div class="contact-mail-icon">
                         <i class="icon-main icon-12"></i>
@@ -187,27 +187,72 @@ $APPLICATION->SetTitle("AnyPact");
 </div>
 <script>
     $(document).ready(function() {
-        var owl = $('.owl-carousel');
-        owl.owlCarousel({
-            dotsEach: true,
+        $('.main-carousel_sdel').owlCarousel({
+            dotsEach: false,
             //dotsData: true,
             margin: 30,
             stagePadding: 5,
             responsive: {
                 0: {
                     items: 1,
+                    stagePadding: 40,
+                    margin: 15,
+                    dots: false,
                     nav: false
                 },
                 590: {
                     items: 2,
+                    stagePadding: 40,
+                    margin: 15,
+                    dots: true,
                     nav: true
                 },
                 768: {
+                    stagePadding: 40,
+                    margin: 15,
                     nav: true,
+                    dots: true,
                     items: 2
                 },
                 992: {
+                    stagePadding: 5,
+                    margin: 30,
                     nav: true,
+                    dots: true,
+                    items: 4
+                }
+            }
+        });
+        $('.cards-how').owlCarousel({
+            dotsEach: true,
+            //dotsData: true,
+            responsive: {
+                0: {
+                    items: 1,
+                    stagePadding: 40,
+                    margin: 15,
+                    dots: false,
+                    nav: false
+                },
+                590: {
+                    items: 2,
+                    stagePadding: 40,
+                    margin: 15,
+                    dots: true,
+                    nav: true
+                },
+                768: {
+                    stagePadding: 40,
+                    margin: 15,
+                    nav: true,
+                    dots: true,
+                    items: 2
+                },
+                992: {
+                    stagePadding: 5,
+                    margin: 30,
+                    nav: true,
+                    dots: true,
                     items: 4
                 }
             }
