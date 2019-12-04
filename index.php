@@ -35,8 +35,10 @@ $APPLICATION->IncludeComponent(
     <h2 style="margin-top:30px;">С сервисом AnyPact</h2>
     <div class="short-divider"></div>
     <p>Вы можете заключить договор в Сети прямо сейчас! Anypact позволяет найти контрагента, сформировать условия договора, подписать его и приобрести по нему все права и обязанности. Что бы Вы ни делали, покупали или продавали имущество, искали для себя надежного исполнителя работ или сами оказывали услуги - теперь Вам не нужно волноваться о том, будет ли исполнена сделка, которую Вы заключили через Интернет. Ваше соглашение приобретает юридическую силу.</p>
+</div>
+<div class="container container-slider">
     <div class="owl-carousel owl-theme cards-how">
-        <div>
+        <div class="card-how-container">
             <a href="/service/#prosto" style="color: #333;text-decoration: none;">
                 <div class="card-how">
                     <i class="icon-main icon-1"></i>
@@ -45,7 +47,7 @@ $APPLICATION->IncludeComponent(
                 </div>
             </a>
         </div>
-        <div>
+        <div class="card-how-container">
             <a href="/service/#nadezhno" style="color: #333;text-decoration: none;">
                 <div class="card-how">
                     <i class="icon-main icon-2"></i>
@@ -54,7 +56,7 @@ $APPLICATION->IncludeComponent(
                 </div>
             </a>
         </div>
-        <div>
+        <div class="card-how-container">
             <a href="/service/#bezopasno" style="color: #333;text-decoration: none;">
                 <div class="card-how">
                     <i class="icon-main icon-3"></i>
@@ -63,7 +65,7 @@ $APPLICATION->IncludeComponent(
                 </div>
             </a>
         </div>
-        <div>
+        <div class="card-how-container">
             <a href="/service/#udobno" style="color: #333;text-decoration: none;">
                 <div class="card-how">
                     <i class="icon-main icon-4"></i>
@@ -76,9 +78,11 @@ $APPLICATION->IncludeComponent(
 </div>
 <!-- Список категорий -->
 <div class="deal-container">
-    <div class="container">
+    <div class="container" style="margin-top: 106px;">
         <h2>Заключить сделку</h2>
         <div class="short-divider"></div>
+    </div>
+    <div class="container container-slider">
         <?$APPLICATION->IncludeComponent("bitrix:catalog.section.list","sdelki_main",
             Array(
                 "VIEW_MODE" => "TEXT",
@@ -153,7 +157,7 @@ $APPLICATION->IncludeComponent(
         <div class="short-divider"></div>
         <div class="row">
             <div class="col-lg-6">
-                <a href="tel:88000000000">
+                <a class="d-flex" href="tel:+78002008484">
                     <div class="contact-phone-icon">
                         <i class="icon-main icon-11"></i>
                     </div>
@@ -168,7 +172,7 @@ $APPLICATION->IncludeComponent(
                 </a>
             </div>
             <div class="col-lg-6 mt-3 mt-lg-0">
-                <a href="mailto:info@anypact.ru">
+                <a class="d-flex" href="mailto:info@anypact.ru">
                     <div class="contact-mail-icon">
                         <i class="icon-main icon-12"></i>
                     </div>
@@ -195,28 +199,29 @@ $APPLICATION->IncludeComponent(
             responsive: {
                 0: {
                     items: 1,
-                    stagePadding: 40,
-                    margin: 15,
+                    stagePadding: 5,
+                    margin: 0,
                     dots: false,
-                    nav: false
+                    nav: false,
+                    autoWidth:true
                 },
-                590: {
+                544: {
                     items: 2,
-                    stagePadding: 40,
+                    stagePadding: 5,
                     margin: 15,
                     dots: true,
                     nav: true
                 },
                 768: {
-                    stagePadding: 40,
+                    items: 2,
+                    stagePadding: 5,
                     margin: 15,
                     nav: true,
-                    dots: true,
-                    items: 2
+                    dots: true
                 },
                 992: {
                     stagePadding: 5,
-                    margin: 30,
+                    margin: 20,
                     nav: true,
                     dots: true,
                     items: 4
@@ -229,28 +234,29 @@ $APPLICATION->IncludeComponent(
             responsive: {
                 0: {
                     items: 1,
-                    stagePadding: 40,
-                    margin: 15,
+                    stagePadding: 5,
+                    margin: 0,
                     dots: false,
-                    nav: false
+                    nav: false,
+                    autoWidth:true
                 },
-                590: {
+                544: {
                     items: 2,
-                    stagePadding: 40,
+                    stagePadding: 5,
                     margin: 15,
                     dots: true,
                     nav: true
                 },
                 768: {
-                    stagePadding: 40,
+                    items: 2,
+                    stagePadding: 5,
                     margin: 15,
                     nav: true,
-                    dots: true,
-                    items: 2
+                    dots: true
                 },
                 992: {
                     stagePadding: 5,
-                    margin: 30,
+                    margin: 20,
                     nav: true,
                     dots: true,
                     items: 4

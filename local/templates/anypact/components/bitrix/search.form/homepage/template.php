@@ -13,21 +13,21 @@
 $this->setFrameMode(true);?>
 
 <div class="search">
-        <form action="<?=$arResult["FORM_ACTION"]?>">
-            <span class="magnifier"></span>
-            <input type="text" name="q" placeholder="Поиск" value="">
-			<input name="s" type="submit" class="btn btn-nfk btn-search" value="<?=GetMessage("BSF_T_SEARCH_BUTTON");?>" style="border: 1px solid #ff6416 !important;"/>
-            <span class="region"><?=$arParams['LOCATION']?></span>
-            <span class="deal-type" id="button_select_category">Вид сделки</span>
-            <?
-            $APPLICATION->IncludeComponent(
-                "nfksber:sectionlist",
-                "homepage",
-                Array(
-                    "IBLOCK_ID" => "3",
-                    "SECTION_ID" => 0,
-                )
-            );
-            ?>
-        </form>
-    </div>
+    <form action="<?=$arResult["FORM_ACTION"]?>">
+        <span class="magnifier"></span>
+        <input type="text" name="q" placeholder="Поиск" value="">
+        <input name="s" type="submit" class="btn btn-nfk btn-search d-none d-md-inline" value="<?=GetMessage("BSF_T_SEARCH_BUTTON");?>" style="border: 1px solid #ff6416 !important;"/>
+        <span class="region d-none d-md-inline"><?=$arParams['LOCATION']?></span>
+        <span class="deal-type" id="button_select_category"><span class="d-none d-md-inline">Вид сделки</span></span>
+        <?
+        $APPLICATION->IncludeComponent(
+            "nfksber:sectionlist",
+            "homepage",
+            Array(
+                "IBLOCK_ID" => "3",
+                "SECTION_ID" => 0,
+            )
+        );
+        ?>
+    </form>
+</div>
