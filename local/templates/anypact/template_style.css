@@ -105,7 +105,8 @@ input {
 
 .nav-link {
     cursor: pointer;
-    color: #000;
+    color: #000000;
+    border-bottom: 2px solid #FFFFFF;
 }
 
 .nav-link {
@@ -115,9 +116,11 @@ input {
 .nav-link:hover,
 .nav-link-activ {
     border-bottom: 2px solid #ff6416;
-    color: #000;
+    color: #000000;
 }
-
+.nav-link[href="#"] {
+    display: none;
+}
 .navbar-brand {
     color: #ff6416;
     font-size: 16px;
@@ -729,23 +732,6 @@ input::-webkit-input-placeholder {
     font-weight: normal;
     float: right;
 }
-
-.nav-link {
-    cursor: pointer;
-    color: #000000;
-    border-bottom: 2px solid #FFFFFF;
-}
-
-.nav-link {
-    margin-right: 1em !important;
-}
-
-.nav-link:hover,
-.nav-link-activ {
-    border-bottom: 2px solid #ff6416;
-    color: #000000;
-}
-
 .navbar-brand {
     color: #ff6416;
     font-size: 16px;
@@ -1921,6 +1907,9 @@ input::-webkit-input-placeholder {
     .phone {
         float: right;
     }
+    .nav-link[href="#"] {
+        display: block;
+    }
 }
 
 @media screen and (max-width: 543px) {
@@ -2064,22 +2053,6 @@ input::-webkit-input-placeholder {
     font-size: 24px;
     font-weight: normal;
     float: right;
-}
-
-.nav-link {
-    cursor: pointer;
-    color: #000000;
-    border-bottom: 2px solid #FFFFFF;
-}
-
-.nav-link {
-    margin-right: 1em !important;
-}
-
-.nav-link:hover,
-.nav-link-activ {
-    border-bottom: 2px solid #ff6416;
-    color: #000000;
 }
 
 .navbar-brand {
