@@ -116,54 +116,83 @@ endif;?>
 			<td><?=GetMessage("SEARCH_BRACKETS_ALT")?></td>
 		</tr>
 	</table>
-<?elseif(count($arResult["SEARCH"])>0):?>
-	<? // if($arParams["DISPLAY_TOP_PAGER"] != "N") echo $arResult["NAV_STRING"]?>
-<div class="row">
-  <div class="col-lg-9 col-md-8 col-sm-12">	
-	<div class="row">
-	<?foreach($arResult["SEARCH"] as $arItem):?>
-		<!----------->
-		<? //print_r($arItem);?>
-		<div class="col-lg-4 col-md-6 col-sm-12">
+<?elseif(count($arResult["USERS"])>0):?>
+    <?//блок  пользователями?>
+    <div class="row">
+        <div class="col-lg-12">
+            <h3>Пользователи</h3>
+        </div>
+        <div class="col-lg-12">
+            <div class="row">
+                <?foreach($arResult["USERS"] as $arItem):?>
+                    <div class="col-lg-4 col-md-6 col-sm-12">
                         <div class="tender-post">
-                            <a href="/pacts/view_pact/?ELEMENT_ID=<?=$arItem['ITEM_ID']?>">
+                            <a href="/profile_user/?ID=<?=$arItem['ID']?>">
                                 <div class="tender-img">
-                                  <?if (!isset($pact['URL_IMG_PREVIEW'])){ ?>
-                                    <img src="<?=SITE_TEMPLATE_PATH?>/img/no_img_pacts.jpg" alt="">
-                                  <?} else {?>
-                                    <img src="<?=$pact['URL_IMG_PREVIEW']?>" alt="">
-                                  <?}?>
-                                    <span><?=$pact["CREATED_DATE"]?></span>
+                                    <?if (!isset($arItem['PERSONAL_PHOTO'])){ ?>
+                                        <img src="<?=SITE_TEMPLATE_PATH?>/img/no_img_pacts.jpg">
+                                    <?} else {?>
+                                        <img src="<?=CFile::GetPath($arItem['PERSONAL_PHOTO'])?>">
+                                    <?}?>
                                 </div>
                             </a>
-                            <div class="tender-text">                            
-                                <a href="/pacts/view_pact/?ELEMENT_ID=<?=$arItem['ITEM_ID']?>">
-                                    <h3><?echo $arItem["TITLE_FORMATED"]?></h3>
-                                    <p><?echo $arItem["BODY_FORMATED"]?></p>
-                                    <!--<span class="tender-price">до <?=$pact['PROPERTIES']['SUMM_PACT']['VALUE']?> руб.</span>--->
+                            <div class="tender-text">
+                                <a href="/profile_user/?ID=<?=$arItem['ID']?>">
+                                    <h3><?=$arItem["NAME"]?> <?=$arItem["LAST_NAME"]?></h3>
                                 </a>
-									<!----------------->									
-									<small><?=GetMessage("SEARCH_MODIFIED")?> <?=$arItem["DATE_CHANGE"]?></small>
-									
-									<!----------------->
                             </div>
                         </div>
+                    </div>
+                <?endforeach;?>
+            </div>
         </div>
-		<!----------->		
-	<?endforeach;?>
-	</div>
-  </div>
-</div>
-<? //пагинация ?>
-<?if($arParams["DISPLAY_BOTTOM_PAGER"] != "N") echo $arResult["NAV_STRING"]?>	
-	<p>
-	<?if($arResult["REQUEST"]["HOW"]=="d"):?>
-		<a href="<?=$arResult["URL"]?>&amp;how=r"><?=GetMessage("SEARCH_SORT_BY_RANK")?></a>&nbsp;|&nbsp;<b><?=GetMessage("SEARCH_SORTED_BY_DATE")?></b>
-	<?else:?>
-		<b><?=GetMessage("SEARCH_SORTED_BY_RANK")?></b>&nbsp;|&nbsp;<a href="<?=$arResult["URL"]?>&amp;how=d"><?=GetMessage("SEARCH_SORT_BY_DATE")?></a>
-	<?endif;?>
-	</p>
+    </div>
+    <? //пагинация ?>
+    <?if($arParams["DISPLAY_BOTTOM_PAGER"] != "N") echo $arResult["USER_NAV_STRING"];?>
+<?elseif(count($arResult["SEARCH"])>0):?>
+    <div class="row">
+        <div class="col-lg-12">
+            <h3>Сделки</h3>
+        </div>
+        <div class="col-lg-12">
+            <div class="row">
+            <?foreach($arResult["SEARCH"] as $arItem):?>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="tender-post">
+                        <a href="/pacts/view_pact/?ELEMENT_ID=<?=$arItem['ITEM_ID']?>">
+                            <div class="tender-img">
+                              <?if (!isset($pact['URL_IMG_PREVIEW'])){ ?>
+                                <img src="<?=SITE_TEMPLATE_PATH?>/img/no_img_pacts.jpg" alt="">
+                              <?} else {?>
+                                <img src="<?=$pact['URL_IMG_PREVIEW']?>" alt="">
+                              <?}?>
+                                <span><?=$pact["CREATED_DATE"]?></span>
+                            </div>
+                        </a>
+                        <div class="tender-text">
+                            <a href="/pacts/view_pact/?ELEMENT_ID=<?=$arItem['ITEM_ID']?>">
+                                <h3><?echo $arItem["TITLE_FORMATED"]?></h3>
+                                <p><?echo $arItem["BODY_FORMATED"]?></p>
+                                <?/*<span class="tender-price">до <?=$pact['PROPERTIES']['SUMM_PACT']['VALUE']?> руб.</span>*/?>
+                            </a>
+                            <small><?=GetMessage("SEARCH_MODIFIED")?> <?=$arItem["DATE_CHANGE"]?></small>
+                        </div>
+                    </div>
+                </div>
+            <?endforeach;?>
+            </div>
+        </div>
+    </div>
+    <? //пагинация ?>
+    <?if($arParams["DISPLAY_BOTTOM_PAGER"] != "N") echo $arResult["NAV_STRING"]?>
+    <p>
+        <?if($arResult["REQUEST"]["HOW"]=="d"):?>
+            <a href="<?=$arResult["URL"]?>&amp;how=r"><?=GetMessage("SEARCH_SORT_BY_RANK")?></a>&nbsp;|&nbsp;<b><?=GetMessage("SEARCH_SORTED_BY_DATE")?></b>
+        <?else:?>
+            <b><?=GetMessage("SEARCH_SORTED_BY_RANK")?></b>&nbsp;|&nbsp;<a href="<?=$arResult["URL"]?>&amp;how=d"><?=GetMessage("SEARCH_SORT_BY_DATE")?></a>
+        <?endif;?>
+    </p>
 <?else:?>
-	<?ShowNote(GetMessage("SEARCH_NOTHING_TO_FOUND"));?>
+    <?ShowNote(GetMessage("SEARCH_NOTHING_TO_FOUND"));?>
 <?endif;?>
 </div>

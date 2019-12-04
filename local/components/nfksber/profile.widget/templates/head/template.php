@@ -5,7 +5,7 @@
     <div class="login-information">
         <div class="login-information-container">
             <div class="login-information-photo">
-                <img src="<?=$arResult["PERSONAL_PHOTO"]?>" alt="Васильев Александр Евгеньевич">
+                <img src="<?=$arResult["PERSONAL_PHOTO"]?>">
                 <!-- <a href="#" class="login-information-message-counter">4</a> -->
             </div>
             <div class="login-information-text widget_user_profile_name">

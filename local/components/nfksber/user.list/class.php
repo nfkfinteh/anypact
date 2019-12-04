@@ -31,11 +31,10 @@ class CDemoSqr extends CBitrixComponent
                 if(!is_array($arrFilter))
                     $arrFilter = array();
             }
-            $arrFilter[] = [
-                "LOGIC"=>"OR",
-                [ "NAME"=>"_" ],
-                [ "LAST_NAME"=>"_" ]
-            ];
+
+            if(empty($arrFilter['NAME'])){
+                $arrFilter['NAME'] = "_";
+            }
 
             $res = CUser::GetList($by="personal_country", $order="desc", $arrFilter);
             $res->NavStart($arNavParams['nPageSize']);
