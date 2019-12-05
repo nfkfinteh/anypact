@@ -36,7 +36,7 @@ $APPLICATION->IncludeComponent(
     <div class="short-divider"></div>
     <p>Вы можете заключить договор в Сети прямо сейчас! Anypact позволяет найти контрагента, сформировать условия договора, подписать его и приобрести по нему все права и обязанности. Что бы Вы ни делали, покупали или продавали имущество, искали для себя надежного исполнителя работ или сами оказывали услуги - теперь Вам не нужно волноваться о том, будет ли исполнена сделка, которую Вы заключили через Интернет. Ваше соглашение приобретает юридическую силу.</p>
     <div class="owl-carousel owl-theme cards-how">
-        <div>
+        <div style="padding-top: 6px;">
             <a href="/service/#prosto" style="color: #333;text-decoration: none;">
                 <div class="card-how">
                     <i class="icon-main icon-1"></i>
@@ -45,7 +45,7 @@ $APPLICATION->IncludeComponent(
                 </div>
             </a>
         </div>
-        <div>
+        <div style="padding-top: 6px;">
             <a href="/service/#nadezhno" style="color: #333;text-decoration: none;">
                 <div class="card-how">
                     <i class="icon-main icon-2"></i>
@@ -54,7 +54,7 @@ $APPLICATION->IncludeComponent(
                 </div>
             </a>
         </div>
-        <div>
+        <div style="padding-top: 6px;">
             <a href="/service/#bezopasno" style="color: #333;text-decoration: none;">
                 <div class="card-how">
                     <i class="icon-main icon-3"></i>
@@ -63,7 +63,7 @@ $APPLICATION->IncludeComponent(
                 </div>
             </a>
         </div>
-        <div>
+        <div style="padding-top: 6px;">
             <a href="/service/#udobno" style="color: #333;text-decoration: none;">
                 <div class="card-how">
                     <i class="icon-main icon-4"></i>
@@ -195,7 +195,7 @@ $APPLICATION->IncludeComponent(
             responsive: {
                 0: {
                     items: 1,
-                    stagePadding: 40,
+                    stagePadding: 10,
                     margin: 15,
                     dots: false,
                     nav: false
@@ -229,7 +229,7 @@ $APPLICATION->IncludeComponent(
             responsive: {
                 0: {
                     items: 1,
-                    stagePadding: 40,
+                    stagePadding: 10,
                     margin: 15,
                     dots: false,
                     nav: false

@@ -2489,6 +2489,7 @@ input::-webkit-input-placeholder {
 .contact-phone-icon,
 .contact-mail-icon {
     display: inline-block;
+    width: 70%;
 }
 
 .contact-mail-icon,
