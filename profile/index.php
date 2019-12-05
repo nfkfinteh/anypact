@@ -49,7 +49,7 @@ if ($USER->IsAuthorized()){
 
 
 }
-?>
+?>    
     <div class="container">
         <?$APPLICATION->IncludeComponent("bitrix:main.profile","anypact",Array(
                 "USER_PROPERTY_NAME" => "",
@@ -65,5 +65,5 @@ if ($USER->IsAuthorized()){
             )
         );?>
     </div>
-    </div>
+</div>
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

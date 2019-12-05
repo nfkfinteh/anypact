@@ -1,3 +1,4 @@
+<h3>Загрузите и отредактруйте фото</h3>
 <div class="tender cardPact">
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12">
@@ -12,7 +13,7 @@
         </div>
     </div>
 </div>
-<div class="cart-tab" style="display: none">
+<div class="cart-tab" style="display:;">
     <button class="btn btn-nfk js-rem_img">Очистить</button>
     <button class="btn btn-nfk js-submit_selection">Обрезать</button>
 </div>

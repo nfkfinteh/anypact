@@ -51,10 +51,10 @@ $(document).ready(function() {
     });
 
     //добавление изображения
-    $('.user_profile_form_editdata_foto img').on( 'click', function( event ){
-        event.preventDefault();
-        $('#filePicture').click();
-    });
+    // $('.user_profile_form_editdata_foto img').on( 'click', function( event ){
+    //     event.preventDefault();
+    //     $('#filePicture').click();
+    // });
 
     $('#filePicture').on('change', function () {
         var file = this.files;

@@ -34,13 +34,15 @@ if (!empty($arResult['arUser']['UF_ESIA_ID']) && $arResult['arUser']['UF_ESIA_AU
                 <div class="row">
                     <div class="col-xl-5 col-md-6 col-sm-12">
                     <div class="user_profile_form_editdata_foto">
+                        <a href="/profile/edit_photo/">
                         <?if(!empty($arResult['arUser']['IMG_URL'])) {?>
                             <img src="<?=$arResult['arUser']['IMG_URL']?>" style="height: 100%; width: 100%; object-fit: cover;">
                             <img src="<?=SITE_TEMPLATE_PATH?>/img/edit_user_photo.png">
                         <?}else {?>
                             <img src="<?=SITE_TEMPLATE_PATH?>/img/user_profile_no_foto.png" id="edit_user_photo">
                         <?}?>
-                        <input id='filePicture' name="PERSONAL_PHOTO" type="file" accept=".txt,image/*" style="display: none">
+                        </a>
+                        <!-- <input id='filePicture' name="PERSONAL_PHOTO" type="file" accept=".txt,image/*" style="display: none"> -->
                     </div>
                         </div>
                     <div class="col-xl-7 col-md-12 col-sm-12">
