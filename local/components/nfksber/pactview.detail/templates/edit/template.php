@@ -154,6 +154,7 @@
             fade : true,
             thumbnailWidth : 164,
             thumbnailHeight : 101,
+            keyboard : false,
             breakpoints: {
                 450: {
                     thumbnailWidth : 82,
