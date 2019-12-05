@@ -1,5 +1,5 @@
 <div style="display:none;">
-<? print_r($arResult['ITEMS']);?>
+<? //print_r($arResult['ITEMS']);?>
 </div>
 <div class="map-space">
 			<!--YM-->
