@@ -191,7 +191,8 @@ global $USER;
                         $arUrlMenu = array(
                             '/' => 'Главная',								
                             '/service/' => 'О сервисе',
-                            '/help/' => 'Поддержка'
+                            '/help/' => 'Поддержка',
+                            '#' => 'Регистрация/вход'
                         );
                     }
                     $APPLICATION->IncludeComponent("nfksber:navmenu.head", 

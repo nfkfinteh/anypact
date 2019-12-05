@@ -105,7 +105,8 @@ input {
 
 .nav-link {
     cursor: pointer;
-    color: #000;
+    color: #000000;
+    border-bottom: 2px solid #FFFFFF;
 }
 
 .nav-link {
@@ -115,9 +116,11 @@ input {
 .nav-link:hover,
 .nav-link-activ {
     border-bottom: 2px solid #ff6416;
-    color: #000;
+    color: #000000;
 }
-
+.nav-link[href="#"] {
+    display: none;
+}
 .navbar-brand {
     color: #ff6416;
     font-size: 16px;
@@ -142,14 +145,20 @@ input {
     border-radius: 5px;
     box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.2);
     margin-bottom: 20px;
+    margin-top: 43px;
+    position: relative;
+    z-index: 10;
 }
-
 .search .btn-search {
     height: 45px;
     width: 163px;
     margin-right: 28px;
 }
-
+.search>form>input {
+    width: calc(100% - 630px);
+    border: none;
+    height: 40px;
+}
 .search .region,
 .search .deal-type {
     border-left: 1px solid #dddddd;
@@ -723,23 +732,6 @@ input::-webkit-input-placeholder {
     font-weight: normal;
     float: right;
 }
-
-.nav-link {
-    cursor: pointer;
-    color: #000000;
-    border-bottom: 2px solid #FFFFFF;
-}
-
-.nav-link {
-    margin-right: 1em !important;
-}
-
-.nav-link:hover,
-.nav-link-activ {
-    border-bottom: 2px solid #ff6416;
-    color: #000000;
-}
-
 .navbar-brand {
     color: #ff6416;
     font-size: 16px;
@@ -779,65 +771,6 @@ input::-webkit-input-placeholder {
     line-height: 3.6;
     text-decoration: none;
 }
-
-.search {
-    background-color: #ffffff;
-    padding: 15px;
-    border-radius: 5px;
-    box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.2);
-    margin-bottom: 20px;
-    margin-top: 43px;
-    position: relative;
-    z-index: 10;
-}
-
-.search .region,
-.search .deal-type {
-    border-left: 1px solid #dddddd;
-    display: inline-block;
-    padding: 5px 20px 15px 37px;
-}
-
-.search .magnifier::after {
-    content: "";
-    background: url(image/magnifier.png);
-    width: 25px;
-    height: 25px;
-    display: inline-block;
-    position: relative;
-    top: 8px;
-}
-
-.search .region::before {
-    content: "";
-    background: url(image/geopointer.png);
-    width: 27px;
-    height: 29px;
-    display: inline-block;
-    position: relative;
-    top: 8px;
-    right: 17px;
-}
-
-.search .deal-type::before {
-    content: "";
-    background: url(image/gear.png);
-    width: 28px;
-    height: 28px;
-    display: inline-block;
-    position: relative;
-    top: 8px;
-    right: 17px;
-}
-
-.search .deal-type::after {
-    content: ">";
-    display: inline-block;
-    position: relative;
-    left: 13px;
-    transform: rotate(90deg);
-}
-
 
 /*TODO------Карта с объектами--------*/
 
@@ -1108,6 +1041,7 @@ input::-webkit-input-placeholder {
 .contact-phone-icon {
     width: 98px;
     height: 98px;
+    min-width: 98px;
     border: 1px solid #ff6416;
     border-radius: 50%;
     float: left;
@@ -1954,14 +1888,27 @@ input::-webkit-input-placeholder {
 
 @media screen and (max-width: 767px) {
     .search .btn-search {
-        float: none;
-        margin-left: calc(50% - 80px);
+        /*float: none;
+        margin-left: calc(50% - 80px);*/
+    }
+    .search .deal-type::after {
+        display: none;
+    }
+    .search>form>input {
+        width: calc(100% - 85px);
+    }
+    .search .deal-type {
+        border-left: none;
+        padding: 5px 0px 15px 18px;
     }
     .location {
         float: none;
     }
     .phone {
         float: right;
+    }
+    .nav-link[href="#"] {
+        display: block;
     }
 }
 
@@ -2108,22 +2055,6 @@ input::-webkit-input-placeholder {
     float: right;
 }
 
-.nav-link {
-    cursor: pointer;
-    color: #000000;
-    border-bottom: 2px solid #FFFFFF;
-}
-
-.nav-link {
-    margin-right: 1em !important;
-}
-
-.nav-link:hover,
-.nav-link-activ {
-    border-bottom: 2px solid #ff6416;
-    color: #000000;
-}
-
 .navbar-brand {
     color: #ff6416;
     font-size: 16px;
@@ -2157,70 +2088,6 @@ input::-webkit-input-placeholder {
     line-height: 3.6;
     text-decoration: none;
 }
-
-.search {
-    background-color: #ffffff;
-    padding: 15px;
-    border-radius: 5px;
-    box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.2);
-    margin-bottom: 20px;
-    margin-top: 43px;
-    position: relative;
-    z-index: 10;
-}
-
-.search>form>input {
-    width: calc(100% - 630px);
-    border: none;
-    height: 40px;
-}
-.search .region,
-.search .deal-type {
-    border-left: 1px solid #dddddd;
-    display: inline-block;
-    padding: 5px 20px 15px 37px;
-}
-
-.search .magnifier::after {
-    content: "";
-    background: url(image/magnifier.png);
-    width: 25px;
-    height: 25px;
-    display: inline-block;
-    position: relative;
-    top: 8px;
-}
-
-.search .region::before {
-    content: "";
-    background: url(image/geopointer.png);
-    width: 27px;
-    height: 29px;
-    display: inline-block;
-    position: relative;
-    top: 8px;
-    right: 17px;
-}
-
-.search .deal-type::before {
-    content: "";
-    background: url(image/gear.png);
-    width: 28px;
-    height: 28px;
-    display: inline-block;
-    position: relative;
-    top: 8px;
-    right: 17px;
-}
-
-.search .deal-type::after {
-    content: ">";
-    display: inline-block;
-    position: relative;
-    left: 13px;
-    transform: rotate(90deg);
-}
-
 
 /*TODO------Карта с объектами--------*/
 
@@ -2359,12 +2226,14 @@ input::-webkit-input-placeholder {
 .signature img {
     margin-top: 45px;
 }
-
+.main-carousel_sdel .card-deal,
+.cards-how .card-how-container {
+    margin: 5px;
+}
 .cards-how {
     margin-top: 37px;
     margin-bottom: 10px;
 }
-
 .card-how {
     border-radius: 5px;
     box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.2);
@@ -3206,9 +3075,6 @@ input::-webkit-input-placeholder {
     .map-space {
         min-height: 392px;
     }
-    .search>form>input {
-        width: calc(100% - 29px);
-    }
     .location {
         float: right;
     }
@@ -3220,10 +3086,6 @@ input::-webkit-input-placeholder {
 @media screen and (max-width: 767px) {
     h2{
         font-size: 24px;
-    }
-    .search .btn-search {
-        float: none;
-        margin-left: calc(50% - 80px);
     }
     .location {
         float: none;
@@ -3250,8 +3112,17 @@ input::-webkit-input-placeholder {
     h5 {
         font-size: 16px;
     }
+    .container-slider{
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .main-carousel_sdel .card-deal,
+    .cards-how .card-how-container{
+        width: 180px;
+        margin: 5px 0 5px 15px;
+    }
     .card-how {
-        padding: 35px 15px 5px;
+        padding: 35px 10px 5px;
         min-height: 295px;
     }
     .deal-container {
@@ -3264,6 +3135,7 @@ input::-webkit-input-placeholder {
     .contact-mail-icon, .contact-phone-icon {
         width: 60px;
         height: 60px;
+        min-width: 60px;
     }
 
     .contact-container .contact-big-text {

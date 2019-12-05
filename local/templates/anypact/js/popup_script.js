@@ -179,7 +179,8 @@ window.onload = function() {
         var regpopup_form_autorisation = document.getElementById('regpopup_autarisation');
         var regpopup_btn_open_reg = document.getElementById('regpopup_btn_reg');
         var regpopup_form_registration = document.getElementById('regpopup_registration');
-        var open_reg_form = document.getElementById('open_reg_form');        
+        var open_reg_form = document.getElementById('open_reg_form');
+        var regpopup_open_link_mobile = document.querySelector('.nav-link[href="#"]');
         
         document.getElementById('user_password_fild').value = '';
         document.getElementById('user_login_fild').value = '';
@@ -199,6 +200,11 @@ window.onload = function() {
         // открываем окно
         if(document.getElementById('reg_button')){
             regpopup_open_btn.onclick = function(event) {
+                regpopup_bg.style.display = 'block';
+            };
+        }
+        if(document.querySelector('.nav-link[href="#"]')){
+            regpopup_open_link_mobile.onclick = function(event) {
                 regpopup_bg.style.display = 'block';
             };
         }
