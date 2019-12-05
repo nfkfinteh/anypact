@@ -30,7 +30,7 @@
                             <div class="person-conversation-photo">                                
                                 <?if ($user['PERSONAL_PHOTO'] !=''){?>
                                     <? $renderImage = CFile::ResizeImageGet($user['PERSONAL_PHOTO'], Array("width" => 261, "height" => 261), BX_RESIZE_IMAGE_EXACT, false); ?>                               
-                                    <img src="<?=$renderImage['src']?>" alt="Васильев Александр Евгеньевич">
+                                    <img src="<?=$renderImage['src']?>">
                                 <?}else {?>
                                     <span class="user-first-letter" style="padding:13px;font-size: 28px;"><?=substr($user['NAME'], 0, 1);?></span>
                                 <?}?>
