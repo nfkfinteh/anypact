@@ -46,4 +46,6 @@ $APPLICATION->SetTitle("Поиск");
 		)
 	),
 	false
-);?><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
+);?>
+</div></div>
+<?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
