@@ -4,6 +4,10 @@ body {
     font-weight: 300;
 }
 
+textarea{
+    resize: none;
+}
+
 .bgpopup {
     background: url(img/popup_bg.png);
 }
@@ -3167,6 +3171,14 @@ input::-webkit-input-placeholder {
 
 .selectize-input > .item{
     font-size: 16px;
+}
+
+.modal-dialog .form-control{
+    font-size: 14px;
+}
+
+.modal-dialog textarea.form-control{
+    min-height: 80px;
 }
 
 /*------sdelka.php --------*/
