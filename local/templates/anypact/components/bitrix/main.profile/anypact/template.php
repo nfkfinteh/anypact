@@ -70,7 +70,9 @@ if (!empty($arResult['arUser']['UF_ESIA_ID']) && $arResult['arUser']['UF_ESIA_AU
                                 <option value="F">Женский</option>                                        
                             </select>
                             <!-- <input type="text" name="PERSONAL_GENDER" maxlength="50" value="<?=$arResult["arUser"]["PERSONAL_GENDER"]?>" style="width: 40%; float: left; margin-right: 10%;" > -->
-                            <input type="text" name="PERSONAL_BIRTHDAY" maxlength="50" value="<?=$arResult["arUser"]["PERSONAL_BIRTHDAY"]?>" style="width: 50%;">
+                            <span id="param_selected_activ_date">
+                                <input type="text" class="input_date" name="PERSONAL_BIRTHDAY" maxlength="50" value="<?=$arResult["arUser"]["PERSONAL_BIRTHDAY"]?>" style="width: 50%;" readonly>
+                            </span>
                         </div>                    
                         <div class="form-group">
                             <? if (!empty($arResult['arUser']['UF_ETAG_ESIA']) && $arResult['arUser']['UF_ESIA_AUT']) {?>                                                
