@@ -3133,6 +3133,41 @@ input::-webkit-input-placeholder {
     z-index: 100;
     background-color: #ffffff87;
 }
+.selectbox-select{
+    margin: 50px 0 0 0;
+}
+
+.selectbox-select .selectize-input{
+    border: solid 1px #ff6416;
+    border-radius: 5px;
+    padding: 15px 17px;
+}
+
+.selectbox-select .selectize-input input{
+    color: #000000;
+    font-family: inherit;
+    font-size: 16px;
+    line-height: 18px;
+    -webkit-font-smoothing: inherit;
+    height: auto;
+}
+
+.selectbox-select .selectize-input input::-webkit-input-placeholder {color:#000000;}
+.selectbox-select .selectize-input input::-moz-placeholder          {color:#000000;}/* Firefox 19+ */
+.selectbox-select .selectize-input input:-moz-placeholder           {color:#000000;}/* Firefox 18- */
+.selectbox-select .selectize-input input:-ms-input-placeholder      {color:#000000;}
+
+.selectbox-select .selectize-dropdown{
+    border: 1px solid #ff6416;
+}
+
+.selectize-control.single .selectize-input:after{
+    content: "\e114";
+}
+
+.selectize-input > .item{
+    font-size: 16px;
+}
 
 /*------sdelka.php --------*/
 
