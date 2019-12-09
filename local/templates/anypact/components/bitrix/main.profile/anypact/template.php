@@ -65,7 +65,8 @@ if (!empty($arResult['arUser']['UF_ESIA_ID']) && $arResult['arUser']['UF_ESIA_AU
                         </div>
                         <div class="form-group">
                             <label style="width: 100%;"><?=GetMessage("DATAR_POL")?></label>
-                            <select name="PERSONAL_GENDER" style="width: 48%;height: 47px;float: left;margin-right: 5px;">                            
+                            <select name="PERSONAL_GENDER" style="width: 48%;height: 47px;float: left;margin-right: 5px;">
+                                <option value="" <?if(empty($arResult['arUser']['PERSONAL_GENDER'])):?>selected<?endif?>>не установлено</option>
                                 <option value="M" <?if($arResult['arUser']['PERSONAL_GENDER']=='M'):?>selected<?endif?>>Мужской</option>
                                 <option value="F" <?if($arResult['arUser']['PERSONAL_GENDER']=='F'):?>selected<?endif?>>Женский</option>
                             </select>
