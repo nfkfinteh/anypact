@@ -3,7 +3,7 @@ global $USER;
 
 $imgData = $_FILES;
 $data = $_POST;
-echo json_encode($data);
+
 if (!\Bitrix\Main\Loader::includeModule('iblock')) {
     echo json_encode([ 'VALUE'=>'Не подключен модуль инфоблоки', 'TYPE'=> 'ERROR']);
     die();
