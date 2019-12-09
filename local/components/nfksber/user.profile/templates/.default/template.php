@@ -9,6 +9,16 @@
                 <h3 class="font-weight-bold mt-4"><?=$arResult['USER']['LAST_NAME']?> <?=$arResult['USER']['NAME']?> <?=$arResult['USER']['SECOND_NAME']?></h3>
                 <a href="#" class="btn btn-nfk btn-uprofile" data-toggle="modal" data-target=".bd-comment-modal-sm">Оставить отзыв</a>
                 <a href="#" class="btn btn-nfk btn-uprofile" data-toggle="modal" data-target=".bd-message-modal-sm">Отправить сообщение</a>
+                <?if($arResult['USER']['PERSONAL_GENDER']=='M'):?>
+                    <span class="d-block mt-4">Пол: мужской</span>
+                <?else:?>
+                    <span class="d-block mt-4">Пол: женский</span>
+                <?endif?>
+
+                <?if(!empty($arResult['USER']['PERSONAL_BIRTHDAY'])):?>
+                    <span class="d-block mt-4">Дата рождения: <?=$arResult['USER']['PERSONAL_BIRTHDAY']?></span>
+                <?endif?>
+
                 <span class="d-block mt-4">Частное лицо</span>
                 <span class="d-block mt-3"><?=$arResult['USER']['PERSONAL_CITY']?>, <?=$arResult['USER']['PERSONAL_STREET']?></span>
                 <?if($arResult['USER']['UF_ESIA_AUT']==1):?>

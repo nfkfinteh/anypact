@@ -146,6 +146,24 @@ class CDemoSqr extends CBitrixComponent
         return $result;
     }
 
+    public function getListCity(){
+        $arFilter = [
+            'IBLOCK_ID'=>7,
+            'ACTIVE'=>'Y',
+        ];
+        $arSelect = [
+            'IBLOCK_ID',
+            'ID',
+            'NAME'
+        ];
+        $res = CIBlockElement::GetList(['NAME'=>'ASC'], $arFilter, false, false, $arSelect);
+        while ($obj = $res->GetNext(true, false)){
+            $result[] = $obj['NAME'];
+        }
+        return $result;
+
+    }
+
     public function executeComponent()
     {
         if($this->startResultCache())
@@ -157,6 +175,7 @@ class CDemoSqr extends CBitrixComponent
             $this->arResult["PROPERTY"] = $this->getProperty($this->arResult["INFOBLOCK_ID"], $this->arResult["ELEMENT_ID"]);
             $this->arResult["INFOBLOCK_SECTION_LIST"] = $this->getTreeCategory($this->arResult["INFOBLOCK_ID"]);
             $this->arResult['DOGOVOR']['CNT'] =  $this->getCountDogovor($this->arResult["USER_ID"]);
+            $this->arResult['LIST_CITY'] = $this->getListCity();
             
             // данные владельца сделки           
             $UserContractHolder = CUser::GetByID($this->arResult["PROPERTY"]["PACT_USER"]["VALUE"]);

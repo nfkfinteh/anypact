@@ -91,6 +91,15 @@
                 <div id="param_selected_activ_date" class="view_text">Активно до: <input type="text" id="param_selected_activ_date_input" name="ACTIVE_DATE" value="" disabled ><span class="glyphicon glyphicon-calendar"></span></div>
             </div>
             <h3>Дата активности объявления</h3><span>(По умолчанию 10 дней)</span>
+
+            <select id="select-city" class="selectbox-select" placeholder="Выбор города">
+                <option value=""><?=$item?>Выбор города</option>
+                <? foreach($arResult['LIST_CITY'] as $item):?>
+                    <option value="<?=$item?>"><?=$item?></option>
+                <? endforeach?>
+            </select>
+            <h3>Город</h3><span>Выберите город</span>
+
             <button class="btn btn-nfk" id="save_ad" style="margin-top:50px;">Сохранить</button>              
 
         </div>            

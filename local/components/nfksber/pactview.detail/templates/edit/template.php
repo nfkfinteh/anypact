@@ -58,6 +58,20 @@
         <!-- Правая часть карточки -->
         <div class="col-lg-4 col-md-4 col-sm-4 cardPact-rightPanel">
             <h1><span id="cardPact-EditText-Summ" contenteditable="true"><?=$arResult["PROPERTY"]["SUMM_PACT"]["VALUE"]?></span> руб.</h1>
+
+            <select id="select-city" class="selectbox-select" placeholder="Выбор города">
+                <?if(!empty($arResult['PROPERTY']['LOCATION_CITY']['VALUE'])):?>
+                    <option value=""><?=$item?>Выбор города</option>
+                <?endif?>
+                <? foreach($arResult['LIST_CITY'] as $item):?>
+                    <?if($arResult['PROPERTY']['LOCATION_CITY']['VALUE'] == $item):?>
+                        <option value="<?=$item?>" selected><?=$item?></option>
+                    <?else:?>
+                        <option value="<?=$item?>"><?=$item?></option>
+                    <?endif?>
+                <? endforeach?>
+            </select>
+
             <button class="btn btn-nfk " id="save_summ" style="margin-top:30px;">Сохранить</button>
             <!--Срок объявления -->
             <h4>Объявление активно до: <? print_r($arResult["ELEMENT"]["DATE_ACTIVE_TO"]); ?></h4>

@@ -116,7 +116,7 @@ endif;?>
 			<td><?=GetMessage("SEARCH_BRACKETS_ALT")?></td>
 		</tr>
 	</table>
-<?elseif(count($arResult["USERS"])>0):?>
+<?elseif(!empty($arResult["USERS"])):?>
     <?//блок  пользователями?>
     <div class="row">
         <div class="col-lg-12">
