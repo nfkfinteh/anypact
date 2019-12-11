@@ -26,6 +26,11 @@ $data = array(
 );
 
 $result = $entity_data_class::add($data);
+$mess = "Со страницы /help/ отправлено сообщение \n";
+$mess .= "ФИО:".$data['FIO']." \n";
+$mess .= "email:".$data['FIO']." \n";
+$mess .= "сообщение:".$data['FIO']." \n";
+mail('info@anypact.ru', 'Сообщение с контактной формы', $mess);
 // возвращаем id записи
 if (!$result->isSuccess()) {
     //$result = $result->getErrorMessages();
