@@ -35,8 +35,7 @@ $(document).ready(function() {
         e.preventDefault();
         let that = $(this);
 
-        var res = getURLData(that).then(function(data) {          
-            console.log(data);
+        var res = getURLData(that).then(function(data) {
             $result = JSON.parse(data);
 
             if($result['TYPE']=='ERROR'){
@@ -103,4 +102,9 @@ $(document).ready(function() {
             input.val(0);
         }
     });
+
+    $('#param_selected_activ_date').on('click', function(){
+        BX.calendar({node:this, field:'PERSONAL_BIRTHDAY', form: '', bTime: true, bHideTime: true})
+    });
+
 });

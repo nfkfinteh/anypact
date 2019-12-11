@@ -1,4 +1,10 @@
 $(document).ready(function() {
+
+    $('#select-city').selectize({
+        sortField: 'text'
+    });
+
+
     // Выбор категории
     $('#choice_category li a').on('click', function() {
         let selected_item = $(this);
@@ -85,9 +91,6 @@ $(document).ready(function() {
     });
 
     $('#param_selected_activ_date').on('click', function(){
-
-
-
         BX.calendar({node:this, field:'ACTIVE_DATE', form: '', bTime: true, bHideTime: true})
     });
 
@@ -117,7 +120,10 @@ $(document).ready(function() {
             let adSum = document.getElementById('cardPact-EditText-Summ').textContent;
             let date = document.getElementById('param_selected_activ_date_input').value;
             let adSection = $('#param_selected_category').attr('data-id');
+            let adCity = $('#select-city').val();
             let prop = {};
+
+            prop['LOCATION_CITY'] = adCity;
 
             //html контент
             let arAdDescript = {};
@@ -134,6 +140,11 @@ $(document).ready(function() {
 
             if(adSection === undefined){
                 alert('Раздел обязателен');
+                return;
+            }
+
+            if(adCity.length == 0){
+                alert('Город обязателен');
                 return;
             }
 

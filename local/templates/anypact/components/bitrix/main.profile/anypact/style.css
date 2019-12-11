@@ -161,6 +161,10 @@ input:disabled {
     margin-bottom: 0;
 }
 
+.input_date{
+    cursor:pointer;
+}
+
 /*@media (min-width: 1201px) {}
 
 @media (max-width: 1200px) {}

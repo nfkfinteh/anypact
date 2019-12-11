@@ -2,6 +2,10 @@ $(document).ready(function() {
     var check = 0;
     var ID_Object = $("#params_object").attr("data")
 
+    $('#select-city').selectize({
+        sortField: 'text'
+    });
+
     $("#save_descript").on('click', function() {
 
         var text_descript = $(".cardPact-EditText-Descript .editbox").html();        
@@ -35,10 +39,12 @@ $(document).ready(function() {
         }
     });
     $("#save_summ").on('click', function() {
-        var text_descript = $("#cardPact-EditText-Summ").text();        
+        var text_descript = $("#cardPact-EditText-Summ").text();
+        var city = $('#select-city').val();
         $.post(
             "/response/ajax/up_pact_text.php", {
                 text: text_descript,
+                city: city,
                 id_element: ID_Object,
                 atrr_text: 'summ'
             },
