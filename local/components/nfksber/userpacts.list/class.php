@@ -106,8 +106,6 @@ class CDemoSqr extends CBitrixComponent
         /* Договора подписанные с одной стороны храняться в HL блоке со статусом 1 
             договора пользователя ожидающие акцепта
         */
-
-        $now = new DateTime();
         $arFilter = Array(
             Array(
                 "LOGIC" => "AND",
@@ -116,11 +114,8 @@ class CDemoSqr extends CBitrixComponent
                 ),
                 Array(                 
                  "UF_ID_USER_A" => $userId
-                ),
-                Array(
-                ">UF_TIME_SEND_USER_A" => $now->modify('-7 day')->format('d.m.Y H:i:s')
-                ),
-            )
+                )                   
+             )
          );
         $arSend_Contract = array();
         $arSend_Contract = $this->getSendContracts($UserID, $arFilter);
@@ -186,7 +181,6 @@ class CDemoSqr extends CBitrixComponent
     private function getSendUserContract($userId){
         /* Договора подписанные текущим пользователем
         */
-        $now = new DateTime();
         $arFilter = Array(
             Array(
                 "LOGIC" => "AND",
@@ -195,13 +189,10 @@ class CDemoSqr extends CBitrixComponent
                 ),
                 Array(                 
                  "UF_ID_USER_B" => $userId
-                ),
-                Array(
-                    ">UF_TIME_SEND_USER_B" => $now->modify('-7 day')->format('d.m.Y H:i:s')
-                )
+                )                   
              )
          );
-        $arSend_Contract = $this->getSendContracts($UserID, $arFilter, false);
+        $arSend_Contract = $this->getSendContracts($UserID, $arFilter, false); 
         
         // договора измененные и ожидающие подписания
 

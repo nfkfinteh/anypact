@@ -330,6 +330,7 @@ window.onload = function() {
           let login = document.getElementById('user_aut_login').value
           let password  = document.getElementById('user_aut_pass').value          
           var res = getAutorisation(login, password).then(function(data) {
+              console.log(data)
                 $result = JSON.parse(data);
                 if($result['TYPE']=='ERROR'){
                     document.getElementById('message_error_aut').innerHTML = '&#8226; '+$result['VALUE'];

@@ -15,5 +15,5 @@
 </div>
 <div class="cart-tab" style="display:;">
     <button class="btn btn-nfk js-rem_img">Очистить</button>
-    <button class="btn btn-nfk js-submit_selection">Обрезать</button>
+    <button class="btn btn-nfk js-submit_selection">Обрезать и сохранить</button>
 </div>

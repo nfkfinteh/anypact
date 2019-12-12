@@ -34,7 +34,8 @@ $(document).ready(function(){
                         alert(result['VALUE']);
                     }
                     if(result['TYPE']=='SUCCESS'){
-                        location.reload();
+                        //location.reload();
+                        document.location.href = '/profile/';
                     }
                 }
             });
@@ -112,7 +113,7 @@ $(document).ready(function(){
 
         //imageSection.cancelSelection();
         $('.cardPact-box').html(div);
-        $('.cart-tab').hide();
+        //$('.cart-tab').hide();
         $('.cart-tab').attr('data-id', '');
 
         delete arFiles[id];
