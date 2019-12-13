@@ -82,6 +82,7 @@ if(!empty($userId)){
     unlink($result);
 
 
+    ob_clean();
     if($status){
         echo json_encode(['TYPE'=> 'SUCCESS']);
     }
