@@ -1,0 +1,354 @@
+22.01.2019 15:27:18-------------------------------------------------
+Array
+(
+    [SERVER] => Array
+        (
+            [UNIQUE_ID] => XEcMJga4d96YhL@-4CHvkQAAAAM
+            [REMOTE_USER] => 
+            [HTTP_X_REAL_IP] => 89.151.182.66
+            [HTTP_X_FORWARDED_FOR] => 89.151.182.66
+            [HTTP_X_FORWARDED_PROTO] => http
+            [HTTP_HOST] => anypact.nfksber.ru
+            [HTTP_CONNECTION] => close
+            [HTTP_UPGRADE_INSECURE_REQUESTS] => 1
+            [HTTP_USER_AGENT] => Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36
+            [HTTP_ACCEPT] => text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+            [HTTP_ACCEPT_ENCODING] => gzip, deflate
+            [HTTP_ACCEPT_LANGUAGE] => ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7
+            [HTTP_COOKIE] => _ym_uid=1545030653914794223; _ym_d=1545030653; BX_USER_ID=49c59359b40d5a42df2b5ebcf6b40cdd; BITRIX_SM_LOGIN=admin_anypact; BITRIX_SM_SOUND_LOGIN_PLAYED=Y; BITRIX_SM_DSC=44; PHPSESSID=bde719c0a4dfbad7fe7c780419c60973
+            [PATH] => /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin
+            [SERVER_SIGNATURE] => 
+            [SERVER_SOFTWARE] => Apache/2.4.6 (CentOS) OpenSSL/1.0.2k-fips PHP/5.6.32
+            [SERVER_NAME] => anypact.nfksber.ru
+            [SERVER_ADDR] => 127.0.0.1
+            [SERVER_PORT] => 80
+            [REMOTE_ADDR] => 127.0.0.1
+            [DOCUMENT_ROOT] => /var/www/domains/anypact.nfksber.ru
+            [REQUEST_SCHEME] => http
+            [CONTEXT_PREFIX] => 
+            [CONTEXT_DOCUMENT_ROOT] => /var/www/domains/anypact.nfksber.ru
+            [SERVER_ADMIN] => root@localhost
+            [SCRIPT_FILENAME] => /var/www/domains/anypact.nfksber.ru/esia/open_gu.php
+            [REMOTE_PORT] => 52940
+            [GATEWAY_INTERFACE] => CGI/1.1
+            [SERVER_PROTOCOL] => HTTP/1.0
+            [REQUEST_METHOD] => GET
+            [QUERY_STRING] => 
+            [REQUEST_URI] => /esia/open_gu.php
+            [SCRIPT_NAME] => /esia/open_gu.php
+            [PHP_SELF] => /esia/open_gu.php
+            [REQUEST_TIME_FLOAT] => 1548160038.216
+            [REQUEST_TIME] => 1548160038
+        )
+
+    [REQUEST] => Array
+        (
+        )
+
+    [POST] => Array
+        (
+        )
+
+    [GET] => Array
+        (
+        )
+
+    [COOKIE] => Array
+        (
+            [_ym_uid] => 1545030653914794223
+            [_ym_d] => 1545030653
+            [BX_USER_ID] => 49c59359b40d5a42df2b5ebcf6b40cdd
+            [BITRIX_SM_LOGIN] => admin_anypact
+            [BITRIX_SM_SOUND_LOGIN_PLAYED] => Y
+            [BITRIX_SM_DSC] => 44
+            [PHPSESSID] => bde719c0a4dfbad7fe7c780419c60973
+        )
+
+    [SESSION] => Array
+        (
+            [SESS_IP] => 127.0.0.1
+            [SESS_TIME] => 1548160036
+            [BX_SESSION_SIGN] => abb71d18e497b2026a46579c741a3452
+            [fixed_session_id] => c9a8b2992ceeeeec950569c40bf1729d
+            [VOTE] => Array
+                (
+                    [VOTES] => Array
+                        (
+                        )
+
+                )
+
+            [BX_LOGIN_NEED_CAPTCHA_LOGIN] => Array
+                (
+                    [LOGIN] => admin_anypact
+                    [POLICY_ATTEMPTS] => 0
+                )
+
+            [UNIQUE_KEY] => aa715c83ec02c29219623cee0aa0e4b1
+            [LOCAL_REDIRECTS] => Array
+                (
+                    [C] => 0
+                    [R] => http://anypact.nfksber.ru/bitrix/admin/iblock_element_edit.php?IBLOCK_ID=3&type=4&ID=12&lang=ru&find_section_section=-1&WF=Y
+                )
+
+            [SESS_AUTH] => Array
+                (
+                    [POLICY] => Array
+                        (
+                            [SESSION_TIMEOUT] => 24
+                            [SESSION_IP_MASK] => 0.0.0.0
+                            [MAX_STORE_NUM] => 10
+                            [STORE_IP_MASK] => 0.0.0.0
+                            [STORE_TIMEOUT] => 525600
+                            [CHECKWORD_TIMEOUT] => 525600
+                            [PASSWORD_LENGTH] => 6
+                            [PASSWORD_UPPERCASE] => N
+                            [PASSWORD_LOWERCASE] => N
+                            [PASSWORD_DIGITS] => N
+                            [PASSWORD_PUNCTUATION] => N
+                            [LOGIN_ATTEMPTS] => 0
+                            [PASSWORD_REQUIREMENTS] => Пароль должен быть не менее 6 символов длиной.
+                        )
+
+                    [AUTHORIZED] => Y
+                    [USER_ID] => 1
+                    [LOGIN] => admin_anypact
+                    [LOGIN_COOKIES] => admin_anypact
+                    [EMAIL] => solovyow_iv@nfksber.ru
+                    [PASSWORD_HASH] => mcC5fSfz52c453fd0f4cf72cd8098453cdd55077
+                    [TITLE] => 
+                    [NAME] => Игорь Соловьёв
+                    [FIRST_NAME] => Игорь
+                    [SECOND_NAME] => Владимирович
+                    [LAST_NAME] => Соловьёв
+                    [PERSONAL_PHOTO] => 3
+                    [PERSONAL_GENDER] => M
+                    [ADMIN] => 1
+                    [AUTO_TIME_ZONE] => 
+                    [TIME_ZONE] => 
+                    [TIME_ZONE_OFFSET] => 
+                    [APPLICATION_ID] => 
+                    [BX_USER_ID] => 49c59359b40d5a42df2b5ebcf6b40cdd
+                    [GROUPS] => Array
+                        (
+                            [0] => 1
+                            [1] => 2
+                            [2] => 3
+                            [3] => 4
+                        )
+
+                    [CONTROLLER_ADMIN] => 
+                )
+
+            [BX_LOGIN_NEED_CAPTCHA] => 
+            [AUTH_ACTIONS_PERFORMED] => Array
+                (
+                )
+
+            [BX_SESSION_COUNTER] => 107
+            [BX_SESSION_TERMINATE_TIME] => 1548161476
+            [SESS_ADMIN] => Array
+                (
+                    [tbl_user] => Array
+                        (
+                        )
+
+                    [tbl_iblock_element_a16b0b39889181577ded41b49cd80b1b] => Array
+                        (
+                        )
+
+                )
+
+            [hasHotKeys] => 1
+            [SS_B24NET_STATE] => 1
+            [SHOW_SQL_STAT] => N
+            [SESS_INCLUDE_AREAS] => 
+            [3ec3545ef159089e79db980178f310f0SESS_PAGEN_1] => 1
+            [3ec3545ef159089e79db980178f310f0SESS_ALL_1] => 
+            [f32232b9bb66b07c6e690d18754d57d5SESS_PAGEN_1] => 1
+            [f32232b9bb66b07c6e690d18754d57d5SESS_ALL_1] => 
+            [ADMIN_CUSTOM_FIELDS] => Array
+                (
+                )
+
+        )
+
+)
+22.01.2019 15:49:09-------------------------------------------------
+Array
+(
+    [SERVER] => Array
+        (
+            [UNIQUE_ID] => XEcRRXaiJxYI@4jFJD@1wAAAAAU
+            [REMOTE_USER] => 
+            [HTTP_X_REAL_IP] => 89.151.182.66
+            [HTTP_X_FORWARDED_FOR] => 89.151.182.66
+            [HTTP_X_FORWARDED_PROTO] => http
+            [HTTP_HOST] => anypact.nfksber.ru
+            [HTTP_CONNECTION] => close
+            [HTTP_CACHE_CONTROL] => max-age=0
+            [HTTP_UPGRADE_INSECURE_REQUESTS] => 1
+            [HTTP_USER_AGENT] => Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36
+            [HTTP_ACCEPT] => text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+            [HTTP_ACCEPT_ENCODING] => gzip, deflate
+            [HTTP_ACCEPT_LANGUAGE] => ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7
+            [HTTP_COOKIE] => _ym_uid=1545030653914794223; _ym_d=1545030653; BX_USER_ID=49c59359b40d5a42df2b5ebcf6b40cdd; BITRIX_SM_LOGIN=admin_anypact; BITRIX_SM_SOUND_LOGIN_PLAYED=Y; BITRIX_SM_DSC=44; PHPSESSID=bde719c0a4dfbad7fe7c780419c60973
+            [PATH] => /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin
+            [SERVER_SIGNATURE] => 
+            [SERVER_SOFTWARE] => Apache/2.4.6 (CentOS) OpenSSL/1.0.2k-fips PHP/5.6.32
+            [SERVER_NAME] => anypact.nfksber.ru
+            [SERVER_ADDR] => 127.0.0.1
+            [SERVER_PORT] => 80
+            [REMOTE_ADDR] => 127.0.0.1
+            [DOCUMENT_ROOT] => /var/www/domains/anypact.nfksber.ru
+            [REQUEST_SCHEME] => http
+            [CONTEXT_PREFIX] => 
+            [CONTEXT_DOCUMENT_ROOT] => /var/www/domains/anypact.nfksber.ru
+            [SERVER_ADMIN] => root@localhost
+            [SCRIPT_FILENAME] => /var/www/domains/anypact.nfksber.ru/esia/open_gu.php
+            [REMOTE_PORT] => 53194
+            [GATEWAY_INTERFACE] => CGI/1.1
+            [SERVER_PROTOCOL] => HTTP/1.0
+            [REQUEST_METHOD] => GET
+            [QUERY_STRING] => 
+            [REQUEST_URI] => /esia/open_gu.php
+            [SCRIPT_NAME] => /esia/open_gu.php
+            [PHP_SELF] => /esia/open_gu.php
+            [REQUEST_TIME_FLOAT] => 1548161349.13
+            [REQUEST_TIME] => 1548161349
+        )
+
+    [REQUEST] => Array
+        (
+        )
+
+    [POST] => Array
+        (
+        )
+
+    [GET] => Array
+        (
+        )
+
+    [COOKIE] => Array
+        (
+            [_ym_uid] => 1545030653914794223
+            [_ym_d] => 1545030653
+            [BX_USER_ID] => 49c59359b40d5a42df2b5ebcf6b40cdd
+            [BITRIX_SM_LOGIN] => admin_anypact
+            [BITRIX_SM_SOUND_LOGIN_PLAYED] => Y
+            [BITRIX_SM_DSC] => 44
+            [PHPSESSID] => bde719c0a4dfbad7fe7c780419c60973
+        )
+
+    [SESSION] => Array
+        (
+            [SESS_IP] => 127.0.0.1
+            [SESS_TIME] => 1548161302
+            [BX_SESSION_SIGN] => abb71d18e497b2026a46579c741a3452
+            [fixed_session_id] => c9a8b2992ceeeeec950569c40bf1729d
+            [VOTE] => Array
+                (
+                    [VOTES] => Array
+                        (
+                        )
+
+                )
+
+            [BX_LOGIN_NEED_CAPTCHA_LOGIN] => Array
+                (
+                    [LOGIN] => admin_anypact
+                    [POLICY_ATTEMPTS] => 0
+                )
+
+            [UNIQUE_KEY] => aa715c83ec02c29219623cee0aa0e4b1
+            [LOCAL_REDIRECTS] => Array
+                (
+                    [C] => 0
+                    [R] => http://anypact.nfksber.ru/bitrix/admin/user_admin.php?lang=ru
+                )
+
+            [SESS_AUTH] => Array
+                (
+                    [POLICY] => Array
+                        (
+                            [SESSION_TIMEOUT] => 24
+                            [SESSION_IP_MASK] => 0.0.0.0
+                            [MAX_STORE_NUM] => 10
+                            [STORE_IP_MASK] => 0.0.0.0
+                            [STORE_TIMEOUT] => 525600
+                            [CHECKWORD_TIMEOUT] => 525600
+                            [PASSWORD_LENGTH] => 6
+                            [PASSWORD_UPPERCASE] => N
+                            [PASSWORD_LOWERCASE] => N
+                            [PASSWORD_DIGITS] => N
+                            [PASSWORD_PUNCTUATION] => N
+                            [LOGIN_ATTEMPTS] => 0
+                            [PASSWORD_REQUIREMENTS] => Пароль должен быть не менее 6 символов длиной.
+                        )
+
+                    [AUTHORIZED] => Y
+                    [USER_ID] => 1
+                    [LOGIN] => admin_anypact
+                    [LOGIN_COOKIES] => admin_anypact
+                    [EMAIL] => solovyow_iv@nfksber.ru
+                    [PASSWORD_HASH] => mcC5fSfz52c453fd0f4cf72cd8098453cdd55077
+                    [TITLE] => 
+                    [NAME] => Игорь Соловьёв
+                    [FIRST_NAME] => Игорь
+                    [SECOND_NAME] => Владимирович
+                    [LAST_NAME] => Соловьёв
+                    [PERSONAL_PHOTO] => 3
+                    [PERSONAL_GENDER] => M
+                    [ADMIN] => 1
+                    [AUTO_TIME_ZONE] => 
+                    [TIME_ZONE] => 
+                    [TIME_ZONE_OFFSET] => 
+                    [APPLICATION_ID] => 
+                    [BX_USER_ID] => 49c59359b40d5a42df2b5ebcf6b40cdd
+                    [GROUPS] => Array
+                        (
+                            [0] => 1
+                            [1] => 2
+                            [2] => 3
+                            [3] => 4
+                        )
+
+                    [CONTROLLER_ADMIN] => 
+                )
+
+            [BX_LOGIN_NEED_CAPTCHA] => 
+            [AUTH_ACTIONS_PERFORMED] => Array
+                (
+                )
+
+            [BX_SESSION_COUNTER] => 136
+            [BX_SESSION_TERMINATE_TIME] => 1548162606
+            [SESS_ADMIN] => Array
+                (
+                    [tbl_user] => Array
+                        (
+                        )
+
+                    [tbl_iblock_element_a16b0b39889181577ded41b49cd80b1b] => Array
+                        (
+                        )
+
+                )
+
+            [hasHotKeys] => 1
+            [SS_B24NET_STATE] => 1
+            [SHOW_SQL_STAT] => N
+            [SESS_INCLUDE_AREAS] => 
+            [3ec3545ef159089e79db980178f310f0SESS_PAGEN_1] => 1
+            [3ec3545ef159089e79db980178f310f0SESS_ALL_1] => 
+            [f32232b9bb66b07c6e690d18754d57d5SESS_PAGEN_1] => 1
+            [f32232b9bb66b07c6e690d18754d57d5SESS_ALL_1] => 
+            [ADMIN_CUSTOM_FIELDS] => Array
+                (
+                )
+
+            [esia_oauth_state] => b93a2305-b2b3-343e-1d02-0bfdd50c052e
+        )
+
+)

@@ -31,12 +31,12 @@ class UserProfile extends CBitrixComponent
     public function executeComponent()
     {
         global $USER;
-        if($this->startResultCache($USER))
-        {
+        // if($this->startResultCache($USER))
+        // {
             //$this->arResult = array_merge($this->arResult, $this->paramsUser($this->arParams));
             $this->arResult = $this->getUserInfo($USER);
             $this->includeComponentTemplate();
-        }
+        // }
         
         return $this->arResult;
     }

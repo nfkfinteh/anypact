@@ -34,8 +34,8 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            background: url(upload/image/bg-points.png) calc(24vw - 1088px) calc(34vh - 212px) no-repeat,
-            url(upload/image/bg-points.png) 59vw 50vh no-repeat;
+            background: url(image/bg-points.png) calc(24vw - 1088px) calc(34vh - 212px) no-repeat,
+            url(image/bg-points.png) 59vw 50vh no-repeat;
         }
         h1{
             font-size: 72px;
@@ -55,7 +55,7 @@
 <body>
 
 <div class="container">
-    <img src="/upload/image/logo-opening-soon.png" alt="AnyPact">
+    <img src="image/logo-opening-soon.png" alt="AnyPact">
     <h1>Скоро открытие</h1>
 </div>
 

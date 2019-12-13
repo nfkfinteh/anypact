@@ -43,13 +43,11 @@ if ($USER->IsAuthorized()){
         //print_r($info);
         //echo "</pre>";
         $USER->Update($USER->GetID(), $fields);
+        header("Refresh: 0");
     }
-    // todo  если запись не верифицирована то выдавать предупреждение
-    // Ваша запись не подтверждена, вам необходимо  
-
 
 }
-?>    
+?>
     <div class="container">
         <?$APPLICATION->IncludeComponent("bitrix:main.profile","anypact",Array(
                 "USER_PROPERTY_NAME" => "",
@@ -65,5 +63,5 @@ if ($USER->IsAuthorized()){
             )
         );?>
     </div>
-</div>
+    </div>
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

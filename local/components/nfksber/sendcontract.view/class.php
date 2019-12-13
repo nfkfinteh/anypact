@@ -80,7 +80,7 @@ class CDemoSqr extends CBitrixComponent
         $arUser_B = $rsUser->Fetch();
         $hash_B = md5($arSendItem['UF_VER_CODE_USER_B']);
         
-        $Send_text = '<table style="width:100%; margin: 50px 0;">';
+        $Send_text = '<table style="width:100%; margin 50px 0;">';
         $Send_text .= '<tr>';
         $Send_text .= '<td style="width:44%">';
         $Send_text .= '<b>Подписано простой электронной подписью:</b>';

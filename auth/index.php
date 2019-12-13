@@ -27,7 +27,6 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 			);
 		$user = new CUser;
 		$user->Update($getIDUser, $fields);
-		$user->Authorize($getIDUser);
 		?>
 			<div class="d-flex flex-column align-items-center text-center mt-5 pt-5 mb-5" >
 				<img src="<?=SITE_TEMPLATE_PATH?>/image/ok_reg.png" alt="Необходима регистрация">
