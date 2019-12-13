@@ -74,6 +74,10 @@ input {
     float: left;
     cursor:pointer;
 }
+.mobile-location .location{
+    color: #ff6416;
+    text-decoration: none;
+}
 
 .location::after {
     content: "";
