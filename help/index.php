@@ -160,17 +160,23 @@ global $USER;
 
     }
     send_mess_button.onclick = function(){
-        let mess_form = document.getElementById('mess_form')
+        let mess_form = document.getElementById('mess_form');
         let strObject = []
-        strObject[0]  = document.getElementById('textFIO').value
-        strObject[1]  = document.getElementById('textEmail').value
-        strObject[2]  = document.getElementById('textText').value
+        strObject[0]  = document.getElementById('textFIO').value;
+        strObject[1]  = document.getElementById('textEmail').value;
+        strObject[2]  = document.getElementById('textText').value;
+
+        if(strObject[2].length==0){
+            showResult('#popup-error','Ошибка сохранения', 'Введите текст сообщения');
+            return;
+        }
 
         var res = sendMess(strObject).then(function(data) {
             if(data == 'ERROR'){
-                console.log('Сообщение не создано');
+                showResult('#popup-error','Ошибка сохранения');
             }
             else{
+                //showResult('#popup-success', 'Срок объявления продлен');
                 mess_form.innerHTML = '<h3>Ваша заявка отправлена!</h3>'
             }
 

@@ -10,6 +10,10 @@
     position: relative;
 }
 
+.cardPact .cardPact-box.cardPact-box_img{
+    margin-top: 60px;
+}
+
 .cardPact .cardPact-box-BoxMainImg {
     width: 150px;
     height: 150px;

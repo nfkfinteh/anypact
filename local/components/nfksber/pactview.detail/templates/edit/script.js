@@ -7,8 +7,14 @@ $(document).ready(function() {
     });
 
     $("#save_descript").on('click', function() {
+        var text_descript = $(".cardPact-EditText-Descript .editbox").html().trim();
+        cntDescript = $(".cardPact-EditText-Descript .editbox").text().trim().length;
 
-        var text_descript = $(".cardPact-EditText-Descript .editbox").html();        
+        if(cntDescript==0) {
+            showResult('#popup-error','Ошибка сохранения', 'Поле обязательно для заполнения');
+            return;
+        }
+
         $.post(
             "/response/ajax/up_pact_text.php", {
                 text: text_descript,
@@ -19,12 +25,25 @@ $(document).ready(function() {
         );
 
         function onAjaxSuccess(data) {
-
+            $result = JSON.parse(data);
+            if($result['TYPE']=='ERROR'){
+                showResult('#popup-error','Ошибка сохранения', $result['VALUE']);
+            }
+            if($result['TYPE']=='SUCCESS'){
+                showResult('#popup-success', 'Изменения сохранены');
+            }
         }
     });
 
     $("#save_conditions").on('click', function() {
-        var text_descript = $(".cardPact-EditText-Сonditions .editbox").html();        
+        var text_descript = $(".cardPact-EditText-Сonditions .editbox").html().trim();
+        cntDescript = $(".cardPact-EditText-Сonditions .editbox").text().trim().length;
+
+        if(cntDescript==0) {
+            showResult('#popup-error','Ошибка сохранения', 'Поле обязательно для заполнения');
+            return;
+        }
+
         $.post(
             "/response/ajax/up_pact_text.php", {
                 text: text_descript,
@@ -35,11 +54,24 @@ $(document).ready(function() {
         );
 
         function onAjaxSuccess(data) {
-
+            $result = JSON.parse(data);
+            if($result['TYPE']=='ERROR'){
+                showResult('#popup-error','Ошибка сохранения', $result['VALUE']);
+            }
+            if($result['TYPE']=='SUCCESS'){
+                showResult('#popup-success', 'Изменения сохранены');
+            }
         }
     });
     $("#save_summ").on('click', function() {
-        var text_descript = $("#cardPact-EditText-Summ").text();
+        var text_descript = $("#cardPact-EditText-Summ").text().trim();
+        text_descript = Number(text_descript);
+        if(text_descript.length<=0 || isNaN(text_descript)) {
+            console.log('lol');
+            $("#cardPact-EditText-Summ").text(0);
+            text_descript = 0;
+        }
+
         var city = $('#select-city').val();
         $.post(
             "/response/ajax/up_pact_text.php", {
@@ -52,14 +84,19 @@ $(document).ready(function() {
         );
 
         function onAjaxSuccess(data) {
-
+            $result = JSON.parse(data);
+            if($result['TYPE']=='ERROR'){
+                showResult('#popup-error','Ошибка сохранения', $result['VALUE']);
+            }
+            if($result['TYPE']=='SUCCESS'){
+                showResult('#popup-success', 'Изменения сохранены');
+            }
         }
     });
 
     // автоматическое удаление объявления
     $("#avtomatic_delete").on('click', function(){        
         let auto_delete_button = $(this).prop("checked");
-        console.log(auto_delete_button)
         let auto_delete_params
 
         if(auto_delete_button){
@@ -78,13 +115,19 @@ $(document).ready(function() {
         );
 
         function onAjaxSuccess(data) {
-            location.reload();
+            $result = JSON.parse(data);
+            if($result['TYPE']=='ERROR'){
+                showResult('#popup-error','Ошибка сохранения', $result['VALUE']);
+            }
+            if($result['TYPE']=='SUCCESS'){
+                showResult('#popup-success', 'Изменения сохранены');
+            }
         }
 
     });
 
     // Продление срока объявления
-    $("#up_date_active").on('click', function(){      
+    $("#up_date_active").on('click', function(){
         $.post(
             "/response/ajax/up_pact_text.php", {                    
                 id_element: ID_Object,
@@ -94,31 +137,78 @@ $(document).ready(function() {
         );
 
         function onAjaxSuccess(data) {
-            console.log(data)
-            //location.reload();
+            $result = JSON.parse(data);
+            if($result['TYPE']=='ERROR'){
+                showResult('#popup-error','Ошибка сохранения', $result['VALUE']);
+            }
+            if($result['TYPE']=='SUCCESS'){
+                $('.date-active').text($result['DATA']);
+                showResult('#popup-success', 'Срок объявления продлен');
+            }
         }
 
     });
 
+    /*dop file*/
+    $(document).on('submit', '.dop-file__form', function(e){
+        e.preventDefault();
+        var formData = new FormData(this);
+        var mainData = JSON.stringify({
+            id_element: ID_Object,
+            atrr_text: 'add_incl_file'
+        });
+
+        formData.append( 'arr', mainData );
+
+        var res = getURLData().then(function(data) {
+            if(data=='ERROR'){
+                showResult('#popup-error','Ошибка сохранения');
+            }
+            else{
+                $('.list-dopfile').html(data);
+                showResult('#popup-success', 'Изменения сохранены');
+            }
+        });
+
+        async function getURLData() {
+            var url = '/response/ajax/up_pact_dopfile.php'
+
+            const response = await fetch(url, {
+                method: 'post',
+                body:formData
+            });
+            const data = await response.text();
+            return data
+        }
+    });
+
     // удаление загруженных файлов
-    $('.delete_unclude_file').on('click', function(){      
+    $(document).on('click', '.delete_unclude_file', function(){
         let id_value_el = $(this).attr('data');
         let id_file = $(this).attr('data-file');
+        let mainData = new Object();;
+        mainData.arr = JSON.stringify({
+            id_file: id_file,
+            id_value: id_value_el,
+            id_element: ID_Object,
+            atrr_text: 'delete_incl_file'
+        });
+
         $.post(
-            "/response/ajax/up_pact_text.php", {                    
-                id_file: id_file,
-                id_value: id_value_el,
-                id_element: ID_Object,
-                atrr_text: 'delete_incl_file'
-            },
+            "/response/ajax/up_pact_dopfile.php",
+            mainData,
             onAjaxSuccess
         );
 
         function onAjaxSuccess(data) {
-            //console.log(data)
-            location.reload();
+            if(data=='ERROR'){
+                showResult('#popup-error','Ошибка сохранения');
+            }
+            else{
+                $('.list-dopfile').html(data);
+                showResult('#popup-success', 'Изменения сохранены');
+            }
         }
-
     });
 
     var arFiles = [];
@@ -126,8 +216,6 @@ $(document).ready(function() {
     //добавление изображения
     $('#filePicture').on('change', function () {
         var files = this.files;
-        console.log(files)        
-        console.log('ИД Об '+ID_Object)
         // ничего не делаем если files пустой
         if( typeof arFiles != 'undefined' ){
             var mainData = JSON.stringify({
@@ -146,12 +234,12 @@ $(document).ready(function() {
 
             updateImage(formData);
         }
-        console.log(formData)
-        $('#cardPact-box-edit').empty();
+        //$('#cardPact-box-edit').empty();
 
-        for (var i = 0; i < files.length; i++) {
-            //preview(files[i]);
-        }
+        /*for (var i = 0; i < files.length; i++) {
+            preview(files[i]);
+        }*/
+
 
         this.value = '';
     });
@@ -161,41 +249,25 @@ $(document).ready(function() {
         var reader = new FileReader();
 
         reader.addEventListener('load', function(e) {
-
-            if(check == 0){
-                var wrap = document.createElement('div');
-                var img = document.createElement('img');
-                var div = document.createElement('div');
-
-                wrap.setAttribute('class', 'cardPact-box-BoxMainImg');
-
-                //img.setAttribute('data-id', file.name);
-                img.setAttribute('src', e.target.result);
-
-                div.setAttribute('id', 'cardPact-box-edit-rem_img');
-                div.innerHTML = ['<span>-</span>'].join('');
-
-                wrap.insertBefore(img, null);
-                wrap.insertBefore(div, null);
-
-                //document.getElementById('cardPact-box-edit').insertBefore(wrap, null);
+            let slide = '<div class="sp-slide">' +
+                    '<img class="sp-image" src="'+e.target.result+'">' +
+                '</div> ';
+            let thumb = '<img class="sp-thumbnail" src="'+e.target.result+'">' +
+                '<span class="cardPact-box-edit-rem_img" data-id="'+file.name+'">-</span>';
+            let slider = $( '#my-slider' ).data( 'sliderPro' );
+            let thumbAdd = '<img id="cardPact-box-edit-add_img" class="sp-thumbnail" src="/local/templates/anypact/image/add_img.png">';
 
 
-                arFiles[file.name] = file;
-            }
-            else{
-                var img = document.createElement('img');
+            $(slide).appendTo('#my-slider .sp-slides');
+            $("#cardPact-box-edit-add_img").parent().remove();
+            $(thumb).appendTo($('#my-slider .sp-thumbnails'));
+            $(thumbAdd).appendTo($('#my-slider .sp-thumbnails'));
+            slider.update();
 
-                //img.setAttribute('data-id', file.name);
-                img.setAttribute('src', e.target.result);
-                img.setAttribute('class', 'cardPact-box-BoxPrewImg-img');
+            slider.gotoSlide(slider.getTotalSlides()-1);
 
-                //document.getElementById('cardPact-box-BoxPrewImg').insertBefore(img, null);
+            arFiles[file.name] = file;
 
-                arFiles[file.name] = file;
-            }
-
-            check++;
 
         });
         reader.readAsDataURL(file);
@@ -203,32 +275,19 @@ $(document).ready(function() {
 
 
     //добавление изображения
-    $(document).on( 'click', '#cardPact-box-edit-add_img', function( event ){
+    $(document).on( 'click', '.js-add_img', function( event ){
         $('#filePicture').click();
     });
 
     //удаление изображения
-    $(document).on('click', '#cardPact-box-edit-rem_img',  function(){
-        var item = $(this).parents('.cardPact-box-BoxMainImg').eq(0).find('img');
-        var id = $(item).attr('data-id');
-        var newImg = document.createElement('img');
-        var ar_keys;
-        var addimg = "<div id='cardPact-box-edit-add_img'>" +
-            "<span>+</span>" +
-            "</div>";
-        var id_element = $(".cardPact-box").attr("data");
+    $(document).on('click', '.cardPact-box-edit-rem_img',  function(){
 
-        delete arImg[id];
-
-        ar_keys = Object.keys(arImg);
-
-        var mainData = JSON.stringify({
-            id_element: id_element,
-            atrr_text: 'delete',
-            detailUrl: arImg[ar_keys[0]],
-            detailID: ar_keys[0],
+        let id_value_el = $(this).attr('data-id');
+        let mainData = JSON.stringify({
+            id_value: id_value_el,
+            id_element: ID_Object,
+            atrr_text: 'delete'
         });
-
         var formData = new FormData();
 
         formData.append( 'arr', mainData );
@@ -236,34 +295,23 @@ $(document).ready(function() {
         updateImage(formData);
 
 
-        if(ar_keys.length > 0){
-            item.remove();
-            newImg.setAttribute('src', arImg[ar_keys[0]]);
-            newImg.setAttribute('data-id', ar_keys[0]);
-            $(newImg).prependTo('.cardPact-box-BoxMainImg');
-            let remImg = $('.cardPact-box-BoxPrewImg-img').filter(function(index){
-                let idImg = $(this).attr('data-id');
-                return idImg == ar_keys[0];
-            });
-            remImg.remove();
-        }
-        else{
-            $('.cardPact-box-BoxMainImg').remove();
-            $(addimg).prependTo('.cardPact-box-edit');
-        }
-
     });
 
     function updateImage(arData){
         // var id_element = $(".cardPact-box").attr("data");
-        console.log(arData);
         var res = getURLData().then(function(data) {
-            $result = JSON.parse(data);
-            if($result['TYPE']=='ERROR'){
-                console.log(data);
+            if(data=='ERROR'){
+                showResult('#popup-error','Ошибка сохранения');
             }
-            if($result['TYPE']=='SUCCES'){
+            else{
+                showResult('#popup-success', 'Изменения сохранены');
+                let slider = $( '#my-slider' ).data( 'sliderPro' );
+                slider.destroy();
+                $('#my-slider').html(data);
 
+                initSlider();
+                slider = $( '#my-slider' ).data( 'sliderPro' );
+                slider.gotoSlide(slider.getTotalSlides()-1);
             }
         });
 
@@ -280,4 +328,25 @@ $(document).ready(function() {
         }
     }
 
+    /*slider*/
+    function initSlider(){
+        $( '#my-slider' ).sliderPro({
+            width : "100%",
+            aspectRatio : 1.6, //соотношение сторон
+            loop : false,
+            autoplay : false,
+            fade : true,
+            thumbnailWidth : 164,
+            thumbnailHeight : 101,
+            //thumbnailPointer : true,
+            keyboard : false,
+            breakpoints: {
+                450: {
+                    thumbnailWidth : 82,
+                    thumbnailHeight : 50
+                }
+            }
+        });
+    }
+    initSlider();
 });

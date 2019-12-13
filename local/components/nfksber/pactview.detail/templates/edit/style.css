@@ -87,8 +87,30 @@
     overflow: hidden;
 }
 
-.cardPact-box-edit #cardPact-box-edit-add_img,
-.cardPact-box-edit #cardPact-box-edit-rem_img {
+.cardPact-box-edit-rem_img{
+    display: none;
+    border: 4px #fff dashed;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin: 150px auto;
+    cursor: pointer;
+    padding: 34px 59px;
+    position: absolute;
+    z-index: 100;
+    top: 0;
+    left: 50%;
+    margin-left: -75px;
+    font-size: 50px;
+    font-weight: 900;
+    color: #fff;
+}
+
+#my-slider .sp-slide:hover .cardPact-box-edit-rem_img{
+    display: block;
+}
+
+.cardPact-box-edit #cardPact-box-edit-add_img{
     border: 4px #fff dashed;
     width: 150px;
     height: 150px;
@@ -103,8 +125,7 @@
     margin-left: -75px;
 }
 
-.cardPact-box-edit #cardPact-box-edit-add_img span,
-.cardPact-box-edit #cardPact-box-edit-rem_img span {
+.cardPact-box-edit #cardPact-box-edit-add_img span{
     font-size: 50px;
     font-weight: 900;
     color: #fff;
@@ -114,4 +135,23 @@
     color: #ff6416;
     margin-bottom: 10px;
     display: inline-block;
+}
+
+.typefile {
+    border: none;
+    padding: 0;
+    height: 60px;
+}
+
+.label-title{
+    padding: 0 0 44px 20px;
+    float: left;
+    width: 94%;
+    font-weight: 300;
+    color: #a6a6a6;
+    cursor: pointer;
+}
+
+#my-slider .sp-image-container{
+    position: relative;
 }

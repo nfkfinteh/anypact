@@ -48,10 +48,10 @@ $arGroups = $USER->GetUserGroupArray();
 
 #проверка на принадлежность пользователя к группам
 if(in_array( 1, $arGroups) || in_array( 6, $arGroups)){
-    $detailPicture = reset($_FILES);
-    $keyDetailPicture = key($_FILES);
+    /*$detailPicture = reset($_FILES);
+    $keyDetailPicture = key($_FILES);*/
     $dopPicture = $_FILES;
-    unset($dopPicture[$keyDetailPicture]);
+    //unset($dopPicture[$keyDetailPicture]);
 
     if(count($dopPicture)>0){
         $data['PROPERTY_VALUES']['INPUT_FILES'] = $dopPicture;
@@ -84,8 +84,8 @@ if(in_array( 1, $arGroups) || in_array( 6, $arGroups)){
         "ACTIVE"         => $data['ACTIVE'],
         "DETAIL_TEXT"    => $data['DETAIL_TEXT']['TEXT'],
         "DETAIL_TEXT_TYPE" => $data['DETAIL_TEXT']['TYPE'],
-        "DETAIL_PICTURE" => $detailPicture,
-        "PREVIEW_PICTURE" => $detailPicture,
+        /*"DETAIL_PICTURE" => $detailPicture,
+        "PREVIEW_PICTURE" => $detailPicture,*/
         "DATE_ACTIVE_FROM" => ConvertTimeStamp(time(), "SHORT"),
         "DATE_ACTIVE_TO" => ConvertTimeStamp(time()+(86400*10), "SHORT")
     );

@@ -99,8 +99,7 @@ $(document).ready(function() {
         var res = getURLData().then(function(data) {
             $result = JSON.parse(data);
             if($result['TYPE']=='ERROR'){
-                console.log($result['VALUE']);
-                alert($result['VALUE']);
+                showResult('#popup-error','Ошибка сохранения', $result['VALUE']);
             }
             if($result['TYPE']=='SUCCES'){
                 window.location.href = "/my_pacts/edit_my_pact/?ELEMENT_ID="+$result['VALUE']+"&ACTION=EDIT";
@@ -117,7 +116,7 @@ $(document).ready(function() {
             let adName = document.getElementById('ad_name').textContent;
             let adDescript = document.getElementById('ad_descript').innerText;
             let adCondition = document.getElementById('ad_condition').innerText;
-            let adSum = document.getElementById('cardPact-EditText-Summ').textContent;
+            let adSum = document.getElementById('cardPact-EditText-Summ').textContent.trim();
             let date = document.getElementById('param_selected_activ_date_input').value;
             let adSection = $('#param_selected_category').attr('data-id');
             let adCity = $('#select-city').val();
@@ -134,17 +133,17 @@ $(document).ready(function() {
                 adName = $.trim(adName);
             }
             else{
-                alert('Название обязательно');
+                showResult('#popup-error','Ошибка сохранения', 'Название обязательно');
                 return;
             }
 
             if(adSection === undefined){
-                alert('Раздел обязателен');
+                showResult('#popup-error','Ошибка сохранения', 'Раздел обязателен');
                 return;
             }
 
             if(adCity.length == 0){
-                alert('Город обязателен');
+                showResult('#popup-error','Ошибка сохранения', 'Город обязателен');
                 return;
             }
 
@@ -159,7 +158,12 @@ $(document).ready(function() {
                 aradCondition = {'TEXT': adCondition, 'TYPE': 'html'};
                 prop['CONDITIONS_PACT'] = aradCondition;
             }
-            if($.trim(adSum).length != 0){
+
+            if(adSum.length<=0 || isNaN(adSum)) {
+                $("#cardPact-EditText-Summ").text(0);
+                adSum = 0;
+            }
+            if(adSum.length != 0) {
                 prop['SUMM_PACT'] = $.trim(adSum);
             }
             // ничего не делаем если files пустой

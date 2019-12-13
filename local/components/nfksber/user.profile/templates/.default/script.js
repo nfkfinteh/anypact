@@ -23,7 +23,6 @@ $(document).ready(function(){
     });
 
     $(document).on('click', '.submit_message', function(){
-        console.log('test');
         let form = $(this).parents('.modal-content').eq(0).find('form');
         let url = form.attr('action');
         let data = form.serialize();
@@ -35,12 +34,14 @@ $(document).ready(function(){
             success: function(result){
                 $result = JSON.parse(result);
                 if($result['TYPE']=='ERROR'){
-                    console.log($result['VALUE']);
-                    alert($result['VALUE']);
+                    form.find('textarea').val('');
+                    form.parents('.modal-content').eq(0).find('button.close').click();
+                    showResult('#popup-error','Ошибка сохранения', $result['VALUE']);
                 }
                 if($result['TYPE']=='SUCCESS'){
                     form.find('textarea').val('');
                     form.parents('.modal-content').eq(0).find('button.close').click();
+                    showResult('#popup-success', 'Изменения сохранены');
                 }
             },
 
