@@ -7,6 +7,30 @@ $(document).ready(function(){
         $('.grid-view').addClass("list-view").removeClass("grid-view");
     }
 
+    $(document).on('click', '.js-add-frends', function(){
+        let that = $(this);
+        let login = $(this).attr('data-login');
+        let data = {
+            'login':login,
+            'action':'add'
+        };
+        $.ajax({
+            url: '/response/ajax/add_frends.php',
+            data: data,
+            type: 'POST',
+            success: function(data){
+                result = JSON.parse(data);
+                if(result.TYPE == 'SUCCESS'){
+                    that.hide();
+                    showResult('#popup-success', 'Пользователь добавлен в друзья');
+                }
+                else{
+                    showResult('#popup-error','Ошибка сохранения', result.VALUE);
+                }
+            }
+        });
+
+    });
 
 });
 
@@ -107,3 +131,33 @@ $("span.location").click(function () {
 $("span.region").click(function () {
     openCloseWin()
 });
+
+function showResult(name, title='', text='') {
+    var popups = $('.popup-wrapper');
+    var activePopup;
+    var w, h;
+    popups.each(function (i, elem) {
+        if ($(elem).css('display') == 'block') {
+            activePopup = $(elem).find('.popup');
+            w = activePopup.outerWidth();
+            h = activePopup.outerHeight();
+        }
+    });
+    var popup = $(name);
+    var block = popup.find('.popup');
+
+    popup.find('.popup__title').text(title);
+    popup.find('.popup__subtitle').text(text);
+
+    block.css({
+        'width': w + 'px',
+        'height': h + 'px'
+    });
+    popup.fadeIn(500);
+    $('.modals-wrap').show();
+    //block.addClass('popup-anim');
+    setTimeout(function () {
+        popup.fadeOut(500);
+        $('.modals-wrap').hide();
+    }, 2000)
+}

@@ -9,30 +9,35 @@
         <div class="col-lg-8 col-md-8 col-sm-8">
             <!--//Слайдер изображений -->
             <div class="slider-sdelka" id="my-slider">
-                <div class="sp-slides">                     
-                    <? if(!empty($arResult["ELEMENT"]["DETAIL_PICTURE"])){
-                        $resize_img = CFile::ResizeImageGet($arResult["ELEMENT"]["DETAIL_PICTURE"], array('width'=>'855', 'height'=>'460'), BX_RESIZE_IMAGE_EXACT);?>
-                        <div class="sp-slide">
-                            <img class="sp-image" src="<?=$resize_img["src"]?>">
-                            <img class="sp-thumbnail" src="<?=$resize_img["src"]?>">
-                        </div> 
-                    <?} ?>
+                <div class="sp-slides">
                     <?// изображения 
                         $arr_img = $arResult["PROPERTY"]["IMG_FILE"];
-                        if(!empty($arResult["PROPERTY"]["IMG_FILE"])){
+                        if(!empty($arResult["PROPERTY"]["IMG_FILE"])):
                             foreach ($arr_img as $url_img){?>
                                 <?if(!empty($url_img["URL"])):?>
                                     <div class="sp-slide">
                                         <img class="sp-image" src="<?=$url_img["URL"]?>">
-                                        <img class="sp-thumbnail" src="<?=$url_img["URL"]?>">
+                                        <span class="cardPact-box-edit-rem_img" data-id="<?=$url_img['PROPERTY']['PROPERTY_VALUE_ID']?>">-</span>
                                     </div>
                                 <?endif?>
-                            <?}
-                        }?>
-                    <div class="sp-slide">
-                        <img class="sp-image" src="<?=SITE_TEMPLATE_PATH?>/image/add_img.png">
-                        <img id="cardPact-box-edit-add_img" class="sp-thumbnail" src="<?=SITE_TEMPLATE_PATH?>/image/add_img.png">
-                    </div>            
+                            <?}?>
+                        <?else:?>
+                            <div class="sp-slide">
+                                <img class="sp-image js-add_img" src="<?=SITE_TEMPLATE_PATH?>/image/add_img.png">
+                            </div>
+                        <?endif?>
+                </div>
+                <div class="sp-thumbnails">
+                    <?// изображения
+                    $arr_img = $arResult["PROPERTY"]["IMG_FILE"];
+                    if(!empty($arResult["PROPERTY"]["IMG_FILE"])){
+                        foreach ($arr_img as $url_img){?>
+                            <?if(!empty($url_img["URL"])):?>
+                                <img class="sp-thumbnail" src="<?=$url_img["URL"]?>">
+                            <?endif?>
+                        <?}
+                    }?>
+                    <img id="cardPact-box-edit-add_img" class="sp-thumbnail js-add_img" src="<?=SITE_TEMPLATE_PATH?>/image/add_img.png">
                 </div>
             </div>     
             <!--//Слайдер изображений -->
@@ -74,7 +79,7 @@
 
             <button class="btn btn-nfk " id="save_summ" style="margin-top:30px;">Сохранить</button>
             <!--Срок объявления -->
-            <h4>Объявление активно до: <? print_r($arResult["ELEMENT"]["DATE_ACTIVE_TO"]); ?></h4>
+            <h4>Объявление активно до: <span class="date-active"><?=$arResult["ELEMENT"]["DATE_ACTIVE_TO"]?></span></h4>
             <button class="btn btn-nfk" id="up_date_active">Продлить на 10 дней</button>
             <!-- Добавление договора -->
             <h4>Вы можете добавить договор из шаблона или загрузить свой</h4>
@@ -96,54 +101,28 @@
                 <?}else {?>
                     <input type="checkbox" id="avtomatic_delete" name="hide_profile" style="width: 19px;height: 26px;float: left">
                 <?}?>
-                <label for="hide_profile" style="padding: 0 0 44px 20px;float: left; width: 94%;">автоматически удалить предложение после заключения сделки</label>
+                <label for="avtomatic_delete" class="label-title" style="">автоматически удалить предложение после заключения сделки</label>
                 <input type="hidden" name="UF_HIDE_PROFILE" value="0" class="hide_profile_input">
             </div>
             <!--Приложения к договору-->
             <h4>Добавить приложение в виде файла(опционально)</h4>
-            <!-- <button class="btn btn-nfk">Загрузить файл</button>-->
-            <?if(!empty($arResult["PROPERTY"]["UNCLUDE_FILE"])){?>
-                <? foreach($arResult["PROPERTY"]["UNCLUDE_FILE"] as $Item){?>
-                    <a href="<?=$Item["URL"]?>" class="cardPact-rightPanel-url" target="_blank" style="float: left;width: 74%;">
-                        <img src="<?=SITE_TEMPLATE_PATH?>/image/icon-contract.png" > Дополнительный файл
-                    </a> 
-                    <button class="btn btn-nfk delete_unclude_file" style="float: left;width: 25%;" data="<?=$Item["ID"]?>" data-file ="<?=$Item["ID"]?>">Удалить</button>
-                <?}?>
-            <?}?>
-            <style>
-               .typefile {
-                border: none;
-                padding: 0;
-                height: 60px;
-                }
-            </style>
-            <form method = "post" enctype = 'multipart/form-data' action="<?=$_SERVER['REQUEST_URI']?>&nonsense=1" >
-            <?echo CFile::InputFile("IMAGE_ID", 20, $str_IMAGE_ID);?>
-            <input class="btn btn-nfk" type="submit" value="Сохранить">
+            <div class="list-dopfile">
+                <?if(!empty($arResult["PROPERTY"]["UNCLUDE_FILE"])):?>
+                    <? foreach($arResult["PROPERTY"]["UNCLUDE_FILE"] as $Item):?>
+                        <a href="<?=$Item["URL"]?>" class="cardPact-rightPanel-url" target="_blank" style="float: left;width: 74%;">
+                            <img src="<?=SITE_TEMPLATE_PATH?>/image/icon-contract.png" > <?=$Item['NAME']?>
+                        </a>
+                        <button class="btn btn-nfk delete_unclude_file" style="float: left;width: 25%;" data="<?=$Item["ID"]?>" data-file ="<?=$Item["ID"]?>">Удалить</button>
+                    <?endforeach?>
+                <?endif?>
+            </div>
+
+            <form method="post" enctype = 'multipart/form-data' action="<?=$_SERVER['REQUEST_URI']?>&nonsense=1" class="dop-file__form">
+                <?echo CFile::InputFile("IMAGE_ID", 20, $str_IMAGE_ID);?>
+                <button class="btn btn-nfk" type="submit">Сохранить</button>
             </form>
 
             <?
-
-            $testiruem = Array(
-                "name" => $_FILES["IMAGE_ID"]["name"],
-                "size" => $_FILES["IMAGE_ID"]["size"],
-                "tmp_name" => $_FILES["IMAGE_ID"]["tmp_name"],
-                "type" => "",
-                "old_file" => "",
-                "del" => "Y",
-                "MODULE_ID" => "iblock"
-            );
-            $poluchaem_adress = CFile::SaveFile($testiruem, "dopfile");
-
-            
-            $ELEMENT_ID     = $arResult["ELEMENT"]["ID"];
-            $PROPERTY_CODE  = "MAIN_FILES";
-            $PROPERTY_VALUE = $testiruem;
-            CIBlockElement::SetPropertyValueCode($ELEMENT_ID, $PROPERTY_CODE, $PROPERTY_VALUE);
-
-            if (!empty($_FILES)) {
-                header("Refresh:0");
-            }
 
             // if ($poluchaem_adress>0):
             //print_r ('<br/>ID файла: '.$poluchaem_adress.'<br/>');
@@ -158,26 +137,6 @@
         </div>
     </div>
 </div>
-<script type="text/javascript">
-    jQuery( document ).ready(function( $ ) {
-        $( '#my-slider' ).sliderPro({
-            width : "100%",
-            aspectRatio : 1.6, //соотношение сторон
-            loop : false,
-            autoplay : false,
-            fade : true,
-            thumbnailWidth : 164,
-            thumbnailHeight : 101,
-            keyboard : false,
-            breakpoints: {
-                450: {
-                    thumbnailWidth : 82,
-                    thumbnailHeight : 50
-                }
-            }
-        });
-    });
-</script>
 <script>
     var arImg = <?=CUtil::PhpToJSObject($arResult['JS_DATA']['IMG_FILE'])?>
 </script>

@@ -4,6 +4,7 @@ require_once($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/include/prolog_befo
 CModule::IncludeModule('iblock');
 
 $el = new CIBlockElement;
+$PRODUCT_ID = $_POST['id_element'];
 
 switch ($_POST['atrr_text']) {
     case 'descript':
@@ -49,41 +50,46 @@ switch ($_POST['atrr_text']) {
         $PROPERTY_VALUE = html_entity_decode($_POST['text']);  // значение свойства
 
         $value="text";
-        CIBlockElement::SetPropertyValueCode($ELEMENT_ID, $PROPERTY_CODE, $PROPERTY_VALUE);
+        $checkUpdate = CIBlockElement::SetPropertyValueCode($ELEMENT_ID, $PROPERTY_CODE, $PROPERTY_VALUE);
+
+        if($checkUpdate){
+            $resultData = $PROPERTY_VALUE;
+        }
 
         $arLoadProductArray = Array(
             "MODIFIED_BY"    => $USER->GetID()
         );
         break;
     // продление срока объявления
-    case 'up_date_active':        
+    case 'up_date_active':
+        $res = CIBlockElement::GetList([], ['IBLOCK_ID'=>3, 'ID'=>$PRODUCT_ID], false, false, ['IBLOCK_ID', 'ID', 'DATE_ACTIVE_TO']);
+        if($obj=$res->GetNext()){
+            $arSdelka = $obj;
+        }
+
+        if(empty($arSdelka['DATE_ACTIVE_TO'])){
+            $time = ConvertTimeStamp(time()+(86400*10), "SHORT");
+        }
+        else{
+            $time = ConvertTimeStamp( MakeTimeStamp($arSdelka['DATE_ACTIVE_TO'], "DD.MM.YYYY")+(86400*10), "SHORT");
+        }
+
         $arLoadProductArray = Array(
             "MODIFIED_BY"    => $USER->GetID(),
-            "DATE_ACTIVE_TO" => ConvertTimeStamp(time()+(86400*10), "SHORT")
+            "DATE_ACTIVE_TO" => $time
         );
-        break;   
-    
-    // Удаление прикрепленного файла
-    case 'delete_incl_file':
-        print_r($_POST);
-        // Удаление свойства
-        $ELEMENT_ID = $_POST['id_element'];
-        $PROPERTY_CODE  = "MAIN_FILES";
-        $PROPERTY_VALUE = Array(
-            "del" => "Y",
-            "MODULE_ID" => "additionFiles"
-        );         
-        CIBlockElement::SetPropertyValueCode($ELEMENT_ID, $PROPERTY_CODE, Array ($_POST['id_value'] => $PROPERTY_VALUE) );
-        // Удаление файла
-        CFile::Delete($_POST['id_file']);
-        $arLoadProductArray = Array(
-            "MODIFIED_BY"    => $USER->GetID()        
-        );
-    break;        
+
+        $resultData = $time;
+        break;
+
 }
 
 // код свойства
-$PRODUCT_ID = $_POST['id_element'];
 $res = $el->Update($PRODUCT_ID, $arLoadProductArray);
-
+if($res){
+    echo json_encode([ 'VALUE'=>$PRODUCT_ID, 'TYPE'=> 'SUCCESS', 'DATA'=>$resultData]);
+}
+else{
+    echo json_encode([ 'VALUE'=>$el->LAST_ERROR, 'TYPE'=> 'ERROR']);
+}
 ?>

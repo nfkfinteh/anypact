@@ -3,8 +3,14 @@
 <h1>Новое предложение</h1>
 <div class="tender cardPact">
     <div class="row">
-            <div class="col-lg-8 col-md-8 col-sm-8">            
-                <div class="cardPact-box" data="<?=$arResult["ELEMENT"]["ID"]?>">
+            <div class="col-lg-8 col-md-8 col-sm-8">
+                <div class="cardPact-EditText-Descript" id="ad_name">
+                    <div class="editbox" contenteditable="true" style="min-height: 0px; margin-top: 0">
+                        <?=$arResult["ELEMENT"]["DETAIL_TEXT"]?>
+                    </div>
+                </div>
+                <h3>Название</h3><span>(введите описание сделки и/или предмета сделки)</span>
+                <div class="cardPact-box cardPact-box_img" data="<?=$arResult["ELEMENT"]["ID"]?>">
                     <div class="cardPact-box-edit" data-code="<?=$arResult['PROPERTY']['IMG_FILE']['CODE']?>">
                         <?
                             if(!empty($arResult["ELEMENT"]["DETAIL_PICTURE"])){
@@ -44,13 +50,7 @@
                     </div>  
                 </div>
                 <h3>Фотографии</h3><span>(не более 10)</span>
-                <div class="cardPact-EditText">  
-                    <div class="cardPact-EditText-Descript" id="ad_name">
-                        <div class="editbox" contenteditable="true" style="min-height: 0px;">
-                            <?=$arResult["ELEMENT"]["DETAIL_TEXT"]?>
-                        </div>                        
-                    </div>
-                    <h3>Название</h3><span>(введите описание сделки и/или предмета сделки)</span>           
+                <div class="cardPact-EditText">
                     <div class="cardPact-EditText-Descript">                        
                         <div class="editbox" contenteditable="true" id="ad_descript">
                             <?=$arResult["ELEMENT"]["DETAIL_TEXT"]?>

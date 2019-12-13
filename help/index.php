@@ -1,6 +1,7 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("AnyPact");
+global $USER;
 ?>
 
 <div class="container content-service">	
@@ -55,11 +56,9 @@ $APPLICATION->SetTitle("AnyPact");
             </div>
             <div class="col-12 col-lg-6">                
                 <div class="row" id="mess_form">
-                    <? if($USER->IsAuthorized()){ ?>                        
-                        <div style="display:none;">
-                            <input type="text" value="">
-                            <input type="email" placeholder="E-mail">
-                        </div>
+                    <? if($USER->IsAuthorized()){ ?>
+                        <input type="hidden" value="<?=$USER->GetFullName()?>" id="textFIO">
+                        <input type="hidden" value="<?=$USER->GetEmail()?>" id="textEmail">
                     <?}else {?>
                         <div class="col-10 col-md-5 col-lg-6 offset-1 offset-lg-0">
                             <input type="text" placeholder="ФИО" id="textFIO">
@@ -71,14 +70,14 @@ $APPLICATION->SetTitle("AnyPact");
                     <div class="col-10 col-lg-12 mt-4 offset-1 offset-lg-0">
                         <textarea name="" rows="4" id="textText"></textarea>
                     </div>
-                    <? if(!$USER->IsAuthorized()){ ?>
+
                     <div class="col-10 col-lg-12 mt-3 offset-1 offset-lg-0">                            
                         <label for="empty_rules" class="radio-transform">
                             <input type="checkbox" class="radio__input" name="template_type" value="empty" id="empty_rules">
                             <span class="radio__label" id="empty_rules_span">Нажимая на кнопку, вы даете <a href="/upload/rules/noreg_user_rules.pdf" target="_blank">согласие на обработку персональных данных</a></span>
                         </label>
                     </div>
-                    <? } ?>
+
                     <div class="col-10 col-lg-12 mt-2 offset-1 offset-lg-0">
                         <button class="btn btn-nfk send-btn" id="send_mess_button" disabled>Отправить</button>
                     </div>
@@ -128,50 +127,61 @@ $APPLICATION->SetTitle("AnyPact");
 </div>
 <div style="width: 100%; height: 80px;"></div>
 <script>        
-        async function sendMess(strObject){
-            
-            var url = '/response/ajax/send_mess.php'
-            
-            var mainData = JSON.stringify({
-                FIO  : strObject[0],
-                IMAIL: strObject[1],
-                TEXT : strObject[2],             
-            });
+    async function sendMess(strObject){
 
-            var formData = new FormData();
-                formData.append( 'checkin', mainData );
+        var url = '/response/ajax/send_mess.php'
 
-            
-            const response = await fetch(url, {
-                method: 'post',
-                body:formData
-            });
-            const data = await response.text();
-            return data
+        var mainData = JSON.stringify({
+            FIO  : strObject[0],
+            IMAIL: strObject[1],
+            TEXT : strObject[2],
+        });
+
+        var formData = new FormData();
+            formData.append( 'checkin', mainData );
+
+
+        const response = await fetch(url, {
+            method: 'post',
+            body:formData
+        });
+        const data = await response.text();
+        return data
+    }
+
+    let empty_rules = document.getElementById('empty_rules')
+    let send_mess_button = document.getElementById('send_mess_button')
+    empty_rules.onclick = function(){
+        if(this.checked){
+            send_mess_button.disabled = false
+        }else{
+            send_mess_button.disabled = true
         }
 
-        let empty_rules = document.getElementById('empty_rules')
-        let send_mess_button = document.getElementById('send_mess_button')
-        empty_rules.onclick = function(){
-            if(this.checked){
-                send_mess_button.disabled = false
-            }else{
-                send_mess_button.disabled = true
+    }
+    send_mess_button.onclick = function(){
+        let mess_form = document.getElementById('mess_form');
+        let strObject = []
+        strObject[0]  = document.getElementById('textFIO').value;
+        strObject[1]  = document.getElementById('textEmail').value;
+        strObject[2]  = document.getElementById('textText').value;
+
+        if(strObject[2].length==0){
+            showResult('#popup-error','Ошибка сохранения', 'Введите текст сообщения');
+            return;
+        }
+
+        var res = sendMess(strObject).then(function(data) {
+            if(data == 'ERROR'){
+                showResult('#popup-error','Ошибка сохранения');
             }
-            
-        }
-        send_mess_button.onclick = function(){
-            let mess_form = document.getElementById('mess_form')
-            let strObject = []
-            strObject[0]  = document.getElementById('textFIO').value
-            strObject[1]  = document.getElementById('textEmail').value
-            strObject[2]  = document.getElementById('textText').value
+            else{
+                //showResult('#popup-success', 'Срок объявления продлен');
+                mess_form.innerHTML = '<h3>Ваша заявка отправлена!</h3>'
+            }
 
-            var res = sendMess(strObject).then(function(data) {
-               console.log(mess_form)
-               mess_form.innerHTML = '<h3>Ваша заявка отправлена!</h3>'
-           });
-        }
-    
+       });
+    }
+
 </script>
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
