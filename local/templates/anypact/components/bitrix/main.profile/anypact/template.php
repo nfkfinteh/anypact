@@ -33,7 +33,7 @@ if (!empty($arResult['arUser']['UF_ESIA_ID']) && $arResult['arUser']['UF_ESIA_AU
             <div class="col-xl-7 col-md-6 col-sm-12">
                 <div class="row">
                     <div class="col-xl-5 col-md-6 col-sm-12">
-                    <div class="user_profile_form_editdata_foto">
+                    <div class="user_profile_form_editdata_foto avatar">
                         <!-- <a href="/profile/edit_photo/"> -->
                         <?if(!empty($arResult['arUser']['IMG_URL'])) {?>
                             <img src="<?=$arResult['arUser']['IMG_URL']?>" style="height: 100%; width: 100%; object-fit: cover;">
