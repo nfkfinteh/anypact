@@ -41,6 +41,7 @@ if (!empty($arResult['arUser']['UF_ESIA_ID']) && $arResult['arUser']['UF_ESIA_AU
                         <?}else {?>
                             <img src="<?=SITE_TEMPLATE_PATH?>/img/user_profile_no_foto.png" id="edit_user_photo">
                         <?}?>
+                        <img src="image/edit-avatar.png" class="edit-avatar" alt="">
                         <div class="avatar-hover-box">
                             <a class="avatar-download" href="/profile/edit_photo/">Загрузить фото</a>
                             <a class="avatar-delete" href="#">Удалить фото</a>
