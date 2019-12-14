@@ -75,8 +75,7 @@ input {
     cursor:pointer;
 }
 .mobile-location .location{
-    color: #ff6416;
-    text-decoration: none;
+    display: none;
 }
 
 .location::after {
@@ -565,6 +564,11 @@ select:-webkit-autofill:focus {
         font-size: 2rem;
         margin-bottom: 20px;
         text-align: center;
+    }
+    .mobile-location .location{
+        display: block;
+        color: #ff6416;
+        text-decoration: none;
     }
 }
 
@@ -3223,12 +3227,12 @@ div.btn{
     align-items: center;
 }
 .staff_znak{
-    height: 2px;
+    height: 100%;
     width: 18px;
-    background-color: #C4C4C4;
     position: relative;
+    content: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="lightgrey"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg>');
 }
-.add_staff .staff_znak:before {
+/*.add_staff .staff_znak:before {
     content: '';
     position: absolute;
     top: -8px;
@@ -3239,9 +3243,9 @@ div.btn{
     height: 18px;
     width: 2px;
     background-color: #C4C4C4;
-}
+}*/
 .staff_znak-ok .staff_znak, .add_staff.staff_znak-ok .staff_znak:before {
-    background-color: green;
+    content: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="green"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg>');
 }
 .company-logo-input{
     padding: 9px;

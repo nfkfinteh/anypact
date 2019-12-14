@@ -225,20 +225,29 @@ if (!empty($arResult['arUser']['UF_ESIA_ID']) && $arResult['arUser']['UF_ESIA_AU
         </div>
         </form>
     </div>
-    <!-- Компания -->
-    <?$res = CIBlockElement::GetList(["SORT"=>"ASC"], ['IBLOCK_ID'=>8,'ACTIVE'=>'Y'], false, false, ['ID', 'IBLOCK_ID', 'NAME'])?>
-    <div class="user_profile_form_editdata" style="margin-bottom:50px;">
-        <div class="row">
-            <div class="col-xl-4 col-md-6 col-sm-12 offset-xl-3">
-                <h3>Компания</h3>
-                <?if($arCompany = $res->GetNext(true, false)){?>
+<!-- Компания -->
+
+<div class="user_profile_form_editdata" style="margin-bottom:50px;">
+    <div class="row">
+        <div class="col-xl-4 col-md-6 col-sm-12 offset-xl-3">
+            <h3>Компании</h3>
+            <?if($arResult['COMPANIES']){?>
+                <?foreach($arResult['COMPANIES'] as $key => $arCompany){?>
+                    <p><?=$arCompany['NAME']?></p>
                     <a href="/profile/company/?id=<?=$arCompany['ID']?>" class="btn btn-aut" style="margin-bottom:15px;">Изменить компанию</a>
                     <a href="/profile/company/?id=<?=$arCompany['ID']?>&remove=Y" class="btn btn-aut">Удалить компанию</a>
-                <?}else{?>
-                    <a href="/profile/company/" class="btn btn-aut">Добавить компанию</a>
+                    <?if($key + 1 != count($arResult['COMPANIES'])){?><hr><?}?>
                 <?}?>
-            </div>
+            <?}else{?>
+                <a href="/profile/company/" class="btn btn-aut">Добавить компанию</a>
+            <?}?>
         </div>
+        <?if($arResult['COMPANIES']){?>
+            <div class="col-xl-4 col-md-6 col-sm-12">
+                <a href="/profile/company/" class="btn btn-aut">Добавить компанию</a>
+            </div>
+        <?}?>
     </div>
-</div>    
+</div>
+</div>
 </div>

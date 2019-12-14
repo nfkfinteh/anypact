@@ -24,33 +24,33 @@
         </div>
     </div>
     <form id="form__company_profile" action="<?=$APPLICATION->GetCurPage()?>" enctype="multipart/form-data" method="post">
-        <?if($_REQUEST['error']){?>
-            <p class="error"><?=$_REQUEST['error']?></p>
+        <?if($arResult['ERROR']){?>
+            <p class="error"><?=$arResult['ERROR']?></p>
         <?}?>
         <div class="row">
             <div class="col-xl-6 col-md-12 col-sm-12">
                 <div class="form-group">
                     <label>Название</label>
-                    <input name="NAME" type="text" value="<?=$arResult['COMPANY']['NAME']?>">
+                    <input name="NAME" type="text" value="<?=$arResult['COMPANY']['NAME']?>" required>
                 </div>
-                <?for($i=0; $i < count($arResult['PROPERTIES']); $i++){?>
-                    <?$prop = $arResult['PROPERTIES'][$i]?>
+                <?$i=0;
+                foreach($arResult['PROPERTIES'] as $key => $prop){?>
                     <div class="form-group">
                         <label><?=$prop["NAME"]?></label>
-                        <input type="text" name="<?=$prop["CODE"]?>" value="<?=$arResult['COMPANY']['PROPERTIES'][$prop["CODE"]]['VALUE']?>">
+                        <input <?if(in_array($prop["CODE"], $arParams['PROPERTIES_NUMBER'])){?>onkeypress='validateNumber(event)'<?}?> type="text" name="<?=$prop["CODE"]?>" value="<?=$arResult['COMPANY']['PROPERTIES'][$prop["CODE"]]['VALUE']?>"<?if(in_array($prop["CODE"], $arParams['PROPERTIES_NEED'])){?> required<?}?>>
                     </div>
-                    <?if($prop['CODE'] == 'OFFICE') break;?>
+                    <?unset($arResult['PROPERTIES'][$key]);?>
+                    <?if($prop['CODE'] == 'OFFICE' || $i == 15) break;?>
                 <?}?>
             </div>
             <div class="col-xl-6 col-md-12 col-sm-12">
-                <?for($i++; $i < count($arResult['PROPERTIES']); $i++){?>
-                    <?$prop = $arResult['PROPERTIES'][$i]?>
+                <?foreach($arResult['PROPERTIES'] as $prop){?>
                     <div class="form-group">
                         <label><?=$prop["NAME"]?></label>
-                        <input type="text" name="<?=$prop["CODE"]?>" value="<?=$arResult['COMPANY']['PROPERTIES'][$prop["CODE"]]['VALUE']?>">
+                        <input <?if(in_array($prop["CODE"], $arParams['PROPERTIES_NUMBER'])){?>onkeypress='validateNumber(event)'<?}?> type="text" name="<?=$prop["CODE"]?>" value="<?=$arResult['COMPANY']['PROPERTIES'][$prop["CODE"]]['VALUE']?>"<?if(in_array($prop["CODE"], $arParams['PROPERTIES_NEED'])){?> required<?}?>>
                     </div>
                 <?}?>
-                <div class="form-group">
+                <div class="form-group" id="preview-picture">
                     <label>Логотип</label>
                     <?if($arResult['COMPANY']['PREVIEW_PICTURE']){?>
                         <img class="company-logo" src="<?=$arResult['COMPANY']['PREVIEW_PICTURE']?>" alt="">

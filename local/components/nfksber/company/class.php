@@ -46,13 +46,24 @@ class CompanySber extends CBitrixComponent
 
                 die();
             }
-        #добавление / редактирование компании
+            #добавление / редактирование компании
         }elseif($_REQUEST['DIRECTOR_ID'] && $_REQUEST['NAME']){
             #скрытые поля
             $addition_props = ['DIRECTOR_NAME', 'DIRECTOR_ID', 'STAFF'];
+            $props_empty = [];
             foreach($_REQUEST as $key => $req){
+                if(in_array($key, $this->arParams['PROPERTIES_NEED']) && empty($req)) $props_empty[] = $key;
+                if(in_array($key, $this->arParams['PROPERTIES_NUMBER']) && !empty($req) && !ctype_digit($req)) $props_no_number[] = $key;
                 if((!in_array($key, $this->arParams['PROPERTIES_SHOW']) && !in_array($key, $addition_props)) || empty($req)) continue;
                 $arProps[$key] = htmlspecialchars($req);
+            }
+            if($props_empty){
+                $output = implode(', ', $props_empty);
+                LocalRedirect("/profile/company/?error=props_empty&props=".$output);
+            }
+            if($props_no_number){
+                $output = implode(', ', $props_no_number);
+                LocalRedirect("/profile/company/?error=props_no_number&props=".$output);
             }
             if($arProps){
 
@@ -114,7 +125,7 @@ class CompanySber extends CBitrixComponent
                     ) {
                         if ($arCompany = $rsCompany->GetNext(true, false)) {
                             if($arCompany['PROPERTY_DIRECTOR_ID_VALUE'] != $USER->GetID()){
-                               LocalRedirect("/profile/company/");
+                                LocalRedirect("/profile/company/");
                             }
                         }else{
                             LocalRedirect("/profile/company/");
@@ -130,8 +141,8 @@ class CompanySber extends CBitrixComponent
                     );
                     if($_FILES["PREVIEW_PICTURE"]) $arEl["PREVIEW_PICTURE"] = $_FILES["PREVIEW_PICTURE"];
 
-                    if ($arElm["ID"] = $el->Update(intval($_REQUEST["ID_EXIST"]), $arEl)) {
-                        LocalRedirect("/profile/company/?id=" . $arElm["ID"]);
+                    if ($el->Update(intval($_REQUEST["ID_EXIST"]), $arEl)) {
+                        LocalRedirect("/profile/company/?id=" . $_REQUEST["ID_EXIST"]);
                     } else {
                         LocalRedirect("/profile/company/?error=".$el->LAST_ERROR);
                     }
@@ -139,7 +150,7 @@ class CompanySber extends CBitrixComponent
                 }
 
             }
-        #удалении компании
+            #удалении компании
         }elseif($_REQUEST["id"] && $_REQUEST['remove'] == 'Y'){
 
             #проверка ID пользователя и ID директора
@@ -172,7 +183,7 @@ class CompanySber extends CBitrixComponent
             if ( $el->Delete($arCompany["ID"]) ) $DB->Commit(); else $DB->Rollback();
             LocalRedirect("/profile/");
 
-        #существующая компания
+            #существующая компания
         }elseif($_REQUEST["id"]){
 
             #проверка ID пользователя и ID директора
@@ -208,7 +219,7 @@ class CompanySber extends CBitrixComponent
             $arProps = [];
             $res = CIBlock::GetProperties(intval($this->arParams['IBLOCK_ID']), ['SORT'=>'ASC'], ['ACTIVE' => 'Y']);
             while($res_arr = $res->Fetch())
-                if(in_array($res_arr['CODE'], $this->arParams['PROPERTIES_SHOW'])) $arProps[] = $res_arr;
+                if(in_array($res_arr['CODE'], $this->arParams['PROPERTIES_SHOW'])) $arProps[$res_arr['CODE']] = $res_arr;
 
             $this->arResult['PROPERTIES'] = $arProps;
 
@@ -229,32 +240,14 @@ class CompanySber extends CBitrixComponent
 
             $this->includeComponentTemplate();
 
-        #создание компании
+            #создание компании
         }else{
-            #проверка наличия компании с ID директора = ID пользователя
-            $arFilter['IBLOCK_ID'] = intval($this->arParams['IBLOCK_ID']);
-            $arFilter['ACTIVE'] = 'Y';
-            $arFilter['PROPERTY_DIRECTOR_ID_VALUE'] = $USER->GetID();
-
-            if ($rsCompany = \CIBlockElement::GetList(
-                ['sort' => 'asc'],
-                $arFilter,
-                false,
-                false,
-                ['ID', 'NAME', 'IBLOCK_ID']
-            )
-            ) {
-                if ($arCompany = $rsCompany->GetNext(true, false)) {
-                    #редирект при наличии компании
-                    LocalRedirect("/profile/company/?id=".$arCompany['ID']);
-                }
-            }
 
             #список свойств компании для вывода
             $arProps = [];
             $res = CIBlock::GetProperties(intval($this->arParams['IBLOCK_ID']), ['SORT'=>'ASC'], ['ACTIVE' => 'Y']);
             while($res_arr = $res->Fetch())
-                if(in_array($res_arr['CODE'], $this->arParams['PROPERTIES_SHOW'])) $arProps[] = $res_arr;
+                if(in_array($res_arr['CODE'], $this->arParams['PROPERTIES_SHOW'])) $arProps[$res_arr['CODE']] = $res_arr;
 
             $this->arResult['PROPERTIES'] = $arProps;
 
