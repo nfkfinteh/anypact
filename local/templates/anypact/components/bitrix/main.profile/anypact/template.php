@@ -229,24 +229,26 @@ if (!empty($arResult['arUser']['UF_ESIA_ID']) && $arResult['arUser']['UF_ESIA_AU
 
 <div class="user_profile_form_editdata" style="margin-bottom:50px;">
     <div class="row">
-        <div class="col-xl-4 col-md-6 col-sm-12 offset-xl-3">
+        <div class="col-xl-2 col-md-6 col-sm-12 offset-xl-3">
             <h3>Компании</h3>
-            <?if($arResult['COMPANIES']){?>
-                <?foreach($arResult['COMPANIES'] as $key => $arCompany){?>
+        </div>
+    </div>
+    <div class="row">
+        <?if($arResult['COMPANIES']){?>
+            <?foreach($arResult['COMPANIES'] as $key => $arCompany){?>
+                <div class="col-xl-4 col-md-6 col-sm-12 <?if($key==0 || $key % 2 === 0):?>offset-xl-3<?endif?>">
                     <p><?=$arCompany['NAME']?></p>
                     <a href="/profile/company/?id=<?=$arCompany['ID']?>" class="btn btn-aut" style="margin-bottom:15px;">Изменить компанию</a>
                     <a href="/profile/company/?id=<?=$arCompany['ID']?>&remove=Y" class="btn btn-aut">Удалить компанию</a>
                     <?if($key + 1 != count($arResult['COMPANIES'])){?><hr><?}?>
-                <?}?>
-            <?}else{?>
-                <a href="/profile/company/" class="btn btn-aut">Добавить компанию</a>
+                </div>
             <?}?>
-        </div>
-        <?if($arResult['COMPANIES']){?>
-            <div class="col-xl-4 col-md-6 col-sm-12">
-                <a href="/profile/company/" class="btn btn-aut">Добавить компанию</a>
-            </div>
         <?}?>
+    </div>
+    <div class="row add_company">
+        <div class="col-xl-4 col-md-6 col-sm-12 offset-xl-3 add_company-button">
+            <a href="/profile/company/" class="btn btn-aut">Добавить компанию</a>
+        </div>
     </div>
 </div>
 </div>
