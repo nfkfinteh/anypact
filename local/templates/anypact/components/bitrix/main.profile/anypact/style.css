@@ -74,18 +74,15 @@ div.bx-auth-profile div.bx-auth-secure-unlock {
 .user_profile_form_editdata_foto {
     width: 165px;
     height: 165px;
-    overflow: hidden;
     border-radius: 83px;
     position: relative;
-}
-
-.user_profile_form_editdata_foto img#edit_user_photo {
-    /* position: absolute; */
 }
 
 .user_profile_form_editdata_foto img {
     cursor: pointer;
     height: 165px;
+    border-radius: 83px;
+    overflow: hidden;
 }
 
 .user_profile_form_editdata label,
