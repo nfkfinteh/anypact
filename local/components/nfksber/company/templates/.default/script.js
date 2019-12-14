@@ -31,4 +31,35 @@ $(document).ready(function(){
             $(this).addClass('staff_znak-ok');
         }
     });
+
+    $('input[name="PREVIEW_PICTURE"]').on('change', function () {
+        var files = this.files;
+        if(files.length){
+            for (var i = 0; i < files.length; i++) {
+                console.log(files[i]);
+                preview(files[i]);
+            }
+        }
+    });
+    function preview(file) {
+        var reader = new FileReader();
+
+        reader.addEventListener('load', function(e) {
+            let slide = '<img class="company-logo" src="'+e.target.result+'">';
+
+            $('#preview-picture label').after($(slide));
+        });
+        reader.readAsDataURL(file);
+    };
+
+    function validateNumber(evt) {
+        var theEvent = evt || window.event;
+        var key = theEvent.keyCode || theEvent.which;
+        key = String.fromCharCode( key );
+        var regex = /[0-9]|\./;
+        if( !regex.test(key) ) {
+            theEvent.returnValue = false;
+            if(theEvent.preventDefault) theEvent.preventDefault();
+        }
+    }
 });

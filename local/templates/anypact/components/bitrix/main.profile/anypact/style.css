@@ -165,6 +165,10 @@ input:disabled {
     cursor:pointer;
 }
 
+div.add_company{
+    margin-top: 20px;
+}
+
 /*@media (min-width: 1201px) {}
 
 @media (max-width: 1200px) {}

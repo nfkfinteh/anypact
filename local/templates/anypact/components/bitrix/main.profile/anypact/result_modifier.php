@@ -16,4 +16,9 @@ if(!empty($arParams['ESIA_RESPONSE']['user_docs']['elements'][0]['type'])){
     $arResult["arUser"]["SECOND_NAME"]      =  $arParams['ESIA_RESPONSE']['user_info']['middleName'];
 
 }
+//проверка наличия компании
+$res = CIBlockElement::GetList(["SORT"=>"ASC"], ['IBLOCK_ID'=>8,'ACTIVE'=>'Y'], false, false, ['ID', 'IBLOCK_ID', 'NAME']);
+while($arCompany = $res->GetNext(true, false)){
+    $arResult['COMPANIES'][] = $arCompany;
+}
 ?>
