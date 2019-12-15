@@ -20,6 +20,7 @@ class CDemoSqr extends CBitrixComponent
             "IBLOCK_ID" => intval($arParams["IBLOCK_ID"]),
             "SECTION_ID" => intval($arParams["SECTION_ID"]),
             "ELEMENT_ID" => intval($arParams["ELEMENT_ID"]),
+            "LOCATION" => htmlspecialcharsEx($arParams["LOCATION"])
         );
         return $result;
     }

@@ -81,6 +81,17 @@ switch ($_POST['atrr_text']) {
 
         $resultData = $time;
         break;
+    case 'up_location':
+        $arProperty = [
+            'LOCATION_CITY'=>htmlspecialcharsEx($_POST['cityName']),
+            'COORDINATES_AD'=>htmlspecialcharsEx($_POST['coordinates']),
+        ];
+        $arLoadProductArray = Array(
+            "MODIFIED_BY"    => $USER->GetID(),
+        );
+
+        $checkUpdate = CIBlockElement::SetPropertyValuesEx($PRODUCT_ID, false, $arProperty);
+        break;
 
 }
 

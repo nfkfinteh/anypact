@@ -59,11 +59,8 @@
                     <button class="btn btn-nfk save" id="save_conditions">Сохранить</button>
                 </div>
             </div>
-        </div>
-        <!-- Правая часть карточки -->
-        <div class="col-lg-4 col-md-4 col-sm-4 cardPact-rightPanel">
-            <h1><span id="cardPact-EditText-Summ" contenteditable="true"><?=$arResult["PROPERTY"]["SUMM_PACT"]["VALUE"]?></span> руб.</h1>
 
+            <?/*
             <select id="select-city" class="selectbox-select" placeholder="Выбор города">
                 <?if(!empty($arResult['PROPERTY']['LOCATION_CITY']['VALUE'])):?>
                     <option value=""><?=$item?>Выбор города</option>
@@ -76,6 +73,25 @@
                     <?endif?>
                 <? endforeach?>
             </select>
+            */?>
+
+            <div class="wrap-map_adress">
+                <h3>Местоположение</h3>
+                <div id="header" class="search-map_input">
+                    <input type="text" id="suggest" class="input-search_map" placeholder="Введите адрес">
+                    <input type="hidden" id="LOCATION_CITY" name="LOCATION_CITY" value="">
+                    <input type="hidden" id="COORDINATES_AD" name="COORDINATES_AD" value="">
+                    <button type="submit" id="check-button_map" class="btn btn-nfk btn-search_map">Проверить</button>
+                </div>
+                <p id="notice" class="error_form"></p>
+                <div id="map" style="height: 400px"></div>
+                <button class="btn btn-nfk save" id="save_map_data">Сохранить</button>
+            </div>
+
+        </div>
+        <!-- Правая часть карточки -->
+        <div class="col-lg-4 col-md-4 col-sm-4 cardPact-rightPanel">
+            <h1><span id="cardPact-EditText-Summ" contenteditable="true"><?=$arResult["PROPERTY"]["SUMM_PACT"]["VALUE"]?></span> руб.</h1>
 
             <button class="btn btn-nfk " id="save_summ" style="margin-top:30px;">Сохранить</button>
             <!--Срок объявления -->
@@ -137,6 +153,13 @@
         </div>
     </div>
 </div>
+<?
+$jsParams = [
+    'USER_ID'=> $arResult['USER_ID'],
+    'CITY' => $arParams['LOCATION']
+];
+?>
 <script>
+    var adData = <?=CUtil::PhpToJSObject($jsParams)?>;
     var arImg = <?=CUtil::PhpToJSObject($arResult['JS_DATA']['IMG_FILE'])?>
 </script>

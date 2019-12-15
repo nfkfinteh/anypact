@@ -119,10 +119,12 @@ $(document).ready(function() {
             let adSum = document.getElementById('cardPact-EditText-Summ').textContent.trim();
             let date = document.getElementById('param_selected_activ_date_input').value;
             let adSection = $('#param_selected_category').attr('data-id');
-            let adCity = $('#select-city').val();
+            let adCity = $('#LOCATION_CITY').val();
+            let adCoordinates = $('#COORDINATES_AD').val();
             let prop = {};
 
             prop['LOCATION_CITY'] = adCity;
+            prop['COORDINATES_AD'] = adCoordinates;
 
             //html контент
             let arAdDescript = {};
@@ -201,4 +203,223 @@ $(document).ready(function() {
         }
 
     });
+
+    var coordinatesForm = [];
+    var cityForm = '';
+
+    ymaps.ready(init);
+    function init() {
+        // Подключаем поисковые подсказки к полю ввода.
+        var suggestView = new ymaps.SuggestView('suggest'),
+            map,
+            placemark,
+            addressLine;
+
+        var city = adData['CITY'];
+
+        if(!city){
+            city = 'Москва';
+        }
+
+        ymaps.geocode(city, {
+            results: 1
+        }).then(function (res) {
+            var firstGeoObject = res.geoObjects.get(0);
+            var coords = firstGeoObject.geometry.getCoordinates();
+            var firstGeoObjectGlobal;
+            map = new ymaps.Map('map', {
+                center: coords,
+                zoom: 12,
+                controls: ['zoomControl']
+            });
+
+            // событие клика на крату
+            map.events.add('click', function (e) {
+                var coords = e.get('coords');
+
+                // Если метка уже создана – просто передвигаем ее.
+                if (placemark) {
+                    placemark.geometry.setCoordinates(coords);
+                }
+                // Если нет – создаем.
+                else {
+                    placemark = createPlacemark(coords);
+                    map.geoObjects.add(placemark);
+                    // Слушаем событие окончания перетаскивания на метке.
+                    placemark.events.add('dragend', function () {
+                        getAddress(placemark.geometry.getCoordinates());
+                    });
+                }
+
+                getAddress(coords);
+            });
+
+        });
+
+        // При клике по кнопке запускаем верификацию введёных данных.
+        $(document).on('click', '#check-button_map', function (e) {
+            geocode();
+        });
+
+        function geocode() {
+            // Забираем запрос из поля ввода.
+            var request = $('#suggest').val();
+            // Геокодируем введённые данные.
+            ymaps.geocode(request).then(function (res) {
+                var obj = res.geoObjects.get(0),
+                    error, hint;
+
+                if (obj) {
+                    switch (obj.properties.get('metaDataProperty.GeocoderMetaData.precision')) {
+                        case 'exact':
+                            break;
+                        case 'number':
+                        case 'near':
+                        case 'range':
+                            error = 'Адрес не найден. Уточните адрес или укажите его на карте';
+                            hint = 'Уточните номер дома';
+                            break;
+                        case 'street':
+                            error = 'Адрес не найден. Уточните адрес или укажите его на карте';
+                            hint = 'Уточните номер дома';
+                            break;
+                        case 'other':
+                        default:
+                            error = 'Адрес не найден. Уточните адрес или укажите его на карте';
+                            hint = 'Уточните адрес';
+                    }
+                } else {
+                    error = 'Адрес не найден. Уточните адрес или укажите его на карте';
+                    hint = 'Уточните адрес';
+                }
+
+                // Если геокодер возвращает пустой массив или неточный результат, то показываем ошибку.
+                if (error) {
+                    showError(error);
+                } else {
+                    showResult(obj);
+                }
+            }, function (e) {
+                console.log(e);
+                showError('Адрес не найден. Уточните адрес или укажите его на карте');
+            })
+
+        }
+        function showResult(obj) {
+            // Удаляем сообщение об ошибке, если найденный адрес совпадает с поисковым запросом.
+            $('#suggest').removeClass('input_error');
+            $('#notice').css('display', 'none');
+
+            var mapContainer = $('#map'),
+                bounds = obj.properties.get('boundedBy'),
+                // Рассчитываем видимую область для текущего положения пользователя.
+                mapState = ymaps.util.bounds.getCenterAndZoom(
+                    bounds,
+                    [mapContainer.width(), mapContainer.height()]
+                ),
+                // Сохраняем полный адрес для сообщения под картой.
+                address = [obj.getCountry(), obj.getAddressLine()].join(', '),
+                // Сохраняем укороченный адрес для подписи метки.
+                shortAddress = [obj.getThoroughfare(), obj.getPremiseNumber(), obj.getPremise()].join(' ');
+
+            //Сохраняем координаты и горд для сохранения в инфоблок
+            coordinatesForm = mapState.center;
+            cityForm = obj.getLocalities()[0];
+            $('#LOCATION_CITY').val(cityForm);
+            $('#COORDINATES_AD').val(coordinatesForm);
+
+            // Убираем контролы с карты.
+            mapState.controls = ['zoomControl'];
+            // Создаём карту.
+            createMap(mapState, shortAddress);
+        }
+        function showError(message) {
+            coordinatesForm = [];
+            cityForm = '';
+            $('#LOCATION_CITY').val(cityForm);
+            $('#COORDINATES_AD').val(coordinatesForm);
+            $('#notice').text(message);
+            $('#suggest').addClass('input_error');
+            $('#notice').css('display', 'block');
+        }
+        function createMap(state, caption) {
+            // Если карта еще не была создана, то создадим ее и добавим метку с адресом.
+            if (!map) {
+                map = new ymaps.Map('map', state);
+                placemark = new ymaps.Placemark(
+                    map.getCenter(), {
+                        iconCaption: caption,
+                        balloonContent: caption
+                    }, {
+                        iconLayout: 'default#imageWithContent',
+                        iconImageHref: '/local/templates/anypact/img/map_icon.png',
+                        iconImageSize: [30, 30],
+                        iconImageOffset: [-15, -15],
+                        iconContentOffset: [30, 30],
+                    });
+                map.geoObjects.add(placemark);
+                // Если карта есть, то выставляем новый центр карты и меняем данные и позицию метки в соответствии с найденным адресом.
+            } else {
+                map.setCenter(state.center, state.zoom);
+
+                if(!placemark){
+                    placemark = new ymaps.Placemark(
+                        map.getCenter(), {
+                            iconCaption: caption,
+                            balloonContent: caption
+                        }, {
+                            iconLayout: 'default#imageWithContent',
+                            iconImageHref: '/local/templates/anypact/img/map_icon.png',
+                            iconImageSize: [30, 30],
+                            iconImageOffset: [-15, -15],
+                            iconContentOffset: [30, 30],
+                        });
+                    map.geoObjects.add(placemark);
+                }
+
+                placemark.geometry.setCoordinates(state.center);
+                placemark.properties.set({iconCaption: caption, balloonContent: caption});
+            }
+        }
+
+        // Создание метки.
+        function createPlacemark(coords) {
+            return new ymaps.Placemark(coords, {
+                iconCaption: 'поиск...'
+            }, {
+                iconLayout: 'default#imageWithContent',
+                iconImageHref: '/local/templates/anypact/img/map_icon.png',
+                iconImageSize: [30, 30],
+                iconImageOffset: [-15, -15],
+                iconContentOffset: [30, 30],
+            });
+        }
+
+        // Определяем адрес по координатам (обратное геокодирование).
+        function getAddress(coords) {
+            placemark.properties.set('iconCaption', 'поиск...');
+            ymaps.geocode(coords).then(function (res) {
+                var firstGeoObjectGlobal = res.geoObjects.get(0);
+                placemark.properties.set({
+                        // Формируем строку с данными об объекте.
+                        iconCaption: [
+                            // Название населенного пункта или вышестоящее административно-территориальное образование.
+                            firstGeoObjectGlobal.getLocalities().length ? firstGeoObjectGlobal.getLocalities() : firstGeoObjectGlobal.getAdministrativeAreas(),
+                            // Получаем путь до топонима, если метод вернул null, запрашиваем наименование здания.
+                            firstGeoObjectGlobal.getThoroughfare() || firstGeoObjectGlobal.getPremise()
+                        ].filter(Boolean).join(', '),
+                        // В качестве контента балуна задаем строку с адресом объекта.
+                        balloonContent: firstGeoObjectGlobal.getAddressLine()
+                    });
+
+                addressLine = firstGeoObjectGlobal.getAddressLine();
+                coordinatesForm = coords;
+                cityForm = firstGeoObjectGlobal.getLocalities()[0];
+                $('#suggest').val(addressLine);
+                $('#LOCATION_CITY').val(cityForm);
+                $('#COORDINATES_AD').val(coordinatesForm);
+
+            });
+        }
+    }
 });

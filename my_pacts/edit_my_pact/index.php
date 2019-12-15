@@ -12,7 +12,7 @@ $APPLICATION->SetTitle("AnyPact");
     $arTemplate = array(
         'EDIT'  => 'edit',
         'ADD'   => 'add'
-    );    
+    );
  
     $APPLICATION->IncludeComponent("nfksber:pactview.detail", 
     $arTemplate[$_GET['ACTION']], 
@@ -25,8 +25,9 @@ $APPLICATION->SetTitle("AnyPact");
             "SEF_URL_TEMPLATES" => array(                    
                     "list" => "",
                     "detail" => "#ID#"
-                )      
-            )
+            ),
+            "LOCATION" => $getGeo['cityName']
+        )
     );
     ?> 
 
@@ -39,4 +40,5 @@ $APPLICATION->SetTitle("AnyPact");
     <?}?>
 </div>
 </div>
+<script src="https://api-maps.yandex.ru/2.1/?apikey=08f051a6-35f1-4392-a988-5024961ee1a8&lang=ru_RU" type="text/javascript"></script>
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
