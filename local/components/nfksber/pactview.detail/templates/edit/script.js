@@ -178,7 +178,6 @@ $(document).ready(function() {
             showResult('#popup-error','Ошибка сохранения', 'Поле обязательно для заполнения');
             return;
         }*/
-        console.log(prop);
 
         var formData = new FormData(this);
         var mainData = JSON.stringify({
@@ -188,8 +187,6 @@ $(document).ready(function() {
             atrr_text: 'all_save'
         });
 
-        //lol
-        console.log(mainData);
 
         formData.append( 'arr', mainData );
 
