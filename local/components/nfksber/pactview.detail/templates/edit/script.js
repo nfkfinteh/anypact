@@ -75,7 +75,6 @@ $(document).ready(function() {
         $.post(
             "/response/ajax/up_pact_text.php", {
                 text: text_descript,
-                city: city,
                 id_element: ID_Object,
                 atrr_text: 'summ'
             },
@@ -94,7 +93,7 @@ $(document).ready(function() {
     });
 
     // автоматическое удаление объявления
-    $("#avtomatic_delete").on('click', function(){        
+   /* $("#avtomatic_delete").on('click', function(){
         let auto_delete_button = $(this).prop("checked");
         let auto_delete_params
 
@@ -123,7 +122,7 @@ $(document).ready(function() {
             }
         }
 
-    });
+    });*/
 
     // Продление срока объявления
     $("#up_date_active").on('click', function(){
@@ -148,24 +147,57 @@ $(document).ready(function() {
 
     });
 
-    /*dop file*/
-    $(document).on('submit', '.dop-file__form', function(e){
+    /*all_save*/
+    $(document).on('submit', '.all-save_form', function(e){
         e.preventDefault();
+
+        var DETAIL_TEXT,
+            prop = {},
+            auto_delete_button = $('#avtomatic_delete').prop("checked");
+
+        DETAIL_TEXT = $(".cardPact-EditText-Descript .editbox").html().trim();
+        prop['CONDITIONS_PACT'] = $(".cardPact-EditText-Сonditions .editbox").html().trim();
+
+        prop['SUMM_PACT'] = $("#cardPact-EditText-Summ").text().trim();
+        prop['SUMM_PACT'] = Number(prop['SUMM_PACT']);
+        if(prop['SUMM_PACT'].length<=0 || isNaN(prop['SUMM_PACT'])) {
+            $("#cardPact-EditText-Summ").text(0);
+            prop['SUMM_PACT'] = 0;
+        }
+
+        if(auto_delete_button){
+            prop['AV_DELETE'] = 'Y';
+        }else{
+            prop['AV_DELETE'] = 'N';
+        }
+
+        prop['LOCATION_CITY'] = $('#LOCATION_CITY').val();
+        prop['COORDINATES_AD'] = $('#COORDINATES_AD').val();
+
+        /*if(DETAIL_TEXT.length==0 || prop['CONDITIONS_PACT'].length==0) {
+            showResult('#popup-error','Ошибка сохранения', 'Поле обязательно для заполнения');
+            return;
+        }*/
+
         var formData = new FormData(this);
         var mainData = JSON.stringify({
             id_element: ID_Object,
-            atrr_text: 'add_incl_file'
+            DETAIL_TEXT: DETAIL_TEXT,
+            PROPERTY: prop,
+            atrr_text: 'all_save'
         });
+
 
         formData.append( 'arr', mainData );
 
         var res = getURLData().then(function(data) {
-            if(data=='ERROR'){
+            result = JSON.parse(data);
+            if(result['TYPE']=='ERROR'){
                 showResult('#popup-error','Ошибка сохранения');
             }
             else{
-                $('.list-dopfile').html(data);
-                showResult('#popup-success', 'Изменения сохранены');
+                //showResult('#popup-success', 'Изменения сохранены');
+                location.reload();
             }
         });
 
@@ -358,25 +390,35 @@ $(document).ready(function() {
         var suggestView = new ymaps.SuggestView('suggest'),
             map,
             placemark,
-            addressLine;
+            addressLine,
+            city = $('#LOCATION_CITY').val(),
+            startCoordinates = $('#COORDINATES_AD').val();
 
-        var city = adData['CITY'];
-
-        if(!city){
-            city = 'Москва';
-        }
+        if(!city) city = adData['CITY'];
+        if(!city) city = 'Москва';
 
         ymaps.geocode(city, {
             results: 1
         }).then(function (res) {
-            var firstGeoObject = res.geoObjects.get(0);
-            var coords = firstGeoObject.geometry.getCoordinates();
-            var firstGeoObjectGlobal;
+            var firstGeoObject = res.geoObjects.get(0), coords;
+            if(startCoordinates.length>0){
+                coords = startCoordinates.split(',');
+            }
+            else{
+                coords = firstGeoObject.geometry.getCoordinates();
+            }
+
             map = new ymaps.Map('map', {
                 center: coords,
                 zoom: 12,
                 controls: ['zoomControl']
             });
+
+            if(startCoordinates.length>0){
+                placemark = createPlacemark(coords);
+                map.geoObjects.add(placemark);
+                getAddress(coords);
+            }
 
             // событие клика на крату
             map.events.add('click', function (e) {
@@ -483,6 +525,8 @@ $(document).ready(function() {
             cityForm = '';
             $('#LOCATION_CITY').val(cityForm);
             $('#COORDINATES_AD').val(coordinatesForm);
+            map.geoObjects.remove(placemark);
+            placemark = '';
             $('#notice').text(message);
             $('#suggest').addClass('input_error');
             $('#notice').css('display', 'block');
@@ -566,31 +610,6 @@ $(document).ready(function() {
 
             });
         }
+
     }
-
-    $(document).on('click', '#save_map_data', function(){
-        let cityName = $('#LOCATION_CITY').val();
-        let coordinates = $('#COORDINATES_AD').val();
-
-        $.post(
-            "/response/ajax/up_pact_text.php", {
-                id_element: ID_Object,
-                cityName: cityName,
-                coordinates: coordinates,
-                atrr_text: 'up_location'
-            },
-            onAjaxSuccess
-        );
-
-        function onAjaxSuccess(data) {
-            $result = JSON.parse(data);
-            if($result['TYPE']=='ERROR'){
-                showResult('#popup-error','Ошибка сохранения', $result['VALUE']);
-            }
-            if($result['TYPE']=='SUCCESS'){
-                showResult('#popup-success', 'Изменения сохранены');
-            }
-        }
-    });
-
 });

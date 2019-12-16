@@ -37,7 +37,6 @@ switch ($_POST['atrr_text']) {
 
         $value="text";
         CIBlockElement::SetPropertyValueCode($ELEMENT_ID, $PROPERTY_CODE, $PROPERTY_VALUE);
-        CIBlockElement::SetPropertyValueCode($ELEMENT_ID, 'LOCATION_CITY', htmlspecialcharsEx($_POST['city']));
 
         $arLoadProductArray = Array(
             "MODIFIED_BY"    => $USER->GetID()            
@@ -92,7 +91,6 @@ switch ($_POST['atrr_text']) {
 
         $checkUpdate = CIBlockElement::SetPropertyValuesEx($PRODUCT_ID, false, $arProperty);
         break;
-
 }
 
 // код свойства

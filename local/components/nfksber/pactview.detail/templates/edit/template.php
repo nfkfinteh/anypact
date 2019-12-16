@@ -79,13 +79,12 @@
                 <h3>Местоположение</h3>
                 <div id="header" class="search-map_input">
                     <input type="text" id="suggest" class="input-search_map" placeholder="Введите адрес">
-                    <input type="hidden" id="LOCATION_CITY" name="LOCATION_CITY" value="">
-                    <input type="hidden" id="COORDINATES_AD" name="COORDINATES_AD" value="">
+                    <input type="hidden" id="LOCATION_CITY" name="LOCATION_CITY" value="<?=$arResult['PROPERTY']['LOCATION_CITY']['VALUE']?>">
+                    <input type="hidden" id="COORDINATES_AD" name="COORDINATES_AD" value="<?=$arResult['PROPERTY']['COORDINATES_AD']['VALUE']?>">
                     <button type="submit" id="check-button_map" class="btn btn-nfk btn-search_map">Проверить</button>
                 </div>
                 <p id="notice" class="error_form"></p>
                 <div id="map" style="height: 400px"></div>
-                <button class="btn btn-nfk save" id="save_map_data">Сохранить</button>
             </div>
 
         </div>
@@ -133,7 +132,7 @@
                 <?endif?>
             </div>
 
-            <form method="post" enctype = 'multipart/form-data' action="<?=$_SERVER['REQUEST_URI']?>&nonsense=1" class="dop-file__form">
+            <form method="post" enctype = 'multipart/form-data' action="<?=$_SERVER['REQUEST_URI']?>&nonsense=1" class="all-save_form">
                 <?echo CFile::InputFile("IMAGE_ID", 20, $str_IMAGE_ID);?>
                 <button class="btn btn-nfk" type="submit">Сохранить</button>
             </form>

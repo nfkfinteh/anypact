@@ -52,8 +52,6 @@ switch ($arData['atrr_text']) {
 
         break;
     case 'add_incl_file':
-
-
         $ELEMENT_ID     = $arData['id_element'];
         $PROPERTY_CODE  = "MAIN_FILES";
         $PROPERTY_VALUE = $arFiles;
@@ -83,6 +81,28 @@ switch ($arData['atrr_text']) {
         else{
             echo 'ERROR';
             die();
+        }
+        break;
+    case 'all_save':
+        $ELEMENT_ID = $arData['id_element'];
+        $PROPERTY_CODE  = "MAIN_FILES";
+        $PROPERTY_VALUE = $arFiles;
+        $arLoadProductArray = Array(
+            "MODIFIED_BY"    => $USER->GetID(),
+            "DETAIL_TEXT_TYPE" =>"html",
+            "DETAIL_TEXT" => html_entity_decode($arData['DETAIL_TEXT'])
+            //"DETAIL_TEXT"    => $_POST['text']
+        );
+        $PROPERTY_CODE  = "MAIN_FILES";
+        $PROPERTY_VALUE = $arFiles;
+
+        if($el->Update($ELEMENT_ID, $arLoadProductArray)){
+            CIBlockElement::SetPropertyValuesEx($ELEMENT_ID, false, $arData['PROPERTY']);
+            $checkUpdate = CIBlockElement::SetPropertyValueCode($ELEMENT_ID, $PROPERTY_CODE, $PROPERTY_VALUE);
+            die(json_encode([ 'VALUE'=>'', 'TYPE'=> 'SUCCESS']));
+        }
+        else{
+            die(json_encode([ 'VALUE'=>$el->LAST_ERROR, 'TYPE'=> 'ERROR']));
         }
         break;
 }
