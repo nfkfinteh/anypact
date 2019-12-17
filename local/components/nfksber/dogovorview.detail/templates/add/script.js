@@ -352,7 +352,8 @@ $(document).ready(function() {
                             $(canvas).addClass('canvas-img');
                             $('#save_btn').addClass('canvas-img');
                             //здесь блокирум инструменты при загрухке картинки. Пока только "редактирование"
-                            $('#btn-edit').attr('disabled', true);
+                            //$('#btn-edit').attr('disabled', true);
+                            $('.tools_redactor button:not(#save_btn)').attr('disabled', true);
                             canvas.innerHTML = result[i].CONTENT;
                         }
                         else{

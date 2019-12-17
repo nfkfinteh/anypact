@@ -152,7 +152,9 @@ class CDemoSqr extends CBitrixComponent
         $res = CIBlockElement::GetProperty($ID_IBLOCK, $ID_EL, "sort", "asc", array("CODE" => "STEPS"));
         while ($ob = $res->GetNext())
         {
-            $VALUES[] = $ob['VALUE'];
+            if(!empty($ob['VALUE'])){
+                $VALUES[] = $ob['VALUE'];
+            }
         }
         return $VALUES;
     }
@@ -255,6 +257,31 @@ class CDemoSqr extends CBitrixComponent
             $arrUserContractHolder                  = $UserContractHolder->Fetch();
             $this->USER_PROPERTY                    = $arrUserContractHolder;
             $this->arResult["USER_PROP"]            = $arrUserContractHolder;
+
+            //если выбран профиль компании
+            if(!empty($this->arResult['USER_PROP']['UF_CUR_COMPANY'])){
+                $res = CIBlockElement::GetList([], ['IBLOCK_ID'=>8, 'ID'=>$this->arResult['USER_PROP']['UF_CUR_COMPANY'], 'ACTIVE'=>'Y'], false, false, ['IBLOCK_ID', 'ID', 'NAME']);
+                if($obj = $res->GetNextElement()){
+                    $arCompany = $obj->GetFields();
+                    $arCompany['PROPERTY'] = $obj->GetProperties();
+                }
+                if(!empty($arCompany)){
+                    $this->arResult['COMPANY_PROP'] = [
+                        'IBLOCK_ID'=>$arCompany['IBLOCK_ID'],
+                        'ID'=>$arCompany['ID'],
+                        'NAME'=>$arCompany['NAME']
+                    ];
+                    foreach ($arCompany['PROPERTY'] as $prop){
+                        $this->arResult['COMPANY_PROP'][$prop['CODE']] = [
+                            'NAME'=>$prop['NAME'],
+                            'VALUE'=>$prop['VALUE']
+                        ];
+                    }
+                }
+
+            }
+
+
             $this->arResult["USER_LOGIN"]           = CUser::GetLogin();
 
             $this->arResult["ELEMENT"]              = $this->getElement($this->arResult["ELEMENT_ID"]);

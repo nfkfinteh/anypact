@@ -1,22 +1,3 @@
-<?  //print_r($arResult["LIST_CATEGORY"]) ;?>
-<? //print_r($arResult) ;
-   $Name = $arResult["USER_PROP"]["NAME"];
-   $Surname = $arResult["USER_PROP"]["LAST_NAME"];
-   $Midlenmae = $arResult["USER_PROP"]["SECOND_NAME"];
-   $Phone = $arResult["USER_PROP"]["PERSONAL_PHONE"];
-   $Passport = $arResult["USER_PROP"]["UF_PASSPORT"].' '.$arResult["USER_PROP"]["UF_KEM_VPASSPORT"];
-
-?>
-<script>
-var re_url = '<?=$_SERVER['REQUEST_URI']?>'
-var full_name = {
-    name: '<?=$Name?>',
-    surname: '<?=$Surname?>',
-    midlname:'<?=$Midlenmae?>',
-    phone: '<?=$Phone?>',
-    passport: '<?=$Passport?>'
-}
-</script>
 <h1><?=$arResult["ELEMENT"]["NAME"]?></h1>
  <div class="tender cardDogovor" style="margin-bottom: 100px;">
     <div class="row">
@@ -24,7 +5,9 @@ var full_name = {
             <div class="cardDogovor-boxTool cardPact">
                 <h5>Создать договор из наших шаблонов</h5>
                 <p>В правой части выберите тему договора:</p>
-                <button class="btn btn-nfk" id="template_con">Загрузить договор из шаблона</button>                
+                <a href="/my_pacts/add_my_dogovor/?ELEMENT_ID=<?=$arResult['ELEMENT_ID']?>&EDIT=ADD" class="btn btn-nfk" id="template_con">
+                    Загрузить договор из шаблона
+                </a>
                 <?if(!empty($arResult["TEMPLATE_CONTENT"])){ ?>                    
                     <div class="steps">
                         <?if(!empty($arResult["TEMPLATE_CONTENT_PROPERTY"])){?>
@@ -93,3 +76,13 @@ var full_name = {
         </div>            
     </div>
 </div>
+<script>
+    var re_url = '<?=$_SERVER['REQUEST_URI']?>'
+    var full_name = {
+        name: '<?= $arResult['JS_DATA']['USER']['NAME']?>',
+        surname: '<?=$arResult['JS_DATA']['USER']['SURNAME']?>',
+        midlname:'<?=$arResult['JS_DATA']['USER']['MIDLENAME']?>',
+        phone: '<?=$arResult['JS_DATA']['USER']['PHONE']?>',
+        passport: '<?=$arResult['JS_DATA']['USER']['PASSPORT']?>'
+    }
+</script>

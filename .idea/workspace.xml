@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="095c6364-006c-4512-9344-8361d6fd3db8" name="Default" comment="">
+    <list default="true" id="095c6364-006c-4512-9344-8361d6fd3db8" name="Default" comment="fix Ошибка поиса людей">
+      <change afterPath="$PROJECT_DIR$/local/components/nfksber/dogovorview.detail/templates/add/result_modifier.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/components/nfksber/resizeimg/templates/.default/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/local/components/nfksber/resizeimg/templates/.default/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local/components/nfksber/dogovorview.detail/class.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/components/nfksber/dogovorview.detail/class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local/components/nfksber/dogovorview.detail/templates/add/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/local/components/nfksber/dogovorview.detail/templates/add/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local/components/nfksber/dogovorview.detail/templates/add/template.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/components/nfksber/dogovorview.detail/templates/add/template.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local/php_interface/init.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/php_interface/init.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -25,10 +29,16 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/local/components/nfksber/pactview.detail/templates/add/script.js" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/local/components/nfksber/userpacts.list/class.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/local/components/nfksber/dogovorview.detail/templates/add/script.js" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/local/components/nfksber/pactview.detail/templates/edit/script.js" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/local/components/nfksber/pactview.detail/class.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/local/components/nfksber/pactview.detail/templates/edit/template.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/local/templates/anypact/components/bitrix/main.profile/anypact/script.js" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/response/ajax/class/rtf_html.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/local/templates/anypact/js/popup_script.js" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/local/components/nfksber/dogovorview.detail/class.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/local/components/nfksber/dogovorview.detail/templates/edit/script.js" root0="SKIP_INSPECTION" />
   </component>
   <component name="JsFlowSettings">
@@ -42,18 +52,20 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/local/templates/anypact/module/cropper" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/local/components/nfksber/company.list" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\OpenServer\domains\anypact_dev\local\components\nfksber\company.list" />
+      <recent name="D:\OpenServer\domains\anypact_dev\local\components\nfksber" />
+      <recent name="D:\OpenServer\domains\anypact_dev\response\ajax" />
+      <recent name="D:\OpenServer\domains\anypact_dev\local\components\nfksber\company\templates\.default" />
+      <recent name="D:\OpenServer\domains\anypact_dev\upload" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\OpenServer\domains\anypact_dev\local\templates\anypact\module\imgareaselect" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\OpenServer\domains\anypact_dev\local\templates\anypact\module\cropper" />
-      <recent name="D:\OpenServer\domains\anypact_dev" />
-      <recent name="D:\OpenServer\domains\anypact_dev\local\components\nfksber" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -91,7 +103,147 @@
       <workItem from="1575010769064" duration="963000" />
       <workItem from="1575038193181" duration="3263000" />
       <workItem from="1575095514905" duration="17276000" />
+      <workItem from="1575872431113" duration="6337000" />
+      <workItem from="1575923064594" duration="4813000" />
+      <workItem from="1575958267584" duration="4607000" />
+      <workItem from="1575982189822" duration="22802000" />
+      <workItem from="1576047886765" duration="2861000" />
+      <workItem from="1576084304447" duration="13571000" />
+      <workItem from="1576130319840" duration="50000" />
+      <workItem from="1576165950562" duration="19091000" />
+      <workItem from="1576218305867" duration="4769000" />
+      <workItem from="1576228864770" duration="4029000" />
+      <workItem from="1576238746958" duration="853000" />
+      <workItem from="1576243639147" duration="349000" />
+      <workItem from="1576248779757" duration="4220000" />
+      <workItem from="1576318048577" duration="33854000" />
+      <workItem from="1576400692252" duration="22042000" />
+      <workItem from="1576480497551" duration="600000" />
+      <workItem from="1576489255151" duration="17642000" />
+      <workItem from="1576567318782" duration="129000" />
+      <workItem from="1576576265846" duration="31000" />
+      <workItem from="1576594878696" duration="8853000" />
     </task>
+    <task id="LOCAL-00001" summary="fix Ошибка поиса людей">
+      <created>1575805429856</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1575805429856</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Добавлен город в редактировании объявления">
+      <created>1575816506729</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1575816506729</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Вывод пола в профиле, и даты рождения + пикер для ввода даты">
+      <created>1575833893960</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1575833893961</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Увеличен шрифт в окне отправки сообщения пользователю">
+      <created>1575834475636</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1575834475636</updated>
+    </task>
+    <task id="LOCAL-00005" summary="fix">
+      <created>1575882134903</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1575882134903</updated>
+    </task>
+    <task id="LOCAL-00006" summary="fix Отображение пола в редакторе профиля пользователя">
+      <created>1575887495132</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1575887495132</updated>
+    </task>
+    <task id="LOCAL-00007" summary="fix">
+      <created>1575887951565</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1575887951565</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Push уведомления. Fix форм добаления и редактирования объявления">
+      <created>1576223743527</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1576223743527</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Добавление компании">
+      <created>1576239566589</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1576239566589</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Отображение выбора города на мобильнике">
+      <created>1576250088550</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1576250088550</updated>
+    </task>
+    <task id="LOCAL-00011" summary="fix редирект при обрезке изображения">
+      <created>1576257450833</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1576257450833</updated>
+    </task>
+    <task id="LOCAL-00012" summary="fix Добавление компании">
+      <created>1576322983123</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1576322983123</updated>
+    </task>
+    <task id="LOCAL-00013" summary="fix Ошибка поиса людей 2">
+      <created>1576326024824</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1576326024824</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Выбор компании для профиля">
+      <created>1576355656328</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1576355656328</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Добавлены город и координаты, в редактировании сделки">
+      <created>1576449657833</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1576449657833</updated>
+    </task>
+    <task id="LOCAL-00016" summary="fix Формы изменения объявления">
+      <created>1576529819517</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1576529819517</updated>
+    </task>
+    <task id="LOCAL-00017" summary="fix Формы изменения объявления 2">
+      <created>1576530100196</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1576530100196</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -118,7 +270,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="master" />
+                        <option value="nfk2" />
                       </list>
                     </value>
                   </entry>
@@ -137,6 +289,11 @@
             <list>
               <RecentGroup>
                 <option name="FILTER_VALUES">
+                  <option value="nfk2" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
                   <option value="master" />
                 </option>
               </RecentGroup>
@@ -153,6 +310,22 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Обрезка фото профиля пользователя" />
-    <option name="LAST_COMMIT_MESSAGE" value="Обрезка фото профиля пользователя" />
+    <MESSAGE value="fix Ошибка поиса людей" />
+    <MESSAGE value="Добавлен город в редактировании объявления" />
+    <MESSAGE value="Вывод пола в профиле, и даты рождения + пикер для ввода даты" />
+    <MESSAGE value="Увеличен шрифт в окне отправки сообщения пользователю" />
+    <MESSAGE value="fix Отображение пола в редакторе профиля пользователя" />
+    <MESSAGE value="fix" />
+    <MESSAGE value="Push уведомления. Fix форм добаления и редактирования объявления" />
+    <MESSAGE value="Добавление компании" />
+    <MESSAGE value="Отображение выбора города на мобильнике" />
+    <MESSAGE value="fix редирект при обрезке изображения" />
+    <MESSAGE value="fix Добавление компании" />
+    <MESSAGE value="fix Ошибка поиса людей 2" />
+    <MESSAGE value="Выбор компании для профиля" />
+    <MESSAGE value="Добавлены город и координаты, в редактировании сделки" />
+    <MESSAGE value="fix Формы изменения объявления" />
+    <MESSAGE value="fix Формы изменения объявления 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix Формы изменения объявления 2" />
   </component>
 </project>
