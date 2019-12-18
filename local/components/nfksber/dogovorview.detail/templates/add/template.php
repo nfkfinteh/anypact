@@ -31,7 +31,7 @@
                     </div>
                 <?}?>
                 <h5>Загрузить договор из вашего файла</h5>
-                <p>поддерживаемые форматы(docx, rtf, txt)</p>
+                <p31>поддерживаемые форматы(docx, rtf, txt)</p31>
                 <form enctype="multipart/form-data" method="post" name="loadcontract"> 
                     <label for="uploadbtn" class="btn btn-nfk" id="">Выберите собственный файл</label>
                     <input id="uploadbtn" type="file" name="file[]"  accept="docx/*" capture="camera" multiple required value="Сделать фото" style="display:none;"/>
@@ -40,7 +40,7 @@
                 </form>
                 <h5>Создать договор используя наш редактор</h5>
                 <p>Нажмите на кнопку "Создать договор в редакторе" и в поле справа наберайте текст используя инструменты для форматирования.</p>
-                <button class="btn btn-nfk" id="create_con">Создать договор в редакторе</button>
+                <button class="btn btn-nfk" id="create_con" disabled>Создать договор в редакторе</button>
             </div>
         </div>
         <div class="col-lg-9 col-md-9 col-sm-12">

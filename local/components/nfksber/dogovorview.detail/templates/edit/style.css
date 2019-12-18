@@ -154,3 +154,45 @@ edbox {
 	left: 50%;
 	transform: translate(-50%, -50%);
 }
+#canvas .edit-buttons-container{
+    display: none;
+}
+#canvas[contenteditable="true"] .edit-buttons-container{
+    display: block;
+}
+.add-row, .delete-row{
+    color: #ff6416 !important;
+    background-color: #ffffff;
+    border-color: #ff6416 !important;
+    border-radius: .25rem;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    margin-top: 3px;
+    position: relative;
+    opacity: .3;
+    transition: opacity .3s;
+}
+.add-row:hover, .delete-row:hover{
+    opacity: 1;
+}
+.add-row::before, .delete-row::before{
+    content: "";
+    width: 10px;
+    height: 2px;
+    background-color: #ff6416;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.add-row::after{
+    content: "";
+    width: 2px;
+    height: 10px;
+    background-color: #ff6416;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

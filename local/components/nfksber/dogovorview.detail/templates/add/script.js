@@ -92,6 +92,7 @@ function loadTextBox(el) {
 function setHeaderFullName(idname) {
     let seller = document.getElementsByClassName('fullnameseller');
     let customer = document.getElementsByClassName('fullnamecustomer');
+
     //let type_user = document.getElementById('step0_text');
     switch (idname) {
         case 'seller':
@@ -351,8 +352,7 @@ $(document).ready(function() {
                         if(!$(canvas).hasClass('canvas-img')){
                             $(canvas).addClass('canvas-img');
                             $('#save_btn').addClass('canvas-img');
-                            //здесь блокирум инструменты при загрухке картинки. Пока только "редактирование"
-                            //$('#btn-edit').attr('disabled', true);
+                            //здесь блокирум инструменты при загрухке картинки.
                             $('.tools_redactor button:not(#save_btn)').attr('disabled', true);
                             canvas.innerHTML = result[i].CONTENT;
                         }

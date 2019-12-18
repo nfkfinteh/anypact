@@ -1,87 +1,3 @@
-<? // print_r($arResult["TEMPLATE_CONTENT_PROPERTY"]) ;?>
-<? //print_r($arResult) ;
-   $Name = $arResult["USER_PROP"]["NAME"];
-   $Surname = $arResult["USER_PROP"]["LAST_NAME"];
-   $Midlenmae = $arResult["USER_PROP"]["SECOND_NAME"];
-   $Phone = $arResult["USER_PROP"]["PERSONAL_PHONE"];
-   $Passport = $arResult["USER_PROP"]["UF_PASSPORT"].' '.$arResult["USER_PROP"]["UF_KEM_VPASSPORT"];
-
-?>
-<style>
-/*----------Стили кнопок-------------*/
-#canvas .edit-buttons-container{
-	display: none;
-}
-#canvas[contenteditable="true"] .edit-buttons-container{
-	display: block;
-}
-.add-row, .delete-row{
-	color: #ff6416 !important;
-	background-color: #ffffff;
-	border-color: #ff6416 !important;
-	border-radius: .25rem;
-	cursor: pointer;
-	width: 20px;
-	height: 20px;
-	margin-top: 3px;
-	position: relative;
-	opacity: .3;
-	transition: opacity .3s;
-}
-.add-row:hover, .delete-row:hover{
-	opacity: 1;
-}
-.add-row::before, .delete-row::before{
-	content: "";
-	width: 10px;
-	height: 2px;
-	background-color: #ff6416;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-}
-.add-row::after{
-	content: "";
-	width: 2px;
-	height: 10px;
-	background-color: #ff6416;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-}
-</style>
-<script type="text/javascript">
-	function addRow(thisBtn, n){
-		let tbody = thisBtn.parentElement.previousElementSibling.tBodies[0];
-		let tr = document.createElement('tr');
-		const num = tbody.rows.length + 1;
-		const numTextNode = document.createTextNode(num);
-		const td = document.createElement('td');
-		td.append(numTextNode);
-		tr.append(td);
-		for (var i = 1; i < n; i++) {
-			const td = document.createElement('td');
-			tr.append(td);
-		}
-		tbody.append(tr);
-	}
-	function deleteRow(thisBtn){
-		let collection = thisBtn.parentElement.previousElementSibling.tBodies[0].rows;
-		console.log(collection);
-		collection[collection.length-1].remove();
-	}
-</script>
-<script>
-var full_name = {
-    name: '<?=$Name?>',
-    surname: '<?=$Surname?>',
-    midlname:'<?=$Midlenmae?>',
-    phone: '<?=$Phone?>',
-    passport: '<?=$Passport?>'
-}
-</script>
 <h1><?=$arResult["ELEMENT"]["NAME"]?></h1>
  <div class="tender cardDogovor" style="margin-bottom: 100px;">
     <div class="row">
@@ -128,3 +44,31 @@ var full_name = {
         </div>            
     </div>
 </div>
+<script type="text/javascript">
+    function addRow(thisBtn, n){
+        let tbody = thisBtn.parentElement.previousElementSibling.tBodies[0];
+        let tr = document.createElement('tr');
+        const num = tbody.rows.length + 1;
+        const numTextNode = document.createTextNode(num);
+        const td = document.createElement('td');
+        td.append(numTextNode);
+        tr.append(td);
+        for (var i = 1; i < n; i++) {
+            const td = document.createElement('td');
+            tr.append(td);
+        }
+        tbody.append(tr);
+    }
+    function deleteRow(thisBtn){
+        let collection = thisBtn.parentElement.previousElementSibling.tBodies[0].rows;
+        collection[collection.length-1].remove();
+    }
+
+    var full_name = {
+        name: '<?= $arResult['JS_DATA']['USER']['NAME']?>',
+        surname: '<?=$arResult['JS_DATA']['USER']['SURNAME']?>',
+        midlname:'<?=$arResult['JS_DATA']['USER']['MIDLENAME']?>',
+        phone: '<?=$arResult['JS_DATA']['USER']['PHONE']?>',
+        passport: '<?=$arResult['JS_DATA']['USER']['PASSPORT']?>'
+    }
+</script>

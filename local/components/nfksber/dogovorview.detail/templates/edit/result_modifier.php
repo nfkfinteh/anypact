@@ -18,5 +18,4 @@ else{
         'PASSPORT' => $arResult["USER_PROP"]["UF_PASSPORT"].' '.$arResult["USER_PROP"]["UF_KEM_VPASSPORT"]
     ];
 }
-new dBug($arResult['JS_DATA']['USER']);
 ?>

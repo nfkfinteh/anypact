@@ -304,7 +304,7 @@ $(document).ready(function() {
         }
     });
 
-    var form = document.forms.namedItem("loadcontract");
+    /*var form = document.forms.namedItem("loadcontract");
     form.addEventListener('submit', function(ev) {
         var oOutput = document.querySelector("div"),
             oData = new FormData(form);
@@ -328,7 +328,7 @@ $(document).ready(function() {
 
         oReq.send(oData);
         ev.preventDefault();
-    }, false);
+    }, false);*/
 
 
 

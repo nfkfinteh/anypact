@@ -407,7 +407,7 @@ class getdocument{
     }
 
     public function getImg($filename){
-        $result = '<div class="document-img" style="text-align: center"><img src="'. $filename .'"></img></div><br>';
+        $result = '<div class="document-img" style="text-align: center"><img src="'. $filename .'" style="width: 100%"></img></div><br>';
         return $result;
     }
 
