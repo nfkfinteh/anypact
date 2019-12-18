@@ -1,7 +1,6 @@
 // разрешение редактирование курсора
 function on_contenteditable(element) {
     var element_atr = element.attr('contenteditable');
-    console.log(element_atr);
     if (element_atr == 'true') {
         element.attr('contenteditable', false);
         return false;
@@ -45,7 +44,6 @@ function formatSelectText(id_name) {
     let selection = window.getSelection();
     let range = selection.getRangeAt(0);
     let sel_string = selection.toString();
-    console.log(selection.focusNode.parentNode);
     // на основе id выбираем подстановку    
     let key = id_name.replace('btn-', '');
     let arrTegs = {
@@ -176,7 +174,6 @@ function setHeaderFullName(idname) {
             STAFF : document.getElementsByClassName('customer_STAFF')
         };
 
-    console.log(user_req);
 
     //let type_user = document.getElementById('step0_text');
     switch (idname) {
@@ -254,7 +251,6 @@ function addRow(thisBtn, n){
 }
 function deleteRow(thisBtn){
     let collection = thisBtn.parentElement.previousElementSibling.tBodies[0].rows;
-    console.log(collection);
     collection[collection.length-1].remove();
 }
 
@@ -335,7 +331,6 @@ $(document).ready(function() {
             );
         }
         else{
-            console.log('test');
             $.post(
                 "/response/ajax/up_contract_text.php", {
                     contect: canvas_contr_context,
@@ -348,7 +343,6 @@ $(document).ready(function() {
 
         function onAjaxSuccess(data) {
             // Здесь мы получаем данные, отправленные сервером и выводим их на экран.
-            console.log(data);
             let result = JSON.parse(data);
             if(result['TYPE']=='ERROR'){
                 console.log($result['VALUE']);
