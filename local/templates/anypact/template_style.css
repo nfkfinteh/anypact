@@ -111,6 +111,10 @@ input {
     border-color: #ff6416;
 }
 
+.btn-nfk-invert span{
+    color: #ffF;
+}
+
 .btn-nfk-invert:hover {
     color: #ff6416;
     background-color: #ffffff;
