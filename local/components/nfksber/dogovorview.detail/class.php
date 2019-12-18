@@ -244,6 +244,40 @@ class CDemoSqr extends CBitrixComponent
         return $arNewRedaction;
     }
 
+    private function getJsRequisit(){
+        if(!empty($this->arResult['COMPANY_PROP'])){
+            foreach ($this->arResult['COMPANY_PROP'] as $code=>$prop){
+                if(!is_array($prop)){
+                    if($code=='NAME'){
+                        $this->arResult['JS_DATA']['USER'][$code] = [
+                            'NAME'=>'Название компании',
+                            'VALUE'=>$prop
+                        ];
+                    }
+                }
+                else{
+                    $this->arResult['JS_DATA']['USER'][$code] = $prop;
+                }
+            }
+        }
+        else{
+            $this->arResult['JS_DATA']['USER'] = [
+                'NAME' => [
+                    'NAME'=>'ФИО',
+                    'VALUE'=> $this->arResult["USER_PROP"]["LAST_NAME"].' '.$this->arResult["USER_PROP"]["NAME"].' '.$this->arResult["USER_PROP"]["SECOND_NAME"],
+                ],
+                'PHONE' => [
+                    'NAME'=>'Телефон',
+                    'VALUE'=> $this->arResult["USER_PROP"]["PERSONAL_PHONE"],
+                ],
+                'PASSPORT' => [
+                    'NAME'=>'Пасопрт',
+                    'VALUE'=> $this->arResult["USER_PROP"]["UF_PASSPORT"].' '.$this->arResult["USER_PROP"]["UF_KEM_VPASSPORT"],
+                ]
+            ];
+        }
+    }
+
     public function executeComponent()
     {
         global $USER;
@@ -304,6 +338,10 @@ class CDemoSqr extends CBitrixComponent
 
             #поиск имеющихся своих редакций для этой сделки по пользователю
             $this->arResult['NEW_REDACTION'] = $this->getNewRedaction($userId, $this->arResult["ELEMENT"]);
+
+            #формирование масива для js (подстановка реквизитов)
+            $this->getJsRequisit();
+
 
             $this->EndResultCache();
         //}

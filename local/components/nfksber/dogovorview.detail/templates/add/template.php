@@ -77,12 +77,13 @@
     </div>
 </div>
 <script>
-    var re_url = '<?=$_SERVER['REQUEST_URI']?>'
-    var full_name = {
+    var re_url = '<?=$_SERVER['REQUEST_URI']?>';
+    <?/*var full_name = {
         name: '<?= $arResult['JS_DATA']['USER']['NAME']?>',
         surname: '<?=$arResult['JS_DATA']['USER']['SURNAME']?>',
         midlname:'<?=$arResult['JS_DATA']['USER']['MIDLENAME']?>',
         phone: '<?=$arResult['JS_DATA']['USER']['PHONE']?>',
         passport: '<?=$arResult['JS_DATA']['USER']['PASSPORT']?>'
-    }
+    }*/?>
+    var user_req =   <?=CUtil::PhpToJSObject($arResult['JS_DATA']['USER'])?>;
 </script>

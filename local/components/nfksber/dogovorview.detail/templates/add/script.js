@@ -124,43 +124,106 @@ function loadTextBox(el) {
 
 // автоподстановка реквизитов пользователя
 function setHeaderFullName(idname) {
-    let seller = document.getElementsByClassName('fullnameseller');
-    let customer = document.getElementsByClassName('fullnamecustomer');
+    let seller =
+    {
+        NAME : document.getElementsByClassName('fullnameseller'),
+        PHONE : document.getElementsByClassName('seller_PHONE'),
+        PASSPORT : document.getElementsByClassName('seller_PASSPORT'),
+        DIRECTOR_ID : document.getElementsByClassName('seller_DIRECTOR_ID'),
+        INN : document.getElementsByClassName('seller_INN'),
+        KPP : document.getElementsByClassName('seller_KPP'),
+        OGRN : document.getElementsByClassName('seller_OGRN'),
+        ADRESS : document.getElementsByClassName('seller_ADRESS'),
+        INDEX : document.getElementsByClassName('seller_INDEX'),
+        REGION : document.getElementsByClassName('seller_REGION'),
+        CITY : document.getElementsByClassName('seller_CITY'),
+        DISTRICT : document.getElementsByClassName('seller_DISTRICT'),
+        LOCALITY : document.getElementsByClassName('seller_LOCALITY'),
+        HOUSE : document.getElementsByClassName('seller_HOUSE'),
+        OFFICE : document.getElementsByClassName('seller_OFFICE'),
+        BANK :  document.getElementsByClassName('seller_BANK'),
+        BIK : document.getElementsByClassName('seller_BIK'),
+        RAS_ACCOUNT : document.getElementsByClassName('seller_RAS_ACCOUNT'),
+        KOR_ACCOUNT :  document.getElementsByClassName('seller_KOR_ACCOUNT'),
+        INN_BANK : document.getElementsByClassName('seller_INN_BANK'),
+        DIRECTOR_NAME : document.getElementsByClassName('seller_DIRECTOR_NAME'),
+        STAFF : document.getElementsByClassName('seller_STAFF')
+    };
+
+    let customer =
+        {
+            NAME : document.getElementsByClassName('fullnamecustomer'),
+            PHONE : document.getElementsByClassName('customer_PHONE'),
+            PASSPORT : document.getElementsByClassName('customer_PASSPORT'),
+            DIRECTOR_ID : document.getElementsByClassName('customer_DIRECTOR_ID'),
+            INN : document.getElementsByClassName('customer_INN'),
+            KPP : document.getElementsByClassName('customer_KPP'),
+            OGRN : document.getElementsByClassName('customer_OGRN'),
+            ADRESS : document.getElementsByClassName('customer_ADRESS'),
+            INDEX : document.getElementsByClassName('customer_INDEX'),
+            REGION : document.getElementsByClassName('customer_REGION'),
+            CITY : document.getElementsByClassName('customer_CITY'),
+            DISTRICT : document.getElementsByClassName('customer_DISTRICT'),
+            LOCALITY : document.getElementsByClassName('customer_LOCALITY'),
+            HOUSE : document.getElementsByClassName('customer_HOUSE'),
+            OFFICE : document.getElementsByClassName('customer_OFFICE'),
+            BANK :  document.getElementsByClassName('customer_BANK'),
+            BIK : document.getElementsByClassName('customer_BIK'),
+            RAS_ACCOUNT : document.getElementsByClassName('customer_RAS_ACCOUNT'),
+            KOR_ACCOUNT :  document.getElementsByClassName('customer_KOR_ACCOUNT'),
+            INN_BANK : document.getElementsByClassName('customer_INN_BANK'),
+            DIRECTOR_NAME : document.getElementsByClassName('customer_DIRECTOR_NAME'),
+            STAFF : document.getElementsByClassName('customer_STAFF')
+        };
+
+    console.log(user_req);
 
     //let type_user = document.getElementById('step0_text');
     switch (idname) {
         case 'seller':
-            for (var i = 0; i < seller.length; i++) {
-                seller[i].innerText = full_name.surname + ' ' + full_name.name + ' ' + full_name.midlname;
-
-            }
-            for (var i = 0; i < customer.length; i++) {
-                customer[i].innerText = '[ФИО Покупателя]'
-
-            }
-            //type_user.setAttribute('type', 'seller');
+            $.each(seller, function(code, arObj){
+                if(seller[code].length>0 && user_req[code]) {
+                    for (var i = 0; i < seller[code].length; i++) {
+                        seller[code][i].innerText = user_req[code].VALUE;
+                    }
+                }
+                if(customer[code].length>0 && user_req[code]){
+                    for (var i = 0; i < customer[code].length; i++) {
+                        customer[code][i].innerText = '['+ user_req[code].NAME +' Покупателя]'
+                    }
+                }
+            });
             break;
         case 'customer':
-            for (var i = 0; i < seller.length; i++) {
-                seller[i].innerText = '[ФИО Продавца]';
+            $.each(customer, function(code, arObj){
+                if(seller[code].length>0 && user_req[code]) {
+                    for (var i = 0; i < seller[code].length; i++) {
+                        seller[code][i].innerText = '[' + user_req[code].NAME + ' Продавца]';
 
-            }
-            for (var i = 0; i < customer.length; i++) {
-                customer[i].innerText = full_name.surname + ' ' + full_name.name + ' ' + full_name.midlname;
+                    }
+                }
+                if(customer[code].length>0 && user_req[code]) {
+                    for (var i = 0; i < customer[code].length; i++) {
+                        customer[code][i].innerText = user_req[code].VALUE;
 
-            }
-            //type_user.setAttribute('type', 'customer');
+                    }
+                }
+            });
             break;
-
         default:
-            for (var i = 0; i < seller.length; i++) {
-                seller[i].innerText = full_name.surname + ' ' + full_name.name + ' ' + full_name.midlname;
-            }
-            for (var i = 0; i < customer.length; i++) {
-                customer[i].innerText = '[ФИО Покупателя]';
+            $.each(seller, function(code, arObj){
+                if(seller[code].length>0 && user_req[code]) {
+                    for (var i = 0; i < seller[code].length; i++) {
+                        seller[code][i].innerText = user_req[code].VALUE;
+                    }
+                }
+                if(customer[code].length>0 && user_req[code]) {
+                    for (var i = 0; i < customer[code].length; i++) {
+                        customer[code][i].innerText = '[' + user_req[code].NAME + ' Покупателя]'
+                    }
+                }
 
-            }
-            //type_user.setAttribute('type', 'seller');
+            });
             break;
     }
 

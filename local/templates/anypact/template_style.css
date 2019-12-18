@@ -98,6 +98,7 @@ input {
     color: #ff6416;
     background-color: #ffffff;
     border-color: #ff6416;
+    white-space: normal;
 }
 
 .btn-nfk:hover {
