@@ -151,7 +151,12 @@
     }
 }
 
-
+.tender-block .tender-post .tender-img {
+    overflow: hidden;
+    height: 165px;
+    display: flex;
+    align-items: center;
+}
 .tender-horizon .tender-post .tender-img{
     display: inline-block;
 }
@@ -227,9 +232,4 @@
 
 .btn-list {
     background-image: url(/local/templates/anypact/image/sprite.png) !important;
-}
-
-.tender-block .tender-post .tender-img {        
-    overflow: hidden;
-    height: 165px;
 }

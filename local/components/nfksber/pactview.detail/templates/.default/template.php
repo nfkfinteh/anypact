@@ -5,15 +5,6 @@ if (empty($arResult["PROPERTY"]["ID_DOGOVORA"]["VALUE"])){
     $disable_a = 'disabled';
 }
 
-$detail_img_thumb = CFile::ResizeImageGet($arResult["ELEMENT"]["DETAIL_PICTURE"], array('width'=>'180', 'height'=>'110'),
-    BX_RESIZE_IMAGE_EXACT);
-// изображения
-
-$arr_img[] = [
-    'URL' => CFile::GetPath($arResult["ELEMENT"]["DETAIL_PICTURE"]),
-    'THUMB_URL'=>$detail_img_thumb['src']
-];
-
 foreach ($arResult["PROPERTY"]["IMG_FILE"] as $item){
     $file =CFile::ResizeImageGet($item['PROPERTY']['VALUE'], array('width'=>'180', 'height'=>'110'), BX_RESIZE_IMAGE_EXACT);
     $arr_img[] =[
@@ -27,7 +18,7 @@ foreach ($arResult["PROPERTY"]["IMG_FILE"] as $item){
 <h1 class="d-inline-block"><?=$arResult["ELEMENT"]["NAME"]?></h1>
 <div class="row">
     <div class="col-md-7 col-lg-8">
-        <? if(!empty($arResult["ELEMENT"]["DETAIL_PICTURE"])){ ?>
+        <? if(!empty($arr_img)){ ?>
             <div class="slider-sdelka" id="my-slider">
                 <div class="sp-slides">
                     <?

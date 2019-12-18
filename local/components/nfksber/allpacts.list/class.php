@@ -68,14 +68,10 @@ class CDemoSqr extends CBitrixComponent
             {
                 $arFields   = $ob->GetFields();
                 $id_element = $arFields["ID"];
-                $id_img = $arFields["PREVIEW_PICTURE"];
-                $db_props = CIBlockElement::GetProperty($id_iblock, $id_element);
-                while ($ar_props = $db_props->GetNext())
-                {
-                    $arFields["PROPERTIES"][$ar_props["CODE"]] = $ar_props;
-                }
+                $arFields['PROPERTIES'] = $ob->GetProperties();
+
                 $arFields['URL_IMG_PREVIEW'] = NULL;
-                $arFields['URL_IMG_PREVIEW'] = CFile::GetPath($id_img);
+                $arFields['URL_IMG_PREVIEW'] = CFile::ResizeImageGet($arFields["PROPERTIES"]['INPUT_FILES']['VALUE'][0], ['width'=>500, 'height'=>500], BX_RESIZE_IMAGE_PROPORTIONAL )['src'];
                 $arPact[]   = $arFields;
                 // добавим url img
             }
