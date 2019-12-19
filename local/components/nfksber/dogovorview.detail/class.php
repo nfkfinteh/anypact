@@ -63,8 +63,10 @@ class CDemoSqr extends CBitrixComponent
             }
 
             if ($ar_props["CODE"] == "MAIN_FILES"){
-                $file_path = CFile::GetPath($ar_props["VALUE"]);
-                $array_unclude_file[] = array("URL" => $file_path, "PROPERTY" => $ar_props);
+                if(!empty($ar_props["VALUE"])){
+                    $file_path = CFile::GetPath($ar_props["VALUE"]);
+                    $array_unclude_file[] = array("URL" => $file_path, "PROPERTY" => $ar_props);
+                }
             }
 
         }

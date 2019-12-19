@@ -382,7 +382,6 @@ $(document).ready(function() {
     });
 
     $('rededittext').on('click', function() {
-        console.log('Выделенная часть текста');
         let select_box = $(this);
         let dom_nodes = $($.parseHTML('<input type="text" class="input_text" />'));
         select_box.after(dom_nodes);
