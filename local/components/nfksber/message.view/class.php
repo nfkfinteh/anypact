@@ -3,6 +3,7 @@
 use Bitrix\Main\Loader; 
 use Bitrix\Highloadblock as HL; 
 use Bitrix\Main\Entity;
+use Bitrix\Iblock;;
 
 class CDemoSqr extends CBitrixComponent
 {
@@ -77,6 +78,16 @@ class CDemoSqr extends CBitrixComponent
         }
         $this->ID_HL    = 6;
         $this->arResult['MESSAGES'] = $this->getMessage();
+
+        #Выводим 404 если нет такой переписки
+        if(empty($this->arResult['MESSAGES'])){
+            Iblock\Component\Tools::process404(
+                '',
+                true,
+                true,
+                true
+            );
+        }
         $this->arResult['UsersChart'] = $this->listUsers();
         foreach($this->arResult['UsersChart'] as $user){
             $this->arResult['FastUserParams'][$user['ID']]['FIO'] = $user['LAST_NAME'] .' '.$user['NAME'] ;

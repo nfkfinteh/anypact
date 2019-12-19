@@ -25,18 +25,35 @@ $(document).ready(function() {
     let ButtonSendMessage = document.getElementById('sendMessage')
 
     ButtonSendMessage.onclick = function(){
-        console.log('Отправка сообщения')        
         let Params      = new Object()        
         Params.IDMess   = id
         Params.message  = TextMes.value
         let arrParams   = JSON.stringify(Params)
 
         var res = responseRoute(arrParams).then(function(data) {
-            console.log(data)
             location.reload()
         });
         
-    }   
+    }
+
+    $(document).on('click', '.js-chat_delete', function(){
+        $.post(
+            "/response/ajax/delete_chat_user.php", {
+                id: id,
+            },
+            onAjaxSuccess
+        );
+
+        function onAjaxSuccess(data) {
+            let result = JSON.parse(data);
+            if(result['TYPE']=='ERROR'){
+                console.log(result);
+            }
+            if(result['TYPE']=='SUCCESS'){
+                location.href = '/my_pacts/';
+            }
+        }
+    });
 
 
 });

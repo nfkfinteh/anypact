@@ -34,14 +34,14 @@
                                 <?}else {?>
                                     <span class="user-first-letter" style="padding:13px;font-size: 28px;"><?=substr($user['NAME'], 0, 1);?></span>
                                 <?}?>
-                                <!--<img src="<?=SITE_TEMPLATE_PATH?>/image/sample_face_150x150.png" alt="Васильев Александр Евгеньевич">-->
+                                <?/*<img src="<?=SITE_TEMPLATE_PATH?>/image/sample_face_150x150.png" alt="Васильев Александр Евгеньевич">*/?>
                             </div>
                             <div class="person-conversation-name"><?=$user['LAST_NAME']?> <?=$user['NAME']?> <?=$user['SECOND_NAME']?></div>
                         </li>
                     <?}?>
                 </ul>
-                <!-- <button class="btn btn-nfk btn-add-person w-100">+ добавить участника</button> -->
-                <button class="btn btn-nfk btn-add-person w-100">Удалить переписку</button>
+                <?/*<button class="btn btn-nfk btn-add-person w-100">+ добавить участника</button>*/?>
+                <button class="btn btn-nfk btn-add-person w-100 js-chat_delete">Удалить переписку</button>
             </div>
             <div class="col-md-8 col-sm-12">
                 <h3 class="font-weight-bold"><?=$arResult['MESSAGES']['UF_TITLE_MESSAGE']?></h3>
