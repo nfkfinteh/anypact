@@ -65,6 +65,7 @@ function formatSelectText(id_name) {
             if(range.startContainer.parentNode != range.endContainer.parentNode){
                 let text = document.createElement(arrTegs[key]);
                 text.innerHTML = sel_string;
+                if(key == 'noedit') text.setAttribute('contenteditable', false);
                 range.insertNode(text);
                 let restText = sel_string.split(arrayText[0]);
                 if(range.endContainer.textContent.indexOf(restText[1]) === 0){
@@ -77,6 +78,7 @@ function formatSelectText(id_name) {
                 if (text && arrayText[1] != undefined) {
                     //text.setAttribute('contenteditable', false);
                     text.innerHTML = arrayText[1];
+                    if(key == 'noedit') text.setAttribute('contenteditable', false);
                     range.insertNode(text);
                 }
                 if (sel_string && sel_string != undefined) range.insertNode(document.createTextNode(sel_string));
@@ -84,6 +86,7 @@ function formatSelectText(id_name) {
                 if (text2 && arrayText[0] != undefined) {
                     //text2.setAttribute('contenteditable', false);
                     text2.innerHTML = arrayText[0];
+                    if(key == 'noedit') text2.setAttribute('contenteditable', false);
                     range.insertNode(text2);
                 }
             }
