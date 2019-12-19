@@ -1,22 +1,3 @@
-<?  //print_r($arResult["LIST_CATEGORY"]) ;?>
-<? //print_r($arResult) ;
-   $Name = $arResult["USER_PROP"]["NAME"];
-   $Surname = $arResult["USER_PROP"]["LAST_NAME"];
-   $Midlenmae = $arResult["USER_PROP"]["SECOND_NAME"];
-   $Phone = $arResult["USER_PROP"]["PERSONAL_PHONE"];
-   $Passport = $arResult["USER_PROP"]["UF_PASSPORT"].' '.$arResult["USER_PROP"]["UF_KEM_VPASSPORT"];
-
-?>
-<script>
-var re_url = '<?=$_SERVER['REQUEST_URI']?>'
-var full_name = {
-    name: '<?=$Name?>',
-    surname: '<?=$Surname?>',
-    midlname:'<?=$Midlenmae?>',
-    phone: '<?=$Phone?>',
-    passport: '<?=$Passport?>'
-}
-</script>
 <h1><?=$arResult["ELEMENT"]["NAME"]?></h1>
  <div class="tender cardDogovor" style="margin-bottom: 100px;">
     <div class="row">
@@ -24,7 +5,9 @@ var full_name = {
             <div class="cardDogovor-boxTool cardPact">
                 <h5>Создать договор из наших шаблонов</h5>
                 <p>В правой части выберите тему договора:</p>
-                <button class="btn btn-nfk" id="template_con">Загрузить договор из шаблона</button>                
+                <a href="/my_pacts/add_my_dogovor/?ELEMENT_ID=<?=$arResult['ELEMENT_ID']?>&EDIT=ADD" class="btn btn-nfk" id="template_con">
+                    Загрузить договор из шаблона
+                </a>
                 <?if(!empty($arResult["TEMPLATE_CONTENT"])){ ?>                    
                     <div class="steps">
                         <?if(!empty($arResult["TEMPLATE_CONTENT_PROPERTY"])){?>
@@ -48,7 +31,7 @@ var full_name = {
                     </div>
                 <?}?>
                 <h5>Загрузить договор из вашего файла</h5>
-                <p>поддерживаемые форматы(docx, rtf, txt)</p>
+                <p31>поддерживаемые форматы(docx, rtf, txt)</p31>
                 <form enctype="multipart/form-data" method="post" name="loadcontract"> 
                     <label for="uploadbtn" class="btn btn-nfk" id="">Выберите собственный файл</label>
                     <input id="uploadbtn" type="file" name="file[]"  accept="docx/*" capture="camera" multiple required value="Сделать фото" style="display:none;"/>
@@ -57,7 +40,7 @@ var full_name = {
                 </form>
                 <h5>Создать договор используя наш редактор</h5>
                 <p>Нажмите на кнопку "Создать договор в редакторе" и в поле справа наберайте текст используя инструменты для форматирования.</p>
-                <button class="btn btn-nfk" id="create_con">Создать договор в редакторе</button>
+                <button class="btn btn-nfk" id="create_con" disabled>Создать договор в редакторе</button>
             </div>
         </div>
         <div class="col-lg-9 col-md-9 col-sm-12">
@@ -67,12 +50,12 @@ var full_name = {
             </button>
             <!--<button type="button" class="btn btn-nfk btn-default" data-toggle="tooltip" data-placement="left" title="Сохранить"><span class="glyphicon glyphicon-print"></span></button>-->
             <button type="button" class="btn btn-nfk btn-default space_right" id="btn-edit" data-toggle="tooltip" data-placement="left" title="Включить редактирование текста" contenteditable="false"><span class="glyphicon glyphicon-pencil"></span></button>
-            <button type="button" class="btn btn-nfk btn-default" data-toggle="tooltip" data-placement="left" title="Вставить изображение"><span class="glyphicon glyphicon-picture"></span></button>
+            <?/*<button type="button" class="btn btn-nfk btn-default" data-toggle="tooltip" data-placement="left" title="Вставить изображение"><span class="glyphicon glyphicon-picture"></span></button>*/?>
             <button type="button" class="btn btn-nfk btn-default form_text"  id="btn-noedit" data-toggle="tooltip" data-placement="left" title="Запретить редактирование выделенного текста"><span class="glyphicon glyphicon-ban-circle"></span></button>
             <button type="button" class="btn btn-nfk btn-default space_right" id="btn-data" data-toggle="tooltip" data-placement="left" title="Вставить подстановку текущей даты"><span class="glyphicon glyphicon-calendar"></span></button>
             <button type="button" class="btn btn-nfk btn-default form_text" id="btn-weight" data-toggle="tooltip" data-placement="left" title="Жирный текст" contenteditable="false"><span class="glyphicon glyphicon-bold"></span></button>
             <button type="button" class="btn btn-nfk btn-default form_text space_right" id="btn-italic" data-toggle="tooltip" data-placement="left" title="Курсив" contenteditable="false"><span class="glyphicon glyphicon-italic"></span></button>
-            <button type="button" class="btn btn-nfk btn-default form_text" id="btn-question" data-toggle="tooltip" data-placement="left" title="Информация по инструментам" contenteditable="false"><span class="glyphicon glyphicon-question-sign"></span></button>
+            <?/*<button type="button" class="btn btn-nfk btn-default form_text" id="btn-question" data-toggle="tooltip" data-placement="left" title="Информация по инструментам" contenteditable="false"><span class="glyphicon glyphicon-question-sign"></span></button>*/?>
         </div>
         <div class="cardDogovor-boxViewText" id="canvas" contenteditable="false">
             <?if(!empty($arResult["TEMPLATE_CONTENT"])){ ?>                
@@ -93,3 +76,14 @@ var full_name = {
         </div>            
     </div>
 </div>
+<script>
+    var re_url = '<?=$_SERVER['REQUEST_URI']?>';
+    <?/*var full_name = {
+        name: '<?= $arResult['JS_DATA']['USER']['NAME']?>',
+        surname: '<?=$arResult['JS_DATA']['USER']['SURNAME']?>',
+        midlname:'<?=$arResult['JS_DATA']['USER']['MIDLENAME']?>',
+        phone: '<?=$arResult['JS_DATA']['USER']['PHONE']?>',
+        passport: '<?=$arResult['JS_DATA']['USER']['PASSPORT']?>'
+    }*/?>
+    var user_req =   <?=CUtil::PhpToJSObject($arResult['JS_DATA']['USER'])?>;
+</script>

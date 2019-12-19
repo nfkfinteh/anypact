@@ -1,50 +1,3 @@
-<? // print_r($arResult["TEMPLATE_CONTENT_PROPERTY"]) ;?>
-<?// print_r($arResult["TEMPLATE_CONTENT"]) ;?>
-<style>
-/*----------Стили кнопок-------------*/
-#canvas .edit-buttons-container{
-	display: none;
-}
-#canvas[contenteditable="true"] .edit-buttons-container{
-	display: block;
-}
-.add-row, .delete-row{
-	color: #ff6416 !important;
-	background-color: #ffffff;
-	border-color: #ff6416 !important;
-	border-radius: .25rem;
-	cursor: pointer;
-	width: 20px;
-	height: 20px;
-	margin-top: 3px;
-	position: relative;
-	opacity: .3;
-	transition: opacity .3s;
-}
-.add-row:hover, .delete-row:hover{
-	opacity: 1;
-}
-.add-row::before, .delete-row::before{
-	content: "";
-	width: 10px;
-	height: 2px;
-	background-color: #ff6416;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-}
-.add-row::after{
-	content: "";
-	width: 2px;
-	height: 10px;
-	background-color: #ff6416;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-}
-</style>
 <?
 switch ($arResult['SEND_CONTRACT']) {
 // Процедура подписания
@@ -62,7 +15,8 @@ case 'N': ?>
         </div>               
         <div class="col-lg-9 col-md-9 col-sm-12">
         <div class="tools_redactor">                
-                <button type="button" class="btn btn-nfk btn-default space_right" id="btn-edit" data-toggle="tooltip" data-placement="left" title="Включить редактирование текста" contenteditable="false"><span class="glyphicon glyphicon-pencil"></span></button>                
+                <button type="button" class="btn btn-nfk btn-default space_right" id="btn-edit" data-toggle="tooltip" data-placement="left" title="Включить редактирование текста" contenteditable="false"><span class="glyphicon glyphicon-pencil"></span></button>
+                <button type="button" class="btn btn-nfk btn-default form_text"  id="btn-noedit" data-toggle="tooltip" data-placement="left" title="Запретить редактирование выделенного текста"><span class="glyphicon glyphicon-ban-circle"></span></button>
                 <button type="button" class="btn btn-nfk btn-default form_text" id="btn-weight" data-toggle="tooltip" data-placement="left" title="Жирный текст" contenteditable="false"><span class="glyphicon glyphicon-bold"></span></button>
                 <button type="button" class="btn btn-nfk btn-default form_text space_right" id="btn-italic" data-toggle="tooltip" data-placement="left" title="Курсив" contenteditable="false"><span class="glyphicon glyphicon-italic"></span></button>                
         </div>

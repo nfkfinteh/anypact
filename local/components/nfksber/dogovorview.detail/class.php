@@ -63,8 +63,10 @@ class CDemoSqr extends CBitrixComponent
             }
 
             if ($ar_props["CODE"] == "MAIN_FILES"){
-                $file_path = CFile::GetPath($ar_props["VALUE"]);
-                $array_unclude_file[] = array("URL" => $file_path, "PROPERTY" => $ar_props);
+                if(!empty($ar_props["VALUE"])){
+                    $file_path = CFile::GetPath($ar_props["VALUE"]);
+                    $array_unclude_file[] = array("URL" => $file_path, "PROPERTY" => $ar_props);
+                }
             }
 
         }
@@ -152,7 +154,9 @@ class CDemoSqr extends CBitrixComponent
         $res = CIBlockElement::GetProperty($ID_IBLOCK, $ID_EL, "sort", "asc", array("CODE" => "STEPS"));
         while ($ob = $res->GetNext())
         {
-            $VALUES[] = $ob['VALUE'];
+            if(!empty($ob['VALUE'])){
+                $VALUES[] = $ob['VALUE'];
+            }
         }
         return $VALUES;
     }
@@ -242,6 +246,40 @@ class CDemoSqr extends CBitrixComponent
         return $arNewRedaction;
     }
 
+    private function getJsRequisit(){
+        if(!empty($this->arResult['COMPANY_PROP'])){
+            foreach ($this->arResult['COMPANY_PROP'] as $code=>$prop){
+                if(!is_array($prop)){
+                    if($code=='NAME'){
+                        $this->arResult['JS_DATA']['USER'][$code] = [
+                            'NAME'=>'Название компании',
+                            'VALUE'=>$prop
+                        ];
+                    }
+                }
+                else{
+                    $this->arResult['JS_DATA']['USER'][$code] = $prop;
+                }
+            }
+        }
+        else{
+            $this->arResult['JS_DATA']['USER'] = [
+                'NAME' => [
+                    'NAME'=>'ФИО',
+                    'VALUE'=> $this->arResult["USER_PROP"]["LAST_NAME"].' '.$this->arResult["USER_PROP"]["NAME"].' '.$this->arResult["USER_PROP"]["SECOND_NAME"],
+                ],
+                'PHONE' => [
+                    'NAME'=>'Телефон',
+                    'VALUE'=> $this->arResult["USER_PROP"]["PERSONAL_PHONE"],
+                ],
+                'PASSPORT' => [
+                    'NAME'=>'Пасопрт',
+                    'VALUE'=> $this->arResult["USER_PROP"]["UF_PASSPORT"].' '.$this->arResult["USER_PROP"]["UF_KEM_VPASSPORT"],
+                ]
+            ];
+        }
+    }
+
     public function executeComponent()
     {
         global $USER;
@@ -255,6 +293,31 @@ class CDemoSqr extends CBitrixComponent
             $arrUserContractHolder                  = $UserContractHolder->Fetch();
             $this->USER_PROPERTY                    = $arrUserContractHolder;
             $this->arResult["USER_PROP"]            = $arrUserContractHolder;
+
+            //если выбран профиль компании
+            if(!empty($this->arResult['USER_PROP']['UF_CUR_COMPANY'])){
+                $res = CIBlockElement::GetList([], ['IBLOCK_ID'=>8, 'ID'=>$this->arResult['USER_PROP']['UF_CUR_COMPANY'], 'ACTIVE'=>'Y'], false, false, ['IBLOCK_ID', 'ID', 'NAME']);
+                if($obj = $res->GetNextElement()){
+                    $arCompany = $obj->GetFields();
+                    $arCompany['PROPERTY'] = $obj->GetProperties();
+                }
+                if(!empty($arCompany)){
+                    $this->arResult['COMPANY_PROP'] = [
+                        'IBLOCK_ID'=>$arCompany['IBLOCK_ID'],
+                        'ID'=>$arCompany['ID'],
+                        'NAME'=>$arCompany['NAME']
+                    ];
+                    foreach ($arCompany['PROPERTY'] as $prop){
+                        $this->arResult['COMPANY_PROP'][$prop['CODE']] = [
+                            'NAME'=>$prop['NAME'],
+                            'VALUE'=>$prop['VALUE']
+                        ];
+                    }
+                }
+
+            }
+
+
             $this->arResult["USER_LOGIN"]           = CUser::GetLogin();
 
             $this->arResult["ELEMENT"]              = $this->getElement($this->arResult["ELEMENT_ID"]);
@@ -277,6 +340,10 @@ class CDemoSqr extends CBitrixComponent
 
             #поиск имеющихся своих редакций для этой сделки по пользователю
             $this->arResult['NEW_REDACTION'] = $this->getNewRedaction($userId, $this->arResult["ELEMENT"]);
+
+            #формирование масива для js (подстановка реквизитов)
+            $this->getJsRequisit();
+
 
             $this->EndResultCache();
         //}

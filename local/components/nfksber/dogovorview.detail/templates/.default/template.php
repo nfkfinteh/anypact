@@ -29,7 +29,7 @@ switch ($arResult['SEND_CONTRACT']) {
                     <?if ($arResult["USER_ID"] == $arResult["PROPERTY"]["PACT_USER"]["VALUE"]){
                     ?>
                         <h3>Это ваш договор:</h3>
-                        <a herf="/my_pacts/" class="btn btn-nfk" > Внести изменения </a>
+                        <a href="/my_pacts/add_my_dogovor/?ELEMENT_ID=<?=$arResult['ELEMENT_ID']?>&EDIT=EDIT" class="btn btn-nfk" > Внести изменения </a>
                     <?
                     }else {?>
                         <? // блокировка кнопки от повторного подписания темже пользователем

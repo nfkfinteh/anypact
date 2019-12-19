@@ -1,7 +1,6 @@
 // разрешение редактирование курсора
 function on_contenteditable(element) {
     var element_atr = element.attr('contenteditable');
-    console.log(element_atr);
     if (element_atr == 'true') {
         element.attr('contenteditable', false);
         return false;
@@ -45,25 +44,61 @@ function formatSelectText(id_name) {
     let selection = window.getSelection();
     let range = selection.getRangeAt(0);
     let sel_string = selection.toString();
-    console.log(selection.focusNode.parentNode);
-    // удаляем его, что бы замнить
-    range.deleteContents();
     // на основе id выбираем подстановку    
     let key = id_name.replace('btn-', '');
     let arrTegs = {
         weight: 'b',
         italic: 'i',
-        noedit: 'noedit'
+        noedit: 'nedittext'
+    }
+    if(range.startContainer.parentElement.tagName != arrTegs[key].toUpperCase()){
+        // удаляем его, что бы замнить
+        range.deleteContents();
+        let insert_space = document.createElement(arrTegs[key]);
+        if(key == 'noedit') insert_space.setAttribute('contenteditable', false);
+        insert_space.innerHTML = sel_string;
+        range.insertNode(insert_space);
+    }else{
+        if (range.startContainer.parentNode.innerText != sel_string) {
+            let arrayText = range.startContainer.parentNode.innerText.split(sel_string);
+            $(range.startContainer.parentNode).remove();
+            if(range.startContainer.parentNode != range.endContainer.parentNode){
+                let text = document.createElement(arrTegs[key]);
+                text.innerHTML = sel_string;
+                if(key == 'noedit') text.setAttribute('contenteditable', false);
+                range.insertNode(text);
+                let restText = sel_string.split(arrayText[0]);
+                if(range.endContainer.textContent.indexOf(restText[1]) === 0){
+                    range.endContainer.textContent = range.endContainer.textContent.replace(restText[1], '');
+                }else if(range.startContainer.textContent.indexOf(restText[1]) !== false){
+                    range.startContainer.textContent = range.startContainer.textContent.replace(restText[1], '');
+                }
+            }else {
+                let text = document.createElement(arrTegs[key]);
+                if (text && arrayText[1] != undefined) {
+                    //text.setAttribute('contenteditable', false);
+                    text.innerHTML = arrayText[1];
+                    if(key == 'noedit') text.setAttribute('contenteditable', false);
+                    range.insertNode(text);
+                }
+                if (sel_string && sel_string != undefined) range.insertNode(document.createTextNode(sel_string));
+                let text2 = document.createElement(arrTegs[key]);
+                if (text2 && arrayText[0] != undefined) {
+                    //text2.setAttribute('contenteditable', false);
+                    text2.innerHTML = arrayText[0];
+                    if(key == 'noedit') text2.setAttribute('contenteditable', false);
+                    range.insertNode(text2);
+                }
+            }
+        } else {
+            let text = sel_string;
+            $(range.startContainer.parentNode).remove();
+            range.insertNode(document.createTextNode(text));
+        }
+
     }
 
-    let insert_space = document.createElement(arrTegs[key]);
-    if (key == 'noedit') {
-        insert_space.setAttribute('contenteditable', false);
-    }
-    insert_space.innerHTML = sel_string;
-    range.insertNode(insert_space);
-
-    for (let position = 0; position != text.length; position++) {
+    for (let position = 0; position != sel_string.length; position++) {
         selection.modify("move", "right", "character");
     };
 }
@@ -90,42 +125,105 @@ function loadTextBox(el) {
 
 // автоподстановка реквизитов пользователя
 function setHeaderFullName(idname) {
-    let seller = document.getElementsByClassName('fullnameseller');
-    let customer = document.getElementsByClassName('fullnamecustomer');
+    let seller =
+    {
+        NAME : document.getElementsByClassName('fullnameseller'),
+        PHONE : document.getElementsByClassName('seller_PHONE'),
+        PASSPORT : document.getElementsByClassName('seller_PASSPORT'),
+        DIRECTOR_ID : document.getElementsByClassName('seller_DIRECTOR_ID'),
+        INN : document.getElementsByClassName('seller_INN'),
+        KPP : document.getElementsByClassName('seller_KPP'),
+        OGRN : document.getElementsByClassName('seller_OGRN'),
+        ADRESS : document.getElementsByClassName('seller_ADRESS'),
+        INDEX : document.getElementsByClassName('seller_INDEX'),
+        REGION : document.getElementsByClassName('seller_REGION'),
+        CITY : document.getElementsByClassName('seller_CITY'),
+        DISTRICT : document.getElementsByClassName('seller_DISTRICT'),
+        LOCALITY : document.getElementsByClassName('seller_LOCALITY'),
+        HOUSE : document.getElementsByClassName('seller_HOUSE'),
+        OFFICE : document.getElementsByClassName('seller_OFFICE'),
+        BANK :  document.getElementsByClassName('seller_BANK'),
+        BIK : document.getElementsByClassName('seller_BIK'),
+        RAS_ACCOUNT : document.getElementsByClassName('seller_RAS_ACCOUNT'),
+        KOR_ACCOUNT :  document.getElementsByClassName('seller_KOR_ACCOUNT'),
+        INN_BANK : document.getElementsByClassName('seller_INN_BANK'),
+        DIRECTOR_NAME : document.getElementsByClassName('seller_DIRECTOR_NAME'),
+        STAFF : document.getElementsByClassName('seller_STAFF')
+    };
+
+    let customer =
+        {
+            NAME : document.getElementsByClassName('fullnamecustomer'),
+            PHONE : document.getElementsByClassName('customer_PHONE'),
+            PASSPORT : document.getElementsByClassName('customer_PASSPORT'),
+            DIRECTOR_ID : document.getElementsByClassName('customer_DIRECTOR_ID'),
+            INN : document.getElementsByClassName('customer_INN'),
+            KPP : document.getElementsByClassName('customer_KPP'),
+            OGRN : document.getElementsByClassName('customer_OGRN'),
+            ADRESS : document.getElementsByClassName('customer_ADRESS'),
+            INDEX : document.getElementsByClassName('customer_INDEX'),
+            REGION : document.getElementsByClassName('customer_REGION'),
+            CITY : document.getElementsByClassName('customer_CITY'),
+            DISTRICT : document.getElementsByClassName('customer_DISTRICT'),
+            LOCALITY : document.getElementsByClassName('customer_LOCALITY'),
+            HOUSE : document.getElementsByClassName('customer_HOUSE'),
+            OFFICE : document.getElementsByClassName('customer_OFFICE'),
+            BANK :  document.getElementsByClassName('customer_BANK'),
+            BIK : document.getElementsByClassName('customer_BIK'),
+            RAS_ACCOUNT : document.getElementsByClassName('customer_RAS_ACCOUNT'),
+            KOR_ACCOUNT :  document.getElementsByClassName('customer_KOR_ACCOUNT'),
+            INN_BANK : document.getElementsByClassName('customer_INN_BANK'),
+            DIRECTOR_NAME : document.getElementsByClassName('customer_DIRECTOR_NAME'),
+            STAFF : document.getElementsByClassName('customer_STAFF')
+        };
+
+
     //let type_user = document.getElementById('step0_text');
     switch (idname) {
         case 'seller':
-            for (var i = 0; i < seller.length; i++) {
-                seller[i].innerText = full_name.surname + ' ' + full_name.name + ' ' + full_name.midlname;
-
-            }
-            for (var i = 0; i < customer.length; i++) {
-                customer[i].innerText = '[ФИО Покупателя]'
-
-            }
-            //type_user.setAttribute('type', 'seller');
+            $.each(seller, function(code, arObj){
+                if(seller[code].length>0 && user_req[code]) {
+                    for (var i = 0; i < seller[code].length; i++) {
+                        seller[code][i].innerText = user_req[code].VALUE;
+                    }
+                }
+                if(customer[code].length>0 && user_req[code]){
+                    for (var i = 0; i < customer[code].length; i++) {
+                        customer[code][i].innerText = '['+ user_req[code].NAME +' Покупателя]'
+                    }
+                }
+            });
             break;
         case 'customer':
-            for (var i = 0; i < seller.length; i++) {
-                seller[i].innerText = '[ФИО Продавца]';
+            $.each(customer, function(code, arObj){
+                if(seller[code].length>0 && user_req[code]) {
+                    for (var i = 0; i < seller[code].length; i++) {
+                        seller[code][i].innerText = '[' + user_req[code].NAME + ' Продавца]';
 
-            }
-            for (var i = 0; i < customer.length; i++) {
-                customer[i].innerText = full_name.surname + ' ' + full_name.name + ' ' + full_name.midlname;
+                    }
+                }
+                if(customer[code].length>0 && user_req[code]) {
+                    for (var i = 0; i < customer[code].length; i++) {
+                        customer[code][i].innerText = user_req[code].VALUE;
 
-            }
-            //type_user.setAttribute('type', 'customer');
+                    }
+                }
+            });
             break;
-
         default:
-            for (var i = 0; i < seller.length; i++) {
-                seller[i].innerText = full_name.surname + ' ' + full_name.name + ' ' + full_name.midlname;
-            }
-            for (var i = 0; i < customer.length; i++) {
-                customer[i].innerText = '[ФИО Покупателя]';
+            $.each(seller, function(code, arObj){
+                if(seller[code].length>0 && user_req[code]) {
+                    for (var i = 0; i < seller[code].length; i++) {
+                        seller[code][i].innerText = user_req[code].VALUE;
+                    }
+                }
+                if(customer[code].length>0 && user_req[code]) {
+                    for (var i = 0; i < customer[code].length; i++) {
+                        customer[code][i].innerText = '[' + user_req[code].NAME + ' Покупателя]'
+                    }
+                }
 
-            }
-            //type_user.setAttribute('type', 'seller');
+            });
             break;
     }
 
@@ -156,7 +254,6 @@ function addRow(thisBtn, n){
 }
 function deleteRow(thisBtn){
     let collection = thisBtn.parentElement.previousElementSibling.tBodies[0].rows;
-    console.log(collection);
     collection[collection.length-1].remove();
 }
 
@@ -237,7 +334,6 @@ $(document).ready(function() {
             );
         }
         else{
-            console.log('test');
             $.post(
                 "/response/ajax/up_contract_text.php", {
                     contect: canvas_contr_context,
@@ -250,7 +346,6 @@ $(document).ready(function() {
 
         function onAjaxSuccess(data) {
             // Здесь мы получаем данные, отправленные сервером и выводим их на экран.
-            console.log(data);
             let result = JSON.parse(data);
             if(result['TYPE']=='ERROR'){
                 console.log($result['VALUE']);
@@ -298,8 +393,12 @@ $(document).ready(function() {
 
 
     $('#btn-data').on('click', function() {
-        var date_ins = '/%DATE%/';
-        insertTextAtCursor(date_ins);
+        if($('.cardDogovor-boxViewText').attr('contenteditable') == 'true' && $(window.getSelection().focusNode).parents('.cardDogovor-boxViewText').length) {
+            /*var date_ins = new Date();
+            insertTextAtCursor(date_ins.getDate() + '.' + date_ins.getMonth() + '.' + date_ins.getFullYear());*/
+            var date_ins = '/%DATE%/';
+            insertTextAtCursor(date_ins);
+        }
     });
 
     $('.form_text').on('click', function() {
@@ -351,8 +450,8 @@ $(document).ready(function() {
                         if(!$(canvas).hasClass('canvas-img')){
                             $(canvas).addClass('canvas-img');
                             $('#save_btn').addClass('canvas-img');
-                            //здесь блокирум инструменты при загрухке картинки. Пока только "редактирование"
-                            $('#btn-edit').attr('disabled', true);
+                            //здесь блокирум инструменты при загрухке картинки.
+                            $('.tools_redactor button:not(#save_btn)').attr('disabled', true);
                             canvas.innerHTML = result[i].CONTENT;
                         }
                         else{
@@ -375,6 +474,23 @@ $(document).ready(function() {
         ev.preventDefault();
     }, false);
 
-
+    $(document).on('click touchstart', '.cardDogovor-boxViewText', function() {
+        $('.tools_redactor .btn-nfk-invert').removeClass('btn-nfk-invert');
+        // получаем выделенный текст
+        let selection = window.getSelection();
+        let range = selection.getRangeAt(0);
+        let sel_string = selection.toString();
+        if(sel_string){
+            if(range.startContainer.parentElement.tagName == 'B' && range.endContainer.parentElement.tagName == 'B'){
+                $('#btn-weight').addClass('btn-nfk-invert');
+            }
+            if(range.startContainer.parentElement.tagName == 'I' && range.endContainer.parentElement.tagName == 'T'){
+                $('#btn-italic').addClass('btn-nfk-invert');
+            }
+            if(range.startContainer.parentElement.tagName == 'NEDITTEXT' && range.endContainer.parentElement.tagName == 'NEDITTEXT'){
+                $('#btn-noedit').addClass('btn-nfk-invert');
+            }
+        }
+    });
 
 });
