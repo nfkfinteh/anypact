@@ -11,6 +11,19 @@ function on_contenteditable(element) {
 }
 
 // вставка текста на место курсора
+function insertTextAtCursorRedact(text) {
+    let selection = window.getSelection();
+    let range = selection.getRangeAt(0);
+    range.deleteContents();
+    let node = document.createElement('nedittext');
+    node.innerHTML = text;
+    range.insertNode(node);
+
+    selection.modify("move", "right", "character");
+    /*for (let position = 0; position != text.length; position++) {
+        selection.modify("move", "right", "character");
+    };*/
+}
 function insertTextAtCursor(text) {
     let selection = window.getSelection();
     let range = selection.getRangeAt(0);
@@ -387,8 +400,41 @@ $(document).ready(function() {
     //таблица с реквизитами
     $(document).on('click', '.js-btn-rquised', function() {
         if($('.cardDogovor-boxViewText').attr('contenteditable') == 'true' && $(window.getSelection().focusNode).parents('.cardDogovor-boxViewText').length) {
-            var data_ins = '%REQUISITE%';
-            insertTextAtCursor(data_ins);
+            var data_ins = '<table class="detail_contract" border="1" cellspacing="0" cellpadding="0" style="border-collapse: collapse; width: 90%;margin: 5%;">' +
+                '<thead>' +
+                '<tr>' +
+                '<td colspan="2">Исполнитель</td>' +
+                '<td colspan="2">Заказчик</td>' +
+                '</tr>' +
+                '</thead>' +
+                '<tbody>' +
+                '<tr>' +
+                '<td style="width: 25%;">ФИО</td>' +
+                '<td style="width: 25%;">[____]</td>' +
+                '<td style="width: 25%;">ФИО</td>' +
+                '<td style="width: 25%;">[____]</td>' +
+                '</tr>' +
+                '<tr>' +
+                '<td>Адрес</td>' +
+                '<td>[____]</td>' +
+                '<td>Адрес</td>' +
+                '<td>[____]</td>' +
+                '</tr>' +
+                '<tr>' +
+                '<td>Телефон</td>' +
+                '<td>[____]</td>' +
+                '<td>Телефон</td>' +
+                '<td>[____]</td>' +
+                '</tr>' +
+                '<tr>' +
+                '<td>Расчетные реквизиты</td>' +
+                '<td>[____]</td>' +
+                '<td>Расчетные реквизиты</td>' +
+                '<td>[____]</td>' +
+                '</tr>' +
+                '</tbody>' +
+                '</table>';
+            insertTextAtCursorRedact(data_ins);
         }
     });
 

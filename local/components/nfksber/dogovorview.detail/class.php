@@ -93,9 +93,9 @@ class CDemoSqr extends CBitrixComponent
         $replacement    = date("d m Y") ;
         $Content = preg_replace($regexp, $replacement, $Content);
 
-        $regexp         = "/%REQUISITE%/ui";
-        $replacement    = 'таблица с реквизитами';
-        $Content = preg_replace($regexp, $replacement, $Content);
+        /*$regexp         = "/%REQUISITE%/ui";
+        $replacement    = '';
+        $Content = preg_replace($regexp, $replacement, $Content);*/
 
         /*$regexp         = "/%FIO%/ui";
         $replacement    = $userA['LAST_NAME'].' '.$userA['NAME'].' '.$userA['SECOND_NAME'];
