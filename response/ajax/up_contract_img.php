@@ -18,14 +18,18 @@ foreach ($arUrl as $url){
 $res = CIBlockElement::GetByID($idSdelka);
 if($obj = $res->GetNext(true, false)) $arSdelka = $obj;
 
+$resUser = CUser::GetByID($USER->GetID());
+if($obj = $resUser->GetNext()) $arUser = $obj;
+
 $arLoadProductArray = Array(
     "IBLOCK_ID"=> 4,
-    "MODIFIED_BY"    => $USER->GetID(),
+    "MODIFIED_BY"    => $arUser['ID'],
     "NAME"=>$arSdelka['NAME'],
     "ACTIVE" => "Y",
     "PROPERTY_VALUES"=> array(
-        "USER_A"=>$USER->GetID(),
-        "DOGOVOR_IMG"=>$arImg
+        "USER_A"=>$arUser['ID'],
+        "DOGOVOR_IMG"=>$arImg,
+        "COMPANY_A"=>$arUser['UF_CUR_COMPANY']
     )
 );
 

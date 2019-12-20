@@ -497,10 +497,12 @@ class CDemoSqr extends CBitrixComponent
                             $Params = array(
                                 'UF_VER_CODE_USER_A' => '',
                                 'UF_ID_USER_A' => $this->arResult["CONTRACT_PROPERTY"]["CONTRACT_PROPERTY"]["USER_A"]["VALUE"], // владелец договора
+                                'UF_ID_COMPANY_A'=>$this->arResult["CONTRACT_PROPERTY"]["CONTRACT_PROPERTY"]["COMPANY_A"]["VALUE"],
                                 'UF_TEL_CODE_USER_A' => '', //пока не заполняем авторизация через ЕСИА
                                 'UF_TIME_SEND_USER_A' => ConvertTimeStamp(time(), "FULL"),
                                 'UF_ID_CONTRACT' => $this->ID_CONTRACT,
                                 'UF_ID_USER_B' => $userId, // подписавшая сторона
+                                'UF_ID_COMPANY_B'=> $this->arResult['USER_PROP']['UF_CUR_COMPANY'],
                                 'UF_VER_CODE_USER_B' => $info['user_info']['eTag'],
                                 'UF_TEL_CODE_USER_B' => '',
                                 'UF_TIME_SEND_USER_B' => ConvertTimeStamp(time(), "FULL"),

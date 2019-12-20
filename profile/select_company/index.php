@@ -5,7 +5,9 @@ $APPLICATION->SetTitle("Компания");
 if (!$USER->IsAuthorized()) {
     LocalRedirect("/");
 }
-
+?>
+<h1>Выберите профиль:</h1>
+<?
 global $USER;
 $idUser = $USER->GetID();
 $GLOBALS['arrFilter'] = [

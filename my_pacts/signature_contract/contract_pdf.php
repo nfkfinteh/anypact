@@ -104,5 +104,6 @@ $pdf->lastPage();
 // ---------------------------------------------------------
 
 //Close and output PDF document
+ob_end_clean();
 $pdf->Output('dogovor.pdf', 'I');
 exit();
