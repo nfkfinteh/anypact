@@ -5,12 +5,12 @@
             <div class="cardDogovor-boxTool cardPact">
                 <h5>Вставить в договор:</h5>
 				<p>Вы можете вставить в текст договора автоподстановку следующих реквизитов:</p>
-				<button class="btn btn-nfk" data="signed">Таблица с реквизитами</button>
-				<button class="btn btn-nfk" data="signed">Моё ФИО</button>
-				<button class="btn btn-nfk" data="signed">Мой Адрес</button>
-				<button class="btn btn-nfk" data="signed">Текущую дату</button>
-				<button class="btn btn-nfk" data="signed">ФИО Контрагента</button>
-				<button class="btn btn-nfk" data="signed">Адрес Контрагента</button>
+				<button class="btn btn-nfk js-btn-rquised" data="signed">Таблица с реквизитами</button>
+				<button class="btn btn-nfk js-btn-fio" data="signed">Моё ФИО</button>
+				<button class="btn btn-nfk js-btn-address" data="signed">Мой Адрес</button>
+				<?/*<button class="btn btn-nfk js-btn-data" data="signed">Текущую дату</button>*/?>
+				<button class="btn btn-nfk js-btn-fio-contr" data="signed">ФИО Контрагента</button>
+				<button class="btn btn-nfk js-btn-adress-contr" data="signed">Адрес Контрагента</button>
             </div>
         </div>               
         <div class="col-lg-9 col-md-9 col-sm-12">
@@ -22,7 +22,7 @@
                 <button type="button" class="btn btn-nfk btn-default space_right" id="btn-edit" data-toggle="tooltip" data-placement="left" title="Включить редактирование текста" contenteditable="false"><span class="glyphicon glyphicon-pencil"></span></button>                
                 <?/*<button type="button" class="btn btn-nfk btn-default" data-toggle="tooltip" data-placement="left" title="Вставить изображение"><span class="glyphicon glyphicon-picture"></span></button>*/?>
                 <button type="button" class="btn btn-nfk btn-default form_text"  id="btn-noedit" data-toggle="tooltip" data-placement="left" title="Запретить редактирование выделенного текста"><span class="glyphicon glyphicon-ban-circle"></span></button>
-                <button type="button" class="btn btn-nfk btn-default space_right" id="btn-data" data-toggle="tooltip" data-placement="left" title="Вставить подстановку текущей даты"><span class="glyphicon glyphicon-calendar"></span></button>                
+                <button type="button" class="btn btn-nfk btn-default space_right js-btn-data" data-toggle="tooltip" data-placement="left" title="Вставить подстановку текущей даты"><span class="glyphicon glyphicon-calendar"></span></button>
                 <button type="button" class="btn btn-nfk btn-default form_text" id="btn-weight" data-toggle="tooltip" data-placement="left" title="Жирный текст" contenteditable="false"><span class="glyphicon glyphicon-bold"></span></button>
                 <button type="button" class="btn btn-nfk btn-default form_text space_right" id="btn-italic" data-toggle="tooltip" data-placement="left" title="Курсив" contenteditable="false"><span class="glyphicon glyphicon-italic"></span></button>
                 <?/*<button type="button" class="btn btn-nfk btn-default form_text" id="btn-question" data-toggle="tooltip" data-placement="left" title="Информация по инструментам" contenteditable="false"><span class="glyphicon glyphicon-question-sign"></span></button>*/?>

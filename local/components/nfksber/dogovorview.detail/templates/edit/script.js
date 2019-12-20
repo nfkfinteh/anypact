@@ -15,12 +15,15 @@ function insertTextAtCursor(text) {
     let selection = window.getSelection();
     let range = selection.getRangeAt(0);
     range.deleteContents();
-    let node = document.createTextNode(text);
+    let node = document.createElement('nedittext');
+    node.setAttribute('contenteditable', false);
+    node.innerHTML = text;
     range.insertNode(node);
 
-    for (let position = 0; position != text.length; position++) {
+    selection.modify("move", "right", "character");
+    /*for (let position = 0; position != text.length; position++) {
         selection.modify("move", "right", "character");
-    };
+    };*/
 }
 
 function insertBoldAtCursor(text) {
@@ -370,14 +373,58 @@ $(document).ready(function() {
     });
 
 
-    $('#btn-data').on('click', function() {
+    //установка даты
+    $(document).on('click', '.js-btn-data', function() {
         if($('.cardDogovor-boxViewText').attr('contenteditable') == 'true' && $(window.getSelection().focusNode).parents('.cardDogovor-boxViewText').length) {
             /*var date_ins = new Date();
             insertTextAtCursor(date_ins.getDate() + '.' + date_ins.getMonth() + '.' + date_ins.getFullYear());*/
-            var date_ins = '/%DATE%/';
-            insertTextAtCursor(date_ins);
+            //var data_ins = "<edbox contenteditable='false'>%DATE%</edbox>";
+            var data_ins = "%DATE%";
+            insertTextAtCursor(data_ins);
         }
     });
+
+    //таблица с реквизитами
+    $(document).on('click', '.js-btn-rquised', function() {
+        if($('.cardDogovor-boxViewText').attr('contenteditable') == 'true' && $(window.getSelection().focusNode).parents('.cardDogovor-boxViewText').length) {
+            var data_ins = '%REQUISITE%';
+            insertTextAtCursor(data_ins);
+        }
+    });
+
+    //ФИО
+    $(document).on('click', '.js-btn-fio', function() {
+        if($('.cardDogovor-boxViewText').attr('contenteditable') == 'true' && $(window.getSelection().focusNode).parents('.cardDogovor-boxViewText').length) {
+            var data_ins = user_req.NAME.VALUE;
+            insertTextAtCursor(data_ins);
+        }
+    });
+
+    //Адрес
+    $(document).on('click', '.js-btn-address', function() {
+        console.log(user_req);
+        if($('.cardDogovor-boxViewText').attr('contenteditable') == 'true' && $(window.getSelection().focusNode).parents('.cardDogovor-boxViewText').length) {
+            var data_ins = user_req.INDEX.VALUE+', '+user_req.REGION.VALUE+', '+user_req.CITY.VALUE+', '+user_req.STREET.VALUE+', дом '+user_req.HOUSE.VALUE;
+            insertTextAtCursor(data_ins);
+        }
+    });
+
+    //ФИО Контрагента
+    $(document).on('click', '.js-btn-fio-contr', function() {
+        if($('.cardDogovor-boxViewText').attr('contenteditable') == 'true' && $(window.getSelection().focusNode).parents('.cardDogovor-boxViewText').length) {
+            var data_ins = '%FIO_CONTRAGENT%';
+            insertTextAtCursor(data_ins);
+        }
+    });
+
+    //ФИО Контрагента
+    $(document).on('click', '.js-btn-adress-contr', function() {
+        if($('.cardDogovor-boxViewText').attr('contenteditable') == 'true' && $(window.getSelection().focusNode).parents('.cardDogovor-boxViewText').length) {
+            var data_ins = '%ADDRESS_CONTRAGENT%';
+            insertTextAtCursor(data_ins);
+        }
+    });
+
 
     $('.form_text').on('click', function() {
         let id_name = $(this).attr('id');

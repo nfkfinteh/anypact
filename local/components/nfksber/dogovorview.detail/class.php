@@ -58,8 +58,10 @@ class CDemoSqr extends CBitrixComponent
             }
 
             if ($ar_props["CODE"] == "DOGOVOR_IMG"){
-                $file_path      = CFile::GetPath($ar_props["VALUE"]);
-                $array_img_dogovor[]    = array("URL" => $file_path, "PROPERTY" => $ar_props);
+                if(!empty($ar_props["VALUE"])) {
+                    $file_path = CFile::GetPath($ar_props["VALUE"]);
+                    $array_img_dogovor[] = array("URL" => $file_path, "PROPERTY" => $ar_props);
+                }
             }
 
             if ($ar_props["CODE"] == "MAIN_FILES"){
@@ -83,14 +85,65 @@ class CDemoSqr extends CBitrixComponent
     }
 
     private function convertContent($Content){
-        
+
+        $userID = $this->arResult["CONTRACT_PROPERTY"]['CONTRACT_PROPERTY']['USER_A']['VALUE'];
+        $userA = CUser::GetByID($userID)->GetNext();
+
         $regexp         = "/%DATE%/ui";
         $replacement    = date("d m Y") ;
         $Content = preg_replace($regexp, $replacement, $Content);
 
-        $regexp         = '/<recont fio.*recont>/ui';
-        $replacement    = 'Соловьёв Игорь Владимирович' ;
+        $regexp         = "/%REQUISITE%/ui";
+        $replacement    = 'таблица с реквизитами';
         $Content = preg_replace($regexp, $replacement, $Content);
+
+        /*$regexp         = "/%FIO%/ui";
+        $replacement    = $userA['LAST_NAME'].' '.$userA['NAME'].' '.$userA['SECOND_NAME'];
+        $Content = preg_replace($regexp, $replacement, $Content);
+
+        $regexp         = "/%ADDRESS%/ui";
+        $replacement    = [
+            $userA['PERSONAL_ZIP'],
+            $userA['USER_PROP']['PERSONAL_STATE'],
+            $userA['USER_PROP']['PERSONAL_CITY'],
+            $userA['USER_PROP']['UF_STREET'],
+            $userA['USER_PROP']['UF_N_HOUSE']
+        ];
+
+        $replacement = array_filter($replacement, function($element) {
+            return !empty($element);
+        });
+        $replacement = implode(', ', $replacement);
+
+        $Content = preg_replace($regexp, $replacement, $Content);*/
+
+        #если создатель договора и контрагент оно и то же лицо
+        if($userID!=$this->arResult['USER_PROP']['ID']){
+            $regexp         = "/%FIO_CONTRAGENT%/ui";
+            $replacement    = $this->arResult['USER_PROP']['LAST_NAME'].' '.$this->arResult['USER_PROP']['NAME'].' '.$this->arResult['USER_PROP']['SECOND_NAME'];
+            $Content = preg_replace($regexp, $replacement, $Content);
+
+            $regexp         = "/%ADDRESS_CONTRAGENT%/ui";
+            $replacement    = [
+                $this->arResult['USER_PROP']['PERSONAL_ZIP'],
+                $this->arResult['USER_PROP']['PERSONAL_STATE'],
+                $this->arResult['USER_PROP']['PERSONAL_CITY'],
+                $this->arResult['USER_PROP']['UF_STREET'],
+                $this->arResult['USER_PROP']['UF_N_HOUSE']
+            ];
+
+            $replacement = array_filter($replacement, function($element) {
+                return !empty($element);
+            });
+
+            $replacement = implode(', ', $replacement);
+
+            $Content = preg_replace($regexp, $replacement, $Content);
+        }
+
+        /*$regexp         = '/<recont fio.*recont>/ui';
+        $replacement    = 'Соловьёв Игорь Владимирович' ;
+        $Content = preg_replace($regexp, $replacement, $Content);*/
         return $Content;
     }
 
@@ -102,21 +155,12 @@ class CDemoSqr extends CBitrixComponent
         
         if($ar_res = $res->GetNext(true, false)){
             $array_props["CONTRACT"] = $ar_res;
-        }        
-        //подготовка текста
-        $Contract_template_Text = $this->convertContent($array_props["CONTRACT"]["DETAIL_TEXT"]);
+        }
 
-        $clear_text = new autoedittext();
-        // echo '<pre>';
-        // print_r($this->USER_PROPERTY);
-        // echo '</pre>';
-        $Contract_template_Text                 = $clear_text->replaceTag($Contract_template_Text, $this->USER_PROPERTY);
-        $array_props["CONTRACT"]["DETAIL_TEXT"] = str_replace("&nbsp;", "", $Contract_template_Text);
-        
         // свойства контракта
         $db_props       = CIBlockElement::GetProperty($id_infobloc_contract, $this->ID_CONTRACT, "sort", "asc", array());
-        
-        while($ar_props = $db_props->Fetch()){ 
+
+        while($ar_props = $db_props->Fetch()){
             $array_props["CONTRACT_PROPERTY"][$ar_props["CODE"]] = $ar_props;
         }
         
@@ -275,6 +319,26 @@ class CDemoSqr extends CBitrixComponent
                 'PASSPORT' => [
                     'NAME'=>'Пасопрт',
                     'VALUE'=> $this->arResult["USER_PROP"]["UF_PASSPORT"].' '.$this->arResult["USER_PROP"]["UF_KEM_VPASSPORT"],
+                ],
+                'INDEX' => [
+                    'NAME'=>'Индекс',
+                    'VALUE'=> $this->arResult["USER_PROP"]["PERSONAL_ZIP"],
+                ],
+                'CITY' => [
+                    'NAME'=>'Город',
+                    'VALUE'=> $this->arResult["USER_PROP"]["PERSONAL_CITY"],
+                ],
+                'REGION' => [
+                    'NAME'=>'Область',
+                    'VALUE'=> $this->arResult["USER_PROP"]["UF_REGION"],
+                ],
+                'STREET' => [
+                    'NAME'=>'Улица',
+                    'VALUE'=> $this->arResult["USER_PROP"]["UF_STREET"],
+                ],
+                'HOUSE' => [
+                    'NAME'=>'Дом',
+                    'VALUE'=> $this->arResult["USER_PROP"]["UF_N_HOUSE"],
                 ]
             ];
         }
@@ -323,14 +387,24 @@ class CDemoSqr extends CBitrixComponent
             $this->arResult["ELEMENT"]              = $this->getElement($this->arResult["ELEMENT_ID"]);
             $this->arResult["PROPERTY"]             = $this->getProperty($this->arResult["INFOBLOCK_ID"], $this->arResult["ELEMENT_ID"]);
             $this->arResult["LIST_CATEGORY"]        = $this->getListCategory();
-            $this->arResult["CONTRACT_PROPERTY"]    = $this->getPropertyContract($this->arResult["INFOBLOCK_C_ID"]);
             $this->arResult["THREE_TEMPLATE"]       = $this->getTemplateContractCategote();
 
-            if(!empty($this->ID_CONTRACT)){                
+            if(!empty($this->ID_CONTRACT)){
                 $this->arResult["TEMPLATE_CONTENT"] = $this->getElement($this->ID_CONTRACT);
-                $this->arResult["TEMPLATE_CONTENT_PROPERTY"]    = $this->getMultyProperty(5, $_GET["ID_TEMPLATE"]);
+                //$this->arResult["TEMPLATE_CONTENT_PROPERTY"]    = $this->getMultyProperty(4, $this->arResult['TEMPLATE_CONTENT']['ID']);
                 $this->arResult["DOGOVOR_IMG"] = $this->getProperty(4, $this->ID_CONTRACT)['DOGOVOR_IMG'];
             }
+
+            //ополучаем данные по контракту
+            $this->arResult["CONTRACT_PROPERTY"]    = $this->getPropertyContract($this->arResult["INFOBLOCK_C_ID"]);
+
+            //замена реквизитов в тексте контракта
+            $Contract_template_Text = $this->convertContent($this->arResult["CONTRACT_PROPERTY"]["CONTRACT"]["DETAIL_TEXT"]);
+            $clear_text = new autoedittext();
+            $Contract_template_Text                 = $clear_text->replaceTag($Contract_template_Text, $this->USER_PROPERTY);
+            $this->arResult["CONTRACT_PROPERTY"]["CONTRACT"]["DETAIL_TEXT"] = str_replace("&nbsp;", "", $Contract_template_Text);
+
+
 
             if(!empty($_GET["ID_TEMPLATE"])){                
                 $this->arResult["TEMPLATE_CONTENT"] = $this->getElement($_GET["ID_TEMPLATE"]);
