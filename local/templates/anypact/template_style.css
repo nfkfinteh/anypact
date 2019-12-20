@@ -1712,6 +1712,13 @@ input::-webkit-input-placeholder {
 .lk-contracts .collapse-header.open .collapse-arrow::before{
     transform: rotate(45deg) scale(-1, -1);
 }
+table thead td {
+    font-weight: 900;
+}
+
+table.detail_contract, table.detail_contract thead, table.detail_contract tr, table.detail_contract td{
+    border:none;
+}
 @media screen and (max-width: 991px){
     .lk-contracts .btn-db{
         width: 49%;
