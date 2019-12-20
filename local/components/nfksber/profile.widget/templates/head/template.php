@@ -10,7 +10,10 @@
             </div>
             <div class="login-information-text widget_user_profile_name">
                 <a href="#"><?=$arResult["LAST_NAME"]?> <?=$arResult["IN_NAMES"]?></a>
-                <span class="widget_user_profile_url_profile">Профиль</span>
+                <?/*<span class="widget_user_profile_url_profile">Профиль</span>*/?>
+                <?if(!empty($arResult['ACTIVE_COMPANY'])):?>
+                    <span class="widget_user_profile_url_profile">Компания: <?=$arResult['ACTIVE_COMPANY']['NAME']?></span>
+                <?endif?>
                 <div class="widget_user_profile_select">
                     <ul>
                         <li><a href="/profile/">Редактировать профиль</a></li>

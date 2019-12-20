@@ -15,12 +15,15 @@ function insertTextAtCursor(text) {
     let selection = window.getSelection();
     let range = selection.getRangeAt(0);
     range.deleteContents();
-    let node = document.createTextNode(text);
+    let node = document.createElement('nedittext');
+    node.setAttribute('contenteditable', false);
+    node.innerHTML = text;
     range.insertNode(node);
 
-    for (let position = 0; position != text.length; position++) {
+    selection.modify("move", "right", "character");
+    /*for (let position = 0; position != text.length; position++) {
         selection.modify("move", "right", "character");
-    };
+    };*/
 }
 
 function insertBoldAtCursor(text) {
@@ -317,7 +320,7 @@ $(document).ready(function() {
         if($('.cardDogovor-boxViewText').attr('contenteditable') == 'true' && $(window.getSelection().focusNode).parents('.cardDogovor-boxViewText').length) {
             /*var date_ins = new Date();
             insertTextAtCursor(date_ins.getDate() + '.' + date_ins.getMonth() + '.' + date_ins.getFullYear());*/
-            var date_ins = '/%DATE%/';
+            var date_ins = '%DATE%';
             insertTextAtCursor(date_ins);
         }
     });

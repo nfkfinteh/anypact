@@ -25,6 +25,17 @@ class UserProfile extends CBitrixComponent
         $UserParams = $USER->GetByID($arrUserInfo["ID"]);
         $UserParams = $UserParams->Fetch();
         $arrUserInfo["PERSONAL_PHOTO"] = CFile::GetPath($UserParams["PERSONAL_PHOTO"]);
+
+        if(!empty($UserParams['UF_CUR_COMPANY'])){
+            if(CModule::IncludeModule('iblock')){
+                $res = CIBlockElement::GetList([], ['IBLOCK_ID'=>8, 'ID'=>$UserParams['UF_CUR_COMPANY'], 'ACTIVE'=>'Y'], false, false, ['IBLOCK_ID', 'ID', 'NAME', 'PREVIEW_PICTURE']);
+                if($obj=$res->GetNext(true, false)){
+                    $arrUserInfo['ACTIVE_COMPANY'] = $obj;
+                }
+            }
+        }
+
+
         return $arrUserInfo;
     }
 
