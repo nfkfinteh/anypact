@@ -17,7 +17,21 @@ if(!empty($arParams['ESIA_RESPONSE']['user_docs']['elements'][0]['type'])){
 
 }
 //проверка наличия компании
-$res = CIBlockElement::GetList(["SORT"=>"ASC"], ['IBLOCK_ID'=>8,'ACTIVE'=>'Y'], false, false, ['ID', 'IBLOCK_ID', 'NAME']);
+$res = CIBlockElement::GetList(
+    ["SORT"=>"ASC"],
+    [
+        'IBLOCK_ID'=>8,
+        'ACTIVE'=>'Y',
+        [
+            'LOGIC'=> 'OR',
+            ['=PROPERTY_DIRECTOR_ID'=>$arResult['arUser']['ID']],
+            ['=PROPERTY_STAFF'=>$arResult['arUser']['ID']]
+        ]
+
+    ],
+    false,
+    false,
+    ['ID', 'IBLOCK_ID', 'NAME']);
 while($arCompany = $res->GetNext(true, false)){
     $arResult['COMPANIES'][] = $arCompany;
 }
