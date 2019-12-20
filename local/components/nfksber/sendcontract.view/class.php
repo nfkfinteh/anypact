@@ -61,9 +61,19 @@ class CDemoSqr extends CBitrixComponent
         }
         
         // получить данные пользователей по id
-        // пользователь А владелец контракта        
-        $rsUser = CUser::GetByID($arSendItem['UF_ID_USER_A']);
-        $arUser_A = $rsUser->Fetch();        
+        // пользователь А владелец контракта
+        if(!empty($arSendItem['UF_ID_COMPANY_A'])){
+            //компания
+            $res = CIBlockElement::GetList([], ['IBLOCK_ID'=>8, 'ID'=>$arSendItem['UF_ID_COMPANY_A'], 'ACTIVE'=>'Y'], false, false, ['IBLOCK_ID', 'ID', 'NAME', 'PROPERTY_INN']);
+            if($obj=$res->GetNext(true, false)){
+                $arCompany_A = $obj;
+            }
+        }
+        else{
+            //пользователь
+            $rsUser = CUser::GetByID($arSendItem['UF_ID_USER_A']);
+            $arUser_A = $rsUser->Fetch();
+        }
         //статус подписи
         $hash_A ='--';
         if(!empty($arSendItem['UF_VER_CODE_USER_A'])){
@@ -74,26 +84,52 @@ class CDemoSqr extends CBitrixComponent
             $status_send_a = '<button class="btn btn-nfk" id="sign_contract" data-id="'.$arSendItem['ID'].'" data-user="'.$arSendItem['UF_ID_USER_A'].'" style="width:100%">Подписать договор</button>';
         }
 
-//        print_r($arSendItem);
         // пользователь В подписывающий
-        $rsUser = CUser::GetByID($arSendItem['UF_ID_USER_B']);
-        $arUser_B = $rsUser->Fetch();
+        if(!empty($arSendItem['UF_ID_COMPANY_B'])){
+            //компания
+            $res = CIBlockElement::GetList([], ['IBLOCK_ID'=>8, 'ID'=>$arSendItem['UF_ID_COMPANY_B'], 'ACTIVE'=>'Y'], false, false, ['IBLOCK_ID', 'ID', 'NAME', 'PROPERTY_INN']);
+            if($obj=$res->GetNext(true, false)){
+                $arCompany_B = $obj;
+            }
+        }
+        else{
+            //пользователь
+            $rsUser = CUser::GetByID($arSendItem['UF_ID_USER_B']);
+            $arUser_B = $rsUser->Fetch();
+        }
         $hash_B = md5($arSendItem['UF_VER_CODE_USER_B']);
         
         $Send_text = '<table style="width:100%; margin 50px 0;">';
         $Send_text .= '<tr>';
         $Send_text .= '<td style="width:44%">';
         $Send_text .= '<b>Подписано простой электронной подписью:</b>';
-        $Send_text .= '<br>'.$arUser_A['LAST_NAME'].' '.$arUser_A['NAME'].' '.$arUser_A['SECOND_NAME'];
-        $Send_text .= '<br>#'.$arUser_A['UF_PASSPORT'];
+        if(!empty($arCompany_A)){
+            //компания
+            $Send_text .= '<br>'.$arCompany_A['NAME'];
+            $Send_text .= '<br>'.$arCompany_A['PROPERTY_INN_VALUE'];
+        }
+        else{
+            //пользователь
+            $Send_text .= '<br>'.$arUser_A['LAST_NAME'].' '.$arUser_A['NAME'].' '.$arUser_A['SECOND_NAME'];
+            $Send_text .= '<br>#'.$arUser_A['UF_PASSPORT'];
+        }
         $Send_text .= '<br>'.$arSendItem["UF_TIME_SEND_USER_A"]->format("Y-m-d H:i:s");
         $Send_text .= '<br>'.$hash_A;
         $Send_text .= '</td>';
         $Send_text .= '<td style="width:2%"></td>';
         $Send_text .= '<td style="width:44%">';
         $Send_text .= '<b>Подписано простой электронной подписью:</b>';
-        $Send_text .= '<br>'.$arUser_B['LAST_NAME'].' '.$arUser_B['NAME'].' '.$arUser_B['SECOND_NAME'];
-        $Send_text .= '<br>#'.$arUser_B['UF_PASSPORT'];
+        if(!empty($arCompany_B)) {
+            //компания
+            $Send_text .= '<br>'.$arCompany_B['NAME'];
+            $Send_text .= '<br>'.$arCompany_B['PROPERTY_INN_VALUE'];
+        }
+        else{
+            //пользователь
+            $Send_text .= '<br>'.$arUser_B['LAST_NAME'].' '.$arUser_B['NAME'].' '.$arUser_B['SECOND_NAME'];
+            $Send_text .= '<br>#'.$arUser_B['UF_PASSPORT'];
+        }
+
         $Send_text .= '<br>'.$arSendItem["UF_TIME_SEND_USER_A"]->format("Y-m-d H:i:s");
         $Send_text .= '<br>'.$hash_B;
         $Send_text .= '</td>';
