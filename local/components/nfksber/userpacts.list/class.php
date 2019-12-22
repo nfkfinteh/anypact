@@ -299,7 +299,7 @@ class CDemoSqr extends CBitrixComponent
         $this->arResult["SEND_CONTRACT"] = $this->getSendContract($User_ID);
 
         // сообщение пользователю
-        $this->arResult["MESSAGE_USER"] = $this->getMessageUser($User_ID);;
+        //$this->arResult["MESSAGE_USER"] = $this->getMessageUser($User_ID);;
 
         // кэш отключен
         /*if($this->startResultCache($this->arParams['CACHE_TIME'], $User_ID))
