@@ -2,7 +2,7 @@
 include_once 'function.php';
 
 AddEventHandler("main", "OnAfterEpilog", "Prefix_FunctionName");
-AddEventHandler("main", "OnAfterUserLogin", "OnAfterUserLoginHandler");
+//AddEventHandler("main", "OnAfterUserLogin", "OnAfterUserLoginHandler");
 
 function Prefix_FunctionName() {
     global $APPLICATION;
@@ -19,7 +19,7 @@ function Prefix_FunctionName() {
     }
 }
 
-function OnAfterUserLoginHandler(&$fields){
+/*function OnAfterUserLoginHandler(&$fields){
     if(\CModule::IncludeModule('iblock') && !empty($fields['USER_ID'])){
         //получаем компании для пол
         $arFilter = [
@@ -39,4 +39,4 @@ function OnAfterUserLoginHandler(&$fields){
         }
 
     }
-}
+}*/
