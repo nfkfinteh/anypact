@@ -470,6 +470,7 @@ $(document).ready(function() {
             } else {
                 oOutput.innerHTML = "Error " + oReq.status + " occurred when trying to upload your file.<br \/>";
             }
+            $('.tools_redactor').show();
             $('.document-load').remove();
         };
 
