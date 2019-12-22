@@ -1,0 +1,22 @@
+.page-item .page-link {
+    background: none !important;
+    border: none !important;
+    color: #000000 !important;
+}
+.page-item.active .page-link {
+    color: #fd6600 !important;
+}
+
+.page-link:hover {
+    color: #fd6600 !important;
+}
+.page-item.active .page-link {
+    z-index: 1;
+    text-decoration: underline;
+    color: #fd6600;
+    background: none;
+    border: none;
+}
+.wrap-pagination{
+    width: 100%;
+}
