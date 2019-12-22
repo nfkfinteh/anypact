@@ -1,4 +1,6 @@
-
+.widget_user_profile{
+    text-align: right;
+}
 .widget_user_profile_avatar {
     width: 45px;
     height: 45px;
@@ -10,10 +12,21 @@
 }
 
 .widget_user_profile_name {
-    float: left;
     margin-left: 10px;
     max-width: 78%;
-    /*overflow: hidden;*/
+}
+
+.widget_user_profile_name__title:after{
+    content: ">";
+    display: inline-block;
+    position: relative;
+    left: 5px;
+    transform: rotate(90deg);
+    color: #ff6416;
+}
+
+.widget_user_profile_name__title:hover{
+    text-decoration: none;
 }
 
 .widget_user_profile_fio {
@@ -58,6 +71,7 @@
     background-color: white;
     left: 59px;
     display: none;
+    text-align: left;
 }
 
 .login-information{
@@ -66,6 +80,7 @@
 }
 .login-information .login-information-container{
     display: flex;
+    align-items: center;
 }
 .login-information .login-information-photo{
     width: 51px;
