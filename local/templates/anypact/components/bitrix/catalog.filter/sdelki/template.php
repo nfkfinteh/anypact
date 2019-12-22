@@ -36,7 +36,7 @@ $this->setFrameMode(true);
         }
         ?>        
         <? if($key==0){?>
-            <input class="filter-price" type="text" id="minmax<?=$key?>" name="<?=$input?>" value="0"> -
+            <input class="filter-price" type="text" id="minmax<?=$key?>" name="<?=$input?>" value="<?=$value?>"> -
         <?}else {?>
             <input class="filter-price" type="text" id="minmax<?=$key?>" name="<?=$input?>" value="<?=$value?>" >
         <?}?>
@@ -86,7 +86,7 @@ $this->setFrameMode(true);
             var value1=$(minCost2).val();
             var value2=$(maxCost2).val();
 
-            if (value2 > 30000) { value2 = 30000; $(maxCost2).val(30000)}
+            //if (value2 > 30000) { value2 = 30000; $(maxCost2).val(30000)}
 
             if(parseInt(value1) > parseInt(value2)){
                 value2 = value1;
