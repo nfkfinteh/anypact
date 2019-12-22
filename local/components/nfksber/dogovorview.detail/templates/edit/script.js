@@ -450,7 +450,7 @@ $(document).ready(function() {
     $(document).on('click', '.js-btn-address', function() {
         console.log(user_req);
         if($('.cardDogovor-boxViewText').attr('contenteditable') == 'true' && $(window.getSelection().focusNode).parents('.cardDogovor-boxViewText').length) {
-            var data_ins = user_req.INDEX.VALUE+', '+user_req.REGION.VALUE+', '+user_req.CITY.VALUE+', '+user_req.STREET.VALUE+', дом '+user_req.HOUSE.VALUE;
+            var data_ins = user_req.INDEX.VALUE+', '+user_req.REGION.VALUE+', '+user_req.CITY.VALUE+', '+user_req.STREET.VALUE+', '+user_req.HOUSE.VALUE;
             insertTextAtCursor(data_ins);
         }
     });

@@ -120,16 +120,16 @@ class CDemoSqr extends CBitrixComponent
         #если создатель договора и контрагент оно и то же лицо
         if($userID!=$this->arResult['USER_PROP']['ID']){
             $regexp         = "/%FIO_CONTRAGENT%/ui";
-            $replacement    = $this->arResult['USER_PROP']['LAST_NAME'].' '.$this->arResult['USER_PROP']['NAME'].' '.$this->arResult['USER_PROP']['SECOND_NAME'];
+            $replacement    = $this->arResult['JS_DATA']['USER']['NAME']['VALUE'];
             $Content = preg_replace($regexp, $replacement, $Content);
 
             $regexp         = "/%ADDRESS_CONTRAGENT%/ui";
             $replacement    = [
-                $this->arResult['USER_PROP']['PERSONAL_ZIP'],
-                $this->arResult['USER_PROP']['PERSONAL_STATE'],
-                $this->arResult['USER_PROP']['PERSONAL_CITY'],
-                $this->arResult['USER_PROP']['UF_STREET'],
-                $this->arResult['USER_PROP']['UF_N_HOUSE']
+                $this->arResult['JS_DATA']['USER']['INN']['VALUE'],
+                $this->arResult['JS_DATA']['USER']['REGION']['VALUE'],
+                $this->arResult['JS_DATA']['USER']['CITY']['VALUE'],
+                $this->arResult['JS_DATA']['USER']['STREET']['VALUE'],
+                $this->arResult['JS_DATA']['USER']['HOUSE']['VALUE']
             ];
 
             $replacement = array_filter($replacement, function($element) {
@@ -398,14 +398,6 @@ class CDemoSqr extends CBitrixComponent
             //ополучаем данные по контракту
             $this->arResult["CONTRACT_PROPERTY"]    = $this->getPropertyContract($this->arResult["INFOBLOCK_C_ID"]);
 
-            //замена реквизитов в тексте контракта
-            $Contract_template_Text = $this->convertContent($this->arResult["CONTRACT_PROPERTY"]["CONTRACT"]["DETAIL_TEXT"]);
-            $clear_text = new autoedittext();
-            $Contract_template_Text                 = $clear_text->replaceTag($Contract_template_Text, $this->USER_PROPERTY);
-            $this->arResult["CONTRACT_PROPERTY"]["CONTRACT"]["DETAIL_TEXT"] = str_replace("&nbsp;", "", $Contract_template_Text);
-
-
-
             if(!empty($_GET["ID_TEMPLATE"])){                
                 $this->arResult["TEMPLATE_CONTENT"] = $this->getElement($_GET["ID_TEMPLATE"]);
                 $this->arResult["TEMPLATE_CONTENT_PROPERTY"]    = $this->getMultyProperty(5, $_GET["ID_TEMPLATE"]);
@@ -417,6 +409,12 @@ class CDemoSqr extends CBitrixComponent
 
             #формирование масива для js (подстановка реквизитов)
             $this->getJsRequisit();
+
+            //замена реквизитов в тексте контракта
+            $Contract_template_Text = $this->convertContent($this->arResult["CONTRACT_PROPERTY"]["CONTRACT"]["DETAIL_TEXT"]);
+            $clear_text = new autoedittext();
+            $Contract_template_Text                 = $clear_text->replaceTag($Contract_template_Text, $this->USER_PROPERTY);
+            $this->arResult["CONTRACT_PROPERTY"]["CONTRACT"]["DETAIL_TEXT"] = str_replace("&nbsp;", "", $Contract_template_Text);
 
 
             $this->EndResultCache();
