@@ -71,9 +71,14 @@ if(in_array( 1, $arGroups) || in_array( 6, $arGroups)){
     $data['PROPERTY_VALUES']['PACT_USER'] = $data['MODIFIED_BY'];
 
     $el = new CIBlockElement;
-    /*
-        TODO: задавать параметры активности объявления начало активности текущая дата, окончание активности по умолчанию +7 дней
-    */
+
+    if(empty($data['DATE_ACTIVE_TO'])){
+        $dateFormat = time()+(86400*10);
+    }
+    else{
+        $dateFormat = MakeTimeStamp($data['DATE_ACTIVE_TO'], "DD.MM.YYYY");
+    }
+
     $arLoadProductArray = Array(
         "MODIFIED_BY"    => $data['MODIFIED_BY'],
         "IBLOCK_SECTION_ID" => $data['IBLOCK_SECTION_ID'],
@@ -87,7 +92,7 @@ if(in_array( 1, $arGroups) || in_array( 6, $arGroups)){
         /*"DETAIL_PICTURE" => $detailPicture,
         "PREVIEW_PICTURE" => $detailPicture,*/
         "DATE_ACTIVE_FROM" => ConvertTimeStamp(time(), "SHORT"),
-        "DATE_ACTIVE_TO" => ConvertTimeStamp(time()+(86400*10), "SHORT")
+        "DATE_ACTIVE_TO" => ConvertTimeStamp($dateFormat, "SHORT")
     );
 
     if($PRODUCT_ID = $el->Add($arLoadProductArray)){
