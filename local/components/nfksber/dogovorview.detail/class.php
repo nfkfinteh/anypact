@@ -413,7 +413,7 @@ class CDemoSqr extends CBitrixComponent
             //замена реквизитов в тексте контракта
             $Contract_template_Text = $this->convertContent($this->arResult["CONTRACT_PROPERTY"]["CONTRACT"]["DETAIL_TEXT"]);
             $clear_text = new autoedittext();
-            $Contract_template_Text                 = $clear_text->replaceTag($Contract_template_Text, $this->USER_PROPERTY);
+            $Contract_template_Text                 = $clear_text->replaceTag($Contract_template_Text, $this->arResult['JS_DATA']['USER']);
             $this->arResult["CONTRACT_PROPERTY"]["CONTRACT"]["DETAIL_TEXT"] = str_replace("&nbsp;", "", $Contract_template_Text);
 
 
