@@ -25,18 +25,17 @@ class autoedittext {
         $mons = $this->setDateString($mons);
         $data = date('"d" ').$mons.' '.date('Y');
         
-        $clearText = str_replace('[телефон Покупателя]', $arrPropertyUser["PERSONAL_PHONE"], $clearText);
-        $clearText = str_replace('[дата заключения]', $data, $TEXT);
-        $FullName  = $arrPropertyUser["LAST_NAME"].' '.$arrPropertyUser["NAME"].' '.$arrPropertyUser["SECOND_NAME"];
-        $clearText = str_replace('[ФИО Подписанта]', $FullName, $clearText);
-        $clearText = str_replace('[ФИО Покупателя]', $FullName, $clearText);
-        $clearText = str_replace('[ФИО Продавца]', $FullName, $clearText);
+        $clearText = str_replace('[телефон Покупателя]', $arrPropertyUser["PHONE"]["VALUE"], $TEXT);
+        $clearText = str_replace('[дата заключения]', $data, $clearText);
+        $clearText = str_replace('[ФИО Подписанта]', $arrPropertyUser["NAME"]["VALUE"], $clearText);
+        $clearText = str_replace('[ФИО Покупателя]', $arrPropertyUser["NAME"]["VALUE"], $clearText);
+        $clearText = str_replace('[ФИО Продавца]', $arrPropertyUser["NAME"]["VALUE"], $clearText);
         
 
-        $clearText = str_replace('[ФИО Договородателя]', $FullName, $clearText);
+        $clearText = str_replace('[ФИО Договородателя]', $arrPropertyUser["NAME"]["VALUE"], $clearText);
         $clearText = str_replace('[Введите данные]', '', $clearText);
         //$clearText = str_replace('[телефон Покупателя]', $arrPropertyUser["PERSONAL_PHONE"], $clearText);
-        $clearText = str_replace('[Адрес Договородателя]', $arrPropertyUser["UF_N_BANK"], $clearText);
+        //$clearText = str_replace('[Адрес Договородателя]', $arrPropertyUser["UF_N_BANK"], $clearText);
 
         return $clearText;
     }
