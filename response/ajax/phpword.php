@@ -76,25 +76,25 @@ if( isset( $_GET['uploadfiles'] ) ){
 }
 
 // Загрузка содержимого документа
-foreach ($UrlDocFile as $key=>$utl){
-    $ext_file = $DOCX->getExtension($utl);
+foreach ($UrlDocFile as $key=>$url){
+    $ext_file = $DOCX->getExtension($url);
     switch ($ext_file) {
         case 'docx':
-            $content = $DOCX->readDOCX2($utl);
+            $content = $DOCX->readDOCX2($url);
             $arResult[] = [
                 'FORMAT'=>$ext_file,
                 'CONTENT'=>$content,
             ];
             break;
         case 'txt':
-            $content = $DOCX->readFileTXT($utl);
+            $content = $DOCX->readFileTXT($url);
             $arResult[] = [
                 'FORMAT'=>$ext_file,
                 'CONTENT'=>$content,
             ];
             break;
         case 'rtf':
-            $content = $DOCX->readFileRTF2($utl);
+            $content = $DOCX->readFileRTF2($url);
             $arResult[] = [
                 'FORMAT'=>$ext_file,
                 'CONTENT'=>$content,
