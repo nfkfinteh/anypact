@@ -497,4 +497,10 @@ $(document).ready(function() {
         }
     });
 
+    $(document).on('click', '#create_con', function(){
+        $('.tools_redactor').show();
+        $('#canvas').empty();
+        $('#btn-edit').click();
+    });
+
 });

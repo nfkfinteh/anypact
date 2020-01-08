@@ -93,13 +93,13 @@ foreach ($UrlDocFile as $key=>$url){
                 'CONTENT'=>$content,
             ];
             break;
-        case 'rtf':
+       /* case 'rtf':
             $content = $DOCX->readFileRTF2($url);
             $arResult[] = [
                 'FORMAT'=>$ext_file,
                 'CONTENT'=>$content,
             ];
-            break;
+            break;*/
         case 'png':
             $content = $DOCX->getImg($UrlDocFile2[$key]);
             $arResult[] = [
@@ -115,7 +115,7 @@ foreach ($UrlDocFile as $key=>$url){
             ];
             break;
         default:
-            $content = 'Используйте один из слевующих фарматов: docx, txt, rtf, png, jpg';
+            $content = 'Используйте один из слевующих фарматов: docx, txt, png, jpg';
             $ext_file = 'ERROR';
             $arResult[] = [
                 'FORMAT'=>$ext_file,
