@@ -75,15 +75,6 @@
             }
         }
     </style>
-    <div class="toast" id="popup-success">
-        <div class="toast-card">
-            <button class="toast-close">×</button>
-            <div class="toast-body">
-                <div>
-                    <a href="#" class="popup__title title">Данные сохранены</a>
-                </div>
-            </div>
-        </div>
         <!-- <div class="toast-card toast-status">
             <button class="toast-close">×</button>
             <div class="toast-body">
@@ -106,9 +97,18 @@
         </div>
     </div> -->
     <div class="container-fluid"></div>
-<!--    
+   
 <div class="popup-wrapper" id="popup-success">
-    <div class="popup-wrapper__flex">
+    <div class="toast" id="popup-success">
+        <div class="toast-card">
+            <button class="toast-close">×</button>
+            <div class="toast-body">
+                <div>
+                    <a href="#" class="popup__title title">Данные сохранены</a>
+                </div>
+            </div>
+        </div>
+<!--     <div class="popup-wrapper__flex">
         <div class="popup">
             <div class="popup__content">
                 <div class="popup__success">
@@ -135,6 +135,5 @@
                 </p>
             </div>
         </div>
-    </div>
+    </div>-->
 </div>
--->
