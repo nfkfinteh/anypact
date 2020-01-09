@@ -98,7 +98,7 @@
     </div> -->
     <div class="container-fluid"></div>
    
-<div class="popup-wrapper" id="popup-success">
+<div class="popup-wrapper">
     <div class="toast" id="popup-success">
         <div class="toast-card">
             <button class="toast-close">×</button>
@@ -108,6 +108,8 @@
                 </div>
             </div>
         </div>
+    </div>
+</div>
 <!--     <div class="popup-wrapper__flex">
         <div class="popup">
             <div class="popup__content">
@@ -135,5 +137,6 @@
                 </p>
             </div>
         </div>
-    </div>-->
+    </div>
 </div>
+-->

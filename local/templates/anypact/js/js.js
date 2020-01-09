@@ -143,6 +143,7 @@ function showResult(name, title='', text='') {
             h = activePopup.outerHeight();
         }
     });
+    
     var popup = $(name);
     var block = popup.find('.popup');
 
