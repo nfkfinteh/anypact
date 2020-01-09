@@ -3251,7 +3251,7 @@ input::-webkit-input-placeholder {
 }
 
 /*popup-succes*/
-.popup-wrapper {
+/* .popup-wrapper {
     display: none;
     position: fixed;
     top: 0;
@@ -3261,7 +3261,7 @@ input::-webkit-input-placeholder {
     background: rgba(0, 0, 0, 0.9);
     overflow-y: auto;
     z-index: 50;
-    color: #212529; }
+    color: #212529; } */
 
 .form-group .form-group{
     display: flex;
