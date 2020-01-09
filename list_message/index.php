@@ -11,5 +11,6 @@ $APPLICATION->IncludeComponent("nfksber:message.list",
     )
 );
 ?>
+</div>
 
 <? require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php");?>
