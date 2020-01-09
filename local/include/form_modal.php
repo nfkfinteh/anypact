@@ -109,6 +109,16 @@
             </div>
         </div>
     </div>
+    <div class="toast" id="popup-error">
+        <div class="toast-card">
+            <button class="toast-close">×</button>
+            <div class="toast-body">
+                <div>
+                    <a href="#" class="popup__title title">Данные сохранены</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <!--     <div class="popup-wrapper__flex">
         <div class="popup">

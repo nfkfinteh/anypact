@@ -147,8 +147,8 @@ function showResult(name, title='', text='') {
     var popup = $(name);
     var block = popup.find('.popup');
 
-    popup.find('.popup__title').text(title);
-    popup.find('.popup__subtitle').text(text);
+    popup.find('.popup__title').html(title + "<br>" + text);
+    //popup.find('.popup__subtitle').text(text);
 
     block.css({
         'width': w + 'px',
