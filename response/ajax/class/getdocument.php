@@ -28,6 +28,32 @@ class getdocument{
         return $documentXml;
     }
 
+    public function getAlignStyle($e){
+        if(method_exists($e, 'getParagraphStyle') && method_exists($e->getParagraphStyle(), 'getStyleValues')){
+            $paragraphStyle = $e->getParagraphStyle()->getStyleValues();
+            if(!empty($paragraphStyle['alignment']) || empty($paragraphStyle['name'])){
+                $alignParagraph = $paragraphStyle['alignment'];
+            }
+            elseif(empty($paragraphStyle['alignment'])){
+                if(method_exists(PhpOffice\PhpWord\Style::getStyle($paragraphStyle['name']), 'getParagraphStyle')){
+                    $alignParagraph = PhpOffice\PhpWord\Style::getStyle($paragraphStyle['name'])->getParagraphStyle()->getAlign();
+                }
+
+            }
+        }
+        else{
+            $alignParagraph = NULL;
+        }
+
+        if(!empty($alignParagraph)){
+            $align = $alignParagraph;
+        }
+        else{
+            $align = 'justify';
+        }
+        return $align;
+    }
+
     public function readDOCX2($docxFile)
     {
         $objReader = \PhpOffice\PhpWord\IOFactory::createReader('Word2007');
@@ -42,51 +68,37 @@ class getdocument{
 
             foreach ($arrays as $e) {
 
-                //new dBug($e->getParagraphStyle());
-
                 if (get_class($e) === 'PhpOffice\PhpWord\Element\TextRun') {
 
                     #выравнивание текста
                     if($block){
-                        if(method_exists($e, 'getParagraphStyle') && method_exists($e->getParagraphStyle(), 'getAlign')){
-                            $alignParagraph = $e->getParagraphStyle()->getAlign();
-                        }
-                        else{
-                            $alignParagraph = NULL;
-                        }
-
-                        if(!empty($alignParagraph)){
-                            $align = $alignParagraph;
-                        }
-                        else{
-                            $align = 'justify';
-                        }
+                        $align = $this->getAlignStyle($e);
 
                         $body .= '<div style="text-align:'. $align .'">';
                         $block = false;
                     }
 
+                    if($e->countElements()>0){
+                        foreach ($e->getElements() as $text) {
+
+                            $font = $text->getFontStyle();
+
+                            if(empty($font)) continue;
+
+                            //$size = $font->getSize();
+                            $size = 14;
+                            $bold = $font->isBold();
+                            $color = $font->getColor();
+                            $fontFamily = $font->getName();
 
 
-                    foreach ($e->getElements() as $text) {
+                            if(!empty($color)){
+                                $color = 'color:#'.$color.';';
+                            }
+                            else{
+                                $color = '';
+                            }
 
-                        $font = $text->getFontStyle();
-                        $size = $font->getSize();
-                        $bold = $font->isBold();
-                        $color = $font->getColor();
-                        $fontFamily = $font->getName();
-
-                        if(!empty($color)){
-                            $color = 'color:#'.$color.';';
-                        }
-                        else{
-                            $color = '';
-                        }
-
-
-                        //$body .= '<span style="font-size:' . intval($size) . 'px;' . 'font-family:' . $fontFamily . '; ' . $bold . '; color:#' . $color . ';display:inline;">';
-
-                        if(!empty($bold) || !empty($color) || $size>14){
                             if($bold) {
                                 $tag = 'b';
                             }
@@ -94,43 +106,42 @@ class getdocument{
                                 $tag = 'span';
                             }
 
+                            if(empty($size)) $size = 14;
+
                             $body .= '<'. $tag .' style="font-size:' . intval($size) . 'px;' . $color . 'display:inline;">';
                             $body .= $text->getText() . '</'. $tag .'>';
 
                         }
-                        else{
-                            $body .= $text->getText();
-                        }
-
-
                     }
-                } else if (get_class($e) === 'PhpOffice\PhpWord\Element\TextBreak') {
-                    #выравнивание текста конец
+                    else{
+                        $body .= '<br>';
+                    }
+
+                } elseif (get_class($e) === 'PhpOffice\PhpWord\Element\TextBreak') {
                     $block = true;
                     $body .= '</div>';
 
-                    $body .= '<br />';
-                } else if (get_class($e) === 'PhpOffice\PhpWord\Element\Table') {
-                    $body .= '<table border="2px">';
+                    $body .= '<br/>';
+                } elseif (get_class($e) === 'PhpOffice\PhpWord\Element\Table') {
+                    $body .= '<table style="width: 100%; text-align: start;">';
 
                     $rows = $e->getRows();
 
                     foreach ($rows as $row) {
                         $body .= '<tr>';
-
                         $cells = $row->getCells();
+
                         foreach ($cells as $cell) {
-                            //$body .= '<td style="width:' . $cell->getWidth() . '">';
                             $body .= '<td>';
                             $celements = $cell->getElements();
                             foreach ($celements as $celem) {
                                 if (get_class($celem) === 'PhpOffice\PhpWord\Element\Text') {
                                     $body .= $celem->getText();
-                                } else if (get_class($celem) === 'PhpOffice\PhpWord\Element\TextRun') {
+                                } elseif (get_class($celem) === 'PhpOffice\PhpWord\Element\TextRun') {
                                     foreach ($celem->getElements() as $text) {
                                         $body .= $text->getText();
                                     }
-                                } else {
+                                } else{
                                     //$body .= get_class($celem);
                                 }
                             }
@@ -141,7 +152,89 @@ class getdocument{
                     }
 
                     $body .= '</table>';
-                } else {
+                }
+                elseif (get_class($e) === 'PhpOffice\PhpWord\Element\ListItem') {
+                    if(method_exists($e, 'getTextObject')){
+                        $textObject = $e->getTextObject();
+                        #выравнивание текста
+                        $align = $this->getAlignStyle($textObject);
+
+                        $body .= '<div style="text-align:'. $align .'">';
+
+                        if(method_exists($textObject, 'getFontStyle')){
+                            $font = $textObject->getFontStyle();
+                            //$size = $font->getSize();
+                            $size = 14;
+                            $bold = $font->isBold();
+                            $color = $font->getColor();
+                            $fontFamily = $font->getName();
+                        }
+                        if(!empty($color)){
+                            $color = 'color:#'.$color.';';
+                        }
+                        else{
+                            $color = '';
+                        }
+
+                        if($bold) {
+                            $tag = 'b';
+                        }
+                        else{
+                            $tag = 'span';
+                        }
+
+                        if(empty($size)) $size = 14;
+
+                        $body .= '<'. $tag .' style="font-size:' . intval($size) . 'px;' . $color . 'display:inline;">';
+                        $body .= $e->getText() . '</'. $tag .'>';
+                    }
+                    $body .= '</div>';
+
+                    /*if(method_exists($e, 'getStyle')){
+                    }
+
+                    if(!empty($color)){
+                        $color = 'color:#'.$color.';';
+                    }
+                    else{
+                        $color = '';
+                    }*/
+
+                }
+                elseif (get_class($e) === 'PhpOffice\PhpWord\Element\Text') {
+                    #выравнивание текста
+                    $align = $this->getAlignStyle($e);
+
+                    $body .= '<div style="text-align:'. $align .'">';
+                    if(method_exists($e, 'getFontStyle')){
+                        $font = $e->getFontStyle();
+                        //$size = $font->getSize();
+                        $size = 14;
+                        $bold = $font->isBold();
+                        $color = $font->getColor();
+                        $fontFamily = $font->getName();
+                    }
+                    if(!empty($color)){
+                        $color = 'color:#'.$color.';';
+                    }
+                    else{
+                        $color = '';
+                    }
+
+                    if($bold) {
+                        $tag = 'b';
+                    }
+                    else{
+                        $tag = 'span';
+                    }
+
+                    if(empty($size)) $size = 14;
+
+                    $body .= '<'. $tag .' style="font-size:' . intval($size) . 'px;' . $color . 'display:inline;">';
+                    $body .= $e->getText() . '</'. $tag .'>';
+                    $body .= '</div>';
+                }
+                else {
                     $body .= $e->getText();
                 }
 
