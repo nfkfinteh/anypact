@@ -6,6 +6,7 @@
             top: 0;
             right: 0;
             width: 285px;
+            display:none;
         }
         .toast .toast-card{
             position: relative;
@@ -83,7 +84,7 @@
                 </div>
             </div>
         </div>
-        <div class="toast-card toast-status">
+        <!-- <div class="toast-card toast-status">
             <button class="toast-close">×</button>
             <div class="toast-body">
                 <img src="image/sample_face_150x150.png" alt="">
@@ -103,7 +104,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <div class="container-fluid"></div>
 <!--    
 <div class="popup-wrapper" id="popup-success">
