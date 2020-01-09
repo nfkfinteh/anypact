@@ -20,7 +20,6 @@ if (!$data['LOGIN'] || strlen(trim($data['LOGIN'])) < 1) {
  $arAuthResult = $USER->Login($data['LOGIN'], $data['PASSWORD'], "Y");
 
  if(isset($arAuthResult['TYPE']) && $arAuthResult['TYPE'] == 'ERROR'){
-     print_r($arAuthResult);
     die(json_encode(array('TYPE' => 'ERROR', 'VALUE' => $arAuthResult['MESSAGE'])));
  }else {
     die(json_encode(array('TYPE' => 'SUCCES', 'VALUE' => 'Вы успешно авторизаваны')));
