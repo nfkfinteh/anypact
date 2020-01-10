@@ -3250,6 +3250,10 @@ input::-webkit-input-placeholder {
     min-height: 80px;
 }
 
+.cardDogovor-boxViewText{
+    font-size: 14px;
+}
+
 /*------sdelka.php --------*/
 
 @media (min-width: 1200px) {

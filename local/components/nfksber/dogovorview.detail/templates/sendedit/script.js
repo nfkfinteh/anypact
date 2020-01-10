@@ -26,7 +26,7 @@ function insertTextAtCursor(text) {
     };*/
 }
 
-function insertBoldAtCursor(text) {
+/*function insertBoldAtCursor(text) {
     let selection = window.getSelection();
     let range = selection.getRangeAt(0);
     let string = selection.toString();
@@ -40,7 +40,7 @@ function insertBoldAtCursor(text) {
     for (let position = 0; position != text.length; position++) {
         selection.modify("move", "right", "character");
     };
-}
+}*/
 
 function formatSelectText(id_name) {
     // получаем выделенный текст
@@ -102,9 +102,32 @@ function formatSelectText(id_name) {
 
     }
 
-    for (let position = 0; position != sel_string.length; position++) {
-        selection.modify("move", "right", "character");
-    };
+    selection.modify("move", "right", "character");
+}
+
+function formatSelectTitle(id_name) {
+    // получаем выделенный текст
+    let selection = window.getSelection();
+    let range = selection.getRangeAt(0);
+    let sel_string = selection.toString();
+    // на основе id выбираем подстановку
+    let key = id_name.replace('btn-', '');
+    let arrTegs = {
+        title: 'h4',
+    }
+    if(range.startContainer.parentElement.tagName != arrTegs[key].toUpperCase()){
+        // удаляем его, что бы замнить
+        range.deleteContents();
+        let insert_space = document.createElement(arrTegs[key]);
+        insert_space.innerHTML = sel_string;
+        range.insertNode(insert_space);
+    }else{
+        let text = range.startContainer.parentNode.innerText;
+        $(range.startContainer.parentNode).remove();
+        range.insertNode(document.createTextNode(text));
+    }
+
+    selection.modify("move", "right", "character");
 }
 
 function loadTextCanvas(text, canvas_name) {
@@ -309,9 +332,11 @@ $(document).ready(function() {
         if (onof) {
             $(this).css("backgroundColor", "#ff6416");
             $(span_icon).css("color", "#fff");
+            $('.js-disabled').attr('disabled', false);
         } else {
             $(this).css("backgroundColor", "#fff");
             $(span_icon).css("color", "#ff6416");
+            $('.js-disabled').attr('disabled', true);
         }
 
     });
@@ -326,8 +351,17 @@ $(document).ready(function() {
     });
 
     $('.form_text').on('click', function() {
-        let id_name = $(this).attr('id');
-        formatSelectText(id_name);
+        if($('.cardDogovor-boxViewText').attr('contenteditable') == 'true' && $(window.getSelection().focusNode).parents('.cardDogovor-boxViewText').length) {
+            let id_name = $(this).attr('id');
+            formatSelectText(id_name);
+        }
+    });
+
+    $(document).on('click', '#btn-title', function(){
+        if($('.cardDogovor-boxViewText').attr('contenteditable') == 'true' && $(window.getSelection().focusNode).parents('.cardDogovor-boxViewText').length) {
+            let id_name = $(this).attr('id');
+            formatSelectTitle(id_name);
+        }
     });
 
     $('rededittext').on('click', function() {
@@ -353,6 +387,9 @@ $(document).ready(function() {
             }
             if(range.startContainer.parentElement.tagName == 'NEDITTEXT' && range.endContainer.parentElement.tagName == 'NEDITTEXT'){
                 $('#btn-noedit').addClass('btn-nfk-invert');
+            }
+            if(range.startContainer.parentElement.tagName == 'H4' && range.endContainer.parentElement.tagName == 'H4'){
+                $('#btn-title').addClass('btn-nfk-invert');
             }
         }
     });
