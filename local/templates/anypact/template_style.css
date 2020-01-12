@@ -3254,6 +3254,10 @@ input::-webkit-input-placeholder {
     font-size: 14px;
 }
 
+#open_reg_form{
+    cursor: pointer;
+}
+
 /*------sdelka.php --------*/
 
 @media (min-width: 1200px) {
