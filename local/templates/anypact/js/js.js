@@ -84,8 +84,13 @@ function set_cookie ( name, value, exp_y, exp_m, exp_d, path, domain, secure )
         var expires = new Date ( exp_y, exp_m, exp_d );
         cookie_string += "; expires=" + expires.toGMTString();
     }
-    if ( path )
+    if ( path ){
         cookie_string += "; path=" + escape ( path );
+    }
+    else{
+        cookie_string += "; path=/";
+    }
+
     if ( domain )
         cookie_string += "; domain=" + escape ( domain );
     if ( secure )
