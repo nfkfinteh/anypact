@@ -41,7 +41,6 @@ $(document).ready(function(){
                     $result = JSON.parse(result);
                     if ($result['TYPE'] == 'ERROR') {
                         console.log($result['VALUE']);
-                        alert($result['VALUE']);
                     }
                     if ($result['TYPE'] == 'SUCCESS') {
                         $(this_btn).addClass('js-delete-frends');
