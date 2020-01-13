@@ -3258,6 +3258,10 @@ input::-webkit-input-placeholder {
     cursor: pointer;
 }
 
+.editbox{
+    min-height: 45px;
+}
+
 /*------sdelka.php --------*/
 
 @media (min-width: 1200px) {

@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-lg-8 col-md-8 col-sm-8">
             <div class="cardPact-EditText-Descript" id="ad_name">
-                <div class="editbox" contenteditable="true" style="min-height: 0px; margin-top: 0">
+                <div class="editbox" contenteditable="true" style="margin-top: 0">
                     <?=$arResult["ELEMENT"]["DETAIL_TEXT"]?>
                 </div>
             </div>
@@ -94,7 +94,7 @@
         </div>
         <div class="col-lg-4 col-md-4 col-sm-4 cardPact-rightPanel">
             <h1>
-                <span id="cardPact-EditText-Summ" contenteditable="true" data-code="<?=$arResult['PROPERTY']['SUMM_PACT']['CODE']?>">
+                <span class="editbox_sum" id="cardPact-EditText-Summ" contenteditable="true" data-code="<?=$arResult['PROPERTY']['SUMM_PACT']['CODE']?>">
                     <?=$arResult["PROPERTY"]["SUMM_PACT"]["VALUE"]?>
                 </span>
                 <div style="float:right;">руб.</div>

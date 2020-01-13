@@ -188,3 +188,7 @@
     outline:none;
     background-color: initial;
 }
+
+.editbox_sum{
+    min-height: 25px;
+}
