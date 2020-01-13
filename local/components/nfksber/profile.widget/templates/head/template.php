@@ -1,14 +1,26 @@
 <div class="widget_user_profile">
     <div class="login-information">
         <div class="login-information-container">
-            <? if(empty($arResult["PERSONAL_PHOTO"])):?>
-                <div class="widget_user_profile_avatar">
-                    <span><?=$arResult["IN_NAME"]?></span>
-                </div>
+            <?if(!empty($arResult['ACTIVE_COMPANY'])):?>
+                <? if(empty($arResult['ACTIVE_COMPANY']['PREVIEW_PICTURE'])):?>
+                    <div class="widget_user_profile_avatar">
+                        <span><?=$arResult['ACTIVE_COMPANY']['NAME'][0]?></span>
+                    </div>
+                <?else:?>
+                    <div class="login-information-photo">
+                        <img src="<?=CFile::GetPath($arResult['ACTIVE_COMPANY']['PREVIEW_PICTURE'])?>">
+                    </div>
+                <?endif?>
             <?else:?>
-                <div class="login-information-photo">
-                    <img src="<?=$arResult["PERSONAL_PHOTO"]?>">
-                </div>
+                <? if(empty($arResult["PERSONAL_PHOTO"])):?>
+                    <div class="widget_user_profile_avatar">
+                        <span><?=$arResult["IN_NAME"]?></span>
+                    </div>
+                <?else:?>
+                    <div class="login-information-photo">
+                        <img src="<?=$arResult["PERSONAL_PHOTO"]?>">
+                    </div>
+                <?endif?>
             <?endif?>
 
             <div class="login-information-text widget_user_profile_name">

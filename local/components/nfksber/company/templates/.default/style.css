@@ -59,3 +59,7 @@ table.search-list{
     font-size: 16px;
     transition: .3s;
 }
+.company-logo{
+    max-width: 250px;
+    margin-left: 10px;
+}
