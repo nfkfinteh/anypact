@@ -55,21 +55,22 @@ class CompanySber extends CBitrixComponent
                 if(in_array($key, $this->arParams['PROPERTIES_NEED']) && empty($req)) $props_empty[] = $key;
                 if(in_array($key, $this->arParams['PROPERTIES_NUMBER']) && !empty($req) && !ctype_digit($req)) $props_no_number[] = $key;
                 if((!in_array($key, $this->arParams['PROPERTIES_SHOW']) && !in_array($key, $addition_props)) || empty($req)) continue;
-                $arProps[$key] = htmlspecialchars($req);
+                $arProps[$key] = $req;
             }
+
             if($props_empty){
                 $output = implode(', ', $props_empty);
-                LocalRedirect("/profile/company/?error=props_empty&props=".$output);
+                LocalRedirect("/profile/company/?error=props_empty&props=".$output."&id=".$_REQUEST['ID_EXIST']);
             }
             if($props_no_number){
                 $output = implode(', ', $props_no_number);
-                LocalRedirect("/profile/company/?error=props_no_number&props=".$output);
+                LocalRedirect("/profile/company/?error=props_no_number&props=".$output."&id=".$_REQUEST['ID_EXIST']);
             }
             if($arProps){
 
                 $el = new CIBlockElement;
                 $arParams = array("replace_space" => "-", "replace_other" => "-");
-                $code = CUtil::translit(htmlspecialchars($_REQUEST['NAME']), "ru", $arParams);
+                $code = CUtil::translit($_REQUEST['NAME'], "ru", $arParams);
                 #проверка наличия компании с идиентичным символьным кодом
                 if ($rsCompany = \CIBlockElement::GetList(
                     ['sort' => 'asc'],
@@ -95,7 +96,7 @@ class CompanySber extends CBitrixComponent
                     $arEl = array(
                         "ACTIVE" => "Y",
                         "IBLOCK_ID" => intval($this->arParams['IBLOCK_ID']),
-                        "NAME" => htmlspecialchars($_REQUEST['NAME']),
+                        "NAME" => $_REQUEST['NAME'],
                         "PREVIEW_TEXT" => print_r($_FILES, true),
                         "CODE" => $code,
                         "PROPERTY_VALUES" => $arProps,
@@ -135,7 +136,7 @@ class CompanySber extends CBitrixComponent
                     $arEl = array(
                         "ACTIVE" => "Y",
                         "IBLOCK_ID" => intval($this->arParams['IBLOCK_ID']),
-                        "NAME" => htmlspecialchars($_REQUEST['NAME']),
+                        "NAME" => $_REQUEST['NAME'],
                         "CODE" => $code,
                         "PROPERTY_VALUES" => $arProps,
                     );
