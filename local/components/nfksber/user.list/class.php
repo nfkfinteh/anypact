@@ -36,7 +36,7 @@ class CDemoSqr extends CBitrixComponent
                 $arrFilter['NAME'] = "_";
             }
 
-            $res = CUser::GetList($by="personal_country", $order="desc", $arrFilter);
+            $res = CUser::GetList($by="personal_country", $order="desc", $arrFilter, ['SELECT'=>['UF_*'] ]);
             $res->NavStart($arNavParams['nPageSize']);
             while($obj = $res->NavNext(true)) {
                 $arUser[] = $obj;

@@ -27,9 +27,15 @@
             <div class="people-s-photo-text-block">
                 <h6><?=$user['NAME'].' '.$user['LAST_NAME']?></h6>
                 <div class="grid-hidden-text">
-                    <span class="d-block text-gray">г. Чебоксары</span>
-                    <span class="d-block font-weight-bold mt-4">Подтвержденная регистрация</span>
-                    <span class="d-block registration-checked mt-2">ЕСИА</span>
+                    <?if(!empty($user['PERSONAL_CITY'])):?>
+                        <span class="d-block text-gray"><?=$user['PERSONAL_CITY']?></span>
+                    <?endif?>
+                    <?if($user['UF_ESIA_AUT']):?>
+                        <span class="d-block font-weight-bold mt-4">Подтвержденная регистрация</span>
+                        <span class="d-block registration-checked mt-2">ЕСИА</span>
+                    <?else:?>
+                        <span class="d-block font-weight-bold mt-4">Регистрация не подтверждена</span>
+                    <?endif?>
                 </div>
             </div>
             <div class="people-s-photo-btn-block">

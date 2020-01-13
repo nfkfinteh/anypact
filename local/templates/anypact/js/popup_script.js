@@ -223,7 +223,6 @@ window.onload = function() {
 
         if(document.getElementById('open_reg_form')){
             open_reg_form.onclick = function(event) {
-                console.log("Форма регистрации");
                 regpopup_bg.style.display = 'block';
                 regpopup_form_autorisation.style.display = 'none';
                 regpopup_form_registration.style.display = 'block';

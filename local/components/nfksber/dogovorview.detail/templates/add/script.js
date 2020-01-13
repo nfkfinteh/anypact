@@ -54,6 +54,9 @@ function formatSelectText(id_name) {
         italic: 'i',
         noedit: 'nedittext'
     }
+
+    if(sel_string.length == 0) return;
+
     if(range.startContainer.parentElement.tagName != arrTegs[key].toUpperCase()){
         // удаляем его, что бы замнить
         range.deleteContents();

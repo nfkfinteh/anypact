@@ -6,32 +6,6 @@ $(document).ready(function(){
         $('.tender-block').addClass("tender-horizon").removeClass("tender-block col-md-6 col-lg-4");
         $('.grid-view').addClass("list-view").removeClass("grid-view");
     }
-
-    $(document).on('click', '.js-add-frends', function(){
-        let that = $(this);
-        let login = $(this).attr('data-login');
-        let data = {
-            'login':login,
-            'action':'add'
-        };
-        $.ajax({
-            url: '/response/ajax/add_frends.php',
-            data: data,
-            type: 'POST',
-            success: function(data){
-                result = JSON.parse(data);
-                if(result.TYPE == 'SUCCESS'){
-                    that.hide();
-                    showResult('#popup-success', 'Пользователь добавлен в друзья');
-                }
-                else{
-                    showResult('#popup-error','Ошибка сохранения', result.VALUE);
-                }
-            }
-        });
-
-    });
-
 });
 
 $(document).on('click', '.city-choose-btn-city', function(){
@@ -84,8 +58,13 @@ function set_cookie ( name, value, exp_y, exp_m, exp_d, path, domain, secure )
         var expires = new Date ( exp_y, exp_m, exp_d );
         cookie_string += "; expires=" + expires.toGMTString();
     }
-    if ( path )
+    if ( path ){
         cookie_string += "; path=" + escape ( path );
+    }
+    else{
+        cookie_string += "; path=/";
+    }
+
     if ( domain )
         cookie_string += "; domain=" + escape ( domain );
     if ( secure )
