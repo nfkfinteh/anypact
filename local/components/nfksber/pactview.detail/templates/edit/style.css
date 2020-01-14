@@ -155,3 +155,8 @@
 #my-slider .sp-image-container{
     position: relative;
 }
+
+.wrap-map_adress .error_form{
+    display: none;
+    margin-bottom: 5px;
+}
