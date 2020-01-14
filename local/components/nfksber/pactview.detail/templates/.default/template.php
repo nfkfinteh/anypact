@@ -1,6 +1,5 @@
-<? //print_r($arResult["ELEMENT"]) ;?>
-<?  //print_r($arResult) ;?>
-<?    $disable_a = "";
+<?
+$disable_a = "";
 if (empty($arResult["PROPERTY"]["ID_DOGOVORA"]["VALUE"])){
     $disable_a = 'disabled';
 }
@@ -14,7 +13,6 @@ foreach ($arResult["PROPERTY"]["IMG_FILE"] as $item){
 }
 
 ?>
-
 <h1 class="d-inline-block"><?=$arResult["ELEMENT"]["NAME"]?></h1>
 <div class="row">
     <div class="col-md-7 col-lg-8">
@@ -56,11 +54,9 @@ foreach ($arResult["PROPERTY"]["IMG_FILE"] as $item){
                         <span><?=substr($arResult["CONTRACT_HOLDER"]["NAME"], 0, 1)?></span>
                     </div>
                 <?endif?>
-                <!-- <span><?=$arResult['CONTRACT_HOLDER']['LOGIN']?></span><br> -->            
                 <span>
                     <?=$arResult["CONTRACT_HOLDER"]["LAST_NAME"]?>
                 </span>
-                <br>
                 <span>
                     <?=$arResult["CONTRACT_HOLDER"]["NAME"]?>
                 </span>
@@ -69,9 +65,12 @@ foreach ($arResult["PROPERTY"]["IMG_FILE"] as $item){
             <span class="text-gray"><?=$arResult["CONTRACT_HOLDER"]["CITY"]?></span><br>
         </div>
         <div class="cardPact-info">
-            <span class="float-left">Репутация</span><span class="float-right cardPact-rating">&#9733; 3,9</span><br>
-            <span class="float-left">Заключенных сделок</span><span class="float-right "><?=$arResult['DOGOVOR']['CNT']?></span><br>
-            <!-- <span>9 оценок</span> -->
+            <?/*<span class="float-left">Репутация</span><span class="float-right cardPact-rating">&#9733; 3,9</span><br>*/?>
+            <?if(empty($arResult['PROPERTY']['ID_COMPANY']['VALUE'])):?>
+                <span class="float-left">Заключенных сделок</span><span class="float-right "><?=$arResult['DOGOVOR']['CNT']?></span>
+            <?endif?>
+            <br>
+            <?/*<span>9 оценок</span>*/?>
         </div>
         <button type="button" class="btn btn-nfk d-block cardPact-bBtn" data-toggle="modal" data-target=".bd-message-modal-sm">Написать сообщение</button>
     </div>

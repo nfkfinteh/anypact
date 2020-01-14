@@ -167,6 +167,36 @@ class CDemoSqr extends CBitrixComponent
 
     }
 
+    #функция получения данных владельца договора (компании или физ лица)
+    public function getContractHolder(){
+        if(empty($this->arResult["PROPERTY"]["ID_COMPANY"]["VALUE"])){
+            $UserContractHolder = CUser::GetByID($this->arResult["PROPERTY"]["PACT_USER"]["VALUE"]);
+            $arrUserContractHolder = $UserContractHolder->Fetch();
+            $USER_CONTRACT_HOLDER = array(
+                "ID"    => $arrUserContractHolder["ID"],
+                "NAME"  => $arrUserContractHolder["NAME"],
+                "LAST_NAME" => $arrUserContractHolder["LAST_NAME"],
+                "LOGIN" => $arrUserContractHolder["LOGIN"],
+                "CITY"  => $arrUserContractHolder["PERSONAL_CITY"],
+                "PERSONAL_PHOTO" => CFile::GetPath($arrUserContractHolder["PERSONAL_PHOTO"])
+            );
+        }
+        else{
+            $CompanyContractHolder = CIBlockElement::GetList([], ['IBLOCK_ID'=>8, 'ID'=>$this->arResult["PROPERTY"]["ID_COMPANY"]["VALUE"]], false, false, ['IBLOCK_ID', 'ID', 'NAME', 'PROPERTY_CITY', 'PREVIEW_PICTURE']);
+            if ($obj = $CompanyContractHolder->GetNext(true, false)){
+                $arrCompanyContractHolder = $obj;
+            }
+            $USER_CONTRACT_HOLDER = array(
+                "ID"    => $arrCompanyContractHolder["ID"],
+                "NAME"  => $arrCompanyContractHolder["NAME"],
+                "CITY"  => $arrCompanyContractHolder["PROPERTY_CITY_VALUE"],
+                "PERSONAL_PHOTO" => CFile::GetPath($arrCompanyContractHolder["PREVIEW_PICTURE"])
+            );
+        }
+
+        return $USER_CONTRACT_HOLDER;
+    }
+
     public function executeComponent()
     {
         if($this->startResultCache())
@@ -180,19 +210,8 @@ class CDemoSqr extends CBitrixComponent
             $this->arResult['DOGOVOR']['CNT'] =  $this->getCountDogovor($this->arResult["USER_ID"]);
             $this->arResult['LIST_CITY'] = $this->getListCity();
             
-            // данные владельца сделки           
-            $UserContractHolder = CUser::GetByID($this->arResult["PROPERTY"]["PACT_USER"]["VALUE"]);
-            $arrUserContractHolder = $UserContractHolder->Fetch();
-            //print_r($arrUserContractHolder);
-            $USER_CONTRACT_HOLDER = array(
-                "ID"    => $arrUserContractHolder["ID"],
-                "NAME"  => $arrUserContractHolder["NAME"],
-                "LAST_NAME" => $arrUserContractHolder["LAST_NAME"],
-                "LOGIN" => $arrUserContractHolder["LOGIN"],
-                "CITY"  => $arrUserContractHolder["PERSONAL_CITY"],
-                "PERSONAL_PHOTO" => CFile::GetPath($arrUserContractHolder["PERSONAL_PHOTO"])
-            ); 
-            $this->arResult["CONTRACT_HOLDER"] = $USER_CONTRACT_HOLDER;
+
+            $this->arResult["CONTRACT_HOLDER"] = $this->getContractHolder();
 
             $GLOBALS['CACHE_MANAGER']->StartTagCache("/".SITE_ID.$this->GetRelativePath());
             $GLOBALS['CACHE_MANAGER']->RegisterTag('iblock_id_4');//Кеш будет зависить от изменений инфоблока 9
