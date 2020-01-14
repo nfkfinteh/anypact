@@ -63,7 +63,7 @@
                     <?if($arResult['STAFF']){?>
                         <div class="staff_list">
                             <?foreach($arResult['STAFF'] as $arItem){?>
-                                <?$value_staff = ' '.$arItem['ID'].','?>
+                                <?$value_staff .= ' '.$arItem['ID'].','?>
                                 <div class="staff_man" data-id="<?=$arItem['ID']?>">
                                     <?$name = '';
                                     if($arItem['NAME']) $name = $arItem['NAME'];
