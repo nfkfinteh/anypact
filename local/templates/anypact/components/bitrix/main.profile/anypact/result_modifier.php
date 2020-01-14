@@ -31,7 +31,7 @@ $res = CIBlockElement::GetList(
     ],
     false,
     false,
-    ['ID', 'IBLOCK_ID', 'NAME']);
+    ['ID', 'IBLOCK_ID', 'NAME', 'PROPERTY_DIRECTOR_ID']);
 while($arCompany = $res->GetNext(true, false)){
     $arResult['COMPANIES'][] = $arCompany;
 }

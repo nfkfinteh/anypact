@@ -59,7 +59,68 @@ table.search-list{
     font-size: 16px;
     transition: .3s;
 }
+
+.form-group .form-group{
+    display: flex;
+}
+div.btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.staff_man{
+    display: flex;
+    justify-content: space-between;
+}
+.staff_man p{
+    margin: 0;
+}
+.staff_znak_block{
+    display: flex;
+    justify-content: stretch;
+    cursor: pointer;
+    align-items: center;
+}
+.staff_znak{
+    height: 100%;
+    width: 18px;
+    position: relative;
+    content: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="lightgrey"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg>');
+}
+/*.add_staff .staff_znak:before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    right: 0;
+    left: 0;
+    margin-right: auto;
+    margin-left: auto;
+    height: 18px;
+    width: 2px;
+    background-color: #C4C4C4;
+}*/
+.staff_znak-ok .staff_znak, .add_staff.staff_znak-ok .staff_znak:before {
+    content: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="green"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg>');
+}
+.company-logo-input{
+    padding: 9px;
+}
 .company-logo{
-    max-width: 250px;
-    margin-left: 10px;
+    max-height: 400px;
+    max-width: 100%;
+    display: block;
+    margin: 10px auto;
+}
+.staff_list{
+    margin: 10px 0;
+}
+.editbox {
+    width: 100%;
+    border: none;
+    color: #9fa1a1;
+    border-radius: 0.25rem;
+    background: #f8f9fa;
+    min-height: 200px;
+    padding: 10px;
 }

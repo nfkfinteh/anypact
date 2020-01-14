@@ -23,7 +23,8 @@
             </div>
         </div>
     </div>
-    <form id="form__company_profile" action="<?=$APPLICATION->GetCurPage()?>" enctype="multipart/form-data" method="post">
+    <?if($arResult['IS_DIRECTOR']=='Y'):?>
+        <form id="form__company_profile" action="<?=$APPLICATION->GetCurPage()?>" enctype="multipart/form-data" method="post">
         <?if($arResult['ERROR']){?>
             <p class="error"><?=$arResult['ERROR']?></p>
         <?}?>
@@ -97,4 +98,59 @@
             </div>
         </div>
     </form>
+    <?else:?>
+        <div class="row">
+                <div class="col-xl-6 col-md-12 col-sm-12">
+                    <div class="form-group">
+                        <label>Название</label>
+                        <div class="editbox"><?=$arResult['COMPANY']['NAME']?></div>
+                    </div>
+                    <?$i=0;
+                    foreach($arResult['PROPERTIES'] as $key => $prop){?>
+                        <div class="form-group">
+                            <label><?=$prop["NAME"]?></label>
+                            <div class="editbox"><?=$arResult['COMPANY']['PROPERTIES'][$prop["CODE"]]['VALUE']?></div>
+                        </div>
+                        <?unset($arResult['PROPERTIES'][$key]);?>
+                        <?if($prop['CODE'] == 'OFFICE' || $i == 15) break;?>
+                    <?}?>
+                </div>
+                <div class="col-xl-6 col-md-12 col-sm-12">
+                    <?foreach($arResult['PROPERTIES'] as $prop){?>
+                        <div class="form-group">
+                            <label><?=$prop["NAME"]?></label>
+                            <div class="editbox"><?=$arResult['COMPANY']['PROPERTIES'][$prop["CODE"]]['VALUE']?></div>
+                        </div>
+                    <?}?>
+                    <?if($arResult['COMPANY']['PREVIEW_PICTURE']){?>
+                        <div class="form-group">
+                            <label>Логотип</label>
+                            <img class="company-logo" src="<?=$arResult['COMPANY']['PREVIEW_PICTURE']?>" alt="">
+                        </div>
+                    <?}?>
+                    <div class="form-group">
+                        <label>Сотрудники</label>
+                        <?if($arResult['STAFF']){?>
+                            <div class="staff_list">
+                                <?foreach($arResult['STAFF'] as $arItem){?>
+                                    <?$value_staff = ' '.$arItem['ID'].','?>
+                                    <div class="staff_man" data-id="<?=$arItem['ID']?>">
+                                        <?$name = '';
+                                        if($arItem['NAME']) $name = $arItem['NAME'];
+                                        if($arItem['LAST_NAME']){
+                                            if($name) $name .= ' '.$arItem['LAST_NAME']; else $name = $arItem['LAST_NAME'];
+                                        }
+                                        if($name){?>
+                                            <p><?=$name?> (<?=$arItem['EMAIL']?>)</p>
+                                        <?}else{?>
+                                            <p><?=$arItem['EMAIL']?></p>
+                                        <?}?>
+                                    </div>
+                                <?}?>
+                            </div>
+                        <?}?>
+                    </div>
+                </div>
+            </div>
+    <?endif?>
 </div>
