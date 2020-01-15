@@ -129,9 +129,13 @@ class CDemoSqr extends CBitrixComponent
         {
             if($this->arParams['TYPE']=='company'){
                 $res = CIBlockElement::GetList([], ['IBLOCK_ID'=>$this->arParams['IBLOCK_ID_COMPANY'], 'ID'=>$this->arParams['USER_ID'], 'ACTIVE'=>'Y'], false, false, ['IBLOCK_ID', 'ID', 'NAME', 'PREVIEW_PICTURE']);
-                if($obj = $res->GetNext(true, false)) $arCompany = $obj;
+                if($obj = $res->GetNextElement()){
+                    $arCompany = $obj->GetFields();
+                    $arCompanyProp = $obj->GetProperties();
+                }
 
                 $arResult['USER'] = $arCompany;
+                $arResult['USER']['PROPERTY'] = $arCompanyProp;
                 $arResult["USER"]['IMG_URL'] = CFile::GetPath($arCompany['PREVIEW_PICTURE']);
                 $arResult["USER"]["IN_NAME"] = substr($arCompany['NAME'], 0, 1);
                 $arResult["ACTIVE_ITEMS"] = $this->getCntSdel('Y', 'company');

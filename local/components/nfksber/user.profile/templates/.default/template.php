@@ -30,6 +30,7 @@
                     <?endif?>
                 <?elseif($arResult['TYPE_HOLDER'] == 'company'):?>
                     <span class="d-block mt-4">Юридическое лицо</span>
+                    <span class="d-block mt-3"><?=$arResult['USER']['PROPERTY']['CITY']['VALUE']?> <?=$arResult['USER']['PROPERTY']['ADRESS']['VALUE']?></span>
                 <?endif?>
 
 
@@ -51,7 +52,7 @@
                                             <?if(!empty($item['PREVIEW_PICTURE'])):?>
                                                 <img src="<?=CFile::GetPath($item['PREVIEW_PICTURE'])?>">
                                             <?else:?>
-                                                <img src="<?=CFile::GetPath($item['DETAIL_PICTURE'])?>">
+                                                <img src="/local/templates/anypact/img/no_img_pacts.jpg">
                                             <?endif?>
                                             <span><?=$item['CREATED_DATE']?></span>
                                         </div>
