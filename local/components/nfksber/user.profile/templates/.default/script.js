@@ -4,13 +4,15 @@ $(document).ready(function(){
         let that = $(this);
         let state = that.attr('data-state');
         let current_state = $('.btn-category.active').attr('data-state');
+        let type = that.attr('data-type');
         let url = location.protocol + '//' + location.host + location.pathname;
         console.log(url);
         let user_id = that.attr('data-user');
         let data = {
             'AJAX_SDEL': 'Y',
             'STATE_SDEL': state,
-            'ID': user_id
+            'ID': user_id,
+            'type': type
         };
         $('.btn-category').removeClass('active');
         that.addClass('active');

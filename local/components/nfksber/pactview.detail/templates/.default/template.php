@@ -46,7 +46,7 @@ foreach ($arResult["PROPERTY"]["IMG_FILE"] as $item){
         <a href="/pacts/view_pact/view_dogovor/?ELEMENT_ID=<?=$arResult["ELEMENT"]["ID"]?>" class="btn btn-nfk cardPact-bBtn <?=$disable_a?>">Посмотреть или подписать договор</a>
         <!-- <a href="#" class="btn btn-nfk cardPact-bBtn">Посмотреть спецификацию</a> -->
         <div class="cardPact-person">
-            <a href="/profile_user/?ID=<?=$arResult["CONTRACT_HOLDER"]["ID"]?>">
+            <a href="/profile_user/?ID=<?=$arResult["CONTRACT_HOLDER"]["ID"]?>&type=<?=$arResult["CONTRACT_HOLDER"]["TYPE"]?>">
                 <?if(!empty($arResult["CONTRACT_HOLDER"]["PERSONAL_PHOTO"])):?>
                     <img src="<?=$arResult["CONTRACT_HOLDER"]["PERSONAL_PHOTO"]?>">
                 <?else:?>

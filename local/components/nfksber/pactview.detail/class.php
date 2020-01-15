@@ -178,7 +178,8 @@ class CDemoSqr extends CBitrixComponent
                 "LAST_NAME" => $arrUserContractHolder["LAST_NAME"],
                 "LOGIN" => $arrUserContractHolder["LOGIN"],
                 "CITY"  => $arrUserContractHolder["PERSONAL_CITY"],
-                "PERSONAL_PHOTO" => CFile::GetPath($arrUserContractHolder["PERSONAL_PHOTO"])
+                "PERSONAL_PHOTO" => CFile::GetPath($arrUserContractHolder["PERSONAL_PHOTO"]),
+                "TYPE" => 'user'
             );
         }
         else{
@@ -190,7 +191,8 @@ class CDemoSqr extends CBitrixComponent
                 "ID"    => $arrCompanyContractHolder["ID"],
                 "NAME"  => $arrCompanyContractHolder["NAME"],
                 "CITY"  => $arrCompanyContractHolder["PROPERTY_CITY_VALUE"],
-                "PERSONAL_PHOTO" => CFile::GetPath($arrCompanyContractHolder["PREVIEW_PICTURE"])
+                "PERSONAL_PHOTO" => CFile::GetPath($arrCompanyContractHolder["PREVIEW_PICTURE"]),
+                "TYPE" => 'company'
             );
         }
 

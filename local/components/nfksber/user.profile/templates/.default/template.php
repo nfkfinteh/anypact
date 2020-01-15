@@ -7,28 +7,40 @@
                     <img src="<?=$arResult['USER']['IMG_URL']?>">                    
                 </div>
                 <h3 class="font-weight-bold mt-4"><?=$arResult['USER']['LAST_NAME']?> <?=$arResult['USER']['NAME']?> <?=$arResult['USER']['SECOND_NAME']?></h3>
-                <a href="#" class="btn btn-nfk btn-uprofile" data-toggle="modal" data-target=".bd-comment-modal-sm">Оставить отзыв</a>
-                <a href="#" class="btn btn-nfk btn-uprofile" data-toggle="modal" data-target=".bd-message-modal-sm">Отправить сообщение</a>
-                <?if($arResult['USER']['PERSONAL_GENDER']=='M'):?>
-                    <span class="d-block mt-4">Пол: мужской</span>
-                <?else:?>
-                    <span class="d-block mt-4">Пол: женский</span>
+
+                <?if($arResult['TYPE_HOLDER'] == 'user'):?>
+                    <a href="#" class="btn btn-nfk btn-uprofile" data-toggle="modal" data-target=".bd-comment-modal-sm">Оставить отзыв</a>
+                    <a href="#" class="btn btn-nfk btn-uprofile" data-toggle="modal" data-target=".bd-message-modal-sm">Отправить сообщение</a>
+                    <?if($arResult['USER']['PERSONAL_GENDER']=='M'):?>
+                        <span class="d-block mt-4">Пол: мужской</span>
+                    <?else:?>
+                        <span class="d-block mt-4">Пол: женский</span>
+                    <?endif?>
+
+                    <?if(!empty($arResult['USER']['PERSONAL_BIRTHDAY'])):?>
+                        <span class="d-block mt-4">Дата рождения: <?=$arResult['USER']['PERSONAL_BIRTHDAY']?></span>
+                    <?endif?>
+
+                    <span class="d-block mt-4">Частное лицо</span>
+
+                    <span class="d-block mt-3"><?=$arResult['USER']['PERSONAL_CITY']?>, <?=$arResult['USER']['PERSONAL_STREET']?></span>
+                    <?if($arResult['USER']['UF_ESIA_AUT']==1):?>
+                        <span class="d-block font-weight-bold mt-4">Подтвержденная регистрация</span>
+                        <span class="d-block registration-checked mt-2"><img src="https://gu-st.ru/st/img/logo_nobeta.0a1f5dfe6b.svg" style="width:50%;"/></span>
+                    <?endif?>
+                <?elseif($arResult['TYPE_HOLDER'] == 'company'):?>
+                    <span class="d-block mt-4">Юридическое лицо</span>
                 <?endif?>
 
-                <?if(!empty($arResult['USER']['PERSONAL_BIRTHDAY'])):?>
-                    <span class="d-block mt-4">Дата рождения: <?=$arResult['USER']['PERSONAL_BIRTHDAY']?></span>
-                <?endif?>
 
-                <span class="d-block mt-4">Частное лицо</span>
-                <span class="d-block mt-3"><?=$arResult['USER']['PERSONAL_CITY']?>, <?=$arResult['USER']['PERSONAL_STREET']?></span>
-                <?if($arResult['USER']['UF_ESIA_AUT']==1):?>
-                    <span class="d-block font-weight-bold mt-4">Подтвержденная регистрация</span>
-                    <span class="d-block registration-checked mt-2"><img src="https://gu-st.ru/st/img/logo_nobeta.0a1f5dfe6b.svg" style="width:50%;"/></span>
-                <?endif?>
             </div>
             <div class="col-lg-9 col-md-8 col-sm-12 tenders-list pt-2">
-                <button class="btn-category <?if($arResult['CURRENT_STATE']=='Y'):?>active<?endif?>" data-state="Y" data-user="<?=$arResult['USER']['ID']?>">Активные <span class="text-gray"><?=$arResult['ACTIVE_ITEMS']?></span></button>
-                <button class="btn-category <?if($arResult['CURRENT_STATE']=='N'):?>active<?endif?>" data-state="N" data-user="<?=$arResult['USER']['ID']?>">Завершенные <span class="text-black-50"><?=$arResult['COMPLETED_ITEMS']?></span></button>
+                <button class="btn-category <?if($arResult['CURRENT_STATE']=='Y'):?>active<?endif?>" data-state="Y" data-user="<?=$arResult['USER']['ID']?>" data-type="<?=$arResult['TYPE_HOLDER']?>">
+                    Активные <span class="text-gray"><?=$arResult['ACTIVE_ITEMS']?></span>
+                </button>
+                <button class="btn-category <?if($arResult['CURRENT_STATE']=='N'):?>active<?endif?>" data-state="N" data-user="<?=$arResult['USER']['ID']?>" data-type="<?=$arResult['TYPE_HOLDER']?>">
+                    Завершенные <span class="text-black-50"><?=$arResult['COMPLETED_ITEMS']?></span>
+                </button>
                 <div class="row mt-4">
                     <?if (!empty($arResult['ITEMS'])) { 
                         foreach ($arResult['ITEMS'] as $item):?>
