@@ -2,7 +2,7 @@
 include_once 'function.php';
 
 AddEventHandler("main", "OnAfterEpilog", "Prefix_FunctionName");
-//AddEventHandler("main", "OnAfterUserLogin", "OnAfterUserLoginHandler");
+AddEventHandler("main", "OnAfterEpilog", "checkUserCompany"); //проверка являеться ли пользователь сотрудником компании и сброс по необходимости
 
 function Prefix_FunctionName() {
     global $APPLICATION;
@@ -19,24 +19,40 @@ function Prefix_FunctionName() {
     }
 }
 
-/*function OnAfterUserLoginHandler(&$fields){
-    if(\CModule::IncludeModule('iblock') && !empty($fields['USER_ID'])){
-        //получаем компании для пол
-        $arFilter = [
-            'IBLOCK_ID'=>8,
-            'ACTIVE'=>'Y',
-            [
-                "LOGIC" => "OR",
-                ["PROPERTY_DIRECTOR_ID" => $fields['USER_ID']],
-                ["PROPERTY_STAFF" => $fields['USER_ID']],
-            ],
-        ];
-        $res = \CIBlockElement::GetList([], $arFilter, false, false, ['IBLOCK_ID', 'ID', 'PROPERTY_DIRECTOR_ID', 'PROPERTY_STAFF']);
-        $cntCompany = $res->SelectedRowsCount();
-
-        if($cntCompany>0){
-            LocalRedirect("/profile/select_company/");
-        }
-
+function checkUserCompany(){
+    global $USER;
+    $resUser = CUser::GetByID($USER->GetID());
+    if ($obj = $resUser->GetNext()){
+        $arUser = $obj;
     }
-}*/
+    if(!empty($arUser['UF_CUR_COMPANY'])){
+        if(CModule::IncludeModule('iblock')){
+            $resCompany = CIBlockElement::GetList(
+                [],
+                [
+                    'IBLOCK_ID'=>8,
+                    'ID'=>$arUser['UF_CUR_COMPANY'],
+                    'ACTIVE'=>'Y',
+                    [
+                        "LOGIC" => "OR",
+                        ["=PROPERTY_STAFF" => $arUser['ID']],
+                        ["=PROPERTY_DIRECTOR_ID" => $arUser['ID']],
+                    ]
+                ],
+                false,
+                false,
+                ['IBLOCK_ID', 'ID', 'PROPERTY_STAFF']
+            );
+            $cntCompany = $resCompany->SelectedRowsCount();
+
+            #если не сотрудник и не директор сбрасываем поле UF_CUR_COMPANY
+            if($cntCompany<=0){
+                $user = new CUser;
+                $user->Update(
+                    $arUser['ID'],
+                    ['UF_CUR_COMPANY'=>'']
+                );
+            }
+        }
+    }
+}
