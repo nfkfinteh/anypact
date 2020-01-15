@@ -91,9 +91,26 @@ class CDemoSqr extends CBitrixComponent
     public function executeComponent()
     {
         if(empty($this->arParams['USER_ID'])){
-            $this->arResult['ERROR'] = 'Не найден пользователь';
+            $this->arResult['ERROR'] = 'Профиль не найден';
             $this->includeComponentTemplate();
-            return $this->arResult;
+            return;
+        }
+
+        if($this->arParams['TYPE']=='company'){
+            $res = CIBlockElement::GetList([], ['IBLOCK_ID'=>$this->arParams['IBLOCK_ID_COMPANY'], 'ID'=>$this->arParams['USER_ID'], 'ACTIVE'=>'Y'], false, false, ['IBLOCK_ID', 'ID']);
+            if($obj = $res->SelectedRowsCount()==0){
+                $this->arResult['ERROR'] = 'Профиль не найден';
+                $this->includeComponentTemplate();
+                return;
+            }
+        }
+        else{
+            $res = CUser::GetByID($this->arParams['USER_ID']);
+            if($obj = $res->SelectedRowsCount()==0){
+                $this->arResult['ERROR'] = 'Профиль не найден';
+                $this->includeComponentTemplate();
+                return;
+            }
         }
 
         if(!empty($_REQUEST['STATE_SDEL'])){
