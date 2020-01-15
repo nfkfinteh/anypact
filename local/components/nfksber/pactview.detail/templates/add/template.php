@@ -1,6 +1,3 @@
-<? //print_r($arResult["INFOBLOCK_SECTION_LIST"]) ;?>
-<? //print_r($arResult) ;?>
-<?//new dBug($arResult)?>
 <h1>Новое предложение</h1>
 <div class="tender cardPact">
     <div class="row">

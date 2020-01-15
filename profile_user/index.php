@@ -13,10 +13,12 @@ if ($USER->IsAuthorized()):
             "",
             Array(
                 "IBLOCK_ID" => 3,
+                "IBLOCK_ID_COMPANY" => 8,
                 "USER_ID" => $_REQUEST['ID'],
                 "CACHE_TIME"=>3600000,
                 "ITEM_COUNT"=> 9,
                 "PAGER_TEMPLATE"=>'anypact_pagination',
+                "TYPE" => $_REQUEST['type']=='company' ? 'company' : ''
             )
         );?>
         </div>

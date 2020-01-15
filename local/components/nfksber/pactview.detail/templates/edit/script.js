@@ -304,6 +304,9 @@ $(document).ready(function() {
         reader.readAsDataURL(file);
     }
 
+    $(document).on('input', '#suggest', function(){
+        displayButton();
+    });
 
     //добавление изображения
     $(document).on( 'click', '.js-add_img', function( event ){
@@ -439,6 +442,7 @@ $(document).ready(function() {
                 }
 
                 getAddress(coords);
+                hideButton();
             });
 
         });
@@ -611,5 +615,15 @@ $(document).ready(function() {
             });
         }
 
+    }
+
+    function hideButton(){
+        $('#check-button_map').hide();
+        $('.input-search_map').css('width', '100%');
+    }
+
+    function displayButton(){
+        $('#check-button_map').show();
+        $('.input-search_map').css('width', '70%');
     }
 });

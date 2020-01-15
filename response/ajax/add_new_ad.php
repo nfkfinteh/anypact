@@ -57,6 +57,10 @@ if(in_array( 1, $arGroups) || in_array( 6, $arGroups)){
         $data['PROPERTY_VALUES']['INPUT_FILES'] = $dopPicture;
     }
 
+    #данные по пользователю
+    $resUser = CUser::GetByID($USER->GetID());
+    if($obj = $resUser->GetNext()) $arUser = $obj;
+
     $paramsCode = Array(
         "max_len" => "30", // обрезает символьный код до 100 символов
         "change_case" => "L", // буквы преобразуются к нижнему регистру
@@ -69,6 +73,7 @@ if(in_array( 1, $arGroups) || in_array( 6, $arGroups)){
 
     //дополнительные свойства
     $data['PROPERTY_VALUES']['PACT_USER'] = $data['MODIFIED_BY'];
+    $data['PROPERTY_VALUES']['ID_COMPANY'] = $arUser['UF_CUR_COMPANY'];
 
     $el = new CIBlockElement;
 

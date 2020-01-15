@@ -40,10 +40,13 @@
     font-weight: bold;
     font-size: 35px;
     position: absolute;
-    left: 50%;
-    margin-left: -12px;
+    left: 0;
+    right: 0;
+    width: 50%;
+    margin: 0 auto;
     top: 8px;
     color: #ffffff;
+    text-align: center;
 }
 
 .cardPact .modal-content textarea{

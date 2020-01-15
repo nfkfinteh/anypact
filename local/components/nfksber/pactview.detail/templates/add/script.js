@@ -94,6 +94,10 @@ $(document).ready(function() {
         BX.calendar({node:this, field:'ACTIVE_DATE', form: '', bTime: true, bHideTime: true})
     });
 
+    $(document).on('input', '#suggest', function(){
+        displayButton();
+    });
+
     $('#save_ad').on('click', function() {
 
         var res = getURLData().then(function(data) {
@@ -252,6 +256,7 @@ $(document).ready(function() {
                 }
 
                 getAddress(coords);
+                hideButton();
             });
 
         });
@@ -421,5 +426,15 @@ $(document).ready(function() {
 
             });
         }
+    }
+
+    function hideButton(){
+        $('#check-button_map').hide();
+        $('.input-search_map').css('width', '100%');
+    }
+
+    function displayButton(){
+        $('#check-button_map').show();
+        $('.input-search_map').css('width', '70%');
     }
 });

@@ -203,12 +203,14 @@ class CompanySber extends CBitrixComponent
                 if ($arElem = $rsCompany->GetNextElement()) {
                     $arCompany = $arElem->GetFields();
                     $arCompany['PROPERTIES'] = $arElem->GetProperties();
+                    if($arCompany['PREVIEW_PICTURE']) $arCompany['PREVIEW_PICTURE'] = CFile::GetPath($arCompany['PREVIEW_PICTURE']);
+                    $this->arResult['COMPANY'] = $arCompany;
                     if($arCompany['PROPERTIES']['DIRECTOR_ID']['VALUE'] == $USER->GetID()){
-                        if($arCompany['PREVIEW_PICTURE']) $arCompany['PREVIEW_PICTURE'] = CFile::GetPath($arCompany['PREVIEW_PICTURE']);
-                        $this->arResult['COMPANY'] = $arCompany;
+                        $this->arResult['IS_DIRECTOR'] = 'Y';
                     }else{
-                        #не директор - редирект
-                        LocalRedirect("/profile/company/");
+                        #не директор
+                        $this->arResult['IS_DIRECTOR'] = 'N';
+                        //LocalRedirect("/profile/company/");
                     }
                 }else{
                     #не существует компании - на страницу создания

@@ -225,7 +225,6 @@ if (!empty($arResult['arUser']['UF_ESIA_ID']) && $arResult['arUser']['UF_ESIA_AU
         </div>
     </form>
 <!-- Компания -->
-
 <div class="user_profile_form_editdata" style="margin-bottom:50px;">
     <div class="row">
         <div class="col-xl-2 col-md-6 col-sm-12 offset-xl-3">
@@ -237,8 +236,12 @@ if (!empty($arResult['arUser']['UF_ESIA_ID']) && $arResult['arUser']['UF_ESIA_AU
             <?foreach($arResult['COMPANIES'] as $key => $arCompany){?>
                 <div class="col-xl-4 col-md-6 col-sm-12 <?if($key==0 || $key % 2 === 0):?>offset-xl-3<?endif?>">
                     <p><?=$arCompany['NAME']?></p>
-                    <a href="/profile/company/?id=<?=$arCompany['ID']?>" class="btn btn-aut" style="margin-bottom:15px;">Изменить компанию</a>
-                    <a href="/profile/company/?id=<?=$arCompany['ID']?>&remove=Y" class="btn btn-aut">Удалить компанию</a>
+                    <?if($arCompany['PROPERTY_DIRECTOR_ID_VALUE'] == $arResult['ID']):?>
+                        <a href="/profile/company/?id=<?=$arCompany['ID']?>" class="btn btn-aut" style="margin-bottom:15px;">Изменить компанию</a>
+                        <a href="/profile/company/?id=<?=$arCompany['ID']?>&remove=Y" class="btn btn-aut">Удалить компанию</a>
+                    <?else:?>
+                        <a href="/profile/company/?id=<?=$arCompany['ID']?>" class="btn btn-aut" style="margin-bottom:15px;">Реквизиты компаниии</a>
+                    <?endif?>
                     <?if($key + 1 != count($arResult['COMPANIES'])){?><hr><?}?>
                 </div>
             <?}?>

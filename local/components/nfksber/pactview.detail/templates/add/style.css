@@ -180,7 +180,6 @@
     font-size: 20px;
 }
 
-
 #param_selected_activ_date_input{
     border: none;
     width: 140px;
@@ -191,4 +190,9 @@
 
 .editbox_sum{
     min-height: 25px;
+}
+
+.wrap-map_adress .error_form{
+    display: none;
+    margin-bottom: 5px;
 }
