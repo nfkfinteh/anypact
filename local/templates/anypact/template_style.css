@@ -3361,3 +3361,80 @@ input::-webkit-input-placeholder {
         background-position: -160px -110px;
     }
 }
+
+/*блоки карточек в листе*/
+.tender-block .tender-post .tender-img {
+    overflow: hidden;
+    height: 165px;
+    display: flex;
+    align-items: center;
+}
+.tender-horizon .tender-post .tender-img{
+    display: inline-block;
+}
+.tender-horizon .tender-post .tender-img img {
+    width: 360px;
+    height: 200px;
+}
+.tender-horizon .tender-post .tender-img span{
+    left: unset;
+    right: 20px;
+}
+.tender-horizon .tender-post .tender-text{
+    display: inline-block;
+    position: absolute;
+}
+.tender-horizon .tender-post p{
+    margin-bottom: unset;
+}
+.tender-horizon .tender-post .tender-price {
+    bottom: unset;
+    left: unset;
+    top: 150px;
+}
+@media screen and (max-width: 1199px){
+    .tender-horizon .tender-post .tender-img img {
+        width: 270px;
+    }
+}
+@media screen and (max-width: 991px){
+    .tender-horizon .tender-post .tender-img img {
+        width: 200px;
+    }
+    .tender-horizon .tender-post h3 {
+        font-size: 20px;
+    }
+    .tender-horizon .tender-post p {
+        font-size: 13px;
+    }
+    .tender-horizon .tender-post .tender-price {
+        top: 165px;
+        font-size: 20px;
+    }
+}
+@media screen and (max-width: 520px){
+    .tender-horizon .tender-post .tender-text {
+        padding: 0px 10px;
+    }
+    .tender-horizon .tender-post .tender-img img {
+        width: 120px;
+        height: 150px;
+    }
+    .tender-horizon .tender-post h3 {
+        margin-top: 10px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: calc(100vw - 190px);
+
+    }
+    .tender-horizon .tender-post p {
+        max-height: 60px;
+        overflow: hidden;
+    }
+    .tender-horizon .tender-post .tender-price {
+        top: 115px;
+        font-size: 16px;
+    }
+}
+/*блоки карточек в листе конец*/

@@ -24,20 +24,28 @@ class CDemoSqr extends CBitrixComponent
     public function getUserSdel($activeSdel, $arNavParams, $typeHolder){
         $arParams = $this->arParams;
         if(CModule::IncludeModule("iblock")) {
+            //фильтр для активных сделок
             if($typeHolder == 'user'){
                 $arFilter = [
                     'IBLOCK_ID'=>$arParams['IBLOCK_ID'],
-                    'ACTIVE'=>$activeSdel,
-                    'PROPERTY_PACT_USER'=>$arParams['USER_ID']
+                    'PROPERTY_PACT_USER'=>$arParams['USER_ID'],
+                    'PROPERTY_ID_COMPANY'=>false,
                 ];
             }
             elseif($typeHolder == 'company') {
                 $arFilter = [
                     'IBLOCK_ID'=>$arParams['IBLOCK_ID'],
-                    'ACTIVE'=>$activeSdel,
-                    'PROPERTY_ID_COMPANY'=>$arParams['USER_ID']
+                    'PROPERTY_ID_COMPANY'=>$arParams['USER_ID'],
                 ];
             }
+
+            //фильтр для завершенных сделок
+            if($activeSdel == 'N'){
+                $arFilter['PROPERTY_COMPLETED_VALUE'] = 'Y';
+            }
+            elseif($activeSdel == 'Y') {
+                $arFilter['ACTIVE'] = 'Y';
+            };
 
             $res = CIBlockElement::GetList([], $arFilter, false, $arNavParams);
             while ($obj = $res->GetNextElement()) {
@@ -46,6 +54,7 @@ class CDemoSqr extends CBitrixComponent
                 $arFields = array_merge($arFields, $arProperty);
                 $arResult['ITEMS'][] = $arFields;
             }
+
 
             $navComponentParameters = array();
 
@@ -67,20 +76,28 @@ class CDemoSqr extends CBitrixComponent
     public function getCntSdel($activeSdel, $typeHolder){
         if(CModule::IncludeModule("iblock")) {
             $arParams = $this->arParams;
+            //фильтр для активных сделок
             if($typeHolder == 'user'){
                 $arFilter = [
                     'IBLOCK_ID'=>$arParams['IBLOCK_ID'],
-                    'ACTIVE'=>$activeSdel,
-                    'PROPERTY_PACT_USER'=>$arParams['USER_ID']
+                    'PROPERTY_PACT_USER'=>$arParams['USER_ID'],
+                    'PROPERTY_ID_COMPANY'=>false,
                 ];
             }
             elseif($typeHolder == 'company') {
                 $arFilter = [
                     'IBLOCK_ID'=>$arParams['IBLOCK_ID'],
-                    'ACTIVE'=>$activeSdel,
-                    'PROPERTY_ID_COMPANY'=>$arParams['USER_ID']
+                    'PROPERTY_ID_COMPANY'=>$arParams['USER_ID'],
                 ];
             }
+
+            //фильтр для завершенных сделок
+            if($activeSdel == 'N'){
+                $arFilter['PROPERTY_COMPLETED_VALUE'] = 'Y';
+            }
+            elseif($activeSdel == 'Y') {
+                $arFilter['ACTIVE'] = 'Y';
+            };
 
             $res = CIBlockElement::GetList([], $arFilter);
             $result = $res->SelectedRowsCount();

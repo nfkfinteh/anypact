@@ -49,24 +49,23 @@
                                 <div class="tender-post">
                                     <a href="/pacts/view_pact/?ELEMENT_ID=<?=$item['ID']?>">
                                         <div class="tender-img">
-                                            <?if(!empty($item['PREVIEW_PICTURE'])):?>
-                                                <img src="<?=CFile::GetPath($item['PREVIEW_PICTURE'])?>">
+                                            <?if(!empty($item['INPUT_FILES']['VALUE'])):?>
+                                                <img src="<?=CFile::GetPath($item['INPUT_FILES']['VALUE'][0])?>">
                                             <?else:?>
                                                 <img src="/local/templates/anypact/img/no_img_pacts.jpg">
                                             <?endif?>
-                                            <span><?=$item['CREATED_DATE']?></span>
                                         </div>
                                     </a>
                                     <div class="tender-text">
                                         <a href="/pacts/view_pact/?ELEMENT_ID=<?=$item['ID']?>">
-                                            <h3><?=$item['NAME']?></h3>
+                                            <h3><?=substr($item["NAME"], 0, 30)?></h3>
+                                            <p><?=$item["CREATED_DATE"]?></p>
                                             <?if(!empty($item['PREVIEW_TEXT'])):?>
                                                 <p><?=TruncateText($item['PREVIEW_TEXT'], 150)?></p>
                                             <?else: ?>
                                                 <p><?=strip_tags(TruncateText($item['DETAIL_TEXT'], 150))?></p>
                                             <?endif?>
-
-                                            <span class="tender-price"><?=$item['SUMM_PACT']['VALUE'].' руб.'?></span>
+                                            <span class="tender-price">до <?=$item['SUMM_PACT']['VALUE'].' руб.'?></span>
                                         </a>
                                     </div>
                                 </div>
