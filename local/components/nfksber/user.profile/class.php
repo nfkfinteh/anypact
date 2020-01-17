@@ -2,6 +2,9 @@
 /*
     Класс выводит информацию в карточку по сделке
 */
+use Bitrix\Main\Loader;
+use Bitrix\Highloadblock as HL;
+use Bitrix\Main\Entity;
 
 class CDemoSqr extends CBitrixComponent
 {       
@@ -18,6 +21,65 @@ class CDemoSqr extends CBitrixComponent
             "PAGER_TEMPLATE" => $arParams["PAGER_TEMPLATE"],
             'TYPE' => htmlspecialchars($arParams['TYPE'])
         );
+        return $result;
+    }
+
+    private function getIDCompletSdel($UserID, $typeHolder){
+        CModule::IncludeModule("highloadblock");
+        CModule::IncludeModule("iblock");
+
+        if($typeHolder == 'user'){
+            $arFilter = Array(
+                Array(
+                    "UF_STATUS" => 2,
+                    "UF_ID_USER_A"=> $UserID
+                )
+            );
+        }
+        elseif($typeHolder == 'company') {
+            $arFilter = Array(
+                Array(
+                    "UF_STATUS" => 2,
+                    "UF_ID_COMPANY_A"=> $UserID
+                )
+            );
+        }
+
+        $arSend_Contract = [];
+
+        // получить все подписанные сделки
+        $ID_hl_send_contract = 3;
+        $hlblock = HL\HighloadBlockTable::getById($ID_hl_send_contract)->fetch();
+        $entity = HL\HighloadBlockTable::compileEntity($hlblock);
+        $entity_data_class = $entity->getDataClass();
+        $rsData = $entity_data_class::getList(array(
+            "select" => array("*"),
+            "order"  => array("ID" => "ASC"),
+            "filter" => $arFilter
+        ));
+
+        while($arData = $rsData->Fetch()){
+            $arrID_Info_Contract[] =  $arData['UF_ID_CONTRACT'];
+        }
+
+        #если нет подписаных договоров
+        if(empty($arrID_Info_Contract)) return $arSend_Contract;
+
+        foreach($arrID_Info_Contract as $i=>$value ){
+            $res = CIBlockElement::GetList(
+                array(),
+                array("IBLOCK_ID" => $this->arParams['IBLOCK_ID'], "PROPERTY_ID_DOGOVORA" => $value),
+                false,
+                false,
+                array("IBLOCK_ID", "ID")
+            );
+            while($ob = $res->GetNext(true, false)){
+                $result[] = $ob['ID'];
+            }
+        }
+
+        $result = array_unique($result);
+
         return $result;
     }
 
@@ -41,10 +103,16 @@ class CDemoSqr extends CBitrixComponent
 
             //фильтр для завершенных сделок
             if($activeSdel == 'N'){
-                $arFilter['PROPERTY_COMPLETED_VALUE'] = 'Y';
+                $arIdSdelk = $this->getIDCompletSdel($arParams['USER_ID'], $typeHolder);
+
+                //если нет заключенных сделок
+                if(empty($arIdSdelk)) return 0;
+
+                $arFilter['=ID'] = $arIdSdelk;
             }
             elseif($activeSdel == 'Y') {
                 $arFilter['ACTIVE'] = 'Y';
+                $arFilter['>=DATE_ACTIVE_TO'] = ConvertTimeStamp(time(), "SHORT");
             };
 
             $res = CIBlockElement::GetList([], $arFilter, false, $arNavParams);
@@ -90,13 +158,18 @@ class CDemoSqr extends CBitrixComponent
                     'PROPERTY_ID_COMPANY'=>$arParams['USER_ID'],
                 ];
             }
-
             //фильтр для завершенных сделок
             if($activeSdel == 'N'){
-                $arFilter['PROPERTY_COMPLETED_VALUE'] = 'Y';
+                $arIdSdelk = $this->getIDCompletSdel($arParams['USER_ID'], $typeHolder);
+
+                //если нет заключенных сделок
+                if(empty($arIdSdelk)) return 0;
+
+                $arFilter['=ID'] = $arIdSdelk;
             }
             elseif($activeSdel == 'Y') {
                 $arFilter['ACTIVE'] = 'Y';
+                $arFilter['>=DATE_ACTIVE_TO'] = ConvertTimeStamp(time(), "SHORT");
             };
 
             $res = CIBlockElement::GetList([], $arFilter);
@@ -141,6 +214,7 @@ class CDemoSqr extends CBitrixComponent
             "nPageSize" => $this->arParams["ITEM_COUNT"],
         );
         $arNavigation = CDBResult::GetNavParams($arNavParams);
+
 
         if($this->startResultCache($this->arParams['CACHE_TIME'], [$ajaxData, $arNavigation]))
         {
