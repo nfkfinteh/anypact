@@ -11,7 +11,6 @@ foreach ($arResult["PROPERTY"]["IMG_FILE"] as $item){
         'THUMB_URL'=>$file['src']
     ];
 }
-
 ?>
 <h1 class="d-inline-block"><?=$arResult["ELEMENT"]["NAME"]?></h1>
 <div class="row">
@@ -43,7 +42,12 @@ foreach ($arResult["PROPERTY"]["IMG_FILE"] as $item){
     </div>
     <div class="col-md-5 col-lg-4">
         <span class="cardPact-price"><?=$arResult["PROPERTY"]["SUMM_PACT"]["VALUE"]?> руб.</span>
-        <a href="/pacts/view_pact/view_dogovor/?ELEMENT_ID=<?=$arResult["ELEMENT"]["ID"]?>" class="btn btn-nfk cardPact-bBtn <?=$disable_a?>">Посмотреть или подписать договор</a>
+
+        <?//скрытие кнопки при окончане активности?>
+        <?if($arResult['ELEMENT']['ACTIVE']=='Y' && $arResult['ELEMENT']['DATE_ACTIVE_TO']>=ConvertTimeStamp(time(), "SHORT")):?>
+            <a href="/pacts/view_pact/view_dogovor/?ELEMENT_ID=<?=$arResult["ELEMENT"]["ID"]?>" class="btn btn-nfk cardPact-bBtn <?=$disable_a?>">Посмотреть или подписать договор</a>
+        <?endif?>
+
         <!-- <a href="#" class="btn btn-nfk cardPact-bBtn">Посмотреть спецификацию</a> -->
         <div class="cardPact-person">
             <a href="/profile_user/?ID=<?=$arResult["CONTRACT_HOLDER"]["ID"]?>&type=<?=$arResult["CONTRACT_HOLDER"]["TYPE"]?>">
@@ -72,7 +76,11 @@ foreach ($arResult["PROPERTY"]["IMG_FILE"] as $item){
             <br>
             <?/*<span>9 оценок</span>*/?>
         </div>
-        <button type="button" class="btn btn-nfk d-block cardPact-bBtn" data-toggle="modal" data-target=".bd-message-modal-sm">Написать сообщение</button>
+
+        <?//скрытие кнопки при окончане активности?>
+        <?if($arResult['ELEMENT']['ACTIVE']=='Y' && $arResult['ELEMENT']['DATE_ACTIVE_TO']>=ConvertTimeStamp(time(), "SHORT")):?>
+            <button type="button" class="btn btn-nfk d-block cardPact-bBtn" data-toggle="modal" data-target=".bd-message-modal-sm">Написать сообщение</button>
+        <?endif?>
     </div>
 </div>
 
