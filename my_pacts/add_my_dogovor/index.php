@@ -15,6 +15,9 @@ $APPLICATION->SetTitle("AnyPact");
         $template_page = "add";
     }
 
+    #TYPE_USER_PROF опредляет способ как выставляються реквизиты:
+    # 1 - для зоздающего договор реквизиты выставляються в зависимости от того под каким профилем создавали сделку
+    # пустое значение - для остальных пользователей, реквизиты определяються в зависимости от выбраного профиля
     $APPLICATION->IncludeComponent("nfksber:dogovorview.detail", 
     $template_page, 
         Array(
@@ -26,7 +29,8 @@ $APPLICATION->SetTitle("AnyPact");
             "SEF_URL_TEMPLATES" => array(                    
                     "list" => "",
                     "detail" => "#ID#"
-                )      
+                ),
+            "TYPE_USER_PROF"=> 1,
             )
     );
     ?> 
