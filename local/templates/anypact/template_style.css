@@ -3443,3 +3443,11 @@ input::-webkit-input-placeholder {
     }
 }
 /*блоки карточек в листе конец*/
+
+h4.subtitle_contract{
+    font-size: 16px;
+    font-weight: 900;
+    color: #000;
+    text-align: center;
+    margin: 15px;
+}

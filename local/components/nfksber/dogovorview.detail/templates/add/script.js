@@ -121,6 +121,8 @@ function formatSelectTitle(id_name) {
         // удаляем его, что бы замнить
         range.deleteContents();
         let insert_space = document.createElement(arrTegs[key]);
+        insert_space.setAttribute('class', 'subtitle_contract');
+        insert_space.setAttribute('style', 'font-family: Roboto, sans-serif;');
         insert_space.innerHTML = sel_string;
         range.insertNode(insert_space);
     }else{
@@ -213,7 +215,7 @@ function setHeaderFullName(idname) {
             $.each(seller, function(code, arObj){
                 if(seller[code].length>0 && user_req[code]) {
                     for (var i = 0; i < seller[code].length; i++) {
-                        seller[code][i].innerText = user_req[code].VALUE;
+                        seller[code][i].innerText = user_req[code].VALUE.replace(/&quot;/g, '"');;
                     }
                 }
                 if(customer[code].length>0 && user_req[code]){
@@ -233,7 +235,7 @@ function setHeaderFullName(idname) {
                 }
                 if(customer[code].length>0 && user_req[code]) {
                     for (var i = 0; i < customer[code].length; i++) {
-                        customer[code][i].innerText = user_req[code].VALUE;
+                        customer[code][i].innerText = user_req[code].VALUE.replace(/&quot;/g, '"');;
 
                     }
                 }
@@ -243,7 +245,7 @@ function setHeaderFullName(idname) {
             $.each(seller, function(code, arObj){
                 if(seller[code].length>0 && user_req[code]) {
                     for (var i = 0; i < seller[code].length; i++) {
-                        seller[code][i].innerText = user_req[code].VALUE;
+                        seller[code][i].innerText = user_req[code].VALUE.replace(/&quot;/g, '"');
                     }
                 }
                 if(customer[code].length>0 && user_req[code]) {
