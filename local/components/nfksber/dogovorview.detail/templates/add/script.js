@@ -121,6 +121,8 @@ function formatSelectTitle(id_name) {
         // удаляем его, что бы замнить
         range.deleteContents();
         let insert_space = document.createElement(arrTegs[key]);
+        insert_space.setAttribute('class', 'subtitle_contract');
+        insert_space.setAttribute('style', 'font-family: Roboto, sans-serif;');
         insert_space.innerHTML = sel_string;
         range.insertNode(insert_space);
     }else{
