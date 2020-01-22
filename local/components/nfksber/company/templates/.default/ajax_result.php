@@ -15,6 +15,15 @@
     <?if($arResult['SEARCH']){?>
         <div class="search-result__body">
                 <?foreach($arResult['SEARCH'] as $arItem){?>
+                    <?
+                        if(is_array($arResult['ADD_NO_ACTIVE']) && in_array($arItem['ID'], $arResult['ADD_NO_ACTIVE'])){
+                            $class = 'add_staff__no-active staff_znak-ok';
+                        }elseif(is_array($arResult['ADD']) && in_array($arItem['ID'], $arResult['ADD'])){
+                            $class = 'add_staff staff_znak-ok';
+                        }else{
+                            $class = 'add_staff__no-active';
+                        }
+                    ?>
                     <div class="staff_man" data-id="<?=$arItem['ID']?>">
                         <?$name = '';
                         if($arItem['NAME']) $name = $arItem['NAME'];
@@ -26,7 +35,9 @@
                         <?}else{?>
                             <p><?=$arItem['EMAIL']?></p>
                         <?}?>
-                        <div class="staff_znak_block add_staff<?if(is_array($arResult['ADD']) && in_array($arItem['ID'], $arResult['ADD'])){?> staff_znak-ok<?}?>"><span class="staff_znak"></span></div>
+                        <div class="staff_znak_block <?=$class?>">
+                            <span class="staff_znak"></span>
+                        </div>
                     </div>
                 <?}?>
         </div>

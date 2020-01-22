@@ -6,6 +6,22 @@ use \Bitrix\Main\Loader,
 class CompanySber extends CBitrixComponent
 {
 
+    private function sendMessageAddStaff($idUser, $nameCompany){
+
+            $rsUser = CUser::GetByID($idUser);
+            if($obj = $rsUser->GetNext()){
+                $arUser = $obj;
+            }
+            $send_data = Array(
+               'EMAIL' => $arUser['EMAIL'],
+               'NAME_COMPANY'=> htmlspecialchars($nameCompany)
+            );
+            file_put_contents($_SERVER['DOCUMENT_ROOT'].'/log.txt', print_r([$send_data, $idUser], 1), FILE_APPEND);
+
+            CEvent::Send("ADD_STAFF", "s1", $send_data);
+
+    }
+
     public function executeComponent()
     {
         global $APPLICATION;
@@ -36,6 +52,11 @@ class CompanySber extends CBitrixComponent
                         foreach($arAdd as &$item) $item = trim($item);
                         $this->arResult['ADD'] = $arAdd;
                     }
+                    if($_REQUEST['staff_add_no_active']){
+                        $arAdd = explode(',', $_REQUEST['staff_add_no_active']);
+                        foreach($arAdd as &$item) $item = trim($item);
+                        $this->arResult['ADD_NO_ACTIVE'] = $arAdd;
+                    }
                 }
 
                 $APPLICATION->RestartBuffer();
@@ -49,7 +70,7 @@ class CompanySber extends CBitrixComponent
             #добавление / редактирование компании
         }elseif($_REQUEST['DIRECTOR_ID'] && $_REQUEST['NAME']){
             #скрытые поля
-            $addition_props = ['DIRECTOR_NAME', 'DIRECTOR_ID', 'STAFF'];
+            $addition_props = ['DIRECTOR_NAME', 'DIRECTOR_ID', 'STAFF', 'STAFF_NO_ACTIVE'];
             $props_empty = [];
             foreach($_REQUEST as $key => $req){
                 if(in_array($key, $this->arParams['PROPERTIES_NEED']) && empty($req)) $props_empty[] = $key;
@@ -90,6 +111,11 @@ class CompanySber extends CBitrixComponent
                     foreach ($arAdd as &$item) $item = trim($item);
                     $arProps['STAFF'] = $arAdd;
                 }
+                if ($arProps['STAFF_NO_ACTIVE']) {
+                    $arAdd = explode(',', $arProps['STAFF_NO_ACTIVE']);
+                    foreach ($arAdd as &$item) $item = trim($item);
+                    $arProps['STAFF_NO_ACTIVE'] = $arAdd;
+                }
 
                 if(!$_REQUEST['ID_EXIST']) {
                     #добавление компании
@@ -102,6 +128,15 @@ class CompanySber extends CBitrixComponent
                         "PROPERTY_VALUES" => $arProps,
                     );
                     if ($arElm["ID"] = $el->Add($arEl, false, false, false)) {
+                        #отправка письма добавленным сотрудникам
+                        if(!empty($arProps['STAFF_NO_ACTIVE'])) {
+                            foreach ($arProps['STAFF_NO_ACTIVE'] as $idUser){
+                                if(!empty($idUser)){
+                                    $this->sendMessageAddStaff($idUser, $_REQUEST['NAME']);
+                                }
+                            }
+                        }
+
                         #добавлена компания - редирект на неё
                         LocalRedirect("/profile/company/?id=" . $arElm["ID"]);
                     } else {
@@ -116,21 +151,20 @@ class CompanySber extends CBitrixComponent
                     $arFilter['IBLOCK_ID'] = intval($this->arParams['IBLOCK_ID']);
                     $arFilter['ACTIVE'] = 'Y';
                     $arFilter['ID'] = intval($_REQUEST["ID_EXIST"]);
-                    if ($rsCompany = \CIBlockElement::GetList(
+                    $rsCompany = \CIBlockElement::GetList(
                         ['sort' => 'asc'],
                         $arFilter,
                         false,
                         false,
-                        ['ID', 'NAME', 'IBLOCK_ID', 'PROPERTY_DIRECTOR_ID']
-                    )
-                    ) {
-                        if ($arCompany = $rsCompany->GetNext(true, false)) {
-                            if($arCompany['PROPERTY_DIRECTOR_ID_VALUE'] != $USER->GetID()){
-                                LocalRedirect("/profile/company/");
-                            }
-                        }else{
-                            LocalRedirect("/profile/company/");
-                        }
+                        ['ID', 'NAME', 'IBLOCK_ID', 'PROPERTY_DIRECTOR_ID', 'PROPERTY_STAFF', 'PROPERTY_STAFF_NO_ACTIVE']
+                    );
+                    if ($obj = $rsCompany->GetNextElement()) {
+                        $arCompany = $obj->GetFields();
+                        $arCompany['PROPERTIES'] = $obj->GetProperties();
+                    }
+
+                    if ($arCompany['PROPERTIES']['DIRECTOR_ID']['VALUE']!=$USER->GetID()) {
+                        LocalRedirect("/profile/company/");
                     }
 
                     $arEl = array(
@@ -142,7 +176,18 @@ class CompanySber extends CBitrixComponent
                     );
                     if($_FILES["PREVIEW_PICTURE"]) $arEl["PREVIEW_PICTURE"] = $_FILES["PREVIEW_PICTURE"];
 
+
+
                     if ($el->Update(intval($_REQUEST["ID_EXIST"]), $arEl)) {
+                        #отправка письма добавленным сотрудникам
+                        if(!empty($arProps['STAFF_NO_ACTIVE'])) {
+                            foreach ($arProps['STAFF_NO_ACTIVE'] as $idUser){
+                                if(!in_array($idUser, $arCompany['PROPERTIES']['STAFF_NO_ACTIVE']['VALUE']) && !empty($idUser)){
+                                    $this->sendMessageAddStaff($idUser, $_REQUEST['NAME']);
+                                }
+                            }
+                        }
+
                         LocalRedirect("/profile/company/?id=" . $_REQUEST["ID_EXIST"]);
                     } else {
                         LocalRedirect("/profile/company/?error=".$el->LAST_ERROR);
@@ -238,6 +283,18 @@ class CompanySber extends CBitrixComponent
                 }
             }
 
+            #получение сотрудников не потвердившие свое участие
+            if($IDs = $arCompany['PROPERTIES']['STAFF_NO_ACTIVE']['VALUE']){
+                $arUsers = [];
+                $rsUsers = CUser::GetList(($by = "email"), ($order = "asc"), ['ID' => implode('|',$IDs), 'ACTIVE' => 'Y'], []);
+                while ($arUser = $rsUsers->Fetch()) {
+                    $arUsers[] = $arUser;
+                }
+                if($arUsers){
+                    $this->arResult['STAFF_NO_ACTIVE'] = $arUsers;
+                }
+            }
+
             $APPLICATION->AddHeadScript($this->GetPath().'/script.js');
             CUtil::InitJSCore(array('ajax'));
 
@@ -253,6 +310,7 @@ class CompanySber extends CBitrixComponent
                 if(in_array($res_arr['CODE'], $this->arParams['PROPERTIES_SHOW'])) $arProps[$res_arr['CODE']] = $res_arr;
 
             $this->arResult['PROPERTIES'] = $arProps;
+            $this->arResult['IS_DIRECTOR'] = 'Y';
 
             $APPLICATION->AddHeadScript($this->GetPath().'/script.js');
             CUtil::InitJSCore(array('ajax'));
