@@ -16,7 +16,6 @@ class CompanySber extends CBitrixComponent
                'EMAIL' => $arUser['EMAIL'],
                'NAME_COMPANY'=> htmlspecialchars($nameCompany)
             );
-            file_put_contents($_SERVER['DOCUMENT_ROOT'].'/log.txt', print_r([$send_data, $idUser], 1), FILE_APPEND);
 
             CEvent::Send("ADD_STAFF", "s1", $send_data);
 
