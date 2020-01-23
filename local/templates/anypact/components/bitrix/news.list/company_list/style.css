@@ -57,6 +57,9 @@
     color: #ff6416;
     display: block;
 }
+.people-s-photo-btn-block{
+    margin-bottom: 10px;
+}
 @media screen and (max-width: 520px){
     .list-view .view-item .people-s-photo {
         width: 100px;
