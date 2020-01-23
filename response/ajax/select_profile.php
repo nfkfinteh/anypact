@@ -105,7 +105,7 @@ switch ($action){
             if(!empty($arCompany['PROPERTIES']['STAFF_NO_ACTIVE']['VALUE'])){
                 $arNewStaff = $arCompany['PROPERTIES']['STAFF_NO_ACTIVE']['VALUE'];
                 $keyDelete = array_search($idUser, $arNewStaff);
-                if($keyDelete!=false){
+                if($keyDelete!==false){
                     //удаление id пользователя из свойства не активных сотрудников
                     if(count($arNewStaff)>1){
                         unset($arNewStaff[$keyDelete]);
