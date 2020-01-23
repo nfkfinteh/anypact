@@ -12,7 +12,7 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 ?>
-<?if(!empty($arResult['ITEMS'])):?>
+<?if(!empty($arResult['ITEMS']) || !empty($arResult["ITEMS_NO_ACTIVE"])):?>
     <div class="row grid-view">
         <?foreach($arResult["ITEMS"] as $arItem):?>
             <!-----------------профили компаний------------------->
@@ -48,6 +48,35 @@ $this->setFrameMode(true);
                             </a>
                         </div>
                     <?endif?>
+                </div>
+            </div>
+        <?endforeach?>
+        <?foreach($arResult["ITEMS_NO_ACTIVE"] as $arItem):?>
+            <!-----------------профили компаний не подтвержденных------------------->
+            <div class="view-item col-lg-3 col-sm-6 col-6 mt-4 pb-3">
+                <div class="people-s-photo">
+                    <div class="people-s-photo-img <?if($arParams['COMPANY_ID'] != $arItem['ID']):?>js-auth_company<?endif?>" data-id="<?=$arItem['ID']?>">
+                        <? if(!empty($arItem['PREVIEW_PICTURE'])){ ?>
+                            <?
+                            $renderImage = CFile::ResizeImageGet($arItem['PREVIEW_PICTURE'], Array("width" => 261, "height" => 261), BX_RESIZE_IMAGE_EXACT, false);
+                            ?>
+                            <img class="people-s-user-photo" src="<?=$renderImage["src"];?>">
+                        <?}else {?>
+                            <img src="<?=SITE_TEMPLATE_PATH?>/image/people-search-no-phpto.png" alt="">
+                        <? } ?>
+                    </div>
+                </div>
+                <div class="people-s-photo-text">
+                    <div class="people-s-photo-text-block">
+                        <h6><?=$arItem['NAME']?></h6>
+                    </div>
+                    <div class="people-s-photo-btn-block">
+                        <button class="btn btn-aut js-accept_company" data-id="<?=$arItem['ID']?>">Присоединиться</button>
+                    </div>
+                    <div class="people-s-photo-btn-block ">
+                        <button class="btn btn-aut js-refus_company" data-id="<?=$arItem['ID']?>">Отказаться</button>
+                    </div>
+
                 </div>
             </div>
         <?endforeach?>

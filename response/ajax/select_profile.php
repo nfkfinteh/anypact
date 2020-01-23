@@ -47,6 +47,67 @@ switch ($action){
             }
         }
         break;
+    case 'accept_company':
+        if(!empty($idUser) && !empty($idCompany)){
+            //данные компаннии
+            $arFilter = [
+                'IBLOCK_ID'=>8,
+                'ID'=>$idCompany,
+                'ACTIVE'=>'Y'
+            ];
+            $res = \CIBlockElement::GetList([], $arFilter, false, false, ['IBLOCK_ID', 'ID', 'PROPERTY_STAFF_NO_ACTIVE', 'PROPERTY_STAFF']);
+            if ($obj = $res->GetNextElement()){
+                $arCompany = $obj->GetFields();
+                $arCompany['PROPERTIES'] = $obj->GetProperties();
+                /*$USER->Update($idUser, ['UF_CUR_COMPANY'=>$idCompany]);
+                echo json_encode([ 'VALUE'=>'', 'TYPE'=> 'SUCCESS']);*/
+            }
+            if(!empty($arCompany['PROPERTIES']['STAFF_NO_ACTIVE']['VALUE'])){
+                $arNewStaff = $arCompany['PROPERTIES']['STAFF_NO_ACTIVE']['VALUE'];
+                $keyDelete = array_search($idUser, $arNewStaff);
+                if($keyDelete){
+                    unset($arNewStaff[$keyDelete]);
+                    //удаление id пользователя из свойства не активных сотрудников
+                    CIBlockElement::SetPropertyValuesEx($idCompany, 8, array('STAFF_NO_ACTIVE' => $arNewStaff));
 
+                    //добавление id пользователя в свойство сотрудников
+                    $arNewStaff = $arCompany['PROPERTIES']['STAFF']['VALUE'];
+                    $arNewStaff[] = $idUser;
+                    CIBlockElement::SetPropertyValuesEx($idCompany, 8, array('STAFF' => $arNewStaff));
+
+                    //выбор профиля добавленной компании
+                    $USER->Update($idUser, ['UF_CUR_COMPANY'=>$idCompany]);
+                    echo json_encode([ 'VALUE'=>'', 'TYPE'=> 'SUCCESS']);
+                }
+            }
+        }
+        break;
+    case 'refus_company':
+        if(!empty($idUser) && !empty($idCompany)){
+            //данные компаннии
+            $arFilter = [
+                'IBLOCK_ID'=>8,
+                'ID'=>$idCompany,
+                'ACTIVE'=>'Y'
+            ];
+            $res = \CIBlockElement::GetList([], $arFilter, false, false, ['IBLOCK_ID', 'ID', 'PROPERTY_STAFF_NO_ACTIVE', 'PROPERTY_STAFF']);
+            if ($obj = $res->GetNextElement()){
+                $arCompany = $obj->GetFields();
+                $arCompany['PROPERTIES'] = $obj->GetProperties();
+                /*$USER->Update($idUser, ['UF_CUR_COMPANY'=>$idCompany]);
+                echo json_encode([ 'VALUE'=>'', 'TYPE'=> 'SUCCESS']);*/
+            }
+            if(!empty($arCompany['PROPERTIES']['STAFF_NO_ACTIVE']['VALUE'])){
+                $arNewStaff = $arCompany['PROPERTIES']['STAFF_NO_ACTIVE']['VALUE'];
+                $keyDelete = array_search($idUser, $arNewStaff);
+                if($keyDelete){
+                    //удаление id пользователя из свойства не активных сотрудников
+                    unset($arNewStaff[$keyDelete]);
+                    CIBlockElement::SetPropertyValuesEx($idCompany, 8, array('STAFF_NO_ACTIVE' => $arNewStaff));
+                    echo json_encode([ 'VALUE'=>'', 'TYPE'=> 'SUCCESS']);
+                }
+            }
+        }
+        break;
 }
 ?>

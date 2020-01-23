@@ -60,8 +60,9 @@
                 </div>
                 <div class="form-group">
                     <label>Сотрудники</label>
-                    <?if($arResult['STAFF']){?>
-                        <div class="staff_list">
+                    <div class="staff_list">
+                        <?//подтвержденные сотрудники?>
+                        <?if(!empty($arResult['STAFF'])):?>
                             <?foreach($arResult['STAFF'] as $arItem){?>
                                 <?$value_staff .= ' '.$arItem['ID'].','?>
                                 <div class="staff_man" data-id="<?=$arItem['ID']?>">
@@ -78,8 +79,27 @@
                                     <div class="staff_znak_block add_staff staff_znak-ok"><span class="staff_znak"></span></div>
                                 </div>
                             <?}?>
-                        </div>
-                    <?}?>
+                        <?endif?>
+                        <?//не подтвержденные сотрудники?>
+                        <?if(!empty($arResult['STAFF_NO_ACTIVE'])):?>
+                            <?foreach($arResult['STAFF_NO_ACTIVE'] as $arItem){?>
+                                <?$value_staff_no .= ' '.$arItem['ID'].','?>
+                                <div class="staff_man" data-id="<?=$arItem['ID']?>">
+                                    <?$name = '';
+                                    if($arItem['NAME']) $name = $arItem['NAME'];
+                                    if($arItem['LAST_NAME']){
+                                        if($name) $name .= ' '.$arItem['LAST_NAME']; else $name = $arItem['LAST_NAME'];
+                                    }
+                                    if($name){?>
+                                        <p><?=$name?> (<?=$arItem['EMAIL']?>) - не подтвержден</p>
+                                    <?}else{?>
+                                        <p><?=$arItem['EMAIL']?> - не подтвержден</p>
+                                    <?}?>
+                                    <div class="staff_znak_block add_staff__no-active staff_znak-ok"><span class="staff_znak"></span></div>
+                                </div>
+                            <?}?>
+                        <?endif?>
+                    </div>
                     <div class="form-group">
                         <input id="staff" type="text" value="" placeholder="Введите email сотрудника">
                         <div class="btn btn-aut" id="search_staff">Поиск</div>
@@ -91,6 +111,7 @@
                         <input name="ID_EXIST" value="<?=$arResult['COMPANY']['ID']?>" hidden>
                     <?}?>
                     <input name="STAFF" value="<?=$value_staff?>" hidden>
+                    <input name="STAFF_NO_ACTIVE" value="<?=$value_staff_no?>" hidden>
                     <input name="DIRECTOR_ID" value="<?=$USER->GetID()?>" hidden>
                     <input name="DIRECTOR_NAME" value="<?echo $USER->GetLastName().' '.$USER->GetFirstName(). ' '.$USER->GetParam("SECOND_NAME")?>" hidden>
                     <button type="submit" class="btn btn-aut edit-profile__btn" id="save_company">Сохранить</button>
@@ -128,9 +149,9 @@
                             <img class="company-logo" src="<?=$arResult['COMPANY']['PREVIEW_PICTURE']?>" alt="">
                         </div>
                     <?}?>
-                    <div class="form-group">
-                        <label>Сотрудники</label>
-                        <?if($arResult['STAFF']){?>
+                    <?if($arResult['STAFF']){?>
+                        <div class="form-group">
+                            <label>Сотрудники</label>
                             <div class="staff_list">
                                 <?foreach($arResult['STAFF'] as $arItem){?>
                                     <?$value_staff = ' '.$arItem['ID'].','?>
@@ -148,8 +169,8 @@
                                     </div>
                                 <?}?>
                             </div>
-                        <?}?>
-                    </div>
+                        </div>
+                    <?}?>
                 </div>
             </div>
     <?endif?>
