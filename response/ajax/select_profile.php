@@ -65,8 +65,13 @@ switch ($action){
             if(!empty($arCompany['PROPERTIES']['STAFF_NO_ACTIVE']['VALUE'])){
                 $arNewStaff = $arCompany['PROPERTIES']['STAFF_NO_ACTIVE']['VALUE'];
                 $keyDelete = array_search($idUser, $arNewStaff);
-                if($keyDelete){
-                    unset($arNewStaff[$keyDelete]);
+                if($keyDelete!==false){
+                    if(count($arNewStaff)>1){
+                        unset($arNewStaff[$keyDelete]);
+                    }
+                    else{
+                        $arNewStaff = false;
+                    }
                     //удаление id пользователя из свойства не активных сотрудников
                     CIBlockElement::SetPropertyValuesEx($idCompany, 8, array('STAFF_NO_ACTIVE' => $arNewStaff));
 
@@ -100,9 +105,14 @@ switch ($action){
             if(!empty($arCompany['PROPERTIES']['STAFF_NO_ACTIVE']['VALUE'])){
                 $arNewStaff = $arCompany['PROPERTIES']['STAFF_NO_ACTIVE']['VALUE'];
                 $keyDelete = array_search($idUser, $arNewStaff);
-                if($keyDelete){
+                if($keyDelete!=false){
                     //удаление id пользователя из свойства не активных сотрудников
-                    unset($arNewStaff[$keyDelete]);
+                    if(count($arNewStaff)>1){
+                        unset($arNewStaff[$keyDelete]);
+                    }
+                    else{
+                        $arNewStaff = false;
+                    }
                     CIBlockElement::SetPropertyValuesEx($idCompany, 8, array('STAFF_NO_ACTIVE' => $arNewStaff));
                     echo json_encode([ 'VALUE'=>'', 'TYPE'=> 'SUCCESS']);
                 }
