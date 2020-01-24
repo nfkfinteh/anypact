@@ -27,6 +27,7 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)
 		<div class="regpopup_content_form_fild">
 		<? // print_r($arResult["SHOW_FIELDS"]);?>
 			<input hidden size="30" class="regpopup_content_form_input" id="user_login_fild" name="REGISTER[<?=$LOGIN?>]" value="<?=$arResult["VALUES"][$LOGIN]?>" placeholder="<?=GetMessage($LOGIN)?>"  autocomplete="false" />
+            <input hidden class="regpopup_content_form_input" name="UF_TYPE_REGISTR" value="<?=$_GET['type_registr']?>"  autocomplete="false" />
 			<input size="30" class="regpopup_content_form_input" id="user_email_fild" name="REGISTER[<?=$EMAIL?>]" value="<?=$arResult["VALUES"][$EMAIL]?>" placeholder="<?=GetMessage($EMAIL)?>"  autocomplete="false" />
 			<?foreach ($arResult["SHOW_FIELDS"] as $FIELD):?>
 				<?
