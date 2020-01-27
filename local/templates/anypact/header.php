@@ -193,7 +193,7 @@ global $USER;
                         $arUrlMenu = array(
                             '/' => 'Главная',
                             '/my_pacts/' => 'Мои сделки',                               
-                            '/pacts/' => 'Все сделки',
+                            '/pacts/' => 'Все предложения',
                             '/search_people/' => 'Поиск людей',
                             '/list_message/' => 'Сообщения',
                             '/service/' => 'О сервисе',
