@@ -39,9 +39,11 @@ $(document).ready(function() {
             $result = JSON.parse(data);
 
             if($result['TYPE']=='ERROR'){
-                alert($result['VALUE']);
+                showResult('#popup-error','Ошибка сохранения');
+                console.log($result['VALUE']);
             }
             if($result['TYPE']=='SUCCES'){
+                showResult('#popup-success','Изменения сохранены');
                 location.reload();
             }
 

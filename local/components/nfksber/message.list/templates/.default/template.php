@@ -28,7 +28,7 @@
                         <td><?=$message["PARAMS_SENDER_USER"]["FIO"]?><br>
                             <span class="text-gray d-lg-none"><a href="/list_message/view_message/?id=<?= $message["ID"] ?>" target="_blank"><?= $message["UF_TITLE_MESSAGE"] ?></a></span>
                         </td>
-                        <td class="text-gray d-none d-lg-table-cell"><?= $message["UF_TITLE_MESSAGE"] ?> Посмотреть</td>
+                        <td class="text-gray d-none d-lg-table-cell"><?= $message["UF_TITLE_MESSAGE"] ?></td>
                         <td class="text-right">
                             <?= $message["UF_TIME_CREATE_MSG"]->toString() ?>
                         </td>
