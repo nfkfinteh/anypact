@@ -74,8 +74,39 @@
                 margin-right: 13px;
             }
         }
+
+
+
+
+        .preloader {
+            position: fixed;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            overflow: hidden;
+            opacity: 1;
+            z-index: 1001;
+            display: none;
+        }
+
+        .preloader__image {
+            position: relative;
+            top: 50%;
+            left: 50%;
+            width: 100px;
+            height: 100px;
+            margin-top: -50px;
+            margin-left: -50px;
+            background: url('/local/templates/anypact/img/popup/preloader.svg') no-repeat 50% 50%;
+            opacity: 0.7;
+        }
+
+        .load{
+            overflow-y:hidden;
+        }
     </style>
-        <!-- <div class="toast-card toast-status">
+        <?/*<div class="toast-card toast-status">
             <button class="toast-close">×</button>
             <div class="toast-body">
                 <img src="image/sample_face_150x150.png" alt="">
@@ -95,9 +126,10 @@
                 </div>
             </div>
         </div>
-    </div> -->
+    </div>
     <div class="container-fluid"></div>
-   
+   */?>
+<?#всплывающие окно для отображения результата сохранения?>
 <div class="popup-wrapper">
     <div class="toast" id="popup-success">
         <div class="toast-card">
@@ -120,33 +152,10 @@
         </div>
     </div>
 </div>
-<!--     <div class="popup-wrapper__flex">
-        <div class="popup">
-            <div class="popup__content">
-                <div class="popup__success">
-                    <img src="/local/templates/anypact/img/success.svg" alt="" role="presentation"/>
-                </div>
-                <h3 class="popup__title title">
-                </h3>
-                <p class="popup__subtitle">
-                </p>
-            </div>
-        </div>
-    </div>
+
+<?#всплывающее окно для отображения процеса сохранения?>
+<div id="popup-load" class="preloader">
+    <div class="preloader__image"></div>
 </div>
-<div class="popup-wrapper" id="popup-error">
-    <div class="popup-wrapper__flex">
-        <div class="popup">
-            <div class="popup__content">
-                <div class="popup__success">
-                    <img src="/local/templates/anypact/img/error.svg" alt="" role="presentation"/>
-                </div>
-                <h3 class="popup__title title">
-                </h3>
-                <p class="popup__subtitle">
-                </p>
-            </div>
-        </div>
-    </div>
-</div>
--->
+
+

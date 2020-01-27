@@ -30,13 +30,17 @@ $(document).ready(function() {
         Params.message  = TextMes.value
         let arrParams   = JSON.stringify(Params)
 
-        var res = responseRoute(arrParams).then(function(data) {
-            location.reload()
-        });
-        
+        if(Params.message.length>0){
+            preload('show');
+            var res = responseRoute(arrParams).then(function(data) {
+                preload('hide');
+                location.reload()
+            });
+        }
     }
 
     $(document).on('click', '.js-chat_delete', function(){
+        preload('show');
         $.post(
             "/response/ajax/delete_chat_user.php", {
                 id: id,
@@ -47,10 +51,14 @@ $(document).ready(function() {
         function onAjaxSuccess(data) {
             let result = JSON.parse(data);
             if(result['TYPE']=='ERROR'){
+                preload('hide');
+                showResult('#popup-error','Ошибка сохранения');
                 console.log(result);
             }
             if(result['TYPE']=='SUCCESS'){
-                location.href = '/my_pacts/';
+                preload('hide');
+                showResult('#popup-success','Переписка удалена');
+                location.href = '/list_message/';
             }
         }
     });

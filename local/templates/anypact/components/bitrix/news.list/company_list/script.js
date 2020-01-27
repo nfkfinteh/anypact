@@ -3,6 +3,7 @@ $(document).ready(function(){
     $(document).on('click', '.js-auth_company', function(e){
         e.preventDefault();
         let idCompany = $(this).attr('data-id');
+        preload('show');
 
         $.post(
             "/response/ajax/select_profile.php", {
@@ -15,9 +16,11 @@ $(document).ready(function(){
         function onAjaxSuccess(data) {
             let result = JSON.parse(data);
             if(result['TYPE']=='ERROR'){
+                preload('hide');
                 showResult('#popup-error','Ошибка сохранения', result['VALUE']);
             }
             if(result['TYPE']=='SUCCESS'){
+                preload('hide');
                 location.href = '/';
             }
         }
@@ -26,6 +29,7 @@ $(document).ready(function(){
     //выбран профиль полдьзователя
     $(document).on('click', '.js-auth_user', function(e){
         e.preventDefault();
+        preload('show');
 
         $.post(
             "/response/ajax/select_profile.php", {
@@ -35,12 +39,13 @@ $(document).ready(function(){
         );
 
         function onAjaxSuccess(data) {
-            console.log(data);
             let result = JSON.parse(data);
             if(result['TYPE']=='ERROR'){
+                preload('hide');
                 showResult('#popup-error','Ошибка сохранения', result['VALUE']);
             }
             if(result['TYPE']=='SUCCESS'){
+                preload('hide');
                 location.href = '/';
             }
         }
@@ -50,6 +55,7 @@ $(document).ready(function(){
     $(document).on('click', '.js-accept_company', function(e){
         e.preventDefault();
         let idCompany = $(this).attr('data-id');
+        preload('show');
 
         $.post(
             "/response/ajax/select_profile.php", {
@@ -62,9 +68,11 @@ $(document).ready(function(){
         function onAjaxSuccess(data) {
             let result = JSON.parse(data);
             if(result['TYPE']=='ERROR'){
+                preload('hide');
                 showResult('#popup-error','Ошибка сохранения', result['VALUE']);
             }
             if(result['TYPE']=='SUCCESS'){
+                preload('hide');
                 location.href = '/';
             }
         }
@@ -74,6 +82,7 @@ $(document).ready(function(){
     $(document).on('click', '.js-refus_company', function(e){
         e.preventDefault();
         let idCompany = $(this).attr('data-id');
+        preload('show');
 
         $.post(
             "/response/ajax/select_profile.php", {
@@ -86,9 +95,11 @@ $(document).ready(function(){
         function onAjaxSuccess(data) {
             let result = JSON.parse(data);
             if(result['TYPE']=='ERROR'){
+                preload('hide');
                 showResult('#popup-error','Ошибка сохранения', result['VALUE']);
             }
             if(result['TYPE']=='SUCCESS'){
+                preload('hide');
                 location.reload();
             }
         }

@@ -100,12 +100,15 @@ $(document).ready(function() {
 
     $('#save_ad').on('click', function() {
 
+        preload('show');
         var res = getURLData().then(function(data) {
             $result = JSON.parse(data);
             if($result['TYPE']=='ERROR'){
+                preload('hide');
                 showResult('#popup-error','Ошибка сохранения', $result['VALUE']);
             }
             if($result['TYPE']=='SUCCES'){
+                preload('hide');
                 window.location.href = "/my_pacts/edit_my_pact/?ELEMENT_ID="+$result['VALUE']+"&ACTION=EDIT";
             }
 
@@ -127,6 +130,8 @@ $(document).ready(function() {
             let adCoordinates = $('#COORDINATES_AD').val();
             let prop = {};
 
+            preload('show');
+
             prop['LOCATION_CITY'] = adCity;
             prop['COORDINATES_AD'] = adCoordinates;
 
@@ -139,16 +144,19 @@ $(document).ready(function() {
                 adName = $.trim(adName);
             }
             else{
+                preload('hide');
                 showResult('#popup-error','Ошибка сохранения', 'Название обязательно');
                 return;
             }
 
             if(adSection === undefined){
+                preload('hide');
                 showResult('#popup-error','Ошибка сохранения', 'Раздел обязателен');
                 return;
             }
 
             if(adCity.length == 0){
+                preload('hide');
                 showResult('#popup-error','Ошибка сохранения', 'Город обязателен');
                 return;
             }

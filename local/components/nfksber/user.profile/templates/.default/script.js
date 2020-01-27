@@ -28,6 +28,7 @@ $(document).ready(function(){
         let form = $(this).parents('.modal-content').eq(0).find('form');
         let url = form.attr('action');
         let data = form.serialize();
+        preload('show');
 
         $.ajax({
             type: 'POST',
@@ -38,11 +39,13 @@ $(document).ready(function(){
                 if($result['TYPE']=='ERROR'){
                     form.find('textarea').val('');
                     form.parents('.modal-content').eq(0).find('button.close').click();
+                    preload('hide');
                     showResult('#popup-error','Ошибка сохранения', $result['VALUE']);
                 }
                 if($result['TYPE']=='SUCCESS'){
                     form.find('textarea').val('');
                     form.parents('.modal-content').eq(0).find('button.close').click();
+                    preload('hide');
                     showResult('#popup-success', 'Изменения сохранены');
                 }
             },

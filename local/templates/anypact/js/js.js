@@ -141,3 +141,14 @@ function showResult(name, title='', text='') {
         $('.modals-wrap').hide();
     }, 2000)
 }
+
+function preload($action){
+    if($action == 'show'){
+        $('body').addClass('load');
+        $('#popup-load').show();
+    }
+    if($action == 'hide'){
+        $('body').removeClass('load');
+        $('#popup-load').hide();
+    }
+}

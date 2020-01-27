@@ -10,7 +10,9 @@ $(document).ready(function() {
         var text_descript = $(".cardPact-EditText-Descript .editbox").html().trim();
         cntDescript = $(".cardPact-EditText-Descript .editbox").text().trim().length;
 
+        preload('show');
         if(cntDescript==0) {
+            preload('hide');
             showResult('#popup-error','Ошибка сохранения', 'Поле обязательно для заполнения');
             return;
         }
@@ -27,9 +29,11 @@ $(document).ready(function() {
         function onAjaxSuccess(data) {
             $result = JSON.parse(data);
             if($result['TYPE']=='ERROR'){
+                preload('hide');
                 showResult('#popup-error','Ошибка сохранения', $result['VALUE']);
             }
             if($result['TYPE']=='SUCCESS'){
+                preload('hide');
                 showResult('#popup-success', 'Изменения сохранены');
             }
         }
@@ -38,8 +42,9 @@ $(document).ready(function() {
     $("#save_conditions").on('click', function() {
         var text_descript = $(".cardPact-EditText-Сonditions .editbox").html().trim();
         cntDescript = $(".cardPact-EditText-Сonditions .editbox").text().trim().length;
-
+        preload('show');
         if(cntDescript==0) {
+            preload('hide');
             showResult('#popup-error','Ошибка сохранения', 'Поле обязательно для заполнения');
             return;
         }
@@ -56,9 +61,11 @@ $(document).ready(function() {
         function onAjaxSuccess(data) {
             $result = JSON.parse(data);
             if($result['TYPE']=='ERROR'){
+                preload('hide');
                 showResult('#popup-error','Ошибка сохранения', $result['VALUE']);
             }
             if($result['TYPE']=='SUCCESS'){
+                preload('hide');
                 showResult('#popup-success', 'Изменения сохранены');
             }
         }
@@ -72,6 +79,8 @@ $(document).ready(function() {
         }
 
         var city = $('#select-city').val();
+
+        preload('show');
         $.post(
             "/response/ajax/up_pact_text.php", {
                 text: text_descript,
@@ -84,9 +93,11 @@ $(document).ready(function() {
         function onAjaxSuccess(data) {
             $result = JSON.parse(data);
             if($result['TYPE']=='ERROR'){
+                preload('hide');
                 showResult('#popup-error','Ошибка сохранения', $result['VALUE']);
             }
             if($result['TYPE']=='SUCCESS'){
+                preload('hide');
                 showResult('#popup-success', 'Изменения сохранены');
             }
         }
@@ -126,6 +137,7 @@ $(document).ready(function() {
 
     // Продление срока объявления
     $("#up_date_active").on('click', function(){
+        preload('show');
         $.post(
             "/response/ajax/up_pact_text.php", {                    
                 id_element: ID_Object,
@@ -137,9 +149,11 @@ $(document).ready(function() {
         function onAjaxSuccess(data) {
             $result = JSON.parse(data);
             if($result['TYPE']=='ERROR'){
+                preload('hide');
                 showResult('#popup-error','Ошибка сохранения', $result['VALUE']);
             }
             if($result['TYPE']=='SUCCESS'){
+                preload('hide');
                 $('.date-active').text($result['DATA']);
                 showResult('#popup-success', 'Срок объявления продлен');
             }
@@ -150,7 +164,7 @@ $(document).ready(function() {
     /*all_save*/
     $(document).on('submit', '.all-save_form', function(e){
         e.preventDefault();
-
+        preload('show');
         var DETAIL_TEXT,
             prop = {},
             auto_delete_button = $('#avtomatic_delete').prop("checked");
@@ -193,10 +207,12 @@ $(document).ready(function() {
         var res = getURLData().then(function(data) {
             result = JSON.parse(data);
             if(result['TYPE']=='ERROR'){
+                preload('hide');
                 showResult('#popup-error','Ошибка сохранения');
             }
             else{
-                //showResult('#popup-success', 'Изменения сохранены');
+                preload('hide');
+                showResult('#popup-success', 'Изменения сохранены');
                 location.reload();
             }
         });
@@ -225,6 +241,8 @@ $(document).ready(function() {
             atrr_text: 'delete_incl_file'
         });
 
+        preload('show');
+
         $.post(
             "/response/ajax/up_pact_dopfile.php",
             mainData,
@@ -233,10 +251,12 @@ $(document).ready(function() {
 
         function onAjaxSuccess(data) {
             if(data=='ERROR'){
+                preload('hide');
                 showResult('#popup-error','Ошибка сохранения');
             }
             else{
                 $('.list-dopfile').html(data);
+                preload('hide');
                 showResult('#popup-success', 'Изменения сохранены');
             }
         }
@@ -333,11 +353,14 @@ $(document).ready(function() {
 
     function updateImage(arData){
         // var id_element = $(".cardPact-box").attr("data");
+        preload('show');
         var res = getURLData().then(function(data) {
             if(data=='ERROR'){
+                preload('hide');
                 showResult('#popup-error','Ошибка сохранения');
             }
             else{
+                preload('hide');
                 showResult('#popup-success', 'Изменения сохранены');
                 let slider = $( '#my-slider' ).data( 'sliderPro' );
                 slider.destroy();
