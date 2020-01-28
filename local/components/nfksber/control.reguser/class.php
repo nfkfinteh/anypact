@@ -35,11 +35,23 @@ class ControlRegUser extends CBitrixComponent
             "!=UF_TYPE_REGISTR" => ''            
         );
         
-        $elementsResult = CUser::GetList(($by="ID"), ($order="ASC"), $filter);
+        $elementsResult = CUser::GetList(($by="ID"), ($order="ASC"), $arFilter);
         
         while ($rsUser = $elementsResult->Fetch()) {
-             echo "<br>".$rsUser["LOGIN"] . " - " . $rsUser["DATE_REGISTER"] . "\n";
-        }   
+             echo "<br>".$rsUser["LOGIN"] . " - " . $rsUser["UF_TYPE_REGISTR"] . "\n";
+        } 
+        
+        $arFilter= array(
+            "!UF_TYPE_REGISTR" => false            
+        );
+        
+        $elementsResult = CUser::GetList(($by="ID"), ($order="ASC"), $arFilter);
+        
+        while ($rsUser = $elementsResult->Fetch()) {
+             echo "<br>".$rsUser["LOGIN"] . " - " . $rsUser["UF_TYPE_REGISTR"] . "\n";
+        } 
+
+
         $this->includeComponentTemplate();        
         return $this->arResult;
     }
