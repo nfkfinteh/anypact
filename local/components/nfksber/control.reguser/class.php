@@ -31,9 +31,14 @@ class ControlRegUser extends CBitrixComponent
     
     public function executeComponent()
     {
-        //$this->arResult["SIGN_DOGOVOR"] = ; 
-        $this->includeComponentTemplate();
-        
+        $arFilter= array(
+            "UF_TYPE_REGISTR" => "%"            
+        );
+        $elementsResult = CUser::GetList(($by="ID"), ($order="ASC"), $filter);
+        while ($rsUser = $elementsResult->Fetch()) {
+             echo $rsUser["LOGIN"] . " - " . $rsUser["DATE_REGISTER"] . "\n";
+        }   
+        $this->includeComponentTemplate();        
         return $this->arResult;
     }
 
