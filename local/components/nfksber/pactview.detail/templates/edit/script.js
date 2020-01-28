@@ -1,10 +1,10 @@
 $(document).ready(function() {
     var check = 0;
     var ID_Object = $("#params_object").attr("data")
-
-    $('#select-city').selectize({
+    var select_lcation_city =  $('#LOCATION_CITY').selectize({
         sortField: 'text'
     });
+    var control_location_city = select_lcation_city[0].selectize;
 
     $("#save_descript").on('click', function() {
         var text_descript = $(".cardPact-EditText-Descript .editbox").html().trim();
@@ -413,8 +413,7 @@ $(document).ready(function() {
     ymaps.ready(init);
     function init() {
         // Подключаем поисковые подсказки к полю ввода.
-        var suggestView = new ymaps.SuggestView('suggest'),
-            map,
+        var map,
             placemark,
             addressLine,
             city = $('#LOCATION_CITY').val(),
@@ -422,6 +421,14 @@ $(document).ready(function() {
 
         if(!city) city = adData['CITY'];
         if(!city) city = 'Москва';
+
+        var suggestView = new ymaps.SuggestView('suggest', {
+            provider:{
+                suggest:(function(request, options){
+                    return ymaps.suggest(document.getElementById('LOCATION_CITY').value +", " + request);
+                })
+            }
+        });
 
         ymaps.geocode(city, {
             results: 1
@@ -474,6 +481,26 @@ $(document).ready(function() {
         $(document).on('click', '#check-button_map', function (e) {
             geocode();
         });
+
+        //при смене города изменяем центрирование карты
+        $(document).on('change', 'select.js-location-city', function(){
+            city = $(this).val();
+            changeCity(city);
+            //стираем значение ранее установленных координат
+            $('#COORDINATES_AD').val('');
+            $('#suggest').val('');
+        });
+
+        function changeCity(city){
+            ymaps.geocode(city, {
+                results: 1
+            }).then(function (res) {
+                var firstGeoObject = res.geoObjects.get(0);
+                var coords = firstGeoObject.geometry.getCoordinates();
+                map.setCenter(coords, 12);
+
+            });
+        }
 
         function geocode() {
             // Забираем запрос из поля ввода.
@@ -539,7 +566,6 @@ $(document).ready(function() {
             //Сохраняем координаты и горд для сохранения в инфоблок
             coordinatesForm = mapState.center;
             cityForm = obj.getLocalities()[0];
-            $('#LOCATION_CITY').val(cityForm);
             $('#COORDINATES_AD').val(coordinatesForm);
 
             // Убираем контролы с карты.
@@ -550,7 +576,6 @@ $(document).ready(function() {
         function showError(message) {
             coordinatesForm = [];
             cityForm = '';
-            $('#LOCATION_CITY').val(cityForm);
             $('#COORDINATES_AD').val(coordinatesForm);
             map.geoObjects.remove(placemark);
             placemark = '';
@@ -632,7 +657,6 @@ $(document).ready(function() {
                 coordinatesForm = coords;
                 cityForm = firstGeoObjectGlobal.getLocalities()[0];
                 $('#suggest').val(addressLine);
-                $('#LOCATION_CITY').val(cityForm);
                 $('#COORDINATES_AD').val(coordinatesForm);
 
             });

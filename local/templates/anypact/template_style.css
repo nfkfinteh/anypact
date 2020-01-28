@@ -3451,3 +3451,15 @@ h4.subtitle_contract{
     text-align: center;
     margin: 15px;
 }
+
+.editbox-wrap{
+    margin: 60px 0 0 0;
+}
+
+.editbox-wrap .selectize-input{
+    background: #f1f4f4;
+}
+
+.cardPact-EditText {
+    margin-bottom: 60px;
+}
