@@ -1,8 +1,3 @@
-<pre>
-    <?
-        print_r($arResult["USER_REGIST_ACTION"]);
-    ?>
-</pre>
 <h1>Панель управления пользователями зарегистрированными по акции</h1>
 <table class="table">
   <thead>
@@ -23,7 +18,13 @@
             <td><?=$UserRegAction["NAME"]?> <?=$UserRegAction["LAST_NAME"]?> <?=$UserRegAction["SECOND_NAME"]?></td>
             <td><?=$UserRegAction["DATE_REGISTER"]?></td>
             <td><?=$UserRegAction["USER_REGIST_ACTION"]?></td>
-            <td></td>
+            <td>
+                <?
+                    if($UserRegAction["USER_REGIST_ACTION"] == 1){
+                        echo "Верифицирован через ЕСИА";
+                    } 
+                ?>
+            </td>
             <td><a class="btn btn-nfk" href="#" role="button">Выплатить вознаграждение</a></td>
         </tr>
         <? $i++; ?>
