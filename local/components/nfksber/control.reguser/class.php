@@ -32,7 +32,7 @@ class ControlRegUser extends CBitrixComponent
     public function executeComponent()
     {
         $arFilter= array(
-            "UF_TYPE_REGISTR" => "%"            
+            "!UF_TYPE_REGISTR" => false            
         );
         $elementsResult = CUser::GetList(($by="ID"), ($order="ASC"), $filter);
         while ($rsUser = $elementsResult->Fetch()) {
