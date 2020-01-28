@@ -1,7 +1,3 @@
-<!-- <pre>
-<? //print_r($arResult["PROPERTY"]["ID_DOGOVORA"]) ;?>
-<? //print_r($arResult["PROPERTY"]["UNCLUDE_FILE"]) ;?>
-</pre> -->
 <div id="params_object" style="display:none" data="<?=$arResult["ELEMENT"]["ID"]?>"></div>
 <h1><?=$arResult["ELEMENT"]["NAME"]?></h1>
 <div class="tender cardPact">
@@ -58,6 +54,18 @@
                     </div>
                     <button class="btn btn-nfk save" id="save_conditions">Сохранить</button>
                 </div>
+
+                <div class="editbox-wrap">
+                    <select id="LOCATION_CITY" name="LOCATION_CITY" class="selectbox-select select-bottom js-location-city" placeholder="Выберите город">
+                        <option value="">Выбор города</option>
+                        <? foreach($arResult['LIST_CITY'] as $item):?>
+                            <option value="<?=$item?>" <?if($arResult['PROPERTY']['LOCATION_CITY']['VALUE'] == $item):?>selected<?endif?>>
+                                <?=$item?>
+                            </option>
+                        <? endforeach?>
+                    </select>
+                </div>
+                <h3>Город</h3>
             </div>
 
             <?/*
@@ -79,9 +87,8 @@
                 <h3>Местоположение</h3>
                 <div id="header" class="search-map_input">
                     <input type="text" id="suggest" class="input-search_map" placeholder="Введите адрес">
-                    <input type="hidden" id="LOCATION_CITY" name="LOCATION_CITY" value="<?=$arResult['PROPERTY']['LOCATION_CITY']['VALUE']?>">
                     <input type="hidden" id="COORDINATES_AD" name="COORDINATES_AD" value="<?=$arResult['PROPERTY']['COORDINATES_AD']['VALUE']?>">
-                    <button type="submit" id="check-button_map" class="btn btn-nfk btn-search_map">Проверить</button>
+                    <button type="submit" id="check-button_map" class="btn btn-nfk btn-search_map">Поиск</button>
                 </div>
                 <p id="notice" class="error_form"></p>
                 <div id="map" style="height: 400px"></div>

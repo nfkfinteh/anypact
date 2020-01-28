@@ -21,6 +21,7 @@ $(document).ready(function(){
                 formData.append(id, arFiles[id]);
             }
 
+            preload('show');
             $.ajax({
                 type: 'POST',
                 url: '/response/ajax/resizeimg.php',
@@ -30,11 +31,14 @@ $(document).ready(function(){
                 success: function(data){
                     let result = JSON.parse(data);
                     if(result['TYPE']=='ERROR'){
+                        preload('hide');
+                        showResult('#popup-error','Ошибка сохранения');
                         console.log(result['VALUE']);
-                        alert(result['VALUE']);
                     }
                     if(result['TYPE']=='SUCCESS'){
                         //location.reload();
+                        preload('hide');
+                        showResult('#popup-success','Изменения сохранены');
                         document.location.href = '/profile/';
                     }
                 }

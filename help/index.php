@@ -128,7 +128,7 @@ global $USER;
 <div style="width: 100%; height: 80px;"></div>
 <script>        
     async function sendMess(strObject){
-
+        preload('show');
         var url = '/response/ajax/send_mess.php'
 
         var mainData = JSON.stringify({
@@ -167,11 +167,13 @@ global $USER;
         strObject[2]  = document.getElementById('textText').value;
 
         if(strObject[2].length==0){
+            preload('hide');
             showResult('#popup-error','Ошибка сохранения', 'Введите текст сообщения');
             return;
         }
 
         var res = sendMess(strObject).then(function(data) {
+            preload('hide');
             if(data == 'ERROR'){
                 showResult('#popup-error','Ошибка сохранения');
             }
