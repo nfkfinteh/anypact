@@ -21,7 +21,9 @@
                 <?
                     if($UserRegAction["UF_ESIA_ID"] == 1){
                         echo "Верифицирован через ЕСИА";
-                    } 
+                    } else {
+                        echo "нет";
+                    }
                 ?>
             </td>
             <td><button class="btn btn-nfk" id="button_user_pay">Выплатить вознаграждение</button></td>

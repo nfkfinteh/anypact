@@ -34,13 +34,15 @@ class ControlRegUser extends CBitrixComponent
         
         // по умолчанию "and"
         //$GLOBALS["FILTER_logic"] = "or";
-        
+
         $arFilter= array(
             "ACTIVE" => 'Y',
             "!UF_TYPE_REGISTR" => false            
         );
+
+        $arParams["SELECT"] = array("UF_ESIA_ID", "UF_TYPE_REGISTR");
         
-        $elementsResult = CUser::GetList(($by="ID"), ($order="ASC"), $arFilter);
+        $elementsResult = CUser::GetList(($by="ID"), ($order="ASC"), $arFilter, $arParams);
         
         while ($rsUser = $elementsResult->Fetch()) {
             $arFilterUserRegistAction[] =  $rsUser;
