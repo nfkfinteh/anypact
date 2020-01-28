@@ -31,15 +31,6 @@ class ControlRegUser extends CBitrixComponent
     
     public function executeComponent()
     {
-        $arFilter= array(
-            "!=UF_TYPE_REGISTR" => ''            
-        );
-        
-        $elementsResult = CUser::GetList(($by="ID"), ($order="ASC"), $arFilter);
-        
-        while ($rsUser = $elementsResult->Fetch()) {
-             echo "<br>".$rsUser["LOGIN"] . " - " . $rsUser["UF_TYPE_REGISTR"] . "\n";
-        } 
         
         $arFilter= array(
             "!UF_TYPE_REGISTR" => false            
@@ -48,9 +39,10 @@ class ControlRegUser extends CBitrixComponent
         $elementsResult = CUser::GetList(($by="ID"), ($order="ASC"), $arFilter);
         
         while ($rsUser = $elementsResult->Fetch()) {
-             echo "<br>".$rsUser["LOGIN"] . " - " . $rsUser["UF_TYPE_REGISTR"] . "\n";
+            $arFilterUserRegistAction[] =  $rsUser;
         } 
 
+        $this->arResult["USER_REGIST_ACTION"] = $arFilterUserRegistAction;
 
         $this->includeComponentTemplate();        
         return $this->arResult;
