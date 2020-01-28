@@ -37,7 +37,7 @@ class ControlRegUser extends CBitrixComponent
 
         $arFilter= array(
             "ACTIVE" => 'Y',
-            "!UF_TYPE_REGISTR" => false            
+            "UF_TYPE_REGISTR" => "action%"            
         );
 
         $arParams["SELECT"] = array("UF_ESIA_ID", "UF_TYPE_REGISTR");
