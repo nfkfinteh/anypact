@@ -110,4 +110,6 @@ $(document).ready(function() {
         BX.calendar({node:this, field:'PERSONAL_BIRTHDAY', form: '', bTime: true, bHideTime: true})
     });
 
+    //маска для елементов формы
+    $('#UF_SNILS').mask('999-999-999 99');
 });
