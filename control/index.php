@@ -12,5 +12,7 @@ if ($USER->IsAuthorized() && $USER->IsAdmin()){
         "",
         Array()
     ); ?>
+
+</div>
 <?}?>
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
