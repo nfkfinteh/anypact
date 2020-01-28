@@ -111,5 +111,5 @@ $(document).ready(function() {
     });
 
     //маска для елементов формы
-    $('#UF_SNILS').mask('999-999-999 99');
+    $('#UF_SNILS').inputmask('999-999-999 99');
 });

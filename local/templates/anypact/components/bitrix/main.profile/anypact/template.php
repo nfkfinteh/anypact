@@ -203,7 +203,7 @@ if (!empty($arResult['arUser']['UF_ESIA_ID']) && $arResult['arUser']['UF_ESIA_AU
                     </div>
                     <div class="form-group">
                         <label><?=GetMessage("BANK_BIC")?></label>
-                        <input type="text" name="UF_BIC_BANK" maxlength="50" value="<?=$arResult["arUser"]["UF_BIC_BANK"]?>" class="js-number">
+                        <input type="text" name="UF_BIC_BANK" maxlength="9" value="<?=$arResult["arUser"]["UF_BIC_BANK"]?>" class="js-number">
                     </div>
                     <div class="form-group">
                         <label><?=GetMessage("UF_INN_BANK")?></label>
@@ -213,11 +213,11 @@ if (!empty($arResult['arUser']['UF_ESIA_ID']) && $arResult['arUser']['UF_ESIA_AU
                 <div class="col-xl-4 col-md-6 col-sm-12">
                     <div class="form-group left_blok_margin">
                         <label><?=GetMessage("BANK_KS")?></label>
-                        <input type="text" name="UF_KS_BANK" maxlength="50" value="<?=$arResult["arUser"]["UF_KS_BANK"]?>" class="js-number">
+                        <input type="text" name="UF_KS_BANK" maxlength="20" value="<?=$arResult["arUser"]["UF_KS_BANK"]?>" class="js-number">
                     </div>
                     <div class="form-group">
                         <label><?=GetMessage("BANK_RS")?></label>
-                        <input type="text" name="UF_RS_BANK" maxlength="50" value="<?=$arResult["arUser"]["UF_RS_BANK"]?>" class="js-number">
+                        <input type="text" name="UF_RS_BANK" maxlength="20" value="<?=$arResult["arUser"]["UF_RS_BANK"]?>" class="js-number">
                     </div>
                     <button type="submit" class="btn btn-aut" id="save_profile_button">Сохранить</button>
                 </div>

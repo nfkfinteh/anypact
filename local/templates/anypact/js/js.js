@@ -167,3 +167,20 @@ function validate(evt) {
 $(document).on('keypress', '.js-number', function(e){
     validate(e);
 });
+
+//макси для поле формы
+$('.js-mask__email').inputmask({
+    mask: "*{1,20}[.*{1,20}][.*{1,20}][.*{1,20}]@*{1,20}[.*{2,6}][.*{1,2}]",
+    greedy: false,
+    onBeforePaste: function (pastedValue, opts) {
+        pastedValue = pastedValue.toLowerCase();
+        return pastedValue.replace("mailto:", "");
+    },
+    definitions: {
+        '*': {
+            validator: "[0-9A-Za-z!#$%&'*+/=?^_`{|}~\-]",
+            casing: "lower"
+        }
+    }
+});
+$('.js-mask__phone').inputmask('8(999) 999-9999');
