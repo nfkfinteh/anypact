@@ -22,9 +22,9 @@
             <td scope="row"><?=$i?></td>
             <td><?=$UserRegAction["NAME"]?> <?=$UserRegAction["LAST_NAME"]?> <?=$UserRegAction["SECOND_NAME"]?></td>
             <td><?=$UserRegAction["DATE_REGISTER"]?></td>
-            <td><?=$UserRegAction["LAST_NAME"]?></td>
+            <td><?=$UserRegAction["USER_REGIST_ACTION"]?></td>
             <td></td>
-            <td><a class="btn btn-primary" href="#" role="button">Выплатить вознаграждение</a></td>
+            <td><a class="btn btn-nfk" href="#" role="button">Выплатить вознаграждение</a></td>
         </tr>
         <? $i++; ?>
     <?}?>    

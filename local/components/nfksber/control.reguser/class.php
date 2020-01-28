@@ -32,7 +32,11 @@ class ControlRegUser extends CBitrixComponent
     public function executeComponent()
     {
         
+        // по умолчанию "and"
+        //$GLOBALS["FILTER_logic"] = "or";
+        
         $arFilter= array(
+            "ACTIVE" => 'Y',
             "!UF_TYPE_REGISTR" => false            
         );
         
