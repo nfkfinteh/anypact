@@ -1,8 +1,10 @@
 $(document).ready(function() {
 
-    $('#select-city').selectize({
+    var select_lcation_city =  $('#LOCATION_CITY').selectize({
         sortField: 'text'
     });
+    var control_location_city = select_lcation_city[0].selectize;
+    var city = adData['CITY'];
 
 
     // Выбор категории
@@ -100,12 +102,15 @@ $(document).ready(function() {
 
     $('#save_ad').on('click', function() {
 
+        preload('show');
         var res = getURLData().then(function(data) {
             $result = JSON.parse(data);
             if($result['TYPE']=='ERROR'){
+                preload('hide');
                 showResult('#popup-error','Ошибка сохранения', $result['VALUE']);
             }
             if($result['TYPE']=='SUCCES'){
+                preload('hide');
                 window.location.href = "/my_pacts/edit_my_pact/?ELEMENT_ID="+$result['VALUE']+"&ACTION=EDIT";
             }
 
@@ -127,6 +132,8 @@ $(document).ready(function() {
             let adCoordinates = $('#COORDINATES_AD').val();
             let prop = {};
 
+            preload('show');
+
             prop['LOCATION_CITY'] = adCity;
             prop['COORDINATES_AD'] = adCoordinates;
 
@@ -139,16 +146,19 @@ $(document).ready(function() {
                 adName = $.trim(adName);
             }
             else{
+                preload('hide');
                 showResult('#popup-error','Ошибка сохранения', 'Название обязательно');
                 return;
             }
 
             if(adSection === undefined){
+                preload('hide');
                 showResult('#popup-error','Ошибка сохранения', 'Раздел обязателен');
                 return;
             }
 
             if(adCity.length == 0){
+                preload('hide');
                 showResult('#popup-error','Ошибка сохранения', 'Город обязателен');
                 return;
             }
@@ -213,17 +223,21 @@ $(document).ready(function() {
 
     ymaps.ready(init);
     function init() {
-        // Подключаем поисковые подсказки к полю ввода.
-        var suggestView = new ymaps.SuggestView('suggest'),
-            map,
-            placemark,
-            addressLine;
-
-        var city = adData['CITY'];
-
         if(!city){
             city = 'Москва';
         }
+
+        // Подключаем поисковые подсказки к полю ввода.
+        var suggestView = new ymaps.SuggestView('suggest', {
+                provider:{
+                    suggest:(function(request, options){
+                        return ymaps.suggest(document.getElementById('LOCATION_CITY').value +", " + request);
+                    })
+                }
+            }),
+            map,
+            placemark,
+            addressLine;
 
         ymaps.geocode(city, {
             results: 1
@@ -266,6 +280,25 @@ $(document).ready(function() {
             geocode();
         });
 
+        //при смене города изменяем центрирование карты
+        $(document).on('change', 'select.js-location-city', function(){
+            city = $(this).val();
+            changeCity(city);
+            //стираем значение ранее установленных координат
+            $('#COORDINATES_AD').val('');
+            $('#suggest').val('');
+        });
+
+        function changeCity(city){
+            ymaps.geocode(city, {
+                results: 1
+            }).then(function (res) {
+                var firstGeoObject = res.geoObjects.get(0);
+                var coords = firstGeoObject.geometry.getCoordinates();
+                map.setCenter(coords, 12);
+
+            });
+        }
         function geocode() {
             // Забираем запрос из поля ввода.
             var request = $('#suggest').val();
@@ -330,7 +363,6 @@ $(document).ready(function() {
             //Сохраняем координаты и горд для сохранения в инфоблок
             coordinatesForm = mapState.center;
             cityForm = obj.getLocalities()[0];
-            $('#LOCATION_CITY').val(cityForm);
             $('#COORDINATES_AD').val(coordinatesForm);
 
             // Убираем контролы с карты.
@@ -341,7 +373,6 @@ $(document).ready(function() {
         function showError(message) {
             coordinatesForm = [];
             cityForm = '';
-            $('#LOCATION_CITY').val(cityForm);
             $('#COORDINATES_AD').val(coordinatesForm);
             $('#notice').text(message);
             $('#suggest').addClass('input_error');
@@ -421,7 +452,6 @@ $(document).ready(function() {
                 coordinatesForm = coords;
                 cityForm = firstGeoObjectGlobal.getLocalities()[0];
                 $('#suggest').val(addressLine);
-                $('#LOCATION_CITY').val(cityForm);
                 $('#COORDINATES_AD').val(coordinatesForm);
 
             });

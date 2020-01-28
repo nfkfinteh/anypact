@@ -1,16 +1,18 @@
 $(document).ready(function() {
     var check = 0;
     var ID_Object = $("#params_object").attr("data")
-
-    $('#select-city').selectize({
+    var select_lcation_city =  $('#LOCATION_CITY').selectize({
         sortField: 'text'
     });
+    var control_location_city = select_lcation_city[0].selectize;
 
     $("#save_descript").on('click', function() {
         var text_descript = $(".cardPact-EditText-Descript .editbox").html().trim();
         cntDescript = $(".cardPact-EditText-Descript .editbox").text().trim().length;
 
+        preload('show');
         if(cntDescript==0) {
+            preload('hide');
             showResult('#popup-error','Ошибка сохранения', 'Поле обязательно для заполнения');
             return;
         }
@@ -27,9 +29,11 @@ $(document).ready(function() {
         function onAjaxSuccess(data) {
             $result = JSON.parse(data);
             if($result['TYPE']=='ERROR'){
+                preload('hide');
                 showResult('#popup-error','Ошибка сохранения', $result['VALUE']);
             }
             if($result['TYPE']=='SUCCESS'){
+                preload('hide');
                 showResult('#popup-success', 'Изменения сохранены');
             }
         }
@@ -38,8 +42,9 @@ $(document).ready(function() {
     $("#save_conditions").on('click', function() {
         var text_descript = $(".cardPact-EditText-Сonditions .editbox").html().trim();
         cntDescript = $(".cardPact-EditText-Сonditions .editbox").text().trim().length;
-
+        preload('show');
         if(cntDescript==0) {
+            preload('hide');
             showResult('#popup-error','Ошибка сохранения', 'Поле обязательно для заполнения');
             return;
         }
@@ -56,9 +61,11 @@ $(document).ready(function() {
         function onAjaxSuccess(data) {
             $result = JSON.parse(data);
             if($result['TYPE']=='ERROR'){
+                preload('hide');
                 showResult('#popup-error','Ошибка сохранения', $result['VALUE']);
             }
             if($result['TYPE']=='SUCCESS'){
+                preload('hide');
                 showResult('#popup-success', 'Изменения сохранены');
             }
         }
@@ -72,6 +79,8 @@ $(document).ready(function() {
         }
 
         var city = $('#select-city').val();
+
+        preload('show');
         $.post(
             "/response/ajax/up_pact_text.php", {
                 text: text_descript,
@@ -84,9 +93,11 @@ $(document).ready(function() {
         function onAjaxSuccess(data) {
             $result = JSON.parse(data);
             if($result['TYPE']=='ERROR'){
+                preload('hide');
                 showResult('#popup-error','Ошибка сохранения', $result['VALUE']);
             }
             if($result['TYPE']=='SUCCESS'){
+                preload('hide');
                 showResult('#popup-success', 'Изменения сохранены');
             }
         }
@@ -126,6 +137,7 @@ $(document).ready(function() {
 
     // Продление срока объявления
     $("#up_date_active").on('click', function(){
+        preload('show');
         $.post(
             "/response/ajax/up_pact_text.php", {                    
                 id_element: ID_Object,
@@ -137,9 +149,11 @@ $(document).ready(function() {
         function onAjaxSuccess(data) {
             $result = JSON.parse(data);
             if($result['TYPE']=='ERROR'){
+                preload('hide');
                 showResult('#popup-error','Ошибка сохранения', $result['VALUE']);
             }
             if($result['TYPE']=='SUCCESS'){
+                preload('hide');
                 $('.date-active').text($result['DATA']);
                 showResult('#popup-success', 'Срок объявления продлен');
             }
@@ -150,7 +164,7 @@ $(document).ready(function() {
     /*all_save*/
     $(document).on('submit', '.all-save_form', function(e){
         e.preventDefault();
-
+        preload('show');
         var DETAIL_TEXT,
             prop = {},
             auto_delete_button = $('#avtomatic_delete').prop("checked");
@@ -193,10 +207,12 @@ $(document).ready(function() {
         var res = getURLData().then(function(data) {
             result = JSON.parse(data);
             if(result['TYPE']=='ERROR'){
+                preload('hide');
                 showResult('#popup-error','Ошибка сохранения');
             }
             else{
-                //showResult('#popup-success', 'Изменения сохранены');
+                preload('hide');
+                showResult('#popup-success', 'Изменения сохранены');
                 location.reload();
             }
         });
@@ -225,6 +241,8 @@ $(document).ready(function() {
             atrr_text: 'delete_incl_file'
         });
 
+        preload('show');
+
         $.post(
             "/response/ajax/up_pact_dopfile.php",
             mainData,
@@ -233,10 +251,12 @@ $(document).ready(function() {
 
         function onAjaxSuccess(data) {
             if(data=='ERROR'){
+                preload('hide');
                 showResult('#popup-error','Ошибка сохранения');
             }
             else{
                 $('.list-dopfile').html(data);
+                preload('hide');
                 showResult('#popup-success', 'Изменения сохранены');
             }
         }
@@ -333,11 +353,14 @@ $(document).ready(function() {
 
     function updateImage(arData){
         // var id_element = $(".cardPact-box").attr("data");
+        preload('show');
         var res = getURLData().then(function(data) {
             if(data=='ERROR'){
+                preload('hide');
                 showResult('#popup-error','Ошибка сохранения');
             }
             else{
+                preload('hide');
                 showResult('#popup-success', 'Изменения сохранены');
                 let slider = $( '#my-slider' ).data( 'sliderPro' );
                 slider.destroy();
@@ -390,8 +413,7 @@ $(document).ready(function() {
     ymaps.ready(init);
     function init() {
         // Подключаем поисковые подсказки к полю ввода.
-        var suggestView = new ymaps.SuggestView('suggest'),
-            map,
+        var map,
             placemark,
             addressLine,
             city = $('#LOCATION_CITY').val(),
@@ -399,6 +421,14 @@ $(document).ready(function() {
 
         if(!city) city = adData['CITY'];
         if(!city) city = 'Москва';
+
+        var suggestView = new ymaps.SuggestView('suggest', {
+            provider:{
+                suggest:(function(request, options){
+                    return ymaps.suggest(document.getElementById('LOCATION_CITY').value +", " + request);
+                })
+            }
+        });
 
         ymaps.geocode(city, {
             results: 1
@@ -451,6 +481,26 @@ $(document).ready(function() {
         $(document).on('click', '#check-button_map', function (e) {
             geocode();
         });
+
+        //при смене города изменяем центрирование карты
+        $(document).on('change', 'select.js-location-city', function(){
+            city = $(this).val();
+            changeCity(city);
+            //стираем значение ранее установленных координат
+            $('#COORDINATES_AD').val('');
+            $('#suggest').val('');
+        });
+
+        function changeCity(city){
+            ymaps.geocode(city, {
+                results: 1
+            }).then(function (res) {
+                var firstGeoObject = res.geoObjects.get(0);
+                var coords = firstGeoObject.geometry.getCoordinates();
+                map.setCenter(coords, 12);
+
+            });
+        }
 
         function geocode() {
             // Забираем запрос из поля ввода.
@@ -516,7 +566,6 @@ $(document).ready(function() {
             //Сохраняем координаты и горд для сохранения в инфоблок
             coordinatesForm = mapState.center;
             cityForm = obj.getLocalities()[0];
-            $('#LOCATION_CITY').val(cityForm);
             $('#COORDINATES_AD').val(coordinatesForm);
 
             // Убираем контролы с карты.
@@ -527,7 +576,6 @@ $(document).ready(function() {
         function showError(message) {
             coordinatesForm = [];
             cityForm = '';
-            $('#LOCATION_CITY').val(cityForm);
             $('#COORDINATES_AD').val(coordinatesForm);
             map.geoObjects.remove(placemark);
             placemark = '';
@@ -609,7 +657,6 @@ $(document).ready(function() {
                 coordinatesForm = coords;
                 cityForm = firstGeoObjectGlobal.getLocalities()[0];
                 $('#suggest').val(addressLine);
-                $('#LOCATION_CITY').val(cityForm);
                 $('#COORDINATES_AD').val(coordinatesForm);
 
             });

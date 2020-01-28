@@ -35,18 +35,19 @@ $(document).ready(function() {
         e.preventDefault();
         let that = $(this);
 
+        preload('show');
         var res = getURLData(that).then(function(data) {
             $result = JSON.parse(data);
 
             if($result['TYPE']=='ERROR'){
+                preload('hide');
                 showResult('#popup-error','Ошибка сохранения');
                 console.log($result['VALUE']);
             }
             if($result['TYPE']=='SUCCES'){
+                preload('hide');
                 showResult('#popup-success','Изменения сохранены');
-                location.reload();
             }
-
         });
 
     });
@@ -109,4 +110,6 @@ $(document).ready(function() {
         BX.calendar({node:this, field:'PERSONAL_BIRTHDAY', form: '', bTime: true, bHideTime: true})
     });
 
+    //маска для елементов формы
+    $('#UF_SNILS').inputmask('999-999-999 99');
 });

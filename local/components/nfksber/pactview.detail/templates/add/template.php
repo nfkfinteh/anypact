@@ -61,24 +61,26 @@
                     </div>
                 </div>
                 <h3>Условия</h3><span>(добавьте описание любых важных для вас Условий совершения сделки, например, необходима ли предоплата и т.п.)</span>
+
+                <div class="editbox-wrap">
+                    <select id="LOCATION_CITY" name="LOCATION_CITY" class="selectbox-select select-bottom js-location-city" placeholder="Выберите город">
+                        <option value="">Выбор города</option>
+                        <? foreach($arResult['LIST_CITY'] as $item):?>
+                            <option value="<?=$item?>" <?if($arParams['LOCATION'] == $item):?>selected<?endif?>>
+                                <?=$item?>
+                            </option>
+                        <? endforeach?>
+                    </select>
+                </div>
+                <h3>Город</h3>
             </div>
 
-            <?/*
-            <h3>Город</h3><span>Выберите город</span>
-            <select id="select-city" class="selectbox-select select-bottom" placeholder="Выбор города">
-                <option value=""><?=$item?>Выбор города</option>
-                <? foreach($arResult['LIST_CITY'] as $item):?>
-                    <option value="<?=$item?>"><?=$item?></option>
-                <? endforeach?>
-            </select>
-            */?>
             <div class="wrap-map_adress">
                 <h3>Местоположение</h3>
                 <div id="header" class="search-map_input">
                     <input type="text" id="suggest" class="input-search_map" placeholder="Введите адрес">
-                    <input type="hidden" id="LOCATION_CITY" name="LOCATION_CITY" value="">
                     <input type="hidden" id="COORDINATES_AD" name="COORDINATES_AD" value="">
-                    <button type="submit" id="check-button_map" class="btn btn-nfk btn-search_map">Проверить</button>
+                    <button type="submit" id="check-button_map" class="btn btn-nfk btn-search_map">Поиск</button>
                 </div>
                 <p id="notice" class="error_form"></p>
                 <div id="map" style="height: 400px"></div>
