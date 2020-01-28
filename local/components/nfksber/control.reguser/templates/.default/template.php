@@ -32,9 +32,9 @@
             <td>
                 <?
                     if($UserRegAction["UF_ESIA_AUT"] == 1){
-                        echo "Верифицирован через ЕСИА";
+                        echo "Верифицирован через ЕСИА ".$UserRegAction["UF_ESIA_AUT"] ;
                     } else {
-                        echo "нет";
+                        echo "нет ".$UserRegAction["UF_ESIA_AUT"] ;
                     }
                 ?>
             </td>
