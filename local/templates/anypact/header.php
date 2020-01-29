@@ -136,6 +136,7 @@ global $USER;
 
                     </div>
                     <div class="col-md-3">
+                    <a href="/my_pacts/edit_my_pact/?ACTION=ADD" style="width: 51px;height: 51px;background: #ff6600;float: left;border-radius: 50%;cursor: pointer;color: #fff;font-size: 36px;padding: 0px 15px;">+</a>
                         <?                                
                             $APPLICATION->IncludeComponent("nfksber:profile.widget",
                             "head",
