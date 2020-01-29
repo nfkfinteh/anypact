@@ -73,15 +73,17 @@
                     </select>
                 </div>
                 <h3>Город</h3>
+                <span>(обязательно укажите населенный пункт)</span>
             </div>
 
-            <div class="wrap-map_adress">
-                <h3>Местоположение</h3>
+            <div class="wrap-map_adress">                
                 <div id="header" class="search-map_input">
                     <input type="text" id="suggest" class="input-search_map" placeholder="Введите адрес">
                     <input type="hidden" id="COORDINATES_AD" name="COORDINATES_AD" value="">
                     <button type="submit" id="check-button_map" class="btn btn-nfk btn-search_map">Поиск</button>
                 </div>
+                <h3>Местоположение</h3>
+                <span>(желательно также указать адрес)</span>
                 <p id="notice" class="error_form"></p>
                 <div id="map" style="height: 400px"></div>
                 <div id="footer">
