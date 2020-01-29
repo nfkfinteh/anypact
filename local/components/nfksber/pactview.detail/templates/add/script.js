@@ -111,6 +111,7 @@ $(document).ready(function() {
             }
             if($result['TYPE']=='SUCCES'){
                 preload('hide');
+                showResult('#popup-success','Объявление создано');
                 window.location.href = "/my_pacts/edit_my_pact/?ELEMENT_ID="+$result['VALUE']+"&ACTION=EDIT";
             }
 
