@@ -5,7 +5,7 @@
         <li style = "padding-left:<?echo $item_category["DEPTH_LEVEL"]*5?>px">
             <a href="/pacts/?SECTION_ID=<?=$item_category["ID"]?>">
                 <?=$item_category["NAME"]?>
-                <?if ($item_category["DEPTH_LEVEL"]==1) echo '<span class="chevron-down"></span>';?>
+                <?if ($item_category["DEPTH_LEVEL"]==1) echo '<span></span>'; //class="chevron-down"?>
             </a>
         </li>
     <?}?>
