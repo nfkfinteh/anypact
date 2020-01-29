@@ -19,7 +19,7 @@
             </td>
             <td>
                 <div class="person-conversation-photo">                                
-                    <?if ($user['PERSONAL_PHOTO'] !=''){?>
+                    <?if ($UserRegAction['PERSONAL_PHOTO'] !=''){?>
                         <? $renderImage = CFile::ResizeImageGet($UserRegAction['PERSONAL_PHOTO'], Array("width" => 261, "height" => 261), BX_RESIZE_IMAGE_EXACT, false); ?>                               
                         <img src="<?=$renderImage['src']?>">
                     <?}else {?>
