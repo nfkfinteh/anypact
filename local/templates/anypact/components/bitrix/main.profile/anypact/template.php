@@ -92,7 +92,7 @@ if (!empty($arResult['arUser']['UF_ESIA_ID']) && $arResult['arUser']['UF_ESIA_AU
                 <div class="col-xl-4 col-md-6 col-sm-12">
                     <div class="form-group left_blok_margin_ub">
                         <label><?=GetMessage("SNILS")?></label>
-                        <input type="text" id='UF_SNILS' name="UF_SNILS" maxlength="50" value="<?=$arResult["arUser"]["UF_SNILS"]?>" >
+                        <input type="text" id='UF_SNILS' class="ignore-validate" name="UF_SNILS" maxlength="50" value="<?=$arResult["arUser"]["UF_SNILS"]?>" >
                     </div>
                     <div class="form-group">
                         <label><?=GetMessage("INN")?></label>
