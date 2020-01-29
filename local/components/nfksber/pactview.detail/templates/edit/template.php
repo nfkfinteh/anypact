@@ -56,7 +56,7 @@
                 </div>
 
                 <div class="editbox-wrap">
-                    <h3>Город</h3><span>(обязательно укажите населенный пункт)</span>
+                    <h3>Город</h3><span style="margin-bottom:20px;">(обязательно укажите населенный пункт)</span>
                     <select id="LOCATION_CITY" name="LOCATION_CITY" class="selectbox-select select-bottom js-location-city" placeholder="Выберите город">
                         <option value="">Выбор города</option>
                         <? foreach($arResult['LIST_CITY'] as $item):?>
@@ -84,7 +84,7 @@
             */?>
 
             <div class="wrap-map_adress">
-                <h3>Местоположение</h3><span>(желательно также указать адрес)</span>
+                <h3>Местоположение</h3><span style="margin-bottom:20px;">(желательно также указать адрес)</span>
                 <div id="header" class="search-map_input">
                     <input type="text" id="suggest" class="input-search_map" placeholder="Введите адрес">
                     <input type="hidden" id="COORDINATES_AD" name="COORDINATES_AD" value="<?=$arResult['PROPERTY']['COORDINATES_AD']['VALUE']?>">
