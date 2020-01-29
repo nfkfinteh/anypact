@@ -32,13 +32,17 @@
             <td>
                 <?
                     if($UserRegAction["UF_ESIA_AUT"] == 1){
-                        echo "Верифицирован через ЕСИА ".$UserRegAction["UF_ESIA_AUT"] ;
+                        echo "Верифицирован через ЕСИА ";
                     } else {
-                        echo "нет ".$UserRegAction["UF_ESIA_AUT"] ;
+                        echo "нет ";
                     }
                 ?>
             </td>
-            <td><button class="btn btn-nfk buttonSebdPay">Выплатить вознаграждение</button></td>
+            <td>
+                <? if($UserRegAction["UF_ESIA_AUT"] == 1){ ?>
+                    <button class="btn btn-nfk buttonSebdPay">Выплатить вознаграждение</button>
+                <? } ?>
+            </td>
         </tr>
         <? $i++; ?>
     <?}?>    

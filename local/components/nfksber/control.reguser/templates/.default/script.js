@@ -21,6 +21,7 @@ async function SendUserPay(ParamsPay){
 
 window.onload = function(){
     console.log('Страница регистрации пользователей');
+    
     let ButtonSendPay = document.getElementsByClassName('buttonSebdPay');
 
     ButtonSendPay.onclick = function(){
