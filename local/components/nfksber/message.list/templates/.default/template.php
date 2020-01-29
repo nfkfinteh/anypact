@@ -7,7 +7,7 @@
             <table class="table">
                 <thead>
                 <tr>
-                    <th class="d-none d-sm-table-cell" scope="col" colspan="2">Отправитель</th>
+                    <th class="d-none d-sm-table-cell" scope="col" colspan="2">Контактное лицо</th>
                     <th class="d-none d-lg-table-cell" scope="col"></th>
                     <th class="d-none d-sm-table-cell text-right" scope="col">Время</th>
                 </tr>

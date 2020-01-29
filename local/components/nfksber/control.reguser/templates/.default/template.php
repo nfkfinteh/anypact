@@ -15,13 +15,13 @@
         foreach ($arResult["USER_REGIST_ACTION"] as $UserRegAction){?>
         <tr>
             <td>
-                <?=$i?> <?=$UserRegAction['PERSONAL_PHOTO']?>
+                <?=$i?>
             </td>
             <td>
                 <div class="person-conversation-photo">                                
                     <?if ($UserRegAction['PERSONAL_PHOTO'] !=''){?>
                         <? $renderImage = CFile::ResizeImageGet($UserRegAction['PERSONAL_PHOTO'], Array("width" => 261, "height" => 261), BX_RESIZE_IMAGE_EXACT, false); ?>                               
-                        <img src="<?=$renderImage['src']?>">
+                        <img src="<?=$renderImage['src']?>" style="width: 100px;border-radius: 50%;">
                     <?}else {?>
                         <span class="user-first-letter" style="padding:13px;font-size: 28px;"><?=substr($user['NAME'], 0, 1);?></span>
                     <?}?>
@@ -46,12 +46,17 @@
                     if($UserRegAction["UF_ESIA_AUT"] == 1){
                         echo "Верифицирован через ЕСИА ";
                     } else {
-                        echo "нет ";
+                        echo "неподтвержденная запись ";
+                    }
+                    if($UserRegAction['PERSONAL_PHOTO'] !=''){
+                        echo "<br> есть фото";
+                    }else {
+                        echo "<br> нет фото";
                     }
                 ?>
             </td>
             <td>
-                <? if($UserRegAction["UF_ESIA_AUT"] == 1){ ?>
+                <? if($UserRegAction["UF_ESIA_AUT"] == 1 && $UserRegAction['PERSONAL_PHOTO'] !=''){ ?>
                     <button class="btn btn-nfk buttonSebdPay">Выплатить вознаграждение</button>
                 <? } ?>
             </td>

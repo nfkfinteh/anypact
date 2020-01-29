@@ -2,22 +2,6 @@
     $arMessage  =  json_decode($arResult['MESSAGES']['UF_TEXT_MESSAGE_USER'], true);
     $UserID = CUser::GetID();
 ?>
-
-    <? 
-        //  echo '<pre>';
-        //  print_r($arMessage); // PERSONAL_PHOTO);
-        //  echo '</pre>';
-        
-        $armes = array(
-            array(
-            'user' => 'userA',
-            'data' => '27.11.2019. 12:06',
-            'message' => 'Игорь, привет, это тестовое письмо. Напиши ответ, если получишь.'
-        ));
-        //echo json_encode($armes);
-        // {"user":1,"data":"27.11.2019. 12:06","massage":"Игорь, привет, это тестовое письмо. Напиши ответ, если получишь."}
-    ?>
-
 <input hidden value="<?=$UserID?>" id="IDUSER" />
     <div>
         <h1 class="mb-4">Мои сообщения</h1>
@@ -57,7 +41,7 @@
                                                 $arFile = CFile::GetFileArray($arResult['UsersChart'][$Message['user']]['PERSONAL_PHOTO']);
                                                 $renderImage = CFile::ResizeImageGet($arFile, Array("width" => 261, "height" => 261), BX_RESIZE_IMAGE_EXACT, false);                                            
                                             ?>
-                                            <img src="<?=$renderImage["src"]?>" alt="">
+                                            <img src="<?=$renderImage["src"]?>" alt=""/>
                                         <?}else {?>
                                             <span class="user-first-letter"><?=$arResult['FastUserParams'][$Message['user']]['InitialName']?></span> 
                                         <? }?>
