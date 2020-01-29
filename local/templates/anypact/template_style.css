@@ -3463,3 +3463,8 @@ h4.subtitle_contract{
 .cardPact-EditText {
     margin-bottom: 60px;
 }
+
+.error-message{
+    color: red;
+    font-weight: normal;
+}

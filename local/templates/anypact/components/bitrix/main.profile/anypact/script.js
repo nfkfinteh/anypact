@@ -34,21 +34,24 @@ $(document).ready(function() {
     $(document).on('submit', '.edit-profile', function(e){
         e.preventDefault();
         let that = $(this);
+        let errorMessage = that.find('.error-message')
 
-        preload('show');
-        var res = getURLData(that).then(function(data) {
-            $result = JSON.parse(data);
+        if(errorMessage.length==0){
+            preload('show');
+            var res = getURLData(that).then(function(data) {
+                $result = JSON.parse(data);
 
-            if($result['TYPE']=='ERROR'){
-                preload('hide');
-                showResult('#popup-error','Ошибка сохранения');
-                console.log($result['VALUE']);
-            }
-            if($result['TYPE']=='SUCCES'){
-                preload('hide');
-                showResult('#popup-success','Изменения сохранены');
-            }
-        });
+                if($result['TYPE']=='ERROR'){
+                    preload('hide');
+                    showResult('#popup-error','Ошибка сохранения');
+                    console.log($result['VALUE']);
+                }
+                if($result['TYPE']=='SUCCES'){
+                    preload('hide');
+                    showResult('#popup-success','Изменения сохранены');
+                }
+            });
+        }
 
     });
 
@@ -111,5 +114,50 @@ $(document).ready(function() {
     });
 
     //маска для елементов формы
-    $('#UF_SNILS').inputmask('999-999-999 99');
+    $('#UF_SNILS').inputmask({ mask:'999-999-999 99'});
+
+    //валидация для полей формы с масками
+    $(document).on('focusout keypress', '#UF_SNILS', function(){
+        //let unformattedDate = Inputmask.unmask($(this).val(), { alias: $(this).inputmask("getmetadata")});
+        if(!$(this).inputmask("isComplete")){
+            if(!$(this).hasClass('validate-error')) {
+                $(this).addClass('validate-error');
+                $(this).before('<label class="error-message">Данные введены не полностью</label>');
+            }
+        }
+        else{
+            $(this).removeClass('validate-error');
+            $(this).prev('.error-message').remove();
+        }
+    });
+
+
+    //валидация для простых полей формы
+    $("#form__personal-data").validate({
+        rules: {
+            UF_INN: {
+                minlength: 12,
+            },
+        },
+        messages: {
+            UF_INN: 'Данные введены не полностью',
+        },
+        ignore: ".ignore-validate, :hidden",
+        onsubmit: false,
+        showErrors: function(errorMap, errorList) {
+            let that = this.lastActive;
+
+            if(errorList.length>0){
+                let messaage = errorList[0].message;
+                if(!$(that).hasClass('validate-error')){
+                    $(that).addClass('validate-error');
+                    $(that).before('<label class="error-message">'+messaage+'</label>');
+                }
+            }
+            else{
+                $(that).removeClass('validate-error');
+                $(that).prev('.error-message').remove();
+            }
+        }
+    });
 });
