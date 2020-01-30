@@ -111,7 +111,11 @@ $(document).ready(function() {
             }
             if($result['TYPE']=='SUCCES'){
                 preload('hide');
-                window.location.href = "/my_pacts/edit_my_pact/?ELEMENT_ID="+$result['VALUE']+"&ACTION=EDIT";
+                showResult('#popup-success','Объявление создано');
+                setTimeout(function(){
+                    window.location.href = "/my_pacts/edit_my_pact/?ELEMENT_ID="+$result['VALUE']+"&ACTION=EDIT";
+                }, 300);
+
             }
 
                 /*let box = document.getElementById('inner')
