@@ -3473,6 +3473,7 @@ h4.subtitle_contract{
 .create-pact-btn{
     display: inline-block;
     position: relative;
+    float: left;
 }
 .create-pact-btn a{
     display: block;
