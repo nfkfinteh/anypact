@@ -11,7 +11,7 @@ if(!empty($_GET['ID_SENDITEM'])){
 }else {
     $URL_REF = $_SERVER['HTTP_REFERER'];
 }
-//echo "<br> пришли с этого адреса ".$URL_REF;
+echo "<br> пришли с этого адреса ".$URL_REF;
 
 //if ($USER->IsAuthorized()){
     session_start();
