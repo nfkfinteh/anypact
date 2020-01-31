@@ -11,6 +11,10 @@ if(!empty($_GET['ID_SENDITEM'])){
 }else {
     $URL_REF = $_SERVER['HTTP_REFERER'];
 }
+
+echo "<pre>";
+print_r($_SERVER);
+echo "<pre>";
 echo "<br> пришли с этого адреса ".$URL_REF;
 
 //if ($USER->IsAuthorized()){
