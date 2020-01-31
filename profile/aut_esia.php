@@ -3,6 +3,7 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("AnyPact");
 // проверяем авторизован ли пользователь
 global $USER;
+echo $USER->GetParam("NAME");
 // урл по которому пригол пользователь
 // если пользователь пришел с редактированя контракта нужно ID записи добавить в GET
 if(!empty($_GET['ID_SENDITEM'])){
