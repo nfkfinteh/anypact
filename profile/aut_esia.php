@@ -7,7 +7,7 @@ echo $USER->GetParam("NAME");
 print_r($_GET);
 $domane = 'http://anypact.nfksber.ru';
 $ReturnURL = base64_decode($_GET['returnurl']);
-$ReturnURL = $ReturnURL.$domane;
+$ReturnURL = $domane.$ReturnURL;
 // если пользователь пришел с редактирования контракта нужно ID записи добавить в GET
 if(!empty($_GET['ID_SENDITEM'])){
     $URL_REF = $ReturnURL.'&ID_SENDITEM='.$_GET['ID_SENDITEM'];    
