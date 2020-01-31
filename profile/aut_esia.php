@@ -1,11 +1,10 @@
 <?
-//require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die();
-$APPLICATION->SetTitle("AnyPact");
+require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 // проверяем авторизован ли пользователь
 global $USER;
 echo $USER->GetParam("NAME");
 // урл по которому пригол пользователь
+
 // если пользователь пришел с редактированя контракта нужно ID записи добавить в GET
 if(!empty($_GET['ID_SENDITEM'])){
     $URL_REF = $_SERVER['HTTP_REFERER'].'&ID_SENDITEM='.$_GET['ID_SENDITEM'];    
@@ -14,7 +13,7 @@ if(!empty($_GET['ID_SENDITEM'])){
 }
 //echo "<br> пришли с этого адреса ".$URL_REF;
 
-if ($USER->IsAuthorized()){
+//if ($USER->IsAuthorized()){
     //session_start();
 
     //require_once $_SERVER['DOCUMENT_ROOT'] . '/esia/EsiaLogger.class.php';
@@ -39,8 +38,8 @@ if ($USER->IsAuthorized()){
     
     $esia = new EsiaOmniAuth($config);
     $esia->create();
-} else {
+//} else {
     echo "редирект на ..";
-}
+//}
 
 ?>
