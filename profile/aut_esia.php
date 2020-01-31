@@ -14,7 +14,7 @@ if(!empty($_GET['ID_SENDITEM'])){
 //echo "<br> пришли с этого адреса ".$URL_REF;
 
 //if ($USER->IsAuthorized()){
-    //session_start();
+    session_start();
 
     //require_once $_SERVER['DOCUMENT_ROOT'] . '/esia/EsiaLogger.class.php';
     //EsiaLogger::DumpEnviroment( 'open_gu' );
