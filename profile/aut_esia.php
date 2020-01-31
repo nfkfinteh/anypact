@@ -18,7 +18,7 @@ echo "<br> пришли с этого адреса ".$URL_REF;
 
     //require_once $_SERVER['DOCUMENT_ROOT'] . '/esia/EsiaLogger.class.php';
     //EsiaLogger::DumpEnviroment( 'open_gu' );
-
+    /*
     $_SESSION['id_esia']="";
     unset($_SESSION['id_esia']);
 
@@ -37,9 +37,9 @@ echo "<br> пришли с этого адреса ".$URL_REF;
     );
     
     $esia = new EsiaOmniAuth($config);
-    $esia->create();
+    $esia->create(); 
 //} else {
     echo "редирект на ..";
 //}
-
+*/
 ?>
