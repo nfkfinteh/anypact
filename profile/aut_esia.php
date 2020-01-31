@@ -17,7 +17,7 @@ if(!empty($_GET['ID_SENDITEM'])){
 echo "<br> пришли с этого адреса ".$URL_REF;
 //$URL_REF = 'https://anypact.ru/my_pacts/';
 
-//if ($USER->IsAuthorized()){
+if ($USER->IsAuthorized()){
     //session_start();
 
     //require_once $_SERVER['DOCUMENT_ROOT'] . '/esia/EsiaLogger.class.php';
@@ -42,7 +42,7 @@ echo "<br> пришли с этого адреса ".$URL_REF;
     
     $esia = new EsiaOmniAuth($config);
     $esia->create(); 
-//} else {
-    echo "редирект на ..";
-//}
+} else {
+    echo "Извините вы не авторизованы.";
+}
 ?>
