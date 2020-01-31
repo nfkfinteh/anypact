@@ -3,18 +3,16 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 // проверяем авторизован ли пользователь
 global $USER;
 echo $USER->GetParam("NAME");
-// урл по которому пригол пользователь
+// урл по которому пришел пользователь, получаем через get  и дешифруем
+$ReturnURL = base64_decode($_GET['returnurl']);
 
-// если пользователь пришел с редактированя контракта нужно ID записи добавить в GET
+// если пользователь пришел с редактирования контракта нужно ID записи добавить в GET
 if(!empty($_GET['ID_SENDITEM'])){
-    $URL_REF = $_SERVER['HTTP_REFERER'].'&ID_SENDITEM='.$_GET['ID_SENDITEM'];    
+    $URL_REF = $ReturnURL.'&ID_SENDITEM='.$_GET['ID_SENDITEM'];    
 }else {
-    $URL_REF = $_SERVER['HTTP_REFERER'];
+    $URL_REF = $ReturnURL;
 }
 
-echo "<pre>";
-print_r($_SERVER);
-echo "<pre>";
 echo "<br> пришли с этого адреса ".$URL_REF;
 //$URL_REF = 'https://anypact.ru/my_pacts/';
 
