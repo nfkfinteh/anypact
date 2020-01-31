@@ -1,7 +1,6 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 // проверяем авторизован ли пользователь
-global $USER;
 echo $USER->GetParam("NAME");
 // урл по которому пришел пользователь, получаем через get  и дешифруем
 print_r($_GET);
@@ -19,7 +18,7 @@ echo "<br> пришли с этого адреса ".$URL_REF;
 //$URL_REF = 'https://anypact.ru/my_pacts/';
 
 //if ($USER->IsAuthorized()){
-    session_start();
+    /*session_start();
 
     //require_once $_SERVER['DOCUMENT_ROOT'] . '/esia/EsiaLogger.class.php';
     //EsiaLogger::DumpEnviroment( 'open_gu' );
@@ -46,5 +45,5 @@ echo "<br> пришли с этого адреса ".$URL_REF;
 //} else {
     echo "редирект на ..";
 //}
-
+*/
 ?>
