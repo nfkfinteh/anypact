@@ -5,8 +5,9 @@ global $USER;
 echo $USER->GetParam("NAME");
 // урл по которому пришел пользователь, получаем через get  и дешифруем
 print_r($_GET);
+$domane = 'http://anypact.nfksber.ru';
 $ReturnURL = base64_decode($_GET['returnurl']);
-
+$ReturnURL = $ReturnURL.$domane;
 // если пользователь пришел с редактирования контракта нужно ID записи добавить в GET
 if(!empty($_GET['ID_SENDITEM'])){
     $URL_REF = $ReturnURL.'&ID_SENDITEM='.$_GET['ID_SENDITEM'];    
@@ -22,7 +23,7 @@ echo "<br> пришли с этого адреса ".$URL_REF;
 
     //require_once $_SERVER['DOCUMENT_ROOT'] . '/esia/EsiaLogger.class.php';
     //EsiaLogger::DumpEnviroment( 'open_gu' );
-   /* 
+   
     $_SESSION['id_esia']="";
     unset($_SESSION['id_esia']);
 
@@ -45,6 +46,5 @@ echo "<br> пришли с этого адреса ".$URL_REF;
 //} else {
     echo "редирект на ..";
 //}
-*/
 
 ?>
