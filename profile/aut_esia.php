@@ -1,5 +1,6 @@
 <?
-require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
+//require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
+if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die();
 $APPLICATION->SetTitle("AnyPact");
 // проверяем авторизован ли пользователь
 global $USER;
