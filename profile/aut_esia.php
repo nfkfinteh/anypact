@@ -16,7 +16,7 @@ echo "<pre>";
 print_r($_SERVER);
 echo "<pre>";
 echo "<br> пришли с этого адреса ".$URL_REF;
-$URL_REF = '/my_pacts/';
+$URL_REF = 'https://anypact.ru/my_pacts/';
 
 //if ($USER->IsAuthorized()){
     session_start();
