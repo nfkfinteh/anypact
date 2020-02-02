@@ -62,7 +62,10 @@ switch ($arResult['SEND_CONTRACT']) {
                                     <p>Успешная авторизация на сайте Госуслуг будет означать выражение Вашей воли на подписание Документов и совершение указанной в них сделки (сделок) в понимании ст. 160 ГК РФ.</p>
                                 </span>
                             </label>
-                            <a href="http://anypact.nfksber.ru/profile/aut_esia.php" class="btn btn-nfk" id="ref_esia" style="width:45%;margin-right: 30px;">Подписать</a>
+                            <? //путь для возврата на эту страницу 
+                                $returnURL = base64_encode($_SERVER['REQUEST_URI']);
+                            ?>
+                            <a href="http://anypact.nfksber.ru/profile/aut_esia.php?returnurl=<?=$returnURL?>" class="btn btn-nfk" id="ref_esia" style="width:45%;margin-right: 30px;">Подписать</a>
                             <button class="btn btn-nfk" id="recall_sign" data="<?=$_GET['ID']?>" data-user="1" style="width:45%">Отклонить</button>
                         </div>                        
                         </div>

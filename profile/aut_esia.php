@@ -1,23 +1,28 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$APPLICATION->SetTitle("AnyPact");
 // проверяем авторизован ли пользователь
-global $USER;
-// урл по которому пригол пользователь
-// если пользователь пришел с редактированя контракта нужно ID записи добавить в GET
+echo $USER->GetParam("NAME");
+// урл по которому пришел пользователь, получаем через get  и дешифруем
+print_r($_GET);
+$domane = 'http://anypact.nfksber.ru';
+$ReturnURL = base64_decode($_GET['returnurl']);
+$ReturnURL = $domane.$ReturnURL;
+// если пользователь пришел с редактирования контракта нужно ID записи добавить в GET
 if(!empty($_GET['ID_SENDITEM'])){
-    $URL_REF = $_SERVER['HTTP_REFERER'].'&ID_SENDITEM='.$_GET['ID_SENDITEM'];    
+    $URL_REF = $ReturnURL.'&ID_SENDITEM='.$_GET['ID_SENDITEM'];    
 }else {
-    $URL_REF = $_SERVER['HTTP_REFERER'];
+    $URL_REF = $ReturnURL;
 }
-//echo "<br> пришли с этого адреса ".$URL_REF;
+
+echo "<br> пришли с этого адреса ".$URL_REF;
+//$URL_REF = 'https://anypact.ru/my_pacts/';
 
 if ($USER->IsAuthorized()){
-    session_start();
+    //session_start();
 
     //require_once $_SERVER['DOCUMENT_ROOT'] . '/esia/EsiaLogger.class.php';
     //EsiaLogger::DumpEnviroment( 'open_gu' );
-
+   
     $_SESSION['id_esia']="";
     unset($_SESSION['id_esia']);
 
@@ -36,9 +41,8 @@ if ($USER->IsAuthorized()){
     );
     
     $esia = new EsiaOmniAuth($config);
-    $esia->create();
+    $esia->create(); 
 } else {
-    echo "редирект на ..";
+    echo "Извините вы не авторизованы.";
 }
-
 ?>

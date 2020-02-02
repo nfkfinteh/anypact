@@ -3468,3 +3468,62 @@ h4.subtitle_contract{
     color: red;
     font-weight: normal;
 }
+
+/*Кнопка создать новое предложение */
+.create-pact-btn{
+    display: inline-block;
+    position: relative;
+    float: left;
+}
+.create-pact-btn a{
+    display: block;
+    position: relative;
+    width: 51px;
+    height: 51px;
+    background-color: #FF6600;
+    color: #FFFFFF;
+    border-radius: 50%;
+}
+.create-pact-btn a::before, .create-pact-btn a::after{
+    content: "";
+    width: 2px;
+    height: 18px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-1px, -9px);
+    background-color: #FFFFFF;
+}
+.create-pact-btn a::after{
+    width: 18px;
+    height: 2px;
+    transform: translate(-9px, -1px);
+}
+.create-pact-btn div{
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 63px;
+    background-color: #FF6600;
+    color: #FFFFFF;
+    font-size: 13px;
+    white-space: nowrap;
+    padding: 7px 12px;
+    border-radius: 4px;
+    z-index: 999;
+}
+.create-pact-btn div::before{
+    content: "";
+    display: block;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    right: 16px;
+    top: -3px;
+    background-color: #FF6600;
+    transform: rotate(45deg);
+    z-index: -1;
+}
+.create-pact-btn:hover div{
+    display: block;
+}
