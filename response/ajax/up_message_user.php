@@ -52,11 +52,19 @@ print_r($arrMessages);
  
 $jsonArrMessages = json_encode($arrMessages);
 
-// обновление 
+#id пользователя получающий сообщение
+if($IDUser == $arData['UF_ID_USER']){
+    $idRecipient = $arData['UF_ID_SENDER'];
+}
+else{
+    $idRecipient = $arData['UF_ID_USER'];
+}
 
+// обновление
 $data = array(    
     "UF_TEXT_MESSAGE_USER"=> $jsonArrMessages,
     "UF_STATUS"=>0,
+    "UF_ID_RECIPIENT"=>$idRecipient
 );
 
 $result = $entity_data_class::update($IDMessage, $data);

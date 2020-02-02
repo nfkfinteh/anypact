@@ -141,7 +141,7 @@ global $USER;
                             $APPLICATION->IncludeComponent("nfksber:profile.widget",
                             "head",
                             Array(
-                                
+                                    'IS_PAGE_MESSAGE' => $APPLICATION->GetCurPage() == '/list_message/view_message/' ? 'Y' : 'N'
                                 )
                             );
                         ?>
@@ -185,7 +185,7 @@ global $USER;
                 $APPLICATION->IncludeComponent("nfksber:profile.widget",
                     "head",
                     Array(
-
+                        'IS_PAGE_MESSAGE' => $APPLICATION->GetCurPage() == '/list_message/view_message/' ? 'Y' : 'N'
                     )
                 );}
                 ?>
