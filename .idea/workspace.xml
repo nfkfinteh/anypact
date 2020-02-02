@@ -16,16 +16,23 @@
       <file leaf-file-name="template.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/local/components/nfksber/userpacts.list/templates/.default/template.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2456">
-              <caret line="70" column="98" lean-forward="false" selection-start-line="70" selection-start-column="98" selection-end-line="70" selection-end-column="98" />
+            <state relative-caret-position="354">
+              <caret line="225" column="10" lean-forward="true" selection-start-line="225" selection-start-column="10" selection-end-line="225" selection-end-column="10" />
               <folding>
-                <element signature="n#div#1;n#!!top" expanded="false" />
+                <element signature="e#7137#9721#0#PHP" expanded="false" />
+                <element signature="n#div#17;n#!!top" expanded="false" />
+                <element signature="n#script#0;n#!!top" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>изменен</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -203,12 +210,12 @@
       <workItem from="1575038193181" duration="3263000" />
       <workItem from="1575095514905" duration="17276000" />
       <workItem from="1576358781869" duration="446000" />
-      <workItem from="1580671524832" duration="2293000" />
+      <workItem from="1580671524832" duration="3336000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2745000" />
+    <option name="totallyTimeSpent" value="3788000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
@@ -338,10 +345,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/local/components/nfksber/userpacts.list/templates/.default/template.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2456">
-          <caret line="70" column="98" lean-forward="false" selection-start-line="70" selection-start-column="98" selection-end-line="70" selection-end-column="98" />
+        <state relative-caret-position="354">
+          <caret line="225" column="10" lean-forward="true" selection-start-line="225" selection-start-column="10" selection-end-line="225" selection-end-column="10" />
           <folding>
-            <element signature="n#div#1;n#!!top" expanded="false" />
+            <element signature="e#7137#9721#0#PHP" expanded="false" />
+            <element signature="n#div#17;n#!!top" expanded="false" />
+            <element signature="n#script#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
