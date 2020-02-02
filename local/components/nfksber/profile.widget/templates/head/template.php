@@ -3,22 +3,34 @@
         <div class="login-information-container">
             <?if(!empty($arResult['ACTIVE_COMPANY'])):?>
                 <? if(empty($arResult['ACTIVE_COMPANY']['PREVIEW_PICTURE'])):?>
-                    <div class="widget_user_profile_avatar">
+                    <div class="widget_user_profile_avatar container_prof">
                         <span><?=$arResult['ACTIVE_COMPANY']['NAME'][0]?></span>
+                        <?if($arResult['UNREAD_MESSAGE']>0):?>
+                            <div class="count_unread"><?=$arResult['UNREAD_MESSAGE']?></div>
+                        <?endif?>
                     </div>
                 <?else:?>
-                    <div class="login-information-photo">
+                    <div class="login-information-photo container_prof">
                         <img src="<?=CFile::GetPath($arResult['ACTIVE_COMPANY']['PREVIEW_PICTURE'])?>">
+                        <?if($arResult['UNREAD_MESSAGE']>0):?>
+                            <div class="count_unread"><?=$arResult['UNREAD_MESSAGE']?></div>
+                        <?endif?>
                     </div>
                 <?endif?>
             <?else:?>
                 <? if(empty($arResult["PERSONAL_PHOTO"])):?>
-                    <div class="widget_user_profile_avatar">
+                    <div class="widget_user_profile_avatar container_prof">
                         <span><?=$arResult["IN_NAME"]?></span>
+                        <?if($arResult['UNREAD_MESSAGE']>0):?>
+                            <div class="count_unread"><?=$arResult['UNREAD_MESSAGE']?></div>
+                        <?endif?>
                     </div>
                 <?else:?>
-                    <div class="login-information-photo">
+                    <div class="login-information-photo container_prof">
                         <img src="<?=$arResult["PERSONAL_PHOTO"]?>">
+                        <?if($arResult['UNREAD_MESSAGE']>0):?>
+                            <div class="count_unread"><?=$arResult['UNREAD_MESSAGE']?></div>
+                        <?endif?>
                     </div>
                 <?endif?>
             <?endif?>

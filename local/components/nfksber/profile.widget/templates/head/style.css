@@ -7,7 +7,6 @@
     float: left;
     background: #e8e8e8;
     border-radius: 50%;
-    overflow: hidden;
     position: relative;
 }
 
@@ -118,6 +117,21 @@
 }
 .login-information .login-information-text a, .login-information .login-information-text span{
     display: block;
+}
+.container_prof{
+    position: relative;
+    cursor: default;
+}
+.count_unread{
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #ff6600;
+    color: #fff;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    text-align: center;
 }
 @media screen and (max-width: 767px) {
     .login-information .login-information-photo {
