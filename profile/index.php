@@ -41,8 +41,10 @@ if ($USER->IsAuthorized()){
         );
         //echo "<pre>";
         //print_r($info);
-        //echo "</pre>";
+        //echo "</pre>";        
         $USER->Update($USER->GetID(), $fields);
+        $arGroups[] = 6; // ID группы которые авторизовались через ЕСИА
+        CUser::SetUserGroup($USER->GetID(), $arGroups);
         header("Refresh: 0");
     }
 

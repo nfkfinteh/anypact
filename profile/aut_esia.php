@@ -3,7 +3,7 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 // проверяем авторизован ли пользователь
 echo $USER->GetParam("NAME");
 // урл по которому пришел пользователь, получаем через get  и дешифруем
-print_r($_GET);
+//print_r($_GET);
 $domane = 'http://anypact.nfksber.ru';
 $ReturnURL = base64_decode($_GET['returnurl']);
 $ReturnURL = $domane.$ReturnURL;
