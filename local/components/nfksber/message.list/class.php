@@ -64,6 +64,7 @@ class CDemoSqr extends CBitrixComponent
         $arMesage_User = array();
         $i = 0 ;
         while($arData = $rsData->Fetch()){
+            $arData['UF_TEXT_MESSAGE_USER'] = json_decode($arData['UF_TEXT_MESSAGE_USER']);
             $arMesage_User[$i]  = $arData;
             if($arData["UF_ID_SENDER"] != $UserID){
                 $idUserTitle = $arData["UF_ID_SENDER"];
@@ -71,6 +72,13 @@ class CDemoSqr extends CBitrixComponent
             elseif($arData["UF_ID_USER"] != $UserID){
                 $idUserTitle = $arData["UF_ID_USER"];
             }
+
+            //отображение для не прочитанных сообщений
+            $arMesage_User[$i]['LAST_MESSAGE'] = end($arMesage_User[$i]['UF_TEXT_MESSAGE_USER'])->message;
+            if($UserID==$arMesage_User[$i]['UF_ID_RECIPIENT']){
+                $arMesage_User[$i]['UNREAD'] = 'Y';
+            }
+
             $rsUser = CUser::GetByID($idUserTitle);
             $arUser = $rsUser->Fetch();
             $arMesage_User[$i]["PARAMS_SENDER_USER"]["FIO"]  = $arUser['LAST_NAME'] .' '. $arUser['NAME'] .' '. $arUser['SECOND_NAME'];
