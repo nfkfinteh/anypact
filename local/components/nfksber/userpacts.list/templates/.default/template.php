@@ -15,6 +15,8 @@ $arrStatusAwait = array(
 ?>
 <div class="d-flex flex-wrap align-items-center position-relative">
     <h5>Мои предложения</h5>
+    <button class="info-btn">?</button>
+    <div class="info-content">В данном разделе содержатся Ваши предложения о заключении сделок.</div>
     <a href="/my_pacts/edit_my_pact/?ACTION=ADD" class="btn btn-nfk btn-add-contract ml-auto">+ создать новое предложение</a>
 </div>
     <? $count_pacts = count($arResult["INFOBLOCK_LIST"]["ARR_SDELKI"]);
