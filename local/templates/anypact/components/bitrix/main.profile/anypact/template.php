@@ -80,7 +80,10 @@ if (!empty($arResult['arUser']['UF_ESIA_ID']) && $arResult['arUser']['UF_ESIA_AU
                                     <img src="<?=SITE_TEMPLATE_PATH?>/img/gos_usl.png" />
                                     <p>Данные подтверждены с помощью учетной записи портала госуслуг</p>
                                 <?}else {?>
-                                    <a href="/profile/aut_esia.php">
+                                        <? // закодируем ссылку на возврат из ЕСИА
+                                            $encodeURL = base64_encode('/profile/');
+                                        ?>
+                                        <a href="/profile/aut_esia.php?returnurl=<?=$encodeURL?>">
                                         <img src="<?=SITE_TEMPLATE_PATH?>/img/gos_usl.png" />
                                         <p>Подтверждение данных с помощью учетной записи портала госуслуг</p>
                                     </a>

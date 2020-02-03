@@ -6,6 +6,8 @@ $url_img = CFile::GetPath($arResult['arUser']['PERSONAL_PHOTO']);
 $arResult['arUser']['IMG_URL'] = $url_img;
 //print_r($arParams['ESIA_RESPONSE']);
 //если в профиль пользователь заходит с ЕСИА, то нужно заполнить данными некоторые поля с ЕСИА
+// сделаано в индексе
+/*
 if(!empty($arParams['ESIA_RESPONSE']['user_docs']['elements'][0]['type'])){
     $arResult["arUser"]["UF_SPASSPORT"]     =  $arParams['ESIA_RESPONSE']['user_docs']['elements'][0]['series'];
     $arResult["arUser"]["UF_NPASSPORT"]     =  $arParams['ESIA_RESPONSE']['user_docs']['elements'][0]['number'];
@@ -15,7 +17,7 @@ if(!empty($arParams['ESIA_RESPONSE']['user_docs']['elements'][0]['type'])){
     $arResult["arUser"]["NAME"]             =  $arParams['ESIA_RESPONSE']['user_info']['firstName'];
     $arResult["arUser"]["SECOND_NAME"]      =  $arParams['ESIA_RESPONSE']['user_info']['middleName'];
 
-}
+} */
 //проверка наличия компании
 $res = CIBlockElement::GetList(
     ["SORT"=>"ASC"],
