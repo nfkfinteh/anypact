@@ -8,8 +8,9 @@
                 <thead>
                 <tr>
                     <th class="d-none d-sm-table-cell" scope="col" colspan="2">Контактное лицо</th>
-                    <th class="d-none d-lg-table-cell" scope="col"></th>
-                    <th class="d-none d-sm-table-cell text-right" scope="col">Время</th>
+                    <th class="d-none d-lg-table-cell" scope="col">Сообщения от пользователя</th>
+                    <th class="d-none d-sm-table-cell" scope="col">Время</th>
+                    <th class="d-none d-sm-table-cell" scope="col"></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -28,8 +29,10 @@
                         <td><?=$message["PARAMS_SENDER_USER"]["FIO"]?><br>
                             <span class="text-gray d-lg-none"><a href="/list_message/view_message/?id=<?= $message["ID"] ?>" target="_blank"><?= $message["UF_TITLE_MESSAGE"] ?></a></span>
                         </td>
-                        <td class="text-gray d-none d-lg-table-cell"><?= $message["UF_TITLE_MESSAGE"] ?></td>
-                        <td class="text-right">
+                        <td class="d-none d-lg-table-cell <?if($message['UNREAD']=='Y'):?>unread-message<?else:?>text-gray<?endif?>">
+                            <?= $message["LAST_MESSAGE"] ?>
+                        </td>
+                        <td>
                             <?= $message["UF_TIME_CREATE_MSG"]->toString() ?>
                         </td>
                         <td class="text-gray d-none d-lg-table-cell"><a href="/list_message/view_message/?id=<?= $message["ID"] ?>" target="_blank">Посмотреть</a></td>

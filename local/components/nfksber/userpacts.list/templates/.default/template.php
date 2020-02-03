@@ -10,11 +10,13 @@ $arrStatus = array(
 );
 // статусы договоров ожидающих подписи контрагентов
 $arrStatusAwait = array(
-    '', 'Ожидает подписи контрагентом', '', 'Изменен и ожидает подписи контрагентом'
+    '', 'Ожидает подписи контрагентом', '', 'Изменен Вами и ожидает подписи контрагентом'
 );
 ?>
 <div class="d-flex flex-wrap align-items-center position-relative">
     <h5>Мои предложения</h5>
+    <button class="info-btn">?</button>
+    <div class="info-content">В данном разделе содержатся Ваши предложения о заключении сделок.</div>
     <a href="/my_pacts/edit_my_pact/?ACTION=ADD" class="btn btn-nfk btn-add-contract ml-auto">+ создать новое предложение</a>
 </div>
     <? $count_pacts = count($arResult["INFOBLOCK_LIST"]["ARR_SDELKI"]);
@@ -67,6 +69,8 @@ $arrStatusAwait = array(
         <!------------------------>
     <?else:?>
         <h3>У Вас нет предложений</h3>
+        <button class="info-btn">?</button>
+        <div class="info-content">В данном разделе содержатся Ваши предложения о заключении сделок.</div>
     <?endif?>
 <div style="width: 100%; height: 100px;">
 </div>
@@ -82,7 +86,7 @@ $arrStatusAwait = array(
     <div class="d-none d-md-table-row t-head">
         <div class="d-md-table-cell">Контрагент</div>
         <div class="d-md-table-cell">Наименование</div>
-        <div class="d-md-table-cell">Дата подписания</div>
+        <div class="d-md-table-cell">Дата и время подписания</div>
         <!-- <div class="d-md-table-cell">Статус</div>             -->
         <div class="d-md-table-cell"></div>
     </div>
@@ -105,7 +109,7 @@ $arrStatusAwait = array(
                 </a>
             </div>
             <div class="d-md-table-cell d-none"><?if(!empty($red['NAME_CONTRACT'])) echo $red['NAME_CONTRACT']['NAME']; ?></div>
-            <div class="d-md-none text-gray">Дата подписания</div>
+            <div class="d-md-none text-gray">Дата и время подписания</div>
             <div class="d-md-table-cell"><?=$red['UF_TIME_SEND_USER_B']?></div>
             <!-- <div class="d-md-none text-gray">Статус</div> -->
             <!-- <div class="d-md-table-cell"><?=$arrStatus[$red['UF_STATUS']]?></div>                 -->
@@ -184,7 +188,7 @@ $arrStatusAwait = array(
         <div class="d-none d-md-table-row t-head">
             <div class="d-md-table-cell">Контрагент</div>
             <div class="d-md-table-cell">Наименование</div>
-            <div class="d-md-table-cell">Дата подписания</div>
+            <div class="d-md-table-cell">Дата и время подписания</div>
             <div class="d-md-table-cell">Статус</div>
             <div class="d-md-table-cell"></div>
             <div class="d-md-table-cell"></div>
@@ -208,7 +212,7 @@ $arrStatusAwait = array(
                     </a>
                 </div>
                 <div class="d-md-table-cell d-none" style="width: 24%;"><?if(!empty($red['NAME_CONTRACT'])) echo $red['NAME_CONTRACT']['NAME']; ?></div>
-                <div class="d-md-none text-gray">Дата подписания</div>
+                <div class="d-md-none text-gray">Дата и время подписания</div>
                 <div class="d-md-table-cell"><?=$red['UF_TIME_SEND_USER_B']?></div>
                 <div class="d-md-none text-gray">Статус</div>
                 <div class="d-md-table-cell" style="width: 18%;"><?=$arrStatusAwait[$red['UF_STATUS']]?></div>

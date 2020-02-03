@@ -69,7 +69,8 @@ $data = array(
     "UF_TEXT_MESSAGE_USER"  => $JsonMess,
     "UF_STATUS"             => 1,
     "UF_TIME_CREATE_MSG"    => ConvertTimeStamp(time(), "FULL"),
-    "UF_TITLE_MESSAGE"      => $title    
+    "UF_TITLE_MESSAGE"      => $title,
+    "UF_ID_RECIPIENT"       => $idUser
 );
 $result = $entity_data_class::add($data);
 echo json_encode([ 'VALUE'=>'', 'TYPE'=> 'SUCCESS']);
