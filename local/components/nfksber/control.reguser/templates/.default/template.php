@@ -1,3 +1,6 @@
+<pre>
+<? print_r($arResult)?>
+</pre>
 <table class="table">
   <thead>
     <tr>
@@ -57,7 +60,7 @@
             </td>
             <td>
                 <? if($UserRegAction["UF_ESIA_AUT"] == 1 && $UserRegAction['PERSONAL_PHOTO'] !=''){ ?>
-                    <button class="btn btn-nfk buttonSebdPay">Выплатить вознаграждение</button>
+                    <button class="btn btn-nfk buttonSebdPay" data=<>>Выплатить вознаграждение</button>
                 <? } ?>
             </td>
         </tr>
