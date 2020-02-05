@@ -14,8 +14,23 @@ async function responseRoute(arrParams){
     return data
 }
 
-$(document).ready(function() {   
+function upListMessage(){
+    $.ajax({
+        type: 'POST',
+        url: document.location.href,
+        data: {
+            'ACTION': 'up_message'
+        },
+        success: function (data) {
+            $('.message-list').html(data);
+        },
+        error: function (data) {
+            console.log(data); //ошибки сервера
+        }
+    });
+}
 
+$(document).ready(function() {
     let url     = new URL(window.location.href)
     let searchParams = new URLSearchParams(url.search.substring(1))        
     let id      = searchParams.get("id")    
@@ -33,8 +48,9 @@ $(document).ready(function() {
         if(Params.message.length>0){
             preload('show');
             var res = responseRoute(arrParams).then(function(data) {
+                upListMessage();
+                $('#textMessage').val('');
                 preload('hide');
-                location.reload()
             });
         }
     }
@@ -63,5 +79,8 @@ $(document).ready(function() {
         }
     });
 
-
+    //обновление списка сообщений каждые 5 сек
+    setInterval(function() {
+        upListMessage();
+    },1000*5);
 });

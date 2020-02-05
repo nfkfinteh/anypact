@@ -48,7 +48,6 @@ $arrMessage = array(
 );
 
 $arrMessages[] = $arrMessage;
-print_r($arrMessages);
  
 $jsonArrMessages = json_encode($arrMessages);
 

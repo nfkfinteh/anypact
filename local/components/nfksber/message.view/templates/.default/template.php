@@ -30,6 +30,7 @@
             <div class="col-md-8 col-sm-12">
                 <h3 class="font-weight-bold"><?=$arResult['MESSAGES']['UF_TITLE_MESSAGE']?></h3>
                 <div class="message-list">
+                    <?if ($_REQUEST["ACTION"] == 'up_message') $GLOBALS["APPLICATION"]->RestartBuffer();?>
                     <? foreach($arMessage as $Message){?>
                         <? // сообщения текущего пользователя ?>
                         <?if($Message['user'] == $UserID){?>
@@ -89,6 +90,7 @@
                         <?}?>
                     
                     <?}?>
+                    <?if ($_REQUEST["ACTION"] == 'up_message') die();?>
                     <!------>
                 </div>
                 <div class="message-chat-input">
