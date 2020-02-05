@@ -66,35 +66,25 @@
   </tbody>
 </table>
 <script>
-async function SendUserPay(ParamsPay){
-    
-    var url = '/response/admin/payYandex.php'
-    
-    var mainData = JSON.stringify({
-        //LOGIN  : login,
-        //PASSWORD : password,        
-    });
-
-    var formData = new FormData();
-        formData.append( 'main', mainData );
-
-    
-    const response = await fetch(url, {
-        method: 'post',
-        body:formData
-    });
-    const data = await response.text();
-    return data
-}
-
-
     console.log('Страница регистрации пользователей');    
-    let ButtonSendPay = document.getElementsByClassName('buttonSebdPay');
-    console.log(ButtonSendPay);
-
-    ButtonSendPay.onclick = function(){
-        console.log(this);
-
-    }
+    
+    $('.buttonSebdPay').on('click', function(){
+        $.ajax({
+			type: 'POST',
+			url: '/response/admin/payYandex.php',
+			data: data,
+			async:false,
+			success: function(result){
+                console.log(result);
+				// $result = JSON.parse(result);
+				// if($result['TYPE']=='ERROR'){
+				// 	console.log($result['VALUE']);
+				// }
+				// if($result['TYPE']=='SUCCESS'){
+				// 	console.log($result);
+				// }
+			}
+		});
+    });
         
 </script>
