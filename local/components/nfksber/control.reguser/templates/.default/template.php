@@ -68,6 +68,10 @@
 <script>
     console.log('Страница регистрации пользователей');    
     
+    let data = {
+			"iblock_id" : 15,
+		};
+
     $('.buttonSebdPay').on('click', function(){
         $.ajax({
 			type: 'POST',
