@@ -123,6 +123,7 @@
     cursor: default;
 }
 .count_unread{
+    display: none;
     position: absolute;
     top: 0;
     right: 0;
@@ -132,6 +133,9 @@
     width: 22px;
     height: 22px;
     text-align: center;
+}
+.count_unread.active{
+    display: block;
 }
 @media screen and (max-width: 767px) {
     .login-information .login-information-photo {
