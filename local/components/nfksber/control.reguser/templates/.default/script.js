@@ -1,3 +1,4 @@
+/*
 async function SendUserPay(ParamsPay){
     
     var url = '/response/ajax/autorisation_user.php'
@@ -29,3 +30,8 @@ window.onload = function(){
     }
         
 };
+*/
+
+window.onload = function() {
+    console.log('window - onload'); // 4th
+  };
