@@ -5,6 +5,12 @@ $(document).ready(function(){
         $.post(
             "/response/ajax/get_unread_message.php", {},
             function(data){
+                if(data>0){
+                    count_unread.addClass('active');
+                }
+                else{
+                    count_unread.removeClass('active');
+                }
                 count_unread.text(data);
             }
         );
