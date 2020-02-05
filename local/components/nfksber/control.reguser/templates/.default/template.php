@@ -87,15 +87,14 @@ async function SendUserPay(ParamsPay){
     return data
 }
 
-window.onload = function(){
-    console.log('Страница регистрации пользователей');
-    
+
+    console.log('Страница регистрации пользователей');    
     let ButtonSendPay = document.getElementsByClassName('buttonSebdPay');
+    console.log(ButtonSendPay);
 
     ButtonSendPay.onclick = function(){
-        console.log(ButtonSendPay);
-        
+        console.log(this);
+
     }
         
-};
 </script>
