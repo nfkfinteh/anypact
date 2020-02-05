@@ -17,7 +17,9 @@
 <script type="text/javascript" src="<?=SITE_TEMPLATE_PATH?>/slider/range_prices.js"></script>
 <script type="text/javascript" src="<?=SITE_TEMPLATE_PATH?>/js/js.js"></script>
 <script src="<?=SITE_TEMPLATE_PATH.'/js/popup_script.js?1531732896309912'?>" ></script>
+<?if($USER->IsAuthorized()):?>
 <script src="<?=SITE_TEMPLATE_PATH.'/js/update_unread.js'?>" ></script>
+<?endif?>
 
 </body>
 </html>
