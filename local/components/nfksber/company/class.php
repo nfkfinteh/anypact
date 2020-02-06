@@ -119,7 +119,7 @@ class CompanySber extends CBitrixComponent
                 if(!$_REQUEST['ID_EXIST']) {
                     #добавление компании
                     $arEl = array(
-                        "ACTIVE" => "Y",
+                        "ACTIVE" => "N",
                         "IBLOCK_ID" => intval($this->arParams['IBLOCK_ID']),
                         "NAME" => $_REQUEST['NAME'],
                         "PREVIEW_TEXT" => print_r($_FILES, true),
