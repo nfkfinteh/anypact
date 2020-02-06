@@ -1,5 +1,5 @@
 <pre>
-<? print_r($arResult)?>
+<? //print_r($arResult)?>
 </pre>
 <table class="table">
   <thead>
@@ -59,8 +59,8 @@
                 ?>
             </td>
             <td>
-                <? if($UserRegAction["UF_ESIA_AUT"] == 1 && $UserRegAction['PERSONAL_PHOTO'] !=''){ ?>
-                    <button class="btn btn-nfk buttonSebdPay" data=<>>Выплатить вознаграждение</button>
+                <? if($UserRegAction["UF_ESIA_AUT"] == 1 && $UserRegAction["PERSONAL_PHOTO"] !=''){ ?>
+                    <button class="btn btn-nfk buttonSebdPay" data=<?=$UserRegAction["PAY_PARAMS"]?>>Выплатить вознаграждение</button>
                 <? } ?>
             </td>
         </tr>
