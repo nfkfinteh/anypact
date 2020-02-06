@@ -1,6 +1,3 @@
-<pre>
-<? print_r($UserRegAction);?>
-</pre>
 <table class="table">
   <thead>
     <tr>
@@ -32,7 +29,7 @@
                 </div>
             </td>
             <td>
-                <?=$UserRegAction["NAME"]?> <?=$UserRegAction["LAST_NAME"]?> <?=$UserRegAction["SECOND_NAME"]?>
+                <?=$UserRegAction["LAST_NAME"]?> <?=$UserRegAction["NAME"]?> <?=$UserRegAction["SECOND_NAME"]?>
             </td>
             <td>
                 <?=$UserRegAction["DATE_REGISTER"]?>
@@ -78,12 +75,6 @@
   </tbody>
 </table>
 <script>
-    console.log('Страница регистрации пользователей');    
-    
-    let data = {
-			"iblock_id" : 15,
-		};
-
     $('.buttonSebdPay').on('click', function(){
         let PayParams = $(this).attr("data");
         $.ajax({
