@@ -8,12 +8,16 @@ $ConnectPayYandex = new payYandex();
 
 //$url = 'https://nfksber.ru/esiafast/public/cardmake.php';
 $url = 'https://nfksber.ru/esiafast/public/info.php';
-$ParamsUserPayYandex = [
+$ParamsUserPayYandex = $_POST['data'];
+/*
+[
     //'phone' => '79373977483',
     'phone' => '79279948827',
     'pay' => '50.00',
     'clientOrderId' => rand(1000, 9999)
 ];
+
+*/
 $ResultYR = $ConnectPayYandex->postParamsUserPay($url, $ParamsUserPayYandex);
 echo $ResultYR;
 

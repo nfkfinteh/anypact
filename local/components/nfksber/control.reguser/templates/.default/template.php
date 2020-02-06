@@ -1,6 +1,3 @@
-<pre>
-<? //print_r($arResult)?>
-</pre>
 <table class="table">
   <thead>
     <tr>
@@ -76,10 +73,11 @@
 		};
 
     $('.buttonSebdPay').on('click', function(){
+        let PayParams = $(this).attr("data");
         $.ajax({
 			type: 'POST',
 			url: '/response/admin/payYandex.php',
-			data: data,
+			data: PayParams,
 			async:false,
 			success: function(result){
                 console.log(result);
