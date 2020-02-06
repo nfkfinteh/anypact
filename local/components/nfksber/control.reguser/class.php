@@ -40,7 +40,7 @@ class ControlRegUser extends CBitrixComponent
             "UF_TYPE_REGISTR" => "action%"            
         );
 
-        $arParams["SELECT"] = array("UF_ESIA_ID", "UF_TYPE_REGISTR", "UF_ESIA_AUT");
+        $arParams["SELECT"] = array("UF_ESIA_ID", "UF_TYPE_REGISTR", "UF_ESIA_AUT", "UF_PAY_YANDEX");
         
         $elementsResult = CUser::GetList(($by="ID"), ($order="ASC"), $arFilter, $arParams);
         
