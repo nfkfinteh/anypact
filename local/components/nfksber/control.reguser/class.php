@@ -45,7 +45,9 @@ class ControlRegUser extends CBitrixComponent
         $elementsResult = CUser::GetList(($by="ID"), ($order="ASC"), $arFilter, $arParams);
         
         while ($rsUser = $elementsResult->Fetch()) {
-            $arFilterUserRegistAction[] =  $rsUser;
+            $ID_ORDER = rand(100000, 999999);
+            $rsUser["PAY_PARAMS"] = $rsUser["ID"].'#100.00#'.$rsUser["ID"].'#'.$rsUser["PERSONAL_PHONE"].'#'.$ID_ORDER;
+            $arFilterUserRegistAction[] = base64_decode($rsUser);
         } 
 
         $this->arResult["USER_REGIST_ACTION"] = $arFilterUserRegistAction;
