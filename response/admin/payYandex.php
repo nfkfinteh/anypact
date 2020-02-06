@@ -8,6 +8,7 @@ $ConnectPayYandex = new payYandex();
 
 //$url = 'https://nfksber.ru/esiafast/public/cardmake.php';
 $url = 'https://nfksber.ru/esiafast/public/info.php';
+print_r($_POST);
 $ParamsUserPayYandex = $_POST['payParams'];
 $ResultYR = $ConnectPayYandex->postParamsUserPay($url, $ParamsUserPayYandex);
 echo $ResultYR;
