@@ -1,3 +1,6 @@
+<pre>
+<? print_r($UserRegAction);?>
+</pre>
 <table class="table">
   <thead>
     <tr>
