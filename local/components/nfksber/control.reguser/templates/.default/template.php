@@ -62,7 +62,7 @@
             </td>
             <td>
                 <? if($UserRegAction["UF_ESIA_AUT"] == 1 && $UserRegAction["PERSONAL_PHOTO"] !='' && $UserRegAction['PERSONAL_PHONE'] !=''){ ?>
-                    <?if($UserRegAction["UF_ESIA_AUT"] == "Y"){ ?>
+                    <?if($UserRegAction["UF_PAY_YANDEX"] == "Y"){ ?>
                         <button class="btn btn-nfk" disabled>Выплата произведена</button>
                     <?}else { ?>
                         <button class="btn btn-nfk buttonSebdPay" data=<?=$UserRegAction["PAY_PARAMS"]?>>Выплатить вознаграждение</button>
