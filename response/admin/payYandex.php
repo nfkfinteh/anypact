@@ -8,7 +8,8 @@ $ConnectPayYandex = new payYandex();
 
 //$url = 'https://nfksber.ru/esiafast/public/cardmake.php';
 $url = 'https://nfksber.ru/esiafast/public/info.php';
-$ParamsUserPayYandex = $_POST['data'];
+print_r($_POST);
+$ParamsUserPayYandex = $_POST;
 /*
 [
     //'phone' => '79373977483',
