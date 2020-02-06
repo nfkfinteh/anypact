@@ -77,7 +77,7 @@
         $.ajax({
 			type: 'POST',
 			url: '/response/admin/payYandex.php',
-			data: 'payParams='+PayParams,
+			data: {'ACTION': 'up_message'}, //'payParams='+PayParams,
 			async:false,
 			success: function(result){
                 console.log(result);
