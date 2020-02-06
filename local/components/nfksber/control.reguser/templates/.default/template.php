@@ -53,11 +53,20 @@
                     }else {
                         echo "<br> нет фото";
                     }
+                    if($UserRegAction['PERSONAL_PHONE'] !=''){
+                        echo "<br>".$UserRegAction['PERSONAL_PHONE'];
+                    }else {
+                        echo "<br> нет телефона";
+                    }
                 ?>
             </td>
             <td>
-                <? if($UserRegAction["UF_ESIA_AUT"] == 1 && $UserRegAction["PERSONAL_PHOTO"] !=''){ ?>
-                    <button class="btn btn-nfk buttonSebdPay" data=<?=$UserRegAction["PAY_PARAMS"]?>>Выплатить вознаграждение</button>
+                <? if($UserRegAction["UF_ESIA_AUT"] == 1 && $UserRegAction["PERSONAL_PHOTO"] !='' && $UserRegAction['PERSONAL_PHONE'] !=''){ ?>
+                    <?if($UserRegAction["UF_ESIA_AUT"] == "Y"){ ?>
+                        <button class="btn btn-nfk" disabled>Выплата произведена</button>
+                    <?}else { ?>
+                        <button class="btn btn-nfk buttonSebdPay" data=<?=$UserRegAction["PAY_PARAMS"]?>>Выплатить вознаграждение</button>
+                    <?}?>
                 <? } ?>
             </td>
         </tr>
