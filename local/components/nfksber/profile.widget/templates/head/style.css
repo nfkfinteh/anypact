@@ -145,3 +145,7 @@
         display:block;
     }
 }
+
+.link-messageList{
+    cursor: pointer;
+}

@@ -19,14 +19,14 @@ $MessURL = '/list_message/';
                 <?endif?>
             <?else:?>
                 <? if(empty($arResult["PERSONAL_PHOTO"])):?>
-                    <a href="<?=$MessURL?>">
+                    <a href="<?=$MessURL?>" class="link-messageList">
                         <div class="widget_user_profile_avatar container_prof">
                             <span><?=$arResult["IN_NAME"]?></span>
                             <div class="count_unread <?if($arResult['UNREAD_MESSAGE']>0):?>active<?endif?>"><?=$arResult['UNREAD_MESSAGE']?></div>
                         </div>
                     </a>
                 <?else:?>
-                    <a href="<?=$MessURL?>">
+                    <a href="<?=$MessURL?>" class="link-messageList">
                         <div class="login-information-photo container_prof">
                             <img src="<?=$arResult["PERSONAL_PHOTO"]?>">
                             <div class="count_unread <?if($arResult['UNREAD_MESSAGE']>0):?>active<?endif?>"><?=$arResult['UNREAD_MESSAGE']?></div>
