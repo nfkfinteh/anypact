@@ -120,7 +120,7 @@
 }
 .container_prof{
     position: relative;
-    cursor: default;
+    /* cursor: default; */
 }
 .count_unread{
     display: none;
