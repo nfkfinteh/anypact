@@ -55,12 +55,11 @@ class ControlRegUser extends CBitrixComponent
         $elementsResult = CUser::GetList(($by="ID"), ($order="ASC"), $arFilter, $arParams);
         $FilterSumPay = array();
 
-        $SummPay =  $this->getHLSingl(13, $FilterSumPay); //'100.00' сумма должна быть строкой с точкой и двумя знаками после нее
-        echo "Сумма платежа ";
-        print_r($SummPay);
+        $SummPay =  $this->getHLSingl(13, $FilterSumPay); //'100.00' сумма должна быть строкой с точкой и двумя знаками после нее        
+        
         while ($rsUser = $elementsResult->Fetch()) {
             $ID_ORDER = rand(100000, 999999);
-            $rsUser["PAY_PARAMS"] = base64_encode($rsUser["ID"].'#'.$SummPay.'#'.$rsUser["ID"].'#'.$rsUser["PERSONAL_PHONE"].'#'.$ID_ORDER);
+            $rsUser["PAY_PARAMS"] = base64_encode($rsUser["ID"].'#'.$SummPay["UF_SUMM_PAY"].'#'.$rsUser["ID"].'#'.$rsUser["PERSONAL_PHONE"].'#'.$ID_ORDER);
             $arFilterUserRegistAction[] = $rsUser;
         } 
 
