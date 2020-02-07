@@ -32,25 +32,19 @@ $user->Update($ID_USER_PAY, $fields);
 
 
 // пишем ответ в лог
-
-
-/*
-$hlbl = 8;
+$hlbl = 12;
 $hlblock = HL\HighloadBlockTable::getById($hlbl)->fetch();
 
 $entity = HL\HighloadBlockTable::compileEntity($hlblock);
 $entity_data_class = $entity->getDataClass();
 
 $data = array(
-    "UF_ID_USER"=>$idUser,
-    "UF_TEXT_MESSAGE_USER"=>$messageText,
-    "UF_STATUS"=>1,
-    "UF_TIME_CREATE_MSG"=>ConvertTimeStamp(time(), "FULL"),
-    "UF_TITLE_MESSAGE"=>"Сообщение от пользователя"
+    "UF_ID_USER"    =>$ID_USER_PAY,
+    "UF_TIME_CREATE"=>ConvertTimeStamp(time(), "FULL"),
+    "UF_RESPONSE"   => $ResultYR
 );
 
 $result = $entity_data_class::add($data);
-*/
 
 // шифруем данные с ключом данные конвертим в json
 $arrJsonParamsUserPayYandex = json_encode($ParamsUserPayYandex);

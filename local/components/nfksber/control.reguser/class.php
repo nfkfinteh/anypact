@@ -28,6 +28,16 @@ class ControlRegUser extends CBitrixComponent
         
         return $arResult;
     }
+
+    private function getHLSingl($IDHL, $params){
+        CModule::IncludeModule('highloadblock');
+        $hlblock = HL\HighloadBlockTable::getById($IDHL)->fetch();
+        $entity  = HL\HighloadBlockTable::compileEntity($hlblock);
+        $entity_data_class = $entity->getDataClass();
+        $rsData = $entity_data_class::getList($params);
+        $result = $rsData->fetch();
+        return $result;
+    }
     
     public function executeComponent()
     {
@@ -43,10 +53,13 @@ class ControlRegUser extends CBitrixComponent
         $arParams["SELECT"] = array("UF_ESIA_ID", "UF_TYPE_REGISTR", "UF_ESIA_AUT", "UF_PAY_YANDEX");
         
         $elementsResult = CUser::GetList(($by="ID"), ($order="ASC"), $arFilter, $arParams);
-        
+        $FilterSumPay = array();
+
+        $SummPay =  $this->getHLSingl(1, $FilterSumPay); //'100.00' сумма должна быть строкой с точкой и двумя знаками после нее
+        echo "Сумма платежа ".$SummPay;
         while ($rsUser = $elementsResult->Fetch()) {
             $ID_ORDER = rand(100000, 999999);
-            $rsUser["PAY_PARAMS"] = base64_encode($rsUser["ID"].'#100.00#'.$rsUser["ID"].'#'.$rsUser["PERSONAL_PHONE"].'#'.$ID_ORDER);
+            $rsUser["PAY_PARAMS"] = base64_encode($rsUser["ID"].'#'.$SummPay.'#'.$rsUser["ID"].'#'.$rsUser["PERSONAL_PHONE"].'#'.$ID_ORDER);
             $arFilterUserRegistAction[] = $rsUser;
         } 
 
