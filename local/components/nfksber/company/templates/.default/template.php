@@ -1,15 +1,13 @@
 <?if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die();
-/** @var array $arParams */
-/** @var array $arResult */
-/** @global CMain $APPLICATION */
-/** @global CUser $USER */
-/** @global CDatabase $DB */
-/** @var CBitrixComponentTemplate $this */
-/** @var string $templateName */
-/** @var string $templateFile */
-/** @var string $templateFolder */
-/** @var string $componentPath */
-/** @var CBitrixComponent $component */
+/*
+ *  $GlobalParamsCompany - основные параметры компании
+ *  $AdressCompany -  адрес компании
+ *  $BanksParamsCompany - банковские реквизиты компании
+ * */
+    $arrGlobalParamsKey = ['NAME', 'INN', 'KPP', 'OGRN' ];
+    $GlobalParamsCompany  = array_intersect_key($arResult['PROPERTIES'], $arrGlobalParamsKey);
+
+
 ?>
 <div class="company_profile">
     <div class="company_profile_header">
@@ -23,11 +21,20 @@
             </div>
         </div>
     </div>
+    <? // пользователь в с татусе директора может редактировать реквизиты?>
     <?if($arResult['IS_DIRECTOR']=='Y'):?>
-        <form id="form__company_profile" action="<?=$APPLICATION->GetCurPage()?>" enctype="multipart/form-data" method="post">
+    <form id="form__company_profile" action="<?=$APPLICATION->GetCurPage()?>" enctype="multipart/form-data" method="post">
         <?if($arResult['ERROR']){?>
             <p class="error"><?=$arResult['ERROR']?></p>
         <?}?>
+        <div class="row">
+            <div class="col-xl-6 col-md-12 col-sm-12">
+                <h3>Общие</h3>
+            </div>
+        </div>
+        <?
+            print_r($GlobalParamsCompany);
+        ?>
         <div class="row">
             <div class="col-xl-6 col-md-12 col-sm-12">
                 <div class="form-group">
@@ -119,6 +126,7 @@
             </div>
         </div>
     </form>
+    <?// только просмотр реквизитов?>
     <?else:?>
         <div class="row">
                 <div class="col-xl-6 col-md-12 col-sm-12">
@@ -143,6 +151,7 @@
                             <div class="editbox"><?=$arResult['COMPANY']['PROPERTIES'][$prop["CODE"]]['VALUE']?></div>
                         </div>
                     <?}?>
+                    <? /*Логотип компании*/?>
                     <?if($arResult['COMPANY']['PREVIEW_PICTURE']){?>
                         <div class="form-group">
                             <label>Логотип</label>

@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="095c6364-006c-4512-9344-8361d6fd3db8" name="Default" comment="" />
+    <list default="true" id="095c6364-006c-4512-9344-8361d6fd3db8" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local/components/nfksber/company/templates/.default/template.php" afterPath="$PROJECT_DIR$/local/components/nfksber/company/templates/.default/template.php" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -11,23 +15,63 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="template.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/local/components/nfksber/userpacts.list/templates/.default/template.php">
+      <file leaf-file-name="script.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/local/components/nfksber/company/templates/.default/script.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="201">
-              <caret line="18" column="101" lean-forward="false" selection-start-line="18" selection-start-column="101" selection-end-line="18" selection-end-column="101" />
+            <state relative-caret-position="-793">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="template.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/local/components/nfksber/company/templates/.default/template.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="499">
+              <caret line="35" column="42" lean-forward="false" selection-start-line="35" selection-start-column="42" selection-end-line="35" selection-end-column="42" />
               <folding>
-                <element signature="e#7279#9863#0#PHP" expanded="false" />
+                <element signature="n#div#0;n#div#1;n#form#0;n#div#0;n#!!top" expanded="false" />
+                <element signature="n#div#1;n#div#1;n#form#0;n#div#0;n#!!top" expanded="false" />
+                <element signature="e#7221#10218#0#PHP" expanded="false" />
+                <element signature="e#8554#8868#0#PHP" expanded="false" />
+                <element signature="e#8893#10167#0#PHP" expanded="false" />
+                <marker date="1581186261438" expanded="true" signature="416:545" ph="..." />
+                <marker date="1581186261438" expanded="true" signature="457:545" ph="..." />
+                <marker date="1581186261438" expanded="true" signature="483:545" ph="..." />
+                <marker date="1581186261438" expanded="true" signature="513:545" ph="..." />
+                <marker date="1581186261438" expanded="true" signature="980:1004" ph="..." />
+                <marker date="1581186261438" expanded="true" signature="1113:1233" ph="..." />
+                <marker date="1581186261438" expanded="true" signature="1168:1218" ph="..." />
+                <marker date="1581186261438" expanded="true" signature="1379:1536" ph="..." />
+                <marker date="1581186261438" expanded="true" signature="1420:1536" ph="..." />
+                <marker date="1581186261438" expanded="true" signature="1728:1857" ph="..." />
+                <marker date="1581186261438" expanded="true" signature="2366:2403" ph="..." />
+                <marker date="1581186261438" expanded="true" signature="2474:2603" ph="..." />
+                <marker date="1581186261438" expanded="true" signature="2965:3044" ph="..." />
+                <marker date="1581186261438" expanded="true" signature="3406:3600" ph="..." />
+                <marker date="1581186261438" expanded="true" signature="3497:3600" ph="..." />
+                <marker date="1581186261438" expanded="true" signature="6086:6295" ph="..." />
+                <marker date="1581186261438" expanded="true" signature="6413:6449" ph="..." />
+                <marker date="1581186261438" expanded="false" signature="7253:7464" ph="..." />
+                <marker date="1581186261438" expanded="true" signature="7312:7464" ph="..." />
+                <marker date="1581186261438" expanded="true" signature="7357:7464" ph="..." />
+                <marker date="1581186261438" expanded="true" signature="7667:7792" ph="..." />
+                <marker date="1581186261438" expanded="true" signature="8130:8171" ph="..." />
+                <marker date="1581186261438" expanded="true" signature="8246:8371" ph="..." />
+                <marker date="1581186261438" expanded="true" signature="8648:8772" ph="..." />
+                <marker date="1581186261438" expanded="true" signature="8966:9126" ph="..." />
+                <marker date="1581186261438" expanded="true" signature="9073:9126" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
+      <file leaf-file-name="class.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/local/components/nfksber/company/class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="6" />
+            <state relative-caret-position="85">
+              <caret line="5" column="12" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -59,8 +103,9 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/local/templates/anypact/components/bitrix/main.profile/anypact/style.css" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/local/components/nfksber/userpacts.list/templates/.default/template.php" />
+        <option value="$PROJECT_DIR$/local/components/nfksber/company/templates/.default/template.php" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -101,6 +146,7 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -132,7 +178,7 @@
               <item name="local" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="components" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="nfksber" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="userpacts.list" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="company" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="anypactbitrix" type="b2602c69:ProjectViewProjectNode" />
@@ -140,7 +186,7 @@
               <item name="local" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="components" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="nfksber" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="userpacts.list" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="company" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="templates" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
@@ -149,15 +195,49 @@
               <item name="local" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="components" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="nfksber" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="userpacts.list" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="company" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="templates" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name=".default" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="anypactbitrix" type="b2602c69:ProjectViewProjectNode" />
+              <item name="anypactbitrix" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="local" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="templates" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="anypactbitrix" type="b2602c69:ProjectViewProjectNode" />
+              <item name="anypactbitrix" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="local" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="templates" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="anypact" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="anypactbitrix" type="b2602c69:ProjectViewProjectNode" />
+              <item name="anypactbitrix" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="local" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="templates" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="anypact" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="components" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="anypactbitrix" type="b2602c69:ProjectViewProjectNode" />
+              <item name="anypactbitrix" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="local" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="templates" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="anypact" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="components" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="bitrix" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="anypactbitrix" type="b2602c69:ProjectViewProjectNode" />
+              <item name="anypactbitrix" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="profile" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -218,16 +298,18 @@
       <workItem from="1576358781869" duration="446000" />
       <workItem from="1580671524832" duration="3694000" />
       <workItem from="1580705524684" duration="706000" />
+      <workItem from="1581179956125" duration="5121000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4852000" />
+    <option name="totallyTimeSpent" value="9973000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26285347" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26606685" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -297,10 +379,36 @@
     <option name="LAST_COMMIT_MESSAGE" value="Обрезка фото профиля пользователя" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/local/components/nfksber/company/templates/.default/template.php</url>
+          <line>134</line>
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/local/components/nfksber/userpacts.list/templates/.default/template.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="101" lean-forward="false" selection-start-line="18" selection-start-column="101" selection-end-line="18" selection-end-column="101" />
+          <folding>
+            <element signature="e#7279#9863#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/local/components/nfksber/userpacts.list/templates/.default/template.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -342,14 +450,49 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/local/templates/anypact/components/bitrix/main.profile/anypact/template.php">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3155">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/local/components/nfksber/control.reguser/templates/.default/template.php">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/local/components/nfksber/dogovorview.detail/templates/edit/template.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/local/components/nfksber/pactview.detail/templates/edit/template.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/local/components/nfksber/userpacts.detail/templates/edit/template.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/local/components/nfksber/userpacts.list/templates/.default/template.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
+        <state relative-caret-position="-2966">
           <caret line="18" column="101" lean-forward="false" selection-start-line="18" selection-start-column="101" selection-end-line="18" selection-end-column="101" />
           <folding>
             <element signature="e#7279#9863#0#PHP" expanded="false" />
@@ -357,10 +500,76 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/profile/company/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding>
+            <element signature="e#251#1260#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/local/components/nfksber/company/class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="12" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/local/components/nfksber/company/templates/.default/template.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="499">
+          <caret line="35" column="42" lean-forward="false" selection-start-line="35" selection-start-column="42" selection-end-line="35" selection-end-column="42" />
+          <folding>
+            <element signature="n#div#0;n#div#1;n#form#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#div#1;n#div#1;n#form#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="e#7221#10218#0#PHP" expanded="false" />
+            <element signature="e#8554#8868#0#PHP" expanded="false" />
+            <element signature="e#8893#10167#0#PHP" expanded="false" />
+            <marker date="1581186261438" expanded="true" signature="416:545" ph="..." />
+            <marker date="1581186261438" expanded="true" signature="457:545" ph="..." />
+            <marker date="1581186261438" expanded="true" signature="483:545" ph="..." />
+            <marker date="1581186261438" expanded="true" signature="513:545" ph="..." />
+            <marker date="1581186261438" expanded="true" signature="980:1004" ph="..." />
+            <marker date="1581186261438" expanded="true" signature="1113:1233" ph="..." />
+            <marker date="1581186261438" expanded="true" signature="1168:1218" ph="..." />
+            <marker date="1581186261438" expanded="true" signature="1379:1536" ph="..." />
+            <marker date="1581186261438" expanded="true" signature="1420:1536" ph="..." />
+            <marker date="1581186261438" expanded="true" signature="1728:1857" ph="..." />
+            <marker date="1581186261438" expanded="true" signature="2366:2403" ph="..." />
+            <marker date="1581186261438" expanded="true" signature="2474:2603" ph="..." />
+            <marker date="1581186261438" expanded="true" signature="2965:3044" ph="..." />
+            <marker date="1581186261438" expanded="true" signature="3406:3600" ph="..." />
+            <marker date="1581186261438" expanded="true" signature="3497:3600" ph="..." />
+            <marker date="1581186261438" expanded="true" signature="6086:6295" ph="..." />
+            <marker date="1581186261438" expanded="true" signature="6413:6449" ph="..." />
+            <marker date="1581186261438" expanded="false" signature="7253:7464" ph="..." />
+            <marker date="1581186261438" expanded="true" signature="7312:7464" ph="..." />
+            <marker date="1581186261438" expanded="true" signature="7357:7464" ph="..." />
+            <marker date="1581186261438" expanded="true" signature="7667:7792" ph="..." />
+            <marker date="1581186261438" expanded="true" signature="8130:8171" ph="..." />
+            <marker date="1581186261438" expanded="true" signature="8246:8371" ph="..." />
+            <marker date="1581186261438" expanded="true" signature="8648:8772" ph="..." />
+            <marker date="1581186261438" expanded="true" signature="8966:9126" ph="..." />
+            <marker date="1581186261438" expanded="true" signature="9073:9126" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="6" />
+        <state relative-caret-position="17">
+          <caret line="1" column="19" lean-forward="false" selection-start-line="1" selection-start-column="19" selection-end-line="1" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/local/components/nfksber/company/templates/.default/script.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-793">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
