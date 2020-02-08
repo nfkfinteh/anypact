@@ -32,9 +32,12 @@
                 <h3>Общие</h3>
             </div>
         </div>
-        <?
-            print_r($GlobalParamsCompany);
-        ?>
+        <pre>
+            <?
+                print_r($arResult['PROPERTIES']);
+                print_r($GlobalParamsCompany);
+            ?>
+        </pre>
         <div class="row">
             <div class="col-xl-6 col-md-12 col-sm-12">
                 <div class="form-group">
