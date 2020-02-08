@@ -34,8 +34,8 @@
         </div>
         <pre>
             <?
-                print_r($arResult['PROPERTIES']);
-                print_r($GlobalParamsCompany);
+                //print_r($arResult['PROPERTIES']);
+                //print_r($GlobalParamsCompany);
             ?>
         </pre>
         <div class="row">
@@ -48,7 +48,7 @@
                 foreach($arResult['PROPERTIES'] as $key => $prop){?>
                     <div class="form-group">
                         <label><?=$prop["NAME"]?></label>
-                        <input <?if(in_array($prop["CODE"], $arParams['PROPERTIES_NUMBER'])){?>onkeypress='validateNumber(event)'<?}?> type="text" name="<?=$prop["CODE"]?>" value="<?=$arResult['COMPANY']['PROPERTIES'][$prop["CODE"]]['VALUE']?>"<?if(in_array($prop["CODE"], $arParams['PROPERTIES_NEED'])){?> required<?}?>>
+                        <input type="text" name="<?=$prop["CODE"]?>" value="<?=$arResult['COMPANY']['PROPERTIES'][$prop["CODE"]]['VALUE']?>"<?if(in_array($prop["CODE"], $arParams['PROPERTIES_NEED'])){?> required<?}?>>
                     </div>
                     <?unset($arResult['PROPERTIES'][$key]);?>
                     <?if($prop['CODE'] == 'OFFICE' || $i == 15) break;?>
