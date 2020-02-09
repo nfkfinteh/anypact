@@ -35,18 +35,29 @@
         <? ////////////////////// поля общих реквизитов /////////////////////////?>
         <div class="row">
             <div class="col-xl-6 col-md-12 col-sm-12">
-                <div class="form-group">
-                    <label>Название компании</label>
-                    <input name="NAME" type="text" value="<?=$arResult['COMPANY']['NAME']?>" required>
+                <div class="row">
+                    <div class="col-xl-5 col-md-6 col-sm-12">
+                        <?if($arResult['COMPANY']['PREVIEW_PICTURE']){?>
+                            <img class="company-logo" src="<?=$arResult['COMPANY']['PREVIEW_PICTURE']?>" alt="">
+                        <?}?>
+                        <input class="company-logo-input" name="PREVIEW_PICTURE" type="file" accept="image/jpeg,image/png,image/gif">
+                    </div>
+                    <div class="col-xl-5 col-md-6 col-sm-12">
+                        <div class="form-group">
+                            <label>Название компании</label>
+                            <input name="NAME" type="text" value="<?=$arResult['COMPANY']['NAME']?>" required>
+                        </div>
+                        <div class="form-group">
+                            <label>ИНН</label>
+                            <input name="INN" type="text" value="<?=$arResult['COMPANY']['NAME']?>" required>
+                        </div>
+                        <div class="form-group">
+                            <label>ОГРН</label>
+                            <input name="OGRN" type="text" value="<?=$arResult['COMPANY']['NAME']?>" required>
+                        </div>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label>ИНН</label>
-                    <input name="INN" type="text" value="<?=$arResult['COMPANY']['NAME']?>" required>
-                </div>
-                <div class="form-group">
-                    <label>ОГРН</label>
-                    <input name="OGRN" type="text" value="<?=$arResult['COMPANY']['NAME']?>" required>
-                </div>
+
             </div>
             <div class="col-xl-6 col-md-12 col-sm-12">
                 <div class="form-group">
@@ -157,7 +168,7 @@
         </div>
 
 
-        
+
         <div class="row">
             <div class="col-xl-6 col-md-12 col-sm-12">
                 <div class="form-group">

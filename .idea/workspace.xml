@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="095c6364-006c-4512-9344-8361d6fd3db8" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local/components/nfksber/company/templates/.default/style.css" afterPath="$PROJECT_DIR$/local/components/nfksber/company/templates/.default/style.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local/components/nfksber/company/templates/.default/template.php" afterPath="$PROJECT_DIR$/local/components/nfksber/company/templates/.default/template.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -44,20 +43,26 @@
       <file leaf-file-name="template.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/local/components/nfksber/company/templates/.default/template.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="992">
-              <caret line="159" column="8" lean-forward="false" selection-start-line="159" selection-start-column="8" selection-end-line="159" selection-end-column="8" />
+            <state relative-caret-position="300">
+              <caret line="42" column="133" lean-forward="false" selection-start-line="42" selection-start-column="133" selection-end-line="42" selection-end-column="133" />
               <folding>
                 <element signature="n#div#0;n#div#0;n#!!top" expanded="false" />
                 <element signature="n#style#0;n#div#2;n#form#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#4;n#form#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#div#1;n#div#6;n#form#0;n#div#0;n#!!top" expanded="false" />
-                <element signature="n#div#1;n#div#1;n#div#6;n#form#0;n#div#0;n#!!top" expanded="false" />
-                <element signature="n#div#2;n#div#1;n#div#6;n#form#0;n#div#0;n#!!top" expanded="false" />
-                <element signature="n#div#3;n#div#1;n#div#6;n#form#0;n#div#0;n#!!top" expanded="false" />
-                <element signature="e#12966#15963#0#PHP" expanded="false" />
-                <element signature="e#14299#14613#0#PHP" expanded="false" />
-                <element signature="e#14638#15912#0#PHP" expanded="false" />
+                <element signature="e#13640#16637#0#PHP" expanded="false" />
+                <element signature="e#14973#15287#0#PHP" expanded="false" />
+                <element signature="e#15312#16586#0#PHP" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="template.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/local/templates/anypact/components/bitrix/main.profile/anypact/template.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-255">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -338,12 +343,12 @@
       <workItem from="1580671524832" duration="3694000" />
       <workItem from="1580705524684" duration="706000" />
       <workItem from="1581179956125" duration="10137000" />
-      <workItem from="1581263128300" duration="6122000" />
+      <workItem from="1581263128300" duration="7833000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21111000" />
+    <option name="totallyTimeSpent" value="22822000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
@@ -423,7 +428,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/local/components/nfksber/company/templates/.default/template.php</url>
-          <line>257</line>
+          <line>268</line>
         </line-breakpoint>
       </breakpoints>
       <option name="time" value="1" />
@@ -462,13 +467,9 @@
             <element signature="n#div#0;n#div#0;n#!!top" expanded="false" />
             <element signature="n#style#0;n#div#2;n#form#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#4;n#form#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#div#1;n#div#6;n#form#0;n#div#0;n#!!top" expanded="false" />
-            <element signature="n#div#1;n#div#1;n#div#6;n#form#0;n#div#0;n#!!top" expanded="false" />
-            <element signature="n#div#2;n#div#1;n#div#6;n#form#0;n#div#0;n#!!top" expanded="false" />
-            <element signature="n#div#3;n#div#1;n#div#6;n#form#0;n#div#0;n#!!top" expanded="false" />
-            <element signature="e#12966#15963#0#PHP" expanded="false" />
-            <element signature="e#14299#14613#0#PHP" expanded="false" />
-            <element signature="e#14638#15912#0#PHP" expanded="false" />
+            <element signature="e#13640#16637#0#PHP" expanded="false" />
+            <element signature="e#14973#15287#0#PHP" expanded="false" />
+            <element signature="e#15312#16586#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -512,14 +513,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="1" column="1" lean-forward="false" selection-start-line="1" selection-start-column="1" selection-end-line="1" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/local/templates/anypact/components/bitrix/main.profile/anypact/template.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3155">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -622,21 +615,25 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/local/templates/anypact/components/bitrix/main.profile/anypact/template.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-255">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/local/components/nfksber/company/templates/.default/template.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="992">
-          <caret line="159" column="8" lean-forward="false" selection-start-line="159" selection-start-column="8" selection-end-line="159" selection-end-column="8" />
+        <state relative-caret-position="300">
+          <caret line="42" column="133" lean-forward="false" selection-start-line="42" selection-start-column="133" selection-end-line="42" selection-end-column="133" />
           <folding>
             <element signature="n#div#0;n#div#0;n#!!top" expanded="false" />
             <element signature="n#style#0;n#div#2;n#form#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#4;n#form#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#div#1;n#div#6;n#form#0;n#div#0;n#!!top" expanded="false" />
-            <element signature="n#div#1;n#div#1;n#div#6;n#form#0;n#div#0;n#!!top" expanded="false" />
-            <element signature="n#div#2;n#div#1;n#div#6;n#form#0;n#div#0;n#!!top" expanded="false" />
-            <element signature="n#div#3;n#div#1;n#div#6;n#form#0;n#div#0;n#!!top" expanded="false" />
-            <element signature="e#12966#15963#0#PHP" expanded="false" />
-            <element signature="e#14299#14613#0#PHP" expanded="false" />
-            <element signature="e#14638#15912#0#PHP" expanded="false" />
+            <element signature="e#13640#16637#0#PHP" expanded="false" />
+            <element signature="e#14973#15287#0#PHP" expanded="false" />
+            <element signature="e#15312#16586#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
