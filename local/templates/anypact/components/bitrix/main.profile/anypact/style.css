@@ -99,6 +99,7 @@ div.bx-auth-profile div.bx-auth-secure-unlock {
     width: 100%;
     border-radius: 5px;
     border: 1px solid #ff6416;
+    height: 52px;
 }
 
 .user_profile_form_editdata input:focus {
