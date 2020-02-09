@@ -34,7 +34,7 @@
         </div>
         <? ////////////////////// поля общих реквизитов /////////////////////////?>
         <div class="row">
-            <div class="col-xl-6 col-md-12 col-sm-12">
+            <div class="col-xl-7 col-md-12 col-sm-12">
                 <div class="row">
                     <div class="col-xl-5 col-md-6 col-sm-12">
                         <?if($arResult['COMPANY']['PREVIEW_PICTURE']){?>
@@ -59,7 +59,7 @@
                 </div>
 
             </div>
-            <div class="col-xl-6 col-md-12 col-sm-12">
+            <div class="col-xl-4 col-md-12 col-sm-12">
                 <div class="form-group">
                     <label>Логотип</label>
                     <input name="NAME" type="text" value="<?=$arResult['COMPANY']['NAME']?>" required>
@@ -77,7 +77,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-xl-6 col-md-12 col-sm-12">
+            <div class="col-xl-4 col-md-6 col-sm-12 offset-xl-3">
                 <div class="form-group">
                     <label>Индекс</label>
                     <input name="NAME" type="text" value="<?=$arResult['COMPANY']['NAME']?>" required>
@@ -99,7 +99,7 @@
                     <input name="OGRN" type="text" value="<?=$arResult['COMPANY']['NAME']?>" required>
                 </div>
             </div>
-            <div class="col-xl-6 col-md-12 col-sm-12">
+            <div class="col-xl-4 col-md-12 col-sm-12">
                 <div class="form-group">
                     <label>Область</label>
                     <input name="NAME" type="text" value="<?=$arResult['COMPANY']['NAME']?>" required>

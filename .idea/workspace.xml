@@ -43,15 +43,19 @@
       <file leaf-file-name="template.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/local/components/nfksber/company/templates/.default/template.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="42" column="133" lean-forward="false" selection-start-line="42" selection-start-column="133" selection-end-line="42" selection-end-column="133" />
+            <state relative-caret-position="218">
+              <caret line="79" column="63" lean-forward="false" selection-start-line="79" selection-start-column="63" selection-end-line="79" selection-end-column="63" />
               <folding>
                 <element signature="n#div#0;n#div#0;n#!!top" expanded="false" />
+                <element signature="n#div#0;n#div#1;n#form#0;n#div#0;n#!!top" expanded="false" />
+                <element signature="n#div#1;n#div#1;n#form#0;n#div#0;n#!!top" expanded="false" />
                 <element signature="n#style#0;n#div#2;n#form#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#4;n#form#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="e#13640#16637#0#PHP" expanded="false" />
-                <element signature="e#14973#15287#0#PHP" expanded="false" />
-                <element signature="e#15312#16586#0#PHP" expanded="false" />
+                <element signature="n#div#4;n#form#0;n#div#0;n#!!top" expanded="false" />
+                <element signature="n#div#5;n#form#0;n#div#0;n#!!top" expanded="false" />
+                <element signature="e#13651#16648#0#PHP" expanded="false" />
+                <element signature="e#14984#15298#0#PHP" expanded="false" />
+                <element signature="e#15323#16597#0#PHP" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -343,12 +347,12 @@
       <workItem from="1580671524832" duration="3694000" />
       <workItem from="1580705524684" duration="706000" />
       <workItem from="1581179956125" duration="10137000" />
-      <workItem from="1581263128300" duration="7833000" />
+      <workItem from="1581263128300" duration="8248000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22822000" />
+    <option name="totallyTimeSpent" value="23237000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
@@ -465,11 +469,15 @@
           <caret line="42" column="40" lean-forward="true" selection-start-line="42" selection-start-column="40" selection-end-line="42" selection-end-column="40" />
           <folding>
             <element signature="n#div#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#div#0;n#div#1;n#form#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#div#1;n#div#1;n#form#0;n#div#0;n#!!top" expanded="false" />
             <element signature="n#style#0;n#div#2;n#form#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#4;n#form#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="e#13640#16637#0#PHP" expanded="false" />
-            <element signature="e#14973#15287#0#PHP" expanded="false" />
-            <element signature="e#15312#16586#0#PHP" expanded="false" />
+            <element signature="n#div#4;n#form#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#div#5;n#form#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="e#13651#16648#0#PHP" expanded="false" />
+            <element signature="e#14984#15298#0#PHP" expanded="false" />
+            <element signature="e#15323#16597#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -625,15 +633,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/local/components/nfksber/company/templates/.default/template.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="42" column="133" lean-forward="false" selection-start-line="42" selection-start-column="133" selection-end-line="42" selection-end-column="133" />
+        <state relative-caret-position="218">
+          <caret line="79" column="63" lean-forward="false" selection-start-line="79" selection-start-column="63" selection-end-line="79" selection-end-column="63" />
           <folding>
             <element signature="n#div#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#div#0;n#div#1;n#form#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#div#1;n#div#1;n#form#0;n#div#0;n#!!top" expanded="false" />
             <element signature="n#style#0;n#div#2;n#form#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#4;n#form#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="e#13640#16637#0#PHP" expanded="false" />
-            <element signature="e#14973#15287#0#PHP" expanded="false" />
-            <element signature="e#15312#16586#0#PHP" expanded="false" />
+            <element signature="n#div#4;n#form#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#div#5;n#form#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="e#13651#16648#0#PHP" expanded="false" />
+            <element signature="e#14984#15298#0#PHP" expanded="false" />
+            <element signature="e#15323#16597#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
