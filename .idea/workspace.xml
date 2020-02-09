@@ -43,17 +43,22 @@
       <file leaf-file-name="template.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/local/components/nfksber/company/templates/.default/template.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="471">
-              <caret line="61" column="22" lean-forward="false" selection-start-line="61" selection-start-column="22" selection-end-line="61" selection-end-column="22" />
+            <state relative-caret-position="544">
+              <caret line="144" column="51" lean-forward="false" selection-start-line="144" selection-start-column="51" selection-end-line="144" selection-end-column="51" />
               <folding>
                 <element signature="n#div#0;n#div#0;n#!!top" expanded="false" />
+                <element signature="n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="false" />
+                <element signature="n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="false" />
+                <element signature="n#div#1;n#div#1;n#!!top" expanded="false" />
                 <element signature="n#style#0;n#div#2;n#!!top" expanded="true" />
+                <element signature="n#div#0;n#div#3;n#!!top" expanded="false" />
+                <element signature="n#div#1;n#div#3;n#!!top" expanded="false" />
                 <element signature="n#style#0;n#div#4;n#!!top" expanded="true" />
-                <element signature="n#div#4;n#!!top" expanded="false" />
-                <element signature="n#div#5;n#!!top" expanded="false" />
-                <element signature="e#13433#16430#0#PHP" expanded="false" />
-                <element signature="e#14766#15080#0#PHP" expanded="false" />
-                <element signature="e#15105#16379#0#PHP" expanded="false" />
+                <element signature="n#div#0;n#div#5;n#!!top" expanded="false" />
+                <element signature="n#div#1;n#div#5;n#!!top" expanded="false" />
+                <element signature="e#13453#16450#0#PHP" expanded="false" />
+                <element signature="e#14786#15100#0#PHP" expanded="false" />
+                <element signature="e#15125#16399#0#PHP" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -345,12 +350,12 @@
       <workItem from="1580671524832" duration="3694000" />
       <workItem from="1580705524684" duration="706000" />
       <workItem from="1581179956125" duration="10137000" />
-      <workItem from="1581263128300" duration="8545000" />
+      <workItem from="1581263128300" duration="9619000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23534000" />
+    <option name="totallyTimeSpent" value="24608000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
@@ -430,7 +435,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/local/components/nfksber/company/templates/.default/template.php</url>
-          <line>264</line>
+          <line>263</line>
         </line-breakpoint>
       </breakpoints>
       <option name="time" value="1" />
@@ -467,13 +472,18 @@
           <caret line="42" column="40" lean-forward="true" selection-start-line="42" selection-start-column="40" selection-end-line="42" selection-end-column="40" />
           <folding>
             <element signature="n#div#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="false" />
+            <element signature="n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="false" />
+            <element signature="n#div#1;n#div#1;n#!!top" expanded="false" />
             <element signature="n#style#0;n#div#2;n#!!top" expanded="true" />
+            <element signature="n#div#0;n#div#3;n#!!top" expanded="false" />
+            <element signature="n#div#1;n#div#3;n#!!top" expanded="false" />
             <element signature="n#style#0;n#div#4;n#!!top" expanded="true" />
-            <element signature="n#div#4;n#!!top" expanded="false" />
-            <element signature="n#div#5;n#!!top" expanded="false" />
-            <element signature="e#13433#16430#0#PHP" expanded="false" />
-            <element signature="e#14766#15080#0#PHP" expanded="false" />
-            <element signature="e#15105#16379#0#PHP" expanded="false" />
+            <element signature="n#div#0;n#div#5;n#!!top" expanded="false" />
+            <element signature="n#div#1;n#div#5;n#!!top" expanded="false" />
+            <element signature="e#13453#16450#0#PHP" expanded="false" />
+            <element signature="e#14786#15100#0#PHP" expanded="false" />
+            <element signature="e#15125#16399#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -629,17 +639,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/local/components/nfksber/company/templates/.default/template.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="471">
-          <caret line="61" column="22" lean-forward="false" selection-start-line="61" selection-start-column="22" selection-end-line="61" selection-end-column="22" />
+        <state relative-caret-position="544">
+          <caret line="144" column="51" lean-forward="false" selection-start-line="144" selection-start-column="51" selection-end-line="144" selection-end-column="51" />
           <folding>
             <element signature="n#div#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="false" />
+            <element signature="n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="false" />
+            <element signature="n#div#1;n#div#1;n#!!top" expanded="false" />
             <element signature="n#style#0;n#div#2;n#!!top" expanded="true" />
+            <element signature="n#div#0;n#div#3;n#!!top" expanded="false" />
+            <element signature="n#div#1;n#div#3;n#!!top" expanded="false" />
             <element signature="n#style#0;n#div#4;n#!!top" expanded="true" />
-            <element signature="n#div#4;n#!!top" expanded="false" />
-            <element signature="n#div#5;n#!!top" expanded="false" />
-            <element signature="e#13433#16430#0#PHP" expanded="false" />
-            <element signature="e#14766#15080#0#PHP" expanded="false" />
-            <element signature="e#15105#16379#0#PHP" expanded="false" />
+            <element signature="n#div#0;n#div#5;n#!!top" expanded="false" />
+            <element signature="n#div#1;n#div#5;n#!!top" expanded="false" />
+            <element signature="e#13453#16450#0#PHP" expanded="false" />
+            <element signature="e#14786#15100#0#PHP" expanded="false" />
+            <element signature="e#15125#16399#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>

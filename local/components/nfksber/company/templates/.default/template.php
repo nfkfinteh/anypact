@@ -42,7 +42,7 @@
                         <?}?>
                         <input class="company-logo-input" name="PREVIEW_PICTURE" type="file" accept="image/jpeg,image/png,image/gif">
                     </div>
-                    <div class="col-xl-5 col-md-6 col-sm-12">
+                    <div class="col-xl-7 col-md-6 col-sm-12">
                         <div class="form-group">
                             <label>Название компании</label>
                             <input name="NAME" type="text" value="<?=$arResult['COMPANY']['NAME']?>" required>
@@ -53,7 +53,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
             <div class="col-xl-4 col-md-12 col-sm-12">
                 <div class="form-group">
@@ -116,12 +115,12 @@
         </div>
         <? ////////////////////// платежные реквизиты /////////////////////////?>
         <div class="row" style="margin-top: 40px;">
-            <div class="col-xl-6 col-md-12 col-sm-12">
+            <div class="col-xl-4 col-md-6 col-sm-12 offset-xl-3">
                 <h3>Банковские реквизиты компании</h3>
             </div>
         </div>
         <div class="row">
-            <div class="col-xl-6 col-md-12 col-sm-12">
+            <div class="col-xl-4 col-md-6 col-sm-12 offset-xl-3">
                 <div class="form-group">
                     <label>Индекс</label>
                     <input name="NAME" type="text" value="<?=$arResult['COMPANY']['NAME']?>" required>
@@ -143,7 +142,7 @@
                     <input name="OGRN" type="text" value="<?=$arResult['COMPANY']['NAME']?>" required>
                 </div>
             </div>
-            <div class="col-xl-6 col-md-12 col-sm-12">
+            <div class="col-xl-4 col-md-6 col-sm-12">
                 <div class="form-group">
                     <label>Область</label>
                     <input name="NAME" type="text" value="<?=$arResult['COMPANY']['NAME']?>" required>
