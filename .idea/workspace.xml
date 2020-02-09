@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="095c6364-006c-4512-9344-8361d6fd3db8" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local/components/nfksber/company/class.php" afterPath="$PROJECT_DIR$/local/components/nfksber/company/class.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local/components/nfksber/company/templates/.default/template.php" afterPath="$PROJECT_DIR$/local/components/nfksber/company/templates/.default/template.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/profile/company/index.php" afterPath="$PROJECT_DIR$/profile/company/index.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -29,11 +27,15 @@
       <file leaf-file-name="class.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/local/components/nfksber/company/class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
+            <state relative-caret-position="221">
               <caret line="74" column="8" lean-forward="false" selection-start-line="74" selection-start-column="2" selection-end-line="74" selection-end-column="8" />
               <folding>
                 <element signature="n#sendMessageAddStaff#0;n#CompanySber#0;n#!!top" expanded="false" />
                 <element signature="e#964#2248#0#PHP" expanded="false" />
+                <element signature="e#2523#2993#0#PHP" expanded="false" />
+                <element signature="e#3007#3207#0#PHP" expanded="false" />
+                <element signature="e#3220#3432#0#PHP" expanded="false" />
+                <element signature="e#3445#8372#0#PHP" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -42,16 +44,16 @@
       <file leaf-file-name="template.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/local/components/nfksber/company/templates/.default/template.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="47" column="37" lean-forward="false" selection-start-line="47" selection-start-column="37" selection-end-line="47" selection-end-column="37" />
+            <state relative-caret-position="152">
+              <caret line="64" column="46" lean-forward="false" selection-start-line="64" selection-start-column="46" selection-end-line="64" selection-end-column="46" />
               <folding>
-                <element signature="n#div#1;n#div#2;n#form#0;n#div#0;n#!!top" expanded="false" />
-                <element signature="n#div#1;n#div#1;n#div#2;n#form#0;n#div#0;n#!!top" expanded="false" />
-                <element signature="n#div#2;n#div#1;n#div#2;n#form#0;n#div#0;n#!!top" expanded="false" />
-                <element signature="n#div#3;n#div#1;n#div#2;n#form#0;n#div#0;n#!!top" expanded="false" />
-                <element signature="e#8345#11342#0#PHP" expanded="false" />
-                <element signature="e#9678#9992#0#PHP" expanded="false" />
-                <element signature="e#10017#11291#0#PHP" expanded="false" />
+                <element signature="n#div#1;n#div#4;n#form#0;n#div#0;n#!!top" expanded="false" />
+                <element signature="n#div#1;n#div#1;n#div#4;n#form#0;n#div#0;n#!!top" expanded="false" />
+                <element signature="n#div#2;n#div#1;n#div#4;n#form#0;n#div#0;n#!!top" expanded="false" />
+                <element signature="n#div#3;n#div#1;n#div#4;n#form#0;n#div#0;n#!!top" expanded="false" />
+                <element signature="e#10580#13577#0#PHP" expanded="false" />
+                <element signature="e#11913#12227#0#PHP" expanded="false" />
+                <element signature="e#12252#13526#0#PHP" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -291,12 +293,12 @@
       <workItem from="1580671524832" duration="3694000" />
       <workItem from="1580705524684" duration="706000" />
       <workItem from="1581179956125" duration="10137000" />
-      <workItem from="1581263128300" duration="1039000" />
+      <workItem from="1581263128300" duration="2543000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16028000" />
+    <option name="totallyTimeSpent" value="17532000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1592" y="-8" width="1936" height="1056" extended-state="6" />
@@ -376,7 +378,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/local/components/nfksber/company/templates/.default/template.php</url>
-          <line>164</line>
+          <line>206</line>
         </line-breakpoint>
       </breakpoints>
       <option name="time" value="1" />
@@ -399,6 +401,10 @@
           <folding>
             <element signature="n#sendMessageAddStaff#0;n#CompanySber#0;n#!!top" expanded="false" />
             <element signature="e#964#2248#0#PHP" expanded="false" />
+            <element signature="e#2523#2993#0#PHP" expanded="false" />
+            <element signature="e#3007#3207#0#PHP" expanded="false" />
+            <element signature="e#3220#3432#0#PHP" expanded="false" />
+            <element signature="e#3445#8372#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -408,13 +414,13 @@
         <state relative-caret-position="714">
           <caret line="42" column="40" lean-forward="true" selection-start-line="42" selection-start-column="40" selection-end-line="42" selection-end-column="40" />
           <folding>
-            <element signature="n#div#1;n#div#2;n#form#0;n#div#0;n#!!top" expanded="false" />
-            <element signature="n#div#1;n#div#1;n#div#2;n#form#0;n#div#0;n#!!top" expanded="false" />
-            <element signature="n#div#2;n#div#1;n#div#2;n#form#0;n#div#0;n#!!top" expanded="false" />
-            <element signature="n#div#3;n#div#1;n#div#2;n#form#0;n#div#0;n#!!top" expanded="false" />
-            <element signature="e#8345#11342#0#PHP" expanded="false" />
-            <element signature="e#9678#9992#0#PHP" expanded="false" />
-            <element signature="e#10017#11291#0#PHP" expanded="false" />
+            <element signature="n#div#1;n#div#4;n#form#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#div#1;n#div#1;n#div#4;n#form#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#div#2;n#div#1;n#div#4;n#form#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#div#3;n#div#1;n#div#4;n#form#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="e#10580#13577#0#PHP" expanded="false" />
+            <element signature="e#11913#12227#0#PHP" expanded="false" />
+            <element signature="e#12252#13526#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -537,27 +543,31 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/local/components/nfksber/company/class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
+        <state relative-caret-position="221">
           <caret line="74" column="8" lean-forward="false" selection-start-line="74" selection-start-column="2" selection-end-line="74" selection-end-column="8" />
           <folding>
             <element signature="n#sendMessageAddStaff#0;n#CompanySber#0;n#!!top" expanded="false" />
             <element signature="e#964#2248#0#PHP" expanded="false" />
+            <element signature="e#2523#2993#0#PHP" expanded="false" />
+            <element signature="e#3007#3207#0#PHP" expanded="false" />
+            <element signature="e#3220#3432#0#PHP" expanded="false" />
+            <element signature="e#3445#8372#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/local/components/nfksber/company/templates/.default/template.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="47" column="37" lean-forward="false" selection-start-line="47" selection-start-column="37" selection-end-line="47" selection-end-column="37" />
+        <state relative-caret-position="152">
+          <caret line="64" column="46" lean-forward="false" selection-start-line="64" selection-start-column="46" selection-end-line="64" selection-end-column="46" />
           <folding>
-            <element signature="n#div#1;n#div#2;n#form#0;n#div#0;n#!!top" expanded="false" />
-            <element signature="n#div#1;n#div#1;n#div#2;n#form#0;n#div#0;n#!!top" expanded="false" />
-            <element signature="n#div#2;n#div#1;n#div#2;n#form#0;n#div#0;n#!!top" expanded="false" />
-            <element signature="n#div#3;n#div#1;n#div#2;n#form#0;n#div#0;n#!!top" expanded="false" />
-            <element signature="e#8345#11342#0#PHP" expanded="false" />
-            <element signature="e#9678#9992#0#PHP" expanded="false" />
-            <element signature="e#10017#11291#0#PHP" expanded="false" />
+            <element signature="n#div#1;n#div#4;n#form#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#div#1;n#div#1;n#div#4;n#form#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#div#2;n#div#1;n#div#4;n#form#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#div#3;n#div#1;n#div#4;n#form#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="e#10580#13577#0#PHP" expanded="false" />
+            <element signature="e#11913#12227#0#PHP" expanded="false" />
+            <element signature="e#12252#13526#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>

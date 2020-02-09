@@ -31,8 +31,8 @@
             <div class="col-xl-6 col-md-12 col-sm-12">
                 <h3>Общие</h3>
             </div>
-
         </div>
+        <? ////////////////////// поля общих реквизитов /////////////////////////?>
         <div class="row">
             <div class="col-xl-6 col-md-12 col-sm-12">
                 <div class="form-group">
@@ -59,12 +59,54 @@
                 </div>
             </div>
         </div>
-        <pre>
-            <?
-                //print_r($arResult['PROPERTIES']);
-                //print_r($GlobalParamsCompany);
-            ?>
-        </pre>
+        <? ////////////////////// поля адреса /////////////////////////?>
+        <div class="row">
+            <div class="col-xl-6 col-md-12 col-sm-12">
+                <h3>Юридический адрес компании</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xl-6 col-md-12 col-sm-12">
+                <div class="form-group">
+                    <label>Индекс</label>
+                    <input name="NAME" type="text" value="<?=$arResult['COMPANY']['NAME']?>" required>
+                </div>
+                <div class="form-group">
+                    <label>Город</label>
+                    <input name="INN" type="text" value="<?=$arResult['COMPANY']['NAME']?>" required>
+                </div>
+                <div class="form-group">
+                    <label>Улица</label>
+                    <input name="OGRN" type="text" value="<?=$arResult['COMPANY']['NAME']?>" required>
+                </div>
+                <div class="form-group">
+                    <label>Дом</label>
+                    <input name="OGRN" type="text" value="<?=$arResult['COMPANY']['NAME']?>" required>
+                </div>
+                <div class="form-group">
+                    <label>Офис</label>
+                    <input name="OGRN" type="text" value="<?=$arResult['COMPANY']['NAME']?>" required>
+                </div>
+            </div>
+            <div class="col-xl-6 col-md-12 col-sm-12">
+                <div class="form-group">
+                    <label>Область</label>
+                    <input name="NAME" type="text" value="<?=$arResult['COMPANY']['NAME']?>" required>
+                </div>
+                <div class="form-group">
+                    <label>Район</label>
+                    <input name="INN" type="text" value="<?=$arResult['COMPANY']['NAME']?>" required>
+                </div>
+                <div class="form-group">
+                    <label>Населенный пункт</label>
+                    <input name="OGRN" type="text" value="<?=$arResult['COMPANY']['NAME']?>" required>
+                </div>
+                <div class="form-group">
+                    <label>Корпус</label>
+                    <input name="OGRN" type="text" value="<?=$arResult['COMPANY']['NAME']?>" required>
+                </div>
+            </div>
+        </div>
         <div class="row">
             <div class="col-xl-6 col-md-12 col-sm-12">
                 <div class="form-group">
