@@ -124,6 +124,11 @@ div.btn{
     min-height: 200px;
     padding: 10px;
 }
+.company_profile label {
+    padding-left: 21px;
+    padding-bottom: 4px;
+    font-weight: 100;
+}
 
 .company_profile input {
     padding: 14px 18px;
