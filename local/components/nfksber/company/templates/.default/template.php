@@ -28,7 +28,7 @@
             <p class="error"><?=$arResult['ERROR']?></p>
         <?}?>
         <div class="row">
-            <div class="col-xl-6 col-md-12 col-sm-12">
+            <div class="col-xl-4 col-md-6 col-sm-12 offset-xl-3"">
                 <h3>Общие</h3>
             </div>
         </div>
@@ -51,18 +51,14 @@
                             <label>ИНН</label>
                             <input name="INN" type="text" value="<?=$arResult['COMPANY']['NAME']?>" required>
                         </div>
-                        <div class="form-group">
-                            <label>ОГРН</label>
-                            <input name="OGRN" type="text" value="<?=$arResult['COMPANY']['NAME']?>" required>
-                        </div>
                     </div>
                 </div>
 
             </div>
             <div class="col-xl-4 col-md-12 col-sm-12">
                 <div class="form-group">
-                    <label>Логотип</label>
-                    <input name="NAME" type="text" value="<?=$arResult['COMPANY']['NAME']?>" required>
+                    <label>ОГРН</label>
+                    <input name="OGRN" type="text" value="<?=$arResult['COMPANY']['NAME']?>" required>
                 </div>
                 <div class="form-group">
                     <label>КПП</label>
@@ -72,7 +68,7 @@
         </div>
         <? ////////////////////// поля адреса /////////////////////////?>
         <div class="row" style="margin-top: 40px;">
-            <div class="col-xl-6 col-md-12 col-sm-12">
+            <div class="col-xl-4 col-md-6 col-sm-12 offset-xl-3"">
                 <h3>Юридический адрес компании</h3>
             </div>
         </div>
