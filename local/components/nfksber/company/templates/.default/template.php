@@ -161,9 +161,16 @@
                 </div>
             </div>
         </div>
+        <? ////////////////////// сохранение  /////////////////////////?>
+        <div class="row" style="margin-top: 40px;">
+            <div class="col-xl-4 col-md-6 col-sm-12 offset-xl-3">
+                <button type="submit" class="btn btn-aut edit-profile__btn" id="save_company">Сохранить</button>
+            </div>
+        </div>
+    </form>
+</div>
 
-
-
+<!---
         <div class="row">
             <div class="col-xl-6 col-md-12 col-sm-12">
                 <div class="form-group">
@@ -255,6 +262,7 @@
             </div>
         </div>
     </form>
+    --->
     <?// только просмотр реквизитов?>
     <?else:?>
         <div class="row">
