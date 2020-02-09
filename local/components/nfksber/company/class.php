@@ -66,11 +66,12 @@ class CompanySber extends CBitrixComponent
 
                 die();
             }
-            #добавление / редактирование компании
+        // добавление / редактирование компании
         }elseif($_REQUEST['DIRECTOR_ID'] && $_REQUEST['NAME']){
             #скрытые поля
             $addition_props = ['DIRECTOR_NAME', 'DIRECTOR_ID', 'STAFF', 'STAFF_NO_ACTIVE'];
             $props_empty = [];
+
             foreach($_REQUEST as $key => $req){
                 if(in_array($key, $this->arParams['PROPERTIES_NEED']) && empty($req)) $props_empty[] = $key;
                 if(in_array($key, $this->arParams['PROPERTIES_NUMBER']) && !empty($req) && !ctype_digit($req)) $props_no_number[] = $key;

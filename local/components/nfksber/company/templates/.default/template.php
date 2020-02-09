@@ -31,6 +31,33 @@
             <div class="col-xl-6 col-md-12 col-sm-12">
                 <h3>Общие</h3>
             </div>
+
+        </div>
+        <div class="row">
+            <div class="col-xl-6 col-md-12 col-sm-12">
+                <div class="form-group">
+                    <label>Название компании</label>
+                    <input name="NAME" type="text" value="<?=$arResult['COMPANY']['NAME']?>" required>
+                </div>
+                <div class="form-group">
+                    <label>ИНН</label>
+                    <input name="INN" type="text" value="<?=$arResult['COMPANY']['NAME']?>" required>
+                </div>
+                <div class="form-group">
+                    <label>ОГРН</label>
+                    <input name="OGRN" type="text" value="<?=$arResult['COMPANY']['NAME']?>" required>
+                </div>
+            </div>
+            <div class="col-xl-6 col-md-12 col-sm-12">
+                <div class="form-group">
+                    <label>Логотип</label>
+                    <input name="NAME" type="text" value="<?=$arResult['COMPANY']['NAME']?>" required>
+                </div>
+                <div class="form-group">
+                    <label>КПП</label>
+                    <input name="KPP" type="text" value="<?=$arResult['COMPANY']['NAME']?>" required>
+                </div>
+            </div>
         </div>
         <pre>
             <?
@@ -58,7 +85,7 @@
                 <?foreach($arResult['PROPERTIES'] as $prop){?>
                     <div class="form-group">
                         <label><?=$prop["NAME"]?></label>
-                        <input <?if(in_array($prop["CODE"], $arParams['PROPERTIES_NUMBER'])){?>onkeypress='validateNumber(event)'<?}?> type="text" name="<?=$prop["CODE"]?>" value="<?=$arResult['COMPANY']['PROPERTIES'][$prop["CODE"]]['VALUE']?>"<?if(in_array($prop["CODE"], $arParams['PROPERTIES_NEED'])){?> required<?}?>>
+                        <input type="text" name="<?=$prop["CODE"]?>" value="<?=$arResult['COMPANY']['PROPERTIES'][$prop["CODE"]]['VALUE']?>"<?if(in_array($prop["CODE"], $arParams['PROPERTIES_NEED'])){?> required<?}?>>
                     </div>
                 <?}?>
                 <div class="form-group" id="preview-picture">

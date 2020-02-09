@@ -71,4 +71,5 @@ if ($USER->IsAuthorized()){
     LocalRedirect("/");
 }
 ?>
+</div>
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
