@@ -116,7 +116,7 @@ class CompanySber extends CBitrixComponent
                     foreach ($arAdd as &$item) $item = trim($item);
                     $arProps['STAFF_NO_ACTIVE'] = $arAdd;
                 }
-
+                print_r($_REQUEST);
                 if(!$_REQUEST['ID_EXIST']) {
                     #добавление компании
                     $arEl = array(

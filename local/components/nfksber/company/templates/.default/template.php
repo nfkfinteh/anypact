@@ -149,6 +149,15 @@
             </div>
         </div>
         <? ////////////////////// сохранение  /////////////////////////?>
+        <div class="form-group">
+            <?if($arResult['COMPANY']['ID']){?>
+                <input name="ID_EXIST" value="<?=$arResult['COMPANY']['ID']?>" hidden>
+            <?}?>
+            <input name="STAFF" value="<?=$value_staff?>" hidden>
+            <input name="STAFF_NO_ACTIVE" value="<?=$value_staff_no?>" hidden>
+            <input name="DIRECTOR_ID" value="<?=$USER->GetID()?>" hidden>
+            <input name="DIRECTOR_NAME" value="<?echo $USER->GetLastName().' '.$USER->GetFirstName(). ' '.$USER->GetParam("SECOND_NAME")?>" hidden>            
+        </div>
         <div class="row" style="margin: 40px 0;">
             <div class="col-xl-4 col-md-6 col-sm-12 offset-xl-3">
                 <button type="submit" class="btn btn-aut edit-profile__btn" id="save_company">Сохранить</button>
