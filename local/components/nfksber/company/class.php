@@ -128,6 +128,7 @@ class CompanySber extends CBitrixComponent
                         "PROPERTY_VALUES" => $arProps,
                     );
                     if ($arElm["ID"] = $el->Add($arEl, false, false, false)) {
+                        echo "Компания создана!";
                         #отправка письма добавленным сотрудникам
                         if(!empty($arProps['STAFF_NO_ACTIVE'])) {
                             foreach ($arProps['STAFF_NO_ACTIVE'] as $idUser){
