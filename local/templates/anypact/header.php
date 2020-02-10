@@ -120,7 +120,7 @@ global $USER;
     ?>
 <div class="container <?=$class_container?>">
         <!--Шапка-->
-        <header class="header">
+        <header class="header" style="width: 100%;">
             <div class="row">
                 <div class="col-md-6">
                     <a href="/" class="logo"><img src="<?=SITE_TEMPLATE_PATH?>/image/logo_ap.svg" alt="" style="width: 166px;"></a>
@@ -164,7 +164,7 @@ global $USER;
             </div>
         </header>
         <!--Меню навигации-->
-        <nav class="navbar navbar-expand-md">
+        <nav class="navbar navbar-expand-md" style="width: 100%;">
             <?
                 $Section = $_GET['SECTION_ID'];
                 $APPLICATION->IncludeComponent("nfksber:stepback", 
