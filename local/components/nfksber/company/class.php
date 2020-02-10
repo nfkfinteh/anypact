@@ -138,7 +138,7 @@ class CompanySber extends CBitrixComponent
                             }
                         }
                         #добавлена компания - редирект на неё
-                        LocalRedirect("/profile/select_company/");
+                        LocalRedirect("/profile/infopage/");
                         //LocalRedirect("/profile/company/?id=" . $arElm["ID"]);
                     } else {
                         LocalRedirect("/profile/company/?error=".$el->LAST_ERROR);
