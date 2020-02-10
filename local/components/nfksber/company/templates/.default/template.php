@@ -75,41 +75,41 @@
             <div class="col-xl-4 col-md-6 col-sm-12 offset-xl-3">
                 <div class="form-group">
                     <label>Индекс</label>
-                    <input name="NAME" type="text" value="<?=$arResult['COMPANY']['NAME']?>" required>
+                    <input name="INDEX" type="text" value="<?=$arResult['COMPANY']['INDEX']?>" required>
                 </div>
                 <div class="form-group">
                     <label>Город</label>
-                    <input name="INN" type="text" value="<?=$arResult['COMPANY']['NAME']?>" required>
+                    <input name="CITY" type="text" value="<?=$arResult['COMPANY']['CITY']?>" required>
                 </div>
                 <div class="form-group">
                     <label>Улица</label>
-                    <input name="OGRN" type="text" value="<?=$arResult['COMPANY']['NAME']?>" required>
+                    <input name="STREET" type="text" value="<?=$arResult['COMPANY']['STREET']?>" required>
                 </div>
                 <div class="form-group">
                     <label>Дом</label>
-                    <input name="OGRN" type="text" value="<?=$arResult['COMPANY']['NAME']?>" required>
+                    <input name="HOUSE" type="text" value="<?=$arResult['COMPANY']['HOUSE']?>" required>
                 </div>
                 <div class="form-group">
                     <label>Офис</label>
-                    <input name="OGRN" type="text" value="<?=$arResult['COMPANY']['NAME']?>" required>
+                    <input name="OFFICE" type="text" value="<?=$arResult['COMPANY']['OFFICE']?>" required>
                 </div>
             </div>
             <div class="col-xl-4 col-md-12 col-sm-12">
                 <div class="form-group">
                     <label>Область</label>
-                    <input name="NAME" type="text" value="<?=$arResult['COMPANY']['NAME']?>" required>
+                    <input name="REGION" type="text" value="<?=$arResult['COMPANY']['REGION']?>" required>
                 </div>
                 <div class="form-group">
                     <label>Район</label>
-                    <input name="INN" type="text" value="<?=$arResult['COMPANY']['NAME']?>" required>
+                    <input name="DISTRICT" type="text" value="<?=$arResult['COMPANY']['DISTRICT']?>" required>
                 </div>
                 <div class="form-group">
                     <label>Населенный пункт</label>
-                    <input name="OGRN" type="text" value="<?=$arResult['COMPANY']['NAME']?>" required>
+                    <input name="LOCALITY" type="text" value="<?=$arResult['COMPANY']['LOCALITY']?>" required>
                 </div>
                 <div class="form-group">
                     <label>Корпус</label>
-                    <input name="OGRN" type="text" value="<?=$arResult['COMPANY']['NAME']?>" required>
+                    <input name="KORP" type="text" value="<?=$arResult['COMPANY']['KORP']?>" required>
                 </div>
             </div>
         </div>
@@ -122,47 +122,31 @@
         <div class="row">
             <div class="col-xl-4 col-md-6 col-sm-12 offset-xl-3">
                 <div class="form-group">
-                    <label>Индекс</label>
-                    <input name="NAME" type="text" value="<?=$arResult['COMPANY']['NAME']?>" required>
+                    <label>Наименование банка</label>
+                    <input name="BANK" type="text" value="<?=$arResult['COMPANY']['BANK']?>" required>
+                </div>                
+                <div class="form-group">
+                    <label>Расчетный счет</label>
+                    <input name="RAS_ACCOUNT" type="text" value="<?=$arResult['COMPANY']['RAS_ACCOUNT']?>" required>
                 </div>
                 <div class="form-group">
-                    <label>Город</label>
-                    <input name="INN" type="text" value="<?=$arResult['COMPANY']['NAME']?>" required>
-                </div>
-                <div class="form-group">
-                    <label>Улица</label>
-                    <input name="OGRN" type="text" value="<?=$arResult['COMPANY']['NAME']?>" required>
-                </div>
-                <div class="form-group">
-                    <label>Дом</label>
-                    <input name="OGRN" type="text" value="<?=$arResult['COMPANY']['NAME']?>" required>
-                </div>
-                <div class="form-group">
-                    <label>Офис</label>
-                    <input name="OGRN" type="text" value="<?=$arResult['COMPANY']['NAME']?>" required>
+                    <label>ИНН Банка</label>
+                    <input name="INN_BANK" type="text" value="<?=$arResult['COMPANY']['INN_BANK']?>" required>
                 </div>
             </div>
             <div class="col-xl-4 col-md-6 col-sm-12">
                 <div class="form-group">
-                    <label>Область</label>
-                    <input name="NAME" type="text" value="<?=$arResult['COMPANY']['NAME']?>" required>
+                    <label>БИК</label>
+                    <input name="BIK" type="text" value="<?=$arResult['COMPANY']['BIK']?>" required>
                 </div>
                 <div class="form-group">
-                    <label>Район</label>
-                    <input name="INN" type="text" value="<?=$arResult['COMPANY']['NAME']?>" required>
-                </div>
-                <div class="form-group">
-                    <label>Населенный пункт</label>
-                    <input name="OGRN" type="text" value="<?=$arResult['COMPANY']['NAME']?>" required>
-                </div>
-                <div class="form-group">
-                    <label>Корпус</label>
+                    <label>Кор. Счет</label>
                     <input name="OGRN" type="text" value="<?=$arResult['COMPANY']['NAME']?>" required>
                 </div>
             </div>
         </div>
         <? ////////////////////// сохранение  /////////////////////////?>
-        <div class="row" style="margin-top: 40px;">
+        <div class="row" style="margin: 40px 0;">
             <div class="col-xl-4 col-md-6 col-sm-12 offset-xl-3">
                 <button type="submit" class="btn btn-aut edit-profile__btn" id="save_company">Сохранить</button>
             </div>
