@@ -6,6 +6,7 @@
  * */
     $arrGlobalParamsKey = ['NAME', 'INN', 'KPP', 'OGRN' ];
     $GlobalParamsCompany  = array_intersect_key($arResult['PROPERTIES'], $arrGlobalParamsKey);
+    $CompanyProprties   = $arResult['COMPANY']['PROPERTIES'];
 
 
 ?>
@@ -52,7 +53,7 @@
                         </div>
                         <div class="form-group">
                             <label>ИНН</label>
-                            <input name="INN" type="text" value="<?=$arResult['COMPANY']['INN']['VALUE']?>" required>
+                            <input name="INN" type="text" value="<?=$CompanyProprties['INN']['VALUE']?>" required>
                         </div>
                     </div>
                 </div>
@@ -60,11 +61,11 @@
             <div class="col-xl-4 col-md-12 col-sm-12">
                 <div class="form-group">
                     <label>ОГРН</label>
-                    <input name="OGRN" type="text" value="<?=$arResult['COMPANY']['OGRN']['VALUE']?>" required>
+                    <input name="OGRN" type="text" value="<?=$CompanyProprties['OGRN']['VALUE']?>" required>
                 </div>
                 <div class="form-group">
                     <label>КПП</label>
-                    <input name="KPP" type="text" value="<?=$arResult['COMPANY']['KPP']['VALUE']?>" required>
+                    <input name="KPP" type="text" value="<?=$CompanyProprties['KPP']['VALUE']?>" required>
                 </div>
             </div>
         </div>
@@ -78,41 +79,41 @@
             <div class="col-xl-4 col-md-6 col-sm-12 offset-xl-3">
                 <div class="form-group">
                     <label>Индекс</label>
-                    <input name="INDEX" type="text" value="<?=$arResult['COMPANY']['INDEX']['VALUE']?>" required>
+                    <input name="INDEX" type="text" value="<?=$CompanyProprties['INDEX']['VALUE']?>" required>
                 </div>
                 <div class="form-group">
                     <label>Город</label>
-                    <input name="CITY" type="text" value="<?=$arResult['COMPANY']['CITY']['VALUE']?>" required>
+                    <input name="CITY" type="text" value="<?=$CompanyProprties['CITY']['VALUE']?>" required>
                 </div>
                 <div class="form-group">
                     <label>Улица</label>
-                    <input name="STREET" type="text" value="<?=$arResult['COMPANY']['STREET']['VALUE']?>" required>
+                    <input name="STREET" type="text" value="<?=$CompanyProprties['STREET']['VALUE']?>" required>
                 </div>
                 <div class="form-group">
                     <label>Дом</label>
-                    <input name="HOUSE" type="text" value="<?=$arResult['COMPANY']['HOUSE']['VALUE']?>" required>
+                    <input name="HOUSE" type="text" value="<?=$CompanyProprties['HOUSE']['VALUE']?>" required>
                 </div>
                 <div class="form-group">
                     <label>Офис</label>
-                    <input name="OFFICE" type="text" value="<?=$arResult['COMPANY']['OFFICE']['VALUE']?>" required>
+                    <input name="OFFICE" type="text" value="<?=$CompanyProprties['OFFICE']['VALUE']?>" required>
                 </div>
             </div>
             <div class="col-xl-4 col-md-12 col-sm-12">
                 <div class="form-group">
                     <label>Область</label>
-                    <input name="REGION" type="text" value="<?=$arResult['COMPANY']['REGION']['VALUE']?>" required>
+                    <input name="REGION" type="text" value="<?=$CompanyProprties['REGION']['VALUE']?>" required>
                 </div>
                 <div class="form-group">
                     <label>Район</label>
-                    <input name="DISTRICT" type="text" value="<?=$arResult['COMPANY']['DISTRICT']['VALUE']?>" required>
+                    <input name="DISTRICT" type="text" value="<?=$CompanyProprties['DISTRICT']['VALUE']?>" required>
                 </div>
                 <div class="form-group">
                     <label>Населенный пункт</label>
-                    <input name="LOCALITY" type="text" value="<?=$arResult['COMPANY']['LOCALITY']['VALUE']?>" required>
+                    <input name="LOCALITY" type="text" value="<?=$CompanyProprties['LOCALITY']['VALUE']?>" required>
                 </div>
                 <div class="form-group">
                     <label>Корпус</label>
-                    <input name="KORP" type="text" value="<?=$arResult['COMPANY']['KORP']['VALUE']?>" required>
+                    <input name="KORP" type="text" value="<?=$CompanyProprties['KORP']['VALUE']?>" required>
                 </div>
             </div>
         </div>
@@ -126,25 +127,25 @@
             <div class="col-xl-4 col-md-6 col-sm-12 offset-xl-3">
                 <div class="form-group">
                     <label>Наименование банка</label>
-                    <input name="BANK" type="text" value="<?=$arResult['COMPANY']['BANK']['VALUE']?>" required>
+                    <input name="BANK" type="text" value="<?=$CompanyProprties['BANK']['VALUE']?>" required>
                 </div>                
                 <div class="form-group">
                     <label>Расчетный счет</label>
-                    <input name="RAS_ACCOUNT" type="text" value="<?=$arResult['COMPANY']['RAS_ACCOUNT']['VALUE']?>" required>
+                    <input name="RAS_ACCOUNT" type="text" value="<?=$CompanyProprties['RAS_ACCOUNT']['VALUE']?>" required>
                 </div>
                 <div class="form-group">
                     <label>ИНН Банка</label>
-                    <input name="INN_BANK" type="text" value="<?=$arResult['COMPANY']['INN_BANK']['VALUE']?>" required>
+                    <input name="INN_BANK" type="text" value="<?=$CompanyProprties['INN_BANK']['VALUE']?>" required>
                 </div>
             </div>
             <div class="col-xl-4 col-md-6 col-sm-12">
                 <div class="form-group">
                     <label>БИК</label>
-                    <input name="BIK" type="text" value="<?=$arResult['COMPANY']['BIK']['VALUE']?>" required>
+                    <input name="BIK" type="text" value="<?=$CompanyProprties['BIK']['VALUE']?>" required>
                 </div>
                 <div class="form-group">
                     <label>Кор. Счет</label>
-                    <input name="OGRN" type="text" value="<?=$arResult['COMPANY']['NAME']['VALUE']?>" required>
+                    <input name="OGRN" type="text" value="<?=$CompanyProprties['NAME']['VALUE']?>" required>
                 </div>
             </div>
         </div>
