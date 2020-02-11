@@ -145,7 +145,7 @@
                 </div>
                 <div class="form-group">
                     <label>Кор. Счет</label>
-                    <input name="OGRN" type="text" value="<?=$CompanyProprties['NAME']['VALUE']?>" required>
+                    <input name="KOR_ACCOUNT" type="text" value="<?=$CompanyProprties['KOR_ACCOUNT']['VALUE']?>" required>
                 </div>
             </div>
         </div>
@@ -167,7 +167,7 @@
     </form>
 </div>
 
-<!---
+<?/*
         <div class="row">
             <div class="col-xl-6 col-md-12 col-sm-12">
                 <div class="form-group">
@@ -259,7 +259,7 @@
             </div>
         </div>
     </form>
-    --->
+*/?>
     <?// только просмотр реквизитов?>
     <?else:?>
         <div class="row">
@@ -318,10 +318,3 @@
             </div>
     <?endif?>
 </div>
-<? if($USER->GetID() == 1){?>
-    <pre>
-    <?
-        print_r($arResult['COMPANY']);
-    ?>
-    </pre>
-<?}?>

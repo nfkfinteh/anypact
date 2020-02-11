@@ -31,7 +31,7 @@ if ($USER->IsAuthorized()){
 			14 => "RAS_ACCOUNT",
 			15 => "KOR_ACCOUNT",
 			16 => "INN_BANK",
-			17 => "",
+			17 => "KORP",
 		),
 		"PROPERTIES_NEED" => array(
 			0 => "INN",
