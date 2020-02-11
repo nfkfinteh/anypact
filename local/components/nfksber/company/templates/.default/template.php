@@ -52,7 +52,7 @@
                         </div>
                         <div class="form-group">
                             <label>ИНН</label>
-                            <input name="INN" type="text" value="<?=$arResult['COMPANY']['NAME']?>" required>
+                            <input name="INN" type="text" value="<?=$arResult['COMPANY']['INN']?>" required>
                         </div>
                     </div>
                 </div>
@@ -60,11 +60,11 @@
             <div class="col-xl-4 col-md-12 col-sm-12">
                 <div class="form-group">
                     <label>ОГРН</label>
-                    <input name="OGRN" type="text" value="<?=$arResult['COMPANY']['NAME']?>" required>
+                    <input name="OGRN" type="text" value="<?=$arResult['COMPANY']['OGRN']?>" required>
                 </div>
                 <div class="form-group">
                     <label>КПП</label>
-                    <input name="KPP" type="text" value="<?=$arResult['COMPANY']['NAME']?>" required>
+                    <input name="KPP" type="text" value="<?=$arResult['COMPANY']['KPP']?>" required>
                 </div>
             </div>
         </div>
