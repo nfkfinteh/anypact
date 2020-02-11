@@ -317,3 +317,8 @@
             </div>
     <?endif?>
 </div>
+<pre>
+<?
+    print_r($arResult['COMPANY']);
+?>
+</pre>
