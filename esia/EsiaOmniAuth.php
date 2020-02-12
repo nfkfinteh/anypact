@@ -82,6 +82,8 @@ class EsiaOmniAuth {
     $params["state"] = $this->uuid;
     $params["timestamp"] = $time;
     $params["access_type"] = 'online';
+    $params["display"] = 'popup';
+
 
     //signing params
     $client_secret = $this->sign( $params );
