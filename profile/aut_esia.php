@@ -17,9 +17,9 @@ if(!empty($_GET['ID_SENDITEM'])){
 echo "<br> пришли с этого адреса ".$URL_REF;
 //$URL_REF = 'https://anypact.ru/my_pacts/';
 
-$UserTest = true;
+$UserTest = 1;
 //if ($USER->IsAuthorized()){
-if ($UserTest == true){
+if ($UserTest == 1){
     //session_start();
 
     //require_once $_SERVER['DOCUMENT_ROOT'] . '/esia/EsiaLogger.class.php';
@@ -39,8 +39,7 @@ if ($UserTest == true){
         "pkey_path"     => $keys_dir."/secret_NFKS01211.key",
         "cert_path"     => $keys_dir."/cert_NFKS01211.crt",
         "client_id"     => "NFKS01211",
-        "scope"         => "openid fullname id_doc",
-        "display"       => "popup"
+        "scope"         => "openid fullname id_doc"
     );
     
     $esia = new EsiaOmniAuth($config);
