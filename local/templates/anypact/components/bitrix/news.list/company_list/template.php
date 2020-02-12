@@ -16,7 +16,7 @@ $this->setFrameMode(true);
     <div class="row grid-view">
         <?foreach($arResult["ITEMS"] as $arItem):?>
             <!-----------------профили компаний------------------->
-            <div class="view-item col-lg-3 col-sm-6 col-6 mt-4 pb-3">
+            <div class="view-item col-lg-2 col-sm-3 col-6 mt-4 pb-3">
                 <div class="people-s-photo">
                     <div class="people-s-photo-img <?if($arParams['COMPANY_ID'] != $arItem['ID']):?>js-auth_company<?endif?>" data-id="<?=$arItem['ID']?>">
                         <? if(!empty($arItem['PREVIEW_PICTURE'])){ ?>
@@ -53,7 +53,7 @@ $this->setFrameMode(true);
         <?endforeach?>
         <?foreach($arResult["ITEMS_NO_ACTIVE"] as $arItem):?>
             <!-----------------профили компаний не подтвержденных------------------->
-            <div class="view-item col-lg-3 col-sm-6 col-6 mt-4 pb-3">
+            <div class="view-item col-lg-2 col-sm-3 col-6 mt-4 pb-3">
                 <div class="people-s-photo">
                     <div class="people-s-photo-img <?if($arParams['COMPANY_ID'] != $arItem['ID']):?>js-auth_company<?endif?>" data-id="<?=$arItem['ID']?>">
                         <? if(!empty($arItem['PREVIEW_PICTURE'])){ ?>
@@ -81,7 +81,7 @@ $this->setFrameMode(true);
             </div>
         <?endforeach?>
         <!------------------профили пользователей------------------>
-        <div class="view-item col-lg-3 col-sm-6 col-6 mt-4 pb-3">
+        <div class="view-item col-lg-2 col-sm-4 col-6 mt-4 pb-3">
             <div class="people-s-photo">
                 <div class="people-s-photo-img <?if(empty($arParams['COMPANY_ID'])):?>js-auth_user<?endif?>">
                     <img src="<?=SITE_TEMPLATE_PATH?>/image/people-search-no-phpto.png">

@@ -43,6 +43,11 @@
     width: 100%;
     text-align: center;
 }
+
+.grid-view{
+    margin-bottom: 100px;
+}
+
 .grid-view .view-item{
     padding-bottom: 1rem;
     margin-top: 1.5rem;
