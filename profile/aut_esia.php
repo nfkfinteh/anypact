@@ -20,7 +20,7 @@ echo "<br> пришли с этого адреса ".$URL_REF;
 $UserTest = 1;
 //if ($USER->IsAuthorized()){
 if ($UserTest == 1){
-    //session_start();
+    session_start();
 
     //require_once $_SERVER['DOCUMENT_ROOT'] . '/esia/EsiaLogger.class.php';
     //EsiaLogger::DumpEnviroment( 'open_gu' );
