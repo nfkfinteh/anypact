@@ -572,18 +572,6 @@ class CDemoSqr extends CBitrixComponent
                         /////////////////////////////////////////////////////////////////////////////
                         $ch = curl_init();
                         curl_setopt($ch, CURLOPT_URL, 'https://www.gosuslugi.ru/auth-provider/logout');
-                                                
-                        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/pkcs7-mime'));
-                        curl_setopt($ch, CURLOPT_POST, true);
-                        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-                        curl_setopt($ch, CURLOPT_VERBOSE, false);
-                        curl_setopt($ch, CURLOPT_HEADER, 1);
-                        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-                        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 30);                        
-                        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-                        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);                        
-                        curl_setopt($ch, CURLOPT_FORBID_REUSE, TRUE);
-                        curl_setopt($ch, CURLOPT_FRESH_CONNECT, TRUE);
                         $response = curl_exec($ch);
                         
                         if(!$response)
