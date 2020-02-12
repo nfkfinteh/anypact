@@ -39,7 +39,8 @@ if ($UserTest){
         "pkey_path"     => $keys_dir."/secret_NFKS01211.key",
         "cert_path"     => $keys_dir."/cert_NFKS01211.crt",
         "client_id"     => "NFKS01211",
-        "scope"         => "openid fullname id_doc"
+        "scope"         => "openid fullname id_doc",
+        "display"       => "popup"
     );
     
     $esia = new EsiaOmniAuth($config);
