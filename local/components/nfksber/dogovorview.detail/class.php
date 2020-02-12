@@ -568,6 +568,37 @@ class CDemoSqr extends CBitrixComponent
                         );
                         //$id_add_item = $this->sendContract(7, $Contract_params);
                         // получи
+                        // попробуем разлогинится в госуслугах
+                        /////////////////////////////////////////////////////////////////////////////
+                        $ch = curl_init();
+                        curl_setopt($ch, CURLOPT_URL, 'https://www.gosuslugi.ru/auth-provider/logout');
+                                                
+                        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/pkcs7-mime'));
+                        curl_setopt($ch, CURLOPT_POST, true);
+                        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+                        curl_setopt($ch, CURLOPT_VERBOSE, false);
+                        curl_setopt($ch, CURLOPT_HEADER, 1);
+                        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 30);                        
+                        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+                        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);                        
+                        curl_setopt($ch, CURLOPT_FORBID_REUSE, TRUE);
+                        curl_setopt($ch, CURLOPT_FRESH_CONNECT, TRUE);
+                        $response = curl_exec($ch);
+                        
+                        if(!$response)
+                        {
+                            $error = curl_error($ch).'('.curl_errno($ch).')';
+                            echo $error;
+                        }
+                        //если не ошибка, то выводим результат
+                        else
+                        {
+                           echo "Все ок";		
+                        }
+                        
+                        curl_close($ch);
+                        /////////////////////////////////////////////////////////////////////////////
                     }
                     $this->arResult['SEND_CONTRACT'] = 'Y';
                 } else {
