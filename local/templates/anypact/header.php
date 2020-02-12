@@ -127,7 +127,7 @@ global $USER;
                     <span class="phone">8(800) 200-84-84</span>
                 </div>
                 <? if ($USER->IsAuthorized()){ ?>
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <?if(!empty($getGeo['cityName'])):?>
                             <span class="location"><?=$getGeo['cityName']?></span>
                         <?else:?>
@@ -135,21 +135,27 @@ global $USER;
                         <?endif?>
 
                     </div>
-                    <div class="col-md-3">
-                    <!--Кнопка создать новое предложение-->
-                    <div class="create-pact-btn">
-                        <a href="/my_pacts/edit_my_pact/?ACTION=ADD"></a>
-                        <div>Создать предложение</div>
-                    </div>
-                    <!------------>                    
-                        <?                                
-                            $APPLICATION->IncludeComponent("nfksber:profile.widget",
-                            "head",
-                            Array(
-                                    'IS_PAGE_MESSAGE' => $APPLICATION->GetCurPage() == '/list_message/view_message/' ? 'Y' : 'N'
-                                )
-                            );
-                        ?>
+                    <div class="col-md-4">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <!--Кнопка создать новое предложение-->
+                                <div class="create-pact-btn">
+                                    <a href="/my_pacts/edit_my_pact/?ACTION=ADD"></a>
+                                    <div>Создать предложение</div>
+                                </div>
+                                <!------------>                   
+                            </div>
+                            <div class="col-md-8">
+                                <?                                
+                                    $APPLICATION->IncludeComponent("nfksber:profile.widget",
+                                    "head",
+                                    Array(
+                                            'IS_PAGE_MESSAGE' => $APPLICATION->GetCurPage() == '/list_message/view_message/' ? 'Y' : 'N'
+                                        )
+                                    );
+                                ?>
+                            </div>
+                        </div>
                     </div>
                     <?}else {?>
                         <div class="col-md-6">
