@@ -83,8 +83,8 @@
     url(image/bg-points.png) 59vw 50vh no-repeat;
 }
 h1{
-    font-size: 72px;
-    text-transform: uppercase;
+    width: 100%;
+    text-align: left;
     color: #ff6416;
     font-weight: 900;
     text-align: center;
