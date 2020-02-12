@@ -44,7 +44,7 @@ $MessURL = '/list_message/';
                 <div class="widget_user_profile_select">
                     <ul>
                         <li><a href="/profile/">Редактировать профиль</a></li>
-                        <li><a href="/profile/select_company/">Выбрать компанию</a></li>
+                        <li><a href="/profile/select_company/">Выбрать профиль</a></li>
                         <li><a href="/friends/">Мои друзья</a></li>                        
                         <li><a href="<?echo $APPLICATION->GetCurPageParam("logout=yes", 
                         array(
