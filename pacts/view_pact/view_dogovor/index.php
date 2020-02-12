@@ -6,7 +6,9 @@ $APPLICATION->SetTitle("AnyPact");
 	<?
     // проверяем авторизован ли пользователь
     global $USER;
-    if ($USER->IsAuthorized()){
+    $UserTest = true;
+    //if ($USER->IsAuthorized()){
+    if ($UserTest){
     ?>
     <?//компонент выводит детальный просмотр сделки    
     $APPLICATION->IncludeComponent("nfksber:dogovorview.detail", 

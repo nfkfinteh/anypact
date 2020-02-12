@@ -556,7 +556,7 @@ class CDemoSqr extends CBitrixComponent
                             'UF_ID_SEND_USER' => $userId
                         );
                         // создание записи подписания контрака
-                        $id_add_item = $this->sendContract(3, $Params);
+                        //$id_add_item = $this->sendContract(3, $Params);
                         // создание записи с текстом
                         $Contract_params = array(
                             'UF_ID_CONTRACT' => $this->ID_CONTRACT,
@@ -566,7 +566,7 @@ class CDemoSqr extends CBitrixComponent
                             'UF_CANTRACT_IMG' => '',
                             'UF_ID_USER_SEND' => $userId,
                         );
-                        $id_add_item = $this->sendContract(7, $Contract_params);
+                        //$id_add_item = $this->sendContract(7, $Contract_params);
                         // получи
                     }
                     $this->arResult['SEND_CONTRACT'] = 'Y';
