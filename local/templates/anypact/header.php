@@ -137,7 +137,7 @@ global $USER;
                     </div>
                     <div class="col-md-4">
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <!--Кнопка создать новое предложение-->
                                 <div class="create-pact-btn">
                                     <a href="/my_pacts/edit_my_pact/?ACTION=ADD"></a>
