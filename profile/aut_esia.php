@@ -17,7 +17,9 @@ if(!empty($_GET['ID_SENDITEM'])){
 echo "<br> пришли с этого адреса ".$URL_REF;
 //$URL_REF = 'https://anypact.ru/my_pacts/';
 
-if ($USER->IsAuthorized()){
+$UserTest = true;
+//if ($USER->IsAuthorized()){
+if ($UserTest){
     //session_start();
 
     //require_once $_SERVER['DOCUMENT_ROOT'] . '/esia/EsiaLogger.class.php';
