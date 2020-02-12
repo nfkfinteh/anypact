@@ -96,12 +96,12 @@ $this->setFrameMode(true);
                     <div class="people-s-photo-btn-block">
                         <button class="btn btn-aut js-auth_user">Выбрать</button>
                     </div>
-                <?else:?>
+                <!-- <?//else:?>
                     <div class="people-s-photo-btn-block">
                         <a href="/profile/" class="btn btn-aut active-company">
                             Продолжить с текущим профилем
                         </a>
-                    </div>
+                    </div> -->
                 <?endif?>
             </div>
         </div>
