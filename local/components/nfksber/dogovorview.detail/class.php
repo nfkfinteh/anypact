@@ -570,22 +570,22 @@ class CDemoSqr extends CBitrixComponent
                         // получи
                         // попробуем разлогинится в госуслугах
                         /////////////////////////////////////////////////////////////////////////////
-                        $ch = curl_init();
-                        curl_setopt($ch, CURLOPT_URL, 'https://www.gosuslugi.ru/auth-provider/logout');
-                        $response = curl_exec($ch);
+                        // $ch = curl_init();
+                        // curl_setopt($ch, CURLOPT_URL, 'https://www.gosuslugi.ru/auth-provider/logout');
+                        // $response = curl_exec($ch);
                         
-                        if(!$response)
-                        {
-                            $error = curl_error($ch).'('.curl_errno($ch).')';
-                            echo $error;
-                        }
-                        //если не ошибка, то выводим результат
-                        else
-                        {
-                           echo "Все ок";		
-                        }
+                        // if(!$response)
+                        // {
+                        //     $error = curl_error($ch).'('.curl_errno($ch).')';
+                        //     echo $error;
+                        // }
+                        // //если не ошибка, то выводим результат
+                        // else
+                        // {
+                        //    echo "Все ок";		
+                        // }
                         
-                        curl_close($ch);
+                        // curl_close($ch);
                         /////////////////////////////////////////////////////////////////////////////
                     }
                     $this->arResult['SEND_CONTRACT'] = 'Y';
