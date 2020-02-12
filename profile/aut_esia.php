@@ -4,7 +4,7 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 echo $USER->GetParam("NAME");
 // урл по которому пришел пользователь, получаем через get  и дешифруем
 //print_r($_GET);
-$domane = 'http://anypact.nfksber.ru';
+$domane = 'http://anypact.ru';
 $ReturnURL = base64_decode($_GET['returnurl']);
 $ReturnURL = $domane.$ReturnURL;
 // если пользователь пришел с редактирования контракта нужно ID записи добавить в GET
@@ -19,7 +19,7 @@ echo "<br> пришли с этого адреса ".$URL_REF;
 
 $UserTest = true;
 //if ($USER->IsAuthorized()){
-if ($UserTest){
+if ($UserTest == true){
     //session_start();
 
     //require_once $_SERVER['DOCUMENT_ROOT'] . '/esia/EsiaLogger.class.php';
