@@ -55,7 +55,7 @@ case 'N': ?>
 									<p>Успешная авторизация на сайте Госуслуг будет означать выражение Вашей воли на подписание Документов и совершение указанной в них сделки (сделок) в понимании ст. 160 ГК РФ.</p>
 								</span>
 							</label>
-							<!-- <a href="http://anypact.nfksber.ru/profile/aut_esia.php" class="btn btn-nfk" id="ref_esia" style="width:45%;margin-right: 30px;">Подписать</a>-->
+							<!-- <a href="http://anypact.ru/profile/aut_esia.php" class="btn btn-nfk" id="ref_esia" style="width:45%;margin-right: 30px;">Подписать</a>-->
                             <?
                             $DATA_SER = $arResult["CONTRACT_PROPERTY"]["CONTRACT_PROPERTY"]["USER_A"]["VALUE"].','.$arResult["TEMPLATE_CONTENT"]["ID"].','.$arResult["USER_ID"];
                             $DATA_SER = base64_encode($DATA_SER);
