@@ -35,7 +35,7 @@ if ($USER->IsAuthorized()){
         $Users_have_esia_id = $GET_USER_ESIA_ID->Fetch();
 
         print_r($Users_have_esia_id);
-        if(!empty($Users_have_esia_id["ID"])){
+        if(empty($Users_have_esia_id["ID"])){
             echo "Ошибок нет";
             // если все ок то меняем реквизиты пользователю
             $fields = Array(
