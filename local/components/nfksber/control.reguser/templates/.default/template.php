@@ -77,7 +77,8 @@
 <script>
     $('.buttonSebdPay').on('click', function(){
         let PayParams = $(this).attr("data");
-        PayParams.attr('disabled');
+        let ButtonPay = $(this)
+        ButtonPay.attr('disabled');
         /*
         $.ajax({
 			type: 'POST',
@@ -86,7 +87,7 @@
 			async:false,
 			success: function(result){
                 console.log(result);
-                PayParams.attr('disabled');
+                ButtonPay.attr('disabled');
 				// $result = JSON.parse(result);
 				// if($result['TYPE']=='ERROR'){
 				// 	console.log($result['VALUE']);
