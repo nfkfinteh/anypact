@@ -2,6 +2,9 @@
     $arMessage  =  json_decode($arResult['MESSAGES']['UF_TEXT_MESSAGE_USER'], true);
     $UserID = CUser::GetID();
 ?>
+<pre>
+<? print_r($arResult['UsersChart']);?>
+</pre>
 <input hidden value="<?=$UserID?>" id="IDUSER" />
     <div>
         <h1 class="mb-4">Мои сообщения</h1>

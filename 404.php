@@ -23,4 +23,5 @@ $APPLICATION->SetTitle("404 Not Found");
         <p class="mt-1" style="max-width: 550px">Возможно, страница, которую вы ищете, была удалена, если ее имя было
             изменено или временно недоступно. <a href="/">Вернуться на главную страницу</a></p>
     </div>
+</div>
 <? require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php"); ?>
