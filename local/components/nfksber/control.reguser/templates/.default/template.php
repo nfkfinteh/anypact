@@ -78,7 +78,7 @@
     $('.buttonSebdPay').on('click', function(){
         let PayParams = $(this).attr("data");
         let ButtonPay = $(this)
-        ButtonPay.attr('disabled');
+        ButtonPay.prop('disabled');
         /*
         $.ajax({
 			type: 'POST',
