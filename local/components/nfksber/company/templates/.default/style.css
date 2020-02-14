@@ -140,11 +140,18 @@ div.btn{
     height: 52px;
 }
 
-
 .company_profile h3 {
     font-size: 1.51rem;
     font-weight: 900;
     margin-top: 0;
     padding-top: 0;
     padding-bottom: 27px;
+}
+
+.company-logo img{
+    width: 100%;
+}
+
+.company-logo.edit-photo{
+    max-width: 165px;
 }

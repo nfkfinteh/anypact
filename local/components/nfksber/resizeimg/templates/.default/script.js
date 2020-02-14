@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    var imageSection, arFiles = [];
+    var imageSection, arFiles = {};
     var coordinate_selection = {
         'width': 300,
         'height': 300,
@@ -9,11 +9,28 @@ $(document).ready(function(){
 
     $(document).on('click', '.js-submit_selection', function () {
         coordinate_selection.ajax = 'Y';
-        var mainData = JSON.stringify(coordinate_selection);
+        var mainData = JSON.stringify(coordinate_selection),
+            action = $(this).attr('data-action'),
+            idCompany = $(this).attr('data-id'),
+            url;
 
-        if( typeof arFiles != 'undefined' ){
+        if(action == 'company'){
+            url = '/response/ajax/resizeimg_company.php';
+            if(idCompany){
+                url_reload = '/profile/company/?id='+idCompany;
+            }
+            else{
+                url_reload = '/profile/company/?';
+            }
+
+        }
+        else{
+            url = '/response/ajax/resizeimg.php';
+            url_reload = '/profile/';
+        }
+
+        if( typeof arFiles != 'undefined' && Object.keys(arFiles).length >0){
             var formData = new FormData();
-
             formData.append( 'main', mainData );
 
             // заполняем объект данных файлами в подходящем для отправки формате
@@ -24,7 +41,7 @@ $(document).ready(function(){
             preload('show');
             $.ajax({
                 type: 'POST',
-                url: '/response/ajax/resizeimg.php',
+                url: url,
                 data: formData,
                 processData: false,
                 contentType: false,
@@ -36,10 +53,9 @@ $(document).ready(function(){
                         console.log(result['VALUE']);
                     }
                     if(result['TYPE']=='SUCCESS'){
-                        //location.reload();
                         preload('hide');
                         showResult('#popup-success','Изменения сохранены');
-                        document.location.href = '/profile/';
+                        document.location.href = url_reload+'&img='+result.VALUE;
                     }
                 }
             });

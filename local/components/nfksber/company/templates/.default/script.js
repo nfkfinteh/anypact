@@ -48,34 +48,33 @@ $(document).ready(function(){
         }
     });
 
-    $('input[name="PREVIEW_PICTURE"]').on('change', function () {
-        var files = this.files;
-        if(files.length){
-            for (var i = 0; i < files.length; i++) {
-                console.log(files[i]);
-                preview(files[i]);
+
+    //валидация для простых полей формы
+    $("#form__company_profile").validate({
+        rules: {
+            INN: {
+                minlength: 12,
+            },
+        },
+        messages: {
+            INN: 'Данные введены не полностью',
+        },
+        ignore: ".ignore-validate, :hidden",
+        onsubmit: false,
+        showErrors: function(errorMap, errorList) {
+            let that = this.lastActive;
+
+            if(errorList.length>0){
+                let messaage = errorList[0].message;
+                if(!$(that).hasClass('validate-error')){
+                    $(that).addClass('validate-error');
+                    $(that).before('<label class="error-message">'+messaage+'</label>');
+                }
+            }
+            else{
+                $(that).removeClass('validate-error');
+                $(that).prev('.error-message').remove();
             }
         }
     });
-    function preview(file) {
-        var reader = new FileReader();
-
-        reader.addEventListener('load', function(e) {
-            let slide = '<img class="company-logo" src="'+e.target.result+'">';
-
-            $('#preview-picture label').after($(slide));
-        });
-        reader.readAsDataURL(file);
-    };
-
-    function validateNumber(evt) {
-        var theEvent = evt || window.event;
-        var key = theEvent.keyCode || theEvent.which;
-        key = String.fromCharCode( key );
-        var regex = /[0-9]|\./;
-        if( !regex.test(key) ) {
-            theEvent.returnValue = false;
-            if(theEvent.preventDefault) theEvent.preventDefault();
-        }
-    }
 });

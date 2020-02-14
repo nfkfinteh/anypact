@@ -20,4 +20,18 @@ function getCurCompany($usrId){
     }
      return $idCompany;
 }
+
+//удаление временных фалов в директории
+function deleteTmpFile($dir, $time){
+    $scanFile = scandir($_SERVER['DOCUMENT_ROOT'].$dir);
+    foreach ($scanFile as $file) {
+        if ($file != "." && $file != "..") {
+            //удаляем фал старше $time часов
+            $urlFile = $_SERVER['DOCUMENT_ROOT'].$dir.$file;
+            if (time() - filectime($urlFile) > $time * 60 * 60) {
+                unlink($urlFile);
+            }
+        }
+    }
+}
 ?>
