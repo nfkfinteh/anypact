@@ -26,6 +26,16 @@ if ($USER->IsAuthorized()){
         $number_pass = $info['user_docs']['elements'][0]['series']." ".$info['user_docs']['elements'][0]['number'] ;
         $pass_by = "Выдан: ".$info['user_docs']['elements'][0]['issuedBy'];
 
+        // проверяем ЕСИА ид на наличие в базе, что бы не было регистраций на нескольких пользователей
+        $filterESIAID = array(
+            "UF_ESIA_ID" => $info['user_id']
+        );
+        $GET_USER_ESIA_ID = CUser::GetList(($by="ID"), ($order="DESC"), $filterESIAID);
+        $Users_have_esia_id = $GET_USER_ESIA_ID->Fetch();
+
+        print_r($Users_have_esia_id);
+
+        // если все ок то меняем реквизиты пользователю
         $fields = Array(
             "UF_ESIA_AUT" => 1,
             "UF_ETAG_ESIA" => $info['user_info']['eTag'],
@@ -38,10 +48,7 @@ if ($USER->IsAuthorized()){
             "SECOND_NAME" => $info['user_info']['middleName'], // Отчество
             "UF_PASSPORT" => $number_pass,
             "UF_ESIA_ID" => $info['user_id']
-        );
-        //echo "<pre>";
-        //print_r($info);
-        //echo "</pre>";        
+        );        
         $USER->Update($USER->GetID(), $fields);
         $arGroups[] = 6; // ID группы которые авторизовались через ЕСИА
         CUser::SetUserGroup($USER->GetID(), $arGroups);
