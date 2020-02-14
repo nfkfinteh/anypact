@@ -111,5 +111,7 @@
         </div>
     </div>
 <?}else {?>
-<p>Вы ошиблись чатом</p>
+    <?  // заглушка ошибка чатом
+        $APPLICATION->IncludeFile(SITE_TEMPLATE_PATH."/dont_chat.php", Array());            
+    ?>
 <?}?>
