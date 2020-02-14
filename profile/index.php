@@ -33,10 +33,7 @@ if ($USER->IsAuthorized()){
         );
         $GET_USER_ESIA_ID = CUser::GetList(($by="ID"), ($order="DESC"), $filterESIAID);
         $Users_have_esia_id = $GET_USER_ESIA_ID->Fetch();
-
-        print_r($Users_have_esia_id);
-        if(empty($Users_have_esia_id["ID"])){
-            echo "Ошибок нет";
+        if(empty($Users_have_esia_id["ID"])){            
             // если все ок то меняем реквизиты пользователю
             $fields = Array(
                 "UF_ESIA_AUT" => 1,
@@ -51,13 +48,15 @@ if ($USER->IsAuthorized()){
                 "UF_PASSPORT" => $number_pass,
                 "UF_ESIA_ID" => $info['user_id']
             );        
-            //$USER->Update($USER->GetID(), $fields);
+            $USER->Update($USER->GetID(), $fields);
             $arGroups[] = 6; // ID группы которые авторизовались через ЕСИА
-            //CUser::SetUserGroup($USER->GetID(), $arGroups);
-            //header("Refresh: 0");
-        }else {
-            $error_ESIA = "Пользователь использующий этот аккаунт госуслуг уже зареистрирован."; 
-            echo $error_ESIA;     
+            CUser::SetUserGroup($USER->GetID(), $arGroups);
+            header("Refresh: 0");
+        }else {            
+            $fields = Array(
+                "UF_ESIA_ERROR" => "Пользователь использующий этот аккаунт госуслуг уже зареистрирован."
+            );        
+            $USER->Update($USER->GetID(), $fields);                   
         }
     }
 
@@ -74,8 +73,7 @@ if ($USER->IsAuthorized()){
                 "AJAX_OPTION_JUMP" => "N",
                 "AJAX_OPTION_STYLE" => "Y",
                 "AJAX_OPTION_HISTORY" => "N",
-                "ESIA_RESPONSE" => $info_form,
-                "ESIA_ERROR" => $error_ESIA
+                "ESIA_RESPONSE" => $info_form                
             )
         );?>
     </div>
