@@ -85,11 +85,11 @@ if (!empty($arResult['arUser']['UF_ESIA_ID']) && $arResult['arUser']['UF_ESIA_AU
                                         ?>
                                         <a href="/profile/aut_esia.php?returnurl=<?=$encodeURL?>">
                                         <img src="<?=SITE_TEMPLATE_PATH?>/img/gos_usl.png" />
-                                        <p>Подтверждение данных с помощью учетной записи портала госуслуг</p>
-                                        <? if(!empty($arResult["arUser"]["UF_ESIA_ERROR"])){?>
-                                        <p><?=$arResult["arUser"]["UF_ESIA_ERROR"]?></p>
-                                        <?}?>
+                                        <p>Подтверждение данных с помощью учетной записи портала госуслуг</p>                                        
                                     </a>
+                                    <? if(!empty($arResult["arUser"]["UF_ESIA_ERROR"])){?>
+                                        <p style="color: red;">&#9888; <?=$arResult["arUser"]["UF_ESIA_ERROR"]?></p>
+                                    <?}?>
                                 <?}?>
                             </div>
                         </div>
