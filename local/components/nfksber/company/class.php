@@ -116,19 +116,20 @@ class CompanySber extends CBitrixComponent
                     foreach ($arAdd as &$item) $item = trim($item);
                     $arProps['STAFF_NO_ACTIVE'] = $arAdd;
                 }
-                print_r($_REQUEST);
                 if(!$_REQUEST['ID_EXIST']) {
                     #добавление компании
                     $arEl = array(
                         "ACTIVE" => "N",
                         "IBLOCK_ID" => intval($this->arParams['IBLOCK_ID']),
                         "NAME" => $_REQUEST['NAME'],
-                        "PREVIEW_TEXT" => print_r($_FILES, true),
                         "CODE" => $code,
                         "PROPERTY_VALUES" => $arProps,
                     );
+                    if($_REQUEST["PREVIEW_PICTURE"]) $arEl["PREVIEW_PICTURE"] = CFile::MakeFileArray($_SERVER["DOCUMENT_ROOT"].$_REQUEST["PREVIEW_PICTURE"]);
+
                     if ($arElm["ID"] = $el->Add($arEl, false, false, false)) {
-                        echo "Компания создана!";
+                        //подчищаем пакпку со временными фалами
+                        deleteTmpFile('/upload/tmp/company_profile/', 1);
                         #отправка письма добавленным сотрудникам
                         if(!empty($arProps['STAFF_NO_ACTIVE'])) {
                             foreach ($arProps['STAFF_NO_ACTIVE'] as $idUser){
@@ -175,11 +176,14 @@ class CompanySber extends CBitrixComponent
                         "CODE" => $code,
                         "PROPERTY_VALUES" => $arProps,
                     );
-                    if($_FILES["PREVIEW_PICTURE"]) $arEl["PREVIEW_PICTURE"] = $_FILES["PREVIEW_PICTURE"];
-
+                    if($_REQUEST["PREVIEW_PICTURE"]) $arEl["PREVIEW_PICTURE"] = CFile::MakeFileArray($_SERVER["DOCUMENT_ROOT"].$_REQUEST["PREVIEW_PICTURE"]);
 
 
                     if ($el->Update(intval($_REQUEST["ID_EXIST"]), $arEl)) {
+
+                        //подчищаем пакпку со временными фалами
+                        deleteTmpFile('/upload/tmp/company_profile/', 1);
+
                         #отправка письма добавленным сотрудникам
                         if(!empty($arProps['STAFF_NO_ACTIVE'])) {
                             foreach ($arProps['STAFF_NO_ACTIVE'] as $idUser){
