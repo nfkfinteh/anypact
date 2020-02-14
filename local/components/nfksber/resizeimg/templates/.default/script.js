@@ -55,7 +55,11 @@ $(document).ready(function(){
                     if(result['TYPE']=='SUCCESS'){
                         preload('hide');
                         showResult('#popup-success','Изменения сохранены');
-                        document.location.href = url_reload+'&img='+result.VALUE;
+                        if(result.VALUE == undefined){
+                            location.href = url_reload;
+                        }else{
+                            location.href = url_reload+'&img='+result.VALUE;
+                        }
                     }
                 }
             });
