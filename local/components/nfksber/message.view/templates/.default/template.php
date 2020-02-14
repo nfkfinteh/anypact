@@ -7,9 +7,6 @@
         $arrIDUserChat[] = $Item["ID"];
     }
 ?>
-<pre>
-<? print_r($arrIDUserChat);?>
-</pre>
 <? // если пользователь входит в масив то открываем ему сообщения?>
 <?if(in_array($UserID, $arrIDUserChat)){?>
     <input hidden value="<?=$UserID?>" id="IDUSER" />
