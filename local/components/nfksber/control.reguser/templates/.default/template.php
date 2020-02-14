@@ -78,8 +78,7 @@
     $('.buttonSebdPay').on('click', function(){
         let PayParams = $(this).attr("data");
         let ButtonPay = $(this)
-        ButtonPay.prop('disabled', 'true');
-        /*
+        
         $.ajax({
 			type: 'POST',
 			url: '/response/admin/payYandex.php',
@@ -87,7 +86,7 @@
 			async:false,
 			success: function(result){
                 console.log(result);
-                ButtonPay.attr('disabled');
+                ButtonPay.prop('disabled', 'true');
 				// $result = JSON.parse(result);
 				// if($result['TYPE']=='ERROR'){
 				// 	console.log($result['VALUE']);
@@ -96,8 +95,7 @@
 				// 	console.log($result);
 				// }
 			}
-        });
-        */
+        });        
     });
         
 </script>
