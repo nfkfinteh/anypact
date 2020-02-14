@@ -261,3 +261,6 @@ if (!empty($arResult['arUser']['UF_ESIA_ID']) && $arResult['arUser']['UF_ESIA_AU
 </div>
 </div>
 </div>
+<pre>
+<? print_r($arResult);?>
+</pre>

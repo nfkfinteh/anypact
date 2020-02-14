@@ -36,7 +36,7 @@ if ($USER->IsAuthorized()){
 
         print_r($Users_have_esia_id);
         if(!empty($Users_have_esia_id["ID"])){
-
+            echo "Ошибок нет";
             // если все ок то меняем реквизиты пользователю
             $fields = Array(
                 "UF_ESIA_AUT" => 1,
@@ -56,7 +56,8 @@ if ($USER->IsAuthorized()){
             //CUser::SetUserGroup($USER->GetID(), $arGroups);
             //header("Refresh: 0");
         }else {
-            $error_ESIA = "Пользователь использующий этот аккаунт госуслуг уже зареистрирован.";            
+            $error_ESIA = "Пользователь использующий этот аккаунт госуслуг уже зареистрирован."; 
+            echo $error_ESIA;     
         }
     }
 
