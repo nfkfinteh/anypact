@@ -48,13 +48,13 @@ global $USER;
     $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/module/cropper/cropper.min.js');
     $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/module/jquery.maskedinput/jquery.inputmask.min.js');
     $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/module/jquery.validation/jquery.validate.min.js');
+    $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/moment.js');
 
     CJSCore::Init(array('popup', 'date'));
 
     $APPLICATION->ShowHead();
     //$APPLICATION->ShowProperty('MetaOG');
     ?>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/js/tempusdominus-bootstrap-4.min.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/css/tempusdominus-bootstrap-4.min.css" />
 </head>
 <body>
