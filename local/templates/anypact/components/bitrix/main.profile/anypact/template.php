@@ -78,7 +78,7 @@ if (!empty($arResult['arUser']['UF_ESIA_ID']) && $arResult['arUser']['UF_ESIA_AU
                                     <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                 </div>
                                 <script type="text/javascript">
-                                    $(function () {
+                                    $(document).ready(function(){
                                         $('#datetimepicker2').datetimepicker({
                                             locale: 'ru'
                                         });
