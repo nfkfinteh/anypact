@@ -74,6 +74,16 @@ if (!empty($arResult['arUser']['UF_ESIA_ID']) && $arResult['arUser']['UF_ESIA_AU
                                 <span class="param_selected_activ_date">
                                     <input id="param_selected_activ_date" type="text" class="input_date" name="PERSONAL_BIRTHDAY" maxlength="50" value="<?=$arResult["arUser"]["PERSONAL_BIRTHDAY"]?>" style="width: 48%;" readonly>
                                 </span>
+                                <div class="input-group-append" data-target="#datetimepicker2" data-toggle="datetimepicker">
+                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                </div>
+                                <script type="text/javascript">
+                                    $(function () {
+                                        $('#datetimepicker2').datetimepicker({
+                                            locale: 'ru'
+                                        });
+                                    });
+                                </script>
                             </div>
                             <div class="form-group">
                                 <? if (!empty($arResult['arUser']['UF_ETAG_ESIA']) && $arResult['arUser']['UF_ESIA_AUT']) {?>
