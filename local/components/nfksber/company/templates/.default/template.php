@@ -77,7 +77,7 @@
         <? ////////////////////// поля адреса /////////////////////////?>
         <div class="row" style="margin-top: 40px;">
             <div class="col-xl-4 col-md-6 col-sm-12 offset-xl-3"">
-                <h3>Юридический адрес компании</h3>
+                <h3>Юридический адрес</h3>
             </div>
         </div>
         <div class="row">
@@ -125,7 +125,7 @@
         <? ////////////////////// платежные реквизиты /////////////////////////?>
         <div class="row" style="margin-top: 40px;">
             <div class="col-xl-4 col-md-6 col-sm-12 offset-xl-3">
-                <h3>Банковские реквизиты компании</h3>
+                <h3>Банковские реквизиты</h3>
             </div>
         </div>
         <div class="row">
