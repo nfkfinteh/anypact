@@ -357,3 +357,8 @@ div.add_company{
 #button_calendar img {
     width: 100%;
 }
+
+.user_profile_form_editdata a.btn {
+    padding: 10px 30px;
+    border-radius: 5px;
+}

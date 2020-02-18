@@ -88,7 +88,7 @@ if (!empty($arResult['arUser']['UF_ESIA_ID']) && $arResult['arUser']['UF_ESIA_AU
                                             $encodeURL = base64_encode('/profile/');
                                         ?>
                                         <a href="/profile/aut_esia.php?returnurl=<?=$encodeURL?>">
-                                        <img src="<?=SITE_TEMPLATE_PATH?>/img/gos_usl.png" />
+                                        <img src="<?=SITE_TEMPLATE_PATH?>/img/gos_usl.png" style="margin-top: 10px;"/>
                                         <p>Подтверждение данных с помощью учетной записи портала госуслуг</p>                                        
                                     </a>
                                     <? if(!empty($arResult["arUser"]["UF_ESIA_ERROR"])){?>
@@ -258,7 +258,7 @@ if (!empty($arResult['arUser']['UF_ESIA_ID']) && $arResult['arUser']['UF_ESIA_AU
     </div>
     <div class="row add_company">
         <div class="col-xl-4 col-md-6 col-sm-12 offset-xl-3 add_company-button">
-            <a href="/profile/company/" class="btn btn-aut">Добавить компанию</a>
+            <a href="/profile/company/" class="btn btn-aut">+ Добавить компанию</a>
         </div>
     </div>
 </div>
