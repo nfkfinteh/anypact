@@ -64,11 +64,11 @@ div.bx-auth-profile div.bx-auth-secure-unlock {
 } */
 
 .user_profile_form h3 {
-    font-size: 1.51rem;
+    font-size: 24px;
     font-weight: 900;
     margin-top: 0;
     padding-top: 0;
-    padding-bottom: 27px;
+    padding-bottom: 14px;
 }
 
 .user_profile_form_editdata_foto {
@@ -131,7 +131,7 @@ input:disabled {
 
 #lichnue_dannue,
 #bankovskie_dannue {
-    margin-top: 50px;
+    margin-top: 48px;
 }
 
 .left_blok_margin {
