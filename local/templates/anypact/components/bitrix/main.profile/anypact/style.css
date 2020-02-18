@@ -352,3 +352,7 @@ div.add_company{
     cursor: pointer;
     padding: 12px 8px 5px 10px;
 }
+
+#button_calendar img {
+    width: 100%;
+}
