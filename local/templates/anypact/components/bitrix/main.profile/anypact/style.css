@@ -346,11 +346,12 @@ div.add_company{
 #button_calendar {
     width: 13%;
     height: 52px;
-    float: right;
+    float: left;
     border: 1px solid #FF6600;
-    border-radius: 6px;
+    border-radius: 0 5px 5px 0;
     cursor: pointer;
     padding: 12px 8px 5px 10px;
+    background-color: #f1f4f4;
 }
 
 #button_calendar img {
