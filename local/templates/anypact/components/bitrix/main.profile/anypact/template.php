@@ -77,15 +77,6 @@ if (!empty($arResult['arUser']['UF_ESIA_ID']) && $arResult['arUser']['UF_ESIA_AU
                                 <div class="input-group-append" data-target="#datetimepicker2" data-toggle="datetimepicker">
                                     <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                 </div>
-                                <script>
-                                    jQuery(document).ready(function () {                
-                                        jQuery.datetimepicker.setLocale('ru');
-                                        jQuery('#param_selected_activ_date').datetimepicker({
-                                            timepicker:false,
-                                            format:'d.m.Y'
-                                        });
-                                    });
-                                </script>
                             </div>
                             <div class="form-group">
                                 <? if (!empty($arResult['arUser']['UF_ETAG_ESIA']) && $arResult['arUser']['UF_ESIA_AUT']) {?>
