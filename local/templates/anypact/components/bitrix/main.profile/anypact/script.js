@@ -109,9 +109,9 @@ $(document).ready(function() {
         }
     });
 
-    $('#param_selected_activ_date').on('click', function(){
-        BX.calendar({node:this, field:'PERSONAL_BIRTHDAY', form: '', bTime: false, bHideTime: true})
-    });
+    // $('#param_selected_activ_date').on('click', function(){
+    //     BX.calendar({node:this, field:'PERSONAL_BIRTHDAY', form: '', bTime: false, bHideTime: true})
+    // });
 
     //маска для елементов формы
     $('#UF_SNILS').inputmask({ mask:'999-999-999 99'});
