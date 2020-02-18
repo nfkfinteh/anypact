@@ -72,10 +72,10 @@ if (!empty($arResult['arUser']['UF_ESIA_ID']) && $arResult['arUser']['UF_ESIA_AU
                                 </select>
                                 <!-- <input type="text" name="PERSONAL_GENDER" maxlength="50" value="<?=$arResult["arUser"]["PERSONAL_GENDER"]?>" style="width: 40%; float: left; margin-right: 10%;" > -->
                                 <span class="param_selected_activ_date">
-                                    <input id="param_selected_activ_date" type="text" class="input_date" name="PERSONAL_BIRTHDAY" maxlength="50" value="<?=$arResult["arUser"]["PERSONAL_BIRTHDAY"]?>" style="width: 48%;" readonly>
+                                    <input id="param_selected_activ_date" type="text" class="input_date" name="PERSONAL_BIRTHDAY" maxlength="50" value="<?=$arResult["arUser"]["PERSONAL_BIRTHDAY"]?>" style="width: 35%;" readonly>
+                                    <input type="text" name="PERSONAL_BIRTHDAY_HIDDEN"  value="">
                                 </span>
-                                <div id="button_calendar" class="input-group-append" data-target="#datetimepicker2" data-toggle="datetimepicker">
-                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                <div id="button_calendar">                                    
                                 </div>
                             </div>
                             <div class="form-group">

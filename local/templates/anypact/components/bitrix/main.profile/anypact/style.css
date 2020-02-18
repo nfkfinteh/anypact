@@ -342,3 +342,9 @@ div.add_company{
     transform: rotate(-45deg);
     border-radius: 2px;
 }
+
+#button_calendar {
+    width: 13%;
+    height: 52px;
+    float: right;
+}
