@@ -74,7 +74,7 @@ if (!empty($arResult['arUser']['UF_ESIA_ID']) && $arResult['arUser']['UF_ESIA_AU
                                 <span class="param_selected_activ_date">
                                     <input id="param_selected_activ_date" type="text" class="input_date" name="PERSONAL_BIRTHDAY" maxlength="50" value="<?=$arResult["arUser"]["PERSONAL_BIRTHDAY"]?>" style="width: 48%;" readonly>
                                 </span>
-                                <div class="input-group-append" data-target="#datetimepicker2" data-toggle="datetimepicker">
+                                <div id="button_calendar" class="input-group-append" data-target="#datetimepicker2" data-toggle="datetimepicker">
                                     <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                 </div>
                             </div>
