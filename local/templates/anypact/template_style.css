@@ -128,7 +128,7 @@ input {
 
 .nav-link {
     cursor: pointer;
-    color: #000000;
+    color: #000000 !important;
     border-bottom: 2px solid #FFFFFF;
 }
 
@@ -139,7 +139,7 @@ input {
 .nav-link:hover,
 .nav-link-activ {
     border-bottom: 2px solid #ff6416;
-    color: #000000;
+    color: #ff6416;
 }
 .nav-link[href="#"] {
     display: none;

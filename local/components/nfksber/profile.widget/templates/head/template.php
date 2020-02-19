@@ -46,14 +46,14 @@ $MessURL = '/list_message/';
                         <li><a href="/profile/">Редактировать профиль</a></li>
                         <li><a href="/profile/select_company/">Выбрать профиль</a></li>
                         <li><a href="/friends/">Мои друзья</a></li>                        
-                        <li><a href="<?echo $APPLICATION->GetCurPageParam("logout=yes", 
+                    </ul>
+                    <a href="<?echo $APPLICATION->GetCurPageParam("logout=yes", 
                         array(
                             "login",
                             "logout",
                             "register",
                             "forgot_password",
-                            "change_password"));?>">Выйти</a></li>
-                    </ul>
+                            "change_password"));?>" class="exit-profile">Выйти</a>
                 </div>
             </div>
         </div>

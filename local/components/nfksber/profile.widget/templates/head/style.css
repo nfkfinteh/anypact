@@ -62,8 +62,14 @@
 
 .widget_user_profile_select ul li{
     list-style-type: none;
-    margin: 10px;
+    padding: 10px 16px 10px 16px;
 }
+
+.widget_user_profile_select a.exit-profile {
+    border-top: 1px solid #F1F4F4;
+    padding: 20px 26px;
+}
+
 
 .widget_user_profile_select{
     box-shadow: 1px 3px 11px rgba(0, 0, 0, 0.15);
