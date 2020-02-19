@@ -171,5 +171,9 @@
 
 .cart-tab .js-rem_img, .cart-tab .js-submit_selection{
     margin: 8%;
-    padding: 5px 20px;
+}
+
+button.btn {
+    border-radius: 5px;
+    padding: 10px 30px;
 }

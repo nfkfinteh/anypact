@@ -53,11 +53,11 @@
                     </div>
                     <div class="col-xl-7 col-md-6 col-sm-12">
                         <div class="form-group">
-                            <label>Название компании</label>
+                            <label>Название компании *</label>
                             <input name="NAME" type="text" value="<?=$arResult['COMPANY']['NAME']?>" required maxlength="50">
                         </div>
                         <div class="form-group">
-                            <label>ИНН</label>
+                            <label>ИНН *</label>
                             <input name="INN" type="text" value="<?=$CompanyProprties['INN']['VALUE']?>" required maxlength="12" class="js-number">
                         </div>
                     </div>
@@ -65,11 +65,11 @@
             </div>
             <div class="col-xl-4 col-md-12 col-sm-12">
                 <div class="form-group">
-                    <label>ОГРН</label>
+                    <label>ОГРН *</label>
                     <input name="OGRN" type="text" value="<?=$CompanyProprties['OGRN']['VALUE']?>" required maxlength="13" class="js-number">
                 </div>
                 <div class="form-group">
-                    <label>КПП</label>
+                    <label>КПП *</label>
                     <input name="KPP" type="text" value="<?=$CompanyProprties['KPP']['VALUE']?>" required maxlength="9" class="js-number">
                 </div>
             </div>
@@ -77,29 +77,29 @@
         <? ////////////////////// поля адреса /////////////////////////?>
         <div class="row" style="margin-top: 40px;">
             <div class="col-xl-4 col-md-6 col-sm-12 offset-xl-3"">
-                <h3>Юридический адрес компании</h3>
+                <h3>Юридический адрес</h3>
             </div>
         </div>
         <div class="row">
             <div class="col-xl-4 col-md-6 col-sm-12 offset-xl-3">
                 <div class="form-group">
-                    <label>Индекс</label>
+                    <label>Индекс *</label>
                     <input name="INDEX" type="text" value="<?=$CompanyProprties['INDEX']['VALUE']?>" required maxlength="6" class="js-number">
                 </div>
                 <div class="form-group">
-                    <label>Город</label>
+                    <label>Город *</label>
                     <input name="CITY" type="text" value="<?=$CompanyProprties['CITY']['VALUE']?>" required maxlength="50">
                 </div>
                 <div class="form-group">
-                    <label>Улица</label>
+                    <label>Улица *</label>
                     <input name="STREET" type="text" value="<?=$CompanyProprties['STREET']['VALUE']?>" required maxlength="50">
                 </div>
                 <div class="form-group">
-                    <label>Дом</label>
+                    <label>Дом *</label>
                     <input name="HOUSE" type="text" value="<?=$CompanyProprties['HOUSE']['VALUE']?>" required maxlength="50">
                 </div>
                 <div class="form-group">
-                    <label>Офис</label>
+                    <label>Офис *</label>
                     <input name="OFFICE" type="text" value="<?=$CompanyProprties['OFFICE']['VALUE']?>" required maxlength="50">
                 </div>
             </div>
@@ -117,7 +117,7 @@
                     <input name="LOCALITY" type="text" value="<?=$CompanyProprties['LOCALITY']['VALUE']?>" required maxlength="50">
                 </div>
                 <div class="form-group">
-                    <label>Корпус</label>
+                    <label>Корпус *</label>
                     <input name="KORP" type="text" value="<?=$CompanyProprties['KORP']['VALUE']?>" required maxlength="50">
                 </div>
             </div>
@@ -125,33 +125,34 @@
         <? ////////////////////// платежные реквизиты /////////////////////////?>
         <div class="row" style="margin-top: 40px;">
             <div class="col-xl-4 col-md-6 col-sm-12 offset-xl-3">
-                <h3>Банковские реквизиты компании</h3>
+                <h3>Банковские реквизиты</h3>
             </div>
         </div>
         <div class="row">
             <div class="col-xl-4 col-md-6 col-sm-12 offset-xl-3">
                 <div class="form-group">
-                    <label>Наименование банка</label>
+                    <label>Наименование банка *</label>
                     <input name="BANK" type="text" value="<?=$CompanyProprties['BANK']['VALUE']?>" required maxlength="50">
                 </div>                
                 <div class="form-group">
-                    <label>Расчетный счет</label>
+                    <label>Расчетный счет *</label>
                     <input name="RAS_ACCOUNT" type="text" value="<?=$CompanyProprties['RAS_ACCOUNT']['VALUE']?>" required maxlength="20" class="js-number">
                 </div>
                 <div class="form-group">
-                    <label>ИНН Банка</label>
+                    <label>ИНН Банка *</label>
                     <input name="INN_BANK" type="text" value="<?=$CompanyProprties['INN_BANK']['VALUE']?>" required maxlength="10" class="js-number">
                 </div>
             </div>
             <div class="col-xl-4 col-md-6 col-sm-12">
                 <div class="form-group">
-                    <label>БИК</label>
+                    <label>БИК *</label>
                     <input name="BIK" type="text" value="<?=$CompanyProprties['BIK']['VALUE']?>" required maxlength="9" class="js-number">
                 </div>
                 <div class="form-group">
-                    <label>Кор. Счет</label>
+                    <label>Кор. Счет *</label>
                     <input name="KOR_ACCOUNT" type="text" value="<?=$CompanyProprties['KOR_ACCOUNT']['VALUE']?>" required maxlength="20" class="js-number">
                 </div>
+                <button type="submit" class="btn btn-aut edit-profile__btn" id="save_company">Сохранить</button>
             </div>
         </div>
         <? ////////////////////// сохранение  /////////////////////////?>
@@ -164,11 +165,11 @@
             <input name="DIRECTOR_ID" value="<?=$USER->GetID()?>" hidden>
             <input name="DIRECTOR_NAME" value="<?echo $USER->GetLastName().' '.$USER->GetFirstName(). ' '.$USER->GetParam("SECOND_NAME")?>" hidden>            
         </div>
-        <div class="row" style="margin: 40px 0;">
+        <!-- <div class="row" style="margin: 40px 0;">
             <div class="col-xl-4 col-md-6 col-sm-12 offset-xl-3">
                 <button type="submit" class="btn btn-aut edit-profile__btn" id="save_company">Сохранить</button>
             </div>
-        </div>
+        </div> -->
     </form>
 </div>
     <?// только просмотр реквизитов?>

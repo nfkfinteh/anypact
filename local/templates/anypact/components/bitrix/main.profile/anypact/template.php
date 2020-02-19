@@ -81,7 +81,7 @@ if (!empty($arResult['arUser']['UF_ESIA_ID']) && $arResult['arUser']['UF_ESIA_AU
                             </div>
                             <div class="form-group">
                                 <? if (!empty($arResult['arUser']['UF_ETAG_ESIA']) && $arResult['arUser']['UF_ESIA_AUT']) {?>
-                                    <img src="<?=SITE_TEMPLATE_PATH?>/img/gos_usl.png" />
+                                    <img src="<?=SITE_TEMPLATE_PATH?>/img/gos_usl.png" style="margin-top: 10px;"/>
                                     <p>Данные подтверждены с помощью учетной записи портала госуслуг</p>
                                 <?}else {?>
                                         <? // закодируем ссылку на возврат из ЕСИА

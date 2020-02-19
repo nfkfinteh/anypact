@@ -6,7 +6,7 @@ else{
     $action = '';
 }
 ?>
-<h3>Загрузите и отредактруйте фото</h3>
+<h1>Загрузите и отредактруйте фото</h1>
 <div class="tender cardPact">
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12">
