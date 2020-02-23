@@ -228,6 +228,10 @@ if (!empty($arResult['arUser']['UF_ESIA_ID']) && $arResult['arUser']['UF_ESIA_AU
                         <label><?=GetMessage("BANK_RS")?></label>
                         <input type="text" name="UF_RS_BANK" maxlength="20" value="<?=$arResult["arUser"]["UF_RS_BANK"]?>" class="js-number">
                     </div>
+                    <div class="form-group">
+                        <label><?=GetMessage("UF_OTHER_PARAMS_BANK")?></label>
+                        <input type="text" name="UF_OTHER_PARAMS_BANK" maxlength="20" value="<?=$arResult["arUser"]["UF_OTHER_PARAMS_BANK"]?>" class="js-number">
+                    </div>
                     <button type="submit" class="btn btn-aut" id="save_profile_button">Сохранить</button>
                 </div>
             </div>
