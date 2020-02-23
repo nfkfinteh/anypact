@@ -30,7 +30,7 @@ class sectionPacts extends CBitrixComponent
                 //
                 // для отображения всех элементов в подкаталогах получим их ид
                 if ($_GET['SECTION_ID'] == 0){
-                    $arFilter = Array("IBLOCK_ID"=>IntVal($id_iblock));
+                    $arFilter = Array("IBLOCK_ID"=>IntVal($id_iblock), 'ACTIVE' => 'Y');
                 }
                 // фильтр для отбора всех записей включая подкатегории                 
                 while($arItem = $items->GetNext())
