@@ -30,12 +30,12 @@ class sectionPacts extends CBitrixComponent
                 //
                 // для отображения всех элементов в подкаталогах получим их ид
                 if ($_GET['SECTION_ID'] == 0){
-                    $arFilter = Array("IBLOCK_ID"=>IntVal($id_iblock), 'ACTIVE' => 'Y');
+                    $arFilter = Array("IBLOCK_ID"=>IntVal($id_iblock));
                 }
                 // фильтр для отбора всех записей включая подкатегории                 
                 while($arItem = $items->GetNext())
                 {                  
-                    $arFilter = Array("IBLOCK_ID"=>IntVal($id_iblock), "SECTION_ID"=> $arItem['ID'], "INCLUDE_SUBSECTIONS" => "Y" );                    
+                    $arFilter = Array("IBLOCK_ID"=>IntVal($id_iblock), "SECTION_ID"=> $arItem['ID'], "INCLUDE_SUBSECTIONS" => "Y", "ACTION"=>"Y" );                    
                     $res = CIBlockElement::GetList(Array(), $arFilter, false, Array(), $arSelect);                    
                     $arr_Count_Iten = array();
                     // перебераем категории и считаем сколько там элементов
