@@ -150,12 +150,12 @@ if (!empty($arResult['arUser']['UF_ESIA_ID']) && $arResult['arUser']['UF_ESIA_AU
             <div class="row">
                 <div class="col-xl-4 col-md-6 col-sm-12 offset-xl-3">
                     <div class="form-group">
-                        <label>Новый пароль:</label>
+                        <label>Сменить пароль:</label>
                         <input  type="text"  maxlength="50" value="" >
                     </div>
                 </div>
                 <div class="col-xl-4 col-md-6 col-sm-12">
-                    <div class="form-group left_blok_margin_first">
+                    <div class="form-group">
                         <label>Повторите введеный пароль</label>
                         <input type="text" name="" maxlength="50" value="">
                     </div>
