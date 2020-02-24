@@ -133,15 +133,16 @@ if (!empty($arResult['arUser']['UF_ESIA_ID']) && $arResult['arUser']['UF_ESIA_AU
                 <div class="col-xl-4 col-md-6 col-sm-12 offset-xl-3">
                     <h3 id="lichnue_dannue_bottom">Параметры аккаунта</h3>
                     <div class="form-group">
-                        <label>Изменить эл.ящик</label>
-                        <input type="text" name="EMAIL" maxlength="6" value="<?=$arResult["arUser"]["EMAIL"]?>" class="js-number">
+                        <label>Текущая электронная почта:</label>
+                        <input type="text"  maxlength="50" value="<?=$arResult["arUser"]["EMAIL"]?>" class="js-mask__email">
                     </div>
                 </div>
                 <div class="col-xl-4 col-md-6 col-sm-12">
-                    <div class="form-group left_blok_margin_first">
-                        <label><?=GetMessage("USER_CITY")?></label>
-                        <input type="text" name="PERSONAL_CITY" maxlength="50" value="<?=$arResult["arUser"]["PERSONAL_CITY"]?>">
+                    <div class="form-group">
+                        <label>Изменить эл.почту</label>
+                        <input type="text" name="EMAIL" maxlength="50" value="<?=$arResult["arUser"]["EMAIL"]?>" class="js-mask__email">
                     </div>
+                    <button type="submit" class="btn btn-aut edit-profile__btn" id="save_profile_button">Сохранить</button>
                 </div>
             </div>
         </div>
@@ -205,11 +206,7 @@ if (!empty($arResult['arUser']['UF_ESIA_ID']) && $arResult['arUser']['UF_ESIA_AU
                         <input type="text" name="UF_N_HOUSE" maxlength="10" value="<?=$arResult["arUser"]["UF_N_HOUSE"]?>" class="js-number" style="width: 30%; float: left; margin-right: 10%;" >
                         <input type="text" name="UF_N_HOUSING" maxlength="10" value="<?=$arResult["arUser"]["UF_N_HOUSING"]?>" class="js-number"  style="width: 20%; float: left; margin-right: 10%;" >
                         <input type="text" name="UF_N_APARTMENT" maxlength="10" value="<?=$arResult["arUser"]["UF_N_APARTMENT"]?>" class="js-number" style="width: 30%;" >
-                    </div>
-                    <div class="form-group">
-                        <label><?=GetMessage("EMAIL")?></label>
-                        <input type="text" name="EMAIL" maxlength="50" value="<?=$arResult["arUser"]["EMAIL"]?>" class="js-mask__email">
-                    </div>
+                    </div>                    
                     <div class="form-group">
                         <label><?=GetMessage("USER_PHONE")?></label>
                         <input type="text" name="PERSONAL_PHONE" maxlength="50" value="<?=$arResult["arUser"]["PERSONAL_PHONE"]?>" class="js-mask__phone">
@@ -247,7 +244,7 @@ if (!empty($arResult['arUser']['UF_ESIA_ID']) && $arResult['arUser']['UF_ESIA_AU
                     </div>
                     <div class="form-group">
                         <label><?=GetMessage("UF_OTHER_PARAMS_BANK")?></label>
-                        <input type="text" name="UF_OTHER_PARAMS_BANK" maxlength="20" value="<?=$arResult["arUser"]["UF_OTHER_PARAMS_BANK"]?>">
+                        <input type="text" name="UF_OTHER_PARAMS_BANK" maxlength="200" value="<?=$arResult["arUser"]["UF_OTHER_PARAMS_BANK"]?>">
                     </div>
                     <button type="submit" class="btn btn-aut" id="save_profile_button">Сохранить</button>
                 </div>
