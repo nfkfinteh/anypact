@@ -134,13 +134,30 @@ if (!empty($arResult['arUser']['UF_ESIA_ID']) && $arResult['arUser']['UF_ESIA_AU
                     <h3 id="lichnue_dannue_bottom">Параметры аккаунта</h3>
                     <div class="form-group">
                         <label>Текущая электронная почта:</label>
-                        <input type="text"  maxlength="50" value="<?=$arResult["arUser"]["EMAIL"]?>" class="js-mask__email">
+                        <input  type="text"  maxlength="50" value="<?=$arResult["arUser"]["EMAIL"]?>" class="js-mask__email" disabled>
                     </div>
                 </div>
                 <div class="col-xl-4 col-md-6 col-sm-12">
-                    <div class="form-group">
+                    <div class="form-group left_blok_margin_first">
                         <label>Изменить эл.почту</label>
                         <input type="text" name="EMAIL" maxlength="50" value="<?=$arResult["arUser"]["EMAIL"]?>" class="js-mask__email">
+                    </div>
+                    <button type="submit" class="btn btn-aut edit-profile__btn" id="save_profile_button">Сохранить</button>
+                </div>
+            </div>
+        </div>
+        <div class="user_profile_form_fixdata" style="margin-top: 0px;">
+            <div class="row">
+                <div class="col-xl-4 col-md-6 col-sm-12 offset-xl-3">
+                    <div class="form-group">
+                        <label>Новый пароль:</label>
+                        <input  type="text"  maxlength="50" value="" >
+                    </div>
+                </div>
+                <div class="col-xl-4 col-md-6 col-sm-12">
+                    <div class="form-group left_blok_margin_first">
+                        <label>Повторите введеный пароль</label>
+                        <input type="text" name="" maxlength="50" value="">
                     </div>
                     <button type="submit" class="btn btn-aut edit-profile__btn" id="save_profile_button">Сохранить</button>
                 </div>
