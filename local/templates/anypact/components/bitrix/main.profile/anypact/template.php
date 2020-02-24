@@ -127,6 +127,24 @@ if (!empty($arResult['arUser']['UF_ESIA_ID']) && $arResult['arUser']['UF_ESIA_AU
                 </div>
             </div>
         </div>
+        <!--Пароль почта-->
+        <div class="user_profile_form_fixdata" style="margin-top: 40px;">
+            <div class="row">
+                <div class="col-xl-4 col-md-6 col-sm-12 offset-xl-3">
+                    <h3 id="lichnue_dannue_bottom">Параметры аккаунта</h3>
+                    <div class="form-group">
+                        <label>Изменить эл.ящик</label>
+                        <input type="text" name="EMAIL" maxlength="6" value="<?=$arResult["arUser"]["EMAIL"]?>" class="js-number">
+                    </div>
+                </div>
+                <div class="col-xl-4 col-md-6 col-sm-12">
+                    <div class="form-group left_blok_margin_first">
+                        <label><?=GetMessage("USER_CITY")?></label>
+                        <input type="text" name="PERSONAL_CITY" maxlength="50" value="<?=$arResult["arUser"]["PERSONAL_CITY"]?>">
+                    </div>
+                </div>
+            </div>
+        </div>
         <!--Адрес-->
         <div class="user_profile_form_fixdata" style="margin-top: 40px;">
             <div class="row">
@@ -200,7 +218,6 @@ if (!empty($arResult['arUser']['UF_ESIA_ID']) && $arResult['arUser']['UF_ESIA_AU
                 </div>
             </div>
         </div>
-
         <!-- Банк -->
         <div class="user_profile_form_editdata" style="margin-bottom:50px;">
             <div class="row">
@@ -230,7 +247,7 @@ if (!empty($arResult['arUser']['UF_ESIA_ID']) && $arResult['arUser']['UF_ESIA_AU
                     </div>
                     <div class="form-group">
                         <label><?=GetMessage("UF_OTHER_PARAMS_BANK")?></label>
-                        <input type="text" name="UF_OTHER_PARAMS_BANK" maxlength="20" value="<?=$arResult["arUser"]["UF_OTHER_PARAMS_BANK"]?>" class="js-number">
+                        <input type="text" name="UF_OTHER_PARAMS_BANK" maxlength="20" value="<?=$arResult["arUser"]["UF_OTHER_PARAMS_BANK"]?>">
                     </div>
                     <button type="submit" class="btn btn-aut" id="save_profile_button">Сохранить</button>
                 </div>
