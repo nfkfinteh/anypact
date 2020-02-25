@@ -18,7 +18,7 @@ echo "<br> пришли с этого адреса ".$URL_REF;
 //$URL_REF = 'https://anypact.ru/my_pacts/';
 
 $UserTest = 1;
-if ($USER->IsAuthorized()){
+//if ($USER->IsAuthorized()){
 if ($UserTest == 1){
     session_start();
 
