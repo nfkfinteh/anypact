@@ -61,6 +61,10 @@ case 'N': ?>
                             $DATA_SER = $arResult["CONTRACT_PROPERTY"]["CONTRACT_PROPERTY"]["USER_A"]["VALUE"].','.$arResult["TEMPLATE_CONTENT"]["ID"].','.$arResult["USER_ID"];
                             $DATA_SER = base64_encode($DATA_SER);
                             ?>
+                            <? //путь для возврата на эту страницу 
+                                $returnURL = base64_encode($_SERVER['REQUEST_URI']);
+                            ?>
+                            <a href="http://anypact.ru/profile/aut_esia.php?returnurl=<?=$returnURL?>" class="btn btn-nfk" id="ref_esia" style="width:45%;margin-right: 30px;">Подписать</a>
 							<button class="btn btn-nfk" id="sign_edit_contract" style="width:45%;margin-right: 30px;" data="<?=$DATA_SER?>">Подписать</button>
 							<button class="btn btn-nfk" id="close_sign_popup" style="width:45%">Отклонить</button>
 						</div>                        
