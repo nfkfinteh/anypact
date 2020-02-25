@@ -190,7 +190,11 @@ class CDemoSqr extends CBitrixComponent
              )
          );
         $arSend_Contract = $this->getSendContracts($UserID, $arFilter, false); 
-        
+        if(in_array(1, CUser::GetUserGroup($UserID))){
+            echo "<pre>";
+            print_r($arSend_Contract);
+            echo "</pre>";
+        }
         // договора измененные и ожидающие подписания
 
         $arFilter = Array(

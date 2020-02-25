@@ -556,7 +556,7 @@ class CDemoSqr extends CBitrixComponent
                             'UF_ID_SEND_USER' => $userId
                         );
                         // создание записи подписания контрака
-                        //$id_add_item = $this->sendContract(3, $Params);
+                        $id_add_item = $this->sendContract(3, $Params);
                         // создание записи с текстом
                         $Contract_params = array(
                             'UF_ID_CONTRACT' => $this->ID_CONTRACT,
@@ -566,27 +566,7 @@ class CDemoSqr extends CBitrixComponent
                             'UF_CANTRACT_IMG' => '',
                             'UF_ID_USER_SEND' => $userId,
                         );
-                        //$id_add_item = $this->sendContract(7, $Contract_params);
-                        // получи
-                        // попробуем разлогинится в госуслугах
-                        /////////////////////////////////////////////////////////////////////////////
-                        // $ch = curl_init();
-                        // curl_setopt($ch, CURLOPT_URL, 'https://www.gosuslugi.ru/auth-provider/logout');
-                        // $response = curl_exec($ch);
-                        
-                        // if(!$response)
-                        // {
-                        //     $error = curl_error($ch).'('.curl_errno($ch).')';
-                        //     echo $error;
-                        // }
-                        // //если не ошибка, то выводим результат
-                        // else
-                        // {
-                        //    echo "Все ок";		
-                        // }
-                        
-                        // curl_close($ch);
-                        /////////////////////////////////////////////////////////////////////////////
+                        $id_add_item = $this->sendContract(7, $Contract_params);
                     }
                     $this->arResult['SEND_CONTRACT'] = 'Y';
                 } else {
