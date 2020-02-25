@@ -322,7 +322,7 @@ $(document).ready(function() {
             data: data,
             success: function(result){
                 console.log(result);
-                document.location.replace('/profile/aut_esia.php?ID_SENDITEM='+result+'returnurl='+returnUrl)
+                document.location.replace('/profile/aut_esia.php?ID_SENDITEM='+result+'&returnurl='+returnUrl)
             },
 
         });
