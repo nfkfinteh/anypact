@@ -316,16 +316,16 @@ $(document).ready(function() {
             status:0
         };
 
-        // $.ajax({
-        //     type: 'POST',
-        //     url: url,
-        //     data: data,
-        //     success: function(result){
-        //         console.log(result);
-        //         //document.location.replace('/profile/aut_esia.php?ID_SENDITEM='+result+'&returnurl='+returnUrl)
-        //     },
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: data,
+            success: function(result){
+                console.log(result);
+                document.location.replace('/profile/aut_esia.php?ID_SENDITEM='+result+'&returnurl='+returnUrl)
+            },
 
-        // });
+        });
     });
 
     // разрешение редактирование текста
