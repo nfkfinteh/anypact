@@ -305,8 +305,9 @@ $(document).ready(function() {
     // подписание договора с измененным текстом
     $('#sign_edit_contract').on('click', function(){
         let textContract = $('#canvas').html();
-        let idContract = $(this).attr('data');
-        let url = '/response/ajax/send_edit_contract_esia.php';
+        let idContract   = $(this).attr('data');
+        let url          = '/response/ajax/send_edit_contract_esia.php';
+        let returnUrl    = $(this).attr('data-returnurl');
 
         console.log()
         let data = {
@@ -321,7 +322,7 @@ $(document).ready(function() {
             data: data,
             success: function(result){
                 console.log(result);
-                document.location.replace('/profile/aut_esia.php?ID_SENDITEM='+result)
+                document.location.replace('/profile/aut_esia.php?ID_SENDITEM='+result+'returnurl='+returnUrl)
             },
 
         });
