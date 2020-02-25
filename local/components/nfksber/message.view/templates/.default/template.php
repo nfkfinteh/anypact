@@ -32,7 +32,7 @@
                         <?}?>
                     </ul>
                     <?/*<button class="btn btn-nfk btn-add-person w-100">+ добавить участника</button>*/?>
-                    <button class="btn btn-nfk btn-add-person w-100 js-chat_delete">Удалить переписку</button>
+                    <button class="btn btn-nfk btn-add-person w-100 js-chat_delete">Удалить всю переписку</button>
                 </div>
                 <div class="col-md-8 col-sm-12">
                     <h3 class="font-weight-bold"><?=$arResult['MESSAGES']['UF_TITLE_MESSAGE']?></h3>
