@@ -7,7 +7,7 @@ $(document).ready(function() {
         console.log(text_descript);
         console.log(id_element);
         $.post(
-            "http://anypact.nfksber.ru/response/ajax/up_pact_text.php", {
+            "http://anypact.ru/response/ajax/up_pact_text.php", {
                 text: text_descript,
                 id_element: id_element,
                 atrr_text: 'descript'
@@ -26,7 +26,7 @@ $(document).ready(function() {
         console.log(text_descript);
         console.log(id_element);
         $.post(
-            "http://anypact.nfksber.ru/response/ajax/up_pact_text.php", {
+            "http://anypact.ru/response/ajax/up_pact_text.php", {
                 text: text_descript,
                 id_element: id_element,
                 atrr_text: 'conditions'
@@ -44,7 +44,7 @@ $(document).ready(function() {
         console.log(text_descript);
         console.log(id_element);
         $.post(
-            "http://anypact.nfksber.ru/response/ajax/up_pact_text.php", {
+            "http://anypact.ru/response/ajax/up_pact_text.php", {
                 text: text_descript,
                 id_element: id_element,
                 atrr_text: 'summ'

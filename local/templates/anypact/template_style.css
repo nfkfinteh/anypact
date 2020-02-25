@@ -130,6 +130,7 @@ input {
     cursor: pointer;
     color: #000000 !important;
     border-bottom: 2px solid #FFFFFF;
+    padding-bottom: 4px !important;
 }
 
 .nav-link {

@@ -148,7 +148,7 @@ $result = $entityClass::add(array(
     'UF_TIME_CREATE_MSG' => ConvertTimeStamp(time(), 'FULL'),
     'UF_STATUS' => 1,
     'UF_TITLE_MESSAGE' => 'Подписан ваш договор',
-    'UF_TEXT_MESSAGE_USER' => 'Участник системы Anypact подписал ваш договор <a href="http://anypact.nfksber.ru/my_pacts/send_contract/?ID='.$id_contract.'">ссылка на договор</a>' ,
+    'UF_TEXT_MESSAGE_USER' => 'Участник системы Anypact подписал ваш договор <a href="http://anypact.ru/my_pacts/send_contract/?ID='.$id_contract.'">ссылка на договор</a>' ,
     'UF_ID_USER' => $id_owner_contract
 ));
 

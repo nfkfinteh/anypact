@@ -25,7 +25,7 @@ $APPLICATION->SetTitle("AnyPact");
             )
     );
     ?> 
-    <!--<iframe src="http://anypact.nfksber.ru/upload/private/userfiles/<?=$id_group?>/<?=$id_user_group?>/pact/<?=$id_dogovor?>/pact/dog.pdf" 
+    <!--<iframe src="http://anypact.ru/upload/private/userfiles/<?=$id_group?>/<?=$id_user_group?>/pact/<?=$id_dogovor?>/pact/dog.pdf" 
 style="width: 600px; height: 600px;" frameborder="0">Ваш браузер не поддерживает фреймы</iframe>-->  
     <!--//Созданные или подписанные пользователем документы-->
     <?} else {?>

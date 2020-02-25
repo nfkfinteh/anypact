@@ -9,7 +9,7 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 
 	/* 	получить код и ид пользователя из строки 
 		получить код из БД пользователя если совпадают активировать если нет удаляем пользователя, что бы не занимал логин почтой
-		http://anypact.nfksber.ru/auth/index.php?confirm_registration=yes&confirm_user_id=44&confirm_code=RgdZApuR
+		http://anypact.ru/auth/index.php?confirm_registration=yes&confirm_user_id=44&confirm_code=RgdZApuR
 	*/
 
 	$APPLICATION->SetTitle("Авторизация");

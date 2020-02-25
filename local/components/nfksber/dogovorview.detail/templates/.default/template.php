@@ -45,8 +45,7 @@ switch ($arResult['SEND_CONTRACT']) {
                             <button class="btn btn-nfk <?if(!empty($arResult["DOGOVOR_IMG"][0]['URL'])):?>canvas-img<?endif?>" id="popup_send_contract" data="signed">
                                 Подписать договор
                             </button>
-                            <a href="/pacts/view_pact/edit_dogovor/?ELEMENT_ID=<?=$_GET['ELEMENT_ID']?>" class="btn btn-nfk" >Предложить свою редакцию</a>
-                            <!-- <a href="http://anypact.nfksber.ru/profile/aut_esia.php" class="btn btn-nfk" >Подписать через ЕСИА</a> -->
+                            <a href="/pacts/view_pact/edit_dogovor/?ELEMENT_ID=<?=$_GET['ELEMENT_ID']?>" class="btn btn-nfk" >Предложить свою редакцию</a>                            
                         <? // endif?>                    
                         <?if(empty($arResult['NEW_REDACTION'])):?>
                             <!--<button class="btn btn-nfk" id="new_redaction" data-id_element="<?=$_GET['ELEMENT_ID']?>">Предложить свою редакцию</button>-->
