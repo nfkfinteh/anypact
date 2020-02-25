@@ -35,7 +35,7 @@ class sectionPacts extends CBitrixComponent
                 // фильтр для отбора всех записей включая подкатегории                 
                 while($arItem = $items->GetNext())
                 {                  
-                    $arFilter = Array("IBLOCK_ID"=>IntVal($id_iblock), "SECTION_ID"=> $arItem['ID'], "INCLUDE_SUBSECTIONS" => "Y", "ACTIVE"=>"Y" );                    
+                    $arFilter = Array("IBLOCK_ID"=>IntVal($id_iblock), "SECTION_ID"=> $arItem['ID'], "INCLUDE_SUBSECTIONS" => "Y", "ACTIVE"=>"Y", "<DATE_ACTIVE_TO"=>ConvertTimeStamp(time(),"FULL") );                    
                     $res = CIBlockElement::GetList(Array(), $arFilter, false, Array(), $arSelect);                    
                     $arr_Count_Iten = array();
                     // перебераем категории и считаем сколько там элементов
