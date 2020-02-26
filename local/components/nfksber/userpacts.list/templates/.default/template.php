@@ -140,6 +140,7 @@ $arrStatusAwait = array(
             <div class="d-md-table-cell">Дата подписания</div>
             <div class="d-md-table-cell">Статус</div>            
             <div class="d-md-table-cell"></div>
+            <div class="d-md-table-cell"></div>
         </div>
         <? foreach ($arResult["REDACTION"] as $red) { // выборка договоров?>
             <!--Запись в таблице--->
@@ -163,7 +164,10 @@ $arrStatusAwait = array(
                 <div class="d-md-none text-gray">Дата подписания</div>
                 <div class="d-md-table-cell"><?=$red['UF_TIME_SEND_USER_B']?></div>
                 <div class="d-md-none text-gray">Статус</div>
-                <div class="d-md-table-cell"><?=$arrStatus[$red['UF_STATUS']]?></div>                
+                <div class="d-md-table-cell"><?=$arrStatus[$red['UF_STATUS']]?></div>
+                <div class="d-md-table-cell">
+                    <a href="#" data="<?=$red["ID"]?>" class="recall_send">Отклонить</a>
+                </div>                
                 <div class="d-md-table-cell"><a class="button-link" href="/my_pacts/send_contract/?ID=<?=$red["ID"]?>">Посмотреть</a></div>
             </div>
         <!--//Запись в таблице--->
