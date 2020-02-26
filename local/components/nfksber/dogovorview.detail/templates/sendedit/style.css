@@ -177,3 +177,16 @@ edbox {
     cursor: pointer;
     float: right;
 }
+
+@media screen and (max-width: 520px){
+    .regpopup_win {
+         top: 40px;    
+         margin-top: 0 !important;
+         width: 100%;
+         left: 0;
+     }
+ 
+     .regpopup_win a.ref_esia, .regpopup_win #sign_edit_contract   {        
+         margin-right: 24px !important;
+     }
+ }
