@@ -9,7 +9,7 @@ $APPLICATION->SetTitle("AnyPact");
     if ($USER->IsAuthorized()){
     ?>
     <!--Созданные или подписанные пользователем документы-->   
-    <h1>Все сделки</h1>
+    <h1>Все предложения</h1>
     <?// компонент поисковой строки
     /*$APPLICATION->IncludeComponent(
         "bitrix:search.form",
