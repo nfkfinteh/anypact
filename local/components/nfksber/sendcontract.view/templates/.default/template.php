@@ -55,7 +55,9 @@ switch ($arResult['SEND_CONTRACT']) {
                 <div id="signpopup_close">Х</div>                                       
                         <!--форма подписания-->
                         <div class="regpopup_autorisation" id="regpopup_autarisation">
-                            <? include_once(SITE_TEMPLATE_PATH.'/global_sign/attantion_sign.php');?>
+                            <?
+                                $APPLICATION->IncludeFile(SITE_TEMPLATE_PATH."/global_sign/attantion_sign.php", Array()); 
+                            ?>
                             <? //путь для возврата на эту страницу 
                                 $returnURL = base64_encode($_SERVER['REQUEST_URI']);
                             ?>
