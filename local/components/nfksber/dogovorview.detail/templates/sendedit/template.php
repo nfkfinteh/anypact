@@ -48,7 +48,9 @@ case 'N': ?>
 				<div id="signpopup_close">Х</div>                                       
 						<!--форма подписания-->
 						<div class="regpopup_autorisation" id="regpopup_autarisation">
-                            <? include_once(SITE_TEMPLATE_PATH.'/global_sign/attantion_sign.php');?>                        
+                            <?
+                                $APPLICATION->IncludeFile(SITE_TEMPLATE_PATH."/global_sign/attantion_sign.php", Array()); 
+                            ?>                   
 							<!-- <a href="http://anypact.ru/profile/aut_esia.php" class="btn btn-nfk" id="ref_esia" style="width:45%;margin-right: 30px;">Подписать</a>-->
                             <?
                             $DATA_SER = $arResult["CONTRACT_PROPERTY"]["CONTRACT_PROPERTY"]["USER_A"]["VALUE"].','.$arResult["TEMPLATE_CONTENT"]["ID"].','.$arResult["USER_ID"];
