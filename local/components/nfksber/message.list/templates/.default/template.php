@@ -8,7 +8,7 @@
                 <thead>
                 <tr>
                     <th class="d-none d-sm-table-cell" scope="col" colspan="2">Контактное лицо</th>
-                    <th class="d-none d-lg-table-cell" scope="col">Тема</th>
+                    <th class="d-none d-lg-table-cell" scope="col">Последнее сообщение</th>
                     <th class="d-none d-sm-table-cell" scope="col">Время</th>
                     <th class="d-none d-sm-table-cell" scope="col"></th>
                 </tr>
