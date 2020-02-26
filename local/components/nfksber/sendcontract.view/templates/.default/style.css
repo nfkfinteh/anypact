@@ -1,6 +1,7 @@
 .cardDogovor .cardDogovor-boxTool .btn {
     width: 100%;
     margin-bottom: 30px;
+    min-height: 47px;
 }
 
 .cardDogovor .cardDogovor-boxViewText {
@@ -126,3 +127,16 @@ ul.list-document li:hover button{
     cursor: pointer;
     text-align: right;
 }
+
+@media screen and (max-width: 520px){
+    .regpopup_win {
+         top: 40px;    
+         margin-top: 0 !important;
+         width: 100%;
+         left: 0;
+     }
+ 
+     .regpopup_win a.ref_esia, .regpopup_win #sign_edit_contract   {        
+         margin-right: 24px !important;
+     }
+ }
