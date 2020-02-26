@@ -62,14 +62,9 @@ switch ($arResult['SEND_CONTRACT']) {
                             <div id="signpopup_close">Х</div>
                             <!--форма подписания-->
                             <div class="regpopup_autorisation" id="regpopup_autarisation">
-                                <label for="smscode" style="margin-bottom: 1.5rem;">
-                                    <span>Внимание!
-                                        <p>Удостоверьтесь в том, что Вам полностью понятны условия, подписываемых Вами Документов!</p> 
-                                        <p>Нажимая кнопку «Подписать», Вы безусловно соглашаетесь с условиями сделки.</p> 
-                                        <p>Ваша простая электронная подпись будет сформирована с помощью сервиса «Госуслуги». Успешная авторизация на Госуслугах будет означать выражение Вашей воли на подписание документов и совершение сделки (сделок) в понимании ст. 160 ГК РФ.</p>
-                                        <p>Примечание: если вы ранее подписывали сделку или авторизовались на сайте Госуслуг, то дальнейшая авторизация может не потребовать введения Вами логина/пароля.</p>
-                                    </span>
-                                </label>                               
+                                <?
+                                    $APPLICATION->IncludeFile(SITE_TEMPLATE_PATH."/global_sign/attantion_sign.php", Array()); 
+                                ?>                               
                                 <?
                                 $DATA_SER = $arResult["CONTRACT_PROPERTY"]["CONTRACT_PROPERTY"]["USER_A"]["VALUE"].','.$arResult["TEMPLATE_CONTENT"]["ID"].','.$arResult["USER_ID"];
                                 $DATA_SER = base64_encode($DATA_SER);

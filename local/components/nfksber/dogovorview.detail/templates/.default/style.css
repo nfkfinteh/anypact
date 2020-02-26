@@ -4,7 +4,7 @@
 .cardDogovor .cardDogovor-boxTool .btn {
     width: 100%;
     margin-bottom: 30px;
-    min-height: 47px;
+    padding: 10px;
 }
 
 .cardDogovor .cardDogovor-boxViewText {
