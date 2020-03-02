@@ -234,3 +234,12 @@ edbox {
          margin-right: 24px !important;
      }
  }
+
+ .container-img {
+    margin-bottom: 100px;
+    margin-top: 15px;
+}
+
+.container-img img {
+    width: 100%;
+}

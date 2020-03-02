@@ -52,6 +52,9 @@ switch ($arResult['SEND_CONTRACT']) {
                         <?endif?>
 
                     <?}?>
+                    <div class="container-img">
+                        <img src="<?=SITE_TEMPLATE_PATH?>/img/write_contract.jpg">
+                    </div>
                 </div>            
             </div>               
             <div class="col-lg-9 col-md-9 col-sm-12 js-dogovor">

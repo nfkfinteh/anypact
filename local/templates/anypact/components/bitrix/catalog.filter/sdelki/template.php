@@ -46,7 +46,7 @@ $this->setFrameMode(true);
     <input type="hidden" name="set_filter" value="Y" />&nbsp;&nbsp;
 </form>
 <div class="container-img">
-            <img src="<?=SITE_TEMPLATE_PATH?>/img/pioneer_leasing_avto.png">
+    <img src="<?=SITE_TEMPLATE_PATH?>/img/pioneer_leasing_avto.png">
 </div>
 <script>
     $(document).ready(function(){
