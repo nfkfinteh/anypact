@@ -45,6 +45,9 @@ $this->setFrameMode(true);
     <input type="submit" name="set_filter" class="btn btn-nfk" value="<?=GetMessage("IBLOCK_SET_FILTER")?>" style="margin-top: 15px;"/>
     <input type="hidden" name="set_filter" value="Y" />&nbsp;&nbsp;
 </form>
+<div class="container-img">
+            <img src="<?=TEMPLATE_SITE_PATH?>/img/pioneer_leasing_avto.png">
+</div>
 <script>
     $(document).ready(function(){
         var minCost2 = '#minmax0'
