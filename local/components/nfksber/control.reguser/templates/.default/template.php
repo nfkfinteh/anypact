@@ -12,20 +12,14 @@
         <td>
             <?=$arResult["ALL_REGIST_USERS"]["COUNT_ARR_ALL_USERS"]?>
         </td>
-    </tr>
-    <tr>
         <td>
         <?=$arResult["ALL_REGIST_ESIA_USERS"]["COUNT_ARR_ALL_USERS"]?>
         </td>
-    </tr>
-    <tr>
         <td>
-            -
+        <?=$arResult["ALL_REGIST_ESIA_USERS"]["COUNT_ARR_ALL_USERS"]?>
         </td>
-    </tr>
-    <tr>
         <td>
-            -
+        <?=$arResult["ALL_REGIST_ESIA_USERS"]["COUNT_ARR_ALL_USERS"]?>
         </td>
     </tr>
   </tbody>

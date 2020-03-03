@@ -75,8 +75,8 @@ class ControlRegUser extends CBitrixComponent
             $AllRegistESIAUsers[] = $allRegUsers;
         }
         $arrParamsAllRegistESIAUsers = [
-            "ARR_ALL_USERS"         => $AllRegistrActionUsers,
-            "COUNT_ARR_ALL_USERS"   => count($AllRegistrActionUsers)
+            "ARR_ALL_USERS"         => $AllRegistESIAUsers,
+            "COUNT_ARR_ALL_USERS"   => count($AllRegistESIAUsers)
         ];
         $this->arResult["ALL_REGIST_ESIA_USERS"] = $arrParamsAllRegistESIAUsers;
 
