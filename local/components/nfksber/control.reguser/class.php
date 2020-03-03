@@ -86,7 +86,7 @@ class ControlRegUser extends CBitrixComponent
                 $FillUserProfile[] = $allRegUsersESIA;
             }
             // выплачено вознаграждение
-            if($allRegUsersESIA["UF_PAY_YANDEX"] == 1){
+            if($allRegUsersESIA["UF_PAY_YANDEX"] == "Y"){
                 $UsersPay[] = $allRegUsersESIA;
             }
         }
