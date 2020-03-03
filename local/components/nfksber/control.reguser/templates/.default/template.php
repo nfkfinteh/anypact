@@ -5,6 +5,7 @@
       <th scope="col">Из них активированных</th>
       <th scope="col">Из них Верифицированных ЕСИА</th>      
       <th scope="col">Из них Верифицированных ЕСИА и с фото и номером телефона</th>
+      <th scope="col">Из них Выплачено</th>
     </tr>
   </thead>
   <tbody>
@@ -20,6 +21,9 @@
         </td>
         <td>
             <?=$arResult["ALL_FILL_PARAMS_USERS"]["COUNT_ARR_ALL_USERS"]?>
+        </td>
+        <td>
+            <?=$arResult["ALL_PAY_USERS"]["COUNT_ARR_ALL_USERS"]?>
         </td>
     </tr>
   </tbody>
