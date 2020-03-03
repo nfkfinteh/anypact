@@ -84,8 +84,8 @@ class ControlRegUser extends CBitrixComponent
         ];
 
         $ParamsVerifESIAUsers = [
-            "ARR_ALL_USERS"         => $AllRegistESIAUsers,
-            "COUNT_ARR_ALL_USERS"   => count($AllRegistESIAUsers)
+            "ARR_ALL_USERS"         => $ESIAverifUser,
+            "COUNT_ARR_ALL_USERS"   => count($ESIAverifUser)
         ];
         $this->arResult["ALL_REGIST_ESIA_USERS"] = $arrParamsAllRegistESIAUsers;
         $this->arResult["ALL_VERIF_ESIA_USERS"] = $ParamsVerifESIAUsers;
