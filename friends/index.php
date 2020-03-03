@@ -1,6 +1,6 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$APPLICATION->SetTitle("Мои друзья");
+$APPLICATION->SetTitle("AnyPact || Мои друзья");
 ?>
 <!--Мои друзья-->
 <?

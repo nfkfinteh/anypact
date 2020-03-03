@@ -1,6 +1,6 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-//$APPLICATION->SetTitle("AnyPact || Бесплатный сервис для дистанционного заключения сделок");
+$APPLICATION->SetTitle("AnyPact || Бесплатный сервис для дистанционного заключения сделок");
 ?>
 <!--Форма поиска-->
 <h2>Поиск людей и сделок</h2>

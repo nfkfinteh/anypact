@@ -1,6 +1,6 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$APPLICATION->SetTitle("AnyPact");
+$APPLICATION->SetTitle("AnyPact || Мой профиль");
 // проверяем авторизован ли пользователь
 global $USER;
 
