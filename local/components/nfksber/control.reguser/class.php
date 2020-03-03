@@ -79,7 +79,7 @@ class ControlRegUser extends CBitrixComponent
                 $ESIAverifUser[] = $allRegUsersESIA;                
             }            
             // заполнен один из параметров
-            if(!empty($allRegUsersESIA["PERSONAL_PHONE"]) || $allRegUsersESIA["UF_ESIA_AUT"]==1 || !empty($allRegUsersESIA["PERSONAL_PHONE"])){
+            if(!empty($allRegUsersESIA["PERSONAL_PHONE"]) || $allRegUsersESIA["UF_ESIA_AUT"]==1 || !empty($allRegUsersESIA["PERSONAL_PHOTO"])){
                 $FillUserProfile[] = $allRegUsersESIA;
             }
 
