@@ -62,17 +62,18 @@ class ControlRegUser extends CBitrixComponent
         ];
         $this->arResult["ALL_REGIST_USERS"] = $arrParamsAllRegistUsers;
         
-        // зарегистриованных через рекламный канал и верефицированных через есиа
+        // зарегистриованных через рекламный канал и актвированных
         $arFilter= array(
             "ACTIVE" => 'Y',                   
             "UF_TYPE_REGISTR" => "action%"            
         );
-        $arParams["SELECT"] = array("UF_TYPE_REGISTR");        
+        $arParams["SELECT"] = array("UF_ESIA_ID", "UF_TYPE_REGISTR", "UF_ESIA_AUT", "UF_PAY_YANDEX");      
         $arrAllRegistESIAUsers = CUser::GetList(($by="ID"), ($order="ASC"), $arFilter, $arParams);
         $AllRegistESIAUsers = array();
-        while($allRegUsers = $arrAllRegistESIAUsers->Fetch()){
-            $AllRegistESIAUsers[] = $allRegUsers;
+        while($allRegUsersESIA = $arrAllRegistESIAUsers->Fetch()){
+            $AllRegistESIAUsers[] = $allRegUsersESIA;
         }
+        print_r($AllRegistESIAUsers);
         $arrParamsAllRegistESIAUsers = [
             "ARR_ALL_USERS"         => $AllRegistESIAUsers,
             "COUNT_ARR_ALL_USERS"   => count($AllRegistESIAUsers)
