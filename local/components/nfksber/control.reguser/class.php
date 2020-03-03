@@ -71,11 +71,18 @@ class ControlRegUser extends CBitrixComponent
         $arrAllRegistESIAUsers = CUser::GetList(($by="ID"), ($order="ASC"), $arFilter, $arParams);
         $AllRegistESIAUsers = array();
         $ESIAverifUser = array();
+        $ActiveUserProfile = array();
         while($allRegUsersESIA = $arrAllRegistESIAUsers->Fetch()){
-            $AllRegistESIAUsers[] = $allRegUsersESIA;
+            $AllRegistESIAUsers[] = $allRegUsersESIA;            
+            // верифицорован через ЕСИА
             if($allRegUsersESIA["UF_ESIA_AUT"]==1){
-                $ESIAverifUser[] = $allRegUsersESIA;
+                $ESIAverifUser[] = $allRegUsersESIA;                
+            }            
+            // заполнен один из параметров
+            if(!empty($allRegUsersESIA["PERSONAL_PHONE"]) || $allRegUsersESIA["UF_ESIA_AUT"]==1 || !empty($allRegUsersESIA["PERSONAL_PHONE"])){
+                $FillUserProfile[] = $allRegUsersESIA;
             }
+
         }
         
         $arrParamsAllRegistESIAUsers = [
@@ -87,8 +94,15 @@ class ControlRegUser extends CBitrixComponent
             "ARR_ALL_USERS"         => $ESIAverifUser,
             "COUNT_ARR_ALL_USERS"   => count($ESIAverifUser)
         ];
-        $this->arResult["ALL_REGIST_ESIA_USERS"] = $arrParamsAllRegistESIAUsers;
-        $this->arResult["ALL_VERIF_ESIA_USERS"] = $ParamsVerifESIAUsers;
+
+        $paramsUsersFill = [
+            "ARR_ALL_USERS"         => $FillUserProfile,
+            "COUNT_ARR_ALL_USERS"   => count($FillUserProfile)
+        ];
+
+        $this->arResult["ALL_REGIST_ESIA_USERS"]    = $arrParamsAllRegistESIAUsers;
+        $this->arResult["ALL_VERIF_ESIA_USERS"]     = $ParamsVerifESIAUsers;
+        $this->arResult["ALL_FILL_PARAMS_USERS"]    = $ParamsVerifESIAUsers;
 
         // данные для таблицы
         $arFilter= array(
