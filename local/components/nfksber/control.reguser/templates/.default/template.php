@@ -16,7 +16,7 @@
             <?=$arResult["ALL_REGIST_ESIA_USERS"]["COUNT_ARR_ALL_USERS"]?>
         </td>
         <td>
-        <?=$arResult["ALL_REGIST_ESIA_USERS"]["COUNT_ARR_ALL_USERS"]?>
+            <?=$arResult["ALL_VERIF_ESIA_USERS"]["COUNT_ARR_ALL_USERS"]?>
         </td>
         <td>
         <?=$arResult["ALL_REGIST_ESIA_USERS"]["COUNT_ARR_ALL_USERS"]?>

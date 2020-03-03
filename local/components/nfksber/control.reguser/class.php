@@ -70,15 +70,25 @@ class ControlRegUser extends CBitrixComponent
         $arParams["SELECT"] = array("UF_ESIA_ID", "UF_TYPE_REGISTR", "UF_ESIA_AUT", "UF_PAY_YANDEX");      
         $arrAllRegistESIAUsers = CUser::GetList(($by="ID"), ($order="ASC"), $arFilter, $arParams);
         $AllRegistESIAUsers = array();
+        $ESIAverifUser = array();
         while($allRegUsersESIA = $arrAllRegistESIAUsers->Fetch()){
             $AllRegistESIAUsers[] = $allRegUsersESIA;
+            if($allRegUsersESIA["UF_ESIA_AUT"]==1){
+                $ESIAverifUser[] = $allRegUsersESIA;
+            }
         }
-        print_r($AllRegistESIAUsers);
+        
         $arrParamsAllRegistESIAUsers = [
             "ARR_ALL_USERS"         => $AllRegistESIAUsers,
             "COUNT_ARR_ALL_USERS"   => count($AllRegistESIAUsers)
         ];
+
+        $ParamsVerifESIAUsers = [
+            "ARR_ALL_USERS"         => $AllRegistESIAUsers,
+            "COUNT_ARR_ALL_USERS"   => count($AllRegistESIAUsers)
+        ];
         $this->arResult["ALL_REGIST_ESIA_USERS"] = $arrParamsAllRegistESIAUsers;
+        $this->arResult["ALL_VERIF_ESIA_USERS"] = $ParamsVerifESIAUsers;
 
         // данные для таблицы
         $arFilter= array(
