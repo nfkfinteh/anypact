@@ -102,7 +102,7 @@ class ControlRegUser extends CBitrixComponent
 
         $this->arResult["ALL_REGIST_ESIA_USERS"]    = $arrParamsAllRegistESIAUsers;
         $this->arResult["ALL_VERIF_ESIA_USERS"]     = $ParamsVerifESIAUsers;
-        $this->arResult["ALL_FILL_PARAMS_USERS"]    = $ParamsVerifESIAUsers;
+        $this->arResult["ALL_FILL_PARAMS_USERS"]    = $paramsUsersFill;
 
         // данные для таблицы
         $arFilter= array(
