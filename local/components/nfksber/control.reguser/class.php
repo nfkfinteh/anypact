@@ -64,8 +64,7 @@ class ControlRegUser extends CBitrixComponent
         
         // зарегистриованных через рекламный канал и верефицированных через есиа
         $arFilter= array(
-            "ACTIVE" => 'Y', 
-            "UF_ESIA_ID" => 1,           
+            "ACTIVE" => 'Y',                   
             "UF_TYPE_REGISTR" => "action%"            
         );
         $arParams["SELECT"] = array("UF_TYPE_REGISTR");        
