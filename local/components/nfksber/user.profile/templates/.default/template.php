@@ -23,7 +23,7 @@
 
                     <span class="d-block mt-4">Частное лицо</span>
 
-                    <span class="d-block mt-3"><?=$arResult['USER']['PERSONAL_CITY']?>, <?=$arResult['USER']['PERSONAL_STREET']?></span>
+                    <span class="d-block mt-3">город: <?=$arResult['USER']['PERSONAL_CITY']?> <?//$arResult['USER']['PERSONAL_STREET']?></span>
                     <?if($arResult['USER']['UF_ESIA_AUT']==1):?>
                         <span class="d-block font-weight-bold mt-4">Подтвержденная регистрация</span>
                         <span class="d-block registration-checked mt-2"><img src="https://gu-st.ru/st/img/logo_nobeta.0a1f5dfe6b.svg" style="width:50%;"/></span>

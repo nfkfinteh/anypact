@@ -210,19 +210,20 @@ global $USER;
                     if ($USER->IsAuthorized()){
                         $arUrlMenu = array(
                             '/' => 'Главная',
-                            '/my_pacts/' => 'Мои сделки',                               
-                            '/pacts/' => 'Все предложения',
-                            '/search_people/' => 'Поиск людей',
-                            '/list_message/' => 'Сообщения',
-                            '/service/' => 'О сервисе',
-                            '/help/' => 'Контакты'                            
+                            '/my_pacts/'        => 'Мои сделки',
+                            '/profile/'         => 'Профиль',                               
+                            '/pacts/'           => 'Все предложения',
+                            '/search_people/'   => 'Поиск людей',
+                            '/list_message/'    => 'Сообщения',
+                            '/service/'         => 'О сервисе',
+                            '/help/'            => 'Контакты'                            
                         );
                     }else {
                         $arUrlMenu = array(
-                            '/' => 'Главная',                               
+                            '/'         => 'Главная',                               
                             '/service/' => 'О сервисе',
-                            '/help/' => 'Поддержка',
-                            '#' => 'Регистрация/вход'
+                            '/help/'    => 'Поддержка',
+                            '#'         => 'Регистрация/вход'
                         );
                     }
                     $APPLICATION->IncludeComponent("nfksber:navmenu.head", 

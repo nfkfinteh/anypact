@@ -45,6 +45,42 @@ class ControlRegUser extends CBitrixComponent
         // по умолчанию "and"
         //$GLOBALS["FILTER_logic"] = "or";
 
+        // цифры для статистики
+        // всего зарегистированных через рекламный канал
+        $arFilter= array(            
+            "UF_TYPE_REGISTR" => "action%"            
+        );
+        $arParams["SELECT"] = array("UF_TYPE_REGISTR");        
+        $arrAllRegistUsers = CUser::GetList(($by="ID"), ($order="ASC"), $arFilter, $arParams);
+        $AllRegistrActionUsers = array();
+        while($allRegUsers = $arrAllRegistUsers->Fetch()){
+            $AllRegistrActionUsers[] = $allRegUsers;
+        }
+        $arrParamsAllRegistUsers = [
+            "ARR_ALL_USERS"         => $AllRegistrActionUsers,
+            "COUNT_ARR_ALL_USERS"   => count($AllRegistrActionUsers)
+        ];
+        $this->arResult["ALL_REGIST_USERS"] = $arrParamsAllRegistUsers;
+        
+        // зарегистриованных через рекламный канал и верефицированных через есиа
+        $arFilter= array(
+            "ACTIVE" => 'Y', 
+            "UF_ESIA_ID" => 1,           
+            "UF_TYPE_REGISTR" => "action%"            
+        );
+        $arParams["SELECT"] = array("UF_TYPE_REGISTR");        
+        $arrAllRegistESIAUsers = CUser::GetList(($by="ID"), ($order="ASC"), $arFilter, $arParams);
+        $AllRegistESIAUsers = array();
+        while($allRegUsers = $arrAllRegistESIAUsers->Fetch()){
+            $AllRegistESIAUsers[] = $allRegUsers;
+        }
+        $arrParamsAllRegistESIAUsers = [
+            "ARR_ALL_USERS"         => $AllRegistrActionUsers,
+            "COUNT_ARR_ALL_USERS"   => count($AllRegistrActionUsers)
+        ];
+        $this->arResult["ALL_REGIST_ESIA_USERS"] = $arrParamsAllRegistESIAUsers;
+
+        // данные для таблицы
         $arFilter= array(
             "ACTIVE" => 'Y',
             "UF_TYPE_REGISTR" => "action%"            
@@ -53,8 +89,8 @@ class ControlRegUser extends CBitrixComponent
         $arParams["SELECT"] = array("UF_ESIA_ID", "UF_TYPE_REGISTR", "UF_ESIA_AUT", "UF_PAY_YANDEX");
         
         $elementsResult = CUser::GetList(($by="ID"), ($order="ASC"), $arFilter, $arParams);
+        
         $FilterSumPay = array();
-
         $SummPay =  $this->getHLSingl(13, $FilterSumPay); //'100.00' сумма должна быть строкой с точкой и двумя знаками после нее        
         
         while ($rsUser = $elementsResult->Fetch()) {
@@ -62,7 +98,6 @@ class ControlRegUser extends CBitrixComponent
             $rsUser["PAY_PARAMS"] = base64_encode($rsUser["ID"].'#'.$SummPay["UF_SUMM_PAY"].'#'.$rsUser["ID"].'#'.$rsUser["PERSONAL_PHONE"].'#'.$ID_ORDER);
             $arFilterUserRegistAction[] = $rsUser;
         } 
-
         $this->arResult["USER_REGIST_ACTION"] = $arFilterUserRegistAction;
 
         $this->includeComponentTemplate();        
