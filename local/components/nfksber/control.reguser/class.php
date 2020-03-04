@@ -47,8 +47,7 @@ class ControlRegUser extends CBitrixComponent
 
         // цифры для статистики
         // всего зарегистированных через рекламный канал
-        $arFilter= array(            
-            "UF_TYPE_REGISTR" => "action%"            
+        $arFilter= array(                     
         );
         $arParams["SELECT"] = array("UF_TYPE_REGISTR");        
         $arrAllRegistUsers = CUser::GetList(($by="ID"), ($order="ASC"), $arFilter, $arParams);
@@ -64,8 +63,7 @@ class ControlRegUser extends CBitrixComponent
         
         // зарегистриованных через рекламный канал и актвированных
         $arFilter= array(
-            "ACTIVE" => 'Y',                   
-            "UF_TYPE_REGISTR" => "action%"            
+            "ACTIVE" => 'Y'       
         );
         $arParams["SELECT"] = array("UF_ESIA_ID", "UF_TYPE_REGISTR", "UF_ESIA_AUT", "UF_PAY_YANDEX");      
         $arrAllRegistESIAUsers = CUser::GetList(($by="ID"), ($order="ASC"), $arFilter, $arParams);
