@@ -6,7 +6,9 @@ $APPLICATION->SetTitle("AnyPact");
 	<?
     // проверяем авторизован ли пользователь
     global $USER;
-    if ($USER->IsAuthorized()){
+    //if ($USER->IsAuthorized()){
+        $check = 1;
+    if ($check == 1){
     ?>
         <div class="tender cardPact">
             <?//компонент выводит детальный просмотр сделки

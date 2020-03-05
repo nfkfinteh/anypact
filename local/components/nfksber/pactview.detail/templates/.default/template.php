@@ -44,8 +44,10 @@ foreach ($arResult["PROPERTY"]["IMG_FILE"] as $item){
         <span class="cardPact-price"><?=$arResult["PROPERTY"]["SUMM_PACT"]["VALUE"]?> руб.</span>
 
         <?//скрытие кнопки при окончане активности?>
-        <?if($arResult['ELEMENT']['ACTIVE']=='Y' && $arResult['ELEMENT']['DATE_ACTIVE_TO']>=ConvertTimeStamp(time(), "SHORT")):?>
-            <a href="/pacts/view_pact/view_dogovor/?ELEMENT_ID=<?=$arResult["ELEMENT"]["ID"]?>" class="btn btn-nfk cardPact-bBtn <?=$disable_a?>">Посмотреть или подписать договор</a>
+        <? if($USER->IsAuthorized()):?>
+            <?if($arResult['ELEMENT']['ACTIVE']=='Y' && $arResult['ELEMENT']['DATE_ACTIVE_TO']>=ConvertTimeStamp(time(), "SHORT")):?>
+                <a href="/pacts/view_pact/view_dogovor/?ELEMENT_ID=<?=$arResult["ELEMENT"]["ID"]?>" class="btn btn-nfk cardPact-bBtn <?=$disable_a?>">Посмотреть или подписать договор</a>
+            <?endif?>
         <?endif?>
 
         <!-- <a href="#" class="btn btn-nfk cardPact-bBtn">Посмотреть спецификацию</a> -->
