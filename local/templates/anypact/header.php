@@ -208,6 +208,7 @@ global $USER;
             <div class="collapse navbar-collapse " id="navbarSupportedContent" style="padding-right: 0;">
                 <? // навигационное меню для разных типов пользователей
                     if ($USER->IsAuthorized()){
+                        // авторизованный пользователь
                         $arUrlMenu = array(
                             '/' => 'Главная',
                             '/my_pacts/'        => 'Мои сделки',
@@ -219,6 +220,7 @@ global $USER;
                             '/help/'            => 'Контакты'                            
                         );
                     }else {
+                        // неавторизованный пользователь
                         $arUrlMenu = array(
                             '/'                 => 'Главная',
                             '/pacts/'           => 'Все предложения',  
