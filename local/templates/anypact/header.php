@@ -220,11 +220,12 @@ global $USER;
                         );
                     }else {
                         $arUrlMenu = array(
-                            '/'         => 'Главная',
-                            '/pacts/'   => 'Все предложения',                               
-                            '/service/' => 'О сервисе',
-                            '/help/'    => 'Поддержка',
-                            '#'         => 'Регистрация/вход'
+                            '/'                 => 'Главная',
+                            '/pacts/'           => 'Все предложения',  
+                            '/search_people/'   => 'Поиск людей',                             
+                            '/service/'         => 'О сервисе',
+                            '/help/'            => 'Поддержка',
+                            '#'                 => 'Регистрация/вход'
                         );
                     }
                     $APPLICATION->IncludeComponent("nfksber:navmenu.head", 
