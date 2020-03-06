@@ -43,7 +43,7 @@ $arrMessages =  json_decode($arData['UF_TEXT_MESSAGE_USER'], true);
 
 $arrMessage = array(
   'user' => $IDUser,
-  'data' => date("m.d.y H:m"),
+  'data' => date("d.m.y H:m"),
   'message' => $Params['message']
 );
 
