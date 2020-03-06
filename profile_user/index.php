@@ -28,5 +28,5 @@ if ($USER->IsAuthorized()):
         $APPLICATION->IncludeFile(SITE_TEMPLATE_PATH."/not_access.php", Array());            
     ?>
 <?endif?>
-
+</div>
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
