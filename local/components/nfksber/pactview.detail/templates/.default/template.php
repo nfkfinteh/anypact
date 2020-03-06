@@ -80,8 +80,10 @@ foreach ($arResult["PROPERTY"]["IMG_FILE"] as $item){
         </div>
 
         <?//скрытие кнопки при окончане активности?>
-        <?if($arResult['ELEMENT']['ACTIVE']=='Y' && $arResult['ELEMENT']['DATE_ACTIVE_TO']>=ConvertTimeStamp(time(), "SHORT")):?>
-            <button type="button" class="btn btn-nfk d-block cardPact-bBtn" data-toggle="modal" data-target=".bd-message-modal-sm">Написать сообщение</button>
+        <? if($USER->IsAuthorized()):?>
+            <?if($arResult['ELEMENT']['ACTIVE']=='Y' && $arResult['ELEMENT']['DATE_ACTIVE_TO']>=ConvertTimeStamp(time(), "SHORT")):?>
+                <button type="button" class="btn btn-nfk d-block cardPact-bBtn" data-toggle="modal" data-target=".bd-message-modal-sm">Написать сообщение</button>
+            <?endif?>
         <?endif?>
     </div>
 </div>
