@@ -78,7 +78,8 @@ foreach ($arResult["PROPERTY"]["IMG_FILE"] as $item){
             <br>
             <?/*<span>9 оценок</span>*/?>
         </div>
-
+        <? print_r($USER->IsAuthorized())?>
+        <? echo "User" ?>
         <?//скрытие кнопки при окончане активности?>
         <? if($USER->IsAuthorized()):?>
             <? if($arResult['ELEMENT']['ACTIVE']=='Y' && $arResult['ELEMENT']['DATE_ACTIVE_TO']>=ConvertTimeStamp(time(), "SHORT")): ?>
