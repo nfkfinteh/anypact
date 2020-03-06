@@ -23,6 +23,10 @@ if ($USER->IsAuthorized()):
         );?>
         </div>
     <?if($_REQUEST['AJAX_SDEL'] == 'Y') exit();?>
+<?else:?>
+    <?  // заглушка на авторизацию доступа
+        $APPLICATION->IncludeFile(SITE_TEMPLATE_PATH."/not_access.php", Array());            
+    ?>
 <?endif?>
 
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
