@@ -37,7 +37,10 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 					<br>Вам необходимо заполнить профиль и пройти подтверждение ваших регистрационных данных.
 				</p>
 				<!--<a href="#" class="btn btn-nfk mt-4" style="width: 262px; height: 46px; padding-top: 10px;">Региcтрация</a>-->
-				<a href="/profile/" class="mt-3">Пройти регистрацию через портал "Госуслуг"</a>
+				<? // закодируем ссылку на возврат из ЕСИА
+					$encodeURL = base64_encode('/profile/');
+				?>
+				<a href="/profile/aut_esia.php?returnurl=<?=$encodeURL?>" class="mt-3">Пройти регистрацию через портал "Госуслуг"</a>
 			</div>
 		<?
 
