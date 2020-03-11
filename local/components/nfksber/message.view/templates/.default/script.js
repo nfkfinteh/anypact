@@ -55,6 +55,54 @@ $(document).ready(function() {
         }
     }
 
+    //вызов окна добавление файлов
+    $(document).on('click', '#sendFile', function(){
+        $('#uploadFile').click();
+    });
+
+    //добавление файлов
+    $(document).on('change', '#uploadFile', function(){
+        preload('show');
+        var formData = new FormData(),
+            arFiles = $('#uploadFile').prop('files'),
+            mainData = JSON.stringify({
+                idMessage  : id,
+            });
+
+        for (var key in arFiles) {
+            formData.append(key, arFiles[key]);
+        }
+
+        formData.append( 'main', mainData);
+
+        $.ajax({
+            type:'POST',
+            url: '/response/ajax/up_message_file_user.php',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: onAjaxSuccess,
+            error:function(data){
+                console.log(data); //ошибки сервера
+            }
+        });
+
+
+         function onAjaxSuccess(data) {
+             let result = JSON.parse(data);
+             if(result['TYPE']=='ERROR'){
+                 preload('hide');
+                 showResult('#popup-error','Ошибка сохранения');
+                 console.log(result);
+             }
+             if(result['TYPE']=='SUCCESS'){
+                 upListMessage();
+                 preload('hide');
+             }
+         }
+    });
+
+    //удаление переписки
     $(document).on('click', '.js-chat_delete', function(){
         preload('show');
         $.post(

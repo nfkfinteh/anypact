@@ -6,6 +6,7 @@
     foreach($arResult['UsersChart'] as $Item){
         $arrIDUserChat[] = $Item["ID"];
     }
+    $arImgFormat = ['jpg', 'png', 'svg', 'jpeg'];
 ?>
 <? // если пользователь входит в масив то открываем ему сообщения?>
 <?if(in_array($UserID, $arrIDUserChat)){?>
@@ -59,8 +60,21 @@
                                         <div class="message-message">
                                             <p class="user-name-right"><?=$arResult['FastUserParams'][$Message['user']]['FIO']?></p>
                                             <div class="message-content">
-                                                <div class="message-text">                                                
-                                                    <p><?=$Message['message']?></p>
+                                                <div class="message-text">
+                                                    <?if($Message['file']):?>
+                                                        <?if(in_array($Message['file_format'], $arImgFormat)):?>
+                                                            <div class="message-text__file">
+                                                                <img src="<?=$Message['file']?>" class="message-text__img">
+                                                            </div>
+                                                        <?else:?>
+                                                            <a href="<?=$Message['file']?>" class="message-text__file" target="_blank">
+                                                                <img src="<?=SITE_TEMPLATE_PATH?>/image/icon-file.png" class="message-text__img">
+                                                                <span><?=$Message['file_name']?></span>
+                                                            </a>
+                                                        <?endif?>
+                                                    <?else:?>
+                                                        <p><?=$Message['message']?></p>
+                                                    <?endif?>
                                                     <time datetime="2019-03-01T15:12:13+03:00"><?=$Message['data']?></time>
                                                 </div>
                                             </div>
@@ -104,7 +118,11 @@
                         <!-- <button class="mr-1 mr-sm-3"><img src="<?=SITE_TEMPLATE_PATH?>/image/icon-image-file.png" alt=""></button>
                         <button class="mr-2 mr-sm-4"><img src="<?=SITE_TEMPLATE_PATH?>/image/icon-file.png" alt=""></button> -->
                         <textarea name="" id="textMessage" placeholder="Введите сообщение"></textarea>
-                        <button class="ml-1 mr-0 mx-sm-4" id="sendMessage"><img src="<?=SITE_TEMPLATE_PATH?>/image/icon-sent.png" alt=""></button>
+                        <input type="file" id="uploadFile" name="uploadFile[]" multiple="multiple" style="display: none">
+                        <div class="message-chat-input__buttons">
+                            <button class="ml-1 mr-0 mx-sm-4" id="sendMessage"><img src="<?=SITE_TEMPLATE_PATH?>/image/icon-sent.png"></button>
+                            <button class="ml-1 mr-0 mx-sm-4 message-chat-input__buttons_clip" id="sendFile"><img src="<?=SITE_TEMPLATE_PATH?>/image/icon-image-file.png"></button>
+                        </div>
                     </div>
                 </div>
             </div>
