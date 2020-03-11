@@ -62,16 +62,18 @@
                                             <div class="message-content">
                                                 <div class="message-text">
                                                     <?if($Message['file']):?>
-                                                        <?if(in_array($Message['file_format'], $arImgFormat)):?>
-                                                            <div class="message-text__file">
-                                                                <img src="<?=$Message['file']?>" class="message-text__img">
-                                                            </div>
-                                                        <?else:?>
-                                                            <a href="<?=$Message['file']?>" class="message-text__file" target="_blank">
-                                                                <img src="<?=SITE_TEMPLATE_PATH?>/image/icon-file.png" class="message-text__img">
-                                                                <span><?=$Message['file_name']?></span>
-                                                            </a>
-                                                        <?endif?>
+                                                        <?foreach ($Message['file'] as $file):?>
+                                                            <?if(in_array($file['file_format'], $arImgFormat)):?>
+                                                                <div class="message-text__file">
+                                                                    <img src="<?=$file['src']?>" class="message-text__img">
+                                                                </div>
+                                                            <?else:?>
+                                                                <a href="<?=$file['src']?>" class="message-text__file" target="_blank">
+                                                                    <img src="<?=SITE_TEMPLATE_PATH?>/image/icon-file.png" class="message-text__img">
+                                                                    <span class="message-text__name"><?=$file['file_name']?></span>
+                                                                </a>
+                                                            <?endif?>
+                                                        <?endforeach?>
                                                     <?else:?>
                                                         <p><?=$Message['message']?></p>
                                                     <?endif?>
@@ -100,8 +102,23 @@
                                         <div class="message-message">
                                             <p class="user-name-left"><?=$arResult['FastUserParams'][$Message['user']]['FIO']?></p>
                                             <div class="message-content">
-                                                <div class="message-text">                                                
-                                                    <p><?=$Message['message']?></p>
+                                                <div class="message-text">
+                                                    <?if($Message['file']):?>
+                                                        <?foreach ($Message['file'] as $file):?>
+                                                            <?if(in_array($file['file_format'], $arImgFormat)):?>
+                                                                <div class="message-text__file">
+                                                                    <img src="<?=$file['src']?>" class="message-text__img">
+                                                                </div>
+                                                            <?else:?>
+                                                                <a href="<?=$file['src']?>" class="message-text__file" target="_blank">
+                                                                    <img src="<?=SITE_TEMPLATE_PATH?>/image/icon-file.png" class="message-text__img">
+                                                                    <span class="message-text__name"><?=$file['file_name']?></span>
+                                                                </a>
+                                                            <?endif?>
+                                                        <?endforeach?>
+                                                    <?else:?>
+                                                        <p><?=$Message['message']?></p>
+                                                    <?endif?>
                                                     <time datetime="2019-03-01T15:12:13+03:00"><?=$Message['data']?></time>
                                                 </div>
                                             </div>

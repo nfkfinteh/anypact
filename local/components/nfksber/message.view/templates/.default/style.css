@@ -53,11 +53,15 @@
     padding: 20px;
 }
 .message-text__file{
-    display: block;
+    display: flex;
+    align-items: center;
     max-width: 300px;
+    margin-bottom: 10px;
 }
 .message-text__img{
     max-width: 100%;
+    height: 100%;
+    margin-right: 5px;
 }
 .message-image img{
     max-width: 100%;

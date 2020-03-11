@@ -75,14 +75,18 @@ foreach ($arFiles as $key=>$uploadFiles) {
 $arrMessages =  json_decode($arData['UF_TEXT_MESSAGE_USER'], true);
 
 foreach ($resultFiles['ITEMS'] as $file){
-    $arrMessages[] = array(
-        'user' => $IDUser,
-        'data' => date("d.m.y H:i"),
-        'file' => $file['SRC'],
+    $arFileData[] = [
+        'src' => $file['SRC'],
         'file_format' => pathinfo($file['SRC'])['extension'],
         'file_name' => $file['NAME']
-    );
+    ];
 }
+
+$arrMessages[] = array(
+    'user' => $IDUser,
+    'data' => date("d.m.y H:i"),
+    'file' => $arFileData,
+);
 
 $jsonArrMessages = json_encode($arrMessages);
 
