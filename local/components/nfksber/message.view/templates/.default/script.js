@@ -89,6 +89,7 @@ $(document).ready(function() {
 
 
          function onAjaxSuccess(data) {
+             console.log(data);
              let result = JSON.parse(data);
              if(result['TYPE']=='ERROR'){
                  preload('hide');

@@ -3,9 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="095c6364-006c-4512-9344-8361d6fd3db8" name="Default" comment="Обрезка фото профиля пользователя">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local/components/nfksber/message.list/templates/.default/template.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/components/nfksber/message.list/templates/.default/template.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/local/components/nfksber/message.view/templates/.default/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/local/components/nfksber/message.view/templates/.default/script.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/local/php_interface/init.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/php_interface/init.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/response/ajax/delete_chat_user.php" beforeDir="false" afterPath="$PROJECT_DIR$/response/ajax/delete_chat_user.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/response/ajax/up_message_file_user.php" beforeDir="false" afterPath="$PROJECT_DIR$/response/ajax/up_message_file_user.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -33,6 +34,7 @@
     <setting file="file://$PROJECT_DIR$/local/components/nfksber/pactview.detail/templates/edit/template.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/local/templates/anypact/components/bitrix/main.profile/anypact/script.js" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/local/components/nfksber/message.view/templates/.default/script.js" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/local/components/nfksber/message.view/templates/.default/template.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/local/components/nfksber/dogovorview.detail/templates/sendedit/script.js" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/local/components/nfksber/dogovorview.detail/templates/edit/script.js" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/local/components/nfksber/dogovorview.detail/class.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
@@ -144,7 +146,7 @@
       <workItem from="1583783164589" duration="352000" />
       <workItem from="1583862875796" duration="5467000" />
       <workItem from="1583915535613" duration="45000" />
-      <workItem from="1583915601053" duration="15406000" />
+      <workItem from="1583915601053" duration="24666000" />
     </task>
     <task id="LOCAL-00001" summary="Fix добавление изменение компании">
       <created>1581456357354</created>
@@ -195,7 +197,21 @@
       <option name="project" value="LOCAL" />
       <updated>1583935146956</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Удаление фалов прикрепленных к чату">
+      <created>1583936670713</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1583936670713</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Fix добавление нескольких файлов в чате">
+      <created>1583954318069</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1583954318069</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -264,7 +280,9 @@
     <MESSAGE value="временный комит" />
     <MESSAGE value="Временный коммит" />
     <MESSAGE value="Переписка, добавление фалов" />
-    <option name="LAST_COMMIT_MESSAGE" value="Переписка, добавление фалов" />
+    <MESSAGE value="Удаление фалов прикрепленных к чату" />
+    <MESSAGE value="Fix добавление нескольких файлов в чате" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix добавление нескольких файлов в чате" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

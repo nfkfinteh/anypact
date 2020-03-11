@@ -85,6 +85,7 @@ foreach ($resultFiles['ITEMS'] as $file){
 $arrMessages[] = array(
     'user' => $IDUser,
     'data' => date("d.m.y H:i"),
+    'message' => 'Документ',
     'file' => $arFileData,
 );
 
