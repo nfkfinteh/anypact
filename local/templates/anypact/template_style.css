@@ -234,11 +234,13 @@ input {
 }
 
 .search .deal-type::after {
-    content: ">";
+    content: "";
+    background: url(arr_profile.svg) no-repeat center;
     display: inline-block;
     position: relative;
-    left: 13px;
-    transform: rotate(90deg);
+    left: 5px;
+    width: 12px;
+    height: 12px;
 }
 
 .category {
@@ -3597,4 +3599,7 @@ h4.subtitle_contract{
 .up-arrow:hover{
     background: #FF6600;
     transform: scale(1.2);
+}
+.footer p img{
+    margin-bottom: 50px;
 }
