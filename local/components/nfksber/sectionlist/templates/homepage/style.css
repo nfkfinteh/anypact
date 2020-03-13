@@ -9,7 +9,14 @@
     top: 95px;
     display: none;
 }
-
+#select_category_main::after {
+    content: '';
+    position: absolute;
+    right: 20px;
+    top: 0;
+    border: 10px solid transparent;
+    border-top: 10px solid #fff;
+}
 #select_category_main li{
     list-style-type: none;
     margin: 10px;

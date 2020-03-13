@@ -70,6 +70,8 @@ input {
     font-size: 24px;
     font-weight: normal;
     float: right;
+    text-decoration: none;
+    color: #212529;
 }
 
 .location {
