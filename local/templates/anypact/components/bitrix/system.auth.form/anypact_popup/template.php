@@ -25,7 +25,7 @@ CJSCore::Init();
                             });
                         </script>
                 <!--Пароль-->
-                <input type="password" name="USER_PASSWORD" class="regpopup_content_form_input"  autocomplete="off" id="user_aut_pass"/>  
+                <input type="password" name="USER_PASSWORD" class="regpopup_content_form_input"  autocomplete="off" id="user_aut_pass" placeholder="Пароль"/>  
             <?if ($arResult["STORE_PASSWORD"] == "Y"):?>
                     <input type="checkbox" id="USER_REMEMBER_frm" name="USER_REMEMBER" value="Y" /></td>
                     <label for="USER_REMEMBER_frm" title="<?=GetMessage("AUTH_REMEMBER_ME")?>"><?echo GetMessage("AUTH_REMEMBER_SHORT")?></label>

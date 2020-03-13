@@ -6,8 +6,15 @@ $(document).ready(function(){
         $('.tender-block').addClass("tender-horizon").removeClass("tender-block col-md-6 col-lg-4");
         $('.grid-view').addClass("list-view").removeClass("grid-view");
     }
+    $(document).on("scroll", window, function () {
+        if ($(window).scrollTop() >= 200) {
+            $(".up-arrow").show();
+        } 
+        else {
+            $(".up-arrow").hide();
+        }
+    });
 });
-
 $(document).on('click', '.city-choose-btn-city', function(){
     let city = $(this).text();
     set_cookie('CITY_ANYPACT', city);

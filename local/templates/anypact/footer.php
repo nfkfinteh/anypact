@@ -2,7 +2,7 @@
 <? if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)?>
 <footer class="footer">
     <div class="container-fluid">
-		<p align="center" style="padding: 50px 0;">
+		<p align="center">
 			<img src="<?=SITE_TEMPLATE_PATH.'/image/logo_ap.svg'?>"  style="width: 166px;"/>
 		</p>
 		<p align="center" size="16">
@@ -10,6 +10,7 @@
 			электронная почта: <a href="mailto:info@anypact.ru">info@anypact.ru</a>
 		</p>		
 	</div>
+	<a href="#header" class="up-arrow"></a>
 </footer>
 <?require_once($_SERVER['DOCUMENT_ROOT']."/local/include/form_modal.php");?>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
