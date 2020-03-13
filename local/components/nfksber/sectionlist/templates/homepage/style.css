@@ -13,7 +13,8 @@
     content: '';
     position: absolute;
     right: 20px;
-    top: 0;
+    top: -20px;
+    transform: rotate(180deg);
     border: 10px solid transparent;
     border-top: 10px solid #fff;
 }

@@ -78,7 +78,7 @@ $APPLICATION->IncludeComponent(
 </div>
 <!-- Список категорий -->
 <div class="deal-container">
-    <div class="container" style="margin-top: 106px;">
+    <div class="container">
         <h2>Заключить сделку</h2>
         <div class="short-divider"></div>
     </div>

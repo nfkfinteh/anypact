@@ -71,9 +71,15 @@ input {
     font-weight: normal;
     float: right;
     text-decoration: none;
-    color: #212529;
+    color: #212529 !important;
 }
-
+.phone:hover {
+    text-decoration: none;
+    color: #212529 !important;
+}
+.phone:focus {
+    text-decoration: none;
+}
 .location {
     font-size: 14px;
     line-height: 2.5;
@@ -1031,7 +1037,7 @@ input::-webkit-input-placeholder {
     background-position-x: -51vw;
     background-position-y: calc(100% - 29px);
     margin-bottom: 172px;
-    margin-top: 106px;
+    margin-top: 60px;
 }
 
 .client-container {
