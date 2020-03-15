@@ -177,3 +177,11 @@ button.btn {
     border-radius: 5px;
     padding: 10px 30px;
 }
+
+.rotate_left:before{
+    content: url("./img/rotate_left.svg");
+}
+
+.rotate_right:before{
+    content: url("./img/rotate_right.svg");
+}
