@@ -52,6 +52,17 @@
 .message-text{
     padding: 20px;
 }
+.message-text__file{
+    display: flex;
+    align-items: center;
+    max-width: 300px;
+    margin-bottom: 10px;
+}
+.message-text__img{
+    max-width: 100%;
+    height: 100%;
+    margin-right: 5px;
+}
 .message-image img{
     max-width: 100%;
 }
@@ -86,9 +97,11 @@
     margin-top: 61px;
 }
 .message-chat-input button{
+    display: block;
     background: none;
     border: none;
     padding: 0;
+    margin-bottom: 5px;
     cursor: pointer;
 }
 .message-chat-input textarea{
@@ -99,6 +112,9 @@
     overflow: hidden;
     resize: none;
     flex-grow: 1;
+}
+.message-chat-input__buttons_clip img{
+    height: 30px;
 }
 ul.list-person-conversation{
     padding-left: 12px;

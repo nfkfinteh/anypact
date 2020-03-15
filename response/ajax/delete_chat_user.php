@@ -10,6 +10,7 @@ $IDUser = $USER->GetID();
 
 // id сообщения 
 $IDChat = $postData['id'];
+$IDChat_base64 = base64_encode($IDChat);
 
 if($USER->IsAuthorized()){
     //echo "Пользователь авторизован";
@@ -32,6 +33,8 @@ $entity_data_class = $entity->getDataClass();
 
 $result = $entity_data_class::Delete($IDChat);
 if($result->isSuccess()){
+    //удаление папки с фалами прикрепленными к чату
+    DeleteDirFilesEx("/upload/add_users_files/".$IDChat_base64);
     echo json_encode([ 'VALUE'=>'', 'TYPE'=> 'SUCCESS']);
 }
 else{

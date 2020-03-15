@@ -1,5 +1,5 @@
 <?
-//получаем текущую
+//получаем текущую компанию
 function getCurCompany($usrId){
     $rsUsers = CUser::GetList(
         $by="timestamp_x",
@@ -21,7 +21,7 @@ function getCurCompany($usrId){
      return $idCompany;
 }
 
-//удаление временных фалов в директории
+//удаление временных файлов в директории
 function deleteTmpFile($dir, $time){
     $scanFile = scandir($_SERVER['DOCUMENT_ROOT'].$dir);
     foreach ($scanFile as $file) {
@@ -33,5 +33,21 @@ function deleteTmpFile($dir, $time){
             }
         }
     }
+}
+
+//проверка файлов на размер и формат
+//$size - в байтах
+function checkFileNfk($file, $size, $arFormat){
+    $format = end(explode('.' ,$file['name']));
+    $result['TYPE'] = 'SUCCESS';
+    if($file['size'] == $size){
+        $result['TYPE'] = 'ERROR';
+        $result['VALUE'] = 'Ограничение максимального размера фала '. $size/(1024 * 1024) .'MB';
+    }
+    if(!in_array( $format, $arFormat) && !empty($arFormat)){
+        $result['TYPE'] = 'ERROR';
+        $result['VALUE'] = $format.' - формат файла не поддерживаеться';
+    }
+    return $result;
 }
 ?>
