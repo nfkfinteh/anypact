@@ -196,7 +196,7 @@ $APPLICATION->IncludeComponent(
 </div>
 <!-- Контакты -->
 <div class="container content-service">	
-    <h1 class="mb-4">Все вопросы по работе с AnyPact</h1>
+    <h1 class="mb-4">Остались вопросы?</h1>
     <div class="short-divider"></div>
     <div class="form-card">
         <div class="row pt-2 pb-4">
@@ -223,13 +223,13 @@ $APPLICATION->IncludeComponent(
 
                     <div class="col-10 col-lg-12 mt-3 offset-1 offset-lg-0">                            
                         <label for="empty_rules" class="radio-transform">
-                            <input type="checkbox" class="radio__input" name="template_type" value="empty" id="empty_rules">
+                            <input type="checkbox" class="radio__input" name="template_type" value="empty" id="empty_rules" checked>
                             <span class="radio__label" id="empty_rules_span">Нажимая на кнопку, вы даете <a href="/upload/rules/noreg_user_rules.pdf" target="_blank">согласие на обработку персональных данных</a></span>
                         </label>
                     </div>
 
                     <div class="col-10 col-lg-12 mt-2 offset-1 offset-lg-0">
-                        <button class="btn btn-nfk send-btn" id="send_mess_button" disabled>Отправить</button>
+                        <button class="btn btn-nfk send-btn" id="send_mess_button">Отправить</button>
                     </div>
                 </div>                
             </div>
