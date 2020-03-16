@@ -89,6 +89,7 @@ $(document).ready(function(){
                 minCropBoxHeight: 300,
                 maxCropBoxWidth: 300,
                 maxCropBoxHeight: 300,
+                rotatable: true,
                 crop(event) {
                     coordinate_selection.x1 = event.detail.x;
                     coordinate_selection.y1 = event.detail.y;
@@ -143,4 +144,13 @@ $(document).ready(function(){
         delete arFiles[id];
     });
 
+    //пововрот 90 в лево
+    $(document).on('click', '.js-rotate__img_left', function(){
+        imageSection.rotate(-90);
+    });
+
+    //пововрот 90 в вправо
+    $(document).on('click', '.js-rotate__img_right', function(){
+        imageSection.rotate(90);
+    });
 });

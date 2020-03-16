@@ -24,4 +24,6 @@ else{
 <div class="cart-tab" style="display:;">
     <button class="btn btn-nfk js-rem_img">Очистить</button>
     <button class="btn btn-nfk js-submit_selection" data-action="<?=$action?>" data-id="<?=$_GET['id']?>">Обрезать и сохранить</button>
+    <button class="btn btn-nfk js-rotate__img_left"><i class="rotate_left"></i></button>
+    <button class="btn btn-nfk js-rotate__img_right"><i class="rotate_right"></i></button>
 </div>
