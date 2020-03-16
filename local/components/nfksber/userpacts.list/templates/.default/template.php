@@ -69,7 +69,7 @@ $arrStatusAwait = array(
         <!------------------------>
     <?else:?>
         <h3>У Вас нет предложений</h3>
-        <button class="info-btn">?</button>
+        <!-- <button class="info-btn">?</button> -->
         <div class="info-content">В данном разделе содержатся Ваши предложения о заключении сделок.</div>
     <?endif?>
 <div style="width: 100%; height: 100px;">

@@ -27,7 +27,6 @@ global $USER;
         }
         .contact-container{
             margin-top: 90px;
-            margin-bottom: 130px;
         }
         .radio__label:before{content:' ';display:block;height:16px;width:16px;position:absolute;top:0;left:0;background: #f1f4f4;border:1px solid #e8e8e8;border-radius: 4px;}
         .radio__label:after{content:' ';display:block;height:8px;width:15px;position:absolute;top:1px;left:4px;}
