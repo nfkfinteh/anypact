@@ -1639,9 +1639,7 @@ input::-webkit-input-placeholder {
 }
 .lk-contracts .info-content{
     position: absolute;
-    bottom: 40px;
-    left: calc(50% - 300px);
-    width: 600px;
+    max-width: 400px;
     box-shadow: 0 0 10px 5px #00000030;
     border-radius: 5px;
     margin: 10px 0;
@@ -1651,7 +1649,7 @@ input::-webkit-input-placeholder {
     background-color: #ffffff;
     display: none;
 }
-.lk-contracts .info-btn:active, .lk-contracts .info-btn:focus {
+.lk-contracts .info-btn:active, .lk-contracts .info-btn:focus.lk-contracts .info-btn:active, .lk-contracts .info-btn:hover {
     outline: none;
     box-shadow: 0 0 2px 2px #ff64167a;
 }
@@ -2495,7 +2493,7 @@ input::-webkit-input-placeholder {
 }
 
 .all-easy {
-    margin-bottom: 120px;
+    margin-bottom: 90px;
 }
 
 .all-easy .big-number {
