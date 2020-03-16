@@ -86,6 +86,7 @@
                 <span>(желательно также указать адрес)</span>
                 <p id="notice" class="error_form"></p>
                 <div id="map" style="height: 400px"></div>
+                <button class="btn btn-nfk" id="save_ad" style="margin-top:50px;">Сохранить</button> 
                 <div id="footer">
                     <div id="messageHeader"></div>
                     <div id="message"></div>
@@ -118,9 +119,7 @@
             <div class="selectbox">
                 <div id="param_selected_activ_date" class="view_text">Активно до: <input type="text" id="param_selected_activ_date_input" name="ACTIVE_DATE" value="" disabled ><span class="glyphicon glyphicon-calendar"></span></div>
             </div>
-            <h3>Дата активности объявления</h3><span>(По умолчанию 10 дней)</span>
-
-            <button class="btn btn-nfk" id="save_ad" style="margin-top:50px;">Сохранить</button>              
+            <h3>Дата активности объявления</h3><span>(По умолчанию 10 дней)</span>         
 
         </div>            
     </div>
