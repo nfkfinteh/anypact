@@ -3,6 +3,47 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("AnyPact || Бесплатный сервис для дистанционного заключения сделок");
 global $USER;
 ?>
+<style>
+        .form-card{
+            border-radius: 5px;
+            box-shadow: 1px 2px 10px rgba(0,0,0,0.2);
+            margin-top: 38px;
+            padding-top: 22px;
+        }
+        input, textarea{
+            border-radius: 5px;
+            background-color: #f2f3f5;
+            border-color: #f2f3f5;
+            width: 100%;
+            min-height: 52px;
+        }
+        textarea{
+            resize: none;
+        }
+        .send-btn{
+            height: 46px;
+            width: 262px;
+            max-width: 100%;
+        }
+        .contact-container{
+            margin-top: 90px;
+            margin-bottom: 130px;
+        }
+        .radio__label:before{content:' ';display:block;height:16px;width:16px;position:absolute;top:0;left:0;background: #f1f4f4;border:1px solid #e8e8e8;border-radius: 4px;}
+        .radio__label:after{content:' ';display:block;height:8px;width:15px;position:absolute;top:1px;left:4px;}
+        .radio__input{display: none;}
+        .radio__input:checked ~ .radio__label:after{border-bottom:2px solid #ff6416;border-left:2px solid #ff6416;-ms-transform:rotate(-45deg);transform:rotate(-45deg);}
+        .radio-transform{position:relative;cursor:pointer;-webkit-tap-highlight-color:rgba(0,0,0,0);}
+        .radio__label:after:hover,.radio__label:after:active{border-color:green}
+        .radio__label{margin-left:2.5rem;line-height:.75;    font-weight: 300;}
+        #input-buffer{
+            display: inline-block;
+            /*position:*/
+        }
+        .pb-4, .py-4 {
+            padding-bottom: 3.5rem!important;
+        }
+    </style>
 <!--Форма поиска-->
 <h2>Поиск людей и сделок</h2>
 <?// компонент поисковой строки
@@ -155,47 +196,6 @@ $APPLICATION->IncludeComponent(
 </div>
 <!-- Контакты -->
 <div class="container content-service">	
-<style>
-        .form-card{
-            border-radius: 5px;
-            box-shadow: 1px 2px 10px rgba(0,0,0,0.2);
-            margin-top: 38px;
-            padding-top: 22px;
-        }
-        input, textarea{
-            border-radius: 5px;
-            background-color: #f2f3f5;
-            border-color: #f2f3f5;
-            width: 100%;
-            min-height: 52px;
-        }
-        textarea{
-            resize: none;
-        }
-        .send-btn{
-            height: 46px;
-            width: 262px;
-            max-width: 100%;
-        }
-        .contact-container{
-            margin-top: 90px;
-            margin-bottom: 130px;
-        }
-        .radio__label:before{content:' ';display:block;height:16px;width:16px;position:absolute;top:0;left:0;background: #f1f4f4;border:1px solid #e8e8e8;border-radius: 4px;}
-        .radio__label:after{content:' ';display:block;height:8px;width:15px;position:absolute;top:1px;left:4px;}
-        .radio__input{display: none;}
-        .radio__input:checked ~ .radio__label:after{border-bottom:2px solid #ff6416;border-left:2px solid #ff6416;-ms-transform:rotate(-45deg);transform:rotate(-45deg);}
-        .radio-transform{position:relative;cursor:pointer;-webkit-tap-highlight-color:rgba(0,0,0,0);}
-        .radio__label:after:hover,.radio__label:after:active{border-color:green}
-        .radio__label{margin-left:2.5rem;line-height:.75;    font-weight: 300;}
-        #input-buffer{
-            display: inline-block;
-            /*position:*/
-        }
-        .pb-4, .py-4 {
-            padding-bottom: 3.5rem!important;
-        }
-    </style>
     <h1 class="mb-4">Все вопросы по работе с AnyPact</h1>
     <div class="short-divider"></div>
     <div class="form-card">
@@ -350,6 +350,63 @@ $APPLICATION->IncludeComponent(
             }
         });
         $('[data-toggle="tooltip"]').tooltip();
+        async function sendMess(strObject){
+        preload('show');
+        var url = '/response/ajax/send_mess.php'
+
+        var mainData = JSON.stringify({
+            FIO  : strObject[0],
+            IMAIL: strObject[1],
+            TEXT : strObject[2],
+        });
+
+        var formData = new FormData();
+            formData.append( 'checkin', mainData );
+
+
+        const response = await fetch(url, {
+            method: 'post',
+            body:formData
+        });
+        const data = await response.text();
+        return data
+    }
+
+    let empty_rules = document.getElementById('empty_rules')
+    let send_mess_button = document.getElementById('send_mess_button')
+    empty_rules.onclick = function(){
+        if(this.checked){
+            send_mess_button.disabled = false
+        }else{
+            send_mess_button.disabled = true
+        }
+
+    }
+    send_mess_button.onclick = function(){
+        let mess_form = document.getElementById('mess_form');
+        let strObject = []
+        strObject[0]  = document.getElementById('textFIO').value;
+        strObject[1]  = document.getElementById('textEmail').value;
+        strObject[2]  = document.getElementById('textText').value;
+
+        if(strObject[2].length==0){
+            preload('hide');
+            showResult('#popup-error','Ошибка сохранения', 'Введите текст сообщения');
+            return;
+        }
+
+        var res = sendMess(strObject).then(function(data) {
+            preload('hide');
+            if(data == 'ERROR'){
+                showResult('#popup-error','Ошибка сохранения');
+            }
+            else{
+                //showResult('#popup-success', 'Срок объявления продлен');
+                mess_form.innerHTML = '<h3>Ваша заявка отправлена!</h3>'
+            }
+
+       });
+    }
     })
 </script>
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

@@ -191,6 +191,7 @@ input {
 }
 .search>form>input {
     width: calc(100% - 630px);
+    background-color: #fff;
     border: none;
     height: 40px;
 }
