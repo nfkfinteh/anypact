@@ -26,16 +26,19 @@ $data = array(
 );
 
 $result = $entity_data_class::add($data);
-$mess = "Со страницы /help/ отправлено сообщение \n";
-$mess .= "ФИО:".$data['FIO']." \n";
-$mess .= "email:".$data['FIO']." \n";
-$mess .= "сообщение:".$data['FIO']." \n";
-mail('info@anypact.ru', 'Сообщение с контактной формы', $mess);
 // возвращаем id записи
 if (!$result->isSuccess()) {
     //$result = $result->getErrorMessages();
     $result = 'ERROR';
 } else {
+    //отправка сообщения
+    $send_data = array(
+        'FIO'=>$data['UF_FIO'],
+        'EMAIL'=>$data['UF_EMAIL'],
+        'TEXT'=> $data['UF_TEXT']
+    );
+    CEvent::Send("NEW_FEEDBACK", "s1", $send_data);
+
     $result = $result->getId();
 }
 echo $result;
