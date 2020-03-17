@@ -58,7 +58,7 @@
                                     </a>
                                     <div class="tender-text">
                                         <a href="/pacts/view_pact/?ELEMENT_ID=<?=$item['ID']?>">
-                                            <h3><?=substr($item["NAME"], 0, 30)?>...</h3>
+                                            <h3><?=substr($item["NAME"], 0, 30)?></h3>
                                             <p><?=$item["CREATED_DATE"]?></p>
                                             <?if(!empty($item['PREVIEW_TEXT'])):?>
                                                 <p><?=TruncateText($item['PREVIEW_TEXT'], 150)?></p>
