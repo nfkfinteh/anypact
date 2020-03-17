@@ -44,7 +44,15 @@
     width: 100%;
     margin-bottom: 30px;
 }
-
+.btn-nfk{
+    width:204px;
+    height: 47px;
+    border: 1px solid #ff6416;
+    color: #ff6416;
+    background: none;
+    border-radius: 5px;
+    padding: 10px 30px;
+}
 .cardPact .save {
     width: 165px;
     margin: 14px 0 30px 0;
@@ -66,11 +74,13 @@
 }
 
 
-/*.cardPact-EditText-Descript,
-.cardPact-EditText-Сonditions {
-    margin-bottom: 0;
-}*/
-
+.cardPact-EditText-Descript .editbox,
+.cardPact-EditText-Сonditions .editbox {
+    min-height: 150px;
+}
+#ad_name .editbox {
+    min-height: 45px;
+}
 
 .cardPact-rightPanel h1 {
     color: #000;

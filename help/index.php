@@ -29,7 +29,6 @@ global $USER;
         }
         .contact-container{
             margin-top: 90px;
-            margin-bottom: 130px;
         }
         .radio__label:before{content:' ';display:block;height:16px;width:16px;position:absolute;top:0;left:0;background: #f1f4f4;border:1px solid #e8e8e8;border-radius: 4px;}
         .radio__label:after{content:' ';display:block;height:8px;width:15px;position:absolute;top:1px;left:4px;}
@@ -73,13 +72,13 @@ global $USER;
 
                     <div class="col-10 col-lg-12 mt-3 offset-1 offset-lg-0">                            
                         <label for="empty_rules" class="radio-transform">
-                            <input type="checkbox" class="radio__input" name="template_type" value="empty" id="empty_rules">
+                            <input type="checkbox" class="radio__input" name="template_type" value="empty" id="empty_rules" checked>
                             <span class="radio__label" id="empty_rules_span">Нажимая на кнопку, вы даете <a href="/upload/rules/noreg_user_rules.pdf" target="_blank">согласие на обработку персональных данных</a></span>
                         </label>
                     </div>
 
                     <div class="col-10 col-lg-12 mt-2 offset-1 offset-lg-0">
-                        <button class="btn btn-nfk send-btn" id="send_mess_button" disabled>Отправить</button>
+                        <button class="btn btn-nfk send-btn" id="send_mess_button">Отправить</button>
                     </div>
                 </div>                
             </div>

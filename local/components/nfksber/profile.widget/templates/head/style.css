@@ -16,12 +16,13 @@
 }
 
 .widget_user_profile_name__title:after{
-    content: ">";
+    content: "";
+    background: url(arr_profile.svg) no-repeat center;
     display: inline-block;
     position: relative;
     left: 5px;
-    transform: rotate(90deg);
-    color: #ff6416;
+    width: 12px;
+    height: 12px;
 }
 
 .widget_user_profile_name__title:hover{

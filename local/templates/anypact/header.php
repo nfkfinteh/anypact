@@ -124,11 +124,11 @@ global $USER;
     ?>
 <div class="container <?=$class_container?>">
         <!--Шапка-->
-        <header class="header" style="width: 100%;">
+        <header class="header" id="header" style="width: 100%;">
             <div class="row">
                 <div class="col-md-6">
                     <a href="/" class="logo"><img src="<?=SITE_TEMPLATE_PATH?>/image/logo_ap.svg" alt="" style="width: 166px;"></a>
-                    <span class="phone">8(800) 200-84-84</span>
+                    <a href="tel:+78002008484" class="phone">8(800) 200-84-84</a>
                 </div>
                 <? if ($USER->IsAuthorized()){ ?>
                     <div class="col-md-2">

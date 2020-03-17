@@ -1,3 +1,6 @@
+html{
+    scroll-behavior: smooth;
+}
 body {
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
@@ -70,8 +73,16 @@ input {
     font-size: 24px;
     font-weight: normal;
     float: right;
+    text-decoration: none;
+    color: #212529 !important;
 }
-
+.phone:hover {
+    text-decoration: none;
+    color: #212529 !important;
+}
+.phone:focus {
+    text-decoration: none;
+}
 .location {
     font-size: 14px;
     line-height: 2.5;
@@ -180,6 +191,7 @@ input {
 }
 .search>form>input {
     width: calc(100% - 630px);
+    background-color: #fff;
     border: none;
     height: 40px;
 }
@@ -223,11 +235,13 @@ input {
 }
 
 .search .deal-type::after {
-    content: ">";
+    content: "";
+    background: url(arr_profile.svg) no-repeat center;
     display: inline-block;
     position: relative;
-    left: 13px;
-    transform: rotate(90deg);
+    left: 5px;
+    width: 12px;
+    height: 12px;
 }
 
 .category {
@@ -379,7 +393,7 @@ input {
 
 .footer {
     width: 100%;
-    height: 300px;
+    padding: 50px 0;
     background-color: #f1f4f4;
 }
 
@@ -1029,7 +1043,7 @@ input::-webkit-input-placeholder {
     background-position-x: -51vw;
     background-position-y: calc(100% - 29px);
     margin-bottom: 172px;
-    margin-top: 106px;
+    margin-top: 60px;
 }
 
 .client-container {
@@ -1456,7 +1470,6 @@ input::-webkit-input-placeholder {
 
 .footer {
     width: 100%;
-    height: 300px;
     background-color: #f1f4f4;
 }
 
@@ -1626,9 +1639,7 @@ input::-webkit-input-placeholder {
 }
 .lk-contracts .info-content{
     position: absolute;
-    bottom: 40px;
-    left: calc(50% - 300px);
-    width: 600px;
+    max-width: 400px;
     box-shadow: 0 0 10px 5px #00000030;
     border-radius: 5px;
     margin: 10px 0;
@@ -1638,7 +1649,7 @@ input::-webkit-input-placeholder {
     background-color: #ffffff;
     display: none;
 }
-.lk-contracts .info-btn:active, .lk-contracts .info-btn:focus {
+.lk-contracts .info-btn:active, .lk-contracts .info-btn:focus.lk-contracts .info-btn:active, .lk-contracts .info-btn:hover {
     outline: none;
     box-shadow: 0 0 2px 2px #ff64167a;
 }
@@ -2360,8 +2371,8 @@ input::-webkit-input-placeholder {
     background: url(/local/templates/anypact/image/bg-points.png) no-repeat;
     background-position-x: -16vw;
     background-position-y: calc(100% - 5px);
-    margin-bottom: 172px;
-    margin-top: 106px;
+    margin-bottom: 93px;
+    margin-top: 60px;
 }
 
 .client-container {
@@ -2482,7 +2493,7 @@ input::-webkit-input-placeholder {
 }
 
 .all-easy {
-    margin-bottom: 120px;
+    margin-bottom: 90px;
 }
 
 .all-easy .big-number {
@@ -2805,7 +2816,6 @@ input::-webkit-input-placeholder {
 
 .footer {
     width: 100%;
-    height: 300px;
     background-color: #f1f4f4;
 }
 
@@ -3542,4 +3552,58 @@ h4.subtitle_contract{
     .regpopup_win a.ref_esia, .regpopup_win #sign_edit_contract   {        
         margin-right: 24px !important;
     }
+}
+
+
+.all-easy h2{
+    margin-bottom: 30px;
+}
+.contact-container .short-divider {
+    margin-bottom: 36px;
+}
+.up-arrow{
+    display: none;
+    z-index: 10;
+    position: fixed;
+    bottom: 40px;
+    right: 60px;
+    cursor: pointer;
+    width: 45px;
+    height: 45px;
+    float: left;
+    background: #e8e8e8;
+    border-radius: 50%;
+    transition: all .4s;
+}
+.up-arrow::before{
+    position: absolute;
+    content: '';
+    background: #fff;
+    top: 21px;
+    right: 15px;
+    width: 10px;
+    height: 2px;
+    transform: rotate(45deg);
+}
+.up-arrow::after {
+    position: absolute;
+    content: '';
+    background: #fff;
+    top: 21px;
+    right: 21px;
+    width: 10px;
+    height: 2px;
+    transform: rotate(-45deg);
+}
+.up-arrow:hover{
+    background: #FF6600;
+    transform: scale(1.2);
+}
+.footer p img{
+    margin-bottom: 50px;
+}
+
+footer .polit_link{
+    color: #8f8f8f;
+    text-decoration: underline;
 }

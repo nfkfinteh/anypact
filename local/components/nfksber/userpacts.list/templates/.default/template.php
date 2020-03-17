@@ -13,7 +13,7 @@ $arrStatusAwait = array(
     '', 'Ожидает подписи контрагентом', '', 'Изменен Вами и ожидает подписи контрагентом'
 );
 ?>
-<div class="d-flex flex-wrap align-items-center position-relative">
+<div class="d-flex flex-wrap align-items-center">
     <h5>Мои предложения</h5>
     <button class="info-btn">?</button>
     <div class="info-content">В данном разделе содержатся Ваши предложения о заключении сделок.</div>
@@ -69,13 +69,13 @@ $arrStatusAwait = array(
         <!------------------------>
     <?else:?>
         <h3>У Вас нет предложений</h3>
-        <button class="info-btn">?</button>
+        <!-- <button class="info-btn">?</button> -->
         <div class="info-content">В данном разделе содержатся Ваши предложения о заключении сделок.</div>
     <?endif?>
 <div style="width: 100%; height: 100px;">
 </div>
 <!-- Заключенные договоры -->
-<div class="d-flex flex-wrap align-items-center position-relative">
+<div class="d-flex flex-wrap align-items-center">
     <h5>Заключенные договоры</h5>
     <button class="info-btn">?</button>
     <div class="info-content">В данном разделе содержатся Договоры, которые подписаны с двух сторон.</div>
@@ -126,7 +126,7 @@ $arrStatusAwait = array(
 <div style="width: 100%; height: 100px;"></div
 >
 <!-- Договора которые подписал контрагент -->
-<div class="d-flex flex-wrap align-items-center position-relative">
+<div class="d-flex flex-wrap align-items-center">
     <h5>Договоры, ожидающие подписания с моей стороны</h5>
     <button class="info-btn">?</button>
     <div class="info-content">В данном разделе содержатся Договоры, которые уже подписаны контрагентом и ожидают подписания с Вашей стороны.</div>
@@ -181,7 +181,7 @@ $arrStatusAwait = array(
 <div style="width: 100%; height: 100px;"></div>
 
 <!-- Подписанные договоры -->
-<div class="d-flex flex-wrap align-items-center position-relative">
+<div class="d-flex flex-wrap align-items-center">
     <h5>Договоры, подписанные с моей стороны и ожидающие подписания контрагентом</h5>
     <button class="info-btn">?</button>
     <div class="info-content">В данном разделе содержатся Договоры, которые подписаны с Вашей стороны и ожидающие подписания со стороны контрагента.</div>
@@ -265,8 +265,27 @@ $arrStatusAwait = array(
         if (window.innerWidth <= 767)
             $(this).next().slideToggle();
     });
-    $(".info-btn").hover(function () {
-        if (window.innerWidth > 767)
-            $(this).next().fadeToggle();
+    // $(".info-btn").hover(function () {
+    //     if (window.innerWidth > 767)
+    //         $(this).next().fadeToggle(50);
+    // });
+
+    $('.info-btn').mousemove(function(e){
+        var X = e.pageX;
+        var Y = e.pageY;
+        var top = Y  + 10 + 'px';
+        var left = X  + 10 + 'px';
+        var id = $(this).next();
+        id.css({
+            display:"block",
+            top: top,
+            left: left
+        });
+    });
+    $('.info-btn').mouseout (function(){
+        var id = $(this).next();
+        id.css({
+            display:"none"
+        });
     });
 </script>
