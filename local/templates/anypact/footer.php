@@ -8,7 +8,8 @@
 		<p align="center" size="16">
 			&copy; 2019 АО «НФК-Сбережения», ООО «НФК - Структурные инвестиции», ООО «Пионер-Лизинг»<br>
 			Электронная почта: <a href="mailto:info@anypact.ru">info@anypact.ru</a><br>
-			<a href="/upload/rules/user_rules.pdf" target="_blank">Условия использования сайта Аnypact.ru</a></span>
+			<a href="/upload/rules/user_rules.pdf" target="_blank" style="color: #8f8f8f;">Условия использования сайта
+				Аnypact.ru</a></span>
 		</p>		
 	</div>
 	<a href="#header" class="up-arrow"></a>
