@@ -74,10 +74,10 @@
 }
 
 
-/*.cardPact-EditText-Descript,
-.cardPact-EditText-Сonditions {
-    margin-bottom: 0;
-}*/
+.cardPact-EditText-Descript .editbox,
+.cardPact-EditText-Сonditions .editbox {
+    min-height: 150px;
+}
 
 
 .cardPact-rightPanel h1 {
