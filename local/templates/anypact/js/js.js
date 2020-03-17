@@ -146,7 +146,7 @@ function showResult(name, title='', text='') {
     setTimeout(function () {
         popup.fadeOut(500);
         $('.modals-wrap').hide();
-    }, 2000)
+    }, 4000)
 }
 
 function preload($action){
