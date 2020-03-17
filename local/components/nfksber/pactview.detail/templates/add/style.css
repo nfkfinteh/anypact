@@ -45,13 +45,13 @@
     margin-bottom: 30px;
 }
 .btn-nfk{
-    width: 166px;
+    width:204px;
+    height: 47px;
     border: 1px solid #ff6416;
     color: #ff6416;
     background: none;
     border-radius: 5px;
     padding: 10px 30px;
-    float: right;
 }
 .cardPact .save {
     width: 165px;
