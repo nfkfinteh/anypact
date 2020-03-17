@@ -50,7 +50,7 @@
                                                     $arFile = CFile::GetFileArray($arResult['UsersChart'][$Message['user']]['PERSONAL_PHOTO']);
                                                     $renderImage = CFile::ResizeImageGet($arFile, Array("width" => 261, "height" => 261), BX_RESIZE_IMAGE_EXACT, false);                                            
                                                 ?>
-                                                <a href="/profile_user/?ID=<?=$message["PARAMS_SENDER_USER"]["ID"]?>" target="_blank" style="text-decoration: none;"><img src="<?=$renderImage["src"]?>" alt=""/></a>
+                                                <a href="/profile_user/?ID=<?=$message['user']["ID"]?>" target="_blank" style="text-decoration: none;"><img src="<?=$renderImage["src"]?>" alt=""/></a>
                                             <?}else {?>
                                                 <span class="user-first-letter"><?=$arResult['FastUserParams'][$Message['user']]['InitialName']?></span> 
                                             <? }?>
