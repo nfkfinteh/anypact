@@ -3602,3 +3602,8 @@ h4.subtitle_contract{
 .footer p img{
     margin-bottom: 50px;
 }
+
+footer .polit_link{
+    color: #8f8f8f;
+    text-decoration: underline;
+}
