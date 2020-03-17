@@ -1,8 +1,5 @@
 <?php
-if (!defined ("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
-{
-    die();
-} 
+if (!defined ("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 global $USER;
 ?>
 <!DOCTYPE html>
@@ -54,7 +51,6 @@ global $USER;
     CJSCore::Init(array('popup', 'date'));
 
     $APPLICATION->ShowHead();
-    //$APPLICATION->ShowProperty('MetaOG');
     ?>
     <link href="<?=SITE_TEMPLATE_PATH?>/css/jquery.datetimepicker.css" type="text/css"  rel="stylesheet" />
     <script type="text/javascript" src="<?=SITE_TEMPLATE_PATH?>/js/jquery.datetimepicker.js"></script>        

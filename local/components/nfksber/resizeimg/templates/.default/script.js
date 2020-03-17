@@ -8,6 +8,7 @@ $(document).ready(function(){
     };
 
     $(document).on('click', '.js-submit_selection', function () {
+        coordinate_selection.rotate = imageSection.getData().rotate;
         coordinate_selection.ajax = 'Y';
         var mainData = JSON.stringify(coordinate_selection),
             action = $(this).attr('data-action'),
