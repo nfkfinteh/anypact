@@ -93,7 +93,7 @@ $(document).ready(function() {
     });
 
     $('#param_selected_activ_date').on('click', function(){
-        BX.calendar({node:this, field:'ACTIVE_DATE', form: '', bTime: true, bHideTime: true})
+        BX.calendar({node:this, field:'ACTIVE_DATE', form: '', bTime: false})
     });
 
     $(document).on('input', '#suggest', function(){
