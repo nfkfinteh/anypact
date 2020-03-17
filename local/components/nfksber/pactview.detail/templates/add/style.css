@@ -78,7 +78,9 @@
 .cardPact-EditText-Сonditions .editbox {
     min-height: 150px;
 }
-
+#ad_name{
+    min-height: 45px;
+}
 
 .cardPact-rightPanel h1 {
     color: #000;
