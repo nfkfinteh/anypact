@@ -39,14 +39,13 @@ $(document).ready(function() {
     // нажатие кнопки отправки сообщения 
     let ButtonSendMessage = document.getElementById('sendMessage')
 
-    ButtonSendMessage.keyup = function (event) {
+    ButtonSendMessage.onclick = function(){
         let Params      = new Object()        
         Params.IDMess   = id
         Params.message  = TextMes.value
         let arrParams   = JSON.stringify(Params)
 
-        if (Params.message.length > 0 && event.keyCode == 13) {
-            ButtonSendMessage.click();
+        if(Params.message.length>0){
             preload('show');
             var res = responseRoute(arrParams).then(function(data) {
                 upListMessage();
@@ -55,12 +54,6 @@ $(document).ready(function() {
             });
         }
     }
-    // ButtonSendMessage.keyup(function (event) {
-    //     if (event.keyCode == 13) {
-    //         ButtonSendMessage.click();
-    //         $(this).val('');
-    //     }
-    // });
 
     //вызов окна добавление файлов
     $(document).on('click', '#sendFile', function(){
