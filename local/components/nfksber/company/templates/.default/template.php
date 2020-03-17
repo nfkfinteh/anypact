@@ -105,7 +105,7 @@
             </div>
             <div class="col-xl-4 col-md-12 col-sm-12">
                 <div class="form-group">
-                    <label>Область</label>
+                    <label>Область / Республика / Край</label>
                     <input name="REGION" type="text" value="<?=$CompanyProprties['REGION']['VALUE']?>" required maxlength="50">
                 </div>
                 <div class="form-group">
