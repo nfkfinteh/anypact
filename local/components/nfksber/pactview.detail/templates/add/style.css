@@ -78,7 +78,7 @@
 .cardPact-EditText-Сonditions .editbox {
     min-height: 150px;
 }
-#ad_name{
+#ad_name .editbox {
     min-height: 45px;
 }
 
