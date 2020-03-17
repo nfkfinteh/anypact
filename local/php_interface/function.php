@@ -50,4 +50,15 @@ function checkFileNfk($file, $size, $arFormat){
     }
     return $result;
 }
+//поворот изображения
+function rotate_img($src, $dest, $degrees){
+    if (!file_exists($src)) return false;
+    $size_img = getimagesize($src);
+    $format = strtolower(substr($size_img['mime'], strpos($size_img['mime'], '/')+1));
+    $icfunc = "imagecreatefrom" . $format;
+    if (!function_exists($icfunc)) return false;
+    $image = $icfunc($src);
+    $rotate = imagerotate($image, $degrees, 0);
+    imagejpeg($rotate, $dest, 95);
+}
 ?>

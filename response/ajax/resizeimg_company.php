@@ -64,6 +64,18 @@ foreach ($data_img as $key=>$value){
     $data_img[$key] = htmlspecialcharsEx($value);
 }
 
+
+if($data_img['rotate']){
+    if($data_img['rotate']>0){
+        $data_img['rotate'] = 360-$data_img['rotate'];
+    }
+    elseif ($data_img['rotate']<0){
+        $data_img['rotate'] = abs($data_img['rotate']);
+    }
+
+    rotate_img($data_img['url'], $data_img['url'], $data_img['rotate']);
+}
+
 $result = cropImg($data_img, $userId);
 
 if(empty($result)){
