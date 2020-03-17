@@ -15,7 +15,7 @@
                 </a>
                 <div class="tender-text">
                     <a href="/pacts/view_pact/?ELEMENT_ID=<?=$pact['ID']?>">
-                        <h3><?=mb_strimwidth($pact["NAME"], 0, 30 '...')?></h3>
+                        <h3><?=substr($pact["NAME"], 0, 30)?></h3>
                         <p><?=$pact["CREATED_DATE"]?></p>
                         <span class="tender-price">до <?=$pact['PROPERTIES']['SUMM_PACT']['VALUE']?> руб.</span>
                     </a>
