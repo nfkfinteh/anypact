@@ -38,9 +38,15 @@ class Location extends \CBitrixComponent
             $this->arResult['GEO']['cityName'] = $_COOKIE['CITY_ANYPACT'];
         }
         else{
-            $ipAddress = GeoIp\Manager::getRealIp();
-            GeoIp\Manager::useCookieToStoreInfo(true);
-            $this->arResult['GEO'] = (array) $this->getLocation($ipAddress);
+            // Перед запросом можно включить сохранение геоинформации в cookies
+            \Bitrix\Main\Service\GeoIp\Manager::useCookieToStoreInfo(true);
+            // Для определения местоположения требуется IP пользователя
+            $ipAddress = \Bitrix\Main\Service\GeoIp\Manager::getRealIp();
+            // Получение геоинформации по этому IP
+            $resultheader = \Bitrix\Main\Service\GeoIp\Manager::getDataResult($ipAddress, "ru", array('cityName'));
+            $cityName = \Bitrix\Main\Service\GeoIp\Manager::getcityName($ipAddress, "ru");
+            if (empty($cityName)) $cityName = "Москва";
+            $this->arResult['GEO']['cityName'] = $cityName;
         }
         $this->includeComponentTemplate();
         return $this->arResult['GEO'];
