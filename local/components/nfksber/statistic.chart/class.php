@@ -87,6 +87,14 @@ class ControlRegUser extends CBitrixComponent
             if($allRegUsersESIA["UF_PAY_YANDEX"] == "Y"){
                 $UsersPay[] = $allRegUsersESIA;
             }
+            // канал 
+            if($allRegUsersESIA["UF_TYPE_REGISTR"] == "actionDuW0KXQsNC7YXnQstCwQ2l0eQ=="){
+                $SaleCanalOne[] = $allRegUsersESIA;
+            }
+
+            if($allRegUsersESIA["actionDuWQHdvd19mcmVl"] == "actionDuW0KXQsNC7YXnQstCwQ2l0eQ=="){
+                $SaleCanalOne[] = $allRegUsersESIA;
+            }
         }
 
         $arrParamsAllRegistESIAUsers = [
