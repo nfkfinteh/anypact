@@ -5,7 +5,7 @@
             position: fixed;
             top: 0;
             right: 0;
-            width: 285px;
+            width: 300px;
             display:none;
         }
         .toast .toast-card{
@@ -15,7 +15,7 @@
             background-color: #ffffff;
             padding: 13px 15px 13px 20px;
             margin: 20px 25px;
-            font-size: 15px;
+            font-size: 18px;
         }
         .toast .toast-close{
             position: absolute;

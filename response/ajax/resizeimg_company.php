@@ -45,10 +45,15 @@ function cropImg($data_img, $userId){
 if (!file_exists($_SERVER['DOCUMENT_ROOT']."/upload/tmp/company_profile")) {
     mkdir($_SERVER['DOCUMENT_ROOT']."/upload/tmp/company_profile/", 0777, true);
 }
-
+$arParamsTranslit = array("replace_space"=>"-","replace_other"=>"-");
 foreach( $_FILES as $file ){
-    if( move_uploaded_file( $file['tmp_name'],  $_SERVER['DOCUMENT_ROOT'].'/upload/tmp/company_profile/' . basename($file['name']) ) ){
-        $files[] = realpath( $_SERVER['DOCUMENT_ROOT'].'/upload/tmp/company_profile/' . $file['name'] );
+    $arDataFile = explode('.', $file['name']);
+
+    $fileNameTranslit = Cutil::translit($arDataFile[0],"ru", $arParamsTranslit);
+    $fileNameTranslit = $fileNameTranslit.'.'.$arDataFile[1];
+
+    if( move_uploaded_file( $file['tmp_name'],  $_SERVER['DOCUMENT_ROOT'].'/upload/tmp/company_profile/' . $fileNameTranslit ) ){
+        $files[] = realpath( $_SERVER['DOCUMENT_ROOT'].'/upload/tmp/company_profile/' . $fileNameTranslit );
     }
     else{
         $error = true;
