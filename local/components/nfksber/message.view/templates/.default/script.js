@@ -30,30 +30,44 @@ function upListMessage(){
     });
 }
 
-$(document).ready(function() {
+function sendMessage(){
     let url     = new URL(window.location.href)
-    let searchParams = new URLSearchParams(url.search.substring(1))        
-    let id      = searchParams.get("id")    
+    let searchParams = new URLSearchParams(url.search.substring(1))
+    let id      = searchParams.get("id")
     let TextMes = document.getElementById('textMessage')
+    let Params      = new Object()
+    Params.IDMess   = id
+    Params.message  = TextMes.value
+    let arrParams   = JSON.stringify(Params)
 
+    if(Params.message.length>0){
+        preload('show');
+        var res = responseRoute(arrParams).then(function(data) {
+            upListMessage();
+            $('#textMessage').val('');
+            preload('hide');
+        });
+    }
+}
+
+$(document).ready(function() {
     // нажатие кнопки отправки сообщения 
     let ButtonSendMessage = document.getElementById('sendMessage')
-
     ButtonSendMessage.onclick = function(){
-        let Params      = new Object()        
-        Params.IDMess   = id
-        Params.message  = TextMes.value
-        let arrParams   = JSON.stringify(Params)
-
-        if(Params.message.length>0){
-            preload('show');
-            var res = responseRoute(arrParams).then(function(data) {
-                upListMessage();
-                $('#textMessage').val('');
-                preload('hide');
-            });
-        }
+        sendMessage();
     }
+
+    //отправка сообщения при нажатии Enter
+    $(document).on('keydown', '#textMessage', 'return', function(){
+        sendMessage();
+        return false;
+    });
+
+    //перенос строки при нажати ctrl+enter
+    $(document).on('keydown', '#textMessage', 'Ctrl+return', function(){
+        this.value += "\n";
+        return false;
+    });
 
     //вызов окна добавление файлов
     $(document).on('click', '#sendFile', function(){
