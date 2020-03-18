@@ -178,6 +178,26 @@ class CDemoSqr extends CBitrixComponent
         return $result;
     }
 
+    public function getFrends(){
+        global $USER;
+        $current_user = $USER->GetID();
+        $arFilter = array("ID" => $current_user);
+        $arParams["SELECT"] = array("ID", "UF_FRENDS");
+        $res = CUser::GetList($by ="timestamp_x", $order = "desc", $arFilter, $arParams);
+        $result = [];
+        if($obj=$res->GetNext()){
+            if(!empty($obj['UF_FRENDS'])){
+                $result = json_decode($obj['~UF_FRENDS']);
+            }
+        }
+
+        if(empty($result)){
+            $result = [];
+        }
+
+        return $result;
+    }
+
     public function executeComponent()
     {
         if(empty($this->arParams['USER_ID'])){
@@ -248,8 +268,8 @@ class CDemoSqr extends CBitrixComponent
                 $arResult["TYPE_HOLDER"] = 'user';
 
                 $arItems  =  $this->getUserSdel($ajaxData, $arNavParams, 'user');
-                // ошибка если нет записей поправка в шаблоне
                 $arResult["ITEMS"] = $arItems['ITEMS'];
+                $arResult["FRENDS"] = $this->getFrends();
             }
 
 
