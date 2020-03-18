@@ -52,6 +52,9 @@
 .message-text{
     padding: 20px;
 }
+.message-text p{
+    white-space: pre;
+}
 .message-text__file{
     display: flex;
     align-items: center;
@@ -95,6 +98,7 @@
     display: flex;
     align-items: flex-start;
     margin-top: 61px;
+    width: 100%;
 }
 .message-chat-input button{
     display: block;

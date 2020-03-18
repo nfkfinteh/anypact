@@ -132,8 +132,6 @@
                         <!------>
                     </div>
                     <div class="message-chat-input">
-                        <!-- <button class="mr-1 mr-sm-3"><img src="<?=SITE_TEMPLATE_PATH?>/image/icon-image-file.png" alt=""></button>
-                        <button class="mr-2 mr-sm-4"><img src="<?=SITE_TEMPLATE_PATH?>/image/icon-file.png" alt=""></button> -->
                         <textarea name="" id="textMessage" placeholder="Введите сообщение"></textarea>
                         <input type="file" id="uploadFile" name="uploadFile[]" multiple="multiple" style="display: none">
                         <div class="message-chat-input__buttons">

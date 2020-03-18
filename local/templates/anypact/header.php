@@ -44,6 +44,7 @@ global $USER;
     $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/jquery.sliderPro.min.js');
     $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/owl.carousel.min.js');
     $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/module/cropper/cropper.min.js');
+    $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/module/jquery.hotkeys/script.js');
     $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/module/jquery.maskedinput/jquery.inputmask.min.js');
     $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/module/jquery.validation/jquery.validate.min.js');
     $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/jquery.datetimepicker.js');
