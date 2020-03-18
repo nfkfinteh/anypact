@@ -16,12 +16,12 @@
             <div class="row pt-2 pb-5">
                 <div class="col-md-4 col-sm-12">
                     <h3 class="font-weight-bold">Участники</h3>
-                    <ul class="list-person-conversation">
+                    <div class="list-person-conversation">
                         <? foreach($arResult['UsersChart'] as $user){ ?>
-                            <li class="person-conversation">
-                                <div class="person-conversation-photo">                                
+                            <a href="/profile_user/?ID=<?=$user['ID']?>" class="person-conversation">
+                                <div class="person-conversation-photo">
                                     <?if ($user['PERSONAL_PHOTO'] !=''){?>
-                                        <? $renderImage = CFile::ResizeImageGet($user['PERSONAL_PHOTO'], Array("width" => 261, "height" => 261), BX_RESIZE_IMAGE_EXACT, false); ?>                               
+                                        <? $renderImage = CFile::ResizeImageGet($user['PERSONAL_PHOTO'], Array("width" => 261, "height" => 261), BX_RESIZE_IMAGE_EXACT, false); ?>
                                         <img src="<?=$renderImage['src']?>">
                                     <?}else {?>
                                         <span class="user-first-letter" style="padding:13px;font-size: 28px;"><?=substr($user['NAME'], 0, 1);?></span>
@@ -29,9 +29,9 @@
                                     <?/*<img src="<?=SITE_TEMPLATE_PATH?>/image/sample_face_150x150.png" alt="Васильев Александр Евгеньевич">*/?>
                                 </div>
                                 <div class="person-conversation-name"><?=$user['LAST_NAME']?> <?=$user['NAME']?> <?=$user['SECOND_NAME']?></div>
-                            </li>
+                            </a>
                         <?}?>
-                    </ul>
+                    </div>
                     <?/*<button class="btn btn-nfk btn-add-person w-100">+ добавить участника</button>*/?>
                     <button class="btn btn-nfk btn-add-person w-100 js-chat_delete">Удалить всю переписку</button>
                 </div>
@@ -44,7 +44,7 @@
                             <?if($Message['user'] == $UserID){?>
                                 <div class="message-block message-block-left">
                                     <div class="message-person-photo">
-                                        <div class="user-avatar">                                                                              
+                                        <a href="/profile_user/?ID=<?=$user['ID']?>" class="user-avatar">
                                             <? if($arResult['UsersChart'][$Message['user']]['PERSONAL_PHOTO'] != ''){ ?>
                                                 <?                                             
                                                     $arFile = CFile::GetFileArray($arResult['UsersChart'][$Message['user']]['PERSONAL_PHOTO']);
@@ -54,7 +54,7 @@
                                             <?}else {?>
                                                 <span class="user-first-letter"><?=$arResult['FastUserParams'][$Message['user']]['InitialName']?></span> 
                                             <? }?>
-                                        </div>
+                                        </a>
                                     </div>
                                     <div class="message-container">
                                         <div class="message-message">
@@ -86,7 +86,7 @@
                             <?}else {?>                            
                                 <div class="message-block message-block-right">                        
                                     <div class="message-person-photo">
-                                        <div class="user-avatar">                                        
+                                        <a href="/profile_user/?ID=<?=$user['ID']?>" class="user-avatar">
                                             <? if($arResult['UsersChart'][$Message['user']]['PERSONAL_PHOTO'] != ''){ ?>
                                                 <?                                             
                                                     $arFile = CFile::GetFileArray($arResult['UsersChart'][$Message['user']]['PERSONAL_PHOTO']);
@@ -96,7 +96,7 @@
                                             <?}else {?>
                                                 <span class="user-first-letter"><?=$arResult['FastUserParams'][$Message['user']]['InitialName']?></span>
                                             <? } ?>
-                                        </div>
+                                        </a>
                                     </div>
                                     <div class="message-container">
                                         <div class="message-message">
