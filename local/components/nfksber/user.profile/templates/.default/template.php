@@ -9,6 +9,15 @@
                 <h3 class="font-weight-bold mt-4"><?=$arResult['USER']['LAST_NAME']?> <?=$arResult['USER']['NAME']?> <?=$arResult['USER']['SECOND_NAME']?></h3>
 
                 <?if($arResult['TYPE_HOLDER'] == 'user'):?>
+                    <?if(!in_array($arResult['USER']['ID'], $arResult['FRENDS']) && $USER->GetID() != $arResult['USER']['ID']):?>
+                        <a href="#" class="btn btn-nfk btn-uprofile js-add-frends" data-login="<?=$arResult['USER']['LOGIN']?>">
+                            Добавить в друзья
+                        </a>
+                    <?elseif(in_array($arResult['USER']['ID'], $arResult['FRENDS'])):?>
+                        <a href="#" class="btn btn-nfk btn-uprofile js-delete-frends" data-login="<?=$arResult['USER']['LOGIN']?>">
+                            Удалить из друзей
+                        </a>
+                    <?endif?>
                     <a href="#" class="btn btn-nfk btn-uprofile" data-toggle="modal" data-target=".bd-comment-modal-sm">Оставить отзыв</a>
                     <a href="#" class="btn btn-nfk btn-uprofile" data-toggle="modal" data-target=".bd-message-modal-sm">Отправить сообщение</a>
                     <?if($arResult['USER']['PERSONAL_GENDER']=='M'):?>

@@ -52,4 +52,60 @@ $(document).ready(function(){
 
         });
     });
+
+    $(document).on('click', '.js-add-frends', function(){
+        let login = $(this).attr('data-login');
+        if(login) {
+            let this_btn = $(this);
+            preload('show');
+            $.ajax({
+                type: 'POST',
+                url: '/response/ajax/add_frends.php',
+                data: {'login':login,'action':'add'},
+                success: function (result) {
+                    $result = JSON.parse(result);
+                    if ($result['TYPE'] == 'ERROR') {
+                        preload('hide');
+                        showResult('#popup-error','Ошибка сохранения');
+                        console.log($result['VALUE']);
+                    }
+                    if ($result['TYPE'] == 'SUCCESS') {
+                        $(this_btn).addClass('js-delete-frends');
+                        $(this_btn).removeClass('js-add-frends');
+                        $(this_btn).text('Удалить из друзей');
+                        preload('hide');
+                        showResult('#popup-success','Добавлен в друзья');
+                    }
+                },
+            });
+        }
+    });
+
+    $(document).on('click', '.js-delete-frends', function(){
+        let login = $(this).attr('data-login');
+        if(login) {
+            let this_btn = $(this);
+            preload('show');
+            $.ajax({
+                type: 'POST',
+                url: '/response/ajax/add_frends.php',
+                data: {'login':login,'action':'delete'},
+                success: function (result) {
+                    $result = JSON.parse(result);
+                    if ($result['TYPE'] == 'ERROR') {
+                        preload('hide');
+                        showResult('#popup-error','Ошибка сохранения');
+                        console.log($result['VALUE']);
+                    }
+                    if ($result['TYPE'] == 'SUCCESS') {
+                        $(this_btn).removeClass('js-delete-frends');
+                        $(this_btn).addClass('js-add-frends');
+                        $(this_btn).text('Добавить в друзья');
+                        preload('hide');
+                        showResult('#popup-success','Удален из друзей');
+                    }
+                },
+            });
+        }
+    });
 });
