@@ -10,6 +10,10 @@ $(document).ready(function(){
     $(document).on('click', '.js-submit_selection', function () {
         coordinate_selection.rotate = imageSection.getData().rotate;
         coordinate_selection.ajax = 'Y';
+
+        if(coordinate_selection.x1<0) coordinate_selection.x1 = 0;
+        if(coordinate_selection.y1<0) coordinate_selection.y1 = 0;
+
         var mainData = JSON.stringify(coordinate_selection),
             action = $(this).attr('data-action'),
             idCompany = $(this).attr('data-id'),
