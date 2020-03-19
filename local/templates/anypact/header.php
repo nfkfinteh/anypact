@@ -73,7 +73,7 @@ global $USER;
                                 ShowMessage($arParams["~AUTH_RESULT"]); 
 
                                 $APPLICATION->IncludeComponent( 
-                                "bitrix:main.register", 
+                                "bitrix:main.register",
                                 "anypact", 
                                 Array( 
                                     "USER_PROPERTY_NAME" => "", 
@@ -204,11 +204,10 @@ global $USER;
                     if ($USER->IsAuthorized()){
                         // авторизованный пользователь
                         $arUrlMenu = array(
-                            '/' => 'Главная',
-                            '/my_pacts/'        => 'Мои сделки',
-                            '/profile/'         => 'Профиль',                               
                             '/pacts/'           => 'Все предложения',
                             '/search_people/'   => 'Поиск людей',
+                            '/my_pacts/'        => 'Мои сделки',
+                            '/friends/'         => 'Мои друзья',
                             '/list_message/'    => 'Сообщения',
                             '/service/'         => 'О сервисе',
                             '/help/'            => 'Контакты'                            
@@ -216,11 +215,10 @@ global $USER;
                     }else {
                         // неавторизованный пользователь
                         $arUrlMenu = array(
-                            '/'                 => 'Главная',
                             '/pacts/'           => 'Все предложения',  
                             '/search_people/'   => 'Поиск людей',                             
                             '/service/'         => 'О сервисе',
-                            '/help/'            => 'Поддержка',
+                            '/help/'            => 'Контакты',
                             '#'                 => 'Регистрация/вход'
                         );
                     }
