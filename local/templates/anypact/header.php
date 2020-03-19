@@ -10,8 +10,6 @@ global $USER;
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title><? $APPLICATION->ShowTitle(); ?></title>
-    <?/*<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>*/?>
-    
     <!-- Google Fonts -->
     <link rel="preload" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'" data-font="g-font-open-sans" data-protected="true" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&subset=cyrillic">
     <link rel="preload" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'" data-font="g-font-roboto" data-protected="true" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&subset=cyrillic,cyrillic-ext,latin-ext">
@@ -38,7 +36,7 @@ global $USER;
     $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH.'/module/cropper/cropper.min.css');
     $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH.'/module/selectize/selectize.css');
     $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH.'/css/jquery.datetimepicker.css');
-    $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/module/jquery/jquery.min.js');
+    $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/module/jquery/jquery-3.3.1.min.js');
     $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/module/selectize/selectize.min.js');
     $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/bootstrap.min.js');
     $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/jquery.sliderPro.min.js');
@@ -48,13 +46,12 @@ global $USER;
     $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/module/jquery.maskedinput/jquery.inputmask.min.js');
     $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/module/jquery.validation/jquery.validate.min.js');
     $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/jquery.datetimepicker.js');
-
+    $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/module/jquery.ui/jquery-ui.js');
     CJSCore::Init(array('popup', 'date'));
 
     $APPLICATION->ShowHead();
     ?>
     <link href="<?=SITE_TEMPLATE_PATH?>/css/jquery.datetimepicker.css" type="text/css"  rel="stylesheet" />
-    <script type="text/javascript" src="<?=SITE_TEMPLATE_PATH?>/js/jquery.datetimepicker.js"></script>        
 </head>
 <body>
 <div id="panel"><?$APPLICATION->ShowPanel();?></div>

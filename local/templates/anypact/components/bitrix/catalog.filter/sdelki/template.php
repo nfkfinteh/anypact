@@ -25,77 +25,50 @@ $this->setFrameMode(true);
             $value = $arResult['ITEMS']['DATE_ACTIVE_FROM']['INPUT_VALUES'][$key];
         }
         ?>
-        <input id="<?=$input?>" class="filter-date" type="text" name="<?=$input?>" placeholder="--/--/---" value="<?=$value?>">
+        <input id="<?=$input?>" class="filter-date js-filter-date" type="text" name="<?=$input?>" placeholder="--/--/---" value="<?=$value?>" readonly>
         <?if($key==0) echo '-';?>
     <?endforeach?>
+
+    <select id="LOCATION_CITY" name="<?=$arResult['ITEMS']['PROPERTY_22']['INPUT_NAME']?>" class="selectbox-select select__margin js-location-city" placeholder="Выберите город" >
+        <option value="">Выбор города</option>
+        <? foreach($arResult['LIST_CITY'] as $item):?>
+            <option value="<?=$item?>" <?if($arResult['ITEMS']['PROPERTY_22']['INPUT_VALUE'] == $item):?>selected<?endif?>>
+                <?=$item?>
+            </option>
+        <? endforeach?>
+    </select>
     <span>Цена, руб.</span>
     <?foreach ($arResult['ITEMS']['PROPERTY_14']['INPUT_NAMES'] as $key => $input):?>
-        <?
-        if(!empty($arResult['ITEMS']['PROPERTY_14']['INPUT_VALUES'])){
-            $value = $arResult['ITEMS']['PROPERTY_14']['INPUT_VALUES'][$key];
-        }
-        ?>        
-        <? if($key==0){?>
+        <? if($key==0):?>
+            <?
+            if(!empty($arResult['ITEMS']['PROPERTY_14']['INPUT_VALUES'][$key])){
+                $value = $arResult['ITEMS']['PROPERTY_14']['INPUT_VALUES'][$key];
+            }
+            else{
+                $value = $arResult['arrPrice']['LEFT'];
+            }
+            ?>
             <input class="filter-price" type="text" id="minmax<?=$key?>" name="<?=$input?>" value="<?=$value?>"> -
-        <?}else {?>
+        <?else:?>
+            <?
+            if(!empty($arResult['ITEMS']['PROPERTY_14']['INPUT_VALUES'][$key])){
+                $value = $arResult['ITEMS']['PROPERTY_14']['INPUT_VALUES'][$key];
+            }
+            else{
+                $value = $arResult['arrPrice']['RIGHT'];
+            }
+            ?>
             <input class="filter-price" type="text" id="minmax<?=$key?>" name="<?=$input?>" value="<?=$value?>" >
-        <?}?>
+        <?endif?>
     <?endforeach?>
     <div id="slider"></div>
-    <input type="submit" name="set_filter" class="btn btn-nfk" value="<?=GetMessage("IBLOCK_SET_FILTER")?>" style="margin-top: 15px;"/>
+    <input type="submit" name="set_filter" class="btn btn-nfk" value="Поиск" style="margin-top: 15px;"/>
     <input type="hidden" name="set_filter" value="Y" />&nbsp;&nbsp;
 </form>
 <div class="container-img">
     <a href="https://pioneer-leasing.ru/" target="_blanc"><img src="<?=SITE_TEMPLATE_PATH?>/img/pioneer_leasing_avto.png"></a>
 </div>
-<script>
-    $(document).ready(function(){
-        var minCost2 = '#minmax0'
-        var maxCost2 = '#minmax1'
-        /*$("#slider").slider({
-            min: 0,
-            max: 30000,
-            values: [0,30000],
-            range: true
-        });*/
 
-        $("#slider").slider({
-            min: 0,
-            max: 1000000,
-            values: [0,700000],
-            range: true,
-            stop: function(event, ui) {
-                $(minCost2).val($("#slider").slider("values",0));
-                $(maxCost2).val($("#slider").slider("values",1));
-            },
-            slide: function(event, ui){
-                $(minCost2).val($("#slider").slider("values",0));
-                $(maxCost2).val($("#slider").slider("values",1));
-            }
-        });
-
-        $(minCost2).change(function(){
-            var value1=$(minCost2).val();
-            var value2=$(maxCost2).val();
-
-            if(parseInt(value1) > parseInt(value2)){
-                value1 = value2;
-                $(minCost2).val(value1);
-            }
-            $("#slider").slider("values",0,value1);
-        });
-
-        $(maxCost2).change(function(){
-            var value1=$(minCost2).val();
-            var value2=$(maxCost2).val();
-
-            //if (value2 > 30000) { value2 = 30000; $(maxCost2).val(30000)}
-
-            if(parseInt(value1) > parseInt(value2)){
-                value2 = value1;
-                $(maxCost2).val(value2);
-            }
-            $("#slider").slider("values",1,value2);
-        });
-    });
+<script type="text/javascript">
+    var smartFilter = <?=CUtil::PhpToJSObject($arResult["JS_FILTER_PARAMS"])?>;
 </script>

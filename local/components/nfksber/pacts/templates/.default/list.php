@@ -18,7 +18,7 @@
                         "IBLOCK_ID" => "3",
                         "FILTER_NAME" => "arrFilter",
                         "FIELD_CODE" => array('DATE_ACTIVE_FROM'),
-                        "PROPERTY_CODE" => array('SUMM_PACT'),
+                        "PROPERTY_CODE" => array('SUMM_PACT', 'LOCATION_CITY'),
                         "OFFERS_FIELD_CODE" => array(),
                         "OFFERS_PROPERTY_CODE" => array(),
                         "PRICE_CODE" => array(),
