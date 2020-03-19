@@ -2,3 +2,11 @@
     color: #ff6416;
     font-weight: bold
 }
+.first-face a.d-flex{
+    text-decoration: none;
+    color: #0d0d0d;
+}
+.first-face a.d-flex:hover{
+    text-decoration: none;
+    color: #0d0d0d;
+}

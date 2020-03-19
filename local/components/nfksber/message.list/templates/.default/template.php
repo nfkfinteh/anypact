@@ -19,11 +19,13 @@
                         <td class="first-face">
                             <?if(!empty($message["PARAMS_SENDER_USER"]["PERSONAL_PHOTO"])){?>
                                 <? $renderImage = CFile::ResizeImageGet($message["PARAMS_SENDER_USER"]["PERSONAL_PHOTO"], Array("width" => 261, "height" => 261), BX_RESIZE_IMAGE_EXACT, false); ?>
-                                <a class="d-flex align-items-center" href="/profile_user/?ID=<?=$message["PARAMS_SENDER_USER"]["ID"]?>" target="_blank" style="text-decoration: none;">
+                                <a class="d-flex align-items-center" href="/profile_user/?ID=<?=$message["PARAMS_SENDER_USER"]["ID"]?>" target="_blank">
                                     <img src="<?=$renderImage["src"]?>" height="60" alt="">
                                 </a>
                             <?}else {?>
-                                <h3 style="text-align: center; width: 40px;"><?=$message["PARAMS_SENDER_USER"]["IN"]?></h3>
+                                <a class="d-flex align-items-center" href="/profile_user/?ID=<?=$message["PARAMS_SENDER_USER"]["ID"]?>" target="_blank">
+                                    <h3 style="text-align: center; width: 40px;"><?=$message["PARAMS_SENDER_USER"]["IN"]?></h3>
+                                </a>
                             <?}?>
                         </td>
                         <td><?=$message["PARAMS_SENDER_USER"]["FIO"]?><br>

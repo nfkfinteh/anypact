@@ -51,6 +51,15 @@ function sendMessage(){
 }
 
 $(document).ready(function() {
+    let url     = new URL(window.location.href)
+    let searchParams = new URLSearchParams(url.search.substring(1))
+    let id      = searchParams.get("id")
+    let TextMes = document.getElementById('textMessage')
+    let Params      = new Object()
+    Params.IDMess   = id
+    Params.message  = TextMes.value
+    let arrParams   = JSON.stringify(Params)
+
     // нажатие кнопки отправки сообщения 
     let ButtonSendMessage = document.getElementById('sendMessage')
     ButtonSendMessage.onclick = function(){

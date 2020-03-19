@@ -26,7 +26,7 @@ if (empty($arFiles)) {
 }
 
 foreach ($arFiles as $file){
-    $checkFileResult = checkFileNfk($file, 10*1024*1024, ['docx', 'txt', 'rtf', 'doc', 'pdf', 'xlsx', 'jpg', 'png', 'svg', 'jpeg']);
+    $checkFileResult = checkFileNfk($file, 20*1024*1024, ['docx', 'txt', 'rtf', 'doc', 'pdf', 'xlsx', 'jpg', 'png', 'svg', 'jpeg']);
     if($checkFileResult['TYPE']=='ERROR'){
         die(json_encode([ 'VALUE'=>$checkFileResult['VALUE'], 'TYPE'=> 'ERROR']));
     }
