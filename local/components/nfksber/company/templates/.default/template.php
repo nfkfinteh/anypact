@@ -60,6 +60,7 @@
                             <label>ИНН *</label>
                             <input name="INN" type="text" value="<?=$CompanyProprties['INN']['VALUE']?>" required maxlength="12" class="js-number">
                         </div>
+                        <label>* — поля, обязательные для заполнения</label>
                     </div>
                 </div>
             </div>
@@ -102,6 +103,7 @@
                     <label>Офис</label>
                     <input name="OFFICE" type="text" value="<?=$CompanyProprties['OFFICE']['VALUE']?>" maxlength="50">
                 </div>
+                <label>* — поля, обязательные для заполнения</label>
             </div>
             <div class="col-xl-4 col-md-12 col-sm-12">
                 <div class="form-group">
