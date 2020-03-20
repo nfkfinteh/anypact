@@ -99,26 +99,26 @@
                     <input name="HOUSE" type="text" value="<?=$CompanyProprties['HOUSE']['VALUE']?>" required maxlength="50">
                 </div>
                 <div class="form-group">
-                    <label>Офис *</label>
-                    <input name="OFFICE" type="text" value="<?=$CompanyProprties['OFFICE']['VALUE']?>" required maxlength="50">
+                    <label>Офис</label>
+                    <input name="OFFICE" type="text" value="<?=$CompanyProprties['OFFICE']['VALUE']?>" maxlength="50">
                 </div>
             </div>
             <div class="col-xl-4 col-md-12 col-sm-12">
                 <div class="form-group">
-                    <label>Область / Республика / Край</label>
+                    <label>Область / Республика / Край *</label>
                     <input name="REGION" type="text" value="<?=$CompanyProprties['REGION']['VALUE']?>" required maxlength="50">
                 </div>
                 <div class="form-group">
                     <label>Район</label>
-                    <input name="DISTRICT" type="text" value="<?=$CompanyProprties['DISTRICT']['VALUE']?>" required maxlength="50">
+                    <input name="DISTRICT" type="text" value="<?=$CompanyProprties['DISTRICT']['VALUE']?>" maxlength="50">
                 </div>
                 <div class="form-group">
                     <label>Населенный пункт</label>
-                    <input name="LOCALITY" type="text" value="<?=$CompanyProprties['LOCALITY']['VALUE']?>" required maxlength="50">
+                    <input name="LOCALITY" type="text" value="<?=$CompanyProprties['LOCALITY']['VALUE']?>" maxlength="50">
                 </div>
                 <div class="form-group">
-                    <label>Корпус *</label>
-                    <input name="KORP" type="text" value="<?=$CompanyProprties['KORP']['VALUE']?>" required maxlength="50">
+                    <label>Корпус</label>
+                    <input name="KORP" type="text" value="<?=$CompanyProprties['KORP']['VALUE']?>" maxlength="50">
                 </div>
             </div>
         </div>
@@ -142,6 +142,7 @@
                     <label>ИНН Банка *</label>
                     <input name="INN_BANK" type="text" value="<?=$CompanyProprties['INN_BANK']['VALUE']?>" required maxlength="10" class="js-number">
                 </div>
+                <label>* — поля, обязательные для заполнения</label>
             </div>
             <div class="col-xl-4 col-md-6 col-sm-12">
                 <div class="form-group">
