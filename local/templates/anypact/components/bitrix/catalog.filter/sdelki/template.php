@@ -18,7 +18,9 @@ $this->setFrameMode(true);
 			echo $arItem["INPUT"];
 		endif;
 	endforeach;?>
-    <span>Дата</span>
+    <span class="filter-date__title">
+        Дата <a href="javascript:undefined" class="filter-date_reset" style="display: none">Сбросить</a>
+    </span>
     <?foreach ($arResult['ITEMS']['DATE_ACTIVE_FROM']['INPUT_NAMES'] as $key => $input):?>
         <?
         if(!empty($arResult['ITEMS']['DATE_ACTIVE_FROM']['INPUT_VALUES'])){
@@ -63,6 +65,7 @@ $this->setFrameMode(true);
     <?endforeach?>
     <div id="slider"></div>
     <input type="submit" name="set_filter" class="btn btn-nfk" value="Поиск" style="margin-top: 15px;"/>
+    <input type="submit" name="del_filter" class="btn btn-nfk" value="Сбросить" style="margin-top: 15px;"/>
     <input type="hidden" name="set_filter" value="Y" />&nbsp;&nbsp;
 </form>
 <div class="container-img">

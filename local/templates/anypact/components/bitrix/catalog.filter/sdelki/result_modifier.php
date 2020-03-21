@@ -1,13 +1,19 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
+$arFilter = [
+    'IBLOCK_ID'=>$arParams['IBLOCK_ID'],
+    'ACTIVE'=>'Y',
+    'ACTIVE_DATE'=>'Y',
+];
+
+if(!empty($_REQUEST['SECTION_ID'])){
+    $arFilter['IBLOCK_SECTION_ID'] = $_REQUEST['SECTION_ID'];
+}
+
 $res = CIBlockElement::GetList(
     [
        'PROPERTY_SUMM_PACT'=>'ASC'
     ],
-    [
-        'IBLOCK_ID'=>$arParams['IBLOCK_ID'],
-        'ACTIVE'=>'Y',
-        'ACTIVE_DATE'=>'Y'
-    ],
+    $arFilter,
     false,
     ['nTopCount'=>1],
     [
@@ -25,11 +31,7 @@ $res = CIBlockElement::GetList(
     [
         'PROPERTY_SUMM_PACT'=>'DESC'
     ],
-    [
-        'IBLOCK_ID'=>$arParams['IBLOCK_ID'],
-        'ACTIVE'=>'Y',
-        'ACTIVE_DATE'=>'Y'
-    ],
+    $arFilter,
     false,
     ['nTopCount'=>1],
     [
@@ -67,16 +69,15 @@ else{
 }
 
 //Список городов
-$arFilter = [
-    'IBLOCK_ID'=>7,
-    'ACTIVE'=>'Y',
-];
+$arFilter = array_merge($arFilter, $GLOBALS[$arParams['FILTER_NAME']]);
+unset($arFilter['PROPERTY']['?LOCATION_CITY']);
 $arSelect = [
     'IBLOCK_ID',
     'ID',
-    'NAME'
+    'PROPERTY_LOCATION_CITY'
 ];
-$res = CIBlockElement::GetList(['NAME'=>'ASC'], $arFilter, false, false, $arSelect);
+$arResult['LIST_CITY'] = [];
+$res = CIBlockElement::GetList([], $arFilter, ['PROPERTY_LOCATION_CITY']);
 while ($obj = $res->GetNext(true, false)){
-    $arResult['LIST_CITY'][] = $obj['NAME'];
+    $arResult['LIST_CITY'][] = $obj['PROPERTY_LOCATION_CITY_VALUE'];
 }
