@@ -63,7 +63,8 @@ else{
 $data = array(    
     "UF_TEXT_MESSAGE_USER"=> $jsonArrMessages,
     "UF_STATUS"=>0,
-    "UF_ID_RECIPIENT"=>$idRecipient
+    "UF_ID_RECIPIENT"=>$idRecipient,
+    "UF_DELETE"=>''//убираем id пользователей для которых скрывали переписку
 );
 
 $result = $entity_data_class::update($IDMessage, $data);

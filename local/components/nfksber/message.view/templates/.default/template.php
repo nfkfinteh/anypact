@@ -1,6 +1,16 @@
 <?
-    $arMessage  =  json_decode($arResult['MESSAGES']['UF_TEXT_MESSAGE_USER'], true);
     $UserID = CUser::GetID();
+    /*if(!empty($arResult['MESSAGES']['UF_DELETE'])){
+        $arResult['MESSAGES']['UF_DELETE'] = json_decode($arResult['MESSAGES']['UF_DELETE']);
+    }
+    $keyMessageDelete = $arResult['MESSAGES']['UF_DELETE']->$UserID->key_message;*/
+    $arMessage  =  json_decode($arResult['MESSAGES']['UF_TEXT_MESSAGE_USER'], true);
+   /* $lastKeyMessage = count($arMessage);
+
+    if(!empty($keyMessageDelete)){
+        $arMessage = array_slice($arMessage, $keyMessageDelete);
+    }*/
+
     // массив пользователей
     $arrIDUserChat = array();
     foreach($arResult['UsersChart'] as $Item){
@@ -33,7 +43,7 @@
                         <?}?>
                     </div>
                     <?/*<button class="btn btn-nfk btn-add-person w-100">+ добавить участника</button>*/?>
-                    <button class="btn btn-nfk btn-add-person w-100 js-chat_delete">Удалить всю переписку</button>
+                    <button class="btn btn-nfk btn-add-person w-100 js-chat_delete" <?/*data-message="<?=$lastKeyMessage?>"*/?>>Удалить переписку</button>
                 </div>
                 <div class="col-md-8 col-sm-12">
                     <h3 class="font-weight-bold"><?=$arResult['MESSAGES']['UF_TITLE_MESSAGE']?></h3>

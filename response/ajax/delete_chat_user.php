@@ -31,7 +31,39 @@ $hlblock = HL\HighloadBlockTable::getById($hlbl)->fetch();
 $entity = HL\HighloadBlockTable::compileEntity($hlblock);
 $entity_data_class = $entity->getDataClass();
 
-$result = $entity_data_class::Delete($IDChat);
+$rsData = $entity_data_class::getList(array(
+    "select" => array("*"),
+    "order" => array("ID" => "ASC"),
+    "filter" => array("ID"=>$IDChat)
+));
+
+$arDelete = [];
+if($arData = $rsData->Fetch()){
+    $arDelete = json_decode($arData['UF_DELETE'], true);
+}
+
+if(empty($arDelete)){
+    $arDelete[] = $IDUser;
+}
+elseif(!in_array($IDUser, $arDelete)){
+    $arDelete[] = $IDUser;
+}
+
+
+$data = array(
+    "UF_DELETE"=>json_encode($arDelete),
+);
+
+$result = $result = $entity_data_class::update($IDChat, $data);
+if($result->isSuccess()){
+    echo json_encode([ 'VALUE'=>'', 'TYPE'=> 'SUCCESS']);
+}
+else{
+    echo json_encode([ 'VALUE'=>'Ошибка удаления', 'TYPE'=> 'ERROR']);
+}
+
+
+/*$result = $entity_data_class::Delete($IDChat);
 if($result->isSuccess()){
     //удаление папки с фалами прикрепленными к чату
     DeleteDirFilesEx("/upload/add_users_files/".$IDChat_base64);
@@ -39,5 +71,5 @@ if($result->isSuccess()){
 }
 else{
     echo json_encode([ 'VALUE'=>'', 'TYPE'=> 'ERROR']);
-}
+}*/
 ?>
