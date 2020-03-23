@@ -1,5 +1,5 @@
 <form action="<?=$arResult["FORM_ACTION"]?>" class="form-filter__user">
-    <label>Имя</label>
+    <label>Имя / Фамилия</label>
         <input type="text" name="NAME" value="<?=$arResult['POST']['NAME']?>" maxlength="50" class="filter-key" placeholder="Введите имя" />
     <label>Город</label>
         <input type="text" name="PERSONAL_CITY" value="<?=$arResult['POST']['PERSONAL_CITY']?>" maxlength="50" class="filter-key" placeholder="Введите город" />
