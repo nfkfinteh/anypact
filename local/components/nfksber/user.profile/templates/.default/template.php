@@ -9,7 +9,7 @@
                 <h3 class="font-weight-bold mt-4"><?=$arResult['USER']['LAST_NAME']?> <?=$arResult['USER']['NAME']?> <?=$arResult['USER']['SECOND_NAME']?></h3>
 
                 <?if($arResult['TYPE_HOLDER'] == 'user'):?>
-                    <?if(!in_array($arResult['USER']['ID'], $arResult['FRENDS']) && $USER->GetID() != $arResult['USER']['ID']):?>
+                    <?if(!in_array($arResult['USER']['ID'], $arResult['FRENDS']) && $arParams['CURRENT_USER'] != $arResult['USER']['ID']):?>
                         <a href="#" class="btn btn-nfk btn-uprofile js-add-frends" data-login="<?=$arResult['USER']['LOGIN']?>">
                             Добавить в друзья
                         </a>
@@ -18,8 +18,10 @@
                             Удалить из друзей
                         </a>
                     <?endif?>
-                    <a href="#" class="btn btn-nfk btn-uprofile" data-toggle="modal" data-target=".bd-comment-modal-sm">Оставить отзыв</a>
-                    <a href="#" class="btn btn-nfk btn-uprofile" data-toggle="modal" data-target=".bd-message-modal-sm">Отправить сообщение</a>
+                    <?if($arResult['USER']['ID'] !=$arParams['CURRENT_USER']):?>
+                        <a href="#" class="btn btn-nfk btn-uprofile" data-toggle="modal" data-target=".bd-comment-modal-sm">Оставить отзыв</a>
+                        <a href="#" class="btn btn-nfk btn-uprofile" data-toggle="modal" data-target=".bd-message-modal-sm">Отправить сообщение</a>
+                    <?endif?>
                     <?if($arResult['USER']['PERSONAL_GENDER']=='M'):?>
                         <span class="d-block mt-4">Пол: мужской</span>
                     <?else:?>

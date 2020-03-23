@@ -15,6 +15,7 @@ class CDemoSqr extends CBitrixComponent
             "CACHE_TYPE" => $arParams["CACHE_TYPE"],
             "CACHE_TIME" => isset($arParams["CACHE_TIME"]) ?$arParams["CACHE_TIME"]: 36000000,
             "USER_ID" => intval($arParams['USER_ID']),
+            'CURRENT_USER'=>intval($arParams['CURRENT_USER']),
             "IBLOCK_ID" => intval($arParams['IBLOCK_ID']),
             "IBLOCK_ID_COMPANY" => intval($arParams['IBLOCK_ID_COMPANY']),
             "ITEM_COUNT" => intval($arParams['ITEM_COUNT']),
