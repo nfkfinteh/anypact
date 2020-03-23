@@ -15,6 +15,7 @@
                 </thead>
                 <tbody>
                 <? foreach ($arResult["MESSAGE_USER"] as $message) { // выборка сообщений?>
+                    <?if(!empty($message['UF_DELETE']) && in_array($arResult['USER_ID'], $message['UF_DELETE'])) continue;?>
                     <tr>
                         <td class="first-face">
                             <?if(!empty($message["PARAMS_SENDER_USER"]["PERSONAL_PHOTO"])){?>
@@ -37,7 +38,7 @@
                         <td>
                             <?= $message["UF_TIME_CREATE_MSG"]->toString() ?>
                         </td>
-                        <td class="text-gray d-none d-lg-table-cell"><a href="/list_message/view_message/?id=<?= $message["ID"] ?>" target="_blank">Посмотреть</a></td>
+                        <td class="text-gray d-none d-lg-table-cell"><a href="/list_message/view_message/?id=<?= $message["ID"] ?>">Посмотреть</a></td>
                     </tr>
                 <?}?>
                 </tbody>

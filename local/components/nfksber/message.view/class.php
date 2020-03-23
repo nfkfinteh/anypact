@@ -44,6 +44,7 @@ class CDemoSqr extends CBitrixComponent
         ));
 
         while($arData = $rsData->Fetch()){
+            $arData['UF_DELETE'] = json_decode($arData['UF_DELETE'], true);
             $arSendItem  = $arData;
             $this->arIDUsers[] = $arData['UF_ID_USER'];
             $this->arIDUsers[] = $arData['UF_ID_SENDER'];
@@ -70,6 +71,8 @@ class CDemoSqr extends CBitrixComponent
             $this->arResult = array_merge($this->arResult, $this->paramsUser($this->arParams));              
             $this->includeComponentTemplate();
         }*/
+        global $USER;
+        $this->arResult['USER_ID'] = $USER->GetId();
         
         $this->arResult = array_merge($this->arResult, $this->paramsUser($this->arParams));              
         // получить сообщения
@@ -79,8 +82,15 @@ class CDemoSqr extends CBitrixComponent
         $this->ID_HL    = 6;
         $this->arResult['MESSAGES'] = $this->getMessage();
 
-        #Выводим 404 если нет такой переписки
-        if(empty($this->arResult['MESSAGES'])){
+        #Выводим 404 если нет такой переписки или пользователь удалил(скрыл) переписку
+        if
+        (
+            empty($this->arResult['MESSAGES']) ||
+            (
+                !empty($this->arResult['MESSAGES']['UF_DELETE']) &&
+                in_array($this->arResult['USER_ID'], $this->arResult['MESSAGES']['UF_DELETE'])
+            )
+        ){
             Iblock\Component\Tools::process404(
                 '',
                 true,

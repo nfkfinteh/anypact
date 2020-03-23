@@ -129,9 +129,11 @@ $(document).ready(function() {
     //удаление переписки
     $(document).on('click', '.js-chat_delete', function(){
         preload('show');
+        //let key_message = $(this).attr('data-message');
         $.post(
             "/response/ajax/delete_chat_user.php", {
                 id: id,
+                //key_message: key_message,
             },
             onAjaxSuccess
         );

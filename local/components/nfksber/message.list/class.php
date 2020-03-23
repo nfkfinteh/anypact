@@ -81,6 +81,7 @@ class CDemoSqr extends CBitrixComponent
 
             $rsUser = CUser::GetByID($idUserTitle);
             $arUser = $rsUser->Fetch();
+            $arMesage_User[$i]['UF_DELETE'] = json_decode($arMesage_User[$i]['UF_DELETE'], true);
             $arMesage_User[$i]["PARAMS_SENDER_USER"]["FIO"]  = $arUser['LAST_NAME'] .' '. $arUser['NAME'] .' '. $arUser['SECOND_NAME'];
             $arMesage_User[$i]["PARAMS_SENDER_USER"]["PERSONAL_PHOTO"]  = $arUser["PERSONAL_PHOTO"];
             $arMesage_User[$i]["PARAMS_SENDER_USER"]["ID"]  = $arUser['ID'];
@@ -95,6 +96,7 @@ class CDemoSqr extends CBitrixComponent
     public function executeComponent()
     {
         $User_ID = CUser::GetID();
+        $this->arResult['USER_ID'] = $User_ID;
         // сообщение пользователю
         $this->arResult["MESSAGE_USER"] = $this->getMessageUser($User_ID);
 
