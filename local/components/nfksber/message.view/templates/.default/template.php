@@ -54,7 +54,7 @@
                             <?if($Message['user'] == $UserID){?>
                                 <div class="message-block message-block-left">
                                     <div class="message-person-photo">
-                                        <a href="/profile_user/?ID=<?=$user['ID']?>" class="user-avatar">
+                                        <a href="/profile_user/?ID=<?=$Message['user']?>" class="user-avatar">
                                             <? if($arResult['UsersChart'][$Message['user']]['PERSONAL_PHOTO'] != ''){ ?>
                                                 <?                                             
                                                     $arFile = CFile::GetFileArray($arResult['UsersChart'][$Message['user']]['PERSONAL_PHOTO']);
@@ -96,7 +96,7 @@
                             <?}else {?>                            
                                 <div class="message-block message-block-right">                        
                                     <div class="message-person-photo">
-                                        <a href="/profile_user/?ID=<?=$user['ID']?>" class="user-avatar">
+                                        <a href="/profile_user/?ID=<?=$Message['user']?>" class="user-avatar">
                                             <? if($arResult['UsersChart'][$Message['user']]['PERSONAL_PHOTO'] != ''){ ?>
                                                 <?                                             
                                                     $arFile = CFile::GetFileArray($arResult['UsersChart'][$Message['user']]['PERSONAL_PHOTO']);
