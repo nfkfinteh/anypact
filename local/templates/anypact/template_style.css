@@ -1139,7 +1139,7 @@ input::-webkit-input-placeholder {
 }
 .card-deal a:link{
     text-align: center;
-    line-height: 44px;
+    line-height: 39px;
 }
 .card-deal a::after {
     content: "";
@@ -1159,7 +1159,9 @@ input::-webkit-input-placeholder {
     width: calc(100% - 11px);
     border: 2px solid #ff6416;
 }
-
+.card-deal a:hover{
+    color: #ffffff;
+}
 .card-deal:hover a::after {
     border-color: #ffffff;
 }
