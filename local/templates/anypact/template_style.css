@@ -1139,6 +1139,7 @@ input::-webkit-input-placeholder {
 }
 .card-deal a:link{
     text-align: center;
+    line-height: 44px;
 }
 .card-deal a::after {
     content: "";
@@ -1152,7 +1153,7 @@ input::-webkit-input-placeholder {
     transform: rotate(45deg);
 }
 
-.card-deal:hover a {
+.card-deal a:hover {
     color: #ffffff;
     background: #ff6416;
     width: calc(100% - 11px);
