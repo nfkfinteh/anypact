@@ -26,9 +26,9 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)
 	<form method="post" action="<?=POST_FORM_ACTION_URI?>" name="regform" enctype="multipart/form-data">
 		<div class="regpopup_content_form_fild">
 		<? // print_r($arResult["SHOW_FIELDS"]);?>
-			<input hidden size="30" class="regpopup_content_form_input" id="user_login_fild" name="REGISTER[<?=$LOGIN?>]" value="<?=$arResult["VALUES"][$LOGIN]?>" placeholder="<?=GetMessage($LOGIN)?>"  autocomplete="false" />
-            <input hidden class="regpopup_content_form_input" name="UF_TYPE_REGISTR" value="<?=$_GET['type_registr']?>"  autocomplete="false" />
-			<input size="30" class="regpopup_content_form_input" id="user_email_fild" name="REGISTER[<?=$EMAIL?>]" value="<?=$arResult["VALUES"][$EMAIL]?>" placeholder="<?=GetMessage($EMAIL)?>"  autocomplete="false" />
+			<input hidden size="30" class="regpopup_content_form_input" id="user_login_fild" name="REGISTER[<?=$LOGIN?>]" value="<?=$arResult["VALUES"][$LOGIN]?>" placeholder="<?=GetMessage($LOGIN)?>"  autocomplete="off" />
+            <input hidden class="regpopup_content_form_input" name="UF_TYPE_REGISTR" value="<?=$_GET['type_registr']?>"  autocomplete="off" />
+			<input size="30" class="regpopup_content_form_input" id="user_email_fild" name="REGISTER[<?=$EMAIL?>]" value="<?=$arResult["VALUES"][$EMAIL]?>" placeholder="<?=GetMessage($EMAIL)?>"  autocomplete="off" />
 			<?foreach ($arResult["SHOW_FIELDS"] as $FIELD):?>
 				<?
 					switch ($FIELD) {
@@ -40,7 +40,7 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)
 							?><input size="30" class="regpopup_content_form_input" id="user_con_password_fild" type="password" name="REGISTER[<?=$FIELD?>]" value="<?=$arResult["VALUES"][$FIELD]?>" autocomplete="off" placeholder="<?=GetMessage($FIELD)?>" disabled/><?
 						break;
 						/*case 'LOGIN':
-							?><input size="30" class="regpopup_content_form_input" id="user_login_fild" name="REGISTER[<?=$FIELD?>]" value="<?=$arResult["VALUES"][$FIELD]?> " placeholder="<?=GetMessage($FIELD)?>"  autocomplete="false" /><?
+							?><input size="30" class="regpopup_content_form_input" id="user_login_fild" name="REGISTER[<?=$FIELD?>]" value="<?=$arResult["VALUES"][$FIELD]?> " placeholder="<?=GetMessage($FIELD)?>"  autocomplete="off" /><?
 						break;
 						case 'EMAIL':
 							?><input size="30" class="regpopup_content_form_input" id="user_email_fild" name="REGISTER[<?=$FIELD?>]" value="<?=$arResult["VALUES"][$FIELD]?>" placeholder="<?=GetMessage($FIELD)?>" disabled/><?
