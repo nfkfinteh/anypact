@@ -1153,7 +1153,7 @@ input::-webkit-input-placeholder {
     transform: rotate(45deg);
 }
 
-.card-deal a:hover {
+.card-deal:hover a {
     color: #ffffff;
     background: #ff6416;
     width: calc(100% - 11px);
