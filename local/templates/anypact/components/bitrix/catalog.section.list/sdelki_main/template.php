@@ -27,7 +27,7 @@ $this->setFrameMode(true);
                     $URL_Section = 'https://nfksber.ru/open_account/';
                 }
             ?>
-            <a href="<?=$URL_Section?>"><button class="card-deal__button">Перейти</button></a>
+            <button class="card-deal__button" href="<?=$URL_Section?>">Перейти</button>
         </div>
     <?endforeach?>
 </div>
