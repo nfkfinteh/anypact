@@ -1120,8 +1120,7 @@ input::-webkit-input-placeholder {
     background-color: #ff6416;
 }
 
-.card-deal button,
-.card-deal button a {
+.card-deal button {
     color: transparent;
     text-decoration: none;
     user-select: none;
