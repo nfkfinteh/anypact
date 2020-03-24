@@ -1122,7 +1122,6 @@ input::-webkit-input-placeholder {
 
 .card-deal button,
 .card-deal button a {
-    display: block;
     color: transparent;
     text-decoration: none;
     user-select: none;
@@ -1152,8 +1151,7 @@ input::-webkit-input-placeholder {
     transform: rotate(45deg);
 }
 
-.card-deal:hover button,
-.card-deal button a::after {
+.card-deal:hover button {
     color: #ffffff;
     background: #ff6416;
     width: calc(100% - 11px);
