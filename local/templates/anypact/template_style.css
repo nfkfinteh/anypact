@@ -1120,7 +1120,7 @@ input::-webkit-input-placeholder {
     background-color: #ff6416;
 }
 
-.card-deal button {
+.card-deal__button {
     display: block;
     color: transparent;
     text-decoration: none;
@@ -1138,7 +1138,7 @@ input::-webkit-input-placeholder {
     margin-top: 10px;
 }
 
-.card-deal button::after {
+.card-deal__button::after {
     content: "";
     position: absolute;
     top: 15px;
@@ -2452,7 +2452,7 @@ input::-webkit-input-placeholder {
     background-color: #ff6416;
 }
 
-.card-deal button {
+.card-deal__button {
     color: transparent;
     text-decoration: none;
     user-select: none;
@@ -2469,7 +2469,7 @@ input::-webkit-input-placeholder {
     margin-top: 10px;
 }
 
-.card-deal button::after {
+.card-deal__button::after {
     content: "";
     position: absolute;
     top: 15px;
