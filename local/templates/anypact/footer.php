@@ -3,7 +3,7 @@
 <footer class="footer">
     <div class="container-fluid">
 		<p>
-			<img src="<?=SITE_TEMPLATE_PATH.'/image/logo_ap.svg'?>"  style="width: 166px;"/>
+			<img src="<?=SITE_TEMPLATE_PATH.'/image/logo_ap.svg'?>"  style="width: 166px;"/ alt="Anypact">
 		</p>
 		<p>
 			&copy; 2019 АО «НФК-Сбережения», ООО «НФК - Структурные инвестиции», ООО «Пионер-Лизинг»<br>
