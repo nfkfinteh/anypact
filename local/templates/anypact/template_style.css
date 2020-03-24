@@ -1136,11 +1136,13 @@ input::-webkit-input-placeholder {
     position: relative;
     transition: .15s ease-in-out;
     margin-top: 10px;
-}
-.card-deal a:link{
     text-align: center;
     line-height: 39px;
 }
+/* .card-deal a{
+    text-align: center;
+    line-height: 39px;
+} */
 .card-deal a::after {
     content: "";
     position: absolute;
@@ -1159,9 +1161,7 @@ input::-webkit-input-placeholder {
     width: calc(100% - 11px);
     border: 2px solid #ff6416;
 }
-.card-deal a:hover{
-    color: #ffffff;
-}
+
 .card-deal:hover a::after {
     border-color: #ffffff;
 }
