@@ -3614,3 +3614,8 @@ footer .polit_link{
 .ui-slider-horizontal .ui-slider-handle{
     margin-top: 0;
 }
+
+footer p{
+    text-align: center;
+    font-style: 16px;
+}
