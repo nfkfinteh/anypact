@@ -1136,16 +1136,7 @@ input::-webkit-input-placeholder {
     transition: .15s ease-in-out;
     margin-top: 10px;
 }
-.card-deal button a{
-    display: block;
-    background: #fffffe;
-    outline: none;
-    width: 44px;
-    height: 44px;
-    border: 2px solid #f3f3f3;
-    border-radius: 22px;
-    font-weight: 300;
-}
+
 .card-deal button::after {
     content: "";
     position: absolute;
@@ -1164,12 +1155,8 @@ input::-webkit-input-placeholder {
     width: calc(100% - 11px);
     border: 2px solid #ff6416;
 }
-.card-deal:hover button a{
-    color: #ffffff;
-}
 
-.card-deal:hover button::after,
-.card-deal button a::after {
+.card-deal:hover button::after {
     border-color: #ffffff;
 }
 
