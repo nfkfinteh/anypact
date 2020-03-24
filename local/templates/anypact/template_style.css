@@ -1120,7 +1120,8 @@ input::-webkit-input-placeholder {
     background-color: #ff6416;
 }
 
-.card-deal button {
+.card-deal button,
+.card-deal button a {
     display: block;
     color: transparent;
     text-decoration: none;
@@ -1138,7 +1139,8 @@ input::-webkit-input-placeholder {
     margin-top: 10px;
 }
 
-.card-deal button::after {
+.card-deal button::after,
+.card-deal button a::after {
     content: "";
     position: absolute;
     top: 15px;
@@ -1150,14 +1152,16 @@ input::-webkit-input-placeholder {
     transform: rotate(45deg);
 }
 
-.card-deal:hover button {
+.card-deal:hover button,
+.card-deal button a::after {
     color: #ffffff;
     background: #ff6416;
     width: calc(100% - 11px);
     border: 2px solid #ff6416;
 }
 
-.card-deal:hover button::after {
+.card-deal:hover button::after,
+.card-deal button a::after {
     border-color: #ffffff;
 }
 
