@@ -1121,6 +1121,7 @@ input::-webkit-input-placeholder {
 }
 
 .card-deal button {
+    display: block;
     color: transparent;
     text-decoration: none;
     user-select: none;
