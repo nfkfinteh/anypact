@@ -1139,10 +1139,9 @@ input::-webkit-input-placeholder {
     text-align: center;
     line-height: 39px;
 }
-/* .card-deal a{
-    text-align: center;
-    line-height: 39px;
-} */
+.card-deal a:hover{
+    color: #ffffff !important;
+}
 .card-deal a::after {
     content: "";
     position: absolute;
