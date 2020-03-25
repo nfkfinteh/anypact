@@ -86,13 +86,15 @@
 }
 
 .widget_user_profile_select::after {
+    box-shadow: 1px 3px 11px rgba(0, 0, 0, 0.15);
     content: '';
     position: absolute;
+    background-color: white;
     right: 20px;
     top: -20px;
     transform: rotate(180deg);
     border: 10px solid transparent;
-    border-top: 10px solid #fff;
+    transform: rotate(45deg) translateX(15px) translateY(15px);
 }
 
 .login-information{
