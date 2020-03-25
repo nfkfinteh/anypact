@@ -84,15 +84,24 @@
     display: none;
     text-align: left;
 }
+.triangle {
+    width: 20px;
+    height: 20px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 16px 10px -17px rgba(0, 0, 0, 0.5);
+}
 
-.widget_user_profile_select::after {
-    content: '';
+.triangle:after {
+    content: "";
     position: absolute;
-    right: 20px;
-    top: -20px;
-    transform: rotate(180deg);
-    border: 10px solid transparent;
-    border-top: 10px solid #fff;
+    width: 20px;
+    height: 20px;
+    background: #999;
+    -webkit-transform: rotate(45deg);
+    top: 75px;
+    left: 25px;
+    box-shadow: -1px -1px 10px -2px rgba(0, 0, 0, 0.5);
 }
 
 .login-information{
