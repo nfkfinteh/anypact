@@ -84,15 +84,18 @@
     display: none;
     text-align: left;
 }
-
-.widget_user_profile_select::after {
+.forarrow{
+    box-shadow: 1px 3px 11px rgba(0, 0, 0, 0.15);
+}
+.forarrow::after {
     content: '';
     position: absolute;
+    background-color: white;
     right: 20px;
-    top: -20px;
+    top: -30px;
     transform: rotate(180deg);
     border: 10px solid transparent;
-    border-top: 10px solid #fff;
+    transform: rotate(45deg) translateX(15px) translateY(15px);
 }
 
 .login-information{
