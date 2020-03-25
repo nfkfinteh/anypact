@@ -79,6 +79,7 @@
     position: absolute;
     z-index: 100;
     background-color: white;
+    top: 10px;
     left: 19px;
     display: none;
     text-align: left;
