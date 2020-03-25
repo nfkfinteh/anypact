@@ -98,12 +98,6 @@ $(document).ready(function(){
             HOUSE:{
                 required: true
             },
-            OFFICE:{
-                required: true
-            },
-            KORP:{
-                required: true
-            },
             BANK:{
                 required: true
             },
@@ -122,6 +116,9 @@ $(document).ready(function(){
             KOR_ACCOUNT:{
                 required: true,
                 minlength: 20
+            },
+            REGION:{
+                required: true
             }
         },
         messages: {
@@ -133,13 +130,12 @@ $(document).ready(function(){
             CITY: 'Данные введены не полностью',
             STREET: 'Данные введены не полностью',
             HOUSE: 'Данные введены не полностью',
-            OFFICE: 'Данные введены не полностью',
-            KORP: 'Данные введены не полностью',
             BANK: 'Данные введены не полностью',
             RAS_ACCOUNT: 'Данные введены не полностью',
             INN_BANK: 'Данные введены не полностью',
             BIK: 'Данные введены не полностью',
             KOR_ACCOUNT: 'Данные введены не полностью',
+            REGION: 'Данные введены не полностью'
         },
         ignore: ".ignore-validate, :hidden",
         onsubmit: true,
