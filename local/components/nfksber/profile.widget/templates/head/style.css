@@ -70,33 +70,33 @@
     border-top: 1px solid #F1F4F4;
     padding: 20px 26px;
 }
+.forarrow {
+    box-sizing: border-box;
+    width: 92%;
+    top: 45px;
+    left: 19px;
+    box-shadow: 1px 3px 11px rgba(0, 0, 0, 0.15);
+}
 
-
-.widget_user_profile_select{
+.forarrow:after {
+    content: '';
+    position: absolute;
+    right: 20px;
+    top: -20px;
+    background: white;
+    border: 10px solid transparent;
+    transform: rotate(45deg) translateX(15px) translateY(15px);
+    box-shadow: 0 0 10px 0 #909090;
+}
+.forarrow .widget_user_profile_select {
     box-shadow: 1px 3px 11px rgba(0, 0, 0, 0.15);
     border-radius: 5px;
-    width: 92%;
+    width: 100%;
     position: absolute;
     z-index: 100;
     background-color: white;
-    top: 45px;
-    left: 19px;
     display: none;
     text-align: left;
-    transition: all 1s ease;
-}
-.forarrow{
-    box-shadow: 1px 3px 11px rgba(0, 0, 0, 0.15);
-}
-.forarrow::after {
-    content: '';
-    position: absolute;
-    background-color: white;
-    right: 20px;
-    top: -30px;
-    transform: rotate(180deg);
-    border: 10px solid transparent;
-    transform: rotate(45deg) translateX(15px) translateY(15px);
 }
 
 .login-information{
