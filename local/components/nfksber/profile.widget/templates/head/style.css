@@ -73,8 +73,6 @@
 .forarrow {
     box-sizing: border-box;
     width: 92%;
-    top: 45px;
-    left: 19px;
     box-shadow: 1px 3px 11px rgba(0, 0, 0, 0.15);
 }
 
