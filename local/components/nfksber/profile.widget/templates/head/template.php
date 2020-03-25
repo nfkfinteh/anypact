@@ -40,19 +40,20 @@ $MessURL = '/list_message/';
                     <?if(!empty($arResult['ACTIVE_COMPANY'])):?><?=$arResult['ACTIVE_COMPANY']['NAME']?>,   <?endif?> <?=$arResult["LAST_NAME"]?> <?=$arResult["IN_NAMES"]?>
                 </a>
                 <?/*<span class="widget_user_profile_url_profile">Профиль</span>*/?>
-
-                <div class="widget_user_profile_select">
-                    <ul>
-                        <li><a href="/profile/">Редактировать профиль</a></li>
-                        <li><a href="/profile/select_company/">Переключить профиль</a></li>
-                    </ul>
-                    <a href="<?echo $APPLICATION->GetCurPageParam("logout=yes", 
-                        array(
-                            "login",
-                            "logout",
-                            "register",
-                            "forgot_password",
-                            "change_password"));?>" class="exit-profile">Выйти</a>
+                <div class="forarrow">
+                    <div class="widget_user_profile_select">
+                        <ul>
+                            <li><a href="/profile/">Редактировать профиль</a></li>
+                            <li><a href="/profile/select_company/">Переключить профиль</a></li>
+                        </ul>
+                        <a href="<?echo $APPLICATION->GetCurPageParam("logout=yes", 
+                            array(
+                                "login",
+                                "logout",
+                                "register",
+                                "forgot_password",
+                                "change_password"));?>" class="exit-profile">Выйти</a>
+                    </div>
                 </div>
             </div>
         </div>
