@@ -86,7 +86,6 @@
 }
 
 .widget_user_profile_select::after {
-    box-shadow: 1px 3px 11px rgba(0, 0, 0, 0.15);
     content: '';
     position: absolute;
     right: 20px;
