@@ -79,13 +79,14 @@
     position: absolute;
     z-index: 100;
     background-color: white;
-    top: 30px;
+    top: 40px;
     left: 19px;
     display: none;
     text-align: left;
 }
 
 .widget_user_profile_select::after {
+    box-shadow: 1px 3px 11px rgba(0, 0, 0, 0.15);
     content: '';
     position: absolute;
     right: 20px;
