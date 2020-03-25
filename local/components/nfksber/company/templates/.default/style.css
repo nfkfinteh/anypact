@@ -125,7 +125,7 @@ div.btn{
     padding: 10px;
 }
 .company_profile label {
-    padding-left: 21px;
+    padding-left: 10px;
     padding-bottom: 4px;
     font-weight: 100;
 }
@@ -170,4 +170,7 @@ button#save_company {
 button#save_company:hover{
     color: #fff;
     background: #ff6416;
+}
+.company_profile .error-message{
+    font-size: 11px;
 }
