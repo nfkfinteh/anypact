@@ -2,13 +2,13 @@
 <? if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)?>
 <footer class="footer">
     <div class="container-fluid">
-		<p align="center">
-			<img src="<?=SITE_TEMPLATE_PATH.'/image/logo_ap.svg'?>"  style="width: 166px;"/>
+		<p>
+			<img src="<?=SITE_TEMPLATE_PATH.'/image/logo_ap.svg'?>"  style="width: 166px;" alt="Anypact">
 		</p>
-		<p align="center" size="16">
+		<p>
 			&copy; 2019 АО «НФК-Сбережения», ООО «НФК - Структурные инвестиции», ООО «Пионер-Лизинг»<br>
 			Электронная почта: <a href="mailto:info@anypact.ru">info@anypact.ru</a><br>
-			<a href="/upload/rules/user_rules.pdf" target="_blank" class="polit_link">Условия использования сайта
+			<span><a href="/upload/rules/user_rules.pdf" target="_blank" class="polit_link">Условия использования сайта
 				Аnypact.ru</a></span>
 		</p>		
 	</div>

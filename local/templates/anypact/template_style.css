@@ -1120,7 +1120,8 @@ input::-webkit-input-placeholder {
     background-color: #ff6416;
 }
 
-.card-deal button {
+.card-deal a {
+    display: block;
     color: transparent;
     text-decoration: none;
     user-select: none;
@@ -1135,9 +1136,13 @@ input::-webkit-input-placeholder {
     position: relative;
     transition: .15s ease-in-out;
     margin-top: 10px;
+    text-align: center;
+    line-height: 39px;
 }
-
-.card-deal button::after {
+.card-deal a:hover{
+    color: #ffffff !important;
+}
+.card-deal a::after {
     content: "";
     position: absolute;
     top: 15px;
@@ -1149,14 +1154,14 @@ input::-webkit-input-placeholder {
     transform: rotate(45deg);
 }
 
-.card-deal:hover button {
+.card-deal:hover a {
     color: #ffffff;
     background: #ff6416;
     width: calc(100% - 11px);
     border: 2px solid #ff6416;
 }
 
-.card-deal:hover button::after {
+.card-deal:hover a::after {
     border-color: #ffffff;
 }
 
@@ -2451,7 +2456,7 @@ input::-webkit-input-placeholder {
     background-color: #ff6416;
 }
 
-.card-deal button {
+.card-deal a {
     color: transparent;
     text-decoration: none;
     user-select: none;
@@ -2468,7 +2473,7 @@ input::-webkit-input-placeholder {
     margin-top: 10px;
 }
 
-.card-deal button::after {
+.card-deal a::after {
     content: "";
     position: absolute;
     top: 15px;
@@ -3608,4 +3613,9 @@ footer .polit_link{
 
 .ui-slider-horizontal .ui-slider-handle{
     margin-top: 0;
+}
+
+footer p{
+    text-align: center;
+    font-style: 16px;
 }

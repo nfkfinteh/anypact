@@ -217,7 +217,7 @@ $APPLICATION->IncludeComponent(
                         </div>
                     <?}?>
                     <div class="col-10 col-lg-12 mt-4 offset-1 offset-lg-0">
-                        <textarea name="" rows="4" id="textText"></textarea>
+                        <textarea rows="4" id="textText"></textarea>
                     </div>
 
                     <div class="col-10 col-lg-12 mt-3 offset-1 offset-lg-0">                            

@@ -109,7 +109,7 @@
             <div class="modal-body">
                 <form action="/response/ajax/add_new_messag_user.php">
                     <div class="form-group">
-                        <label for="">Тема сообщения</label>
+                        <label>Тема сообщения</label>
                         <input class="form-control" name="title" value="">
                     </div>
                     <input type="hidden" name="login" value="<?=$arResult['USER']['LOGIN']?>">

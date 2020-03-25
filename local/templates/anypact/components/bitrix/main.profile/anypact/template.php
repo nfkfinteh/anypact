@@ -157,7 +157,7 @@ if (!empty($arResult['arUser']['UF_ESIA_ID']) && $arResult['arUser']['UF_ESIA_AU
                 <div class="col-xl-4 col-md-6 col-sm-12">
                     <div class="form-group">
                         <label>Повторите введеный пароль</label>
-                        <input type="text" name="" maxlength="50" value="">
+                        <input type="text" maxlength="50" value="">
                     </div>
                     <button type="submit" class="btn btn-aut edit-profile__btn" id="save_profile_button">Сохранить</button>
                 </div>

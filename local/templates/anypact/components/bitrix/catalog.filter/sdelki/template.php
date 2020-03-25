@@ -69,7 +69,7 @@ $this->setFrameMode(true);
     <input type="hidden" name="set_filter" value="Y" />&nbsp;&nbsp;
 </form>
 <div class="container-img">
-    <a href="https://pioneer-leasing.ru/" target="_blanc"><img src="<?=SITE_TEMPLATE_PATH?>/img/pioneer_leasing_avto.png"></a>
+    <a href="https://pioneer-leasing.ru/" target="_blank"><img src="<?=SITE_TEMPLATE_PATH?>/img/pioneer_leasing_avto.png" alt="Пионер-лизинг"></a>
 </div>
 
 <script type="text/javascript">

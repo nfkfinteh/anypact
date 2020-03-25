@@ -84,11 +84,11 @@
                 <form id="message_user" action="/response/ajax/add_new_messag_user.php">
                     <input class="login__input" type="hidden" name="login" value="">
                     <div class="form-group">
-                        <label for="">Тема сообщения</label>
+                        <label>Тема сообщения</label>
                         <input class="form-control" name="title" value="">
                     </div>
                     <div class="form-group">
-                        <label for="">Текст сообщения</label>
+                        <label>Текст сообщения</label>
                         <textarea class="form-control message-textarea" name="message-text"></textarea>
                     </div>
                 </form>
