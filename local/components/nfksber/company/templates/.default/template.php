@@ -40,12 +40,12 @@
                         <div class="form-group">
                             <label>Логотип компании</label>
                             <?if($prevImage){?>
-                                <a href="/profile/edit_photo/?action=company&id=<?=$arResult['COMPANY']['ID']?>" class="company-logo">
+                                <a href="/profile/edit_photo/?action=company&id=<?=$arResult['COMPANY']['ID']?>" class="company-logo js-addphoto">
                                     <img src="<?=$prevImage?>">
                                 </a>
-                                <input style="display: none" name="PREVIEW_PICTURE" type="text" value="<?=$prevImage?>">
+                                <input name="PREVIEW_PICTURE" type="hidden" value="<?=$prevImage?>">
                             <?}else{?>
-                                <a href="/profile/edit_photo/?action=company&id=<?=$arResult['COMPANY']['ID']?>" class="company-logo edit-photo">
+                                <a href="/profile/edit_photo/?action=company&id=<?=$arResult['COMPANY']['ID']?>" class="company-logo edit-photo js-addphoto">
                                     <img src="/local/templates/anypact/img/user_profile_no_foto.png">
                                 </a>
                             <?}?>
@@ -161,12 +161,12 @@
         <? ////////////////////// сохранение  /////////////////////////?>
         <div class="form-group">
             <?if($arResult['COMPANY']['ID']){?>
-                <input name="ID_EXIST" value="<?=$arResult['COMPANY']['ID']?>" hidden>
+                <input name="ID_EXIST" value="<?=$arResult['COMPANY']['ID']?>" type="hidden">
             <?}?>
-            <input name="STAFF" value="<?=$value_staff?>" hidden>
-            <input name="STAFF_NO_ACTIVE" value="<?=$value_staff_no?>" hidden>
-            <input name="DIRECTOR_ID" value="<?=$USER->GetID()?>" hidden>
-            <input name="DIRECTOR_NAME" value="<?echo $USER->GetLastName().' '.$USER->GetFirstName(). ' '.$USER->GetParam("SECOND_NAME")?>" hidden>            
+            <input name="STAFF" value="<?=$value_staff?>" type="hidden">
+            <input name="STAFF_NO_ACTIVE" value="<?=$value_staff_no?>" type="hidden">
+            <input name="DIRECTOR_ID" value="<?=$USER->GetID()?>" type="hidden">
+            <input name="DIRECTOR_NAME" value="<?echo $USER->GetLastName().' '.$USER->GetFirstName(). ' '.$USER->GetParam("SECOND_NAME")?>" type="hidden">
         </div>
         <!-- <div class="row" style="margin: 40px 0;">
             <div class="col-xl-4 col-md-6 col-sm-12 offset-xl-3">
