@@ -60,9 +60,15 @@ $MessURL = '/list_message/';
 </div>
 <script>
     //клик по профилю в шапке
-    $(document).ready(function() {
-        $(".widget_user_profile_name").click(function() {
-            return $(".widget_user_profile_select").slideToggle("fast"), !1
-        })
+    $('.widget_user_profile_name').click(function () {
+        $('.widget_user_profile_select').fadeIn();
+        return false;
+    });
+
+    $(document).mouseup(function (e) {
+        var popup = $('.widget_user_profile_name');
+        if (e.target!=popup[0]&&popup.has(e.target).length === 0){
+            $('.widget_user_profile_select').fadeOut();
+        }
     });
 </script>
