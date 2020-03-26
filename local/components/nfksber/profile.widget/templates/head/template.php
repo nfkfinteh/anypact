@@ -61,6 +61,6 @@ $MessURL = '/list_message/';
 <script>
     //клик по профилю в шапке
     $('.widget_user_profile_name').click(function () {
-        $('.widget_user_profile_select').toggleClass('widget_user_profile_select-active');
+        $('.widget_user_profile_select').fadeIn();
     });
 </script>

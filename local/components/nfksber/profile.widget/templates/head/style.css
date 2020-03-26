@@ -49,7 +49,7 @@
     display: none;
     text-align: left;
 }
-.widget_user_profile_select-active {
+.widget_user_profile_select_active {
     box-shadow: 1px 3px 11px rgba(0, 0, 0, 0.15);
     border-radius: 5px;
     width: 92%;
