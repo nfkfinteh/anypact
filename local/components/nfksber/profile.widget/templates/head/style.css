@@ -37,9 +37,29 @@
 .widget_user_profile_name {
     cursor: pointer;
 }
-
+.widget_user_profile_select {
+    box-shadow: 1px 3px 11px rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+    width: 92%;
+    position: absolute;
+    z-index: 100;
+    background-color: white;
+    top: 45px;
+    left: 19px;
+    display: none;
+    text-align: left;
+}
 .widget_user_profile_select-active {
+    box-shadow: 1px 3px 11px rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+    width: 92%;
+    position: absolute;
+    z-index: 100;
+    background-color: white;
+    top: 45px;
+    left: 19px;
     display: block;
+    text-align: left;
 }
 .widget_user_profile_avatar span{
     font-weight: bold;
@@ -68,20 +88,6 @@
 .widget_user_profile_select a.exit-profile {
     border-top: 1px solid #F1F4F4;
     padding: 20px 26px;
-}
-
-
-.widget_user_profile_select{
-    box-shadow: 1px 3px 11px rgba(0, 0, 0, 0.15);
-    border-radius: 5px;
-    width: 92%;
-    position: absolute;
-    z-index: 100;
-    background-color: white;
-    top: 45px;
-    left: 19px;
-    display: none;
-    text-align: left;
 }
 
 .widget_user_profile_select::after {
