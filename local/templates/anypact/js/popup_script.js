@@ -325,8 +325,7 @@ window.onload = function() {
         };
 
         // авторизация пользователя и вывод ошибок
-        document.getElementById('submit_button_aut_user').onclick = function () {
-        function getAuth() {
+        document.getElementById('submit_button_aut_user').onclick  = function(){
           let login = document.getElementById('user_aut_login').value
           let password  = document.getElementById('user_aut_pass').value          
           var res = getAutorisation(login, password).then(function(data) {
@@ -339,18 +338,6 @@ window.onload = function() {
                 }
             });
         };
-
-        // нажатие кнопки авторизации
-        let ButtongetAuth = document.getElementById('submit_button_aut_user')
-        ButtongetAuth.onclick = function () {
-            getAuth();
-        }
-
-        //авторизация при нажатии Enter
-        $(document).on('keydown', '#user_aut_pass', 'return', function () {
-            getAuth();
-            return false;
-        });
     }
 
     var button_send_contract = document.getElementById('send_contract');
