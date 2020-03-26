@@ -88,14 +88,14 @@
     border-top: 10px solid #fff;
 } */
 
-.triangle-with-shadow {
+/* .triangle-with-shadow {
     width: 40px;
     height: 40px;
-    display: none;
+    z-index: -1;
     position: relative;
     overflow: hidden;
     box-shadow: 1px 3px 11px rgba(0, 0, 0, 0.15);
-}
+} */
 
 .triangle-with-shadow:after {
     content: "";
