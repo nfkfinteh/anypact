@@ -61,12 +61,12 @@ $MessURL = '/list_message/';
 <script>
     //клик по профилю в шапке
     $(".widget_user_profile_name__title").click(function() {
-        return $(".widget_user_profile_select").slideToggle("fast") !1
+        return $(".widget_user_profile_select").slideToggle("fast"), !1
     })
     // $(document).mouseup(function (e) {
     //     var popup = $('.widget_user_profile_name__title');
     //     if (e.target!=popup[0]&&popup.has(e.target).length === 0){
-    //         $('.widget_user_profile_select')..slideDown("fast")
+    //         $('.widget_user_profile_select').style.display = 'none';
     //     }
     // });
 </script>
