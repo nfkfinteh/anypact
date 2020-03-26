@@ -62,7 +62,7 @@ $MessURL = '/list_message/';
     //клик по профилю в шапке
     $(document).ready(function() {
         $(".widget_user_profile_name__title").click(function() {
-            return $(".widget_user_profile_select").slideToggle("fast"), !1
+            return $(".widget_user_profile_select").slideToggle(750), !1
         })
     });
 </script>
