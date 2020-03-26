@@ -41,7 +41,7 @@ $MessURL = '/list_message/';
                 </a>
                 <?/*<span class="widget_user_profile_url_profile">Профиль</span>*/?>
 
-                <div class="widget_user_profile_select">
+                <div class="widget_user_profile_select" style="display: none;">
                     <ul>
                         <li><a href="/profile/">Редактировать профиль</a></li>
                         <li><a href="/profile/select_company/">Переключить профиль</a></li>
