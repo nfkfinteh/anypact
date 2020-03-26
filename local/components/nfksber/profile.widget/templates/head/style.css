@@ -89,13 +89,13 @@
 } */
 .triangle {
     right: 20px;
-    top: -22px;
+    top: -15px;
     position: absolute;
     z-index: -1;
-    transform: scaleX(2.5);
+    transform: scaleX(2);
     color: #FFF;
     text-shadow: 1px 0px 11px rgba(0, 0, 0, 0.15);
-    font-size: 20px;
+    font-size: 14px;
 }
 .login-information{
     display: inline-block;
