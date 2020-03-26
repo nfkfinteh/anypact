@@ -21,10 +21,6 @@ $(document).on('click', '.city-choose-btn-city', function(){
     window.location.reload();
 });
 
-//клик по профилю в шапке
-$('.widget_user_profile_name').click(function () {
-    $('.widget_user_profile_select').toggleClass('widget_user_profile_select-active');
-});
 
 $(document).on('submit', '.sity-submit', function(e){
     e.preventDefault();
