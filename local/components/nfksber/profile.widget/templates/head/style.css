@@ -38,7 +38,7 @@
     cursor: pointer;
 }
 
-.widget_user_profile_name:hover  .widget_user_profile_select{
+.widget_user_profile_name:focus  .widget_user_profile_select{
     display: block;
 }
 
