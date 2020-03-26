@@ -42,6 +42,7 @@
     border-radius: 5px;
     width: 92%;
     position: absolute;
+    z-index: 100;
     background-color: white;
     top: 55px;
     left: 19px;
@@ -64,7 +65,7 @@
 
 .widget_user_profile_select ul {
     position: relative;
-    z-index: 100;
+    z-index: 1000;
     padding: 10px;
     margin: 0;
 }
