@@ -60,14 +60,13 @@ $MessURL = '/list_message/';
 </div>
 <script>
     //клик по профилю в шапке
-    $('.widget_user_profile_name').click(function () {
-        document.getElementByClassname('widget_user_profile_name').style.display = 'block';
-    });
-
+    $(".widget_user_profile_name").click(function() {
+        return $(".widget_user_profile_select").slideToggle("fast"), !1
+    })
     $(document).mouseup(function (e) {
         var popup = $('.widget_user_profile_name');
         if (e.target!=popup[0]&&popup.has(e.target).length === 0){
-            document.getElementByClassname('widget_user_profile_name').style.display = 'none';
+            $('.widget_user_profile_select').style.display = 'none';
         }
     });
 </script>
