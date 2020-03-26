@@ -20,9 +20,9 @@ $(document).on('click', '.city-choose-btn-city', function(){
     set_cookie('CITY_ANYPACT', city);
     window.location.reload();
 });
+
 //клик по профилю в шапке
 $('.widget_user_profile_name').click(function () {
-    $(this).toggleClass('widget_user_profile_name-active');
     $('.widget_user_profile_select').toggleClass('widget_user_profile_select-active');
 });
 

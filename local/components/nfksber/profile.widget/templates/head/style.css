@@ -38,10 +38,7 @@
     cursor: pointer;
 }
 
-.widget_user_profile_name-active{
-    display: block;
-}
-.widget_user_profile_select-active{
+.widget_user_profile_select-active {
     display: block;
 }
 .widget_user_profile_avatar span{
