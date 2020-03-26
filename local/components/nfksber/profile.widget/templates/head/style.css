@@ -91,6 +91,7 @@
 .triangle-with-shadow {
     width: 40px;
     height: 40px;
+    z-index: -1;
     position: relative;
     overflow: hidden;
     box-shadow: 1px 3px 11px rgba(0, 0, 0, 0.15);
@@ -99,9 +100,10 @@
 .triangle-with-shadow:after {
     content: "";
     position: absolute;
+    z-index: -1;
     width: 20px;
     height: 20px;
-    background: #999;
+    background: #fff;
     transform: rotate(45deg);
     top: 75px;
     left: 25px;
