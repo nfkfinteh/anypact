@@ -78,7 +78,7 @@
     padding: 20px 26px;
 }
 
-.widget_user_profile_select::after {
+/* .widget_user_profile_select::after {
     content: '';
     position: absolute;
     right: 20px;
@@ -86,8 +86,17 @@
     transform: rotate(180deg);
     border: 10px solid transparent;
     border-top: 10px solid #fff;
+} */
+.triangle {
+    display: inline-block;
+    right: 20px;
+    top: -20px;
+    position: absolute;
+    transform: scaleX(2.5);
+    color: #FFF;
+    text-shadow: 1px 3px 11px rgba(0, 0, 0, 0.15);
+    font-size: 32px;
 }
-
 .login-information{
     display: inline-block;
     /* float: right; */
