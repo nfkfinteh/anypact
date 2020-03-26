@@ -64,8 +64,6 @@
 }
 
 .widget_user_profile_select ul {
-    position: relative;
-    z-index: 1000;
     padding: 10px;
     margin: 0;
 }
@@ -80,7 +78,7 @@
     padding: 20px 26px;
 }
 
-/* .widget_user_profile_select::after {
+.widget_user_profile_select::after {
     content: '';
     position: absolute;
     right: 20px;
@@ -88,33 +86,8 @@
     transform: rotate(180deg);
     border: 10px solid transparent;
     border-top: 10px solid #fff;
-} */
-
-.triangle-with-shadow {
-    content: "";
-    position: absolute;
-    z-index: 99;
-    width: 20px;
-    height: 20px;
-    background: #fff;
-    transform: rotate(45deg);
-    top: -7px;
-    right: 25px;
-    box-shadow: 1px 3px 11px rgba(0, 0, 0, 0.15);
 }
 
-/* .triangle-with-shadow:after {
-    content: "";
-    position: absolute;
-    z-index: -999;
-    width: 20px;
-    height: 20px;
-    background: #fff;
-    transform: rotate(45deg);
-    top: -7px;
-    right: 25px;
-    box-shadow: 1px 3px 11px rgba(0, 0, 0, 0.15);
-} */
 .login-information{
     display: inline-block;
     /* float: right; */
