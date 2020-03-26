@@ -347,7 +347,7 @@ window.onload = function() {
         }
 
         //авторизация при нажатии Enter
-        $(document).on('keydown', 'return', function () {
+        $(document).on('keydown', '#user_aut_pass', 'return', function () {
             getAuth();
             return false;
         });
