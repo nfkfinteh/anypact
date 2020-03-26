@@ -338,13 +338,6 @@ window.onload = function() {
                 }
             });
         };
-        //авторизация по enter
-        $("#user_aut_pass").keyup(function (event) {
-            if (event.keyCode == 13) {
-                $("#submit_button_aut_user").click();
-                $(this).val('');
-            }
-        });
     }
 
     var button_send_contract = document.getElementById('send_contract');
