@@ -88,15 +88,20 @@
     border-top: 10px solid #fff;
 } */
 
-/* .triangle-with-shadow {
-    width: 40px;
-    height: 40px;
-    z-index: -1;
-    position: relative;
-    overflow: hidden;
+.triangle-with-shadow {
+    content: "";
+    position: absolute;
+    z-index: 99;
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    transform: rotate(45deg);
+    top: -7px;
+    right: 25px;
     box-shadow: 1px 3px 11px rgba(0, 0, 0, 0.15);
-} */
-.triangle-with-shadow:after {
+}
+
+/* .triangle-with-shadow:after {
     content: "";
     position: absolute;
     z-index: -999;
@@ -107,7 +112,7 @@
     top: -7px;
     right: 25px;
     box-shadow: 1px 3px 11px rgba(0, 0, 0, 0.15);
-}
+} */
 .login-information{
     display: inline-block;
     /* float: right; */
