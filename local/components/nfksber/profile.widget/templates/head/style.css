@@ -38,10 +38,12 @@
     cursor: pointer;
 }
 
-.widget_user_profile_name:target .widget_user_profile_select {
+.widget_user_profile_name-active{
     display: block;
 }
-
+.widget_user_profile_select-active{
+    display: block;
+}
 .widget_user_profile_avatar span{
     font-weight: bold;
     font-size: 25px;
