@@ -88,14 +88,14 @@
     border-top: 10px solid #fff;
 } */
 .triangle {
-    display: inline-block;
     right: 20px;
     top: -20px;
     position: absolute;
+    z-index: -1;
     transform: scaleX(2.5);
     color: #FFF;
     text-shadow: 1px 3px 11px rgba(0, 0, 0, 0.15);
-    font-size: 32px;
+    font-size: 20px;
 }
 .login-information{
     display: inline-block;
