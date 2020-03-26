@@ -94,7 +94,7 @@
     z-index: -1;
     transform: scaleX(2);
     color: #FFF;
-    text-shadow: 1px 0px 11px rgba(0, 0, 0, 0.15);
+    text-shadow: 0px -5px 11px rgba(0, 0, 0, 0.15);
     font-size: 14px;
 }
 .login-information{
