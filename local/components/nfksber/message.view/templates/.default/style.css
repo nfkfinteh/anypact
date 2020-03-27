@@ -32,7 +32,7 @@
 }
 .message-container{
     margin-top: 25px;
-    max-width: 100%;
+    max-width: calc(100% - 99px);
 }
 .message-message{
     margin-top: 26px;
@@ -51,9 +51,11 @@
 }
 .message-text{
     padding: 20px;
+    max-width: 100%;
 }
 .message-text p{
     white-space: pre-wrap;
+    max-width: 100%;
 }
 .message-text__file{
     display: flex;
