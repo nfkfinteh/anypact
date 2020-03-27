@@ -55,6 +55,7 @@
 }
 .message-text p{
     white-space: pre-wrap;
+    word-wrap: break-word;
 }
 .message-text__file{
     display: flex;
