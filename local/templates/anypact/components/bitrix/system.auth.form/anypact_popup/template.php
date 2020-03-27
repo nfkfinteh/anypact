@@ -2,7 +2,7 @@
 CJSCore::Init();
 ?>
 <div class="regpopup_content_auform">
-        <form name="system_auth_form<?=$arResult["RND"]?>" method="post" target="_top" action="<?=$arResult["AUTH_URL"]?>">
+        <form name="system_auth_form<?=$arResult["RND"]?>" id="system_auth_form" method="post" target="_top" action="<?=$arResult["AUTH_URL"]?>">
             <?if($arResult["BACKURL"] <> ''):?>
                 <input type="hidden" name="backurl" value="<?=$arResult["BACKURL"]?>" />
             <?endif?>

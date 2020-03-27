@@ -338,6 +338,12 @@ window.onload = function() {
                 }
             });
         };
+        //авторизация по enter
+        document.getElementById('system_auth_form').addEventListener('keydown', function (e) {
+            if (e.keyCode == 13) {
+                this.submit();
+            }
+        })
     }
 
     var button_send_contract = document.getElementById('send_contract');
