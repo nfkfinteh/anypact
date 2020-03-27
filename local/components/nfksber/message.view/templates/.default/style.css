@@ -51,10 +51,11 @@
 }
 .message-text{
     padding: 20px;
-    max-width: 300px;
+    max-width: 100%;
 }
 .message-text p{
     white-space: normal;
+    word-wrap:
 }
 .message-text__file{
     display: flex;
