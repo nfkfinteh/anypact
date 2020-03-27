@@ -54,8 +54,7 @@
     max-width: 100%;
 }
 .message-text p{
-    white-space: normal;
-    word-wrap:
+    white-space: pre-wrap;
 }
 .message-text__file{
     display: flex;
