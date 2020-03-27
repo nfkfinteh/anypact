@@ -325,36 +325,25 @@ window.onload = function() {
         };
 
         // авторизация пользователя и вывод ошибок
-        // document.getElementById('submit_button_aut_user').onclick  = function(){
-        //   let login = document.getElementById('user_aut_login').value
-        //   let password  = document.getElementById('user_aut_pass').value          
-        //   var res = getAutorisation(login, password).then(function(data) {
-        //         $result = JSON.parse(data);
-        //         if($result['TYPE']=='ERROR'){
-        //             document.getElementById('message_error_aut').innerHTML = '&#8226; '+$result['VALUE'];
-        //         }
-        //         if($result['TYPE']=='SUCCES'){
-        //             location.reload();
-        //         }
-        //     });
-        // };
-        //авторизация по enter
-        function handleForm(event) {
-            let login = document.getElementById('user_aut_login').value
-            let password = document.getElementById('user_aut_pass').value
-            var res = getAutorisation(login, password).then(function (data) {
+        document.getElementById('submit_button_aut_user').onclick  = function(){
+          let login = document.getElementById('user_aut_login').value
+          let password  = document.getElementById('user_aut_pass').value          
+          var res = getAutorisation(login, password).then(function(data) {
                 $result = JSON.parse(data);
-                if ($result['TYPE'] == 'ERROR') {
-                    document.getElementById('message_error_aut').innerHTML = '&#8226; ' + $result['VALUE'];
+                if($result['TYPE']=='ERROR'){
+                    document.getElementById('message_error_aut').innerHTML = '&#8226; '+$result['VALUE'];
                 }
-                if ($result['TYPE'] == 'SUCCES') {
+                if($result['TYPE']=='SUCCES'){
                     location.reload();
                 }
             });
-        }
-
-        $('#system_auth_form').on('submit', handleForm)
-        $('#system_auth_form #submit_button_aut_user').on('click', handleForm)
+        };
+        //авторизация по enter
+        document.getElementById('system_auth_form').addEventListener('keydown', function (e) {
+            if (e.keyCode == 13) {
+                this.submit();
+            }
+        })
     }
 
     var button_send_contract = document.getElementById('send_contract');

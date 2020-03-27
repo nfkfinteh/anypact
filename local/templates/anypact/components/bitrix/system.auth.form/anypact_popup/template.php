@@ -2,7 +2,7 @@
 CJSCore::Init();
 ?>
 <div class="regpopup_content_auform">
-        <form name="system_auth_form<?=$arResult["RND"]?>" id="system_auth_form" method="post" target="_top" action="<?=$arResult["AUTH_URL"]?>">
+        <form name="system_auth_form<?=$arResult["RND"]?>" method="post" target="_top" action="<?=$arResult["AUTH_URL"]?>">
             <?if($arResult["BACKURL"] <> ''):?>
                 <input type="hidden" name="backurl" value="<?=$arResult["BACKURL"]?>" />
             <?endif?>
@@ -31,8 +31,8 @@ CJSCore::Init();
                     <label for="USER_REMEMBER_frm" title="<?=GetMessage("AUTH_REMEMBER_ME")?>"><?echo GetMessage("AUTH_REMEMBER_SHORT")?></label>
             <?endif?>
                             <div id="message_error_aut"></div>
-                    <!--<input type="submit" name="Login" class="regpopup_content_form_submit" value="<?=GetMessage("AUTH_LOGIN_BUTTON")?>" /> -->
-                    <a href="#" class="regpopup_content_form_submit" id="submit_button_aut_user"><?=GetMessage("AUTH_LOGIN_BUTTON")?></a>
+                    <input type="submit" name="Login" class="regpopup_content_form_submit" value="<?=GetMessage("AUTH_LOGIN_BUTTON")?>" />
+                    <!-- <a href="#" class="regpopup_content_form_submit" id="submit_button_aut_user"><?=GetMessage("AUTH_LOGIN_BUTTON")?></a> -->
         </form>
         <p class="text-center">Нет аккаунта? <a href="#" id="regpopup_btn_reg">Зарегистриуйтесь</a></p>
 
