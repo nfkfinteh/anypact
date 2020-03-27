@@ -53,6 +53,7 @@
 .message-text{
     padding: 20px;
     max-width: 100%;
+    word-wrap: break-word;
 }
 .message-text p{
     white-space: normal;
