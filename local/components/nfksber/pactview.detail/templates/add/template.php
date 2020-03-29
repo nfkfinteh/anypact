@@ -1,3 +1,10 @@
+<?
+if(!empty($arResult['FORM_SDELKA']['adCity'])){
+    $city = $arResult['FORM_SDELKA']['adCity'];
+}elseif(!empty($arParams['LOCATION'])){
+    $city = $arParams['LOCATION'];
+}
+?>
 <h1>Новое предложение</h1>
 <div class="tender cardPact">
     <form id="save_ad">
@@ -5,7 +12,7 @@
             <div class="col-lg-8 col-md-8 col-sm-8">
                 <div class="cardPact__item">
                     <div>
-                        <input type="text" class="editbox" id="ad_name" value="" name="ad_name">
+                        <input type="text" class="editbox" id="ad_name" value="<?=$arResult['FORM_SDELKA']['adName']?>" name="ad_name">
                     </div>
                     <div class="cardPact__title">
                         <h3>Название</h3>
@@ -59,7 +66,7 @@
                 </div>
                 <div class="cardPact__item">
                     <div class="cardPact-EditText-Descript">
-                        <textarea class="editbox" id="ad_descript"></textarea>
+                        <textarea class="editbox" id="ad_descript"><?=$arResult['FORM_SDELKA']['adDescript']?></textarea>
                     </div>
                     <div class="cardPact__title">
                         <h3>Описание</h3>
@@ -68,7 +75,7 @@
                 </div>
                 <div class="cardPact__item">
                     <div class="cardPact-EditText-Сonditions">
-                        <textarea class="editbox" id="ad_condition" data-code="<?=$arResult['PROPERTY']['CONDITIONS_PACT']['CODE']?>"></textarea>
+                        <textarea class="editbox" id="ad_condition" data-code="<?=$arResult['PROPERTY']['CONDITIONS_PACT']['CODE']?>"><?=$arResult['FORM_SDELKA']['adCondition']?></textarea>
                     </div>
                     <div class="cardPact__title">
                         <h3>Условия</h3>
@@ -80,7 +87,7 @@
                         <select id="LOCATION_CITY" name="LOCATION_CITY" class="selectbox-select select-bottom js-location-city" placeholder="Выберите город">
                             <option value="">Выбор города</option>
                             <? foreach($arResult['LIST_CITY'] as $item):?>
-                                <option value="<?=$item?>" <?if($arParams['LOCATION'] == $item):?>selected<?endif?>>
+                                <option value="<?=$item?>" <?if($city == $item):?>selected<?endif?>>
                                     <?=$item?>
                                 </option>
                             <? endforeach?>
@@ -95,7 +102,7 @@
                 <div class="wrap-map_adress">
                     <div id="header" class="search-map_input">
                         <input type="text" id="suggest" class="input-search_map" placeholder="Введите адрес">
-                        <input type="hidden" id="COORDINATES_AD" name="COORDINATES_AD" value="">
+                        <input type="hidden" id="COORDINATES_AD" name="COORDINATES_AD" value="<?=$arResult['FORM_SDELKA']['adCoordinates']?>">
                         <button type="submit" id="check-button_map" class="btn btn-nfk btn-search_map">Поиск</button>
                     </div>
                     <div class="cardPact__title">
@@ -116,7 +123,7 @@
 
                 <div class="cardPact__item">
                     <div class="scardPact-rightPanel__sum">
-                        <input type="text" class="editbox_sum js-number" id="cardPact-EditText-Summ" data-code="<?=$arResult['PROPERTY']['SUMM_PACT']['CODE']?>">
+                        <input type="text" class="editbox_sum js-number" id="cardPact-EditText-Summ" data-code="<?=$arResult['PROPERTY']['SUMM_PACT']['CODE']?>" value="<?=$arResult['FORM_SDELKA']['adSum']?>">
                         <div style="float:right;">руб.</div>
                     </div>
                     <div class="cardPact__title">
@@ -126,15 +133,17 @@
                 </div>
                 <div class="cardPact__item">
                     <div class="selectbox">
-                        <div id="param_selected_category" class="view_text" data="close">
+                        <div id="param_selected_category" class="view_text" data="close" data-id="<?=$arResult['FORM_SDELKA']['adSection']?>">
                             Выбор категории
                             <span class="glyphicon glyphicon-chevron-down"></span>
                         </div>
                         <div class="select_category">
                             <ul id="choice_category">
-                                <? foreach($arResult["INFOBLOCK_SECTION_LIST"] as $item){
-                                    ?><li style="margin-left:<?=$item["DEPTH_LEVEL"]?>0px;"><a href="#" data-id="<?=$item['ID'];?>"><?=$item['NAME'];?></a></li><?
-                                }?>
+                                <? foreach($arResult["INFOBLOCK_SECTION_LIST"] as $item){?>
+                                <li style="margin-left:<?=$item["DEPTH_LEVEL"]?>0px;">
+                                    <a href="#" data-id="<?=$item['ID'];?>"><?=$item['NAME'];?></a>
+                                </li>
+                                <?}?>
                             </ul>
                         </div>
                     </div>
@@ -142,12 +151,12 @@
                         <h3>Категория</h3>
                     </div>
                     <span>(Выберите подходящую категорию)</span>
-                    <input name="CATEGORY" value="" class="param_selected_category__input" style="width: 0; height: 0;">
+                    <input name="CATEGORY" value="<?=$arResult['FORM_SDELKA']['adSection']?>" class="param_selected_category__input" style="width: 0; height: 0;">
                 </div>
 
                 <div class="cardPact__item">
                     <div class="selectbox">
-                        <div id="param_selected_activ_date" class="view_text">Активно до: <input type="text" id="param_selected_activ_date_input" name="ACTIVE_DATE" value="" disabled ><span class="glyphicon glyphicon-calendar"></span></div>
+                        <div id="param_selected_activ_date" class="view_text">Активно до: <input type="text" id="param_selected_activ_date_input" name="ACTIVE_DATE" value="<?=$arResult['FORM_SDELKA']['date']?>" disabled ><span class="glyphicon glyphicon-calendar"></span></div>
                     </div>
                     <div class="cardPact__title">
                         <h3>Дата активности объявления</h3>
@@ -155,7 +164,12 @@
                     <span>(По умолчанию 10 дней)</span>
                 </div>
                 <div class="cardPact__item">
-                    <button class="btn btn-nfk" id="add_dogovor" data-url="/my_pacts/add_my_dogovor/?EDIT=ADD">Добавить договор</button>
+                    <?if(empty($arResult['DOGOVOR'])):?>
+                        <button class="btn btn-nfk" id="add_dogovor" data-url="/my_pacts/add_new_dogovor/?ADD=ADD">Добавить договор</button>
+                    <?else:?>
+                        <button class="btn btn-nfk" id="add_dogovor" data-url="/my_pacts/add_new_dogovor/?ADD=ADD">Заменить договр</button>
+                        <input type="hidden" id="DOGOVOR_KEY" value="<?=$arResult['DOGOVOR_KEY_CASHE']?>">
+                    <?endif?>
                 </div>
             </div>
         </div>
@@ -164,7 +178,7 @@
 <?
 $jsParams = [
     'USER_ID'=> $arResult['USER_ID'],
-    'CITY' => $arParams['LOCATION']
+    'CITY' => $city
 ];
 ?>
 <script type="text/javascript">

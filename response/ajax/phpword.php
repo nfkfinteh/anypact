@@ -62,7 +62,7 @@ if( isset( $_GET['uploadfiles'] ) ){
         $temp_name_file = $DOCX->getExtension($file['name']);
 
         $temp_name_file_full = CUtil::translit($DOCX->getFileName($file['name']), "ru" , $paramsCode).'.'.$temp_name_file;
-        $temp_name_file = 'tempfile'.'_'.$USER->GetLogin().'_'. $temp_name_file_full;
+        $temp_name_file = 'tempfile'.'_'.$USER->GetID().'_'. $temp_name_file_full;
 
         if(move_uploaded_file( $file['tmp_name'], $uploaddir . basename($temp_name_file) ) ){
             $UrlDocFile[] = realpath( $uploaddir . $temp_name_file );

@@ -26,9 +26,12 @@ $APPLICATION->SetTitle("AnyPact");
                     "list" => "",
                     "detail" => "#ID#"
             ),
-            "LOCATION" => $getGeo['cityName']
+            "LOCATION" => $getGeo['cityName'],
+            "FORM_SDELKA"=>$_SESSION['FORM_SDELKA'],
+            "DOGOVOR"=>$_GET['dogovor']
         )
     );
+    unset($_SESSION['FORM_SDELKA']);
     ?> 
 
     <!--//-->

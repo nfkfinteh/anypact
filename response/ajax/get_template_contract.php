@@ -18,14 +18,20 @@ if(CModule::IncludeModule("iblock"))
         $arr[] = $ob;
 
     }
-
 }
 if(!empty($arr)){
     foreach ($arr as $item) {
         ?>        
         <a class="navbar-brand" href="<?=$returnURL?>" data-id="0" style="width: 100%;">← Назад</a>
-        <a href="/my_pacts/add_my_dogovor/?EDIT=ADD&ID_TEMPLATE=<?=$item["ID"]?>&ELEMENT_ID=<?=$idSdelka?>" style="width:100%; display: inline-block;">
-            <img src="<?=SITE_TEMPLATE_PATH?>/img/document_contract.png" /><?=$item["NAME"]?></a>
+        <?if($_POST["type"]=='new_dogovor'):?>
+            <a href="/my_pacts/add_new_dogovor/?ADD=ADD&ID_TEMPLATE=<?=$item["ID"]?>" style="width:100%; display: inline-block;">
+                <img src="<?=SITE_TEMPLATE_PATH?>/img/document_contract.png" /><?=$item["NAME"]?>
+            </a>
+        <?else:?>
+            <a href="/my_pacts/add_my_dogovor/?EDIT=ADD&ID_TEMPLATE=<?=$item["ID"]?>&ELEMENT_ID=<?=$idSdelka?>" style="width:100%; display: inline-block;">
+                <img src="<?=SITE_TEMPLATE_PATH?>/img/document_contract.png" /><?=$item["NAME"]?>
+            </a>
+        <?endif?>
         <?
     }
 }else { ?>

@@ -23,6 +23,11 @@ $(document).ready(function() {
         return false;
     });
 
+    if($('#param_selected_category').attr('data-id')){
+        let activeSection = $('#choice_category li a[data-id='+$('#param_selected_category').attr('data-id')+']');
+        if(activeSection) activeSection.click();
+    }
+
     // открытие списка категорий
     $('#param_selected_category').on('click', function() {
         let status = $(this).attr("data");
@@ -114,7 +119,8 @@ $(document).ready(function() {
             date : $('#param_selected_activ_date_input').val(),
             adSection : $('#param_selected_category').attr('data-id'),
             adCity : $('#LOCATION_CITY').val(),
-            adCoordinates : $('#COORDINATES_AD').val()
+            adCoordinates : $('#COORDINATES_AD').val(),
+            DOGOVOR_KEY : $('#DOGOVOR_KEY').val(),
         };
         return arResult;
     }
@@ -166,6 +172,7 @@ $(document).ready(function() {
                 ACTIVE : "N",
                 DETAIL_TEXT : {'TEXT': arFormData.adDescript, 'TYPE': 'html'},
                 DATE_ACTIVE_TO : arFormData.date,
+                DOGOVOR_KEY : arFormData.DOGOVOR_KEY
             });
 
             var formData = new FormData();
@@ -199,6 +206,7 @@ $(document).ready(function() {
         if(!city){
             city = 'Москва';
         }
+        let startCoordinates = $('#COORDINATES_AD').val();
 
         // Подключаем поисковые подсказки к полю ввода.
         var suggestView = new ymaps.SuggestView('suggest', {
@@ -216,13 +224,25 @@ $(document).ready(function() {
             results: 1
         }).then(function (res) {
             var firstGeoObject = res.geoObjects.get(0);
-            var coords = firstGeoObject.geometry.getCoordinates();
+            if(startCoordinates.length>0){
+                coords = startCoordinates.split(',');
+            }
+            else{
+                coords = firstGeoObject.geometry.getCoordinates();
+            }
+
             var firstGeoObjectGlobal;
             map = new ymaps.Map('map', {
                 center: coords,
                 zoom: 12,
                 controls: ['zoomControl']
             });
+
+            if(startCoordinates.length>0){
+                placemark = createPlacemark(coords);
+                map.geoObjects.add(placemark);
+                getAddress(coords);
+            }
 
             // событие клика на крату
             map.events.add('click', function (e) {
