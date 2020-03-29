@@ -111,6 +111,11 @@ if(in_array( 1, $arGroups) || in_array( 6, $arGroups)){
             if ($cache->initCache(600, $cacheName, $cacheInitDir)){
                 $arLoadProductArray = $cache->getVars();
                 $arLoadProductArray['NAME'] = $data['NAME'];
+                if(!empty($arLoadProductArray['PROPERTY_VALUES']['DOGOVOR_IMG'])){
+                    foreach ($arLoadProductArray['PROPERTY_VALUES']['DOGOVOR_IMG'] as &$img){
+                        $img = CFile::MakeFileArray($img);
+                    }
+                }
                 if($DOGOVOR_ID = $elDogovor->Add($arLoadProductArray)) {
                     $prop = array(
                         "ID_DOGOVORA"=>$DOGOVOR_ID

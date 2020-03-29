@@ -264,6 +264,7 @@ class CDemoSqr extends CBitrixComponent
         }
 
         BXClearCache(false, "/dogovor_create_sdelka/");//подчищаем кеш с временными сохраненными догворми
+        deleteTmpFile('/upload/tmp/dogovor_create_sdelka_img/', 1);//удаление временных картинок для договоров
         $this->includeComponentTemplate();
         
         //return $this->arResult;
