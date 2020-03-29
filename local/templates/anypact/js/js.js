@@ -21,6 +21,7 @@ $(document).on('click', '.city-choose-btn-city', function(){
     window.location.reload();
 });
 
+
 $(document).on('submit', '.sity-submit', function(e){
     e.preventDefault();
     let city = $(this).find('.sity-submit_input').val();

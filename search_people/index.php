@@ -1,10 +1,10 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$APPLICATION->SetTitle("Поиск людей");
+$APPLICATION->SetTitle("Поиск контрагентов");
 ?>
 <!--Поиск людей-->
     <div class="tender" style="margin-bottom: 100px;">
-        <h1 class="mb-4">Поиск людей</h1>
+        <h1 class="mb-4">Поиск контрагентов</h1>
         <div class="row">
             <div class="col-lg-3 col-md-4 col-sm-12">
                 <div class="filter-tender people-s-form">

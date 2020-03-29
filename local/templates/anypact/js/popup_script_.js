@@ -278,6 +278,19 @@ window.onload = function() {
                 }
             });
         };
+
+        // var password = document.getElementById('user_aut_pass');
+
+        // password.addEventListener('keydown', function (e) {
+
+        //     var subm = document.getElementById('submit_button_aut_user');
+
+        //     if (e.keyCode == 13) {
+        //         subm.click();
+        //         console.log('succ');
+        //     }
+
+        // })
     }
 
     var button_send_contract = document.getElementById('send_contract');

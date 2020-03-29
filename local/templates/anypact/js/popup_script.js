@@ -338,6 +338,7 @@ window.onload = function() {
                 }
             });
         };
+        
     }
 
     var button_send_contract = document.getElementById('send_contract');

@@ -35,6 +35,7 @@
     max-width: calc(100% - 99px);
 }
 .message-message{
+    max-width: 100%;
     margin-top: 26px;
     display: inline-block;
 }
@@ -51,9 +52,12 @@
 }
 .message-text{
     padding: 20px;
+    max-width: 100%;
+    word-wrap: break-word;
 }
 .message-text p{
-    white-space: pre;
+    white-space: normal;
+    max-width: 100%;
 }
 .message-text__file{
     display: flex;

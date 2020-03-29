@@ -44,7 +44,7 @@ global $USER;
         }
     </style>
 <!--Форма поиска-->
-<h2>Поиск людей и сделок</h2>
+<h2>Поиск людей, компаний и сделок</h2>
 <?// компонент поисковой строки
 $APPLICATION->IncludeComponent(
     "bitrix:search.form",
