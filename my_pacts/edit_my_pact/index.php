@@ -13,6 +13,10 @@ $APPLICATION->SetTitle("AnyPact");
         'EDIT'  => 'edit',
         'ADD'   => 'add'
     );
+
+    if(!empty($_SESSION['FORM_SDELKA']) && !$_GET['dogovor']){
+        unset($_SESSION['FORM_SDELKA']);
+    }
  
     $APPLICATION->IncludeComponent("nfksber:pactview.detail", 
     $arTemplate[$_GET['ACTION']], 
