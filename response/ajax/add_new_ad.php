@@ -76,6 +76,7 @@ if(in_array( 1, $arGroups) || in_array( 6, $arGroups)){
     $data['PROPERTY_VALUES']['ID_COMPANY'] = $arUser['UF_CUR_COMPANY'];
 
     $el = new CIBlockElement;
+    $elDogovor = new CIBlockElement;
 
     if(empty($data['DATE_ACTIVE_TO'])){
         $dateFormat = time()+(86400*10);
@@ -101,11 +102,50 @@ if(in_array( 1, $arGroups) || in_array( 6, $arGroups)){
     );
 
     if($PRODUCT_ID = $el->Add($arLoadProductArray)){
-        echo json_encode([ 'VALUE'=>$PRODUCT_ID, 'TYPE'=> 'SUCCES']);
+
+        if(!empty($data['DOGOVOR_KEY'])){
+            $error_message = '';
+            $cacheName = $data['DOGOVOR_KEY'];
+            $cache = \Bitrix\Main\Data\Cache::createInstance();
+            $cacheInitDir = 'dogovor_create_sdelka';
+            if ($cache->initCache(600, $cacheName, $cacheInitDir)){
+                $arLoadProductArray = $cache->getVars();
+                $arLoadProductArray['NAME'] = $data['NAME'];
+                if($DOGOVOR_ID = $elDogovor->Add($arLoadProductArray)) {
+                    $prop = array(
+                        "ID_DOGOVORA"=>$DOGOVOR_ID
+                    );
+
+                    CIBlockElement::SetPropertyValuesEx($PRODUCT_ID, '3', $prop);
+                }
+                else{
+                    $error_message = 'Ошибка сохранения договора. '.$elDogovor->LAST_ERROR;
+                }
+            }
+            else{
+                $error_message = 'Ошибка сохранения договора. Договор не найден повторите попытку';
+            }
+
+        }
+
+        $arResult = [ 'VALUE'=>$PRODUCT_ID, 'TYPE'=> 'SUCCES'];
+        if(!empty($error_message)){
+            $arResult['DOGOVOR'] = [
+                'TYPE'=>'ERROR',
+                'VALUE'=>$error_message
+            ];
+        }
+        else{
+            $arResult['DOGOVOR'] = [
+                'TYPE'=>'SUCCESS',
+                'VALUE'=>''
+            ];
+        }
+
+        die(json_encode($arResult));
     }
     else{
-        echo json_encode([ 'VALUE'=>$el->LAST_ERROR, 'TYPE'=> 'ERROR']);
-        die();
+        die(json_encode([ 'VALUE'=>$el->LAST_ERROR, 'TYPE'=> 'ERROR']));
     }
 }
 else{

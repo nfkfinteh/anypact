@@ -15,8 +15,18 @@ $(document).ready(function() {
         $('.select_category').css('display', 'none');
         $('#param_selected_category').html(selected_item_text + '<span class="glyphicon glyphicon-chevron-down"></span>');
         $('#param_selected_category').attr('data-id', selected_item_id);
+
+        //валидация формы
+        $('.param_selected_category__input').val(selected_item_id);
+        $('.param_selected_category__input').removeClass('validate-error');
+        if(selected_item_id) $('.param_selected_category__input').parents('.cardPact__item').eq(0).find('.error-message').remove();
         return false;
     });
+
+    if($('#param_selected_category').attr('data-id')){
+        let activeSection = $('#choice_category li a[data-id='+$('#param_selected_category').attr('data-id')+']');
+        if(activeSection) activeSection.click();
+    }
 
     // открытие списка категорий
     $('#param_selected_category').on('click', function() {
@@ -100,9 +110,23 @@ $(document).ready(function() {
         displayButton();
     });
 
-    $('#save_ad').on('click', function() {
+    function getFormData(){
+        let arResult = {
+            adName : $('#ad_name').val(),
+            adDescript : $('#ad_descript').val(),
+            adCondition : $('#ad_condition').val(),
+            adSum : $('#cardPact-EditText-Summ').val(),
+            date : $('#param_selected_activ_date_input').val(),
+            adSection : $('#param_selected_category').attr('data-id'),
+            adCity : $('#LOCATION_CITY').val(),
+            adCoordinates : $('#COORDINATES_AD').val(),
+            DOGOVOR_KEY : $('#DOGOVOR_KEY').val(),
+        };
+        return arResult;
+    }
 
-        preload('show');
+    $(document).on('submit', '#save_ad', function(e) {
+        e.preventDefault();
         var res = getURLData().then(function(data) {
             $result = JSON.parse(data);
             if($result['TYPE']=='ERROR'){
@@ -117,100 +141,52 @@ $(document).ready(function() {
                 }, 300);
 
             }
-
                 /*let box = document.getElementById('inner')
                 box.innerHTML = data*/
         });
 
 
-        //var text = ;
         async function getURLData() {
-            var url = '/response/ajax/add_new_ad.php'
-            let adName = document.getElementById('ad_name').textContent;
-            let adDescript = document.getElementById('ad_descript').innerText;
-            let adCondition = document.getElementById('ad_condition').innerText;
-            let adSum = document.getElementById('cardPact-EditText-Summ').textContent.trim();
-            let date = document.getElementById('param_selected_activ_date_input').value;
-            let adSection = $('#param_selected_category').attr('data-id');
-            let adCity = $('#LOCATION_CITY').val();
-            let adCoordinates = $('#COORDINATES_AD').val();
-            let prop = {};
+            let arFormData = getFormData(),
+                url = '/response/ajax/add_new_ad.php',
+                prop = {};
 
             preload('show');
 
-            prop['LOCATION_CITY'] = adCity;
-            prop['COORDINATES_AD'] = adCoordinates;
+            prop['LOCATION_CITY'] = arFormData.adCity;
+            prop['COORDINATES_AD'] = arFormData.adCoordinates;
+            prop['CONDITIONS_PACT'] = arFormData.adCondition;
 
-            //html контент
-            let arAdDescript = {};
-            let aradCondition = {};
+            if(arFormData.adSum.length<=0 || isNaN(arFormData.adSum)) {
+                $("#cardPact-EditText-Summ").val(0);
+                arFormData.adSum = 0;
+            }
+            prop['SUMM_PACT'] = arFormData.adSum;
 
-            //поля
-            if($.trim(adName).length != 0){
-                adName = $.trim(adName);
-            }
-            else{
-                preload('hide');
-                showResult('#popup-error','Ошибка сохранения', 'Название обязательно');
-                return;
-            }
+            var mainData = JSON.stringify({
+                MODIFIED_BY  : adData['USER_ID'],
+                IBLOCK_SECTION_ID : arFormData.adSection,
+                IBLOCK_ID : 3,
+                PROPERTY_VALUES : prop,
+                NAME : arFormData.adName,
+                ACTIVE : "N",
+                DETAIL_TEXT : {'TEXT': arFormData.adDescript, 'TYPE': 'html'},
+                DATE_ACTIVE_TO : arFormData.date,
+                DOGOVOR_KEY : arFormData.DOGOVOR_KEY
+            });
 
-            if(adSection === undefined){
-                preload('hide');
-                showResult('#popup-error','Ошибка сохранения', 'Раздел обязателен');
-                return;
-            }
+            var formData = new FormData();
 
-            if(adCity.length == 0){
-                preload('hide');
-                showResult('#popup-error','Ошибка сохранения', 'Город обязателен');
-                return;
-            }
+            formData.append( 'main', mainData );
 
-            if($.trim(adDescript).length != 0){
-                adDescript = $.trim(adDescript);
-                arAdDescript = {'TEXT': adDescript, 'TYPE': 'html'};
-            }
-
-            //свойства
-            if($.trim(adCondition).length != 0){
-                adCondition = $.trim(adCondition);
-                aradCondition = {'TEXT': adCondition, 'TYPE': 'html'};
-                prop['CONDITIONS_PACT'] = aradCondition;
-            }
-
-            if(adSum.length<=0 || isNaN(adSum)) {
-                $("#cardPact-EditText-Summ").text(0);
-                adSum = 0;
-            }
-            if(adSum.length != 0) {
-                prop['SUMM_PACT'] = $.trim(adSum);
-            }
             // ничего не делаем если files пустой
             if( typeof arFiles != 'undefined' ){
-
-                var mainData = JSON.stringify({
-                    MODIFIED_BY  : adData['USER_ID'],
-                    IBLOCK_SECTION_ID : adSection,
-                    IBLOCK_ID : 3,
-                    PROPERTY_VALUES : prop,
-                    NAME : adName,
-                    ACTIVE : "N",
-                    DETAIL_TEXT : arAdDescript,
-                    DATE_ACTIVE_TO : date,
-                });
-
-                var formData = new FormData();
-
-                formData.append( 'main', mainData );
-
                 // заполняем объект данных файлами в подходящем для отправки формате
                 for (var id in arFiles) {
                     formData.append(id, arFiles[id]);
                 }
 
             }
-
 
             const response = await fetch(url, {
                 method: 'post',
@@ -230,6 +206,7 @@ $(document).ready(function() {
         if(!city){
             city = 'Москва';
         }
+        let startCoordinates = $('#COORDINATES_AD').val();
 
         // Подключаем поисковые подсказки к полю ввода.
         var suggestView = new ymaps.SuggestView('suggest', {
@@ -247,13 +224,25 @@ $(document).ready(function() {
             results: 1
         }).then(function (res) {
             var firstGeoObject = res.geoObjects.get(0);
-            var coords = firstGeoObject.geometry.getCoordinates();
+            if(startCoordinates.length>0){
+                coords = startCoordinates.split(',');
+            }
+            else{
+                coords = firstGeoObject.geometry.getCoordinates();
+            }
+
             var firstGeoObjectGlobal;
             map = new ymaps.Map('map', {
                 center: coords,
                 zoom: 12,
                 controls: ['zoomControl']
             });
+
+            if(startCoordinates.length>0){
+                placemark = createPlacemark(coords);
+                map.geoObjects.add(placemark);
+                getAddress(coords);
+            }
 
             // событие клика на крату
             map.events.add('click', function (e) {
@@ -471,4 +460,64 @@ $(document).ready(function() {
         $('#check-button_map').show();
         $('.input-search_map').css('width', '70%');
     }
+
+    $(document).on('click', '#add_dogovor', function(e){
+        e.preventDefault();
+        let url = $(this).attr('data-url'),
+            arFormData = getFormData(),
+            form = '';
+
+        $.each(arFormData, function (name, val) {
+            if(val!=undefined){
+                form +=name+'='+val+'&';
+            }
+        });
+        form = encodeURIComponent(form);
+        url += '&form=' + form;
+        location.href = url;
+    });
+
+    //валидация для простых полей формы
+    $("#save_ad").validate({
+        rules: {
+            ad_name: {
+                required: true
+            },
+            LOCATION_CITY: {
+                required: true
+            },
+            CATEGORY:{
+                required: true
+            }
+        },
+        messages: {
+            ad_name: 'Поле обязательно для заполнения',
+            LOCATION_CITY: 'Поле обязательно для заполнения',
+            CATEGORY: 'Поле обязательно для заполнения',
+        },
+        ignore: ".ignore-validate, :hidden",
+        onsubmit: true,
+        showErrors: function(errorMap, errorList) {
+            let that = this.lastActive
+
+            if(errorList.length>0){
+                for (let i = 0; i < errorList.length; i++){
+                    let messaage = errorList[i].message;
+                    if(!$(errorList[i].element).hasClass('validate-error')){
+                        $(errorList[i].element).addClass('validate-error');
+                        if($(errorList[i].element).attr('name') == 'CATEGORY'){
+                            $(errorList[i].element).parents('.cardPact__item').eq(0).find('.cardPact__title').before('<span class="error-message">'+messaage+'</span>');
+                        }
+                        else{
+                            $(errorList[i].element).parents('.cardPact__item').eq(0).find('h3').after('<span class="error-message">'+messaage+'</span>');
+                        }
+                    }
+                }
+            }
+            else{
+                $(that).removeClass('validate-error');
+                $(that).parents('.cardPact__item').eq(0).find('.error-message').remove();
+            }
+        }
+    });
 });

@@ -20,7 +20,9 @@ class CDemoSqr extends CBitrixComponent
             "IBLOCK_ID" => intval($arParams["IBLOCK_ID"]),
             "SECTION_ID" => intval($arParams["SECTION_ID"]),
             "ELEMENT_ID" => intval($arParams["ELEMENT_ID"]),
-            "LOCATION" => htmlspecialcharsEx($arParams["LOCATION"])
+            "LOCATION" => htmlspecialcharsEx($arParams["LOCATION"]),
+            "FORM_SDELKA"=>$arParams["FORM_SDELKA"],
+            "DOGOVOR"=>$arParams["DOGOVOR"]
         );
         return $result;
     }
@@ -201,8 +203,8 @@ class CDemoSqr extends CBitrixComponent
 
     public function executeComponent()
     {
-        if($this->startResultCache())
-        {
+        /*if($this->startResultCache())
+        {*/
             $this->arResult = array_merge($this->arResult, $this->paramsUser($this->arParams));
             $this->arResult["USER_ID"] = CUser::GetID();
             $this->arResult["USER_LOGIN"] =CUser::GetLogin();            
@@ -211,17 +213,35 @@ class CDemoSqr extends CBitrixComponent
             $this->arResult["INFOBLOCK_SECTION_LIST"] = $this->getTreeCategory($this->arResult["INFOBLOCK_ID"]);
             $this->arResult['DOGOVOR']['CNT'] =  $this->getCountDogovor($this->arResult["USER_ID"]);
             $this->arResult['LIST_CITY'] = $this->getListCity();
-            
-
             $this->arResult["CONTRACT_HOLDER"] = $this->getContractHolder();
 
-            $GLOBALS['CACHE_MANAGER']->StartTagCache("/".SITE_ID.$this->GetRelativePath());
+            //данные заполненния формы и договор
+            $this->arResult['FORM_SDELKA'] = $this->arParams['FORM_SDELKA'];
+            if($this->arParams['DOGOVOR']){
+                $cacheName = $this->arParams['DOGOVOR'];
+            }
+            $cache = \Bitrix\Main\Data\Cache::createInstance();
+            $cacheInitDir = 'dogovor_create_sdelka';
+
+            if ($cache->initCache(600, $cacheName, $cacheInitDir)){
+                $this->arResult['DOGOVOR'] = $cache->getVars();
+            }
+            else{
+                $this->arResult['DOGOVOR'] = '';
+            }
+
+            if(!empty($this->arResult['DOGOVOR'])){
+                $this->arResult['DOGOVOR_KEY_CASHE'] = $cacheName;
+            }
+
+
+            /*$GLOBALS['CACHE_MANAGER']->StartTagCache("/".SITE_ID.$this->GetRelativePath());
             $GLOBALS['CACHE_MANAGER']->RegisterTag('iblock_id_4');//Кеш будет зависить от изменений инфоблока 9
-            $GLOBALS['CACHE_MANAGER']->EndTagCache();
+            $GLOBALS['CACHE_MANAGER']->EndTagCache();*/
             $this->includeComponentTemplate();
-        }
+        //}
         
-        return $this->arResult;
+        //return $this->arResult;
     }
 };
 

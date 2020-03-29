@@ -10,10 +10,6 @@
     position: relative;
 }
 
-.cardPact .cardPact-box.cardPact-box_img{
-    margin-top: 60px;
-}
-
 .cardPact .cardPact-box-BoxMainImg {
     width: 150px;
     height: 150px;
@@ -30,8 +26,6 @@
     overflow: hidden;
     position: relative;
     display: flex;
-
-
 }
 
 .cardPact .cardPact-box-BoxPrewImg .cardPact-box-BoxPrewImg-img {
@@ -63,32 +57,27 @@
     cursor: default;
 }
 
-.editbox {
+.cardPact__item .editbox {
     width: 100%;
     border: solid 1px #ff6416;
-    margin: 60px 0 0 0;
     border-radius: 0.25rem;
     background: #f1f4f4;
-    min-height: 200px;
     padding: 10px;
 }
-
 
 .cardPact-EditText-Descript .editbox,
 .cardPact-EditText-Сonditions .editbox {
     min-height: 150px;
 }
-#ad_name .editbox {
-    min-height: 45px;
-}
 
-.cardPact-rightPanel h1 {
+.cardPact-rightPanel .scardPact-rightPanel__sum {
     color: #000;
     border: solid 1px #ff6416;
     border-radius: 5px;
     padding: 15px 17px;
     margin-bottom: 0px;
     font-size: 2.2rem;
+    font-weight: 600;
 }
 
 .selectbox {
@@ -96,16 +85,15 @@
     border: solid 1px #ff6416;
     border-radius: 5px;
     padding: 15px 17px;
-    /*background: #f1f4f4;*/
-    margin: 50px 0 0 0;
     font-size: 2.2rem;
     position: relative;
 }
 
-.cardPact-rightPanel h1 span {
+.editbox_sum {
+    max-height: 35px;
     padding: 0 5px;
     background: #e7ecec;
-    min-width: 200px;
+    max-width: 220px;
     display: inline-block;
     margin-right: 5px;
 }
@@ -195,11 +183,16 @@
     background-color: initial;
 }
 
-.editbox_sum{
-    min-height: 25px;
-}
-
 .wrap-map_adress .error_form{
     display: none;
     margin-bottom: 5px;
+}
+
+.cardPact__item{
+    margin-bottom: 40px;
+}
+.cardPact__title{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
