@@ -60,4 +60,3 @@ function checkUserCompany(){
         }
     }
 }
-include_once 'dBug.php';

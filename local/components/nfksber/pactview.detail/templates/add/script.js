@@ -500,8 +500,6 @@ $(document).ready(function() {
         showErrors: function(errorMap, errorList) {
             let that = this.lastActive
 
-
-            console.log('start');
             if(errorList.length>0){
                 for (let i = 0; i < errorList.length; i++){
                     let messaage = errorList[i].message;
