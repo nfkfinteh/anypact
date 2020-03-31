@@ -23,11 +23,12 @@ $APPLICATION->SetTitle("Поиск контрагентов");
                     $GLOBALS['arrFilter']['UF_HIDE_PROFILE'] = 0;
                 ?>
                 <? $APPLICATION->IncludeComponent(
-                    "nfksber:user.list",
+                    "nfksber:contragent.list",
                     "",
                     Array(
                         "FILTER_NAME" => "arrFilter",
-                        "NEWS_COUNT" => 12,
+                        "NEWS_COUNT" => 3,
+                        "IBLOCK_COMPANY"=>8,
                         "PAGER_TEMPLATE" => "anypact_pagination"
                     )
                 ); ?>
