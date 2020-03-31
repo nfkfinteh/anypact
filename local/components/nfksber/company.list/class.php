@@ -15,52 +15,6 @@ class CDemoSqr extends CBitrixComponent
         return $result;
     }
 
-    public function listAllUser($arNavParams) {
-
-        $arUser = [];
-
-        if(CModule::IncludeModule("iblock"))
-        {
-            //внешняя фильтрация
-            if(strlen($this->arParams['FILTER_NAME'])<=0)
-            {
-                $arrFilter = array();
-            }
-            else
-            {
-                $arrFilter = $GLOBALS[$this->arParams['FILTER_NAME']];
-                if(!is_array($arrFilter))
-                    $arrFilter = array();
-            }
-
-            if(empty($arrFilter['NAME'])){
-                $arrFilter['NAME'] = "_";
-            }
-
-            $res = CUser::GetList($by="personal_country", $order="desc", $arrFilter, ['SELECT'=>['UF_*'] ]);
-            $res->NavStart($arNavParams['nPageSize']);
-            while($obj = $res->NavNext(true)) {
-                $arUser[] = $obj;
-            }
-
-            $navComponentParameters = array();
-
-            $this->arResult["NAV_STRING"] = $res->GetPageNavStringEx(
-                $navComponentObject,
-                '',
-                $this->arParams["PAGER_TEMPLATE"],
-                false,
-                $this,
-                $navComponentParameters
-            );
-            $this->arResult["NAV_CACHED_DATA"] = null;
-            $this->arResult["NAV_RESULT"] = $res;
-            $this->arResult["NAV_PARAM"] = $navComponentParameters;
-
-        }
-        return $arUser;
-    }
-
     public function listAllCompany($arNavParams) {
 
         $arCompany = [];
@@ -172,7 +126,6 @@ class CDemoSqr extends CBitrixComponent
         {*/
             $this->arResult["FRENDS"] = $this->getFrends();
             $this->arResult["BLACKLIST"] = $this->getBlackList();
-            $this->arResult["USER"] = $this->listAllUser($arNavParams);
             $this->arResult["COMPANY"] = $this->listAllCompany($arNavParams);
             $this->includeComponentTemplate();
         //}

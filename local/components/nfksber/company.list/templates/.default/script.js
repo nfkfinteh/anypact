@@ -137,7 +137,7 @@ $(document).ready(function(){
         }
     });
 
-    $(document).on('click', '.user__pagination a', function(e){
+    /*$(document).on('click', '.user__pagination a', function(e){
         e.preventDefault();
         let url = $(this).attr('href');
 
@@ -163,6 +163,6 @@ $(document).ready(function(){
                 preload('hide');
             })
         }
-    });
+    });*/
 
 });

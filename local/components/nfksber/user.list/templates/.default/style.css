@@ -102,6 +102,11 @@ textarea.message-textarea{
     padding: 10px 20px;
     resize: none;
 }
+.grid-view__title{
+    margin: 20px 0;
+    font-weight: bold;
+    font-size: 24px;
+}
 @media screen and (max-width: 520px){
     .list-view .view-item .people-s-photo {
         width: 100px;
