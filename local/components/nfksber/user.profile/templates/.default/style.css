@@ -49,3 +49,17 @@
 .btn-category:hover, .btn-category.active{
     border-bottom: 2px solid #fd6600;
 }
+.tenders__row{
+    min-height: 250px;
+}
+.tenders__title{
+    font-size: 24px;
+    line-height: 1.5;
+    font-weight: 700;
+}
+.tenders__about{
+    background-color: #f1f4f4;
+    min-height: 250px;
+    border-radius: 5px;
+    padding: 10px;
+}

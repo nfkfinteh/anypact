@@ -174,3 +174,12 @@ button#save_company:hover{
 .company_profile .error-message{
     font-size: 11px;
 }
+.company_profile textarea{
+    padding: 14px 18px;
+    margin-bottom: 6px;
+    background: #f1f4f4;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #ff6416;
+    height: 200px;
+}
