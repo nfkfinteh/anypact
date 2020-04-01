@@ -240,7 +240,13 @@ class CDemoSqr extends CBitrixComponent
         if($this->startResultCache($this->arParams['CACHE_TIME'], [$ajaxData, $arNavigation]))
         {
             if($this->arParams['TYPE']=='company'){
-                $res = CIBlockElement::GetList([], ['IBLOCK_ID'=>$this->arParams['IBLOCK_ID_COMPANY'], 'ID'=>$this->arParams['USER_ID'], 'ACTIVE'=>'Y'], false, false, ['IBLOCK_ID', 'ID', 'NAME', 'PREVIEW_PICTURE']);
+                $res = CIBlockElement::GetList(
+                    [],
+                    ['IBLOCK_ID'=>$this->arParams['IBLOCK_ID_COMPANY'], 'ID'=>$this->arParams['USER_ID'], 'ACTIVE'=>'Y'],
+                    false,
+                    false,
+                    ['IBLOCK_ID', 'ID', 'NAME', 'PREVIEW_PICTURE', 'PREVIEW_TEXT']
+                );
                 if($obj = $res->GetNextElement()){
                     $arCompany = $obj->GetFields();
                     $arCompanyProp = $obj->GetProperties();

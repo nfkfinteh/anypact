@@ -250,7 +250,24 @@ if (!empty($arResult['arUser']['UF_ESIA_ID']) && $arResult['arUser']['UF_ESIA_AU
                         <label><?=GetMessage("USER_PHONE")?></label>
                         <input type="text" name="PERSONAL_PHONE" maxlength="50" value="<?=$arResult["arUser"]["PERSONAL_PHONE"]?>" class="js-mask__phone">
                     </div>
-                    <button type="submit" class="btn btn-aut edit-profile__btn" id="save_profile_button">Сохранить</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="user_profile_form_editdata" style="margin-top: 0px;">
+            <div class="row">
+                <div class="col-xl-8 col-md-12 col-sm-12 offset-xl-3">
+                    <div class="form-group">
+                        <label>О себе</label>
+                        <textarea name="UF_ABOUT" maxlength="1000"><?=$arResult["arUser"]["UF_ABOUT"]?></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-8 col-md-12 col-sm-12 offset-xl-3">
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-aut edit-profile__btn" id="save_profile_button">Сохранить</button>
+                    </div>
                 </div>
             </div>
         </div>

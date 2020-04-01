@@ -123,6 +123,7 @@ class CompanySber extends CBitrixComponent
                         "IBLOCK_ID" => intval($this->arParams['IBLOCK_ID']),
                         "NAME" => $_REQUEST['NAME'],
                         "CODE" => $code,
+                        "PREVIEW_TEXT"=> htmlspecialcharsEx($_REQUEST['PREVIEW_TEXT']),
                         "PROPERTY_VALUES" => $arProps,
                     );
                     if($_REQUEST["PREVIEW_PICTURE"]) $arEl["PREVIEW_PICTURE"] = CFile::MakeFileArray($_SERVER["DOCUMENT_ROOT"].$_REQUEST["PREVIEW_PICTURE"]);
@@ -174,6 +175,7 @@ class CompanySber extends CBitrixComponent
                         "IBLOCK_ID" => intval($this->arParams['IBLOCK_ID']),
                         "NAME" => $_REQUEST['NAME'],
                         "CODE" => $code,
+                        "PREVIEW_TEXT"=>htmlspecialcharsEx($_REQUEST['PREVIEW_TEXT']),
                         "PROPERTY_VALUES" => $arProps,
                     );
                     if($_REQUEST["PREVIEW_PICTURE"]) $arEl["PREVIEW_PICTURE"] = CFile::MakeFileArray($_SERVER["DOCUMENT_ROOT"].$_REQUEST["PREVIEW_PICTURE"]);
@@ -247,7 +249,7 @@ class CompanySber extends CBitrixComponent
                 $arFilter,
                 false,
                 false,
-                ['ID', 'NAME', 'IBLOCK_ID', 'PREVIEW_PICTURE']
+                ['ID', 'NAME', 'IBLOCK_ID', 'PREVIEW_PICTURE', 'PREVIEW_TEXT']
             )
             ) {
                 if ($arElem = $rsCompany->GetNextElement()) {

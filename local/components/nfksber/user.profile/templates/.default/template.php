@@ -28,14 +28,14 @@
                         <span class="d-block mt-4">Пол: женский</span>
                     <?endif?>
 
-                    <?if(!empty($arResult['USER']['PERSONAL_BIRTHDAY'])):?>
+                    <?if(!empty($arResult['USER']['PERSONAL_BIRTHDAY']) && $arResult['USER']['UF_DISPLAY_DATE'] == 1):?>
                         <span class="d-block mt-4">Дата рождения: <?=$arResult['USER']['PERSONAL_BIRTHDAY']?></span>
                     <?endif?>
 
                     <span class="d-block mt-4">Частное лицо</span>
 
                     <span class="d-block mt-3">Город: <?=$arResult['USER']['PERSONAL_CITY']?> <?//$arResult['USER']['PERSONAL_STREET']?></span>
-                    <?if(!empty($arResult['USER']['PERSONAL_PHONE'])):?>
+                    <?if(!empty($arResult['USER']['PERSONAL_PHONE']) && $arResult['USER']['UF_DISPLAY_PHONE'] == 1):?>
                         <span class="d-block mt-4">Телефон: <a href="tel:<?=$arResult['USER']['PERSONAL_PHONE']?>"><?=$arResult['USER']['PERSONAL_PHONE']?></a></span>
                     <?endif?>
                     <?if($arResult['USER']['UF_ESIA_AUT']==1):?>
@@ -56,7 +56,7 @@
                 <button class="btn-category <?if($arResult['CURRENT_STATE']=='N'):?>active<?endif?>" data-state="N" data-user="<?=$arResult['USER']['ID']?>" data-type="<?=$arResult['TYPE_HOLDER']?>">
                     Завершенные <span class="text-black-50"><?=$arResult['COMPLETED_ITEMS']?></span>
                 </button>
-                <div class="row mt-4">
+                <div class="row mt-4 tenders__row">
                     <?if (!empty($arResult['ITEMS'])) { 
                         foreach ($arResult['ITEMS'] as $item):?>
                             <div class="col-lg-4 col-md-6 col-sm-12 tender-block">
@@ -88,6 +88,23 @@
                     <?}else {?>
                         <h4>Записей нет</h4>
                     <?}?>
+                </div>
+                <div class="mt-4 tenders__row">
+                    <?if($arResult['TYPE_HOLDER']=='user'):?>
+                        <div class="tenders__title">
+                            О себе
+                        </div>
+                        <div class="tenders__about">
+                            <?=$arResult['USER']['UF_ABOUT']?>
+                        </div>
+                    <?elseif($arResult['TYPE_HOLDER']=='company'):?>
+                        <div class="tenders__title">
+                            О компании
+                        </div>
+                        <div class="tenders__about">
+                            <?=$arResult['USER']['PREVIEW_TEXT']?>
+                        </div>
+                    <?endif?>
                 </div>
             </div>
         </div>

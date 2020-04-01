@@ -155,7 +155,21 @@
                     <label>Кор. Счет *</label>
                     <input name="KOR_ACCOUNT" type="text" value="<?=$CompanyProprties['KOR_ACCOUNT']['VALUE']?>" required maxlength="20" class="js-number">
                 </div>
-                <button type="submit" class="btn btn-aut edit-profile__btn" id="save_company">Сохранить</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xl-8 col-md-12 col-sm-12 offset-xl-3">
+                <div class="form-group">
+                    <label>О компании</label>
+                    <textarea name="PREVIEW_TEXT" maxlength="1000"><?=$arResult["COMPANY"]["PREVIEW_TEXT"]?></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xl-8 col-md-12 col-sm-12 offset-xl-3">
+                <div class="form-group">
+                    <button type="submit" class="btn btn-aut edit-profile__btn" id="save_company">Сохранить</button>
+                </div>
             </div>
         </div>
         <? ////////////////////// сохранение  /////////////////////////?>
