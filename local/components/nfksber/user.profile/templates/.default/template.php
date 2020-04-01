@@ -36,7 +36,7 @@
 
                     <span class="d-block mt-3">Город: <?=$arResult['USER']['PERSONAL_CITY']?> <?//$arResult['USER']['PERSONAL_STREET']?></span>
                     <?if(!empty($arResult['USER']['PERSONAL_PHONE'])):?>
-                        <span class="d-block mt-4">Телефон: <?=$arResult['USER']['PERSONAL_PHONE']?></span>
+                        <span class="d-block mt-4">Телефон: <a href="tel:<?=$arResult['USER']['PERSONAL_PHONE']?>"><?=$arResult['USER']['PERSONAL_PHONE']?></a></span>
                     <?endif?>
                     <?if($arResult['USER']['UF_ESIA_AUT']==1):?>
                         <span class="d-block font-weight-bold mt-4">Подтвержденная регистрация</span>
