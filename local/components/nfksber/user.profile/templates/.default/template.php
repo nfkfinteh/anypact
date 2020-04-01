@@ -91,19 +91,23 @@
                 </div>
                 <div class="mt-4 tenders__row">
                     <?if($arResult['TYPE_HOLDER']=='user'):?>
-                        <div class="tenders__title">
-                            О себе
-                        </div>
-                        <div class="tenders__about">
-                            <?=$arResult['USER']['UF_ABOUT']?>
-                        </div>
+                        <?if($arResult['USER']['UF_ABOUT']):?>
+                            <div class="tenders__title">
+                                О себе
+                            </div>
+                            <div class="tenders__about">
+                                <?=$arResult['USER']['UF_ABOUT']?>
+                            </div>
+                        <?endif?>
                     <?elseif($arResult['TYPE_HOLDER']=='company'):?>
-                        <div class="tenders__title">
-                            О компании
-                        </div>
-                        <div class="tenders__about">
-                            <?=$arResult['USER']['PREVIEW_TEXT']?>
-                        </div>
+                        <?if($arResult['USER']['PREVIEW_TEXT']):?>
+                            <div class="tenders__title">
+                                О компании
+                            </div>
+                            <div class="tenders__about">
+                                <?=$arResult['USER']['PREVIEW_TEXT']?>
+                            </div>
+                        <?endif?>
                     <?endif?>
                 </div>
             </div>
