@@ -99,12 +99,14 @@ $(document).ready(function() {
         return data
     }
 
-    $(document).on('change', '#hide_profile', function(){
-        let input = $('.hide_profile_input');
+    $(document).on('change', '.js-checkbox', function(){
+        let input = $(this).parents('.form-checkbox').eq(0).find('.js-input_checkbox');
         if($(this).prop('checked')){
+            $(this).val(1);
             input.val(1);
         }
         else{
+            $(this).val(0);
             input.val(0);
         }
     });

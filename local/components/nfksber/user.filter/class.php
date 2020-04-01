@@ -8,6 +8,7 @@ class CUserFilter extends CBitrixComponent
             "CACHE_TYPE" => $arParams["CACHE_TYPE"],
             "CACHE_TIME" => isset($arParams["CACHE_TIME"]) ?$arParams["CACHE_TIME"]: 36000000,
             "FILTER_NAME"=> $arParams["FILTER_NAME"],
+            "TYPE_FILTER"=>$arParams["TYPE_FILTER"]
         );
         return $result;
     }

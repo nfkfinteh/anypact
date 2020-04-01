@@ -107,6 +107,15 @@ textarea.message-textarea{
     font-weight: bold;
     font-size: 24px;
 }
+.grid-view__none{
+    margin: 20px 0;
+    font-size: 18px;
+    color: #FF6600;
+}
+.people-s-photo-text-block{
+    width: 100%;
+    text-align: center;
+}
 @media screen and (max-width: 520px){
     .list-view .view-item .people-s-photo {
         width: 100px;

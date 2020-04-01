@@ -3282,6 +3282,12 @@ input::-webkit-input-placeholder {
     min-height: 45px;
 }
 
+.cotragent{
+    color: #ff6416;
+}
+.cotragent__button_active{
+    font-weight: bold;
+}
 /*------sdelka.php --------*/
 
 @media (min-width: 1200px) {

@@ -200,9 +200,31 @@ if (!empty($arResult['arUser']['UF_ESIA_ID']) && $arResult['arUser']['UF_ESIA_AU
                         <input type="text" name="PERSONAL_CITY" maxlength="50" value="<?=$arResult["arUser"]["PERSONAL_CITY"]?>">
                     </div>*/?>
                     <div class="form-group form-checkbox" style="padding-left: 21px;">
-                        <input type="checkbox" <?if($arResult["arUser"]["UF_HIDE_PROFILE"]):?>checked<?endif?> id="hide_profile" name="hide_profile">
-                        <label for="hide_profile" style="padding: 44px 20px;">не показывать меня в поиске</label>
-                        <input type="hidden" name="UF_HIDE_PROFILE" value="<?=$arResult["arUser"]["UF_HIDE_PROFILE"]?>" class="hide_profile_input">
+                        <input type="checkbox"
+                               <?if($arResult["arUser"]["UF_HIDE_PROFILE"]):?>checked<?endif?>
+                               id="UF_HIDE_PROFILE"
+                               class="js-checkbox"
+                        >
+                        <label for="UF_HIDE_PROFILE">не показывать меня в поиске</label>
+                        <input type="hidden" name="UF_HIDE_PROFILE" value="<?=$arResult["arUser"]["UF_HIDE_PROFILE"]?>" class="js-input_checkbox">
+                    </div>
+                    <div class="form-group form-checkbox" style="padding-left: 21px;">
+                        <input type="checkbox"
+                               <?if($arResult["arUser"]["UF_DISPLAY_PHONE"]):?>checked<?endif?>
+                               id="UF_DISPLAY_PHONE"
+                               class="js-checkbox"
+                        >
+                        <label for="UF_DISPLAY_PHONE">отображать телефон на странице</label>
+                        <input type="hidden" name="UF_DISPLAY_PHONE" value="<?=$arResult["arUser"]["UF_DISPLAY_PHONE"]?>" class="js-input_checkbox">
+                    </div>
+                    <div class="form-group form-checkbox" style="padding-left: 21px;">
+                        <input type="checkbox"
+                               <?if($arResult["arUser"]["UF_DISPLAY_DATE"]):?>checked<?endif?>
+                               id="UF_DISPLAY_DATE"
+                               class="js-checkbox"
+                        >
+                        <label for="UF_DISPLAY_DATE">отображать дату рождения на странице</label>
+                        <input type="hidden" name="UF_DISPLAY_DATE" value="<?=$arResult["arUser"]["UF_DISPLAY_DATE"]?>" class="js-input_checkbox">
                     </div>
                 </div>
                 <div class="col-xl-4 col-md-6 col-sm-12">
