@@ -3,6 +3,7 @@ $arResult['USERS'] = [];
 #поиск пользователей
 $arFilter['NAME'] = $arResult['REQUEST']['QUERY'];
 $arFilter['UF_HIDE_PROFILE'] = 0;
+$arFilter['!ID'] = $USER->GetID();
 $res = CUser::GetList($by="personal_country", $order="desc", $arFilter);
 $res->NavStart($arNavParams['nPageSize']);
 while($obj = $res->NavNext(true)) {

@@ -14,6 +14,7 @@ $APPLICATION->SetTitle("Поиск");
 		"arrWHERE" => "",
 		"arrFILTER" => array(
 			0 => "iblock_4",
+			1 => "iblock_sprav",
 		),
 		"SHOW_WHERE" => "N",
 		"PAGE_RESULT_COUNT" => "50",
@@ -34,7 +35,7 @@ $APPLICATION->SetTitle("Поиск");
 		),
 		"SHOW_WHEN" => "N",
 		"AJAX_OPTION_ADDITIONAL" => "",
-		"USE_LANGUAGE_GUESS" => "Y",
+		"USE_LANGUAGE_GUESS" => "N",
 		"SHOW_RATING" => "",
 		"RATING_TYPE" => "",
 		"PATH_TO_USER_PROFILE" => "",
@@ -43,6 +44,9 @@ $APPLICATION->SetTitle("Поиск");
 		"arrFILTER_main" => "",
 		"arrFILTER_blog" => array(
 			0 => "all",
+		),
+		"arrFILTER_iblock_sprav" => array(
+			0 => "8",
 		)
 	),
 	false
