@@ -235,9 +235,11 @@ class CDemoSqr extends CBitrixComponent
             "nPageSize" => $this->arParams["ITEM_COUNT"],
         );
         $arNavigation = CDBResult::GetNavParams($arNavParams);
+        if($this->arParams['TYPE']!='company'){
+            $arFrends = $this->getFrends();
+        }
 
-
-        if($this->startResultCache($this->arParams['CACHE_TIME'], [$ajaxData, $arNavigation]))
+        if($this->startResultCache($this->arParams['CACHE_TIME'], [$ajaxData, $arNavigation, $arFrends]))
         {
             if($this->arParams['TYPE']=='company'){
                 $res = CIBlockElement::GetList(
@@ -276,7 +278,8 @@ class CDemoSqr extends CBitrixComponent
 
                 $arItems  =  $this->getUserSdel($ajaxData, $arNavParams, 'user');
                 $arResult["ITEMS"] = $arItems['ITEMS'];
-                $arResult["FRENDS"] = $this->getFrends();
+                //$arResult["FRENDS"] = $this->getFrends();
+                $arResult["FRENDS"] =$arFrends;
             }
 
 
