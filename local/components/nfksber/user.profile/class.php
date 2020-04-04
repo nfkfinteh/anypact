@@ -93,12 +93,14 @@ class CDemoSqr extends CBitrixComponent
                     'IBLOCK_ID'=>$arParams['IBLOCK_ID'],
                     'PROPERTY_PACT_USER'=>$arParams['USER_ID'],
                     'PROPERTY_ID_COMPANY'=>false,
+                    'PROPERTY_MODERATION_VALUE'=>'Y',
                 ];
             }
             elseif($typeHolder == 'company') {
                 $arFilter = [
                     'IBLOCK_ID'=>$arParams['IBLOCK_ID'],
                     'PROPERTY_ID_COMPANY'=>$arParams['USER_ID'],
+                    'PROPERTY_MODERATION_VALUE'=>'Y',
                 ];
             }
 
@@ -151,12 +153,14 @@ class CDemoSqr extends CBitrixComponent
                     'IBLOCK_ID'=>$arParams['IBLOCK_ID'],
                     'PROPERTY_PACT_USER'=>$arParams['USER_ID'],
                     'PROPERTY_ID_COMPANY'=>false,
+                    'PROPERTY_MODERATION_VALUE'=>'Y',
                 ];
             }
             elseif($typeHolder == 'company') {
                 $arFilter = [
                     'IBLOCK_ID'=>$arParams['IBLOCK_ID'],
                     'PROPERTY_ID_COMPANY'=>$arParams['USER_ID'],
+                    'PROPERTY_MODERATION_VALUE'=>'Y',
                 ];
             }
             //фильтр для завершенных сделок

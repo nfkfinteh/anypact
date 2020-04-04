@@ -36,7 +36,7 @@ $arrStatusAwait = array(
                         <div><?= $pact["NAME"] ?></div>
                         <div class="collapse-arrow position-relative"></div>
                     </div>
-                    <div class="d-md-table-row collapse-body">
+                    <div class="d-md-table-row collapse-body <?if($pact['PROPERTIES']['MODERATION']['VALUE'] !='Y'):?>collapse-body_disabled<?endif?>">
                         <div class="d-md-none text-gray"></div>
                         <div class="first-face d-md-table-cell">
                             <span class="d-flex align-items-center">
@@ -47,16 +47,28 @@ $arrStatusAwait = array(
                                 </span>
                         </div>
                         <div class="d-md-none text-gray">Активно до:</div>
-                        <div class="d-md-table-cell"><?=$pact["ACTIVE_TO"]?></div>                    
-                        <div class="d-md-none text-gray">Видимость</div>
-                        <div class="d-md-table-cell">
-                            <button iditem="<?= $pact["ID"]?>" active="<?= $pact["ACTIVE"]?>" class="onActive">
-                                <img src="<?=SITE_TEMPLATE_PATH?>/image/<?=$PactStatus[$pact["ACTIVE"]]?>" />
-                            </button>
-                        </div>                
-                        <div class="d-md-table-cell">
-                            <a class="button-link" href="/my_pacts/edit_my_pact/?ELEMENT_ID=<?= $pact['ID'] ?>&ACTION=EDIT" target="_blank" >Посмотреть</a>
-                        </div>
+                        <div class="d-md-table-cell"><?=$pact["ACTIVE_TO"]?></div>
+                        <?if($pact['PROPERTIES']['MODERATION']['VALUE'] =='Y'):?>
+                            <div class="d-md-none text-gray">Видимость</div>
+                            <div class="d-md-table-cell">
+                                <button iditem="<?= $pact["ID"]?>" active="<?= $pact["ACTIVE"]?>" class="onActive">
+                                    <img src="<?=SITE_TEMPLATE_PATH?>/image/<?=$PactStatus[$pact["ACTIVE"]]?>" />
+                                </button>
+                            </div>
+                            <div class="d-md-table-cell">
+                                <a class="button-link" href="/my_pacts/edit_my_pact/?ELEMENT_ID=<?= $pact['ID'] ?>&ACTION=EDIT" target="_blank" >Посмотреть</a>
+                            </div>
+                        <?else:?>
+                            <div class="d-md-none text-gray">Видимость</div>
+                            <div class="d-md-table-cell">
+                                <button class="onActive" disabled>
+                                    <img src="<?=SITE_TEMPLATE_PATH?>/image/<?=$PactStatus['N']?>" />
+                                </button>
+                            </div>
+                            <div class="d-md-table-cell">
+                                На модерации
+                            </div>
+                        <?endif?>
                         <!-- кнопки близко, удаление только из карточки
                         <div class="d-md-table-cell">
                             <a href="#" class="button-link" data-id="<?=$pact['ID']?>" data-toggle="modal" data-target=".bd-message-modal-sm" class="modal_deleteItem">Удалить</a>
