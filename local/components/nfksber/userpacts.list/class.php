@@ -298,6 +298,8 @@ class CDemoSqr extends CBitrixComponent
     {
         $User_ID = CUser::GetID();
         $this->arResult["USER_ID"] = $User_ID;
+        $rsUser = CUser::GetByID($User_ID);
+        $this->arResult['USER'] = $rsUser->GetNext();
 
         // подписанные договора
         $this->arResult["SEND_CONTRACT"] = $this->getSendContract($User_ID);

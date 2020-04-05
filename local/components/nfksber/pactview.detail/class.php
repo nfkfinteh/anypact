@@ -4,6 +4,7 @@ Loader::includeModule("highloadblock");
 
 use Bitrix\Highloadblock as HL;
 use Bitrix\Main\Entity;
+use Bitrix\Iblock;
 /*
     Класс выводит информацию в карточку по сделке
 */
@@ -207,7 +208,20 @@ class CDemoSqr extends CBitrixComponent
         {*/
             $this->arResult = array_merge($this->arResult, $this->paramsUser($this->arParams));
             $this->arResult["USER_ID"] = CUser::GetID();
-            $this->arResult["USER_LOGIN"] =CUser::GetLogin();            
+            $rsUser = CUser::GetByID($this->arResult["USER_ID"]);
+            $this->arResult['USER'] = $rsUser->GetNext();
+
+            if($this->arResult['USER']['UF_ESIA_AUT']==0 && $_REQUEST['ACTION']=='ADD')
+            {
+                Iblock\Component\Tools::process404(
+                    '',
+                    true,
+                    true,
+                    true
+                );
+            }
+
+            $this->arResult["USER_LOGIN"] =$this->arResult['USER']['LOGIN'];
             $this->arResult["ELEMENT"] = $this->getElement($this->arResult["ELEMENT_ID"]);
             $this->arResult["PROPERTY"] = $this->getProperty($this->arResult["INFOBLOCK_ID"], $this->arResult["ELEMENT_ID"]);
             $this->arResult["INFOBLOCK_SECTION_LIST"] = $this->getTreeCategory($this->arResult["INFOBLOCK_ID"]);

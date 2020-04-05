@@ -3,7 +3,7 @@
 use Bitrix\Main\Loader; 
 use Bitrix\Highloadblock as HL; 
 use Bitrix\Main\Entity;
-use Bitrix\Iblock;;
+use Bitrix\Iblock;
 
 class CDemoSqr extends CBitrixComponent
 {
