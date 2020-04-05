@@ -51,6 +51,7 @@ $this->setFrameMode(true);
                 </div>
             </div>
         <?endforeach?>
+        <?/*
         <?foreach($arResult["ITEMS_NO_ACTIVE"] as $arItem):?>
             <!-----------------профили компаний не подтвержденных------------------->
             <div class="view-item col-lg-2 col-sm-3 col-6 mt-4 pb-3">
@@ -80,6 +81,7 @@ $this->setFrameMode(true);
                 </div>
             </div>
         <?endforeach?>
+        */?>
         <!------------------профили пользователей------------------>
         <div class="view-item col-lg-2 col-sm-4 col-6 mt-4 pb-3">
             <div class="people-s-photo">
