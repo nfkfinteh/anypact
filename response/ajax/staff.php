@@ -77,7 +77,21 @@ switch ($data['action']) {
         die(json_encode(['VALUE' => "Заявка на добавление представителя компании принята и будет рассмотрена в течении 2 дней", 'TYPE' => 'SUCCESS']));
         break;
     case 'delete':
+        if(!empty($arProps['STAFF']) && !in_array($data['idUser'], $arProps['STAFF'])){
+            die(json_encode(['VALUE' => "Пользователь не являеться представителем компании", 'TYPE' => 'ERROR']));
+        }
 
+        foreach($arProps['STAFF'] as $key => $staff){
+            if ($staff == $data['idUser']){
+                unset($arProps['STAFF'][$key]);
+                break;
+            }
+        }
+
+        if(empty($arProps['STAFF'])) $arProps['STAFF'] = false;
+
+        CIBlockElement::SetPropertyValuesEx($data['idCompany'], 8, ['STAFF'=>$arProps['STAFF']]);
+        die(json_encode(['VALUE' => "Преедставитель удален", 'TYPE' => 'SUCCESS']));
         break;
 }
 ?>
