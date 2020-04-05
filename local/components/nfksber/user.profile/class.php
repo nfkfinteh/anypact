@@ -266,6 +266,26 @@ class CDemoSqr extends CBitrixComponent
                 $arResult["COMPLETED_ITEMS"] = $this->getCntSdel('N', 'company');
                 $arResult["TYPE_HOLDER"] = 'company';
 
+                $arIdStaff = [];
+                $arIdStaff[] = $arResult['USER']['PROPERTY']['DIRECTOR_ID']['VALUE'];
+                if(!empty($arResult['USER']['PROPERTY']['STAFF']['VALUE'])){
+                    $arIdStaff = array_merge($arIdStaff, $arResult['USER']['PROPERTY']['STAFF']['VALUE']);
+                }
+
+                if(!empty($arIdStaff)){
+                    foreach ($arIdStaff as $id){
+                        $rsUser = CUser::GetByID($id);
+                        if ($obj = $rsUser->GetNext()){
+                            $arResult['STAFF'][] = [
+                                'ID'=>$obj['ID'],
+                                'NAME'=>$obj['NAME'],
+                                'LAST_NAME'=>$obj['LAST_NAME']
+                            ];
+                        }
+                    }
+                }
+                unset($arIdStaff);
+
                 $arItems  =  $this->getUserSdel($ajaxData, $arNavParams, 'company');
                 // ошибка если нет записей поправка в шаблоне
                 $arResult["ITEMS"] = $arItems['ITEMS'];
@@ -284,6 +304,26 @@ class CDemoSqr extends CBitrixComponent
                 $arResult["ITEMS"] = $arItems['ITEMS'];
                 //$arResult["FRENDS"] = $this->getFrends();
                 $arResult["FRENDS"] =$arFrends;
+
+                $res = CIBlockElement::GetList(
+                    [],
+                    [
+                        'IBLOCK_ID'=>$this->arParams['IBLOCK_ID_COMPANY'],
+                        'ACTIVE'=>'Y',
+                        [
+                            'LOGIC'=> 'OR',
+                            ['PROPERTY_DIRECTOR_ID'=>$this->arParams['USER_ID']],
+                            ['PROPERTY_STAFF'=>$this->arParams['USER_ID']]
+                        ]
+                    ],
+                    false,
+                    false,
+                    ['IBLOCK_ID', 'ID', 'NAME']
+                );
+                while($obj = $res->GetNext()){
+                    $arCompany[] = $obj;
+                }
+                $arResult['COMPANY'] = $arCompany;
             }
 
 

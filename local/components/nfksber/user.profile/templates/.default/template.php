@@ -1,4 +1,4 @@
-<div style="padding-bottom: 50px;">
+    <div style="padding-bottom: 50px;">
     <?if(empty($arResult['ERROR'])):?>
         <div class="row pt-2">
             <div class="col-lg-3 col-md-4 col-sm-12">
@@ -38,6 +38,16 @@
                     <?if(!empty($arResult['USER']['PERSONAL_PHONE']) && $arResult['USER']['UF_DISPLAY_PHONE'] == 1):?>
                         <span class="d-block mt-4">Телефон: <a href="tel:<?=$arResult['USER']['PERSONAL_PHONE']?>"><?=$arResult['USER']['PERSONAL_PHONE']?></a></span>
                     <?endif?>
+                    <?if(!empty($arResult['COMPANY'])):?>
+                        <span class="d-block mt-3">Представитель компании: </span>
+                        <?foreach ($arResult['COMPANY'] as $company):?>
+                            <div>
+                                <a href="/profile_user/?type=company&ID=<?=$company['ID']?>">
+                                    <?=$company['NAME']?>
+                                </a>
+                            </div>
+                        <?endforeach?>
+                    <?endif?>
                     <?if($arResult['USER']['UF_ESIA_AUT']==1):?>
                         <span class="d-block font-weight-bold mt-4">Подтвержденная регистрация</span>
                         <span class="d-block registration-checked mt-2"><img src="https://gu-st.ru/st/img/logo_nobeta.0a1f5dfe6b.svg" style="width:50%;"/></span>
@@ -45,6 +55,16 @@
                 <?elseif($arResult['TYPE_HOLDER'] == 'company'):?>
                     <span class="d-block mt-4">Юридическое лицо</span>
                     <span class="d-block mt-3"><?=$arResult['USER']['PROPERTY']['CITY']['VALUE']?> <?=$arResult['USER']['PROPERTY']['ADRESS']['VALUE']?></span>
+                    <?if(!empty($arResult['STAFF'])):?>
+                        <span class="d-block mt-3">Представители компании: </span>
+                        <?foreach ($arResult['STAFF'] as $staff):?>
+                            <div>
+                                <a href="/profile_user/?ID=<?=$staff['ID']?>">
+                                    <?=$staff['NAME'].' '.$staff['LAST_NAME']?>
+                                </a>
+                            </div>
+                        <?endforeach?>
+                    <?endif?>
                 <?endif?>
 
 
