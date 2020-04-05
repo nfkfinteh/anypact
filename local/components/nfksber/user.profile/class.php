@@ -324,6 +324,22 @@ class CDemoSqr extends CBitrixComponent
                     $arCompany[] = $obj;
                 }
                 $arResult['COMPANY'] = $arCompany;
+                unset($arCompany);
+
+                $res = CIBlockElement::GetList(
+                    [],
+                    [
+                        'IBLOCK_ID'=>$this->arParams['IBLOCK_ID_COMPANY'],
+                        'ACTIVE'=>'Y',
+                        'PROPERTY_DIRECTOR_ID'=>$this->arParams['CURRENT_USER']
+                    ],
+                    false,
+                    false,
+                    ['IBLOCK_ID', 'ID', 'NAME']
+                );
+                while($obj = $res->GetNext()){
+                    $arResult['COMPANY_CURRENT_USER'][] = $obj;
+                }
             }
 
 

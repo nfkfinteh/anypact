@@ -18,9 +18,18 @@
                             Удалить из друзей
                         </a>
                     <?endif?>
-                    <?if($arResult['USER']['ID'] !=$arParams['CURRENT_USER']):?>
+                    <?if(!empty($arParams['CURRENT_USER']) && $arResult['USER']['ID'] !=$arParams['CURRENT_USER']):?>
                         <a href="#" class="btn btn-nfk btn-uprofile" data-toggle="modal" data-target=".bd-comment-modal-sm">Оставить отзыв</a>
                         <a href="#" class="btn btn-nfk btn-uprofile" data-toggle="modal" data-target=".bd-message-modal-sm">Отправить сообщение</a>
+                        <?if(!empty($arResult['COMPANY_CURRENT_USER'])):?>
+                            <?if(count($arResult['COMPANY_CURRENT_USER'])==1):?>
+                                <a href="#" class="btn btn-nfk btn-uprofile js-add-staff" data-company="<?=$arResult['COMPANY_CURRENT_USER'][0]['ID']?>" data-user="<?=$arResult['USER']['ID']?>">
+                                    Сделать представителем
+                                </a>
+                            <?else:?>
+                                <a href="#" class="btn btn-nfk btn-uprofile" data-toggle="modal" data-target=".bd-staff-modal-sm">Сделать представителем</a>
+                            <?endif?>
+                        <?endif?>
                     <?endif?>
                     <?if($arResult['USER']['PERSONAL_GENDER']=='M'):?>
                         <span class="d-block mt-4">Пол: мужской</span>
@@ -193,7 +202,33 @@
     </div>
 </div>
 
-
+<div class="modal fade bd-staff-modal-sm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">Выберите компанию</div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="/response/ajax/add_new_messag_user.php">
+                    <div class="form-group">
+                        <select name="company" class="form-control">
+                            <?foreach ($arResult['COMPANY_CURRENT_USER'] as $comp):?>
+                                <option value="<?=$comp['ID']?>"><?=$comp['NAME']?></option>
+                            <?endforeach?>
+                        </select>
+                    </div>
+                    <input type="hidden" name="id" value="<?=$arResult['USER']['ID']?>">
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-nfk d-block cardPact-bBtn">Отправить</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 

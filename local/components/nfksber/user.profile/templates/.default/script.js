@@ -108,4 +108,37 @@ $(document).ready(function(){
             });
         }
     });
+
+    $(document).on('click', '.js-add-staff', function(e){
+        e.preventDefault();
+        let data = {
+            idUser : $(this).attr('data-user'),
+            idCompany : $(this).attr('data-company'),
+            action : 'add'
+        };
+        let that = $(this);
+        preload('show');
+        $.ajax({
+            type:'POST',
+            url: '/response/ajax/staff.php',
+            data: data,
+            dataType: 'JSON',
+            success: function(data){
+                preload('hide');
+                if(data['TYPE']=='SUCCESS'){
+                    that.text('Заявка на модерации');
+                    that.removeClass('js-add-staff');
+                    that.addClass('disabled');
+                    that.attr('disabled', true);
+                    showResult('#popup-success', data['VALUE']);
+                }else if(data['TYPE']=='ERROR'){
+                    showResult('#popup-error','Ошибка сохранения', data['VALUE']);
+                }
+            },
+            error:function(data){
+                preload('hide');
+                console.log(data); //ошибки сервера
+            }
+        });
+    });
 });
