@@ -331,14 +331,26 @@ class CDemoSqr extends CBitrixComponent
                     [
                         'IBLOCK_ID'=>$this->arParams['IBLOCK_ID_COMPANY'],
                         'ACTIVE'=>'Y',
-                        'PROPERTY_DIRECTOR_ID'=>$this->arParams['CURRENT_USER']
+                        'PROPERTY_DIRECTOR_ID'=>$this->arParams['CURRENT_USER'],
                     ],
                     false,
                     false,
                     ['IBLOCK_ID', 'ID', 'NAME']
                 );
-                while($obj = $res->GetNext()){
-                    $arResult['COMPANY_CURRENT_USER'][] = $obj;
+                while($obj = $res->GetNextElement()){
+                    $arr = $obj->GetFields();
+                    $arr['PROPERTY_STAFF'] = $obj->GetProperty('STAFF')['VALUE'];
+                    $arr['PROPERTY_STAFF_NO_ACTIVE'] = $obj->GetProperty('STAFF_NO_ACTIVE')['VALUE'];
+
+                    if(!empty($arr['PROPERTY_STAFF']) && in_array($this->arParams['USER_ID'], $arr['PROPERTY_STAFF'])){
+                        $arr['STAFF'] = true;
+                    }
+
+                    if(!empty($arr['PROPERTY_STAFF_NO_ACTIVE']) && in_array($this->arParams['USER_ID'], $arr['PROPERTY_STAFF_NO_ACTIVE'])){
+                        $arr['STAFF_NO_ACTIVE'] = true;
+                    }
+
+                    $arResult['COMPANY_CURRENT_USER'][] = $arr;
                 }
             }
 

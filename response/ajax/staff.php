@@ -60,7 +60,12 @@ switch ($data['action']) {
             die(json_encode(['VALUE' => "Пользователь уже представитель компании", 'TYPE' => 'ERROR']));
         }
 
-        if(!empty($arProps['STAFF_NO_ACTIVE']) && !in_array($data['idUser'], $arProps['STAFF_NO_ACTIVE'])){
+        if(!empty($arProps['STAFF_NO_ACTIVE'])){
+            if(!in_array($data['idUser'], $arProps['STAFF_NO_ACTIVE'])){
+                $arProps['STAFF_NO_ACTIVE'][] = $data['idUser'];
+            }
+        }
+        else{
             $arProps['STAFF_NO_ACTIVE'][] = $data['idUser'];
         }
 
