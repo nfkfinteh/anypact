@@ -70,9 +70,10 @@ switch ($data['action']) {
         }
 
         CIBlockElement::SetPropertyValuesEx($data['idCompany'], 8, ['STAFF_NO_ACTIVE'=>$arProps['STAFF_NO_ACTIVE']]);
+        $GLOBALS['CACHE_MANAGER']->ClearByTag("iblock_id_8");
 
         //сообщения для модерации
-        sendMessageAddStaff($data['idUser'], $arCompany);
+        //sendMessageAddStaff($data['idUser'], $arCompany);
 
         die(json_encode(['VALUE' => "Заявка на добавление представителя компании принята и будет рассмотрена в течении 2 дней", 'TYPE' => 'SUCCESS']));
         break;
@@ -91,6 +92,7 @@ switch ($data['action']) {
         if(empty($arProps['STAFF'])) $arProps['STAFF'] = false;
 
         CIBlockElement::SetPropertyValuesEx($data['idCompany'], 8, ['STAFF'=>$arProps['STAFF']]);
+        $GLOBALS['CACHE_MANAGER']->ClearByTag("iblock_id_8");
         die(json_encode(['VALUE' => "Преедставитель удален", 'TYPE' => 'SUCCESS']));
         break;
 }
