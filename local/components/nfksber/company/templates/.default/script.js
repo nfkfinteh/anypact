@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    $(document).on('click', '#search_staff', function(){
+   /* $(document).on('click', '#search_staff', function(){
       if($('#staff').val().length < 3) return false;
       var staff = $('input[name="STAFF"]').val();
       var staff_add_no_active = $('input[name="STAFF_NO_ACTIVE"]').val();
@@ -46,7 +46,7 @@ $(document).ready(function(){
             $('input[name="STAFF_NO_ACTIVE"]').val(staff);
             $(this).addClass('staff_znak-ok');
         }
-    });
+    });*/
 
     $(document).on('click', '.js-addphoto', function(e){
         e.preventDefault();

@@ -21,14 +21,15 @@ class UserProfile extends CBitrixComponent
 
     private function getUserInfo($USER){
         $arrUserInfo["ID"] = $USER->GetID();
-        $arrUserInfo["NAME"] = $USER->GetFirstName(); 
-        $arrUserInfo["IN_NAME"] = substr($USER->GetFirstName(), 0, 1); 
-        $arrUserInfo["SECOND_NAME"] = $USER->GetSecondName(); // отчество
-        $arrUserInfo["LAST_NAME"] = $USER->GetLastName(); // фамилия
-        $arrUserInfo["IN_NAMES"] = substr($USER->GetFirstName(), 0, 1).'.'.substr($USER->GetSecondName(), 0, 1).'.'; // Инициалы
         $UserParams = $USER->GetByID($arrUserInfo["ID"]);
         $UserParams = $UserParams->Fetch();
+        $arrUserInfo["NAME"] = $UserParams['NAME'];
+        $arrUserInfo["IN_NAME"] = substr($UserParams['NAME'], 0, 1);
+        $arrUserInfo["SECOND_NAME"] = $USER->GetSecondName(); // отчество
+        $arrUserInfo["LAST_NAME"] = $UserParams['LAST_NAME']; // фамилия
+        $arrUserInfo["IN_NAMES"] = substr($UserParams['NAME'], 0, 1).'.'.substr($arrUserInfo["SECOND_NAME"], 0, 1).'.'; // Инициалы
         $arrUserInfo["PERSONAL_PHOTO"] = CFile::GetPath($UserParams["PERSONAL_PHOTO"]);
+        $arrUserInfo["UF_ESIA_AUT"] = $UserParams['UF_ESIA_AUT'];
 
         if(!empty($UserParams['UF_CUR_COMPANY'])){
             if(CModule::IncludeModule('iblock')){

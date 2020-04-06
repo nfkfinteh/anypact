@@ -108,4 +108,98 @@ $(document).ready(function(){
             });
         }
     });
+
+    $(document).on('change', '.company-list__select', function(){
+        let idCompany = $(this).val(),
+            wrap_btn = $('.js-company__btn'),
+            idUser = wrap_btn.attr('data-user'),
+            currentCompany,
+            html;
+
+        for (i in bitrixCompanyList) {
+            let company = bitrixCompanyList[i];
+            if (company.ID == idCompany) {
+                currentCompany = company;
+                break;
+            }
+        }
+        if(currentCompany.STAFF_NO_ACTIVE){
+            html = '<a href="#" class="btn btn-nfk btn-uprofile disabled">' + 'Заявка на модерации' + '</a>';
+            wrap_btn.html(html);
+        }
+        else if(currentCompany.STAFF){
+            html = '<a href="#" class="btn btn-nfk btn-uprofile js-delete-staff" data-company="'+ currentCompany.ID +'">' + 'Удалить представителя' + '</a>';
+            wrap_btn.html(html);
+        }
+        else{
+            html = '<a href="#" class="btn btn-nfk btn-uprofile js-add-staff" data-company="'+ currentCompany.ID +'">' + 'Сделать представителем' + '</a>';
+            wrap_btn.html(html);
+        }
+    });
+
+    $(document).on('click', '.js-add-staff', function(e){
+        e.preventDefault();
+        let data = {
+            idUser : $('.js-company__btn').attr('data-user'),
+            idCompany : $(this).attr('data-company'),
+            action : 'add'
+        };
+        let that = $(this);
+        preload('show');
+        $.ajax({
+            type:'POST',
+            url: '/response/ajax/staff.php',
+            data: data,
+            dataType: 'JSON',
+            success: function(data){
+                preload('hide');
+                if(data['TYPE']=='SUCCESS'){
+                    that.text('Заявка на модерации');
+                    that.removeClass('js-add-staff');
+                    that.addClass('disabled');
+                    that.attr('disabled', true);
+                    showResult('#popup-success', data['VALUE']);
+                }else if(data['TYPE']=='ERROR'){
+                    showResult('#popup-error','Ошибка сохранения', data['VALUE']);
+                }
+            },
+            error:function(data){
+                preload('hide');
+                console.log(data); //ошибки сервера
+            }
+        });
+    });
+
+    $(document).on('click', '.js-delete-staff', function(e){
+        e.preventDefault();
+        let data = {
+            idUser : $('.js-company__btn').attr('data-user'),
+            idCompany : $(this).attr('data-company'),
+            action : 'delete'
+        };
+        let that = $(this);
+        preload('show');
+        $.ajax({
+            type:'POST',
+            url: '/response/ajax/staff.php',
+            data: data,
+            dataType: 'JSON',
+            success: function(data){
+                preload('hide');
+                if(data['TYPE']=='SUCCESS'){
+                    that.text('Заявка на модерации');
+                    that.removeClass('js-add-staff');
+                    that.addClass('disabled');
+                    that.attr('disabled', true);
+                    showResult('#popup-success', data['VALUE']);
+                }else if(data['TYPE']=='ERROR'){
+                    showResult('#popup-error','Ошибка сохранения', data['VALUE']);
+                }
+            },
+            error:function(data){
+                preload('hide');
+                console.log(data); //ошибки сервера
+            }
+        });
+    });
 });

@@ -1,7 +1,8 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die();
 
 use \Bitrix\Main\Loader,
-    \Bitrix\Main\Application;
+    \Bitrix\Main\Application,
+    Bitrix\Iblock;
 
 class CompanySber extends CBitrixComponent
 {
@@ -29,6 +30,18 @@ class CompanySber extends CBitrixComponent
         if (!$this->arParams['IBLOCK_ID']) return false;
         if (!Loader::includeModule('iblock')) return false;
         if (!$USER) return false;
+
+        $rsUserStart = CUser::GetByID($USER->GetID());
+        $arUserStart = $rsUserStart->GetNext();
+        if($arUserStart['UF_ESIA_AUT'] == 0){
+            //return false;
+            Iblock\Component\Tools::process404(
+                '',
+                true,
+                true,
+                true
+            );
+        }
 
         $this->arResult = [];
         if($_REQUEST["ajax_result"] === "y"){

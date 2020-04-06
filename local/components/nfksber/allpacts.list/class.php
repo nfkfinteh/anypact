@@ -37,29 +37,18 @@ class CDemoSqr extends CBitrixComponent
                     $arrFilter = array();
             }
 
-            // для отображения всех элементов в подкаталогах получим их ид
 
-            if ($_GET['SECTION_ID'] == 0){
-                $arFilter = Array(
-                    "IBLOCK_ID"=>IntVal($id_iblock), 
-                    array(
-                        "LOGIC" => "AND",
-                        array("ACTIVE"=>"Y"),                    
-                        array(">=DATE_ACTIVE_TO"   => new \Bitrix\Main\Type\DateTime()),
-                    )
-                );
-            }else {
+            $arFilter = Array(
+                "IBLOCK_ID"=>IntVal($id_iblock),
+                "ACTIVE"=>"Y",
+                ">=DATE_ACTIVE_TO" => new \Bitrix\Main\Type\DateTime(),
+                "PROPERTY_MODERATION_VALUE" => 'Y'
+            );
+
+            if ($_GET['SECTION_ID'] > 0){
                 // фильтр для отбора всех записей включая подкатегории
-                $arFilter = Array(
-                    "IBLOCK_ID"=>IntVal($id_iblock), 
-                    "SECTION_ID"=> $section_id, 
-                    "INCLUDE_SUBSECTIONS" => "Y",
-                    array(
-                        "LOGIC" => "AND",
-                        array("ACTIVE"=>"Y"),                    
-                        array(">=DATE_ACTIVE_TO"   => new \Bitrix\Main\Type\DateTime()),
-                    )
-                );
+                $arFilter['SECTION_ID'] = $section_id;
+                $arFilter['INCLUDE_SUBSECTIONS'] = 'Y';
             }
 
             $res = CIBlockElement::GetList(Array(), array_merge($arFilter, $arrFilter), false, $arNavParams, $arSelect);

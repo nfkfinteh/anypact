@@ -18,9 +18,33 @@
                             Удалить из друзей
                         </a>
                     <?endif?>
-                    <?if($arResult['USER']['ID'] !=$arParams['CURRENT_USER']):?>
+                    <?if(!empty($arParams['CURRENT_USER']) && $arResult['USER']['ID'] !=$arParams['CURRENT_USER']):?>
                         <a href="#" class="btn btn-nfk btn-uprofile" data-toggle="modal" data-target=".bd-comment-modal-sm">Оставить отзыв</a>
                         <a href="#" class="btn btn-nfk btn-uprofile" data-toggle="modal" data-target=".bd-message-modal-sm">Отправить сообщение</a>
+                        <?if(!empty($arResult['COMPANY_CURRENT_USER'])):?>
+                            <label class="company-list__title">Выбор компании</label>
+                            <select class="company-list__select">
+                                <?foreach($arResult['COMPANY_CURRENT_USER'] as $comp):?>
+                                    <option value="<?=$comp['ID']?>"><?=$comp['NAME']?></option>
+                                <?endforeach?>
+                            </select>
+
+                            <div class="js-company__btn" data-user="<?=$arResult['USER']['ID']?>">
+                                <?if($arResult['COMPANY_CURRENT_USER'][0]['STAFF_NO_ACTIVE']):?>
+                                    <a href="#" class="btn btn-nfk btn-uprofile disabled">
+                                        Заявка на модерации
+                                    </a>
+                                <?elseif($arResult['COMPANY_CURRENT_USER'][0]['STAFF']):?>
+                                    <a href="#" class="btn btn-nfk btn-uprofile js-delete-staff" data-company="<?=$arResult['COMPANY_CURRENT_USER'][0]['ID']?>">
+                                        Удалить представителя
+                                    </a>
+                                <?else:?>
+                                    <a href="#" class="btn btn-nfk btn-uprofile js-add-staff" data-company="<?=$arResult['COMPANY_CURRENT_USER'][0]['ID']?>">
+                                        Сделать представителем
+                                    </a>
+                                <?endif?>
+                            </div>
+                        <?endif?>
                     <?endif?>
                     <?if($arResult['USER']['PERSONAL_GENDER']=='M'):?>
                         <span class="d-block mt-4">Пол: мужской</span>
@@ -38,6 +62,16 @@
                     <?if(!empty($arResult['USER']['PERSONAL_PHONE']) && $arResult['USER']['UF_DISPLAY_PHONE'] == 1):?>
                         <span class="d-block mt-4">Телефон: <a href="tel:<?=$arResult['USER']['PERSONAL_PHONE']?>"><?=$arResult['USER']['PERSONAL_PHONE']?></a></span>
                     <?endif?>
+                    <?if(!empty($arResult['COMPANY'])):?>
+                        <span class="d-block mt-3">Представитель компании: </span>
+                        <?foreach ($arResult['COMPANY'] as $company):?>
+                            <div>
+                                <a href="/profile_user/?type=company&ID=<?=$company['ID']?>">
+                                    <?=$company['NAME']?>
+                                </a>
+                            </div>
+                        <?endforeach?>
+                    <?endif?>
                     <?if($arResult['USER']['UF_ESIA_AUT']==1):?>
                         <span class="d-block font-weight-bold mt-4">Подтвержденная регистрация</span>
                         <span class="d-block registration-checked mt-2"><img src="https://gu-st.ru/st/img/logo_nobeta.0a1f5dfe6b.svg" style="width:50%;"/></span>
@@ -45,6 +79,16 @@
                 <?elseif($arResult['TYPE_HOLDER'] == 'company'):?>
                     <span class="d-block mt-4">Юридическое лицо</span>
                     <span class="d-block mt-3"><?=$arResult['USER']['PROPERTY']['CITY']['VALUE']?> <?=$arResult['USER']['PROPERTY']['ADRESS']['VALUE']?></span>
+                    <?if(!empty($arResult['STAFF'])):?>
+                        <span class="d-block mt-3">Представители компании: </span>
+                        <?foreach ($arResult['STAFF'] as $staff):?>
+                            <div>
+                                <a href="/profile_user/?ID=<?=$staff['ID']?>">
+                                    <?=$staff['NAME'].' '.$staff['LAST_NAME']?>
+                                </a>
+                            </div>
+                        <?endforeach?>
+                    <?endif?>
                 <?endif?>
 
 
@@ -121,6 +165,10 @@
 <?=$arResult["NAV_STRING"]?>
 </div>
 
+<script>
+    var bitrixCompanyList = <?=CUtil::PhpToJSObject($arResult['COMPANY_CURRENT_USER'])?>
+</script>
+
 <div class="modal fade bd-message-modal-sm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -172,8 +220,6 @@
         </div>
     </div>
 </div>
-
-
 
 
 

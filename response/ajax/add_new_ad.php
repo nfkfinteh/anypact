@@ -147,6 +147,17 @@ if(in_array( 1, $arGroups) || in_array( 6, $arGroups)){
             ];
         }
 
+        //отправка сообщения для модератора
+        if($data['IBLOCK_ID'] && $PRODUCT_ID){
+            $resIblockSleka = CIBlock::GetByID($data['IBLOCK_ID']);
+            if($obj = $resIblockSleka->GetNext()) $typeIBlock = $obj['IBLOCK_TYPE_ID'];
+            $send_data = Array(
+                'URL_ADMIN_SDELKA' => $_SERVER['DOCUMENT_ROOT'].'/bitrix/admin/iblock_element_edit.php?IBLOCK_ID='.$data['IBLOCK_ID'].'&type='.$typeIBlock.'&ID='.$PRODUCT_ID,
+            );
+            CEvent::Send("NEW_SDELKA", "s1", $send_data, 'N', 32);
+        }
+
+
         die(json_encode($arResult));
     }
     else{

@@ -332,7 +332,7 @@ if (!empty($arResult['arUser']['UF_ESIA_ID']) && $arResult['arUser']['UF_ESIA_AU
     </div>
     <div class="row add_company">
         <div class="col-xl-4 col-md-6 col-sm-12 offset-xl-3 add_company-button">
-            <a href="/profile/company/" class="btn btn-aut">+ Добавить компанию</a>
+            <a href="/profile/company/" class="btn btn-aut <?if($arResult['arUser']['UF_ESIA_AUT']==0):?>disabled<?endif?>">+ Добавить компанию</a>
         </div>
     </div>
 </div>

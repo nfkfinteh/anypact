@@ -93,12 +93,14 @@ class CDemoSqr extends CBitrixComponent
                     'IBLOCK_ID'=>$arParams['IBLOCK_ID'],
                     'PROPERTY_PACT_USER'=>$arParams['USER_ID'],
                     'PROPERTY_ID_COMPANY'=>false,
+                    'PROPERTY_MODERATION_VALUE'=>'Y',
                 ];
             }
             elseif($typeHolder == 'company') {
                 $arFilter = [
                     'IBLOCK_ID'=>$arParams['IBLOCK_ID'],
                     'PROPERTY_ID_COMPANY'=>$arParams['USER_ID'],
+                    'PROPERTY_MODERATION_VALUE'=>'Y',
                 ];
             }
 
@@ -151,12 +153,14 @@ class CDemoSqr extends CBitrixComponent
                     'IBLOCK_ID'=>$arParams['IBLOCK_ID'],
                     'PROPERTY_PACT_USER'=>$arParams['USER_ID'],
                     'PROPERTY_ID_COMPANY'=>false,
+                    'PROPERTY_MODERATION_VALUE'=>'Y',
                 ];
             }
             elseif($typeHolder == 'company') {
                 $arFilter = [
                     'IBLOCK_ID'=>$arParams['IBLOCK_ID'],
                     'PROPERTY_ID_COMPANY'=>$arParams['USER_ID'],
+                    'PROPERTY_MODERATION_VALUE'=>'Y',
                 ];
             }
             //фильтр для завершенных сделок
@@ -262,6 +266,26 @@ class CDemoSqr extends CBitrixComponent
                 $arResult["COMPLETED_ITEMS"] = $this->getCntSdel('N', 'company');
                 $arResult["TYPE_HOLDER"] = 'company';
 
+                $arIdStaff = [];
+                $arIdStaff[] = $arResult['USER']['PROPERTY']['DIRECTOR_ID']['VALUE'];
+                if(!empty($arResult['USER']['PROPERTY']['STAFF']['VALUE'])){
+                    $arIdStaff = array_merge($arIdStaff, $arResult['USER']['PROPERTY']['STAFF']['VALUE']);
+                }
+
+                if(!empty($arIdStaff)){
+                    foreach ($arIdStaff as $id){
+                        $rsUser = CUser::GetByID($id);
+                        if ($obj = $rsUser->GetNext()){
+                            $arResult['STAFF'][] = [
+                                'ID'=>$obj['ID'],
+                                'NAME'=>$obj['NAME'],
+                                'LAST_NAME'=>$obj['LAST_NAME']
+                            ];
+                        }
+                    }
+                }
+                unset($arIdStaff);
+
                 $arItems  =  $this->getUserSdel($ajaxData, $arNavParams, 'company');
                 // ошибка если нет записей поправка в шаблоне
                 $arResult["ITEMS"] = $arItems['ITEMS'];
@@ -280,6 +304,54 @@ class CDemoSqr extends CBitrixComponent
                 $arResult["ITEMS"] = $arItems['ITEMS'];
                 //$arResult["FRENDS"] = $this->getFrends();
                 $arResult["FRENDS"] =$arFrends;
+
+                $res = CIBlockElement::GetList(
+                    [],
+                    [
+                        'IBLOCK_ID'=>$this->arParams['IBLOCK_ID_COMPANY'],
+                        'ACTIVE'=>'Y',
+                        [
+                            'LOGIC'=> 'OR',
+                            ['PROPERTY_DIRECTOR_ID'=>$this->arParams['USER_ID']],
+                            ['PROPERTY_STAFF'=>$this->arParams['USER_ID']]
+                        ]
+                    ],
+                    false,
+                    false,
+                    ['IBLOCK_ID', 'ID', 'NAME']
+                );
+                while($obj = $res->GetNext()){
+                    $arCompany[] = $obj;
+                }
+                $arResult['COMPANY'] = $arCompany;
+                unset($arCompany);
+
+                $res = CIBlockElement::GetList(
+                    [],
+                    [
+                        'IBLOCK_ID'=>$this->arParams['IBLOCK_ID_COMPANY'],
+                        'ACTIVE'=>'Y',
+                        'PROPERTY_DIRECTOR_ID'=>$this->arParams['CURRENT_USER'],
+                    ],
+                    false,
+                    false,
+                    ['IBLOCK_ID', 'ID', 'NAME']
+                );
+                while($obj = $res->GetNextElement()){
+                    $arr = $obj->GetFields();
+                    $arr['PROPERTY_STAFF'] = $obj->GetProperty('STAFF')['VALUE'];
+                    $arr['PROPERTY_STAFF_NO_ACTIVE'] = $obj->GetProperty('STAFF_NO_ACTIVE')['VALUE'];
+
+                    if(!empty($arr['PROPERTY_STAFF']) && in_array($this->arParams['USER_ID'], $arr['PROPERTY_STAFF'])){
+                        $arr['STAFF'] = true;
+                    }
+
+                    if(!empty($arr['PROPERTY_STAFF_NO_ACTIVE']) && in_array($this->arParams['USER_ID'], $arr['PROPERTY_STAFF_NO_ACTIVE'])){
+                        $arr['STAFF_NO_ACTIVE'] = true;
+                    }
+
+                    $arResult['COMPANY_CURRENT_USER'][] = $arr;
+                }
             }
 
 

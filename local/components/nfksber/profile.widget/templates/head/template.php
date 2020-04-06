@@ -45,7 +45,9 @@ $MessURL = '/list_message/';
                     <span class="triangle">▲</span>
                     <ul>
                         <li><a href="/profile/">Редактировать профиль</a></li>
-                        <li><a href="/profile/select_company/">Переключить профиль</a></li>
+                        <?if($arResult['UF_ESIA_AUT']==1):?>
+                            <li><a href="/profile/select_company/">Переключить профиль</a></li>
+                        <?endif?>
                     </ul>
                     <a href="<?echo $APPLICATION->GetCurPageParam("logout=yes", 
                         array(
