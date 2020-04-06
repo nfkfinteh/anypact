@@ -243,7 +243,10 @@ class CDemoSqr extends CBitrixComponent
             $arFrends = $this->getFrends();
         }
 
-        if($this->startResultCache($this->arParams['CACHE_TIME'], [$ajaxData, $arNavigation, $arFrends]))
+        $res = CUser::GetByID($this->arParams['USER_ID']);
+        $arUser = $res->GetNext();
+
+        if($this->startResultCache($this->arParams['CACHE_TIME'], [$ajaxData, $arNavigation, $arFrends, $arUser]))
         {
             if($this->arParams['TYPE']=='company'){
                 $res = CIBlockElement::GetList(
@@ -291,8 +294,8 @@ class CDemoSqr extends CBitrixComponent
                 $arResult["ITEMS"] = $arItems['ITEMS'];
             }
             else{
-                $res = CUser::GetByID($this->arParams['USER_ID']);
-                $arUser = $res->GetNext();
+               /* $res = CUser::GetByID($this->arParams['USER_ID']);
+                $arUser = $res->GetNext();*/
                 $arResult["USER"] = $arUser;
                 $arResult["USER"]['IMG_URL'] = CFile::GetPath($arResult['USER']['PERSONAL_PHOTO']);
                 $arResult["USER"]["IN_NAME"] = substr($arResult["USER"]['NAME'], 0, 1);
@@ -326,31 +329,35 @@ class CDemoSqr extends CBitrixComponent
                 $arResult['COMPANY'] = $arCompany;
                 unset($arCompany);
 
-                $res = CIBlockElement::GetList(
-                    [],
-                    [
-                        'IBLOCK_ID'=>$this->arParams['IBLOCK_ID_COMPANY'],
-                        'ACTIVE'=>'Y',
-                        'PROPERTY_DIRECTOR_ID'=>$this->arParams['CURRENT_USER'],
-                    ],
-                    false,
-                    false,
-                    ['IBLOCK_ID', 'ID', 'NAME']
-                );
-                while($obj = $res->GetNextElement()){
-                    $arr = $obj->GetFields();
-                    $arr['PROPERTY_STAFF'] = $obj->GetProperty('STAFF')['VALUE'];
-                    $arr['PROPERTY_STAFF_NO_ACTIVE'] = $obj->GetProperty('STAFF_NO_ACTIVE')['VALUE'];
+                //добавление в представители компании
+                //только пользователей подтвердивших на гос услуга
+                if($arResult['USER']['UF_ESIA_AUT']==1){
+                    $res = CIBlockElement::GetList(
+                        [],
+                        [
+                            'IBLOCK_ID'=>$this->arParams['IBLOCK_ID_COMPANY'],
+                            'ACTIVE'=>'Y',
+                            'PROPERTY_DIRECTOR_ID'=>$this->arParams['CURRENT_USER'],
+                        ],
+                        false,
+                        false,
+                        ['IBLOCK_ID', 'ID', 'NAME']
+                    );
+                    while($obj = $res->GetNextElement()){
+                        $arr = $obj->GetFields();
+                        $arr['PROPERTY_STAFF'] = $obj->GetProperty('STAFF')['VALUE'];
+                        $arr['PROPERTY_STAFF_NO_ACTIVE'] = $obj->GetProperty('STAFF_NO_ACTIVE')['VALUE'];
 
-                    if(!empty($arr['PROPERTY_STAFF']) && in_array($this->arParams['USER_ID'], $arr['PROPERTY_STAFF'])){
-                        $arr['STAFF'] = true;
+                        if(!empty($arr['PROPERTY_STAFF']) && in_array($this->arParams['USER_ID'], $arr['PROPERTY_STAFF'])){
+                            $arr['STAFF'] = true;
+                        }
+
+                        if(!empty($arr['PROPERTY_STAFF_NO_ACTIVE']) && in_array($this->arParams['USER_ID'], $arr['PROPERTY_STAFF_NO_ACTIVE'])){
+                            $arr['STAFF_NO_ACTIVE'] = true;
+                        }
+
+                        $arResult['COMPANY_CURRENT_USER'][] = $arr;
                     }
-
-                    if(!empty($arr['PROPERTY_STAFF_NO_ACTIVE']) && in_array($this->arParams['USER_ID'], $arr['PROPERTY_STAFF_NO_ACTIVE'])){
-                        $arr['STAFF_NO_ACTIVE'] = true;
-                    }
-
-                    $arResult['COMPANY_CURRENT_USER'][] = $arr;
                 }
             }
 

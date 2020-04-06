@@ -38,14 +38,14 @@ $arrStatusAwait = array(
                         <div><?= $pact["NAME"] ?></div>
                         <div class="collapse-arrow position-relative"></div>
                     </div>
-                    <div class="d-md-table-row collapse-body <?if($pact['PROPERTIES']['MODERATION']['VALUE'] !='Y'):?>collapse-body_disabled<?endif?>">
+                    <div class="d-md-table-row collapse-body">
                         <div class="d-md-none text-gray"></div>
                         <div class="first-face d-md-table-cell">
                             <span class="d-flex align-items-center">
                                 <? if(!empty($pact['URL_IMG_PREVIEW'])) {?>
                                     <img src="<?=$pact['URL_IMG_PREVIEW']?>" height="45" alt ="<?=$pact['NAME']?>" />
                                 <?}?>
-                                <span style="margin-left: 10px;"><?= $pact["NAME"] ?></span>
+                                <span style="margin-left: 10px;"><?=$pact["NAME"]?> <?if($pact['PROPERTIES']['MODERATION']['VALUE'] !='Y'):?>(на модерации)<?endif?></span>
                                 </span>
                         </div>
                         <div class="d-md-none text-gray">Активно до:</div>
@@ -68,7 +68,7 @@ $arrStatusAwait = array(
                                 </button>
                             </div>
                             <div class="d-md-table-cell">
-                                На модерации
+                                <a class="button-link" href="/my_pacts/edit_my_pact/?ELEMENT_ID=<?= $pact['ID'] ?>&ACTION=EDIT" target="_blank" >Посмотреть</a>
                             </div>
                         <?endif?>
                         <!-- кнопки близко, удаление только из карточки
