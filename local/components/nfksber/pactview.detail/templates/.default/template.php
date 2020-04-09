@@ -11,6 +11,7 @@ foreach ($arResult["PROPERTY"]["IMG_FILE"] as $item){
         'THUMB_URL'=>$file['src']
     ];
 }
+$DATE_ACTIVE_TO = MakeTimeStamp($arResult['ELEMENT']['DATE_ACTIVE_TO'], "DD.MM.YYYY");
 ?>
 <h1 class="d-inline-block"><?=$arResult["ELEMENT"]["NAME"]?></h1>
 <div class="row">
@@ -45,7 +46,7 @@ foreach ($arResult["PROPERTY"]["IMG_FILE"] as $item){
 
         <?//скрытие кнопки при окончане активности?>
         <? if($USER->IsAuthorized()):?>
-            <?if($arResult['ELEMENT']['ACTIVE']=='Y' && $arResult['ELEMENT']['DATE_ACTIVE_TO']>=ConvertTimeStamp(time(), "SHORT")):?>
+            <?if($arResult['ELEMENT']['ACTIVE']=='Y' && $DATE_ACTIVE_TO>=time()):?>
                 <a href="/pacts/view_pact/view_dogovor/?ELEMENT_ID=<?=$arResult["ELEMENT"]["ID"]?>" class="btn btn-nfk cardPact-bBtn <?=$disable_a?>">Посмотреть или подписать договор</a>
             <?endif?>
         <?endif?>
@@ -72,7 +73,7 @@ foreach ($arResult["PROPERTY"]["IMG_FILE"] as $item){
         </div>
         <div class="cardPact-info">
             <?/*<span class="float-left">Репутация</span><span class="float-right cardPact-rating">&#9733; 3,9</span><br>*/?>
-            <?if(empty($arResult['PROPERTY']['ID_COMPANY']['VALUE'])):?>
+            <?if(empty($arResult['PROPERTY']['ID_COMPANY']['VALUE']) && !empty($arResult['DOGOVOR']['CNT'])):?>
                 <span class="float-left">Заключенных сделок</span><span class="float-right "><?=$arResult['DOGOVOR']['CNT']?></span>
             <?endif?>
             <br>
@@ -80,7 +81,7 @@ foreach ($arResult["PROPERTY"]["IMG_FILE"] as $item){
         </div>
         <?//скрытие кнопки при окончане активности?>
         <? if($USER->IsAuthorized()):?>
-            <? if($arResult['ELEMENT']['ACTIVE']=='Y' && $arResult['ELEMENT']['DATE_ACTIVE_TO']>=ConvertTimeStamp(time(), "SHORT")): ?>
+            <? if($arResult['ELEMENT']['ACTIVE']=='Y' && $DATE_ACTIVE_TO>=time()): ?>
                 <button type="button" class="btn btn-nfk d-block cardPact-bBtn" data-toggle="modal" data-target=".bd-message-modal-sm">Написать сообщение.</button>
             <? endif ?>
         <? endif?>
