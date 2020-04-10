@@ -2,6 +2,9 @@
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("AnyPact || Бесплатный сервис для дистанционного заключения сделок");
 global $USER;
+
+?>
+<?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 CJSCore::Init();
 ?>
 <style>
