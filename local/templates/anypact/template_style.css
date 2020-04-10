@@ -3678,7 +3678,8 @@ footer p{
 .new-auth-block .regpopup_content_form_submit{
     display: flex;
     justify-content: center;
-    margin-top: 20px;
+    margin: 0 auto;
+    padding-top: 20px;
     width: 174px;
     padding: 14px 65px;
     border-radius: 20px;
