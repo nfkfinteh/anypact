@@ -173,7 +173,7 @@ $APPLICATION->IncludeComponent(
                             <?endforeach?>
                                 <input type="hidden" name="AUTH_FORM" value="Y" />
                                 <input type="hidden" name="TYPE" value="AUTH" /> -->
-                                <img src="<?=SITE_TEMPLATE_PATH?>/image/icons8_user_credentials_100px.png">
+                                <div class="user_credentials"><img src="<?=SITE_TEMPLATE_PATH?>/image/icons8_user_credentials_100px.png"></div>
                                 <h2>Авторизация</h2>
                                 <!--Логин-->
                                 <p>Логин</p>
