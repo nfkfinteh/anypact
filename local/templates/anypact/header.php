@@ -120,7 +120,7 @@ global $USER;
         <!--Шапка-->
         <header class="header" id="header" style="width: 100%;">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-7">
                     <a href="/" class="logo"><img src="<?=SITE_TEMPLATE_PATH?>/image/logo_ap.svg" alt="" style="width: 166px;"></a>
                     <?if(!empty($getGeo['cityName'])):?>
                         <span class="location"><?=$getGeo['cityName']?></span>
@@ -129,7 +129,7 @@ global $USER;
                     <?endif?>
                 </div>
                 <? if ($USER->IsAuthorized()){ ?>
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <!-- <?if(!empty($getGeo['cityName'])):?>
                             <span class="location"><?=$getGeo['cityName']?></span>
                         <?else:?>
@@ -161,7 +161,7 @@ global $USER;
                         </div>
                     </div>
                     <?}else {?>
-                        <div class="col-md-6">
+                        <div class="col-md-5">
                             <a href="tel:+78002008484" class="phone">8(800) 200-84-84</a>
                             <button class="btn btn-nfk btn-login" id="reg_button">Регистрация / Вход</button>
                         </div>

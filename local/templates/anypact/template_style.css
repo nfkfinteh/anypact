@@ -838,7 +838,7 @@ input::-webkit-input-placeholder {
     margin-top: 3px;
     font-size: 24px;
     font-weight: normal;
-    /* white-space: nowrap; */
+    white-space: nowrap;
     /* margin-left: 91px; */
 }
 .navbar-collapse {
