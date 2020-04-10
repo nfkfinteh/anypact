@@ -839,7 +839,7 @@ input::-webkit-input-placeholder {
     font-size: 24px;
     font-weight: normal;
     /* white-space: nowrap; */
-    margin-left: 91px;
+    /* margin-left: 91px; */
 }
 .navbar-collapse {
     -webkit-box-pack: end;
