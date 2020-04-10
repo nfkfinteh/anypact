@@ -158,20 +158,20 @@ $APPLICATION->IncludeComponent(
                 Подтвердить учетную запись портала Госуслуг можно в любом Многофункциональном центре Вашего города.
             </div>
             <button class="btn btn-nfk send-btn new-reg-button" id="open_reg_form">Зарегистрироваться</button>
-            <div class="col-md-6 order-1 order-md-2 text-center">
+            <div class="col-md-6 order-1 order-md-2">
                 <!-- <div  <?if(!$USER->IsAuthorized()):?>id="open_reg_form"<?endif?>>
                     <img src="<?=SITE_TEMPLATE_PATH?>/image/img_reg_us.png" alt="Подпись" style="max-width: 100%">
                 </div> -->
                 <div class="new-auth-block">
                     <form name="system_auth_form<?=$arResult["RND"]?>" method="post" target="_top" action="<?=$arResult["AUTH_URL"]?>">
-                        <?if($arResult["BACKURL"] <> ''):?>
+                        <!-- <?if($arResult["BACKURL"] <> ''):?>
                             <input type="hidden" name="backurl" value="<?=$arResult["BACKURL"]?>" />
                         <?endif?>
                         <?foreach ($arResult["POST"] as $key => $value):?>
                             <input type="hidden" name="<?=$key?>" value="<?=$value?>" />
                         <?endforeach?>
                             <input type="hidden" name="AUTH_FORM" value="Y" />
-                            <input type="hidden" name="TYPE" value="AUTH" />
+                            <input type="hidden" name="TYPE" value="AUTH" /> -->
                             <img src="<?=SITE_TEMPLATE_PATH?>/image/icons8_user_credentials_100px.png">
                             <h2>Авторизация</h2>
                             <!--Логин-->

@@ -3630,6 +3630,7 @@ footer p{
     margin-top: 25px;
 }
 .new-auth-block{
+    width: 262px;
     padding: 27px 20px;
     background: #fff;
     position: relative;
@@ -3646,7 +3647,6 @@ footer p{
     margin-bottom: 39px;
 }
 .new-auth-block .regpopup_content_form_input{
-    width: 262px;
     border-radius: 20px;
 }
 .new-auth-block .regpopup_content_form_submit{
