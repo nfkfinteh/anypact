@@ -2068,6 +2068,9 @@ table.detail_contract, table.detail_contract thead, table.detail_contract tr, ta
     .widget_user_profile_avatar {
         margin-left: -2px;
     }
+    .widget_user_profile_name {
+        margin-left: 0px;
+    }
 }
 
 @media screen and (max-width: 991px) {
