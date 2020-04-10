@@ -137,7 +137,7 @@ global $USER;
                         <?endif?>
 
                     </div> -->
-                    <?=GetMessage('AUTH_LOGIN')?>
+                    <a href="tel:+78002008484" class="phone">8(800) 200-84-84</a>
                     <div class="col-md-4">
                         <div class="row">                            
                             <div class="col-md-9">
