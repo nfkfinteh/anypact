@@ -3630,9 +3630,9 @@ footer p{
     margin-top: 25px;
     display: block;
 }
-.new-auth{
+/* .new-auth{
     position: relative;
-}
+} */
 .new-auth-block{
     width: 262px;
     padding: 27px 20px;
@@ -3660,14 +3660,29 @@ footer p{
     padding-right: 18px;
     color: #a5a5a5;
 }
+.new-auth-block .regpopup_content_form_input::-webkit-input-placeholder {
+    color: #a5a5a5;
+  }
+  
+  .new-auth-block .regpopup_content_form_input:-moz-placeholder {
+    color: #a5a5a5;
+  }
+  
+  .new-auth-block .regpopup_content_form_input::-moz-placeholder {
+    color: #a5a5a5;
+  }
+  
+  .new-auth-block .regpopup_content_form_input:-ms-input-placeholder {
+    color: #a5a5a5;
+  }
 .new-auth-block .regpopup_content_form_submit{
     margin-top: 20px;
     text-align: center;
     width: 174px;
-    padding: 15px 65px;
+    padding: 14px 65px;
     border-radius: 20px;
     background: #ff6416;
-    transition: all .3s;
+    transition: all .1s;
     color: #fff;
 }
 .new-auth-block .regpopup_content_form_submit:hover{
@@ -3682,7 +3697,7 @@ footer p{
 }
 .lock-img {
     position: absolute;
-    z-index: 1;
+    z-index: 1 !important;
     right: -95px;
     top: 150px;
 }
