@@ -2061,6 +2061,14 @@ table.detail_contract, table.detail_contract thead, table.detail_contract tr, ta
         margin-left: -40px;
     }
 }
+@media (max-width: 1200px) {
+    .phone {
+        margin-left: -40px;
+    }
+    .widget_user_profile_avatar {
+        margin-left: -2px;
+    }
+}
 
 @media screen and (max-width: 991px) {
     .map-space {
@@ -2074,9 +2082,6 @@ table.detail_contract, table.detail_contract thead, table.detail_contract tr, ta
     }
     .phone {
         float: left;
-    }
-    .widget_user_profile_avatar {
-        margin-left: -2px;
     }
 }
 
