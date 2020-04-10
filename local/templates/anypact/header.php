@@ -129,7 +129,7 @@ global $USER;
                     <?endif?>
                 </div>
                 <? if ($USER->IsAuthorized()){ ?>
-                    <div class="col-md-2">
+                    <div class="col-md-5">
                         <!-- <?if(!empty($getGeo['cityName'])):?>
                             <span class="location"><?=$getGeo['cityName']?></span>
                         <?else:?>
