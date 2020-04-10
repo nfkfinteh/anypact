@@ -3661,7 +3661,7 @@ footer p{
     padding-right: 18px;
     color: #a5a5a5;
 }
-.new-auth-block .regpopup_content_form_input:last-child{
+.new-auth-block .regpopup_content_form_input:nth-child(2){
     margin-bottom: 20px;
 }
 .new-auth-block .regpopup_content_form_input::-webkit-input-placeholder {
@@ -3704,6 +3704,6 @@ footer p{
 .lock-img {
     position: absolute;
     z-index: 1;
-    right: 156px;
+    right: 76px;
     top: 110px;
 }
