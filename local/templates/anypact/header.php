@@ -120,7 +120,7 @@ global $USER;
         <!--Шапка-->
         <header class="header" id="header" style="width: 100%;">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-3">
                     <a href="/" class="logo"><img src="<?=SITE_TEMPLATE_PATH?>/image/logo_ap.svg" alt="" style="width: 166px;"></a>
                     <?if(!empty($getGeo['cityName'])):?>
                         <span class="location"><?=$getGeo['cityName']?></span>
