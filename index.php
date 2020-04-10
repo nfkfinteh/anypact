@@ -177,7 +177,7 @@ $APPLICATION->IncludeComponent(
                                 <h2>Авторизация</h2>
                                 <!--Логин-->
                                 <p>Логин</p>
-                                <input type="text" name="USER_LOGIN_ERROR" class="regpopup_content_form_input" data-mess="" value="" id="user_aut_login" placeholder="<?=GetMessage('AUTH_LOGIN')?>" />
+                                <input type="text" name="USER_LOGIN_ERROR" class="regpopup_content_form_input" data-mess="" value="" id="user_aut_login" placeholder="" />
                                         <script>
                                             BX.ready(function() {
                                                 var loginCookie = BX.getCookie("<?=CUtil::JSEscape($arResult["~LOGIN_COOKIE_NAME"])?>");
@@ -191,7 +191,7 @@ $APPLICATION->IncludeComponent(
                                         </script>
                                 <!--Пароль-->
                                 <p>Пароль</p>
-                                <input type="password" name="USER_PASSWORD" class="regpopup_content_form_input"  autocomplete="off" id="user_aut_pass" placeholder="Пароль"/>  
+                                <input type="password" name="USER_PASSWORD" class="regpopup_content_form_input"  autocomplete="off" id="user_aut_pass" placeholder=""/>  
                             <?if ($arResult["STORE_PASSWORD"] == "Y"):?>
                                     <input type="checkbox" id="USER_REMEMBER_frm" name="USER_REMEMBER" value="Y" /></td>
                                     <label for="USER_REMEMBER_frm" title="<?=GetMessage("AUTH_REMEMBER_ME")?>"><?echo GetMessage("AUTH_REMEMBER_SHORT")?></label>

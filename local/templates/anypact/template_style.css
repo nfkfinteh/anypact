@@ -2057,6 +2057,9 @@ table.detail_contract, table.detail_contract thead, table.detail_contract tr, ta
     .container {
         max-width: 1170px;
     }
+    .phone {
+        margin-left: -40px;
+    }
 }
 
 @media screen and (max-width: 991px) {
@@ -2071,6 +2074,9 @@ table.detail_contract, table.detail_contract thead, table.detail_contract tr, ta
     }
     .phone {
         float: left;
+    }
+    .widget_user_profile_avatar {
+        margin-left: -2px;
     }
 }
 
