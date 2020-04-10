@@ -3630,9 +3630,10 @@ footer p{
     margin-top: 25px;
     display: block;
 }
-.new-auth{
+.new-auth {
+    margin-left: 130px;
     position: relative;
-    top: 130px;
+    top: -146px;
 }
 .new-auth-block{
     width: 262px;
