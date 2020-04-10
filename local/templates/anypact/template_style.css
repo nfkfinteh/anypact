@@ -72,7 +72,6 @@ input {
 .phone {
     font-size: 24px;
     font-weight: normal;
-    float: right;
     text-decoration: none;
     color: #212529 !important;
 }
@@ -87,7 +86,7 @@ input {
     font-size: 14px;
     line-height: 2.5;
     text-decoration: underline;
-    float: left;
+    /* float: left; */
     cursor:pointer;
 }
 .mobile-location .location{
