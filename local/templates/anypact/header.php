@@ -121,12 +121,12 @@ global $USER;
         <header class="header" id="header" style="width: 100%;">
             <div class="row">
                 <div class="col-md-6">
-                <?if(!empty($getGeo['cityName'])):?>
+                    <a href="/" class="logo"><img src="<?=SITE_TEMPLATE_PATH?>/image/logo_ap.svg" alt="" style="width: 166px;"></a>
+                    <?if(!empty($getGeo['cityName'])):?>
                         <span class="location"><?=$getGeo['cityName']?></span>
                     <?else:?>
                         <span class="location">Выберите город</span>
                     <?endif?>
-                    <a href="/" class="logo"><img src="<?=SITE_TEMPLATE_PATH?>/image/logo_ap.svg" alt="" style="width: 166px;"></a>
                 </div>
                 <? if ($USER->IsAuthorized()){ ?>
                     <div class="col-md-2">
