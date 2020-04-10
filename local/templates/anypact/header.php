@@ -138,7 +138,7 @@ global $USER;
                         <a href="tel:+78002008484" class="phone">8(800) 200-84-84</a>
 
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="row">                            
                             <div class="col-md-9">
                                 <?                                
