@@ -3661,9 +3661,6 @@ footer p{
     padding-right: 18px;
     color: #a5a5a5;
 }
-.new-auth-block .regpopup_content_form_input:nth-child(2){
-    margin-bottom: 20px;
-}
 .new-auth-block .regpopup_content_form_input::-webkit-input-placeholder {
     color: #a5a5a5;
   }
@@ -3680,6 +3677,8 @@ footer p{
     color: #a5a5a5;
   }
 .new-auth-block .regpopup_content_form_submit{
+    position: relative;
+    top: 20px;
     display: flex;
     justify-content: center;
     margin: 0 auto;
