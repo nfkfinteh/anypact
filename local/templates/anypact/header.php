@@ -129,15 +129,15 @@ global $USER;
                     <?endif?>
                 </div>
                 <? if ($USER->IsAuthorized()){ ?>
-                    <div class="col-md-2">
-                        <!-- <?if(!empty($getGeo['cityName'])):?>
+                    <!-- <div class="col-md-2">
+                        <?if(!empty($getGeo['cityName'])):?>
                             <span class="location"><?=$getGeo['cityName']?></span>
                         <?else:?>
                             <span class="location">Выберите город</span>
-                        <?endif?> -->
-                        <a href="tel:+78002008484" class="phone">8(800) 200-84-84</a>
+                        <?endif?>
 
-                    </div>
+                    </div> -->
+                    <?=GetMessage('AUTH_LOGIN')?>
                     <div class="col-md-4">
                         <div class="row">                            
                             <div class="col-md-9">
