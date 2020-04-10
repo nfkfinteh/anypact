@@ -156,8 +156,8 @@ $APPLICATION->IncludeComponent(
                 Регистрация, авторизация и заключение договоров на площадке AnyPact проходят в режиме онлайн.
                 Для заключения сделок вам понадобится подтвержденная учетная запись на портале Госуслуг.
                 Подтвердить учетную запись портала Госуслуг можно в любом Многофункциональном центре Вашего города.
-                <button class="btn btn-nfk send-btn new-reg-button" id="open_reg_form">Зарегистрироваться</button>
             </div>
+            <button class="btn btn-nfk send-btn new-reg-button" id="open_reg_form">Зарегистрироваться</button>
             <div class="col-md-6 order-2 order-md-1">
                 <!-- <div  <?if(!$USER->IsAuthorized()):?>id="open_reg_form"<?endif?>>
                     <img src="<?=SITE_TEMPLATE_PATH?>/image/img_reg_us.png" alt="Подпись" style="max-width: 100%">

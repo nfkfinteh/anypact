@@ -3634,11 +3634,11 @@ footer p{
     padding: 27px 20px;
     background: #fff;
     position: relative;
-    z-index: 10;
     box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.2);
 }
 .new-auth-block img{
-    text-align: center;
+    display: flex;
+    justify-content: center;
 }
 .new-auth-block h2{
     font-size: 24px;
@@ -3646,16 +3646,21 @@ footer p{
     text-align: center;
     margin-bottom: 39px;
 }
+.new-auth-block input{
+    margin-bottom: 20px;
+}
 .new-auth-block .regpopup_content_form_input{
     border-radius: 20px;
 }
 .new-auth-block .regpopup_content_form_submit{
+    width: 174px;
     padding: 15px 65px;
     border-radius: 20px;
+    background: #ff6416;
 }
-.lock-img{
+.lock-img {
     position: absolute;
-    z-index: 1;
-    right: 20px;
-    top: 250px;
+    z-index: -4;
+    right: -95px;
+    top: 150px;
 }
