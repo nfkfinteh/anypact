@@ -162,6 +162,7 @@ $APPLICATION->IncludeComponent(
                 <!-- <div  <?if(!$USER->IsAuthorized()):?>id="open_reg_form"<?endif?>>
                     <img src="<?=SITE_TEMPLATE_PATH?>/image/img_reg_us.png" alt="Подпись" style="max-width: 100%">
                 </div> -->
+                <div class="new-auth">
                     <div class="new-auth-block">
                         <form name="system_auth_form<?=$arResult["RND"]?>" method="post" target="_top" action="<?=$arResult["AUTH_URL"]?>">
                             <!-- <?if($arResult["BACKURL"] <> ''):?>
@@ -197,10 +198,11 @@ $APPLICATION->IncludeComponent(
                             <?endif?>
                                     <input type="submit" id="submit_button_aut_user" class="regpopup_content_form_submit" value="<?=GetMessage("AUTH_LOGIN_BUTTON")?>" />
                         </form>
-                        <div class="lock-img">
-                            <img src="<?=SITE_TEMPLATE_PATH?>/image/icons8_password_check_127px_1.png">
-                        </div>
                     </div>
+                    <div class="lock-img">
+                        <img src="<?=SITE_TEMPLATE_PATH?>/image/icons8_password_check_127px_1.png">
+                    </div>
+                </div>
             </div>
         </div>
     </div>
