@@ -3625,3 +3625,37 @@ footer p{
     text-align: center;
     font-style: 16px;
 }
+
+.new-reg-button{
+    margin-top: 25px;
+}
+.new-auth-block{
+    padding: 27px 20px;
+    background: #fff;
+    position: relative;
+    z-index: 10;
+    box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.2);
+}
+.new-auth-block img{
+    text-align: center;
+}
+.new-auth-block h2{
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 39px;
+}
+.new-auth-block .regpopup_content_form_input{
+    width: 262px;
+    border-radius: 20px;
+}
+.new-auth-block .regpopup_content_form_submit{
+    padding: 15px 65px;
+    border-radius: 20px;
+}
+.lock-img{
+    position: absolute;
+    z-index: 1;
+    right: 20px;
+    top: 250px;
+}

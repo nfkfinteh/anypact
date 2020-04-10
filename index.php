@@ -157,9 +157,49 @@ $APPLICATION->IncludeComponent(
                 Для заключения сделок вам понадобится подтвержденная учетная запись на портале Госуслуг.
                 Подтвердить учетную запись портала Госуслуг можно в любом Многофункциональном центре Вашего города.
             </div>
+            <button class="btn btn-nfk send-btn new-reg-button" id="open_reg_form">Зарегистрироваться</button>
             <div class="col-md-6 order-1 order-md-2 text-center">
-                <div  <?if(!$USER->IsAuthorized()):?>id="open_reg_form"<?endif?>>
+                <!-- <div  <?if(!$USER->IsAuthorized()):?>id="open_reg_form"<?endif?>>
                     <img src="<?=SITE_TEMPLATE_PATH?>/image/img_reg_us.png" alt="Подпись" style="max-width: 100%">
+                </div> -->
+                <div class="new-auth-block">
+                    <form name="system_auth_form<?=$arResult["RND"]?>" method="post" target="_top" action="<?=$arResult["AUTH_URL"]?>">
+                        <?if($arResult["BACKURL"] <> ''):?>
+                            <input type="hidden" name="backurl" value="<?=$arResult["BACKURL"]?>" />
+                        <?endif?>
+                        <?foreach ($arResult["POST"] as $key => $value):?>
+                            <input type="hidden" name="<?=$key?>" value="<?=$value?>" />
+                        <?endforeach?>
+                            <input type="hidden" name="AUTH_FORM" value="Y" />
+                            <input type="hidden" name="TYPE" value="AUTH" />
+                            <img src="<?=SITE_TEMPLATE_PATH?>/image/icons8_user_credentials_100px.png">
+                            <h2>Авторизация</h2>
+                            <!--Логин-->
+                            <p>Логин</p>
+                            <input type="text" name="USER_LOGIN_ERROR" class="regpopup_content_form_input" data-mess="" value="" id="user_aut_login" placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;" />
+                                    <script>
+                                        BX.ready(function() {
+                                            var loginCookie = BX.getCookie("<?=CUtil::JSEscape($arResult["~LOGIN_COOKIE_NAME"])?>");
+                                            if (loginCookie)
+                                            {
+                                                var form = document.forms["system_auth_form<?=$arResult["RND"]?>"];
+                                                var loginInput = form.elements["USER_LOGIN"];
+                                                loginInput.value = loginCookie;
+                                            }
+                                        });
+                                    </script>
+                            <!--Пароль-->
+                            <p>Пароль</p>
+                            <input type="password" name="USER_PASSWORD" class="regpopup_content_form_input"  autocomplete="off" id="user_aut_pass" placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;"/>  
+                        <?if ($arResult["STORE_PASSWORD"] == "Y"):?>
+                                <input type="checkbox" id="USER_REMEMBER_frm" name="USER_REMEMBER" value="Y" /></td>
+                                <label for="USER_REMEMBER_frm" title="<?=GetMessage("AUTH_REMEMBER_ME")?>"><?echo GetMessage("AUTH_REMEMBER_SHORT")?></label>
+                        <?endif?>
+                                <input type="submit" id="submit_button_aut_user" class="regpopup_content_form_submit" value="<?=GetMessage("AUTH_LOGIN_BUTTON")?>" />
+                    </form>
+                    <div class="lock-img">
+                        <img src="<?=SITE_TEMPLATE_PATH?>/image/icons8_password_check_127px_1.png">
+                    </div>
                 </div>
             </div>
         </div>
