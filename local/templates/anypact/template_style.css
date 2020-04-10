@@ -827,7 +827,8 @@ input::-webkit-input-placeholder {
 .phone {
     font-size: 24px;
     font-weight: normal;
-    margin-left: 120px;
+    white-space: nowrap;
+    margin-left: 91px;
 }
 .navbar-collapse {
     justify-content: flex-end;
