@@ -3628,6 +3628,7 @@ footer p{
 
 .new-reg-button{
     margin-top: 25px;
+    display: block;
 }
 .new-auth-block{
     width: 262px;
@@ -3638,7 +3639,7 @@ footer p{
 }
 .new-auth-block img{
     display: flex;
-    justify-content: center;
+    align-items: center;
 }
 .new-auth-block h2{
     font-size: 24px;
