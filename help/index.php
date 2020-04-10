@@ -4,7 +4,6 @@ $APPLICATION->SetTitle("AnyPact");
 global $USER;
 ?>
 
-<div class="container content-service">	
 <style>
         .form-card{
             border-radius: 5px;
@@ -45,10 +44,9 @@ global $USER;
             padding-bottom: 3.5rem!important;
         }
     </style>
-<!-- Контакты -->
 <div class="container content-service">	
     <h1 class="mb-4">Все вопросы по работе с AnyPact</h1>
-    <div class="short-divider"></div>
+<div class="short-divider"></div>
     <div class="form-card">
         <div class="row pt-2 pb-4">
             <div class="col-10 col-lg-4 offset-1  align-self-center">
@@ -124,6 +122,7 @@ global $USER;
             </div>
         </div>
     </div>
+</div>
 </div>
 <div style="width: 100%; height: 80px;"></div>
 <script>        
