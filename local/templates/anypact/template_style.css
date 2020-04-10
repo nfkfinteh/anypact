@@ -827,7 +827,6 @@ input::-webkit-input-placeholder {
 .phone {
     font-size: 24px;
     font-weight: normal;
-    float: right;
 }
 .navbar-collapse {
     justify-content: flex-end;
@@ -2222,7 +2221,6 @@ input::-webkit-input-placeholder {
 .phone {
     font-size: 24px;
     font-weight: normal;
-    float: right;
 }
 
 .navbar-brand {
