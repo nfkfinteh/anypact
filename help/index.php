@@ -45,6 +45,8 @@ global $USER;
             padding-bottom: 3.5rem!important;
         }
     </style>
+<!-- Контакты -->
+<div class="container content-service">	
     <h1 class="mb-4">Все вопросы по работе с AnyPact</h1>
     <div class="short-divider"></div>
     <div class="form-card">
