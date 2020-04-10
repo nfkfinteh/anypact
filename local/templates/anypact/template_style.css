@@ -5,12 +5,16 @@ body {
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
     font-weight: 300;
+    display: -webkit-box;
     display: flex;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+            flex-direction: column;
     min-height: 100vh;
 }
 .container{
-    flex-grow: 1;
+    -webkit-box-flex: 1;
+            flex-grow: 1;
 }
 textarea{
     resize: none;
@@ -167,7 +171,8 @@ input {
 }
 
 .navbar-collapse {
-    justify-content: flex-end;
+    -webkit-box-pack: end;
+            justify-content: flex-end;
 }
 
 .navbar-toggler {
@@ -304,6 +309,7 @@ input {
     height: calc(100% - 35px);
     margin-bottom: 35px;
     background-color: #ffffff;
+    -webkit-transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
     transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
@@ -447,6 +453,7 @@ select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
     /*-webkit-text-fill-color: #fff;*/
     -webkit-box-shadow: 0 0 0px 1000px #f1f4f4 inset;
+    -webkit-transition: background-color 5000s ease-in-out 0s;
     transition: background-color 5000s ease-in-out 0s;
 }
 
@@ -568,9 +575,11 @@ select:-webkit-autofill:focus {
 }
 
 .search-map_input{
+    display: -webkit-box;
     display: flex;
     justify-content: space-around;
-    align-items: center;
+    -webkit-box-align: center;
+            align-items: center;
     flex-wrap: wrap;
     margin-bottom: 10px;
 }
@@ -831,7 +840,8 @@ input::-webkit-input-placeholder {
     float: right;
 }
 .navbar-collapse {
-    justify-content: flex-end;
+    -webkit-box-pack: end;
+            justify-content: flex-end;
 }
 
 .navbar-toggler {
@@ -843,12 +853,8 @@ input::-webkit-input-placeholder {
     height: 18px;
     position: relative;
     -webkit-transform: rotate(0deg);
-    -moz-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
     transform: rotate(0deg);
     -webkit-transition: .5s ease-in-out;
-    -moz-transition: .5s ease-in-out;
-    -o-transition: .5s ease-in-out;
     transition: .5s ease-in-out;
     cursor: pointer;
 }
@@ -862,12 +868,8 @@ input::-webkit-input-placeholder {
     opacity: 1;
     left: 0;
     -webkit-transform: rotate(0deg);
-    -moz-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
     transform: rotate(0deg);
     -webkit-transition: .25s ease-in-out;
-    -moz-transition: .25s ease-in-out;
-    -o-transition: .25s ease-in-out;
     transition: .25s ease-in-out;
 }
 
@@ -880,16 +882,12 @@ input::-webkit-input-placeholder {
 
 .navbar-toggler .navbar-toggler-icon span:nth-child(2) {
     -webkit-transform: rotate(45deg);
-    -moz-transform: rotate(45deg);
-    -o-transform: rotate(45deg);
     transform: rotate(45deg);
     top: calc(50% - 1px);
 }
 
 .navbar-toggler .navbar-toggler-icon span:nth-child(3) {
     -webkit-transform: rotate(-45deg);
-    -moz-transform: rotate(-45deg);
-    -o-transform: rotate(-45deg);
     transform: rotate(-45deg);
     top: calc(50% - 1px);
 }
@@ -903,8 +901,6 @@ input::-webkit-input-placeholder {
 .navbar-toggler.collapsed .navbar-toggler-icon span:nth-child(2),
 .navbar-toggler.collapsed .navbar-toggler-icon span:nth-child(3) {
     -webkit-transform: rotate(0deg);
-    -moz-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
     transform: rotate(0deg);
 }
 
@@ -1077,6 +1073,7 @@ input::-webkit-input-placeholder {
     background-color: #ffffff;
     height: calc(100% - 35px);
     margin-bottom: 35px;
+    -webkit-transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
     transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
     padding: 35px 32px 5px;
 }
@@ -1090,6 +1087,7 @@ input::-webkit-input-placeholder {
     border-radius: 5px;
     box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.2);
     background-color: #ffffff;
+    -webkit-transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
     transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
     margin: 15px 0;
     padding: 32px 5px 32px 18px;
@@ -1124,7 +1122,10 @@ input::-webkit-input-placeholder {
     display: block;
     color: transparent;
     text-decoration: none;
-    user-select: none;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
     background: #fffffe;
     outline: none;
     width: 44px;
@@ -1134,6 +1135,7 @@ input::-webkit-input-placeholder {
     cursor: pointer;
     font-weight: 300;
     position: relative;
+    -webkit-transition: .15s ease-in-out;
     transition: .15s ease-in-out;
     margin-top: 10px;
     text-align: center;
@@ -1151,7 +1153,8 @@ input::-webkit-input-placeholder {
     height: 10px;
     border-top: 1px solid #000000;
     border-right: 1px solid #000000;
-    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
 }
 
 .card-deal:hover a {
@@ -1388,6 +1391,7 @@ input::-webkit-input-placeholder {
     height: calc(100% - 35px);
     margin-bottom: 35px;
     background-color: #ffffff;
+    -webkit-transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
     transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
@@ -1597,8 +1601,6 @@ input::-webkit-input-placeholder {
 /* скругление для полосы слайдера */
 
 .ui-corner-all {
-    -moz-border-radius: 4px;
-    -webkit-border-radius: 4px;
     border-radius: 4px;
 }
 
@@ -1718,11 +1720,16 @@ input::-webkit-input-placeholder {
     border-left: 2px solid #000000;
     top: calc(50% - 4px);
     right: 0;
-    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+    -webkit-transition: -webkit-transform 0.5s ease;
+    transition: -webkit-transform 0.5s ease;
     transition: transform 0.5s ease;
+    transition: transform 0.5s ease, -webkit-transform 0.5s ease;
 }
 .lk-contracts .collapse-header.open .collapse-arrow::before{
-    transform: rotate(45deg) scale(-1, -1);
+    -webkit-transform: rotate(45deg) scale(-1, -1);
+            transform: rotate(45deg) scale(-1, -1);
 }
 table thead td {
     font-weight: 900;
@@ -1760,6 +1767,7 @@ table.detail_contract, table.detail_contract thead, table.detail_contract tr, ta
         padding: .675rem .75rem;
         line-height: 1.5;
         border-radius: .25rem;
+        -webkit-transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
         transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
         width: 100%;
     }
@@ -1771,6 +1779,7 @@ table.detail_contract, table.detail_contract thead, table.detail_contract tr, ta
     .lk-contracts .collapse-body{
         max-height: 0;
         overflow: hidden;
+        -webkit-transition: all 0.5s ease;
         transition: all 0.5s ease;
     }
     .lk-contracts .collapse-body.open{
@@ -1920,9 +1929,12 @@ table.detail_contract, table.detail_contract thead, table.detail_contract tr, ta
     text-align: center;
     margin-bottom: 13px;
     width: 100%;
+    display: -webkit-box;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    -webkit-box-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+            align-items: center;
 }
 
 .cardPact .cardPact-person {
@@ -1952,6 +1964,7 @@ table.detail_contract, table.detail_contract thead, table.detail_contract tr, ta
     width: 30px;
     height: 11px;
     border-radius: 6px;
+    -webkit-transition: 300ms;
     transition: 300ms;
 }
 
@@ -1995,6 +2008,7 @@ table.detail_contract, table.detail_contract thead, table.detail_contract tr, ta
 
 .cardPact textarea::-webkit-input-placeholder {
     opacity: 1;
+    -webkit-transition: opacity 0.3s ease;
     transition: opacity 0.3s ease;
     color: #bbbbbb;
     font-weight: 100;
@@ -2002,16 +2016,19 @@ table.detail_contract, table.detail_contract thead, table.detail_contract tr, ta
 
 .cardPact textarea::-moz-placeholder {
     opacity: 1;
+    -moz-transition: opacity 0.3s ease;
     transition: opacity 0.3s ease;
 }
 
 .cardPact textarea:-moz-placeholder {
     opacity: 1;
+    -moz-transition: opacity 0.3s ease;
     transition: opacity 0.3s ease;
 }
 
 .cardPact textarea:-ms-input-placeholder {
     opacity: 1;
+    -ms-transition: opacity 0.3s ease;
     transition: opacity 0.3s ease;
 }
 
@@ -2237,7 +2254,8 @@ input::-webkit-input-placeholder {
 }
 
 .navbar-collapse {
-    justify-content: flex-end;
+    -webkit-box-pack: end;
+            justify-content: flex-end;
 }
 
 .navbar-toggler {
@@ -2412,6 +2430,7 @@ input::-webkit-input-placeholder {
     background-color: #ffffff;
     height: calc(100% - 35px);
     margin-bottom: 35px;
+    -webkit-transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
     transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
     padding: 35px 32px 5px;
     min-height: 380px;
@@ -2426,6 +2445,7 @@ input::-webkit-input-placeholder {
     border-radius: 5px;
     box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.2);
     background-color: #ffffff;
+    -webkit-transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
     transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
     margin: 15px 0;
     padding: 32px 5px 32px 18px;
@@ -2459,7 +2479,10 @@ input::-webkit-input-placeholder {
 .card-deal a {
     color: transparent;
     text-decoration: none;
-    user-select: none;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
     background: #fffffe;
     outline: none;
     width: 44px;
@@ -2469,6 +2492,7 @@ input::-webkit-input-placeholder {
     cursor: pointer;
     font-weight: 300;
     position: relative;
+    -webkit-transition: .15s ease-in-out;
     transition: .15s ease-in-out;
     margin-top: 10px;
 }
@@ -2482,7 +2506,8 @@ input::-webkit-input-placeholder {
     height: 10px;
     border-top: 1px solid #000000;
     border-right: 1px solid #000000;
-    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
 }
 
 .card-deal:hover button {
@@ -2719,6 +2744,7 @@ input::-webkit-input-placeholder {
     height: calc(100% - 35px);
     margin-bottom: 35px;
     background-color: #ffffff;
+    -webkit-transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
     transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
@@ -2944,8 +2970,6 @@ input::-webkit-input-placeholder {
 /* скругление для полосы слайдера */
 
 .ui-corner-all {
-    -moz-border-radius: 4px;
-    -webkit-border-radius: 4px;
     border-radius: 4px;
 }
 
@@ -3103,9 +3127,12 @@ input::-webkit-input-placeholder {
     text-align: center;
     margin-bottom: 13px;
     width: 100%;
+    display: -webkit-box;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    -webkit-box-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+            align-items: center;
 }
 
 .cardPact .cardPact-person {
@@ -3135,6 +3162,7 @@ input::-webkit-input-placeholder {
     width: 30px;
     height: 11px;
     border-radius: 6px;
+    -webkit-transition: 300ms;
     transition: 300ms;
 }
 
@@ -3178,6 +3206,7 @@ input::-webkit-input-placeholder {
 
 .cardPact textarea::-webkit-input-placeholder {
     opacity: 1;
+    -webkit-transition: opacity 0.3s ease;
     transition: opacity 0.3s ease;
     color: #bbbbbb;
     font-weight: 100;
@@ -3185,16 +3214,19 @@ input::-webkit-input-placeholder {
 
 .cardPact textarea::-moz-placeholder {
     opacity: 1;
+    -moz-transition: opacity 0.3s ease;
     transition: opacity 0.3s ease;
 }
 
 .cardPact textarea:-moz-placeholder {
     opacity: 1;
+    -moz-transition: opacity 0.3s ease;
     transition: opacity 0.3s ease;
 }
 
 .cardPact textarea:-ms-input-placeholder {
     opacity: 1;
+    -ms-transition: opacity 0.3s ease;
     transition: opacity 0.3s ease;
 }
 
@@ -3391,8 +3423,10 @@ input::-webkit-input-placeholder {
 .tender-block .tender-post .tender-img {
     overflow: hidden;
     height: 165px;
+    display: -webkit-box;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+            align-items: center;
 }
 .tender-horizon .tender-post .tender-img{
     display: inline-block;
@@ -3511,13 +3545,15 @@ h4.subtitle_contract{
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-1px, -9px);
+    -webkit-transform: translate(-1px, -9px);
+            transform: translate(-1px, -9px);
     background-color: #FFFFFF;
 }
 .create-pact-btn a::after{
     width: 18px;
     height: 2px;
-    transform: translate(-9px, -1px);
+    -webkit-transform: translate(-9px, -1px);
+            transform: translate(-9px, -1px);
 }
 .create-pact-btn div{
     display: none;
@@ -3541,7 +3577,8 @@ h4.subtitle_contract{
     right: 16px;
     top: -3px;
     background-color: #FF6600;
-    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
     z-index: -1;
 }
 .create-pact-btn:hover div{
@@ -3582,6 +3619,7 @@ h4.subtitle_contract{
     float: left;
     background: #e8e8e8;
     border-radius: 50%;
+    -webkit-transition: all .4s;
     transition: all .4s;
 }
 .up-arrow::before{
@@ -3592,7 +3630,8 @@ h4.subtitle_contract{
     right: 15px;
     width: 10px;
     height: 2px;
-    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
 }
 .up-arrow::after {
     position: absolute;
@@ -3602,11 +3641,13 @@ h4.subtitle_contract{
     right: 21px;
     width: 10px;
     height: 2px;
-    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
 }
 .up-arrow:hover{
     background: #FF6600;
-    transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
 }
 .footer p img{
     margin-bottom: 50px;
@@ -3658,4 +3699,8 @@ footer p{
     z-index: 1;
     right: 20px;
     top: 250px;
+}
+.client-container{
+    display: -webkit-box;
+    display: flex;
 }

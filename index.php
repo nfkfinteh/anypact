@@ -158,7 +158,6 @@ $APPLICATION->IncludeComponent(
                 Подтвердить учетную запись портала Госуслуг можно в любом Многофункциональном центре Вашего города.
             </div>
             <button class="btn btn-nfk send-btn new-reg-button" id="open_reg_form">Зарегистрироваться</button>
-            <div class="col-md-6 order-1 order-md-2">
                 <!-- <div  <?if(!$USER->IsAuthorized()):?>id="open_reg_form"<?endif?>>
                     <img src="<?=SITE_TEMPLATE_PATH?>/image/img_reg_us.png" alt="Подпись" style="max-width: 100%">
                 </div> -->
@@ -201,7 +200,6 @@ $APPLICATION->IncludeComponent(
                         <img src="<?=SITE_TEMPLATE_PATH?>/image/icons8_password_check_127px_1.png">
                     </div>
                 </div>
-            </div>
         </div>
     </div>
 </div>
