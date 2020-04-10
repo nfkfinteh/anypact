@@ -3632,6 +3632,7 @@ footer p{
 }
 .new-auth{
     position: relative;
+    top: 130px;
 }
 .new-auth-block{
     width: 262px;
@@ -3639,6 +3640,7 @@ footer p{
     background: #fff;
     position: relative;
     z-index: 10;
+    border-radius: 5px;
     box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.2);
 }
 .new-auth-block .user_credentials{
@@ -3652,13 +3654,14 @@ footer p{
     margin-bottom: 10px;
     margin-top: 3px;
 }
-.new-auth-block input{
-    margin-bottom: 10px;
-}
 .new-auth-block .regpopup_content_form_input{
+    margin-bottom: 10px;
     border-radius: 20px;
     padding-right: 18px;
     color: #a5a5a5;
+}
+.new-auth-block .regpopup_content_form_input:last-child{
+    margin-bottom: 20px;
 }
 .new-auth-block .regpopup_content_form_input::-webkit-input-placeholder {
     color: #a5a5a5;
@@ -3700,6 +3703,6 @@ footer p{
 .lock-img {
     position: absolute;
     z-index: 1;
-    right: -95px;
-    top: 150px;
+    right: 156px;
+    top: 110px;
 }
