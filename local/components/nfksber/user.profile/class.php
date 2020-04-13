@@ -203,6 +203,26 @@ class CDemoSqr extends CBitrixComponent
         return $result;
     }
 
+    public function getBlackList(){
+        global $USER;
+        $current_user = $USER->GetID();
+        $arFilter = array("ID" => $current_user);
+        $arParams["SELECT"] = array("ID", "UF_BLACKLIST");
+        $res = CUser::GetList($by ="timestamp_x", $order = "desc", $arFilter, $arParams);
+        $result = [];
+        if($obj=$res->GetNext()){
+            if(!empty($obj['UF_BLACKLIST'])){
+                $result = json_decode($obj['~UF_BLACKLIST']);
+            }
+        }
+
+        if(empty($result)){
+            $result = [];
+        }
+
+        return $result;
+    }
+
     public function executeComponent()
     {
         if(empty($this->arParams['USER_ID'])){
@@ -241,12 +261,13 @@ class CDemoSqr extends CBitrixComponent
         $arNavigation = CDBResult::GetNavParams($arNavParams);
         if($this->arParams['TYPE']!='company'){
             $arFrends = $this->getFrends();
+            $arBlackList = $this->getBlackList();
         }
 
         $res = CUser::GetByID($this->arParams['USER_ID']);
         $arUser = $res->GetNext();
 
-        if($this->startResultCache($this->arParams['CACHE_TIME'], [$ajaxData, $arNavigation, $arFrends, $arUser]))
+        if($this->startResultCache($this->arParams['CACHE_TIME'], [$ajaxData, $arNavigation, $arFrends, $arUser, $arBlackList]))
         {
             if($this->arParams['TYPE']=='company'){
                 $res = CIBlockElement::GetList(
@@ -307,6 +328,7 @@ class CDemoSqr extends CBitrixComponent
                 $arResult["ITEMS"] = $arItems['ITEMS'];
                 //$arResult["FRENDS"] = $this->getFrends();
                 $arResult["FRENDS"] =$arFrends;
+                $arResult["BLACK_LIST"] = $arBlackList;
 
                 $res = CIBlockElement::GetList(
                     [],

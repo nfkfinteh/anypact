@@ -18,6 +18,17 @@
                             Удалить из друзей
                         </a>
                     <?endif?>
+
+                    <?if(!in_array($arResult['USER']['ID'], $arResult['BLACK_LIST']) && $arParams['CURRENT_USER'] != $arResult['USER']['ID']):?>
+                        <button class="btn btn-nfk btn-uprofile js-add-blacklist" data-login="<?=$arResult['USER']['LOGIN']?>">
+                            Добавить в ЧС
+                        </button>
+                    <?else:?>
+                        <button class="btn btn-nfk btn-uprofile js-delete-blacklist" data-login="<?=$arResult['USER']['LOGIN']?>">
+                            Удалить из ЧС
+                        </button>
+                    <?endif?>
+
                     <?if(!empty($arParams['CURRENT_USER']) && $arResult['USER']['ID'] !=$arParams['CURRENT_USER']):?>
                         <a href="#" class="btn btn-nfk btn-uprofile" data-toggle="modal" data-target=".bd-comment-modal-sm">Оставить отзыв</a>
                         <a href="#" class="btn btn-nfk btn-uprofile" data-toggle="modal" data-target=".bd-message-modal-sm">Отправить сообщение</a>

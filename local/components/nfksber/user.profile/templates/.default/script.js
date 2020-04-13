@@ -202,4 +202,58 @@ $(document).ready(function(){
             }
         });
     });
+
+    $(document).on('click', '.js-add-blacklist', function(){
+        let login = $(this).attr('data-login');
+        if(login) {
+            let this_btn = $(this);
+            preload('show');
+            $.ajax({
+                type: 'POST',
+                url: '/response/ajax/add_blacklist.php',
+                data: {'login':login,'action':'add'},
+                success: function (result) {
+                    $result = JSON.parse(result);
+                    if ($result['TYPE'] == 'ERROR') {
+                        preload('hide');
+                        console.log($result['VALUE']);
+                    }
+                    if ($result['TYPE'] == 'SUCCESS') {
+                        $(this_btn).addClass('js-delete-blacklist');
+                        $(this_btn).removeClass('js-add-blacklist');
+                        $(this_btn).text('Удалить из ЧС');
+                        showResult('#popup-success','Пользователь добавлен в ЧС');
+                        preload('hide');
+                    }
+                },
+            });
+        }
+    });
+
+    $(document).on('click', '.js-delete-blacklist', function(){
+        let login = $(this).attr('data-login');
+        if(login) {
+            let this_btn = $(this);
+            preload('show');
+            $.ajax({
+                type: 'POST',
+                url: '/response/ajax/add_blacklist.php',
+                data: {'login':login,'action':'delete'},
+                success: function (result) {
+                    $result = JSON.parse(result);
+                    if ($result['TYPE'] == 'ERROR') {
+                        preload('hide');
+                        console.log($result['VALUE']);
+                    }
+                    if ($result['TYPE'] == 'SUCCESS') {
+                        $(this_btn).removeClass('js-delete-blacklist');
+                        $(this_btn).addClass('js-add-blacklist');
+                        $(this_btn).text('Добавить в ЧС');
+                        showResult('#popup-success','Пользователь удален из ЧС');
+                        preload('hide');
+                    }
+                },
+            });
+        }
+    });
 });
