@@ -1,9 +1,38 @@
 <div class="text-right btn-view mt-3">
-    <span>Вид списка</span>
-    <button class="btn btn-tiled active"></button>
-    <button class="btn btn-list"></button>
+    <div class="btn-view__wrap">
+        <button class="btn btn-nfk btn-blacklist" style="height: 100%">Черный список</button>
+    </div>
+    <div class="btn-view__wrap">
+        <span>Вид списка</span>
+        <button class="btn btn-tiled active"></button>
+        <button class="btn btn-list"></button>
+    </div>
 </div>
-<div class="row grid-view">
+<div class="row grid-view friends">
+    <div class="blacklist">
+        <?if(!empty($arResult['BLACK_LIST_FULL'])):?>
+            <div class="blacklist__title">Пользователи вчерном списке</div>
+                <div class="blacklist__body">
+                    <?foreach ($arResult['BLACK_LIST_FULL'] as $user):?>
+                        <div class="blacklist__item">
+                            <div class="blacklist__name"><?=$user['NAME']?></div>
+                            <div class="blacklist__type">
+                                <button class="btn btn-clean js-delete-blacklist" data-login="<?=$user['LOGIN']?>" data-type='list_black'>
+                                    <img src="<?=SITE_TEMPLATE_PATH?>/image/black-list.png" alt="Удалить из черного списка" title="Удалить из черного списка">
+                                </button>
+                            </div>
+                        </div>
+                    <?endforeach?>
+                </div>
+            </div>
+        <?else:?>
+        <div class="blacklist__title">Черный список пуст</div>
+            <div class="blacklist__body">
+            </div>
+        </div>
+        <?endif?>
+</div>
+<div class="row grid-view friends js-friends__list">
     <?foreach($arResult["USER"] as $user):?>
         <?
             if(!empty($user['UF_BLACKLIST'])){
@@ -64,11 +93,11 @@
                             </button>
                         <?endif?>
                         <?if(!in_array($user['ID'], $arResult['BLACKLIST']) && $USER->GetID() != $user['ID']):?>
-                            <button class="btn btn-clean js-add-blacklist" data-login="<?=$user['LOGIN']?>">
+                            <button class="btn btn-clean js-add-blacklist" data-login="<?=$user['LOGIN']?>" id="blacklist_<?=$user['ID']?>">
                                 <img src="<?=SITE_TEMPLATE_PATH?>/image/black-list-add.png" alt="Добавить в черный список" title="Добавить в черный список">
                             </button>
                         <?elseif(in_array($user['ID'], $arResult['BLACKLIST'])):?>
-                            <button class="btn btn-clean js-delete-blacklist" data-login="<?=$user['LOGIN']?>">
+                            <button class="btn btn-clean js-delete-blacklist" data-login="<?=$user['LOGIN']?>" id="blacklist_<?=$user['ID']?>">
                                 <img src="<?=SITE_TEMPLATE_PATH?>/image/black-list.png" alt="Удалить из черного списка" title="Удалить из черного списка">
                             </button>
                         <?endif?>

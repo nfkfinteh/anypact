@@ -95,6 +95,17 @@ class CDemoSqr extends CBitrixComponent
 
         if(empty($result)){
             $result = [];
+            $this->arResult['BLACK_LIST_FULL'] = [];
+        }else{
+            foreach($result as $idUser){
+                if($obj = CUser::GetByID($idUser)->GetNext()){
+                    $this->arResult['BLACK_LIST_FULL'][] = [
+                        'ID'=>$obj['ID'],
+                        'NAME'=>$obj['NAME'].' '.$obj['LAST_NAME'],
+                        'LOGIN'=>$obj['LOGIN']
+                    ];
+                }
+            }
         }
 
         return $result;
@@ -103,6 +114,7 @@ class CDemoSqr extends CBitrixComponent
 
     public function executeComponent()
     {
+        global $APPLICATION;
         $arrFilter = $GLOBALS[$this->arParams['FILTER_NAME']];
 
         $arNavParams = array(
@@ -114,10 +126,18 @@ class CDemoSqr extends CBitrixComponent
 
         if($this->startResultCache(false, array($arrFilter, $arNavigation)))
         {*/
-            $this->arResult["FRENDS"] = $this->getFrends();
             $this->arResult["BLACKLIST"] = $this->getBlackList();
-            $this->arResult["USER"] = $this->listAllUser($arNavParams);
-            $this->includeComponentTemplate();
+            if($_REQUEST["ajax_result"] === "y"){
+                $APPLICATION->RestartBuffer();
+                $this->IncludeComponentTemplate('ajax_result');
+                CMain::FinalActions();
+                die();
+            }
+            else{
+                $this->arResult["FRENDS"] = $this->getFrends();
+                $this->arResult["USER"] = $this->listAllUser($arNavParams);
+                $this->includeComponentTemplate();
+            }
         //}
 
         //$this->setTemplateCachedData($this->arResult["NAV_CACHED_DATA"]);
