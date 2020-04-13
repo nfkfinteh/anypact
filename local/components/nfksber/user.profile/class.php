@@ -267,8 +267,8 @@ class CDemoSqr extends CBitrixComponent
         $res = CUser::GetByID($this->arParams['USER_ID']);
         $arUser = $res->GetNext();
 
-        if($this->startResultCache($this->arParams['CACHE_TIME'], [$ajaxData, $arNavigation, $arFrends, $arUser, $arBlackList]))
-        {
+        /*if($this->startResultCache($this->arParams['CACHE_TIME'], [$ajaxData, $arNavigation, $arFrends, $arUser, $arBlackList]))
+        {*/
             if($this->arParams['TYPE']=='company'){
                 $res = CIBlockElement::GetList(
                     [],
@@ -402,7 +402,7 @@ class CDemoSqr extends CBitrixComponent
 
             $this->arResult = $arResult;
             $this->includeComponentTemplate();
-        }
+        //}
 
         $this->setTemplateCachedData($this->arResult["NAV_CACHED_DATA"]);
         

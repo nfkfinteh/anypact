@@ -5,6 +5,14 @@
 </div>
 <div class="row grid-view">
     <?foreach($arResult["USER"] as $user):?>
+        <?
+            if(!empty($user['UF_BLACKLIST'])){
+                $arBlackList = json_decode($user['UF_BLACKLIST']);
+            }
+            else{
+                $arBlackList = [];
+            }
+        ?>
         <div class="view-item col-lg-3 col-sm-6 col-6 mt-4 pb-3">
             <div class="people-s-photo">
                 <a href="/profile_user/?ID=<?=$user['ID']?>">
@@ -40,9 +48,11 @@
                 <? // кнопки только для авторизированных пользователей ?>
                 <? if($USER->IsAuthorized()):?>
                     <div class="people-s-photo-btn-block">
-                        <button class="btn btn-clean search-peaople__button" data-toggle="modal" data-target=".bd-message-modal-sm" data-login="<?=$user['LOGIN']?>">
-                            <img src="<?=SITE_TEMPLATE_PATH?>/image/people-search-message.png" alt="">
-                        </button>
+                        <?if(!in_array($USER->GetID(), $arBlackList)):?>
+                            <button class="btn btn-clean search-peaople__button" data-toggle="modal" data-target=".bd-message-modal-sm" data-login="<?=$user['LOGIN']?>">
+                                <img src="<?=SITE_TEMPLATE_PATH?>/image/people-search-message.png" alt="">
+                            </button>
+                        <?endif?>
                         <!-- <button class="btn btn-clean"><img src="<?=SITE_TEMPLATE_PATH?>/image/people-search-document.png" alt=""></button> -->
                         <?if(!in_array($user['ID'], $arResult['FRENDS']) && $USER->GetID() != $user['ID']):?>
                             <button class="btn btn-clean js-add-frends" data-login="<?=$user['LOGIN']?>">

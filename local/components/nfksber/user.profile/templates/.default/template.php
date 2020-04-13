@@ -1,3 +1,11 @@
+<?
+if(!empty($arResult['USER']['~UF_BLACKLIST'])){
+    $arBlackList = json_decode($arResult['USER']['~UF_BLACKLIST']);
+}
+else{
+    $arBlackList = [];
+}
+?>
 <div style="padding-bottom: 50px;">
     <?if(empty($arResult['ERROR'])):?>
         <div class="row pt-2">
@@ -30,8 +38,10 @@
                     <?endif?>
 
                     <?if(!empty($arParams['CURRENT_USER']) && $arResult['USER']['ID'] !=$arParams['CURRENT_USER']):?>
-                        <a href="#" class="btn btn-nfk btn-uprofile" data-toggle="modal" data-target=".bd-comment-modal-sm">Оставить отзыв</a>
-                        <a href="#" class="btn btn-nfk btn-uprofile" data-toggle="modal" data-target=".bd-message-modal-sm">Отправить сообщение</a>
+                        <?if(!in_array($arParams['CURRENT_USER'], $arBlackList)):?>
+                            <a href="#" class="btn btn-nfk btn-uprofile" data-toggle="modal" data-target=".bd-comment-modal-sm">Оставить отзыв</a>
+                            <a href="#" class="btn btn-nfk btn-uprofile" data-toggle="modal" data-target=".bd-message-modal-sm">Отправить сообщение</a>
+                        <?endif?>
                         <?if(!empty($arResult['COMPANY_CURRENT_USER'])):?>
                             <label class="company-list__title">Выбор компании</label>
                             <select class="company-list__select">

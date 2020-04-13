@@ -1,5 +1,5 @@
 <?
-    $UserID = CUser::GetID();
+    $UserID = $arResult['USER_ID'];
     /*if(!empty($arResult['MESSAGES']['UF_DELETE'])){
         $arResult['MESSAGES']['UF_DELETE'] = json_decode($arResult['MESSAGES']['UF_DELETE']);
     }
@@ -15,9 +15,19 @@
     $arrIDUserChat = array();
     foreach($arResult['UsersChart'] as $Item){
         $arrIDUserChat[] = $Item["ID"];
+        if($UserID !=$Item["ID"]){
+            $UserID_B = $Item["ID"];
+        }
     }
     $arImgFormat = ['jpg', 'png', 'svg', 'jpeg'];
 ?>
+<?if(in_array($UserID, $arResult['FastUserParams'][$UserID_B]['BLACKLIST'])):?>
+    <?
+    $APPLICATION->IncludeFile(SITE_TEMPLATE_PATH."/include/dont_chat_balcklist.php", Array());
+    return;
+    ?>
+<?endif?>
+
 <? // если пользователь входит в масив то открываем ему сообщения?>
 <?if(in_array($UserID, $arrIDUserChat)){?>
     <input hidden value="<?=$UserID?>" id="IDUSER" />
