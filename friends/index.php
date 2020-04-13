@@ -30,7 +30,7 @@ $APPLICATION->SetTitle("AnyPact || Мои друзья");
                 <? if(!$no_friend){
                     $APPLICATION->IncludeComponent(
                         "nfksber:user.list",
-                        "",
+                        "friends",
                         Array(
                             "FILTER_NAME" => "arrFilter",
                             "NEWS_COUNT" => 12,
