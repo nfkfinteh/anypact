@@ -125,7 +125,6 @@ global $USER;
     </div>
 </div>
 </div>
-<div style="width: 100%; height: 80px;"></div>
 <script>        
     async function sendMess(strObject){
         preload('show');
