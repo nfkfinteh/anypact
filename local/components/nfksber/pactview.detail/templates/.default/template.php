@@ -12,6 +12,12 @@ foreach ($arResult["PROPERTY"]["IMG_FILE"] as $item){
     ];
 }
 $DATE_ACTIVE_TO = MakeTimeStamp($arResult['ELEMENT']['DATE_ACTIVE_TO'], "DD.MM.YYYY");
+if(!empty($arResult['CONTRACT_HOLDER']['UF_BLACKLIST'])){
+    $arBlackList = json_decode($arResult['CONTRACT_HOLDER']['UF_BLACKLIST']);
+}
+else{
+    $arBlackList = [];
+}
 ?>
 <h1 class="d-inline-block"><?=$arResult["ELEMENT"]["NAME"]?></h1>
 <div class="row">
@@ -81,8 +87,10 @@ $DATE_ACTIVE_TO = MakeTimeStamp($arResult['ELEMENT']['DATE_ACTIVE_TO'], "DD.MM.Y
         </div>
         <?//скрытие кнопки при окончане активности?>
         <? if($USER->IsAuthorized()):?>
-            <? if($arResult['ELEMENT']['ACTIVE']=='Y' && $DATE_ACTIVE_TO>=time()): ?>
-                <button type="button" class="btn btn-nfk d-block cardPact-bBtn" data-toggle="modal" data-target=".bd-message-modal-sm">Написать сообщение.</button>
+            <? if($arResult['ELEMENT']['ACTIVE']=='Y' && $DATE_ACTIVE_TO>=time() && !in_array($arResult['USER']['ID'], $arBlackList)): ?>
+                <button type="button" class="btn btn-nfk d-block cardPact-bBtn" data-toggle="modal" data-target=".bd-message-modal-sm">
+                    Написать сообщение
+                </button>
             <? endif ?>
         <? endif?>
     </div>
