@@ -507,5 +507,14 @@ window.onload = function() {
         return input_sms_code;
     }
 
+    $(document).on('click', '.popup_close', function(){
+        $('.popup_bg').hide();
+        $('.popup_win').hide();
+    });
+
+    $(document).on('click', '#btn-question', function(){
+        $('.popup_bg').show();
+        $('#instrument_popup').show();
+    });
 
 }

@@ -14,12 +14,12 @@
     min-height: 500px;
 }
 
-.cardDogovor-boxViewText span {
+/*.cardDogovor-boxViewText span {
     display: list-item;
     text-align: left;
     cursor: pointer;
     margin-bottom: 10px;
-}
+}*/
 
 /*.cardDogovor-boxViewText span:hover {
     color: #ff6416;
@@ -195,4 +195,8 @@ edbox {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+.cardDogovor-boxViewText u{
+    background-color: #ff641621;
+    position: relative;
 }
