@@ -629,6 +629,7 @@ select:-webkit-autofill:focus {
     .people-s-photo-text {
         display: flex;
         flex-direction: column;
+        align-items: center;
     }
 }
 
