@@ -323,7 +323,12 @@ window.onload = function() {
                 });
             }            
         };
-
+        //авторизация по enter
+        $("#user_aut_pass").keyup(function(event) {
+            if (event.keyCode === 13) {
+                $("#submit_button_aut_user").click();
+            }
+        });
         // авторизация пользователя и вывод ошибок
         document.getElementById('submit_button_aut_user').onclick  = function(){
           let login = document.getElementById('user_aut_login').value
