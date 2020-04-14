@@ -143,17 +143,17 @@ window.onload = function() {
             regpopup_bg.style.display = 'none';
         };
         // открываем окно
-        if(document.getElementById('reg_button')){
-            regpopup_open_btn.onclick = function(event) {
-                regpopup_bg.style.display = 'block';
-            };
-        }
+        // if(document.getElementById('reg_button')){
+        //     regpopup_open_btn.onclick = function(event) {
+        //         regpopup_bg.style.display = 'block';
+        //     };
+        // }
         // открываем форму авторизации
-        // regpopup_btn_open_aut.onclick = function() {
-        //     regpopup_form_autorisation.style.display = 'block';
-        //     regpopup_form_registration.style.display = 'none';
-        //     return false;
-        // };
+        regpopup_btn_open_aut.onclick = function() {
+            regpopup_form_autorisation.style.display = 'block';
+            regpopup_form_registration.style.display = 'none';
+            return false;
+        };
         // открываем форму регистрации
         regpopup_btn_open_reg.onclick = function(event) {
             regpopup_form_autorisation.style.display = 'none';
