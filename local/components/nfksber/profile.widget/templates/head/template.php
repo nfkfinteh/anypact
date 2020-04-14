@@ -67,13 +67,13 @@ $MessURL = '/list_message/';
     });
     //клик по профилю в шапке
     $('.widget_user_profile_name').click(function () {
-        $('.widget_user_profile_select').fadeIn();
+        $('.widget_user_profile_select').fadeIn(50);
         return false;
     });
     $(document).mouseup(function (e) {
         var popup = $('.widget_user_profile_name');
         if (e.target!=popup[0]&&popup.has(e.target).length === 0){
-            $('.widget_user_profile_select').fadeOut();
+            $('.widget_user_profile_select').fadeOut(50);
         }
     });
 </script>
