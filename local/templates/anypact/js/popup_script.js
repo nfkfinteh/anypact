@@ -188,13 +188,13 @@ window.onload = function() {
         //Закрываем окно
         regpopup_btn_close_win.onclick = function(event) {
             regpopup_bg.style.display = 'none';
-            console.log('Закрытие окна регистрации')
-            let clear_input = document.forms.regform
-            let i = 0
-            while (i<4) {
-                clear_input.elements[i].value = ''
-                i++
-            }            
+            // console.log('Закрытие окна регистрации')
+            // let clear_input = document.forms.regform
+            // let i = 0
+            // while (i<4) {
+            //     clear_input.elements[i].value = ''
+            //     i++
+            // }            
             // location.reload()
         };
         // открываем окно
