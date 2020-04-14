@@ -629,12 +629,9 @@ select:-webkit-autofill:focus {
     .people-s-photo-text {
         display: flex;
         justify-content: center;
+        text-align: center;
         flex-direction: column;
         align-items: center;
-    }
-    .people-s-photo-text-block h6{
-        margin: 0 auto;
-        padding-bottom: 0.5rem;
     }
 }
 
