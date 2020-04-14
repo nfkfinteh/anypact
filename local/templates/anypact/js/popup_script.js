@@ -186,17 +186,17 @@ window.onload = function() {
         document.getElementById('user_login_fild').value = '';
 
         //Закрываем окно
-        // regpopup_btn_close_win.onclick = function(event) {
-        //     regpopup_bg.style.display = 'none';
-        //     console.log('Закрытие окна регистрации')
-        //     let clear_input = document.forms.regform
-        //     let i = 0
-        //     while (i<4) {
-        //         clear_input.elements[i].value = ''
-        //         i++
-        //     }            
-        //     location.reload()
-        // };
+        regpopup_btn_close_win.onclick = function(event) {
+            regpopup_bg.style.display = 'none';
+            console.log('Закрытие окна регистрации')
+            let clear_input = document.forms.regform
+            let i = 0
+            while (i<4) {
+                clear_input.elements[i].value = ''
+                i++
+            }            
+            location.reload()
+        };
         // открываем окно
         if(document.getElementById('reg_button')){
             regpopup_open_btn.onclick = function(event) {
