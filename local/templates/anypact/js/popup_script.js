@@ -198,11 +198,11 @@ window.onload = function() {
             location.reload()
         };
         // открываем окно
-        if(document.getElementById('reg_button')){
-            regpopup_open_btn.onclick = function(event) {
-                regpopup_bg.style.display = 'block';
-            };
-        }
+        // if(document.getElementById('reg_button')){
+        //     regpopup_open_btn.onclick = function(event) {
+        //         regpopup_bg.style.display = 'block';
+        //     };
+        // }
         if(document.querySelector('.nav-link[href="#"]')){
             regpopup_open_link_mobile.onclick = function(event) {
                 regpopup_bg.style.display = 'block';
