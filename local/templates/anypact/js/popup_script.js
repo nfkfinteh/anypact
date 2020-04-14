@@ -333,7 +333,7 @@ window.onload = function() {
                 if($result['TYPE']=='ERROR'){
                     document.getElementById('message_error_aut').innerHTML = '&#8226; '+$result['VALUE'];
                 }
-                else($result['TYPE']=='SUCCES'){
+                if($result['TYPE']=='SUCCES'){
                     location.reload();
                 }
             });
