@@ -58,7 +58,7 @@ else{
                         "",
                         Array(
                             "FILTER_NAME" => "arrFilter",
-                            "NEWS_COUNT" => 9,
+                            "NEWS_COUNT" => 12,
                             "IBLOCK_COMPANY"=>8,
                             "PAGER_TEMPLATE" => "anypact_pagination"
                         )
