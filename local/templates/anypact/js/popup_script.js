@@ -195,7 +195,7 @@ window.onload = function() {
                 clear_input.elements[i].value = ''
                 i++
             }            
-            location.reload()
+            // location.reload()
         };
         // открываем окно
         if(document.getElementById('reg_button')){
