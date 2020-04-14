@@ -331,6 +331,7 @@ window.onload = function() {
           var res = getAutorisation(login, password).then(function(data) {
                 $result = JSON.parse(data);
                 if($result['TYPE']=='ERROR'){
+                    e.preventDefault();
                     document.getElementById('message_error_aut').innerHTML = '&#8226; '+$result['VALUE'];
                 }
                 if($result['TYPE']=='SUCCES'){
