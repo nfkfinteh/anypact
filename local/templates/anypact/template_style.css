@@ -589,7 +589,7 @@ select:-webkit-autofill:focus {
     }
     .people-s-photo-text {
         display: flex;
-        flex-direction: column;
+        flex-d
     }
     .btn-search_map{
         margin-top: 5px;
