@@ -587,6 +587,10 @@ select:-webkit-autofill:focus {
     .input-search_map{
         width: 100%;
     }
+    .people-s-photo-text {
+        display: flex;
+        flex-direction: column;
+    }
     .btn-search_map{
         margin-top: 5px;
         width: 100%;
