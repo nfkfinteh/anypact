@@ -149,11 +149,11 @@ window.onload = function() {
             };
         }
         // открываем форму авторизации
-        regpopup_btn_open_aut.onclick = function() {
-            regpopup_form_autorisation.style.display = 'block';
-            regpopup_form_registration.style.display = 'none';
-            return false;
-        };
+        // regpopup_btn_open_aut.onclick = function() {
+        //     regpopup_form_autorisation.style.display = 'block';
+        //     regpopup_form_registration.style.display = 'none';
+        //     return false;
+        // };
         // открываем форму регистрации
         regpopup_btn_open_reg.onclick = function(event) {
             regpopup_form_autorisation.style.display = 'none';
