@@ -102,6 +102,13 @@ class CDemoSqr extends CBitrixComponent
         foreach($this->arResult['UsersChart'] as $user){
             $this->arResult['FastUserParams'][$user['ID']]['FIO'] = $user['LAST_NAME'] .' '.$user['NAME'] ;
             $this->arResult['FastUserParams'][$user['ID']]['InitialName'] = substr($user['NAME'], 0, 1);
+            if(!empty($user['UF_BLACKLIST'])){
+                $this->arResult['FastUserParams'][$user['ID']]['BLACKLIST'] = json_decode($user['UF_BLACKLIST']);
+            }
+            else{
+                $this->arResult['FastUserParams'][$user['ID']]['BLACKLIST'] = [];
+            }
+
         }
         $this->includeComponentTemplate();
         

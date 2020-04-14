@@ -182,7 +182,8 @@ class CDemoSqr extends CBitrixComponent
                 "LOGIN" => $arrUserContractHolder["LOGIN"],
                 "CITY"  => $arrUserContractHolder["PERSONAL_CITY"],
                 "PERSONAL_PHOTO" => CFile::GetPath($arrUserContractHolder["PERSONAL_PHOTO"]),
-                "TYPE" => 'user'
+                "TYPE" => 'user',
+                "UF_BLACKLIST" => $arrUserContractHolder['UF_BLACKLIST']
             );
         }
         else{
