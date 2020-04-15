@@ -627,11 +627,16 @@ select:-webkit-autofill:focus {
     }
 
     .people-s-photo-text {
+        display: -webkit-box;
         display: flex;
-        justify-content: center;
+        -webkit-box-pack: center;
+                justify-content: center;
         text-align: center;
-        flex-direction: column;
-        align-items: center;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+                flex-direction: column;
+        -webkit-box-align: center;
+                align-items: center;
     }
 }
 
@@ -3337,19 +3342,21 @@ input::-webkit-input-placeholder {
 .cotragent{
     color: #ff6416;
     background: #fff;
+    display: -webkit-box;
+    display: flex;
 }
 .cotragent a:hover{
     text-decoration: none;
 }
 .cotragent__button{
-    width: 50%;
+    width: 100%;
     text-align: center;
     display: inline-block;
     border: 1px solid #ff6416;
     padding: 10px 10px;
 }
 .cotragent__button_active{
-    width: 50%;
+    width: 100%;
     text-align: center;
     padding: 10px 10px;
     border: 1px solid #ff6416;
