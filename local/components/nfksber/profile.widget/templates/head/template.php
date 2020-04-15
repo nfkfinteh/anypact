@@ -65,12 +65,12 @@ $MessURL = '/list_message/';
     </div>
 </div>
 <script>
-    $('.widget_user_profile_name a').on('click', function() {
-        window.location = $( this ).attr('href');
-    });
+    // $('.widget_user_profile_name a').on('click', function() {
+    //     window.location = $( this ).attr('href');
+    // });
     //клик по профилю в шапке
-    $('#widget_user_profile_name__title').click(function () {
-        $('#widget_user_profile_select').fadeIn(50);
+    $('.login-information').click(function () {
+        $('#widget_user_profile_select').fadeToggle(50);
     });
 
     $(document).mouseup(function (e) {
