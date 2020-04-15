@@ -27,6 +27,13 @@
     height: 12px;
 }
 .widget_user_profile_name__title.active-arrow:after{
+    content: "";
+    background: url(arr_profile.svg) no-repeat center;
+    display: inline-block;
+    position: relative;
+    left: 5px;
+    width: 12px;
+    height: 12px;
     transition: rotare(-180deg);
 }
 
