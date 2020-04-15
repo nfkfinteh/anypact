@@ -71,7 +71,6 @@ $MessURL = '/list_message/';
     //клик по профилю в шапке
     $('#widget_user_profile_name__title').click(function () {
         $('#widget_user_profile_select').fadeIn(50);
-        $('#widget_user_profile_select').hide(50);
 
     });
 
