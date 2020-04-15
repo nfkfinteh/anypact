@@ -332,8 +332,22 @@ window.onload = function() {
         // авторизация пользователя и вывод ошибок
         document.getElementById('submit_button_aut_user').onclick  = function(){
           let login = document.getElementById('user_aut_login').value
-          let password  = document.getElementById('user_aut_pass').value          
+          let password  = document.getElementById('user_aut_pass').value
           var res = getAutorisation(login, password).then(function(data) {
+                $result = JSON.parse(data);
+                if($result['TYPE']=='ERROR'){
+                    document.getElementById('message_error_aut').innerHTML = '&#8226; '+$result['VALUE'];
+                }
+                if($result['TYPE']=='SUCCES'){
+                    location.reload();
+                }
+            });
+        };
+
+        document.getElementById('submit_button_aut_user_main').onclick  = function(){
+            let login = document.getElementById('user_aut_login_main').value
+            let password  = document.getElementById('user_aut_pass_main').value
+            var res = getAutorisation(login, password).then(function(data) {
                 $result = JSON.parse(data);
                 if($result['TYPE']=='ERROR'){
                     document.getElementById('message_error_aut').innerHTML = '&#8226; '+$result['VALUE'];
