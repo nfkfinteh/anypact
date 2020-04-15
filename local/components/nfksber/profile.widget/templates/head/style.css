@@ -14,7 +14,9 @@
     margin-left: 10px;
     max-width: 78%;
 }
-
+.widget_user_profile_name__title{
+    color: #ff6416;
+}
 .widget_user_profile_name__title:after{
     content: "";
     background: url(arr_profile.svg) no-repeat center;

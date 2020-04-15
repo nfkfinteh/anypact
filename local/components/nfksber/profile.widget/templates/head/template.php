@@ -36,12 +36,15 @@ $MessURL = '/list_message/';
             <?endif?>
 
             <div class="login-information-text widget_user_profile_name">
-                <a href="#" class="widget_user_profile_name__title">
+                <!-- <a href="#" class="widget_user_profile_name__title">
                     <?if(!empty($arResult['ACTIVE_COMPANY'])):?><?=$arResult['ACTIVE_COMPANY']['NAME']?>,   <?endif?> <?=$arResult["LAST_NAME"]?> <?=$arResult["IN_NAMES"]?>
-                </a>
+                </a> -->
+                <span class="widget_user_profile_name__title" id="widget_user_profile_name__title">
+                    <?if(!empty($arResult['ACTIVE_COMPANY'])):?><?=$arResult['ACTIVE_COMPANY']['NAME']?>,   <?endif?> <?=$arResult["LAST_NAME"]?> <?=$arResult["IN_NAMES"]?>
+                </span>
                 <?/*<span class="widget_user_profile_url_profile">Профиль</span>*/?>
 
-                <div class="widget_user_profile_select">
+                <div class="widget_user_profile_select" id="widget_user_profile_select">>
                     <span class="triangle">▲</span>
                     <ul>
                         <li><a href="/profile/">Редактировать профиль</a></li>
@@ -66,13 +69,13 @@ $MessURL = '/list_message/';
         window.location = $( this ).attr('href');
     });
     //клик по профилю в шапке
-    $('.widget_user_profile_name__title').click(function () {
-        $('.widget_user_profile_select').fadeIn(50);
+    $('#widget_user_profile_name__title').click(function () {
+        $('#widget_user_profile_select').fadeToggle(50);
     });
     $(document).mouseup(function (e) {
-        var popup = $('.widget_user_profile_name__title');
+        var popup = $('#widget_user_profile_name__title');
         if (e.target!=popup[0]&&popup.has(e.target).length === 0){
-            $('.widget_user_profile_select').css('display', 'none');
+            $('#widget_user_profile_select').css('display', 'none');
         }
     });
 </script>
