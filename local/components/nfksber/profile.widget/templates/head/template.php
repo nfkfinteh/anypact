@@ -67,12 +67,7 @@ $MessURL = '/list_message/';
     });
     //клик по профилю в шапке
     $('.widget_user_profile_name__title').click(function () {
-        //$('.widget_user_profile_select').fadeIn(50);
-        if($('.widget_user_profile_select') == 'none'){
-            $('.widget_user_profile_select').css('display', 'block');
-        }else {
-            $('.widget_user_profile_select').css('display', 'none');
-        }
+        $('.widget_user_profile_select').fadeToggle(50);
         return false;
     });
     $(document).mouseup(function (e) {
