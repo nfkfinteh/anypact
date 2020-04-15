@@ -3340,6 +3340,8 @@ input::-webkit-input-placeholder {
 }
 
 .cotragent{
+    margin-top: 5px;
+    margin-bottom: 5px;
     color: #ff6416;
     background: #fff;
     display: -webkit-box;
