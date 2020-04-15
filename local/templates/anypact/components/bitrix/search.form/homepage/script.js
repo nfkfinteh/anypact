@@ -9,4 +9,11 @@ $(document).ready(function() {
             $(select).css('display', 'none');
         }
     });
+    
+    $(document).mouseup(function (e) {
+        var popup = $('#button_select_category');
+        if (e.target!=popup[0]&&popup.has(e.target).length === 0){
+            $('#select_category_main').css('display', 'none');
+        }
+    });
 });

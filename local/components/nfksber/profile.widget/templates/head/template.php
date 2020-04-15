@@ -66,14 +66,23 @@ $MessURL = '/list_message/';
         window.location = $( this ).attr('href');
     });
     //клик по профилю в шапке
-    $('.widget_user_profile_name').click(function () {
-        $('.widget_user_profile_select').fadeIn(50);
-        return false;
+    // $('.widget_user_profile_name').click(function () {
+    //     $('.widget_user_profile_select').fadeIn(50);
+    //     return false;
+    // });
+    $('.widget_user_profile_name').on('click', function(){
+        let select = $('.widget_user_profile_select');
+        let visual = $(select).css('display');        
+        if(visual == 'none'){
+            $(select).css('display', 'block');
+        }else {
+            $(select).css('display', 'none');
+        }
     });
     $(document).mouseup(function (e) {
         var popup = $('.widget_user_profile_name');
         if (e.target!=popup[0]&&popup.has(e.target).length === 0){
-            $('.widget_user_profile_select').fadeOut(50);
+            $('.widget_user_profile_select').css('display', 'none');
         }
     });
 </script>
