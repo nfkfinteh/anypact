@@ -31,7 +31,7 @@
     text-decoration: none;
 }
 .widget_user_profile_select_open{
-    display: block;
+    display: none;
 }
 .widget_user_profile_fio {
     display: inline-block;

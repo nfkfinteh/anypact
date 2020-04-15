@@ -44,7 +44,7 @@ $MessURL = '/list_message/';
                 </span>
                 <?/*<span class="widget_user_profile_url_profile">Профиль</span>*/?>
 
-                <div class="widget_user_profile_select" id="widget_user_profile_select" style="display: none;">
+                <div class="widget_user_profile_select_open" id="widget_user_profile_select">
                     <span class="triangle">▲</span>
                     <ul>
                         <li><a href="/profile/">Редактировать профиль</a></li>
@@ -70,7 +70,7 @@ $MessURL = '/list_message/';
     });
     клик по профилю в шапке
     $('#widget_user_profile_name__title').click(function () {
-        $('#widget_user_profile_select').toggleClass(widget_user_profile_select_open);
+        $('.widget_user_profile_select_open').toggleClass(widget_user_profile_select);
     });
 
     $(document).mouseup(function (e) {
