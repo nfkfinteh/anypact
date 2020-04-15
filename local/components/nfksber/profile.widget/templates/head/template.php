@@ -36,9 +36,12 @@ $MessURL = '/list_message/';
             <?endif?>
 
             <div class="login-information-text widget_user_profile_name">
-                <a href="#" class="widget_user_profile_name__title">
+                <!-- <a href="#" class="widget_user_profile_name__title">
                     <?if(!empty($arResult['ACTIVE_COMPANY'])):?><?=$arResult['ACTIVE_COMPANY']['NAME']?>,   <?endif?> <?=$arResult["LAST_NAME"]?> <?=$arResult["IN_NAMES"]?>
-                </a>
+                </a> -->
+                <span class="widget_user_profile_name__title">
+                    <?if(!empty($arResult['ACTIVE_COMPANY'])):?><?=$arResult['ACTIVE_COMPANY']['NAME']?>,   <?endif?> <?=$arResult["LAST_NAME"]?> <?=$arResult["IN_NAMES"]?>
+                </span>
                 <?/*<span class="widget_user_profile_url_profile">Профиль</span>*/?>
 
                 <div class="widget_user_profile_select">
@@ -70,8 +73,7 @@ $MessURL = '/list_message/';
     //     $('.widget_user_profile_select').fadeIn(50);
     //     return false;
     // });
-    $('.widget_user_profile_name__title').addEventListener('click', function(e) {
-        e.preventDefault();
+    $('.widget_user_profile_name__title').on('click', function(){
         let select = $('.widget_user_profile_select');
         let visual = $(select).css('display');        
         if(visual == 'none'){
@@ -79,7 +81,6 @@ $MessURL = '/list_message/';
         }else {
             $(select).css('display', 'none');
         }
-        return false;
     });
     $(document).mouseup(function (e) {
         var popup = $('.widget_user_profile_name__title');
