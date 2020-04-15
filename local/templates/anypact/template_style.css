@@ -3342,14 +3342,14 @@ input::-webkit-input-placeholder {
     text-decoration: none;
 }
 .cotragent__button{
-    width: 100%;
+    width: 50%;
     text-align: center;
     display: inline-block;
     border: 1px solid #ff6416;
     padding: 10px 10px;
 }
 .cotragent__button_active{
-    width: 100%;
+    width: 50%;
     text-align: center;
     padding: 10px 10px;
     border: 1px solid #ff6416;
