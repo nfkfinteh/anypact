@@ -70,7 +70,8 @@ $MessURL = '/list_message/';
     //     $('.widget_user_profile_select').fadeIn(50);
     //     return false;
     // });
-    $('.widget_user_profile_name__title').on('click', function(){
+    $('.widget_user_profile_name__title').addEventListener('click', function(e) {
+        e.preventDefault();
         let select = $('.widget_user_profile_select');
         let visual = $(select).css('display');        
         if(visual == 'none'){
