@@ -44,7 +44,7 @@ $MessURL = '/list_message/';
                 </span>
                 <?/*<span class="widget_user_profile_url_profile">Профиль</span>*/?>
 
-                <div class="widget_user_profile_select" id="widget_user_profile_select">>
+                <div class="widget_user_profile_select" id="widget_user_profile_select">
                     <span class="triangle">▲</span>
                     <ul>
                         <li><a href="/profile/">Редактировать профиль</a></li>
@@ -69,8 +69,17 @@ $MessURL = '/list_message/';
         window.location = $( this ).attr('href');
     });
     //клик по профилю в шапке
-    $('#widget_user_profile_name__title').click(function () {
-        $('#widget_user_profile_select').fadeToggle(50);
+    // $('#widget_user_profile_name__title').click(function () {
+    //     $('#widget_user_profile_select').fadeToggle(50);
+    // });
+    $('#widget_user_profile_name__title').on('click', function(){
+        let select = $('#widget_user_profile_select');
+        let visual = $(select).css('display');        
+        if(visual == 'none'){
+            $(select).css('display', 'block');
+        }else {
+            $(select).css('display', 'none');
+        }
     });
     $(document).mouseup(function (e) {
         var popup = $('#widget_user_profile_name__title');
