@@ -19,7 +19,7 @@
 }
 .widget_user_profile_name__title:after{
     content: "";
-    /* background: url(arr_profile.svg) no-repeat center; */
+    background: url(arr_profile.svg) no-repeat center;
     display: inline-block;
     position: relative;
     left: 5px;
