@@ -48,7 +48,7 @@
     background-color: white;
     top: 55px;
     left: 28px;
-    display: none;
+    /* display: none; */
     text-align: left;
 }
 .widget_user_profile_avatar span{
