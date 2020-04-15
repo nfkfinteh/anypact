@@ -78,15 +78,15 @@ $MessURL = '/list_message/';
     //         $(select).css('display', 'none');
     //     }
     // });
-    $('#widget_user_profile_name__title').click(function () {
-        $('#widget_user_profile_select').fadeIn(50);
+    // $('#widget_user_profile_name__title').click(function () {
+    //     $('#widget_user_profile_select').fadeIn(50);
 
-    });
+    // });
 
-    $(document).mouseup(function (e) {
-        var popup = $('#widget_user_profile_name__title');
-        if (e.target!=popup[0]&&popup.has(e.target).length === 0){
-            $('#widget_user_profile_select').css('display', 'none');
-        }
-    });
+    // $(document).mouseup(function (e) {
+    //     var popup = $('#widget_user_profile_name__title');
+    //     if (e.target!=popup[0]&&popup.has(e.target).length === 0){
+    //         $('#widget_user_profile_select').css('display', 'none');
+    //     }
+    // });
 </script>
