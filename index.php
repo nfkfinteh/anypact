@@ -147,6 +147,7 @@ $APPLICATION->IncludeComponent(
     </div>
 </div>
 <!-- Описание и регистрация -->
+<?if(!$USER->IsAuthorized()):?>
 <div class="client-container">
     <div class="container">
         <h2>Стать участником</h2>
@@ -159,9 +160,9 @@ $APPLICATION->IncludeComponent(
                 <button class="btn btn-nfk send-btn new-reg-button" id="open_reg_form">Зарегистрироваться</button>
             </div>
             <div class="col-md-6 order-2 order-md-1">
-                <!-- <div  <?if(!$USER->IsAuthorized()):?>id="open_reg_form"<?endif?>>
+                <?/*<div  <?if(!$USER->IsAuthorized()):?>id="open_reg_form"<?endif?>>
                     <img src="<?=SITE_TEMPLATE_PATH?>/image/img_reg_us.png" alt="Подпись" style="max-width: 100%">
-                </div> -->
+                </div>*/?>
                 <div class="new-auth">
                     <div class="new-auth-block">
                         <form name="system_auth_form<?=$arResult["RND"]?>" method="post" target="_top" action="<?=$arResult["AUTH_URL"]?>">
@@ -177,7 +178,7 @@ $APPLICATION->IncludeComponent(
                                 <h2>Авторизация</h2>
                                 <!--Логин-->
                                 <p>Логин</p>
-                                <input type="text" name="USER_LOGIN_ERROR" class="regpopup_content_form_input" data-mess="" value="" id="user_aut_login" placeholder="" />
+                                <input type="text" name="USER_LOGIN_ERROR" class="regpopup_content_form_input" data-mess="" value="" id="user_aut_login_main" placeholder="" />
                                         <script>
                                             BX.ready(function() {
                                                 var loginCookie = BX.getCookie("<?=CUtil::JSEscape($arResult["~LOGIN_COOKIE_NAME"])?>");
@@ -191,12 +192,12 @@ $APPLICATION->IncludeComponent(
                                         </script>
                                 <!--Пароль-->
                                 <p>Пароль</p>
-                                <input type="password" name="USER_PASSWORD" class="regpopup_content_form_input"  autocomplete="off" id="user_aut_pass" placeholder=""/>  
+                                <input type="password" name="USER_PASSWORD" class="regpopup_content_form_input"  autocomplete="off" id="user_aut_pass_main" placeholder=""/>
                             <?if ($arResult["STORE_PASSWORD"] == "Y"):?>
                                     <input type="checkbox" id="USER_REMEMBER_frm" name="USER_REMEMBER" value="Y" /></td>
                                     <label for="USER_REMEMBER_frm" title="<?=GetMessage("AUTH_REMEMBER_ME")?>"><?echo GetMessage("AUTH_REMEMBER_SHORT")?></label>
                             <?endif?>
-                                    <input type="submit" id="submit_button_aut_user" class="regpopup_content_form_submit" value="<?=GetMessage("AUTH_LOGIN_BUTTON")?>" />
+                            <a href="javascript:undefined" class="regpopup_content_form_submit" id="submit_button_aut_user_main"><?=GetMessage("AUTH_LOGIN_BUTTON")?></a>
                         </form>
                     </div>
                     <div class="lock-img">
@@ -207,6 +208,7 @@ $APPLICATION->IncludeComponent(
         </div>
     </div>
 </div>
+<?endif?>
 <!-- Пошаговая инструкция -->
 <div class="all-easy">
     <div class="container">
