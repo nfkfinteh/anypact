@@ -22,7 +22,7 @@ else{
                         <span class="cotragent__button_active">Физ.лица, ИП</span> /
                         <a class="cotragent__button" href="<?=$APPLICATION->GetCurPage().'?TYPE=company'?>">Юр. лица</a>
                     <?elseif($type=='company'):?>
-                        <a class="cotragent__button" href="<?=$APPLICATION->GetCurPage().'?TYPE=user'?>">Физ. лица</a> /
+                        <a class="cotragent__button" href="<?=$APPLICATION->GetCurPage().'?TYPE=user'?>">Физ.лица, ИП</a> /
                         <span class="cotragent__button_active">Юр. лица</span>
                     <?endif?>
                 </div>

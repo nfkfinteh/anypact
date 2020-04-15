@@ -3336,9 +3336,13 @@ input::-webkit-input-placeholder {
 
 .cotragent{
     color: #ff6416;
+    border: #ff6416;
+    background: #fff;
+    padding: 10px 10px;
 }
 .cotragent__button_active{
-    font-weight: bold;
+    background: #ff6416;
+    color: #fff;
 }
 /*------sdelka.php --------*/
 
