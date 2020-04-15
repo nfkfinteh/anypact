@@ -78,6 +78,7 @@ $MessURL = '/list_message/';
         }else {
             $(select).css('display', 'none');
         }
+        return false;
     });
     $(document).mouseup(function (e) {
         var popup = $('.widget_user_profile_name__title');
