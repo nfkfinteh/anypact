@@ -69,19 +69,19 @@ $MessURL = '/list_message/';
     //     window.location = $( this ).attr('href');
     // });
     //клик по профилю в шапке
-    $('#widget_user_profile_name__title').on('click', function(){
-        let select = $('#widget_user_profile_select');
-        let visual = $(select).css('display');        
-        if(visual == 'none'){
-            $(select).css('display', 'block');
-        }else {
-            $(select).css('display', 'none');
-        }
-    });
-    // $('#widget_user_profile_name__title').click(function () {
-    //     $('#widget_user_profile_select').fadeIn(50);
-
+    // $('#widget_user_profile_name__title').on('click', function(){
+    //     let select = $('#widget_user_profile_select');
+    //     let visual = $(select).css('display');        
+    //     if(visual == 'none'){
+    //         $(select).css('display', 'block');
+    //     }else {
+    //         $(select).css('display', 'none');
+    //     }
     // });
+    $('#widget_user_profile_name__title').click(function () {
+        $('#widget_user_profile_select').fadeIn(50);
+
+    });
 
     $(document).mouseup(function (e) {
         var popup = $('#widget_user_profile_name__title');
