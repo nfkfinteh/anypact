@@ -3338,17 +3338,25 @@ input::-webkit-input-placeholder {
     color: #ff6416;
     background: #fff;
 }
+.cotragent a:hover{
+    text-decoration: none;
+}
 .cotragent__button{
+    width: 100%;
+    text-align: center;
     display: inline-block;
     border: 1px solid #ff6416;
     padding: 10px 10px;
 }
 .cotragent__button_active{
+    width: 100%;
+    text-align: center;
     padding: 10px 10px;
     border: 1px solid #ff6416;
     display: inline-block;
     background: #ff6416;
     color: #fff;
+    box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.2);
 }
 /*------sdelka.php --------*/
 
