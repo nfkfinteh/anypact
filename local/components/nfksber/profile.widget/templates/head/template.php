@@ -74,8 +74,11 @@ $MessURL = '/list_message/';
     // });
     $('#widget_user_profile_name__title').on('click', function(){
         let select = $('#widget_user_profile_select');
-        let visual = $(select).css('display');     
-        $(select).css('display', 'block');   
+        let visual = select.css('display');     
+        $(select).css('display', 'block');
+        if(visual == 'block'){
+            $(select).css('display', 'none');
+        }   
         // if(visual == 'none'){
         //     $(select).css('display', 'block');
         // }else {
