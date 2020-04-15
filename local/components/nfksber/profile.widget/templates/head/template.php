@@ -68,23 +68,11 @@ $MessURL = '/list_message/';
     $('.widget_user_profile_name a').on('click', function() {
         window.location = $( this ).attr('href');
     });
-    //клик по профилю в шапке
-    // $('#widget_user_profile_name__title').click(function () {
-    //     $('#widget_user_profile_select').fadeToggle(50);
-    // });
-    $('#widget_user_profile_name__title').on('click', function(){
-        let select = $('#widget_user_profile_select');
-        let visual = select.css('display');     
-        $(select).css('display', 'block');
-        if(visual == 'block'){
-            $(select).css('display', 'none');
-        }   
-        // if(visual == 'none'){
-        //     $(select).css('display', 'block');
-        // }else {
-        //     $(select).css('display', 'none');
-        // }
+    клик по профилю в шапке
+    $('#widget_user_profile_name__title').click(function () {
+        $('#widget_user_profile_select').toggleClass(widget_user_profile_select_open);
     });
+
     $(document).mouseup(function (e) {
         var popup = $('#widget_user_profile_name__title');
         if (e.target!=popup[0]&&popup.has(e.target).length === 0){
