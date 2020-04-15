@@ -5,8 +5,10 @@ $(document).ready(function() {
         let visual = $(select).css('display');        
         if(visual == 'none'){
             $(select).css('display', 'block');
+            $('.widget_user_profile_name__title:after').css('transition', 'rotate(-180deg)');
         }else {
             $(select).css('display', 'none');
+            $('.widget_user_profile_name__title:after').css('transition', 'rotate(180deg)');
         }
     });
     $(document).mouseup(function (e) {
