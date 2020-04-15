@@ -3336,14 +3336,16 @@ input::-webkit-input-placeholder {
 
 .cotragent{
     color: #ff6416;
-    border: 1px solid #ff6416;
     background: #fff;
-    padding: 10px 10px;
 }
 .cotragent__button{
     display: inline-block;
+    border: 1px solid #ff6416;
+    padding: 10px 10px;
 }
 .cotragent__button_active{
+    padding: 10px 10px;
+    border: 1px solid #ff6416;
     display: inline-block;
     background: #ff6416;
     color: #fff;
