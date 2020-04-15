@@ -72,7 +72,7 @@ $MessURL = '/list_message/';
     // $('#widget_user_profile_name__title').click(function () {
     //     $('#widget_user_profile_select').fadeToggle(50);
     // });
-    $('#widget_user_profile_name__title').on('click', function(){
+    $('.widget_user_profile').on('click', function(){
         let select = $('#widget_user_profile_select');
         let visual = $(select).css('display');        
         if(visual == 'none'){
@@ -82,7 +82,7 @@ $MessURL = '/list_message/';
         }
     });
     $(document).mouseup(function (e) {
-        var popup = $('#widget_user_profile_name__title');
+        var popup = $('#widget_user_profile_select');
         if (e.target!=popup[0]&&popup.has(e.target).length === 0){
             $('#widget_user_profile_select').css('display', 'none');
         }
