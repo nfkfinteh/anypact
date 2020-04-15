@@ -1,4 +1,5 @@
 $(document).ready(function() { 
+    //открытие меню профиля в шапке
     $('#widget_user_profile_name__title').on('click', function(){
         let select = $('#widget_user_profile_select');
         let visual = $(select).css('display');        

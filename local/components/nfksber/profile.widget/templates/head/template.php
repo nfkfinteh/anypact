@@ -64,7 +64,7 @@ $MessURL = '/list_message/';
         </div>
     </div>
 </div>
-<script>
+<!-- <script>
     // $('.widget_user_profile_name a').on('click', function() {
     //     window.location = $( this ).attr('href');
     // });
@@ -89,4 +89,4 @@ $MessURL = '/list_message/';
     //         $('#widget_user_profile_select').css('display', 'none');
     //     }
     // });
-</script>
+</script> -->
