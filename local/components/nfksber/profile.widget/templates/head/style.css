@@ -30,9 +30,7 @@
 .widget_user_profile_name__title:hover{
     text-decoration: none;
 }
-.widget_user_profile_select_open{
-    display: none;
-}
+
 .widget_user_profile_fio {
     display: inline-block;
     width: 100%;
