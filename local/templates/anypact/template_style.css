@@ -3340,7 +3340,11 @@ input::-webkit-input-placeholder {
     background: #fff;
     padding: 10px 10px;
 }
+.cotragent__button{
+    display: inline-block;
+}
 .cotragent__button_active{
+    display: inline-block;
     background: #ff6416;
     color: #fff;
 }

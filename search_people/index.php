@@ -19,7 +19,7 @@ else{
             <div class="col-lg-3 col-md-4 col-sm-12">
                 <div class="cotragent">
                     <?if($type=='user'):?>
-                        <span class="cotragent__button_active">Физ.лица, ИП</span> /
+                        <span class="cotragent__button_active">Физ.лица, ИП</span>
                         <a class="cotragent__button" href="<?=$APPLICATION->GetCurPage().'?TYPE=company'?>">Юр. лица</a>
                     <?elseif($type=='company'):?>
                         <a class="cotragent__button" href="<?=$APPLICATION->GetCurPage().'?TYPE=user'?>">Физ.лица, ИП</a> /
