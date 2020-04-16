@@ -23,8 +23,10 @@ $(document).ready(function() {
         let visual = $(select).css('display');        
         if(visual == 'none'){
             $(select).css('display', 'block');
+            $('.dropdown-arrow-deal').addClass('active-arrow');
         }else {
             $(select).css('display', 'none');
+            $('.dropdown-arrow-deal').removeClass('active-arrow');
         }
     });
     

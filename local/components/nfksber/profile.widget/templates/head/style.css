@@ -28,14 +28,6 @@
     height: 12px;
 }
 .active-arrow{
-    /* content: "";
-    background: url(arr_profile.svg) no-repeat center;
-    display: inline-block;
-    position: relative;
-    top: 0;
-    right: 0;
-    width: 12px;
-    height: 12px; */
     transform: rotate(-180deg);
 }
 
@@ -58,8 +50,8 @@
     position: absolute;
     z-index: 100;
     background-color: white;
-    top: 55px;
-    left: 28px;
+    top: 63px;
+    left: 40px;
     text-align: left;
 }
 .widget_user_profile_avatar span{

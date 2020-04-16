@@ -201,6 +201,7 @@ input {
 }
 .search .region,
 .search .deal-type {
+    position: relative;
     border-left: 1px solid #dddddd;
     display: inline-block;
     padding: 5px 20px 15px 37px;
@@ -238,16 +239,19 @@ input {
     right: 17px;
 }
 
-.search .deal-type::after {
+.dropdown-arrow-deal {
     content: "";
     background: url(arr_profile.svg) no-repeat center;
     display: inline-block;
-    position: relative;
-    left: 5px;
+    position: absolute;
+    top: 5px;
+    right: 5px;
     width: 12px;
     height: 12px;
 }
-
+.active-arrow{
+    transform: rotate(-180deg);
+}
 .category {
     line-height: 2;
     margin-bottom: 50px;
