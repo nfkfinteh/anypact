@@ -41,8 +41,8 @@ $MessURL = '/list_message/';
                 </a> -->
                 <span class="widget_user_profile_name__title" id="widget_user_profile_name__title">
                     <?if(!empty($arResult['ACTIVE_COMPANY'])):?><?=$arResult['ACTIVE_COMPANY']['NAME']?>,   <?endif?> <?=$arResult["LAST_NAME"]?> <?=$arResult["IN_NAMES"]?>
+                    <span class="dropdown-arrow-profile"></span>
                 </span>
-                <div class="dropdown-arrow-profile"></div>
                 <?/*<span class="widget_user_profile_url_profile">Профиль</span>*/?>
 
                 <div class="widget_user_profile_select" id="widget_user_profile_select" style="display: none;">
