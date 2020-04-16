@@ -206,7 +206,11 @@ input {
     display: inline-block;
     padding: 5px 20px 15px 37px;
 }
-
+.search .deal-type{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
 .search .magnifier::after {
     content: "";
     background: url(image/magnifier.png);
