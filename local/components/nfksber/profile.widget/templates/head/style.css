@@ -11,18 +11,18 @@
 }
 
 .widget_user_profile_name {
-    position: relative;
     margin-left: 10px;
     max-width: 78%;
 }
 .widget_user_profile_name__title{
+    position: relative;
     color: #ff6416;
 }
 .dropdown-arrow-profile{
     content: "";
     background: url(arr_profile.svg) no-repeat center;
     display: inline-block;
-    position: relative;
+    position: absolute;
     top: 0;
     right: 0;
     width: 12px;
