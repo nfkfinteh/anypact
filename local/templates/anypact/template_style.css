@@ -201,8 +201,8 @@ input {
 }
 .search .region{
     position: absolute;
-    top: 16px;
-    right: 242px;
+    top: 14px;
+    right: 256px;
 }
 .search .region,
 .search .deal-type {
