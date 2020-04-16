@@ -15,6 +15,7 @@ $(document).ready(function() {
         var popup = $('#widget_user_profile_name__title');
         if (e.target!=popup[0]&&popup.has(e.target).length === 0){
             $('#widget_user_profile_select').css('display', 'none');
+            $('.dropdown-arrow-profile').removeClass('active-arrow');
         }
     });
     // выбор категории
@@ -34,6 +35,7 @@ $(document).ready(function() {
         var popup = $('#button_select_category');
         if (e.target!=popup[0]&&popup.has(e.target).length === 0){
             $('#select_category_main').css('display', 'none');
+            $('.dropdown-arrow-deal').removeClass('active-arrow');
         }
     });
 });
