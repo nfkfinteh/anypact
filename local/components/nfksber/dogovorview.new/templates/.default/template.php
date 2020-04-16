@@ -52,13 +52,12 @@
                     <!--<button type="button" class="btn btn-nfk btn-default" data-toggle="tooltip" data-placement="left" title="Сохранить"><span class="glyphicon glyphicon-print"></span></button>-->
                     <button type="button" class="btn btn-nfk btn-default space_right" id="btn-edit" data-toggle="tooltip" data-placement="left" title="Включить редактирование текста" contenteditable="false"><span class="glyphicon glyphicon-pencil"></span></button>
                     <?/*<button type="button" class="btn btn-nfk btn-default" data-toggle="tooltip" data-placement="left" title="Вставить изображение"><span class="glyphicon glyphicon-picture"></span></button>*/?>
-                    <button type="button" class="btn btn-nfk btn-default form_text js-disabled"  id="btn-noedit" data-toggle="tooltip" data-placement="left" title="Запретить редактирование выделенного текста" disabled><span class="glyphicon glyphicon-ban-circle"></span></button>
-                    <button type="button" class="btn btn-nfk btn-default space_right js-disabled" id="btn-data" data-toggle="tooltip" data-placement="left" title="Вставить подстановку текущей даты" disabled><span class="glyphicon glyphicon-calendar"></span></button>
-
-                    <button type="button" class="btn btn-nfk btn-default form_text js-disabled" id="btn-weight" data-toggle="tooltip" data-placement="left" title="Жирный текст" contenteditable="false" disabled><span class="glyphicon glyphicon-bold"></span></button>
+                    <button type="button" class="btn btn-nfk btn-default form_text js-disabled"  id="btn-nedittext" data-toggle="tooltip" data-placement="left" title="Запретить редактирование выделенного текста" disabled><span class="glyphicon glyphicon-ban-circle"></span></button>
+                    <button type="button" class="btn btn-nfk btn-default space_right js-btn-data js-disabled" data-toggle="tooltip" data-placement="left" title="Вставить подстановку текущей даты" disabled><span class="glyphicon glyphicon-calendar"></span></button>
+                    <button type="button" class="btn btn-nfk btn-default form_text js-disabled" id="btn-bold" data-toggle="tooltip" data-placement="left" title="Жирный текст" contenteditable="false" disabled><span class="glyphicon glyphicon-bold"></span></button>
                     <button type="button" class="btn btn-nfk btn-default form_text js-disabled" id="btn-italic" data-toggle="tooltip" data-placement="left" title="Курсив" contenteditable="false" disabled><span class="glyphicon glyphicon-italic"></span></button>
                     <button type="button" class="btn btn-nfk btn-default form_text space_right js-disabled" id="btn-title" data-toggle="tooltip" data-placement="left" title="Заголовок" contenteditable="false" disabled><span class="glyphicon glyphicon-font"></span></button>
-                    <?/*<button type="button" class="btn btn-nfk btn-default form_text" id="btn-question" data-toggle="tooltip" data-placement="left" title="Информация по инструментам" contenteditable="false"><span class="glyphicon glyphicon-question-sign"></span></button>*/?>
+                    <button type="button" class="btn btn-nfk btn-default form_text" id="btn-question" data-toggle="tooltip" data-placement="left" title="Информация по инструментам" contenteditable="false"><span class="glyphicon glyphicon-question-sign"></span></button>
                 </div>
             <div class="cardDogovor-boxViewText" id="canvas" contenteditable="false">
                 <?if(!empty($arResult["TEMPLATE_CONTENT"])){ ?>
@@ -67,11 +66,11 @@
                     <h3>Вы можете загрузить договор из шаблона или из вашего файла</h3>
                         <?foreach ($arResult["THREE_TEMPLATE"] as $Item_three){?>
                             <?if($Item_three["DEPTH_LEVEL"]==1){?>
-                                <span data-id="<?=$Item_three["ID"]?>"><img src="<?=SITE_TEMPLATE_PATH?>/img/folder_contract.png" /><?=$Item_three["NAME"]?></span>
+                                <span class="link_template" data-id="<?=$Item_three["ID"]?>"><img src="<?=SITE_TEMPLATE_PATH?>/img/folder_contract.png" /><?=$Item_three["NAME"]?></span>
                             <?}elseif ($Item_three["DEPTH_LEVEL"]==2){?>
-                                <span data-id="<?=$Item_three["ID"]?>" style="padding-left: 35px;"><img src="<?=SITE_TEMPLATE_PATH?>/img/folder_contract.png" /><?=$Item_three["NAME"]?></span>
+                                <span class="link_template" data-id="<?=$Item_three["ID"]?>" style="padding-left: 35px;"><img src="<?=SITE_TEMPLATE_PATH?>/img/folder_contract.png" /><?=$Item_three["NAME"]?></span>
                             <?}elseif ($Item_three["DEPTH_LEVEL"]==3){?>
-                                <span data-id="<?=$Item_three["ID"]?>" style="padding-left: 70px;"><img src="<?=SITE_TEMPLATE_PATH?>/img/folder_contract.png" /><?=$Item_three["NAME"]?></span>
+                                <span class="link_template" data-id="<?=$Item_three["ID"]?>" style="padding-left: 70px;"><img src="<?=SITE_TEMPLATE_PATH?>/img/folder_contract.png" /><?=$Item_three["NAME"]?></span>
                             <?}?>
                         <?}?>
                     <?}?>

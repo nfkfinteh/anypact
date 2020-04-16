@@ -238,55 +238,6 @@ function formatSelectText(id_name) {
     }else{
         formatDoc(key);
     }
-
-    /*if(range.startContainer.parentElement.tagName != arrTegs[key].toUpperCase()){
-        // удаляем его, что бы замнить
-        range.deleteContents();
-        let insert_space = document.createElement(arrTegs[key]);
-        //if(key == 'noedit') insert_space.setAttribute('contenteditable', true);
-        insert_space.innerHTML = sel_string;
-        range.insertNode(insert_space);
-    }else{
-        if (range.startContainer.parentNode.innerText != sel_string) {
-            let arrayText = range.startContainer.parentNode.innerText.split(sel_string);
-            $(range.startContainer.parentNode).remove();
-            if(range.startContainer.parentNode != range.endContainer.parentNode){
-                let text = document.createElement(arrTegs[key]);
-                text.innerHTML = sel_string;
-                //if(key == 'noedit') text.setAttribute('contenteditable', true);
-                range.insertNode(text);
-                let restText = sel_string.split(arrayText[0]);
-                if(range.endContainer.textContent.indexOf(restText[1]) === 0){
-                    range.endContainer.textContent = range.endContainer.textContent.replace(restText[1], '');
-                }else if(range.startContainer.textContent.indexOf(restText[1]) !== false){
-                    range.startContainer.textContent = range.startContainer.textContent.replace(restText[1], '');
-                }
-            }else {
-                let text = document.createElement(arrTegs[key]);
-                if (text && arrayText[1] != undefined) {
-                    //text.setAttribute('contenteditable', false);
-                    text.innerHTML = arrayText[1];
-                    //if(key == 'noedit') text.setAttribute('contenteditable', true);
-                    range.insertNode(text);
-                }
-                if (sel_string && sel_string != undefined) range.insertNode(document.createTextNode(sel_string));
-                let text2 = document.createElement(arrTegs[key]);
-                if (text2 && arrayText[0] != undefined) {
-                    //text2.setAttribute('contenteditable', false);
-                    text2.innerHTML = arrayText[0];
-                    //if(key == 'noedit') text2.setAttribute('contenteditable', true);
-                    range.insertNode(text2);
-                }
-            }
-        } else {
-            let text = sel_string;
-            $(range.startContainer.parentNode).remove();
-            range.insertNode(document.createTextNode(text));
-        }
-
-    }*/
-
-    //selection.modify("move", "right", "character");
 }
 
 function formatSelectTitle(id_name) {
@@ -495,27 +446,6 @@ $(document).ready(function() {
     $('#select_type_user').on('change', function() {
         let value = $(this).val();
         setHeaderFullName(value);
-    });
-
-    $('.cardDogovor-boxViewText span').on('click', function() {
-        var category = $(this);
-        var id_category = category.attr('data-id');
-        var canvas_contr = $('.cardDogovor-boxViewText');
-
-        // загружаем содержимое категории
-        $.post(
-            "/response/ajax/get_template_contract.php", {
-                idcontract: id_category
-            },
-            onAjaxSuccess
-        );
-
-        function onAjaxSuccess(data) {
-            // Здесь мы получаем данные, отправленные сервером и выводим их на экран.            
-            canvas_contr.html(data);
-        }
-
-
     });
 
 
