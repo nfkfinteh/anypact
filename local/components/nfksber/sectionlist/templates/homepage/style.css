@@ -1,8 +1,9 @@
 #select_category_main {
+    user-select: none;
     position: absolute;
     background-color: #fff;
     padding: 10px;
-    right: 25px;
+    right: 0px;
     box-shadow: 1px 9px 11px rgba(0, 0, 0, 0.15);
     border-radius: 5px;
     top: 97px;

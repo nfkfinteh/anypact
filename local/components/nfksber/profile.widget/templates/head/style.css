@@ -13,6 +13,7 @@
 .widget_user_profile_name {
     margin-left: 10px;
     max-width: 78%;
+    user-select: none;
 }
 .widget_user_profile_name__title{
     position: relative;

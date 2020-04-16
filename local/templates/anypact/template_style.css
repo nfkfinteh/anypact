@@ -207,9 +207,10 @@ input {
     padding: 5px 20px 15px 37px;
 }
 .search .deal-type{
+    user-select: none;
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 16px;
+    right: 43px;
 }
 .search .magnifier::after {
     content: "";
