@@ -36,7 +36,7 @@
     right: 0;
     width: 12px;
     height: 12px; */
-    translate: rotare(-180deg);
+    translate: rotate(-180deg);
 }
 
 .widget_user_profile_name__title:hover{
