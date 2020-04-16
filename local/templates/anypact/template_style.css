@@ -244,8 +244,8 @@ input {
     background: url(arr_profile.svg) no-repeat center;
     display: inline-block;
     position: absolute;
-    top: 5px;
-    right: 5px;
+    top: 22px;
+    right: -19px;
     width: 12px;
     height: 12px;
 }
