@@ -1,5 +1,8 @@
 #select_category_main {
-    user-select: none;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
     position: absolute;
     background-color: #fff;
     padding: 10px;
@@ -14,7 +17,8 @@
     position: absolute;
     right: 20px;
     top: -20px;
-    transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
     border: 10px solid transparent;
     border-top: 10px solid #fff;
 }
@@ -28,5 +32,6 @@
     display: inline-block;
     position: relative;
     left: 5px;
-    transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+            transform: rotate(90deg);
 }

@@ -199,15 +199,22 @@ input {
     border: none;
     height: 40px;
 }
+.search .region{
+    position: absolute;
+    top: 16px;
+    right: 242px;
+}
 .search .region,
 .search .deal-type {
-    position: relative;
     border-left: 1px solid #dddddd;
     display: inline-block;
     padding: 5px 20px 15px 37px;
 }
 .search .deal-type{
-    user-select: none;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
     position: absolute;
     top: 16px;
     right: 43px;
@@ -255,7 +262,8 @@ input {
     height: 12px;
 }
 .active-arrow{
-    transform: rotate(-180deg);
+    -webkit-transform: rotate(-180deg);
+            transform: rotate(-180deg);
 }
 .category {
     line-height: 2;
