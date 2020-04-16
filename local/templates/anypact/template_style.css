@@ -201,7 +201,9 @@ input {
 }
 .search .region,
 .search .deal-type {
-    position: relative;
+    position: absolute;
+    right: 0;
+    top: 0;
     border-left: 1px solid #dddddd;
     display: inline-block;
     padding: 5px 20px 15px 37px;
