@@ -202,13 +202,13 @@ input {
 .search .region{
     position: absolute;
     top: 14px;
-    right: 256px;
+    right: 220px;
 }
 .search .region,
 .search .deal-type {
     border-left: 1px solid #dddddd;
     display: inline-block;
-    padding: 5px 20px 15px 37px;
+    padding: 5px 0px 15px 37px;
 }
 .search .deal-type{
     -webkit-user-select: none;
