@@ -5,10 +5,10 @@ $(document).ready(function() {
         let visual = $(select).css('display');        
         if(visual == 'none'){
             $(select).css('display', 'block');
-            $('.widget_user_profile_name__title').addClass('active-arrow');
+            $('.dropdown-arrow-profile').addClass('active-arrow');
         }else {
             $(select).css('display', 'none');
-            $('.widget_user_profile_name__title').removeClass('active-arrow');
+            $('.dropdown-arrow-profile').removeClass('active-arrow');
         }
     });
     $(document).mouseup(function (e) {
