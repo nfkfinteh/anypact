@@ -3828,7 +3828,7 @@ footer p{
     z-index: 2;
     width: 42px;
     height: 42px;
-    position: relative;
+    position: absolute;
     bottom: 7px;
     right: 0px;
     background: url("img/check-esia.png") center no-repeat;
