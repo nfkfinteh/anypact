@@ -3819,7 +3819,7 @@ footer p{
 .people-s-photo{
     position: relative;
 }
-.people-s-photo-img{
+.people-s-photo-img img{
     border-radius: 50%;
     position: relative;
     z-index: 1;
