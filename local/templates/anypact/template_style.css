@@ -3858,6 +3858,7 @@ footer p{
     display: inline-block;
 } */
 .check-esia-img-info span{
+    display: inline-block;
     padding-bottom: 5px;
     font-weight: 900;
 }
