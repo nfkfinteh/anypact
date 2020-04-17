@@ -3837,7 +3837,7 @@ footer p{
     padding: 23px 27px;
     background: #fff;
     border-radius: 10px;
-    position: absolute;
+    position: fixed;
     top: 0;
     right: 0;
     display: none;
