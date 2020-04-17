@@ -3847,11 +3847,11 @@ footer p{
     display: none;
     box-shadow: 0 0 10px 5px #00000030;
 }
-.check-esia-img-info img{
-    margin-top: -2px;
+.check-esia-img-info img {
+    margin-top: -5px;
     margin-right: 5px;
-    width: 17px;
-    height: 17px;
+    width: 16px;
+    height: 13px;
     display: inline-block;
 }
 /* .check-esia-img-info {
