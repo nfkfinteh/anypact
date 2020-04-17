@@ -24,7 +24,7 @@ $(document).ready(function(){
         var Y = e.pageY;
         var top = Y  + 10 + 'px';
         var left = X  + 10 + 'px';
-        var id = $(".check-esia-img-info");
+        var id = $(this).children(".check-esia-img-info");
         id.css({
             display:"block",
             top: top,
@@ -32,7 +32,7 @@ $(document).ready(function(){
         });
     });
     $('.check-esia-img').mouseout (function(){
-        var id = $(this).next();
+        var id = $(this).children(".check-esia-img-info");
         id.css({
             display:"none"
         });
