@@ -146,6 +146,10 @@
                     <div class="popup_content">
                         <h2>Инструкция по работе с редактором</h2>
                         <div class="popup_content_form">
+                            <button type="button" class="btn btn-nfk" contenteditable="false">
+                                <span class="glyphicon glyphicon-question-sign"></span>
+                            </button>
+                            - Вы можете запретить для редактирования любую часть текста. Единовременно можно выделить и заблокировать не более одного обзаца. Размер заблокированного текста не ограничен.
                         </div>
                     </div>
                 </div>
