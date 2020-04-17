@@ -21,8 +21,8 @@ $(document).ready(function(){
     //блок с подтвержденной регистрацией на ЕСИА
     $('.check-esia-img').mousemove(function(e){
         var containerPos = $('.check-esia-img').offset();
-        var X = e.pageX - containerPos.left;
-        var Y = e.pageY - containerPos.top;
+        var X = e.offsetX - containerPos.left;
+        var Y = e.offsetY - containerPos.top;
         var top = Y  + 10 + 'px';
         var left = X  + 10 + 'px';
         var id = $(this).children(".check-esia-img-info");
