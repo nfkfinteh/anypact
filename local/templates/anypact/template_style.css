@@ -3829,11 +3829,15 @@ footer p{
     background: url(img/check-esia.png) center no-repeat;
 }
 .check-esia-img-info{
+    padding: 23px 27px;
+    background: #fff;
+    border-radius: 10px;
     position: absolute;
     top: 0;
     right: 0;
     display: none;
     font-style: italic;
+    box-shadow: 0 0 10px 5px #00000030;
 }
 .check-esia-img-info {
     display: inline-block;
