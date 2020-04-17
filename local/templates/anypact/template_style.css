@@ -3816,3 +3816,29 @@ footer p{
     right: 76px;
     top: 110px;
 }
+.people-s-photo{
+    position: relative;
+}
+.people-s-photo-img{
+    position: relative;
+}
+.check-esia-img{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: url(img/check-esia.png) center no-repeat;
+}
+.check-esia-img-info{
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: none;
+    font-style: italic;
+}
+.check-esia-img-info {
+    display: inline-block;
+}
+.check-esia-img-info span{
+    font-style: 16px;
+    font-weight: 900;
+}
