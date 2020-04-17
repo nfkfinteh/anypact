@@ -3839,13 +3839,13 @@ footer p{
     padding: 23px 27px;
     background: #fff;
     border-radius: 10px;
-    position: fixed;
+    position: absolute;
     top: 0;
     right: 0;
     display: none;
     box-shadow: 0 0 10px 5px #00000030;
 }
-.check-esia-img-info {
+.check-esia-img-info img{
     width: 17px;
     height: 17px;
     display: inline-block;
