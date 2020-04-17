@@ -3845,6 +3845,11 @@ footer p{
     display: none;
     box-shadow: 0 0 10px 5px #00000030;
 }
+.check-esia-img-info {
+    width: 17px;
+    height: 17px;
+    display: inline-block;
+}
 /* .check-esia-img-info {
     display: inline-block;
 } */
