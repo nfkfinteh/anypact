@@ -22,7 +22,7 @@ $(document).ready(function(){
     $('.check-esia-img').mousemove(function(e){
         var X = e.offsetX;
         var Y = e.offsetY;
-        var top = Y  + 15 + 'px';
+        var top = Y  + 20 + 'px';
         var left = X  - 10 + 'px';
         var id = $(this).children(".check-esia-img-info");
         id.css({
