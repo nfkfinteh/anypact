@@ -3834,6 +3834,8 @@ footer p{
     background: url("img/check-esia.png") center no-repeat;
 }
 .check-esia-img-info{
+    width: 290px;
+    height: 90px;
     padding: 23px 27px;
     background: #fff;
     border-radius: 10px;
