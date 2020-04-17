@@ -3821,8 +3821,10 @@ footer p{
 }
 .people-s-photo-img{
     position: relative;
+    z-index: 1;
 }
 .check-esia-img{
+    z-index: 2;
     width: 42px;
     height: 42px;
     position: absolute;
