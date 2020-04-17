@@ -55,69 +55,189 @@ function insertTextAtCursor(text) {
     };
 }*/
 
+function rangeCompareNode(range, node) {
+    var nodeRange = node.ownerDocument.createRange();
+    try {
+        nodeRange.selectNode(node);
+    }
+    catch (e) {
+        nodeRange.selectNodeContents(node);
+    }
+    var nodeIsBefore = range.compareBoundaryPoints(Range.START_TO_START, nodeRange) == 1;
+    var nodeIsAfter = range.compareBoundaryPoints(Range.END_TO_END, nodeRange) == -1;
+
+    if (nodeIsBefore && !nodeIsAfter)
+        return 0;
+    if (!nodeIsBefore && nodeIsAfter)
+        return 1;
+    if (nodeIsBefore && nodeIsAfter)
+        return 2;
+
+    return 3;
+}
+
 function formatSelectText(id_name) {
     // получаем выделенный текст
     let selection = window.getSelection();
     let range = selection.getRangeAt(0);
     let sel_string = selection.toString();
+    let sel_html = range.cloneContents();
     // на основе id выбираем подстановку    
     let key = id_name.replace('btn-', '');
     let arrTegs = {
-        weight: 'b',
+        bold: 'b',
         italic: 'i',
-        noedit: 'nedittext'
+        nedittext: 'nedittext'
     }
 
     if(sel_string.length == 0) return;
 
-    if(range.startContainer.parentElement.tagName != arrTegs[key].toUpperCase()){
-        // удаляем его, что бы замнить
-        range.deleteContents();
-        let insert_space = document.createElement(arrTegs[key]);
-        if(key == 'noedit') insert_space.setAttribute('contenteditable', false);
-        insert_space.innerHTML = sel_string;
-        range.insertNode(insert_space);
-    }else{
-        if (range.startContainer.parentNode.innerText != sel_string) {
-            let arrayText = range.startContainer.parentNode.innerText.split(sel_string);
-            $(range.startContainer.parentNode).remove();
-            if(range.startContainer.parentNode != range.endContainer.parentNode){
-                let text = document.createElement(arrTegs[key]);
-                text.innerHTML = sel_string;
-                if(key == 'noedit') text.setAttribute('contenteditable', false);
-                range.insertNode(text);
-                let restText = sel_string.split(arrayText[0]);
-                if(range.endContainer.textContent.indexOf(restText[1]) === 0){
-                    range.endContainer.textContent = range.endContainer.textContent.replace(restText[1], '');
-                }else if(range.startContainer.textContent.indexOf(restText[1]) !== false){
-                    range.startContainer.textContent = range.startContainer.textContent.replace(restText[1], '');
+    if(key == 'nedittext'){
+
+       //проверка находимся ли мы в диапазоне запрета редактирования
+        let parentStartN = $(range.startContainer.parentElement).parents('nedittext').eq(0);
+        let parentEndN = $(range.endContainer.parentElement).parents('nedittext').eq(0);
+
+        if(
+            range.startContainer.parentElement.tagName != key.toUpperCase() &&
+            range.endContainer.parentElement.tagName != key.toUpperCase() &&
+            (parentStartN.length!==1 && parentEndN.length!==1)
+        ){
+            let nedittext = document.createElement('nedittext'),
+                wrap_sel = document.createElement('text');
+
+
+            //если количестов 1 и равняеться nededitex
+            //отмена запрета редактирование для всего
+            if(
+                sel_html.children.length==1 &&
+                sel_html.children[0].tagName=='NEDITTEXT' &&
+                $(sel_html.children[0]).text() == sel_string
+            ){
+                console.log('удаление всего');
+                sel_html = sel_html.querySelector('nedittext');
+                sel_html = sel_html.innerHTML;
+                range.deleteContents();
+                let insert_space = document.createElement('text');
+                insert_space.innerHTML = sel_html;
+                range.insertNode(insert_space);
+            }
+            else{
+                console.log('добавление');
+                //добавление запрета редактирования
+                //удаление внутрених nedittext
+                let arNedittext = sel_html.querySelectorAll('nedittext');
+                for(let i=0; i<arNedittext.length; i++){
+                    if(arNedittext[i].innerHTML.length>0){
+                        let sp1 = document.createElement("text");
+                        sp1.innerHTML = arNedittext[i].innerHTML;
+                        sel_html.replaceChild(sp1, arNedittext[i]);
+                    }
                 }
-            }else {
-                let text = document.createElement(arrTegs[key]);
-                if (text && arrayText[1] != undefined) {
-                    //text.setAttribute('contenteditable', false);
-                    text.innerHTML = arrayText[1];
-                    if(key == 'noedit') text.setAttribute('contenteditable', false);
-                    range.insertNode(text);
+
+                if(range.startContainer.parentNode.innerText == range.endContainer.parentNode.innerText && range.startContainer.parentNode.innerText == sel_string){
+                    //если какой либо селектор совподает с выделением
+                    console.log('test');
+                    //$(nedittext).append(range.startContainer.parentNode);
+                    $(range.startContainer.parentNode).wrapInner(nedittext);
+                    range.insertNode(range.startContainer.parentNode);
                 }
-                if (sel_string && sel_string != undefined) range.insertNode(document.createTextNode(sel_string));
-                let text2 = document.createElement(arrTegs[key]);
-                if (text2 && arrayText[0] != undefined) {
-                    //text2.setAttribute('contenteditable', false);
-                    text2.innerHTML = arrayText[0];
-                    if(key == 'noedit') text2.setAttribute('contenteditable', false);
-                    range.insertNode(text2);
+                else{
+                    //для запрета редактирования внутри выделеного жирного или курсива
+                    console.log('test2');
+                    if(
+                        range.startContainer.parentNode.tagName == range.endContainer.parentNode.tagName &&
+                        (range.startContainer.parentNode.tagName == 'B' || range.startContainer.parentNode.tagName == 'I')
+                    ){
+                        let wrap_text_format = document.createElement(range.startContainer.parentNode.tagName);
+                        sel_html = $(wrap_text_format).append(sel_html);
+                    }
+                    $(nedittext).append(sel_html);
+
+                    //заглушка
+                    //покачто не коректно добавлнеи с блочнми элементами
+                    let bung = false;
+                    $(nedittext).children().each(function(i, element){
+                        if(element.tagName == 'P' || element.tagName == 'DIV'){
+                            bung = true;
+                            return false;
+                        }
+                    });
+
+                    if(!bung){
+                        $(wrap_sel).append(nedittext);
+                        range.deleteContents();
+                        range.insertNode(wrap_sel);
+
+                        //удаление временного селектора text
+                        $('.cardDogovor-boxViewText text').replaceWith(function(){
+                            return $(this).html();
+                        });
+                        //document.execCommand('insertHTML', null, $(wrap_sel).html());
+                    }
+                    else{
+                        showResult('#popup-error','Запрет редактирование отменен. Запрет редактирования возможен тоько в пределах абзаца');
+                    }
                 }
             }
-        } else {
-            let text = sel_string;
-            $(range.startContainer.parentNode).remove();
-            range.insertNode(document.createTextNode(text));
         }
+        else if(range.startContainer.parentNode.innerText == sel_string){
+            console.log('удаление2');
+        }
+        else {
+            console.log('удаление части');
+            let arrayText = range.startContainer.parentNode.innerText.split(sel_string);
+            if(range.startContainer.parentNode.tagName == key.toUpperCase()){
+                //если родительский елемент nedittext
+                $(range.startContainer.parentNode).remove();
+                if (range.startContainer.parentNode.innerText != sel_string) {
+                    let text = document.createElement(key);
+                    if (text && arrayText[1] != undefined) {
+                        text.innerHTML = arrayText[1];
+                        range.insertNode(text);
+                    }
+                    if (sel_string && sel_string != undefined) range.insertNode(document.createTextNode(sel_string));
+                    let text2 = document.createElement(key);
+                    if (text2 && arrayText[0] != undefined) {
+                        text2.innerHTML = arrayText[0];
+                        range.insertNode(text2);
+                    }
+                }
+            }
+            else{
+                //если родительский елемент не nedittext
+                let text = document.createElement('text'),
+                    textWrap = document.createElement('text');
 
+                //1й этап добавляем text для диапазона
+                $(text).append(sel_html);
+                range.deleteContents();
+                range.insertNode(text);
+
+                //2-й этап парсим html и добавляем nedittext
+                let delimetr = text;
+                text = $(parentStartN).html();
+                let arrayText = text.split(delimetr.outerHTML);
+                for(let i=0; i<arrayText.length; i++){
+                    arrayText[i] = '<nedittext>'+arrayText[i]+'</nedittext>';
+                }
+                text = arrayText[0] + delimetr.innerHTML + arrayText[1];
+                $(textWrap).html(text);
+                $(parentStartN).remove();
+                range.insertNode(textWrap);
+            }
+        }
+        //добавление атрибута запрета редактирования
+        $('nedittext').attr('contenteditable', false);
+        //удаление временного селектора text
+        $('.cardDogovor-boxViewText text').replaceWith(function(){
+            return $(this).html();
+        });
+        //премешение курсора направо
+        selection.modify("move", "right", "character");
+    }else{
+        formatDoc(key);
     }
-
-    selection.modify("move", "right", "character");
 }
 
 function formatSelectTitle(id_name) {
@@ -300,6 +420,23 @@ function deleteRow(thisBtn){
     collection[collection.length-1].remove();
 }
 
+//для кнопок редактирования тектса
+function formatDoc(sCmd, sValue) {
+    if (validateMode()) {
+        document.execCommand(sCmd, false, sValue);
+    }
+}
+
+//проверка что редактируемая обоасть активна и курсор в зоне редактора
+function validateMode() {
+    if($('.cardDogovor-boxViewText').attr('contenteditable') == 'true' && $(window.getSelection().focusNode).parents('.cardDogovor-boxViewText').length) {
+        return true;
+    }
+    else{
+        return true
+    }
+}
+
 ////////////////////////////////////////////////////////////////////////////////////////
 
 $(document).ready(function() {
@@ -309,27 +446,6 @@ $(document).ready(function() {
     $('#select_type_user').on('change', function() {
         let value = $(this).val();
         setHeaderFullName(value);
-    });
-
-    $('.cardDogovor-boxViewText span').on('click', function() {
-        var category = $(this);
-        var id_category = category.attr('data-id');
-        var canvas_contr = $('.cardDogovor-boxViewText');
-
-        // загружаем содержимое категории
-        $.post(
-            "/response/ajax/get_template_contract.php", {
-                idcontract: id_category
-            },
-            onAjaxSuccess
-        );
-
-        function onAjaxSuccess(data) {
-            // Здесь мы получаем данные, отправленные сервером и выводим их на экран.            
-            canvas_contr.html(data);
-        }
-
-
     });
 
 
@@ -476,7 +592,6 @@ $(document).ready(function() {
 
     //Адрес
     $(document).on('click', '.js-btn-address', function() {
-        console.log(user_req);
         if($('.cardDogovor-boxViewText').attr('contenteditable') == 'true' && $(window.getSelection().focusNode).parents('.cardDogovor-boxViewText').length) {
             var data_ins = user_req.INDEX.VALUE+', '+user_req.REGION.VALUE+', '+user_req.CITY.VALUE+', '+user_req.STREET.VALUE+', '+user_req.HOUSE.VALUE;
             insertTextAtCursor(data_ins);
@@ -500,6 +615,7 @@ $(document).ready(function() {
     });
 
 
+    //кнопки редактирования текста
     $('.form_text').on('click', function() {
         if($('.cardDogovor-boxViewText').attr('contenteditable') == 'true' && $(window.getSelection().focusNode).parents('.cardDogovor-boxViewText').length) {
             let id_name = $(this).attr('id');
@@ -568,13 +684,13 @@ $(document).ready(function() {
         let sel_string = selection.toString();
         if(sel_string){
             if(range.startContainer.parentElement.tagName == 'B' && range.endContainer.parentElement.tagName == 'B'){
-                $('#btn-weight').addClass('btn-nfk-invert');
+                $('#btn-bold').addClass('btn-nfk-invert');
             }
-            if(range.startContainer.parentElement.tagName == 'I' && range.endContainer.parentElement.tagName == 'T'){
+            if(range.startContainer.parentElement.tagName == 'I' && range.endContainer.parentElement.tagName == 'I'){
                 $('#btn-italic').addClass('btn-nfk-invert');
             }
             if(range.startContainer.parentElement.tagName == 'NEDITTEXT' && range.endContainer.parentElement.tagName == 'NEDITTEXT'){
-                $('#btn-noedit').addClass('btn-nfk-invert');
+                $('#btn-nedittext').addClass('btn-nfk-invert');
             }
             if(range.startContainer.parentElement.tagName == 'H4' && range.endContainer.parentElement.tagName == 'H4'){
                 $('#btn-title').addClass('btn-nfk-invert');
