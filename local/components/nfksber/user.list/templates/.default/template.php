@@ -30,7 +30,7 @@
                     </div>
                 </a>
                 <?if($user['UF_ESIA_AUT']):?>
-                            <div class="check-esia-img"></div>
+                        <div class="check-esia-img"></div>
                 <?endif?>
                 <div class="check-esia-img-info">
                     <span>Подтвержденная авторизация</span>
