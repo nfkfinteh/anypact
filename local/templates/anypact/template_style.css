@@ -3830,7 +3830,7 @@ footer p{
     position: absolute;
     bottom: 0;
     right: 0;
-    background: url(img/check-esia.png) center no-repeat;
+    background: url("img/check-esia.png") center no-repeat;
 }
 .check-esia-img-info{
     padding: 23px 27px;
