@@ -3820,6 +3820,7 @@ footer p{
     position: relative;
 }
 .people-s-photo-img{
+    border-radius: 50%;
     position: relative;
     z-index: 1;
 }
@@ -3828,8 +3829,8 @@ footer p{
     width: 42px;
     height: 42px;
     position: absolute;
-    bottom: 0;
-    right: 0;
+    bottom: 5px;
+    right: 10px;
     background: url("img/check-esia.png") center no-repeat;
 }
 .check-esia-img-info{

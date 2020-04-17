@@ -16,7 +16,7 @@
 .people-s-photo{
     position: relative;
     border-radius: 50%;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 .people-s-photo img{
     width: 100%;
