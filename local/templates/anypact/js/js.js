@@ -20,7 +20,7 @@ $(document).ready(function(){
     });
     //блок с подтвержденной регистрацией на ЕСИА
     $('.check-esia-img').mousemove(function(e){
-        var containerPos = $('.grid-view').offset();
+        var containerPos = $('.check-esia-img').offset();
         var X = e.pageX - containerPos.left;
         var Y = e.pageY - containerPos.top;
         var top = Y  + 10 + 'px';
