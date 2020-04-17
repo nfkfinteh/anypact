@@ -27,11 +27,11 @@
                         <?}else {?>
                             <img src="<?=SITE_TEMPLATE_PATH?>/image/people-search-no-phpto.png" alt="">
                         <? } ?>
-                        <?if($user['UF_ESIA_AUT']):?>
-                            <div class="check-esia-img"></div>
-                        <?endif?>
                     </div>
                 </a>
+                <?if($user['UF_ESIA_AUT']):?>
+                            <div class="check-esia-img"></div>
+                <?endif?>
                 <div class="check-esia-img-info">
                     <span>Подтвержденная авторизация</span>
                     <img src="<?=SITE_TEMPLATE_PATH?>/img/check-esia-min.png" alt="">

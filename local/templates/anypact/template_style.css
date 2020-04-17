@@ -3823,6 +3823,8 @@ footer p{
     position: relative;
 }
 .check-esia-img{
+    width: 42px;
+    height: 42px;
     position: absolute;
     bottom: 0;
     right: 0;
