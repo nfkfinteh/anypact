@@ -3837,7 +3837,7 @@ footer p{
     color: #000;
     width: 290px;
     height: 90px;
-    padding: 23px 27px;
+    padding: 17px 27px;
     background: #fff;
     border-radius: 10px;
     position: absolute;
@@ -3847,6 +3847,8 @@ footer p{
     box-shadow: 0 0 10px 5px #00000030;
 }
 .check-esia-img-info img{
+    margin-top: -2px;
+    margin-right: 5px;
     width: 17px;
     height: 17px;
     display: inline-block;
@@ -3855,6 +3857,7 @@ footer p{
     display: inline-block;
 } */
 .check-esia-img-info span{
+    padding-bottom: 5px;
     font-style: 16px;
     font-weight: 900;
 }

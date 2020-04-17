@@ -20,11 +20,10 @@ $(document).ready(function(){
     });
     //блок с подтвержденной регистрацией на ЕСИА
     $('.check-esia-img').mousemove(function(e){
-        // var containerPos = $('.check-esia-img').offset();
         var X = e.offsetX;
         var Y = e.offsetY;
-        var top = Y  + 10 + 'px';
-        var left = X  + 10 + 'px';
+        var top = Y  + 15 + 'px';
+        var left = X  - 10 + 'px';
         var id = $(this).children(".check-esia-img-info");
         id.css({
             display:"block",
