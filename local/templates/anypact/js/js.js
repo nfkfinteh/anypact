@@ -18,6 +18,27 @@ $(document).ready(function(){
             $('.dropdown-arrow-profile').removeClass('active-arrow');
         }
     });
+    //блок с подтвержденной регистрацией на ЕСИА
+    $('.check-esia-img').mousemove(function(e){
+        var X = e.offsetX;
+        var Y = e.offsetY;
+        var top = Y  + 25 + 'px';
+        var left = X  - 10 + 'px';
+        var id = $(this).children(".check-esia-img-info");
+        id.css({
+            display:"block",
+            top: top,
+            left: left
+        });
+    });
+    $('.check-esia-img').mouseout (function(){
+        var id = $(this).children(".check-esia-img-info");
+        id.css({
+            display:"none"
+        });
+    });
+
+
     const listType = get_cookie ( 'list_style' );
     if (listType==1){
         $("button.btn-list").addClass("active");

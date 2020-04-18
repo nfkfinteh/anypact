@@ -3852,3 +3852,49 @@ footer p{
     right: 76px;
     top: 110px;
 }
+.people-s-photo{
+    position: relative;
+}
+.people-s-photo-img img{
+    border-radius: 50%;
+    position: relative;
+    z-index: 1;
+}
+.check-esia-img{
+    z-index: 2;
+    width: 42px;
+    height: 42px;
+    position: absolute;
+    bottom: 7px;
+    right: 0px;
+    background: url("img/check-esia.png") center no-repeat;
+}
+.check-esia-img-info{
+    color: #000;
+    width: 290px;
+    height: 90px;
+    padding: 17px 27px;
+    font-size: 16px;
+    background: #fff;
+    border-radius: 5px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: none;
+    box-shadow: 0 0 9px 0px #00000030;
+}
+.check-esia-img-info img {
+    margin-top: -5px;
+    margin-right: 5px;
+    width: 16px;
+    height: 13px;
+    display: inline-block;
+}
+/* .check-esia-img-info {
+    display: inline-block;
+} */
+.check-esia-img-info span{
+    display: inline-block;
+    padding-bottom: 7px;
+    font-weight: 900;
+}
