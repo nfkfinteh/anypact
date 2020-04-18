@@ -101,7 +101,7 @@ function formatSelectText(id_name) {
                     if(arNedittext[i].innerHTML.length>0){
                         let sp1 = document.createElement("text");
                         sp1.innerHTML = arNedittext[i].innerHTML;
-                        sel_html.replaceChild(sp1, arNedittext[i]);
+                        $(arNedittext[i]).replaceWith(sp1);
                     }
                 }
 
