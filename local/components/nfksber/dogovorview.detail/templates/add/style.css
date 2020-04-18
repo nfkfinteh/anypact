@@ -14,7 +14,7 @@
     min-height: 500px;
 }
 
-.cardDogovor-boxViewText span {
+.cardDogovor-boxViewText .link_template{
     display: list-item;
     text-align: left;
     cursor: pointer;
@@ -30,7 +30,7 @@
     margin-right: 15px;
 }
 
-.cardDogovor-boxViewText spandoc {
+/*.cardDogovor-boxViewText spandoc {
     display: list-item;
     text-align: left;
     cursor: pointer;
@@ -39,7 +39,7 @@
 
 .cardDogovor-boxViewText spandoc:hover {
     color: #ff6416;
-}
+}*/
 
 .cardDogovor-boxViewText spandoc img,
 .cardDogovor-boxViewText a img {

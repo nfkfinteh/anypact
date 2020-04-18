@@ -14,7 +14,7 @@
     min-height: 500px;
 }
 
-.cardDogovor-boxViewText span {
+.cardDogovor-boxViewText .link_template {
     display: list-item;
     text-align: left;
     cursor: pointer;
