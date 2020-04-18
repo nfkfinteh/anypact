@@ -344,7 +344,7 @@ window.onload = function() {
             });
         };
 
-        document.getElementById('submit_button_aut_user_main').onclick  = function(){
+        $(document).on('click', '#submit_button_aut_user_main', function(){
             let login = document.getElementById('user_aut_login_main').value
             let password  = document.getElementById('user_aut_pass_main').value
             var res = getAutorisation(login, password).then(function(data) {
@@ -356,7 +356,7 @@ window.onload = function() {
                     location.reload();
                 }
             });
-        };
+        });
         
     }
 
