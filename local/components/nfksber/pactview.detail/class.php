@@ -211,7 +211,8 @@ class CDemoSqr extends CBitrixComponent
             $this->arResult["USER_ID"] = CUser::GetID();
             $rsUser = CUser::GetByID($this->arResult["USER_ID"]);
             $this->arResult['USER'] = $rsUser->GetNext();
-
+            $this->arResult['CUR_COMPANY_ID'] = $this->arResult['USER']['UF_CUR_COMPANY'];
+            //404 при добавлении сделки если вользователь не подтвердил ругистрацию в гос услугах
             if($this->arResult['USER']['UF_ESIA_AUT']==0 && $_REQUEST['ACTION']=='ADD')
             {
                 Iblock\Component\Tools::process404(
@@ -225,6 +226,28 @@ class CDemoSqr extends CBitrixComponent
             $this->arResult["USER_LOGIN"] =$this->arResult['USER']['LOGIN'];
             $this->arResult["ELEMENT"] = $this->getElement($this->arResult["ELEMENT_ID"]);
             $this->arResult["PROPERTY"] = $this->getProperty($this->arResult["INFOBLOCK_ID"], $this->arResult["ELEMENT_ID"]);
+
+            $arDataDisplay = [
+                'UF_ESIA_AUT'=>$this->arResult['USER']['UF_ESIA_AUT'],
+                'ID_COMPANY_ELEMENT'=>$this->arResult['PROPERTY']['ID_COMPANY']['VALUE'],
+                'ID_COMPANY_USER'=>$this->arResult['USER']['UF_CUR_COMPANY'],
+                'ID_USER_ELEMENT'=>$this->arResult['PROPERTY']['PACT_USER']['VALUE'],
+                'ID_USER'=>$this->arResult["USER_ID"],
+            ];
+
+            //404 проверка на отображение сделки под выбранным профилем
+            if($_REQUEST['ACTION']=='EDIT' && !isDisplayElement($arDataDisplay))
+            {
+                Iblock\Component\Tools::process404(
+                    '',
+                    true,
+                    true,
+                    true
+                );
+            }
+
+
+
             $this->arResult["INFOBLOCK_SECTION_LIST"] = $this->getTreeCategory($this->arResult["INFOBLOCK_ID"]);
             $this->arResult['DOGOVOR']['CNT'] =  $this->getCountDogovor($this->arResult["USER_ID"]);
             $this->arResult['LIST_CITY'] = $this->getListCity();
