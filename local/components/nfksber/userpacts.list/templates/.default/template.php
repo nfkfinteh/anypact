@@ -71,11 +71,11 @@ $arrStatusAwait = array(
                                 <a class="button-link" href="/my_pacts/edit_my_pact/?ELEMENT_ID=<?= $pact['ID'] ?>&ACTION=EDIT" target="_blank" >Посмотреть</a>
                             </div>
                         <?endif?>
-                        <!-- кнопки близко, удаление только из карточки
+                        <?/*кнопки близко, удаление только из карточки
                         <div class="d-md-table-cell">
                             <a href="#" class="button-link" data-id="<?=$pact['ID']?>" data-toggle="modal" data-target=".bd-message-modal-sm" class="modal_deleteItem">Удалить</a>
                         </div>
-                        -->
+                        */?>
                     </div>
                 <!--//Запись в таблице--->
                 <? } ?>
@@ -111,17 +111,32 @@ $arrStatusAwait = array(
             <div class="collapse-arrow position-relative"></div>
         </div>
         <div class="d-md-table-row collapse-body">
-            <div class="d-md-none text-gray"><?=$red['PARAMS_SEND_USER']['IN']?></div>
-            <div class="first-face d-md-table-cell">
-                <a class="d-flex align-items-center" href="/profile_user/?ID=<?=$red['PARAMS_SEND_USER']['ID']?>" target="_blank" style="text-decoration: none;">
-                    <?if(!empty($red['PERSONAL_PHOTO_SEND_USER'])){?>
-                        <img src="<?=$red['PERSONAL_PHOTO_SEND_USER']?>" height="60" alt="">
-                    <?}else {?>
-                        <h3><?=$red['PARAMS_SEND_USER']['IN']?></h3>
-                    <?}?>
-                    <span style="margin-left: 10px;"><?=$red['PARAMS_SEND_USER']['LAST_NAME']?> <?=$red['PARAMS_SEND_USER']['NAME']?></span>
-                </a>
-            </div>
+            <?if($red['PARAMS_SEND_COMPANY']):?>
+                <div class="d-md-none text-gray"><?=$red['PARAMS_SEND_COMPANY']['IN']?></div>
+                <div class="first-face d-md-table-cell">
+                    <a class="d-flex align-items-center" href="/profile_user/?ID=<?=$red['PARAMS_SEND_COMPANY']['ID']?>&type=company" target="_blank" style="text-decoration: none;">
+                        <?if(!empty($red['PARAMS_SEND_COMPANY']['PREVIEW_PICTURE'])){?>
+                            <img src="<?=$red['PARAMS_SEND_COMPANY']['PREVIEW_PICTURE']?>" height="60" alt="">
+                        <?}else {?>
+                            <h3><?=$red['PARAMS_SEND_COMPANY']['IN']?></h3>
+                        <?}?>
+                        <span style="margin-left: 10px;"><?=$red['PARAMS_SEND_COMPANY']['NAME']?></span>
+                    </a>
+                </div>
+            <?else:?>
+                <div class="d-md-none text-gray"><?=$red['PARAMS_SEND_USER']['IN']?></div>
+                <div class="first-face d-md-table-cell">
+                    <a class="d-flex align-items-center" href="/profile_user/?ID=<?=$red['PARAMS_SEND_USER']['ID']?>" target="_blank" style="text-decoration: none;">
+                        <?if(!empty($red['PERSONAL_PHOTO_SEND_USER'])){?>
+                            <img src="<?=$red['PERSONAL_PHOTO_SEND_USER']?>" height="60" alt="">
+                        <?}else {?>
+                            <h3><?=$red['PARAMS_SEND_USER']['IN']?></h3>
+                        <?}?>
+                        <span style="margin-left: 10px;"><?=$red['PARAMS_SEND_USER']['LAST_NAME']?> <?=$red['PARAMS_SEND_USER']['NAME']?></span>
+                    </a>
+                </div>
+            <?endif?>
+
             <div class="d-md-table-cell d-none"><?if(!empty($red['NAME_CONTRACT'])) echo $red['NAME_CONTRACT']['NAME']; ?></div>
             <div class="d-md-none text-gray">Дата и время подписания</div>
             <div class="d-md-table-cell"><?=$red['UF_TIME_SEND_USER_B']?></div>
@@ -163,17 +178,31 @@ $arrStatusAwait = array(
                 <div class="collapse-arrow position-relative"></div>
             </div>
             <div class="d-md-table-row collapse-body">
-                <div class="d-md-none text-gray"><?=$red['PARAMS_SEND_USER']['IN']?></div>
-                <div class="first-face d-md-table-cell">
-                    <a class="d-flex align-items-center" href="/profile_user/?ID=<?=$red['PARAMS_SEND_USER']['ID']?>" target="_blank" style="text-decoration: none;">
-                        <?if(!empty($red['PERSONAL_PHOTO_SEND_USER'])){?>
-                            <img src="<?=$red['PERSONAL_PHOTO_SEND_USER']?>" height="60" alt="">
-                        <?}else {?>
-                            <h3><?=$red['PARAMS_SEND_USER']['IN']?></h3>
-                        <?}?>
-                        <span style="margin-left: 10px;"><?=$red['PARAMS_SEND_USER']['LAST_NAME']?> <?=$red['PARAMS_SEND_USER']['NAME']?></span>
-                    </a>
-                </div>
+                <?if($red['PARAMS_SEND_COMPANY']):?>
+                    <div class="d-md-none text-gray"><?=$red['PARAMS_SEND_COMPANY']['IN']?></div>
+                    <div class="first-face d-md-table-cell">
+                        <a class="d-flex align-items-center" href="/profile_user/?ID=<?=$red['PARAMS_SEND_COMPANY']['ID']?>&type=company" target="_blank" style="text-decoration: none;">
+                            <?if(!empty($red['PARAMS_SEND_COMPANY']['PREVIEW_PICTURE'])){?>
+                                <img src="<?=$red['PARAMS_SEND_COMPANY']['PREVIEW_PICTURE']?>" height="60" alt="">
+                            <?}else {?>
+                                <h3><?=$red['PARAMS_SEND_COMPANY']['IN']?></h3>
+                            <?}?>
+                            <span style="margin-left: 10px;"><?=$red['PARAMS_SEND_COMPANY']['NAME']?></span>
+                        </a>
+                    </div>
+                <?else:?>
+                    <div class="d-md-none text-gray"><?=$red['PARAMS_SEND_USER']['IN']?></div>
+                    <div class="first-face d-md-table-cell">
+                        <a class="d-flex align-items-center" href="/profile_user/?ID=<?=$red['PARAMS_SEND_USER']['ID']?>" target="_blank" style="text-decoration: none;">
+                            <?if(!empty($red['PERSONAL_PHOTO_SEND_USER'])){?>
+                                <img src="<?=$red['PERSONAL_PHOTO_SEND_USER']?>" height="60" alt="">
+                            <?}else {?>
+                                <h3><?=$red['PARAMS_SEND_USER']['IN']?></h3>
+                            <?}?>
+                            <span style="margin-left: 10px;"><?=$red['PARAMS_SEND_USER']['LAST_NAME']?> <?=$red['PARAMS_SEND_USER']['NAME']?></span>
+                        </a>
+                    </div>
+                <?endif?>
                 <div class="d-md-table-cell d-none"><?if(!empty($red['NAME_CONTRACT'])) echo $red['NAME_CONTRACT']['NAME']; ?></div>
                 <div class="d-md-none text-gray">Дата подписания</div>
                 <div class="d-md-table-cell"><?=$red['UF_TIME_SEND_USER_B']?></div>
@@ -218,17 +247,31 @@ $arrStatusAwait = array(
                 <div class="collapse-arrow position-relative"></div>
             </div>
             <div class="d-md-table-row collapse-body">
-                <div class="d-md-none text-gray"><?=$red['PARAMS_SEND_USER']['IN']?></div>
-                <div class="first-face d-md-table-cell">
-                    <a class="d-flex align-items-center" href="/profile_user/?ID=<?=$red['PARAMS_SEND_USER']['ID']?>" target="_blank" style="text-decoration: none;">
-                        <?if(!empty($red['PERSONAL_PHOTO_SEND_USER'])){?>
-                            <img src="<?=$red['PERSONAL_PHOTO_SEND_USER']?>" height="60" alt="">
-                        <?}else {?>
-                            <h3><?=$red['PARAMS_SEND_USER']['IN']?></h3>
-                        <?}?>
-                        <span style="margin-left: 10px;"><?=$red['PARAMS_SEND_USER']['LAST_NAME']?> <?=$red['PARAMS_SEND_USER']['NAME']?></span>
-                    </a>
-                </div>
+                <?if($red['PARAMS_SEND_COMPANY']):?>
+                    <div class="d-md-none text-gray"><?=$red['PARAMS_SEND_COMPANY']['IN']?></div>
+                    <div class="first-face d-md-table-cell">
+                        <a class="d-flex align-items-center" href="/profile_user/?ID=<?=$red['PARAMS_SEND_COMPANY']['ID']?>&type=company" target="_blank" style="text-decoration: none;">
+                            <?if(!empty($red['PARAMS_SEND_COMPANY']['PREVIEW_PICTURE'])){?>
+                                <img src="<?=$red['PARAMS_SEND_COMPANY']['PREVIEW_PICTURE']?>" height="60" alt="">
+                            <?}else {?>
+                                <h3><?=$red['PARAMS_SEND_COMPANY']['IN']?></h3>
+                            <?}?>
+                            <span style="margin-left: 10px;"><?=$red['PARAMS_SEND_COMPANY']['NAME']?></span>
+                        </a>
+                    </div>
+                <?else:?>
+                    <div class="d-md-none text-gray"><?=$red['PARAMS_SEND_USER']['IN']?></div>
+                    <div class="first-face d-md-table-cell">
+                        <a class="d-flex align-items-center" href="/profile_user/?ID=<?=$red['PARAMS_SEND_USER']['ID']?>" target="_blank" style="text-decoration: none;">
+                            <?if(!empty($red['PERSONAL_PHOTO_SEND_USER'])){?>
+                                <img src="<?=$red['PERSONAL_PHOTO_SEND_USER']?>" height="60" alt="">
+                            <?}else {?>
+                                <h3><?=$red['PARAMS_SEND_USER']['IN']?></h3>
+                            <?}?>
+                            <span style="margin-left: 10px;"><?=$red['PARAMS_SEND_USER']['LAST_NAME']?> <?=$red['PARAMS_SEND_USER']['NAME']?></span>
+                        </a>
+                    </div>
+                <?endif?>
                 <div class="d-md-table-cell d-none" style="width: 24%;"><?if(!empty($red['NAME_CONTRACT'])) echo $red['NAME_CONTRACT']['NAME']; ?></div>
                 <div class="d-md-none text-gray">Дата и время подписания</div>
                 <div class="d-md-table-cell"><?=$red['UF_TIME_SEND_USER_B']?></div>

@@ -18,13 +18,18 @@ class CDemoSqr extends CBitrixComponent
     }
 
     public function listPacts($id_iblock, $id_user) {
-        $arPact = array();        
+        $arPact = array();
         if(CModule::IncludeModule("iblock"))
             {
-                $arSelect = Array();
-                // выборку объявлений делаем по свойству "Владелец договора", так как создавать и модифицировать может администратор
-                $arFilter = Array("IBLOCK_ID"=>IntVal($id_iblock), "PROPERTY_PACT_USER"=>$id_user);
-                $res = CIBlockElement::GetList(Array(), $arFilter, false, Array("nPageSize"=>50), $arSelect);                
+                if(empty($this->arResult['ID_CUR_COMPANY'])){
+                    // выборку объявлений делаем по свойству "Владелец договора", так как создавать и модифицировать может администратор
+                    $arFilter = Array("IBLOCK_ID"=>IntVal($id_iblock), "PROPERTY_PACT_USER"=>$id_user);
+                }
+                else{
+                    // выборку объявлений делаем по свойству "Владелец договора", так как создавать и модифицировать может администратор
+                    $arFilter = Array("IBLOCK_ID"=>IntVal($id_iblock), "PROPERTY_ID_COMPANY"=>$id_user);
+                }
+                $res = CIBlockElement::GetList(Array(), $arFilter, false, Array("nPageSize"=>50));
                 
                 while($ob = $res->GetNextElement())
                 {
@@ -42,20 +47,39 @@ class CDemoSqr extends CBitrixComponent
 
     // подписанные договора пользователей с двух сторон
     private function getSendContract($UserID){
-        $arFilter = Array(
-            Array(
-               "LOGIC" => "OR",
-               Array(
-                "UF_STATUS" => 2,
-                "UF_ID_USER_A"=> $UserID
-               ),
-               Array(
-                "UF_STATUS" => 2,
-                "UF_ID_USER_B" => $UserID
-               )                   
-            )
-         );
-        $arSend_Contract = $this->getSendContracts($UserID, $arFilter); 
+        if(empty($this->arResult['ID_CUR_COMPANY'])){
+            $arFilter = Array(
+                Array(
+                    "LOGIC" => "OR",
+                    Array(
+                        "UF_STATUS" => 2,
+                        "UF_ID_USER_A"=> $UserID,
+                        "UF_ID_COMPANY_A"=>false,
+                    ),
+                    Array(
+                        "UF_STATUS" => 2,
+                        "UF_ID_USER_B" => $UserID,
+                        "UF_ID_COMPANY_B"=>false,
+                    )
+                )
+            );
+        }
+        else{
+            $arFilter = Array(
+                Array(
+                    "LOGIC" => "OR",
+                    Array(
+                        "UF_STATUS" => 2,
+                        "UF_ID_COMPANY_A"=> $UserID
+                    ),
+                    Array(
+                        "UF_STATUS" => 2,
+                        "UF_ID_COMPANY_B" => $UserID
+                    )
+                )
+            );
+        }
+        $arSend_Contract = $this->getSendContracts($UserID, $arFilter, false);
         return $arSend_Contract;
         
     }
@@ -103,17 +127,19 @@ class CDemoSqr extends CBitrixComponent
         /* Договора подписанные с одной стороны храняться в HL блоке со статусом 1 
             договора пользователя ожидающие акцепта
         */
-        $arFilter = Array(
-            Array(
-                "LOGIC" => "AND",
-                Array(
-                 "UF_STATUS" => array(1),                 
-                ),
-                Array(                 
-                 "UF_ID_USER_A" => $userId
-                )                   
-             )
-         );
+        if(empty($this->arResult['ID_CUR_COMPANY'])){
+            $arFilter = Array(
+                "UF_STATUS" => array(1),
+                "UF_ID_USER_A" => $userId,
+                "UF_ID_COMPANY_A"=>false
+            );
+        }
+        else{
+            $arFilter = Array(
+                "UF_STATUS" => array(1),
+                "UF_ID_COMPANY_A" => $userId,
+            );
+        }
         $arSend_Contract = array();
         $arSend_Contract = $this->getSendContracts($UserID, $arFilter);
 
@@ -176,25 +202,23 @@ class CDemoSqr extends CBitrixComponent
     }
 
     private function getSendUserContract($userId){
-        /* Договора подписанные текущим пользователем
+        /* Договора подписанные текущим профилем
         */
-        $arFilter = Array(
-            Array(
-                "LOGIC" => "AND",
-                Array(
-                 "UF_STATUS" => array(1),                 
-                ),
-                Array(                 
-                 "UF_ID_USER_B" => $userId
-                )                   
-             )
-         );
-        $arSend_Contract = $this->getSendContracts($UserID, $arFilter, false); 
-        if(in_array(1, CUser::GetUserGroup($UserID))){
-            echo "<pre>";
-            print_r($arSend_Contract);
-            echo "</pre>";
+        if(empty($this->arResult['ID_CUR_COMPANY'])){
+            $arFilter = Array(
+                "UF_STATUS" => array(1),
+                "UF_ID_USER_B" => $userId,
+                "UF_ID_COMPANY_B"=>false
+            );
         }
+        else{
+            $arFilter = Array(
+                "UF_STATUS" => array(1),
+                "UF_ID_COMPANY_B"=>$userId
+            );
+        }
+
+        $arSend_Contract = $this->getSendContracts($UserID, $arFilter, false);
         // договора измененные и ожидающие подписания
 
         $arFilter = Array(
@@ -263,15 +287,38 @@ class CDemoSqr extends CBitrixComponent
                 // параметры пользователя подписавшего договор
                 if($sideA){
                     $UserSending = $arData['UF_ID_USER_B'];
+                    $companySending = $arData['UF_ID_COMPANY_B'];
                 }else {
                     $UserSending = $arData['UF_ID_USER_A'];
+                    $companySending = $arData['UF_ID_COMPANY_A'];
                 }
 
-                $ParamsSendUser = CUser::GetByID($UserSending);
-                $ParamsSendUser = $ParamsSendUser->Fetch();
-                $arSend_Contract[$i]['PARAMS_SEND_USER']  = $ParamsSendUser;
-                $arSend_Contract[$i]['PARAMS_SEND_USER']['IN'] = substr($ParamsSendUser["LAST_NAME"], 0, 1);
-                $arSend_Contract[$i]['PERSONAL_PHOTO_SEND_USER']  = CFile::GetPath($ParamsSendUser['PERSONAL_PHOTO']);
+
+                if(empty($this->arResult['ID_CUR_COMPANY']) || empty($companySending)){
+                    $ParamsSendUser = CUser::GetByID($UserSending);
+                    $ParamsSendUser = $ParamsSendUser->Fetch();
+                    $arSend_Contract[$i]['PARAMS_SEND_USER']  = $ParamsSendUser;
+                    $arSend_Contract[$i]['PARAMS_SEND_USER']['IN'] = substr($ParamsSendUser["LAST_NAME"], 0, 1);
+                    $arSend_Contract[$i]['PERSONAL_PHOTO_SEND_USER']  = CFile::GetPath($ParamsSendUser['PERSONAL_PHOTO']);
+                }
+                elseif(!empty($companySending)){
+                    $resCompany = CIBlockElement::GetList(
+                        [],
+                        ['IBLOCK_ID'=>8, 'ID'=>$companySending],
+                        false,
+                        false,
+                        ['IBLOCK_ID', 'ID', 'NAME', 'PREVIEW_PICTURE']
+                    );
+                    if($obj = $resCompany->GetNext()){
+                        $arSend_Contract[$i]['PARAMS_SEND_COMPANY'] = $obj;
+                        $arSend_Contract[$i]['PARAMS_SEND_COMPANY']['IN'] = substr($obj["NAME"], 0, 1);
+                        if(!empty($obj['PREVIEW_PICTURE'])){
+                            $arSend_Contract[$i]['PARAMS_SEND_COMPANY']['PREVIEW_PICTURE']  = CFile::GetPath($obj['PREVIEW_PICTURE']);
+                        }
+                    }
+
+                }
+
 
                 $arrID_Info_Contract[$i] =  $arData['UF_ID_CONTRACT'];
                 $i++;
@@ -300,30 +347,28 @@ class CDemoSqr extends CBitrixComponent
         $this->arResult["USER_ID"] = $User_ID;
         $rsUser = CUser::GetByID($User_ID);
         $this->arResult['USER'] = $rsUser->GetNext();
+        $this->arResult["USER_LOGIN"] =$this->arResult['USER']['LOGIN'];
+        $this->arResult['ID_CUR_COMPANY'] = $this->arResult['USER']['UF_CUR_COMPANY'];
+        $this->arResult = array_merge($this->arResult, $this->paramsUser($this->arParams));
+        if(empty($this->arResult['ID_CUR_COMPANY'])){
+            $idProfile = $User_ID;
+        }
+        else{
+            $idProfile = $this->arResult['ID_CUR_COMPANY'];
+        }
 
-        // подписанные договора
-        $this->arResult["SEND_CONTRACT"] = $this->getSendContract($User_ID);
 
         // сообщение пользователю
         //$this->arResult["MESSAGE_USER"] = $this->getMessageUser($User_ID);;
+        // Все сделки созданные пользователем
+        $this->arResult["INFOBLOCK_LIST"] = $this->listPacts($this->arResult["INFOBLOCK_ID"], $idProfile);
+        // подписанные договора
+        $this->arResult["SEND_CONTRACT"] = $this->getSendContract($idProfile);
+        //редакции
+        $this->arResult["REDACTION"] = $this->getRedaction($idProfile);
+        //Подписанные пользователем договора
+        $this->arResult["SEND_USER_PACT"] = $this->getSendUserContract($idProfile);
 
-        // кэш отключен
-        /*if($this->startResultCache($this->arParams['CACHE_TIME'], $User_ID))
-        {*/
-            $this->arResult = array_merge($this->arResult, $this->paramsUser($this->arParams));
-            $this->arResult["USER_LOGIN"] =CUser::GetLogin();
-            
-            // Все сделки созданные пользователем
-            $this->arResult["INFOBLOCK_LIST"] = $this->listPacts($this->arResult["INFOBLOCK_ID"], $User_ID);
-
-            //редакции
-            $this->arResult["REDACTION"] = $this->getRedaction($User_ID);
-
-            //Подписанные пользователем договора
-            $this->arResult["SEND_USER_PACT"] = $this->getSendUserContract($User_ID);
-
-        /*    $this->EndResultCache();
-        }*/
         $this->includeComponentTemplate();
         
         return $this->arResult;
