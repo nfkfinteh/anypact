@@ -5,7 +5,7 @@
         <h3 class="mb-4" style="padding: 0 0 30px 0;font-weight: 600;">Договор, подписанный с моей стороны и ожидающие подписания контрагентом</h3>
         <div class="row pt-2 mb-5 pb-5">
             <div class="col-md-4 col-sm-12">
-                <?if($arResult['USERS']['UF_ID_USER_A']==$USER->GetID()):?>
+                <?if($arResult['DATA_DOGOVOR']['UF_ID_USER_A']==$USER->GetID()):?>
                     <div>
                         <?=$arResult['SEND_BLOCK']['ID']?>
                     </div>

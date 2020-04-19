@@ -61,4 +61,33 @@ function rotate_img($src, $dest, $degrees){
     $rotate = imagerotate($image, $degrees, 0);
     imagejpeg($rotate, $dest, 95);
 }
+
+/**
+ * проверка доступа сделки/договора
+ *
+ * $arDataDisplay['UF_ESIA_AUT'] int UF_ESIA_AUT
+ *               ['ID_COMPANY_ELEMENT'] int id компании текущего договора/сделки
+ *               ['ID_COMPANY_USER'] int id компании текущего выбранного профиля
+ *               ['ID_USER_ELEMENT'] int id пользователя текущего договора/сделки
+ *               ['ID_USER'] int id текущего пользователя
+ * @param array $arDataDisplay
+ * @return bool
+ */
+function isDisplayElement($arDataDisplay){
+    $result = false;
+    if($arDataDisplay['UF_ESIA_AUT']==1){
+        if(!empty($arDataDisplay['ID_COMPANY_ELEMENT'])){
+            if($arDataDisplay['ID_COMPANY_ELEMENT']==$arDataDisplay['ID_COMPANY_USER']){
+                $result = true;
+            }
+        }
+        else{
+            if($arDataDisplay['ID_USER_ELEMENT']==$arDataDisplay['ID_USER']){
+                $result = true;
+            }
+        }
+    }
+
+    return $result;
+}
 ?>

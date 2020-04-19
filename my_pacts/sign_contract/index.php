@@ -19,10 +19,20 @@ $APPLICATION->SetTitle("AnyPact");
             "SEF_FOLDER" => "/my_pacts/",
             "ID_CONTRACT" => $_GET["ID"],
             "SEF_URL_TEMPLATES" => array(                    
-                    "list" => "",
-                    "detail" => "#ID#"
-                )      
+                "list" => "",
+                "detail" => "#ID#"
+            ),
+            "DISPLAY_PROFILE"=> array(
+                array(
+                    "USER"=>"UF_ID_USER_A",
+                    "COMPANY"=>"UF_ID_COMPANY_A"
+                ),
+                array(
+                    "USER"=>"UF_ID_USER_B",
+                    "COMPANY"=>"UF_ID_COMPANY_B"
+                )
             )
+        )
     );
     ?> 
     <?} else {?>

@@ -21,8 +21,14 @@ $APPLICATION->SetTitle("AnyPact");
             "SEF_URL_TEMPLATES" => array(                    
                     "list" => "",
                     "detail" => "#ID#"
-                )      
+            ),
+            "DISPLAY_PROFILE"=> array(
+                array(
+                    "USER"=>"UF_ID_USER_A",
+                    "COMPANY"=>"UF_ID_COMPANY_A"
+                )
             )
+        )
     );
     ?> 
     <?} else {?>
