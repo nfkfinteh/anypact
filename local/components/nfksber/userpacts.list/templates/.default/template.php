@@ -58,7 +58,7 @@ $arrStatusAwait = array(
                                 </button>
                             </div>
                             <div class="d-md-table-cell">
-                                <a class="button-link" href="/my_pacts/edit_my_pact/?ELEMENT_ID=<?= $pact['ID'] ?>&ACTION=EDIT" target="_blank" >Посмотреть</a>
+                                <a class="button-link" href="/my_pacts/edit_my_pact/?ELEMENT_ID=<?= $pact['ID'] ?>&ACTION=EDIT">Посмотреть</a>
                             </div>
                         <?else:?>
                             <div class="d-md-none text-gray">Видимость</div>
@@ -68,7 +68,7 @@ $arrStatusAwait = array(
                                 </button>
                             </div>
                             <div class="d-md-table-cell">
-                                <a class="button-link" href="/my_pacts/edit_my_pact/?ELEMENT_ID=<?= $pact['ID'] ?>&ACTION=EDIT" target="_blank" >Посмотреть</a>
+                                <a class="button-link" href="/my_pacts/edit_my_pact/?ELEMENT_ID=<?= $pact['ID'] ?>&ACTION=EDIT">Посмотреть</a>
                             </div>
                         <?endif?>
                         <?/*кнопки близко, удаление только из карточки
@@ -114,7 +114,7 @@ $arrStatusAwait = array(
             <?if($red['PARAMS_SEND_COMPANY']):?>
                 <div class="d-md-none text-gray"><?=$red['PARAMS_SEND_COMPANY']['IN']?></div>
                 <div class="first-face d-md-table-cell">
-                    <a class="d-flex align-items-center" href="/profile_user/?ID=<?=$red['PARAMS_SEND_COMPANY']['ID']?>&type=company" target="_blank" style="text-decoration: none;">
+                    <a class="d-flex align-items-center" href="/profile_user/?ID=<?=$red['PARAMS_SEND_COMPANY']['ID']?>&type=company" style="text-decoration: none;">
                         <?if(!empty($red['PARAMS_SEND_COMPANY']['PREVIEW_PICTURE'])){?>
                             <img src="<?=$red['PARAMS_SEND_COMPANY']['PREVIEW_PICTURE']?>" height="60" alt="">
                         <?}else {?>
@@ -126,7 +126,7 @@ $arrStatusAwait = array(
             <?else:?>
                 <div class="d-md-none text-gray"><?=$red['PARAMS_SEND_USER']['IN']?></div>
                 <div class="first-face d-md-table-cell">
-                    <a class="d-flex align-items-center" href="/profile_user/?ID=<?=$red['PARAMS_SEND_USER']['ID']?>" target="_blank" style="text-decoration: none;">
+                    <a class="d-flex align-items-center" href="/profile_user/?ID=<?=$red['PARAMS_SEND_USER']['ID']?>" style="text-decoration: none;">
                         <?if(!empty($red['PERSONAL_PHOTO_SEND_USER'])){?>
                             <img src="<?=$red['PERSONAL_PHOTO_SEND_USER']?>" height="60" alt="">
                         <?}else {?>

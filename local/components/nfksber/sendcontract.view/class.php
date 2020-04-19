@@ -5,6 +5,7 @@
 use Bitrix\Main\Loader; 
 use Bitrix\Highloadblock as HL; 
 use Bitrix\Main\Entity;
+use Bitrix\Iblock;
 
 class CDemoSqr extends CBitrixComponent
 {       
@@ -19,13 +20,13 @@ class CDemoSqr extends CBitrixComponent
             "IBLOCK_ID" => intval($arParams["IBLOCK_ID"]),
             "SECTION_ID" => intval($arParams["SECTION_ID"]),
             "ELEMENT_ID" => intval($arParams["ELEMENT_ID"]),
+            "DISPLAY_PROFILE" => $arParams["DISPLAY_PROFILE"],
         );
         return $result;
     }
 
     private function getSendContractText($IDSendItem){
         CModule::IncludeModule("highloadblock");
-        // получить все подписанны сделки
         $ID_hl_send_contract_text = 7;
         $hlblock = HL\HighloadBlockTable::getById($ID_hl_send_contract_text)->fetch(); 
         $entity = HL\HighloadBlockTable::compileEntity($hlblock); 
@@ -45,7 +46,6 @@ class CDemoSqr extends CBitrixComponent
 
     public function getSendContractItem($IDSendItem){
         CModule::IncludeModule("highloadblock");
-        // получить все подписанны сделки
         $ID_hl_send_contract_text = 3;
         $hlblock = HL\HighloadBlockTable::getById($ID_hl_send_contract_text)->fetch(); 
         $entity = HL\HighloadBlockTable::compileEntity($hlblock); 
@@ -139,9 +139,9 @@ class CDemoSqr extends CBitrixComponent
         $arSend['TEXT'] = $Send_text;
         $arSend['ID']   = $status_send_a;
 
-        $this->arResult['USERS'] = $arSendItem;
+        $this->arResult['DATA_DOGOVOR'] = $arSendItem;
         $this->arResult['DOGOVOR_ID'] = $arSendItem['UF_ID_CONTRACT'];
-        
+
         return $arSend;
     }
 
@@ -166,14 +166,67 @@ class CDemoSqr extends CBitrixComponent
         return $arResult;
     }
 
+    /**
+     * проверка для вывода 404
+     * @param array $arFieldsUSER sdsds
+     * @param array $arFieldsCompany dsds
+     * @return bool
+     */
+    private function isDispalyDogovor($curCompanyID, $arDisplayProfile){
+        if(!empty($curCompanyID)){
+            foreach ($arDisplayProfile as $arFieldProfile){
+                $arDataDisplay = [
+                    'UF_ESIA_AUT'=>$this->arResult['USER']['UF_ESIA_AUT'],
+                    'ID_COMPANY_ELEMENT'=>$this->arResult['DATA_DOGOVOR'][$arFieldProfile['COMPANY']],
+                    'ID_COMPANY_USER'=>$this->arResult['USER']['UF_CUR_COMPANY'],
+                    'ID_USER_ELEMENT'=>'',
+                    'ID_USER'=>$this->arResult["ID_USER"],
+                ];
+                if(isDisplayElement($arDataDisplay)) return true;
+            }
+        }
+        else{
+            foreach ($arDisplayProfile as $arFieldProfile){
+                $arDataDisplay = [
+                    'UF_ESIA_AUT'=>$this->arResult['USER']['UF_ESIA_AUT'],
+                    'ID_COMPANY_ELEMENT'=>$this->arResult['DATA_DOGOVOR'][$arFieldProfile['COMPANY']],
+                    'ID_COMPANY_USER'=>$this->arResult['USER']['UF_CUR_COMPANY'],
+                    'ID_USER_ELEMENT'=>$this->arResult['DATA_DOGOVOR'][$arFieldProfile['USER']],
+                    'ID_USER'=>$this->arResult["ID_USER"],
+                ];
+                if(isDisplayElement($arDataDisplay)) return true;
+            }
+        }
+
+        return false;
+    }
+
     public function executeComponent()
     {
-        $IDSendItem = $_GET['ID'];
-        $this->arResult["ID"] = $_GET['ID'];
         global $USER;
+        $IDSendItem = intval($_GET['ID']);
+        $this->arResult["ID"] = $IDSendItem;
         $this->arResult["ID_USER"] =$USER->GetID();
+        $rsUser = CUser::GetByID($this->arResult["ID_USER"]);
+        if($obj = $rsUser->Fetch()){
+            $this->arResult['USER'] = $obj;
+        }
         $this->arResult["CONTRACT_TEXT"] = $this->getSendContractText($IDSendItem);
         $this->arResult["SEND_BLOCK"] = $this->getSendContractItem($IDSendItem);
+        $arDisplayProfile = $this->arParams['DISPLAY_PROFILE'];
+
+        new dBug($this->isDispalyDogovor($this->arResult['USER']['UF_CUR_COMPANY'], $arDisplayProfile));
+        //404 проверка на отображение сделки под выбранным профилем
+        if(!$this->isDispalyDogovor($this->arResult['USER']['UF_CUR_COMPANY'], $arDisplayProfile))
+        {
+            Iblock\Component\Tools::process404(
+                '',
+                true,
+                true,
+                true
+            );
+        }
+
         $this->arResult["PDF"] = $this->getURLPDF();        
         $this->arResult = array_merge($this->arResult, $this->paramsUser($this->arParams));
 
@@ -196,8 +249,9 @@ class CDemoSqr extends CBitrixComponent
             $token  = $esia->get_token($_GET['code']);
             $info   = $esia->get_info($token);
 
-            $rsUser = CUser::GetByID($this->arResult["ID_USER"]);
-            $UserParams = $rsUser->Fetch();
+            /*$rsUser = CUser::GetByID($this->arResult["ID_USER"]);
+            $UserParams = $rsUser->Fetch();*/
+            $UserParams = $this->arResult['USER'];
             $ESIA_ID = $UserParams['UF_ESIA_ID'];
             // проверим идентификаторы из есиа и из профиля пользователя
             if($info['user_id'] == $ESIA_ID){
