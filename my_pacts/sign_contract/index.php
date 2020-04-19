@@ -31,10 +31,6 @@ $APPLICATION->SetTitle("AnyPact");
                     "USER"=>"UF_ID_USER_B",
                     "COMPANY"=>"UF_ID_COMPANY_B"
                 )
-            ),
-            "FIELDS_PROFILE_COMPANY" => array(
-                "UF_ID_COMPANY_A",
-                "UF_ID_COMPANY_B"
             )
         )
     );
