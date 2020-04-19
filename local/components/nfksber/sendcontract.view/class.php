@@ -215,7 +215,6 @@ class CDemoSqr extends CBitrixComponent
         $this->arResult["SEND_BLOCK"] = $this->getSendContractItem($IDSendItem);
         $arDisplayProfile = $this->arParams['DISPLAY_PROFILE'];
 
-        new dBug($this->isDispalyDogovor($this->arResult['USER']['UF_CUR_COMPANY'], $arDisplayProfile));
         //404 проверка на отображение сделки под выбранным профилем
         if(!$this->isDispalyDogovor($this->arResult['USER']['UF_CUR_COMPANY'], $arDisplayProfile))
         {
