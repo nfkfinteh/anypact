@@ -187,6 +187,11 @@ $(document).ready(function() {
 
         prop['LOCATION_CITY'] = $('#LOCATION_CITY').val();
         prop['COORDINATES_AD'] = $('#COORDINATES_AD').val();
+        if(prop['COORDINATES_AD'].length>0){
+            let arCoordinate = prop['COORDINATES_AD'].split(',');
+            prop['LONG'] = arCoordinate[0];
+            prop['LAT'] = arCoordinate[1];
+        }
 
         /*if(DETAIL_TEXT.length==0 || prop['CONDITIONS_PACT'].length==0) {
             showResult('#popup-error','Ошибка сохранения', 'Поле обязательно для заполнения');
