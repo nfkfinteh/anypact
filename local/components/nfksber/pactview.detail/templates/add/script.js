@@ -157,6 +157,12 @@ $(document).ready(function() {
             prop['COORDINATES_AD'] = arFormData.adCoordinates;
             prop['CONDITIONS_PACT'] = arFormData.adCondition;
 
+            if(prop['COORDINATES_AD'].length>0){
+                let arCoordinate = prop['COORDINATES_AD'].split(',');
+                prop['LONG'] = arCoordinate[0];
+                prop['LAT'] = arCoordinate[1];
+            }
+
             if(arFormData.adSum.length<=0 || isNaN(arFormData.adSum)) {
                 $("#cardPact-EditText-Summ").val(0);
                 arFormData.adSum = 0;
