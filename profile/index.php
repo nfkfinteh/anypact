@@ -20,7 +20,7 @@ if ($USER->IsAuthorized()){
     $info_form = array();
     // авторизуем пользователя    
     $error_ESIA = "";
-
+    print_r($info);
     if(count($info['user_docs']['elements']) > 0 && $info['user_info']['trusted']){
 
         $info_form = $info;
@@ -37,9 +37,9 @@ if ($USER->IsAuthorized()){
             // если все ок то меняем реквизиты пользователю
             $fields = Array(
                 "UF_ESIA_AUT" => 1,
-                "UF_ETAG_ESIA" => $info['user_info']['eTag'],
-                "UF_SPASSPORT" => (int) $info['user_docs']['elements'][0]['series'],
-                "UF_NPASSPORT" => (int) $info['user_docs']['elements'][0]['number'],
+                //"UF_ESIA_ID" => $info['user_info']['eTag'],
+                "UF_S_PASS" => (int) $info['user_docs']['elements'][0]['series'],
+                "UF_N_PASS" => (int) $info['user_docs']['elements'][0]['number'],
                 "UF_DATA_PASSPORT" => $info['user_docs']['elements'][0]['issueDate'],
                 "UF_KEM_VPASSPORT" => $pass_by,
                 "LAST_NAME" => $info['user_info']['lastName'], // Фамилия
