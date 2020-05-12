@@ -30,7 +30,7 @@ if ($UserTest == 1){
 
     $urlEsia = $_SERVER['DOCUMENT_ROOT']."/esia";
     include $urlEsia."/Esia.php";
-    include $urlEsia."/EsiaOmniAuth_t.php";
+    include $urlEsia."/EsiaOmniAuth.php";
 
     $keys_dir = $_SERVER['DOCUMENT_ROOT'] . '/esia/sert';    
     $config = array(
