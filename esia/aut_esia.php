@@ -16,7 +16,7 @@ $keys_dir = $urlEsia.'/sert';
  
 $config = array(
     "site" => "https://esia.gosuslugi.ru/", //esia portal
-    "redirect_uri" => "http://anypact.nfksber.ru/profile/",  //callback url
+    "redirect_uri" => "http://anypact.ru/profile/",  //callback url
     "pkey_path"  => $keys_dir."/secret.key",
     "cert_path"  => $keys_dir."/cert.crt",    
     "client_id" => "04VS01",    

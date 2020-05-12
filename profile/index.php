@@ -8,7 +8,7 @@ if ($USER->IsAuthorized()){
 
     $urlEsia = $_SERVER['DOCUMENT_ROOT']."/esia";
     include $urlEsia."/Esia.php";
-    include $urlEsia."/EsiaOmniAuth_t.php";
+    include $urlEsia."/EsiaOmniAuth.php";
     include $urlEsia."/config_esia.php";
 
     $config_esia = new ConfigESIA();
