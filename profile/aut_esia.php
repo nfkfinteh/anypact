@@ -11,7 +11,7 @@ $domane = 'https://anypact.ru';
 $ReturnURL = base64_decode($_GET['returnurl']);
 $ReturnURL = $domane.$ReturnURL;
 echo $ReturnURL;
-/*
+
 // если пользователь пришел с редактирования контракта нужно ID записи добавить в GET
 if(!empty($_GET['ID_SENDITEM'])){
     $URL_REF = $ReturnURL.'?ID_SENDITEM='.$_GET['ID_SENDITEM'];    
@@ -24,7 +24,7 @@ echo "<br> пришли с этого адреса ".$URL_REF;
 
 $UserTest = 1;
 //if ($USER->IsAuthorized()){
-if ($UserTest == 1){
+if ( $UserTest == 1 ) {
     session_start();
 
     //require_once $_SERVER['DOCUMENT_ROOT'] . '/esia/EsiaLogger.class.php';
@@ -40,10 +40,9 @@ if ($UserTest == 1){
     $keys_dir = $_SERVER['DOCUMENT_ROOT'] . '/esia/sert';    
     $config = array(
         "site" => "https://esia.gosuslugi.ru/", //esia portal
-        "redirect_uri" => "http://anypact.ru/profile/",  //callback url
+        "redirect_uri" => "https://anypact.ru/profile/",  //callback url
         "pkey_path"  => $keys_dir."/secret.key",
-        "cert_path"  => $keys_dir."/cert.crt",
-        //"client_id" => "NFKS01211",
+        "cert_path"  => $keys_dir."/cert.crt",        
         "client_id" => "04VS01",    
         "scope" => "openid fullname id_doc"
     );
@@ -53,6 +52,3 @@ if ($UserTest == 1){
 } else {
     echo "Извините вы не авторизованы.";
 }
-
-*/
-?>
