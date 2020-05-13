@@ -35,7 +35,11 @@ if ($UserTest == 1){
     $keys_dir = $_SERVER['DOCUMENT_ROOT'] . '/esia/sert';    
     $config = array(
         "site" => "https://esia.gosuslugi.ru/", //esia portal
+<<<<<<< HEAD
         "redirect_uri" => "http://anypact.nfksber.ru/profile/",  //callback url
+=======
+        "redirect_uri" => "https://anypact.ru/profile/",  //callback url
+>>>>>>> b198de1e188ed3e6c903dcf530de588b352009f8
         "pkey_path"  => $keys_dir."/secret.key",
         "cert_path"  => $keys_dir."/cert.crt",
         //"client_id" => "NFKS01211",
