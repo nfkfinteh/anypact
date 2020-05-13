@@ -1,11 +1,11 @@
 <?
-/*
+
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 global $USER;
 // проверяем авторизован ли пользователь
 echo $USER->GetParam("NAME");
 // урл по которому пришел пользователь, получаем через get  и дешифруем
-*/
+
 print_r($_GET);
 $domane = 'https://anypact.ru';
 $ReturnURL = base64_decode($_GET['returnurl']);
