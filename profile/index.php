@@ -6,7 +6,7 @@ global $USER;
 
 if ($USER->IsAuthorized()){
 
-    $urlEsia = $_SERVER['DOCUMENT_ROOT']."/esia";
+    $urlEsia = $_SERVER['DOCUMENT_ROOT']."/esia_test";
     include $urlEsia."/Esia.php";
     include $urlEsia."/EsiaOmniAuth.php";
     include $urlEsia."/config_esia.php";
@@ -20,7 +20,7 @@ if ($USER->IsAuthorized()){
     $info_form = array();
     // авторизуем пользователя    
     $error_ESIA = "";
-    print_r($info);
+    //print_r($info);
     if(count($info['user_docs']['elements']) > 0 && $info['user_info']['trusted']){
 
         $info_form = $info;

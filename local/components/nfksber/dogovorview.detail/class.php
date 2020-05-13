@@ -477,7 +477,7 @@ class CDemoSqr extends CBitrixComponent
                 GET - ID_SENDITEM уже созданной записи с измененным текстом
             */
             if(!empty($_GET['ID_SENDITEM'])){
-                $urlEsia = $_SERVER['DOCUMENT_ROOT'] . "/esia";
+                $urlEsia = $_SERVER['DOCUMENT_ROOT'] . "/esia_test";
                 include $urlEsia . "/Esia.php";
                 include $urlEsia . "/EsiaOmniAuth_t.php";
                 include $urlEsia . "/config_esia.php";
@@ -512,7 +512,7 @@ class CDemoSqr extends CBitrixComponent
                     $this->arResult['SEND_CONTRACT'] = 'ERR_ID';
                 }
             }else{
-                $urlEsia = $_SERVER['DOCUMENT_ROOT'] . "/esia";
+                $urlEsia = $_SERVER['DOCUMENT_ROOT'] . "/esia_test";
                 include $urlEsia . "/Esia.php";
                 include $urlEsia . "/EsiaOmniAuth_t.php";
                 include $urlEsia . "/config_esia.php";
