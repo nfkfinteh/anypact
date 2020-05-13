@@ -479,7 +479,7 @@ class CDemoSqr extends CBitrixComponent
             if(!empty($_GET['ID_SENDITEM'])){
                 $urlEsia = $_SERVER['DOCUMENT_ROOT'] . "/esia_test";
                 include $urlEsia . "/Esia.php";
-                include $urlEsia . "/EsiaOmniAuth_t.php";
+                include $urlEsia . "/EsiaOmniAuth.php";
                 include $urlEsia . "/config_esia.php";
 
                 $config_esia = new ConfigESIA();
@@ -514,7 +514,7 @@ class CDemoSqr extends CBitrixComponent
             }else{
                 $urlEsia = $_SERVER['DOCUMENT_ROOT'] . "/esia_test";
                 include $urlEsia . "/Esia.php";
-                include $urlEsia . "/EsiaOmniAuth_t.php";
+                include $urlEsia . "/EsiaOmniAuth.php";
                 include $urlEsia . "/config_esia.php";
 
                 $config_esia = new ConfigESIA();
