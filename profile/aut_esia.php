@@ -34,6 +34,9 @@ if ( $UserTest == 1 ) {
     unset($_SESSION['id_esia']);
 
     $urlEsia = $_SERVER['DOCUMENT_ROOT']."/esia";
+
+    echo "путь до ".$urlEsia;
+    /*
     include $urlEsia."/Esia.php";
     include $urlEsia."/EsiaOmniAuth.php";
 
@@ -61,6 +64,7 @@ if ( $UserTest == 1 ) {
     
     $esia = new EsiaOmniAuth($config);
     $esia->create(); 
+    */
 } else {
     echo "Извините вы не авторизованы.";
 }
