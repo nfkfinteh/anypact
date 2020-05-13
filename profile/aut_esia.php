@@ -40,7 +40,7 @@ if ( $UserTest == 1 ) {
     include $urlEsia."/Esia.php";
     include $urlEsia."/EsiaOmniAuth.php";
     
-    $keys_dir = $_SERVER['DOCUMENT_ROOT'] . '/esia/sert';    
+    $keys_dir = $urlEsia . '/sert';    
     $config = array(
         "site" => "https://esia.gosuslugi.ru/", //esia portal
 <<<<<<< HEAD
@@ -61,9 +61,11 @@ if ( $UserTest == 1 ) {
         "client_id" => "04VS01",    
         "scope" => "openid fullname id_doc"
     );
-    
-    $esia = new EsiaOmniAuth($config);
-    $esia->create(); 
+    echo "<pre>";
+    print_r($config);
+    echo "</pre>";
+    // $esia = new EsiaOmniAuth($config);
+    // $esia->create(); 
     
 } else {
     echo "Извините вы не авторизованы.";
