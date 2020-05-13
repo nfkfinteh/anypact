@@ -1,14 +1,17 @@
 <?
+/*
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 global $USER;
 // проверяем авторизован ли пользователь
 echo $USER->GetParam("NAME");
 // урл по которому пришел пользователь, получаем через get  и дешифруем
-//print_r($_GET);
+*/
+print_r($_GET);
 $domane = 'https://anypact.ru';
 $ReturnURL = base64_decode($_GET['returnurl']);
 $ReturnURL = $domane.$ReturnURL;
-
+echo $ReturnURL;
+/*
 // если пользователь пришел с редактирования контракта нужно ID записи добавить в GET
 if(!empty($_GET['ID_SENDITEM'])){
     $URL_REF = $ReturnURL.'?ID_SENDITEM='.$_GET['ID_SENDITEM'];    
@@ -58,4 +61,6 @@ if ($UserTest == 1){
 } else {
     echo "Извините вы не авторизованы.";
 }
+
+*/
 ?>
