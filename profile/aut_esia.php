@@ -33,13 +33,13 @@ if ( $UserTest == 1 ) {
     $_SESSION['id_esia']="";
     unset($_SESSION['id_esia']);
 
-    $urlEsia = $_SERVER['DOCUMENT_ROOT']."/esia";
+    $urlEsia = $_SERVER['DOCUMENT_ROOT']."/esia_test";
 
     echo "путь до ".$urlEsia;
-    /*
+    
     include $urlEsia."/Esia.php";
     include $urlEsia."/EsiaOmniAuth.php";
-
+    
     $keys_dir = $_SERVER['DOCUMENT_ROOT'] . '/esia/sert';    
     $config = array(
         "site" => "https://esia.gosuslugi.ru/", //esia portal
@@ -64,7 +64,7 @@ if ( $UserTest == 1 ) {
     
     $esia = new EsiaOmniAuth($config);
     $esia->create(); 
-    */
+    
 } else {
     echo "Извините вы не авторизованы.";
 }
