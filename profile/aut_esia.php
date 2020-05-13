@@ -1,17 +1,17 @@
 <?
-/*
+
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 global $USER;
 // проверяем авторизован ли пользователь
 echo $USER->GetParam("NAME");
 // урл по которому пришел пользователь, получаем через get  и дешифруем
-*/
+
 print_r($_GET);
 $domane = 'https://anypact.ru';
 $ReturnURL = base64_decode($_GET['returnurl']);
 $ReturnURL = $domane.$ReturnURL;
 echo $ReturnURL;
-/*
+
 // если пользователь пришел с редактирования контракта нужно ID записи добавить в GET
 if(!empty($_GET['ID_SENDITEM'])){
     $URL_REF = $ReturnURL.'?ID_SENDITEM='.$_GET['ID_SENDITEM'];    
@@ -24,7 +24,7 @@ echo "<br> пришли с этого адреса ".$URL_REF;
 
 $UserTest = 1;
 //if ($USER->IsAuthorized()){
-if ($UserTest == 1){
+if ( $UserTest == 1 ) {
     session_start();
 
     //require_once $_SERVER['DOCUMENT_ROOT'] . '/esia/EsiaLogger.class.php';
@@ -42,6 +42,7 @@ if ($UserTest == 1){
         "site" => "https://esia.gosuslugi.ru/", //esia portal
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         "redirect_uri" => "http://anypact.nfksber.ru/profile/",  //callback url
 =======
         "redirect_uri" => "https://anypact.ru/profile/",  //callback url
@@ -49,9 +50,11 @@ if ($UserTest == 1){
 =======
         "redirect_uri" => "http://anypact.ru/profile/",  //callback url
 >>>>>>> be49c0fe4b0954317354b74510fb2459109f317a
+=======
+        "redirect_uri" => "https://anypact.ru/profile/",  //callback url
+>>>>>>> e7ad65d63696f4d0d43f0a8268a7fea697a564ff
         "pkey_path"  => $keys_dir."/secret.key",
-        "cert_path"  => $keys_dir."/cert.crt",
-        //"client_id" => "NFKS01211",
+        "cert_path"  => $keys_dir."/cert.crt",        
         "client_id" => "04VS01",    
         "scope" => "openid fullname id_doc"
     );
@@ -61,6 +64,3 @@ if ($UserTest == 1){
 } else {
     echo "Извините вы не авторизованы.";
 }
-
-*/
-?>
