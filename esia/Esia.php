@@ -24,7 +24,7 @@ class Esia {
    * save to log debug info
    */
 
-  const DEBUG = false;
+  const DEBUG = true;
 
 
 	/**

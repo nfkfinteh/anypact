@@ -82,20 +82,21 @@ class EsiaOmniAuth {
     $params["state"] = $this->uuid;
     $params["timestamp"] = $time;
     $params["access_type"] = 'online';
-    $params["display"] = 'popup';
-
 
     //signing params
-    $client_secret = $this->sign( $params );
+    $client_secret = $this->sign( $params );    
 
     if($client_secret){
       $params["client_secret"] = $client_secret;
-
       //get code
       $_SESSION['esia_oauth_state'] = $this->uuid;
-      $url = $this->config['site'] . "/aas/oauth2/ac" . '?' . http_build_query($params);
+      $url = $this->config['site'] . "aas/oauth2/ac?" . http_build_query($params);
+     
+      exit("<meta http-equiv='refresh' content='0; url= {$url}'>");
 
-      self::redirect($url);
+      //$this->redirect($url);
+      
+
     }else{
       if(!$client_secret)
         $this->debugSave($client_secret, "Can't sign!!!");
@@ -135,7 +136,7 @@ class EsiaOmniAuth {
       $params["client_secret"] = $client_secret;
 
       //get token
-      $url = $this->config['site'] . "/aas/oauth2/te";
+      $url = $this->config['site'] . "aas/oauth2/te";
       $response = self::post($url, http_build_query($params));
 
       $json = json_decode($response);
@@ -207,13 +208,20 @@ class EsiaOmniAuth {
 
     $outfile = $this->signed_file();
     $infile = $this->for_sign_file();
-    $command = "openssl smime -sign -in ${infile} -signer ${cert} -inkey ${pkey} -outform DER -out ${outfile} > /dev/null 2>&1";
-    exec($command);
+
+    $dir_sign = "/var/www/domains/new.nfksber.ru/esiafast/esia/temp";
+   
+    $command = "/opt/cprocsp/bin/amd64/cryptcp -sign -thumbprint 3509fb1f924cf8a0a34fa5ef35e56f3ffb330db2 -cert -strict -detached -der {$infile} {$outfile}";
+    
+    // первый параметр входящий   второй исходящий зашифрованный
+    exec($command, $report);
 
     if(file_exists($outfile)){
-      $encoded = base64_encode(file_get_contents($this->signed_file()));
-      return urlencode($this->url_data_encode($encoded));
+      $StrCode = file_get_contents($outfile);  
+      $encoded = base64_encode($StrCode);     
+      return urlencode($this->url_data_encode($encoded));      
     }else{
+      echo "Неудачно!";
       return false;
     }
   }
@@ -313,11 +321,13 @@ class EsiaOmniAuth {
 	 * @param string $url URL to redirect user to
 	 * @param boolean $exit Whether to call exit() right after redirection
 	 */
-	public static function redirect($url, $exit = true) {
-		header("Location: $url");
-		if ($exit) {
+	public function redirect($url, $exit = true) {
+
+    header("Location: $url", true, 301);    
+    if ($exit) {
 			exit();
-		}
+    }
+
 	}
 
   /**
