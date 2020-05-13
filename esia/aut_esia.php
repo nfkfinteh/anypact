@@ -1,27 +1,55 @@
-<?php 
-session_start();
+<?
+require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
+// проверяем авторизован ли пользователь
+echo $USER->GetParam("NAME");
+// урл по которому пришел пользователь, получаем через get  и дешифруем
+//print_r($_GET);
+$domane = 'https://anypact.ru';
+$ReturnURL = base64_decode($_GET['returnurl']);
+$ReturnURL = $domane.$ReturnURL;
+// если пользователь пришел с редактирования контракта нужно ID записи добавить в GET
+if(!empty($_GET['ID_SENDITEM'])){
+    $URL_REF = $ReturnURL.'?ID_SENDITEM='.$_GET['ID_SENDITEM'];    
+}else {
+    $URL_REF = $ReturnURL;
+}
 
-$_SESSION['id_esia']="";
- 
-unset($_SESSION['id_esia']);
+echo "<br> пришли с этого адреса ".$URL_REF;
+//$URL_REF = 'https://anypact.ru/my_pacts/';
 
-$urlEsia = $_SERVER['DOCUMENT_ROOT']."/esia_test";
+$UserTest = 1;
+//if ($USER->IsAuthorized()){
+if ($UserTest == 1){
+    session_start();
 
-include $urlEsia."/Esia.php";
-include $urlEsia."/EsiaOmniAuth.php";
- 
-echo $urlEsia."/EsiaOmniAuth.php";
+    //require_once $_SERVER['DOCUMENT_ROOT'] . '/esia/EsiaLogger.class.php';
+    //EsiaLogger::DumpEnviroment( 'open_gu' );
+   
+    $_SESSION['id_esia']="";
+    unset($_SESSION['id_esia']);
 
-$keys_dir = $urlEsia.'/sert';  
- 
-$config = array(
-    "site" => "https://esia.gosuslugi.ru/", //esia portal
-    "redirect_uri" => "https://anypact.ru/profile/",  //callback url
-    "pkey_path"  => $keys_dir."/secret.key",
-    "cert_path"  => $keys_dir."/cert.crt",    
-    "client_id" => "04VS01",    
-    "scope" => "openid fullname id_doc"
-);
+    $urlEsia = $_SERVER['DOCUMENT_ROOT']."/esia";
+    include $urlEsia."/Esia.php";
+    include $urlEsia."/EsiaOmniAuth.php";
 
-$esia = new EsiaOmniAuth($config);
-$esia->create();
+    $keys_dir = $_SERVER['DOCUMENT_ROOT'] . '/esia/sert';    
+    $config = array(
+        "site" => "https://esia.gosuslugi.ru/", //esia portal
+<<<<<<< HEAD
+        "redirect_uri" => "http://anypact.nfksber.ru/profile/",  //callback url
+=======
+        "redirect_uri" => "http://anypact.ru/profile/",  //callback url
+>>>>>>> bdef80f20d3e37cd146236e81ef3d0c0029e0a15
+        "pkey_path"  => $keys_dir."/secret.key",
+        "cert_path"  => $keys_dir."/cert.crt",
+        //"client_id" => "NFKS01211",
+        "client_id" => "04VS01",    
+        "scope" => "openid fullname id_doc"
+    );
+    
+    $esia = new EsiaOmniAuth($config);
+    $esia->create(); 
+} else {
+    echo "Извините вы не авторизованы.";
+}
+?>
