@@ -21,7 +21,7 @@ if ($USER->IsAuthorized()){
     // авторизуем пользователя    
     $error_ESIA = "";
     print_r($info);
-    if(count($info['user_docs']['elements']) > 0 && $info['user_info']['trusted']){
+    if(isset($info['user_docs']['elements']) > 0 && $info['user_info']['trusted']){
 
         $info_form = $info;
         $number_pass = $info['user_docs']['elements'][0]['series']." ".$info['user_docs']['elements'][0]['number'] ;
