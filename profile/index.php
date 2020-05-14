@@ -20,7 +20,7 @@ if ($USER->IsAuthorized()){
     $info_form = array();
     // авторизуем пользователя    
     $error_ESIA = "";
-    //print_r($info);
+    print_r($info);
     if(count($info['user_docs']['elements']) > 0 && $info['user_info']['trusted']){
 
         $info_form = $info;
