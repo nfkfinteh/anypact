@@ -6,57 +6,59 @@ global $USER;
 
 if ($USER->IsAuthorized()){
 
-    $urlEsia = $_SERVER['DOCUMENT_ROOT']."/esia_test";
-    include $urlEsia."/Esia.php";
-    include $urlEsia."/EsiaOmniAuth.php";
-    include $urlEsia."/config_esia.php";
+    if ( !empty( $_GET["code"] ) ){
+        $urlEsia = $_SERVER['DOCUMENT_ROOT']."/esia_test";
+        include $urlEsia."/Esia.php";
+        include $urlEsia."/EsiaOmniAuth.php";
+        include $urlEsia."/config_esia.php";
 
-    $config_esia = new ConfigESIA();
+        $config_esia = new ConfigESIA();
 
-    $esia = new EsiaOmniAuth($config_esia->config);
-    $info   = array();
-    $token  = $esia->get_token($_GET['code']);
-    $info   = $esia->get_info($token);
-    $info_form = array();
-    // авторизуем пользователя    
-    $error_ESIA = "";
-    print_r($info);
-    if(isset($info['user_docs']['elements']) > 0 && $info['user_info']['trusted']){
+        $esia = new EsiaOmniAuth($config_esia->config);
+        $info   = array();
+        $token  = $esia->get_token($_GET['code']);
+        $info   = $esia->get_info($token);
+        $info_form = array();
+        // авторизуем пользователя    
+        $error_ESIA = "";
+        print_r($info);
+        if( isset( $info['user_docs']['elements'] ) > 0 && $info['user_info']['trusted']){
 
-        $info_form = $info;
-        $number_pass = $info['user_docs']['elements'][0]['series']." ".$info['user_docs']['elements'][0]['number'] ;
-        $pass_by = "Выдан: ".$info['user_docs']['elements'][0]['issuedBy'];
+            $info_form = $info;
+            $number_pass = $info['user_docs']['elements'][0]['series']." ".$info['user_docs']['elements'][0]['number'] ;
+            $pass_by = "Выдан: ".$info['user_docs']['elements'][0]['issuedBy'];
 
-        // проверяем ЕСИА ид на наличие в базе, что бы не было регистраций на нескольких пользователей
-        $filterESIAID = array(
-            "UF_ESIA_ID" => $info['user_id']
-        );
-        $GET_USER_ESIA_ID = CUser::GetList(($by="ID"), ($order="DESC"), $filterESIAID);
-        $Users_have_esia_id = $GET_USER_ESIA_ID->Fetch();
-        if(empty($Users_have_esia_id["ID"])){            
-            // если все ок то меняем реквизиты пользователю
-            $fields = Array(
-                "UF_ESIA_AUT" => 1,
-                //"UF_ESIA_ID" => $info['user_info']['eTag'],
-                "UF_S_PASS" => (int) $info['user_docs']['elements'][0]['series'],
-                "UF_N_PASS" => (int) $info['user_docs']['elements'][0]['number'],
-                "UF_DATA_PASSPORT" => $info['user_docs']['elements'][0]['issueDate'],
-                "UF_KEM_VPASSPORT" => $pass_by,
-                "LAST_NAME" => $info['user_info']['lastName'], // Фамилия
-                "NAME" => $info['user_info']['firstName'], // Имя
-                "SECOND_NAME" => $info['user_info']['middleName'], // Отчество
-                "UF_PASSPORT" => $number_pass,
+            // проверяем ЕСИА ид на наличие в базе, что бы не было регистраций на нескольких пользователей
+            $filterESIAID = array(
                 "UF_ESIA_ID" => $info['user_id']
-            );        
-            $USER->Update($USER->GetID(), $fields);
-            $arGroups[] = 6; // ID группы которые авторизовались через ЕСИА
-            CUser::SetUserGroup($USER->GetID(), $arGroups);
-            header("Refresh: 0");
-        }else {            
-            $fields = Array(
-                "UF_ESIA_ERROR" => "Пользователь использующий этот аккаунт госуслуг уже зареистрирован."
-            );        
-            $USER->Update($USER->GetID(), $fields);                   
+            );
+            $GET_USER_ESIA_ID = CUser::GetList(($by="ID"), ($order="DESC"), $filterESIAID);
+            $Users_have_esia_id = $GET_USER_ESIA_ID->Fetch();
+            if(empty($Users_have_esia_id["ID"])){            
+                // если все ок то меняем реквизиты пользователю
+                $fields = Array(
+                    "UF_ESIA_AUT" => 1,
+                    //"UF_ESIA_ID" => $info['user_info']['eTag'],
+                    "UF_S_PASS" => (int) $info['user_docs']['elements'][0]['series'],
+                    "UF_N_PASS" => (int) $info['user_docs']['elements'][0]['number'],
+                    "UF_DATA_PASSPORT" => $info['user_docs']['elements'][0]['issueDate'],
+                    "UF_KEM_VPASSPORT" => $pass_by,
+                    "LAST_NAME" => $info['user_info']['lastName'], // Фамилия
+                    "NAME" => $info['user_info']['firstName'], // Имя
+                    "SECOND_NAME" => $info['user_info']['middleName'], // Отчество
+                    "UF_PASSPORT" => $number_pass,
+                    "UF_ESIA_ID" => $info['user_id']
+                );        
+                $USER->Update($USER->GetID(), $fields);
+                $arGroups[] = 6; // ID группы которые авторизовались через ЕСИА
+                CUser::SetUserGroup($USER->GetID(), $arGroups);
+                header("Refresh: 0");
+            }else {            
+                $fields = Array(
+                    "UF_ESIA_ERROR" => "Пользователь использующий этот аккаунт госуслуг уже зареистрирован."
+                );        
+                $USER->Update($USER->GetID(), $fields);                   
+            }
         }
     }
     ?>
