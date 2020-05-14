@@ -236,7 +236,7 @@ class CDemoSqr extends CBitrixComponent
         $this->ID_Item = $_GET['ID'];
         // если пользователь вернулся после авторизации ЕСИА
         if($_GET['code']){
-            $urlEsia = $_SERVER['DOCUMENT_ROOT']."/esia";
+            $urlEsia = $_SERVER['DOCUMENT_ROOT']."/esia_test";
             include $urlEsia."/Esia.php";
             include $urlEsia."/EsiaOmniAuth_t.php";
             include $urlEsia."/config_esia.php";
