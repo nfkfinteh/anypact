@@ -1,6 +1,10 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("AnyPact создание компании");
+// проверяем авторизован ли пользователь
+if (!$USER->IsAuthorized()) {
+    LocalRedirect("/");
+}
 ?>
 <?
  $TypePage = $_GET['typepage'];

@@ -128,7 +128,11 @@ global $USER;
                         <span class="location">Выберите город</span>
                     <?endif?>
                 </div>
-                <? if ($USER->IsAuthorized()){ ?>
+                <? if ($USER->IsAuthorized()){ 
+                    $res = CUser::GetList($by="personal_country", $order="desc", [ 'ID' => $USER->GetID() ], [ 'SELECT' => ['UF_ESIA_AUT'], 'FIELDS' => ['ID'] ]);
+                    if ( $u = $res -> getNext() )
+                        $userEsiaAut = $u['UF_ESIA_AUT'];
+                    ?>
                     <div class="col-md-2">
                         <!-- <?if(!empty($getGeo['cityName'])):?>
                             <span class="location"><?=$getGeo['cityName']?></span>
@@ -139,28 +143,41 @@ global $USER;
 
                     </div>
                     <div class="col-md-3">
-                        <div class="row">                            
-                            <div class="col-md-9">
-                                <?                                
-                                    $APPLICATION->IncludeComponent("nfksber:profile.widget",
-                                    "head",
-                                    Array(
-                                            'IS_PAGE_MESSAGE' => $APPLICATION->GetCurPage() == '/list_message/view_message/' ? 'Y' : 'N'
-                                        )
-                                    );
-                                ?>
-                            </div>
-                            <div class="col-md-3">
-                                <!--Кнопка создать новое предложение-->
-                                <div class="create-pact-btn">
-                                    <a href="/my_pacts/edit_my_pact/?ACTION=ADD"></a>
-                                    <div>Создать предложение</div>
+                        <div class="row">     
+                            <?if ( $userEsiaAut != 1 ) {?>                       
+                                <div class="col-md-12">
+                                    <?                                
+                                        $APPLICATION->IncludeComponent("nfksber:profile.widget",
+                                        "head",
+                                        Array(
+                                                'IS_PAGE_MESSAGE' => $APPLICATION->GetCurPage() == '/list_message/view_message/' ? 'Y' : 'N'
+                                            )
+                                        );
+                                    ?>
                                 </div>
-                                <!------------>                   
-                            </div>
+                            <?} else {?>
+                                <div class="col-md-9">
+                                    <?                                
+                                        $APPLICATION->IncludeComponent("nfksber:profile.widget",
+                                        "head",
+                                        Array(
+                                                'IS_PAGE_MESSAGE' => $APPLICATION->GetCurPage() == '/list_message/view_message/' ? 'Y' : 'N'
+                                            )
+                                        );
+                                    ?>
+                                </div>
+                                <div class="col-md-3">
+                                    <!--Кнопка создать новое предложение-->
+                                    <div class="create-pact-btn">
+                                        <a href="/my_pacts/edit_my_pact/?ACTION=ADD"></a>
+                                        <div>Создать предложение</div>
+                                    </div>
+                                    <!------------>                   
+                                </div>
+                            <? } ?>
                         </div>
                     </div>
-                    <?}else {?>
+                    <?} else {?>
                         <div class="col-md-5">
                             <a href="tel:+78002008484" class="phone">8(800) 200-84-84</a>
                             <button class="btn btn-nfk btn-login" id="reg_button">Регистрация / Вход</button>
@@ -170,16 +187,18 @@ global $USER;
         </header>
         <!--Меню навигации-->
         <nav class="navbar navbar-expand-md" style="width: 100%;">
-            <?
-                $Section = $_GET['SECTION_ID'];
-                $APPLICATION->IncludeComponent("nfksber:stepback", 
-                "", 
-                    Array(
-                        "IBLOCK_ID" => "3",
-                        "SECTION_ID" => $Section,   
-                        )
-                );
-            ?>
+            <div class="navbar-brand-block">
+                <?
+                    $Section = $_GET['SECTION_ID'];
+                    $APPLICATION->IncludeComponent("nfksber:stepback", 
+                    "", 
+                        Array(
+                            "IBLOCK_ID" => "3",
+                            "SECTION_ID" => $Section,   
+                            )
+                    );
+                ?>
+            </div>
             <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon">
                     <span></span>

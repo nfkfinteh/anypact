@@ -17,7 +17,7 @@ $this->setFrameMode(true);?>
         <span class="magnifier"></span>
         <input type="text" name="q" placeholder="Введите название сделки" value="">
         <input name="s" type="submit" class="btn btn-nfk btn-search d-none d-md-inline" value="<?=GetMessage("BSF_T_SEARCH_BUTTON");?>" style="border: 1px solid #ff6416 !important;"/>
-        <span class="region d-none d-md-inline"><?=$arParams['LOCATION']?></span>
+        <a class="region d-none d-md-inline" href="#city_choose"><?=$arParams['LOCATION']?></a>
         <span class="deal-type" id="button_select_category">
             <span class="d-none d-md-inline">Вид сделки</span>
             <span class="dropdown-arrow-deal"></span>

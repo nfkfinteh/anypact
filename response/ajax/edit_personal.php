@@ -22,6 +22,12 @@ if(empty($idUser)){
 if(!empty($data) || !empty($imgData)){
 
     $fields = $data;
+
+    if ( empty($fields['PASSWORD']) ) {
+        unset($fields['PASSWORD']);
+        unset($fields['CONFIRM_PASSWORD']);
+    }
+
     #проверка на картинку
     if(!empty($imgData) && $imgData['PERSONAL_PHOTO']['size']>0){
         $fields = array_merge($fields, $imgData);
