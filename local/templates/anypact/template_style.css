@@ -159,6 +159,12 @@ input {
 .nav-link[href="#"] {
     display: none;
 }
+
+.navbar-brand-block {
+    height: 50px;
+    width: 120px;
+}
+
 .navbar-brand {
     color: #ff6416;
     font-size: 16px;
@@ -203,6 +209,11 @@ input {
     position: absolute;
     top: 14px;
     right: 220px;
+    color: #000000;
+    text-decoration: none;
+}
+.search .region:hover {
+    color: #000000;
 }
 .search .region,
 .search .deal-type {
@@ -1812,7 +1823,7 @@ table.detail_contract, table.detail_contract thead, table.detail_contract tr, ta
         width: 49%;
         margin: 10px 0;
     }
-    .navbar-brand{
+    .navbar-brand-block, .navbar-brand{
         display: none;
     }
 }

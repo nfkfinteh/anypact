@@ -119,7 +119,7 @@ div.bx-auth-profile div.bx-auth-secure-unlock {
 
 /*кнопка сохранения*/
 
-.user_profile_form #save_profile_button {
+.user_profile_form .save_profile_button {
     width: 164px;
     border: 1px solid #ff6416;
     color: #ff6416;
@@ -129,7 +129,7 @@ div.bx-auth-profile div.bx-auth-secure-unlock {
     float: right;
 }
 
-.user_profile_form #save_profile_button:hover {
+.user_profile_form .save_profile_button:hover {
     color: #fff;
     background: #ff6416;
 }

@@ -155,7 +155,7 @@ $("span.location").click(function () {
     openCloseWin()
 });
 
-$("span.region").click(function () {
+$("a.region").click(function () {
     openCloseWin()
 });
 

@@ -1,4 +1,4 @@
-<div class="city-choose">
+<div class="city-choose" id="city_choose">
     <div class="container">
         <button class="city-choose-btn-close">Закрыть&nbsp;&nbsp;&nbsp;х</button>
         <h2>Выберите город</h2>

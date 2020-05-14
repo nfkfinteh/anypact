@@ -350,7 +350,7 @@ window.onload = function() {
             var res = getAutorisation(login, password).then(function(data) {
                 $result = JSON.parse(data);
                 if($result['TYPE']=='ERROR'){
-                    document.getElementById('message_error_aut').innerHTML = '&#8226; '+$result['VALUE'];
+                    document.getElementById('message_error_aut_main').innerHTML = '&#8226; '+$result['VALUE'];
                 }
                 if($result['TYPE']=='SUCCES'){
                     location.reload();
