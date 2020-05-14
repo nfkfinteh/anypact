@@ -238,7 +238,7 @@ class CDemoSqr extends CBitrixComponent
         if($_GET['code']){
             $urlEsia = $_SERVER['DOCUMENT_ROOT']."/esia_test";
             include $urlEsia."/Esia.php";
-            include $urlEsia."/EsiaOmniAuth_t.php";
+            include $urlEsia."/EsiaOmniAuth.php";
             include $urlEsia."/config_esia.php";
 
             $config_esia = new ConfigESIA();
