@@ -248,6 +248,10 @@ class CDemoSqr extends CBitrixComponent
             $token  = $esia->get_token($_GET['code']);
             $info   = $esia->get_info($token);
 
+            echo "<pre>";
+            print($info);
+            echo "</pre>";
+
             /*$rsUser = CUser::GetByID($this->arResult["ID_USER"]);
             $UserParams = $rsUser->Fetch();*/
             $UserParams = $this->arResult['USER'];
