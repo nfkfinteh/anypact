@@ -1,6 +1,7 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$APPLICATION->SetTitle("AnyPact");
+$APPLICATION->SetTitle("AnyPact || Контакты");
+$APPLICATION->SetPageProperty("description", "Телефон: 8 (800) 200-84-84, E-mail: info@anypact.ru. Связаться с менеджером сайта AnyPact.ru.");
 global $USER;
 ?>
 

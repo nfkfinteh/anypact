@@ -1,6 +1,7 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$APPLICATION->SetTitle("Поиск контрагентов");
+$APPLICATION->SetTitle("AnyPact || Поиск контрагентов");
+$APPLICATION->SetPageProperty("description", "Находите контрагента, участвуете в формировании условий договора, как с физическими так и с юридическими лицами, приобретайте права и обязанности в рамках его исполнения.");
 if(!$_REQUEST['TYPE'] || $_REQUEST['TYPE']=='user'){
     $type = 'user';
 }

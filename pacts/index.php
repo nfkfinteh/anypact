@@ -1,6 +1,7 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$APPLICATION->SetTitle("AnyPact || Все предложения пользователей");
+$APPLICATION->SetTitle("AnyPact || Все предложения");
+$APPLICATION->SetPageProperty("description", "Заключить договор с использованием AnyPact. Категории: Купля-продажа; Работа и услуги; Заём; Пожертвование; Наём жилья; Дарение; Инвестиции; Аренда; Обмен, мена; Иной договор");
 ?>
 <div class="container">
 	<?
