@@ -32,12 +32,13 @@
                         </div>
                     <?}?>
                     <h5>Загрузить договор из вашего файла</h5>
-                    <p31>Поддерживаемые форматы(docx, txt, png, jpg)<br>Размер файла не более 1 Мб</p31>
+                    <p31>Поддерживаемые форматы(docx, txt, png, jpg)<br>Размер файла не должен привышать 5мб</p31>
                     <form enctype="multipart/form-data" method="post" name="loadcontract">
                         <label for="uploadbtn" class="btn btn-nfk" id="">Выберите собственный файл</label>
                         <input id="uploadbtn" type="file" name="file[]"  accept="docx/*" capture="camera" multiple required value="Сделать фото" style="display:none;"/>
                         <label for="load-contract" class="btn btn-nfk disabled" id="btn-load">Загрузить в редактор</label>
                         <input type="submit" value="Обработать" id="load-contract" style="display:none;" disabled/>
+                        <p31>Не забудьте загрузить файл в редактор после выбора файла</p31>
                     </form>
                     <h5>Создать договор используя наш редактор</h5>
                     <p>Нажмите на кнопку "Создать договор в редакторе" и в поле справа наберайте текст используя инструменты для форматирования.</p>

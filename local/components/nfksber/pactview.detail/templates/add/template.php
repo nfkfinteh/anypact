@@ -167,6 +167,7 @@ if(!empty($arResult['FORM_SDELKA']['adCity'])){
                     <?if(empty($arResult['DOGOVOR'])):?>
                         <button class="btn btn-nfk" id="add_dogovor" data-url="/my_pacts/add_new_dogovor/?ADD=ADD">Добавить договор</button>
                     <?else:?>
+                        <div style="margin-bottom: 15px;"><img src="<?=SITE_TEMPLATE_PATH;?>/image/doc_ready_ico.png" style="max-width: 40px;"><span>Договор загружен</span></div>
                         <button class="btn btn-nfk" id="add_dogovor" data-url="/my_pacts/add_new_dogovor/?ADD=ADD">Заменить договр</button>
                         <input type="hidden" id="DOGOVOR_KEY" value="<?=$arResult['DOGOVOR_KEY_CASHE']?>">
                     <?endif?>

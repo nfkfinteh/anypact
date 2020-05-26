@@ -108,6 +108,7 @@
                 <?
                 $disable_a = "";
                 if (!empty($arResult["PROPERTY"]["ID_DOGOVORA"]["VALUE"])){
+                    echo '<div style="margin-bottom: 15px;"><img src="'.SITE_TEMPLATE_PATH.'/image/doc_ready_ico.png" style="max-width: 40px;"><span>Договор загружен</span></div>';
                     $text_btn_dogovor = 'Редактировать договор';
                     $action_dogovor = 'EDIT=EDIT';
                 } else {

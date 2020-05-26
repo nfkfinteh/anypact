@@ -27,10 +27,10 @@ if( isset( $_GET['uploadfiles'] ) ){
         for ($i=0; $i<$cntFile; $i++){
             //ограничение на размер файла
             if($key=='size'){
-                if($fields[$i]>1000000){
+                if($fields[$i]>5000000){
                     $arResult[] = [
                         'FORMAT'=>'ERROR',
-                        'CONTENT'=>'Размер файла не должен привышать 1мб',
+                        'CONTENT'=>'Размер файла не должен превышать 5мб',
                     ];
                     echo json_encode($arResult);
                     die();
