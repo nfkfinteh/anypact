@@ -1,5 +1,6 @@
 <? // print_r($arResult["PROPERTY"]) ;?>
 <? //print_r($arResult) ;?>
+<?$this->addExternalJS(SITE_TEMPLATE_PATH . "/js/print.min.js");?>
 <!--------------------------------------1-------------------------------------------------->
 <div>
         <h1 class="mb-4">Подписанные договора</h1>
@@ -31,7 +32,7 @@
                     <h3 class="font-weight-bold flex-grow-1" style="flex-grow: 1!important;">Просмотр договора:</h3>
 
                     <a href="contract_pdf.php?ID=<?=$_GET['ID']?>" target="_blank" class="btn-img" id="download_pdf"><img src="<?=SITE_TEMPLATE_PATH?>/image/icon-pdf-gray.png" alt=""></a>
-                    <button class="btn-img"><img src="<?=SITE_TEMPLATE_PATH?>/image/icon-printer-gray.png" alt=""></button>
+                    <button class="btn-img" onclick="printJS({printable:'https://anypact.ru/my_pacts/sign_contract/contract_pdf.php?ID=<?=$_GET['ID']?>', type:'pdf'});"><img src="<?=SITE_TEMPLATE_PATH?>/image/icon-printer-gray.png" alt=""></button>
                 </div>
                 <!--Поле просмотра договора-->
                 <div class="w-100 mt-4" style="height: 1000px; background-color: #f1f4f4">
