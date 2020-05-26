@@ -14,9 +14,13 @@ case 'N': ?>
             </div>
         </div>               
         <div class="col-lg-9 col-md-9 col-sm-12">
-        <div class="tools_redactor">                
-            <button type="button" class="btn btn-nfk btn-default space_right js-disabled" id="btn-edit" data-toggle="tooltip" data-placement="left" title="Включить редактирование текста" contenteditable="false"><span class="glyphicon glyphicon-pencil"></span></button>
+        <div class="tools_redactor">
+            <button type="button" class="btn btn-nfk btn-default" data-toggle="tooltip" data-placement="left" title="Сохранить" id="save_btn" data-id="<?=$arResult['ELEMENT_ID']?>">
+                <span class="glyphicon glyphicon-floppy-disk"></span>
+            </button>
+            <button type="button" class="btn btn-nfk btn-default space_right" id="btn-edit" data-toggle="tooltip" data-placement="left" title="Включить редактирование текста" contenteditable="false"><span class="glyphicon glyphicon-pencil"></span></button>
             <button type="button" class="btn btn-nfk btn-default form_text js-disabled"  id="btn-nedittext" data-toggle="tooltip" data-placement="left" title="Запретить редактирование выделенного текста" disabled><span class="glyphicon glyphicon-ban-circle"></span></button>
+            <button type="button" class="btn btn-nfk btn-default space_right js-btn-data js-disabled" data-toggle="tooltip" data-placement="left" title="Вставить подстановку текущей даты" disabled><span class="glyphicon glyphicon-calendar"></span></button>
             <button type="button" class="btn btn-nfk btn-default form_text js-disabled" id="btn-bold" data-toggle="tooltip" data-placement="left" title="Жирный текст" contenteditable="false" disabled><span class="glyphicon glyphicon-bold"></span></button>
             <button type="button" class="btn btn-nfk btn-default form_text js-disabled" id="btn-italic" data-toggle="tooltip" data-placement="left" title="Курсив" contenteditable="false" disabled><span class="glyphicon glyphicon-italic"></span></button>
             <button type="button" class="btn btn-nfk btn-default form_text space_right js-disabled" id="btn-title" data-toggle="tooltip" data-placement="left" title="Заголовок" contenteditable="false" disabled><span class="glyphicon glyphicon-font"></span></button>
@@ -32,7 +36,7 @@ case 'N': ?>
                     <?endforeach?>
                 </div>
             <?else:?>
-                <div class="cardDogovor-boxViewText" id="canvas" contenteditable="false">
+                <div class="cardDogovor-boxViewText block" id="canvas" contenteditable="false">
                     <? echo $arResult["TEMPLATE_CONTENT"]["DETAIL_TEXT"] ;?>
                 </div>
             <?endif?>

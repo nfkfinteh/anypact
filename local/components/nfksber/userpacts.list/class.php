@@ -145,37 +145,57 @@ class CDemoSqr extends CBitrixComponent
 
         /* договора имеющие редакцию подписантов храняться в отдельнов инфоблоке
         выборка  данных договоров*/
-        $arFilter = [
-            'IBLOCK_ID'=>6,
-            'ACTIVE'=>'Y',
-            [
-                'LOGIC'=> 'OR',
-                ['=PROPERTY_USER_A'=> $userId],
-                ['=PROPERTY_USER_B'=> $userId]
-            ]
-        ];
-        $arSelect = [
-            'IBLOCK_ID',
-            'ID',
-            'NAME',
-            'TIMESTAMP_X'
-        ];
+        // $arFilter = [
+        //     'IBLOCK_ID'=>6,
+        //     'ACTIVE'=>'Y',
+        //     [
+        //         'LOGIC'=> 'OR',
+        //         ['=PROPERTY_USER_A'=> $userId],
+        //         ['=PROPERTY_USER_B'=> $userId]
+        //     ]
+        // ];
+        // $arSelect = [
+        //     'IBLOCK_ID',
+        //     'ID',
+        //     'NAME',
+        //     'TIMESTAMP_X'
+        // ];
 
-        $arRedaction = array();
+        // $arRedaction = array();
 
-        $res = CIBlockElement::GetList([], $arFilter, false, false, $arSelect);
-        while($obj = $res->GetNextElement(true, false)){
-            $arFields = $obj->GetFields();
-            $arRedaction[$arFields['ID']] = $arFields;
-            $arRedaction[$arFields['ID']]['PROPERTY'] = $obj->GetProperties();
+        // $res = CIBlockElement::GetList([], $arFilter, false, false, $arSelect);
+        // while($obj = $res->GetNextElement(true, false)){
+        //     $arFields = $obj->GetFields();
+        //     $arRedaction[$arFields['ID']] = $arFields;
+        //     $arRedaction[$arFields['ID']]['PROPERTY'] = $obj->GetProperties();
 
-            $dbUser = CUser::GetByID($arRedaction[$arFields['ID']]['PROPERTY']['USER_B']['VALUE']);
-            $arRedaction[$arFields['ID']]['USER_B'] = [
-                'NAME' => $dbUser->GetNext()['LOGIN'],
-                'LINK' => '/profile_user/?ID='.$arRedaction[$arFields['ID']]['PROPERTY']['USER_B']['VALUE']
-            ];
+        //     $send_user = $arRedaction[$arFields['ID']]['PROPERTY']['USER_B']['VALUE'];
 
-        }
+        //     if($arRedaction[$arFields['ID']]['PROPERTY']['USER_B']['VALUE'] == $userId)
+        //         $send_user = $arRedaction[$arFields['ID']]['PROPERTY']['USER_A']['VALUE'];
+
+        //     $dbUser = CUser::GetByID($send_user);
+        //     $arRedaction[$arFields['ID']]['PARAMS_SEND_USER'] = $dbUser->GetNext();
+        //     $arRedaction[$arFields['ID']]['PARAMS_SEND_USER']['IN'] = substr($arRedaction[$arFields['ID']]['PARAMS_SEND_USER']["LAST_NAME"], 0, 1);
+        //     $arRedaction[$arFields['ID']]['PERSONAL_PHOTO_SEND_USER']  = CFile::GetPath($arRedaction[$arFields['ID']]['PARAMS_SEND_USER']['PERSONAL_PHOTO']);
+        //     $arRedaction[$arFields['ID']]['USER_B'] = [
+        //         'NAME' => $arRedaction[$arFields['ID']]['PARAMS_SEND_USER']['LOGIN'],
+        //         'LINK' => '/profile_user/?ID='.$arRedaction[$arFields['ID']]['PROPERTY']['USER_B']['VALUE']
+        //     ];
+
+        //     $arRedaction[$arFields['ID']]['NAME_CONTRACT'] = array("ID" => $arRedaction[$arFields['ID']]['PROPERTY']['USER_B']['VALUE'], "NAME" => $arFields['NAME']);
+            
+        //     $arRedaction[$arFields['ID']]['UF_STATUS'] = 2;
+        //     if($arRedaction[$arFields['ID']]['PROPERTY']['USER_ID_INITIATOR']['VALUE'] == $userId)
+        //         $arRedaction[$arFields['ID']]['UF_STATUS'] = 4;
+        //     if($arRedaction[$arFields['ID']]['PROPERTY']['STATUS_TRADE']['VALUE'] == "0")
+        //         $arRedaction[$arFields['ID']]['UF_STATUS'] = 1;
+        //     if($arRedaction[$arFields['ID']]['PROPERTY']['STATUS_TRADE']['VALUE'] == 1)
+        //         $arRedaction[$arFields['ID']]['UF_STATUS'] = 0;
+        //     if($arRedaction[$arFields['ID']]['PROPERTY']['STATUS_TRADE']['VALUE'] == "0" && $arRedaction[$arFields['ID']]['PROPERTY']['USER_ID_INITIATOR']['VALUE'] != $userId)
+        //         $arRedaction[$arFields['ID']]['UF_STATUS'] = 3;
+
+        // }
 
         // договора изменные несколько раз
         $arFilter = Array(

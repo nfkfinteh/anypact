@@ -558,6 +558,56 @@ select:-webkit-autofill:focus {
     color: #ff6416;
 }
 
+#regpopup_bg_deal {
+    height: 100%;
+    position: fixed;
+    z-index: 1000;
+    width: 100%;
+    display: none;
+    left: 0;
+    top: 0;
+}
+
+#regpopup_bg_deal .regpopup_win #regpopup_close_deal {
+    cursor: pointer;
+}
+
+#regpopup_bg_deal .regpopup_win #regpopup_close_deal {
+    text-align: right;
+    padding: 7px 13px;
+}
+
+#regpopup_bg_deal .regpopup_win input.regpopup_content_form_input {
+    padding: 11px 18px;
+    margin-bottom: 17px;
+    background: #f1f4f4;
+    border: none;
+    width: 100%;
+    border-radius: 5px;
+}
+
+#regpopup_bg_deal .regpopup_win input.regpopup_content_form_submit, #regpopup_bg_deal .regpopup_win a.regpopup_content_form_submit {
+    width: 100%;
+    border: 1px solid #ff6416;
+    color: #ff6416;
+    background: none;
+    border-radius: 5px;
+    padding: 10px 30px;
+    margin: 25px 0;
+    display: inline-block;
+    text-align: center;
+}
+
+#regpopup_bg_deal .regpopup_win input.regpopup_content_form_submit:hover, #regpopup_bg_deal .regpopup_win a.regpopup_content_form_submit:hover {
+    color: #fff;
+    background: #ff6416;
+}
+
+#regpopup_bg_deal .regpopup_win .regpopup_content .regpopup_content_form_fild .regpopup_content_form_soglashenie {
+    margin-top: 7px;
+    font-size: 12px;
+}
+
 /* Окно инструкии для инструментов*/
 .popup_bg {
     background: url(img/popup_bg.png);
@@ -2232,14 +2282,14 @@ body,
 }
 
 .btn-nfk-invert {
-    color: #ffffff;
+    color: #ffffff !important;
     background-color: #ff6416;
-    border-color: #ff6416;
+    border-color: #ff6416 !important;
 }
 
 .btn-nfk-invert:hover {
-    color: #ff6416;
-    background-color: #ffffff;
+    color: #ff6416 !important;
+    background-color: #ffffff !important;
 }
 
 .container.bg-russia {

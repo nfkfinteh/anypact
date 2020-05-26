@@ -130,12 +130,22 @@ switch ($arResult['SEND_CONTRACT']) {
                             <!--форма подписания-->
                             <div class="regpopup_autorisation" id="regpopup_autarisation">
                                 <?
-                                    $APPLICATION->IncludeFile(SITE_TEMPLATE_PATH."/global_sign/attantion_sign.php", Array()); 
+                                    if (COption::GetOptionString("anypact", "block_gosuslugi", "Y") == "Y") {
+                                        $APPLICATION->IncludeFile(SITE_TEMPLATE_PATH."/global_sign/attantion_sign_whit_pass.php", Array());
+                                    }else{
+                                        $APPLICATION->IncludeFile(SITE_TEMPLATE_PATH."/global_sign/attantion_sign.php", Array());
+                                    }
                                 ?>
                                 <? //путь для возврата на эту страницу
                                     $returnURL = base64_encode($_SERVER['REQUEST_URI']);
+                                    if (COption::GetOptionString("anypact", "block_gosuslugi", "Y") == "Y") {
+                                        ?>
+                                        <a href="#" class="btn btn-nfk" id="reg_button_deal" style="width:45%;">Подписать</a>
+                                        <?
+                                    }else{
                                 ?>
-                                <a href="http://anypact.ru/profile/aut_esia.php?returnurl=<?=$returnURL?>" class="btn btn-nfk" id="ref_esia" style="width:45%;">Подписать</a>
+                                    <a href="http://anypact.ru/profile/aut_esia.php?returnurl=<?=$returnURL?>" class="btn btn-nfk" id="ref_esia" style="width:45%;">Подписать</a>
+                                <?}?>
                                 <button class="btn btn-nfk" id="close_sign_popup" style="width:45%">Отклонить</button>
                             </div>                        
                             </div>

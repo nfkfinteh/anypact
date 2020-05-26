@@ -56,13 +56,23 @@ switch ($arResult['SEND_CONTRACT']) {
                         <!--форма подписания-->
                         <div class="regpopup_autorisation" id="regpopup_autarisation">
                             <?
-                                $APPLICATION->IncludeFile(SITE_TEMPLATE_PATH."/global_sign/attantion_sign.php", Array()); 
+                            if (COption::GetOptionString("anypact", "block_gosuslugi", "Y") == "Y") {
+                                $APPLICATION->IncludeFile(SITE_TEMPLATE_PATH."/global_sign/attantion_sign_whit_pass.php", Array());
+                            }else{
+                                $APPLICATION->IncludeFile(SITE_TEMPLATE_PATH."/global_sign/attantion_sign.php", Array());
+                            }
                             ?>
                             <? //путь для возврата на эту страницу 
                                 $returnURL = base64_encode($_SERVER['REQUEST_URI']);
+                                if (COption::GetOptionString("anypact", "block_gosuslugi", "Y") == "Y") {
+                                    ?>
+                                    <a href="#" class="btn btn-nfk" id="reg_button_deal" style="width:45%;">Подписать</a>
+                                    <?
+                                }else{
                             ?>
-                            <a href="http://anypact.ru/profile/aut_esia.php?returnurl=<?=$returnURL?>" class="btn btn-nfk" id="ref_esia" style="width:45%;">Подписать</a>
-                            <button class="btn btn-nfk" id="recall_sign" data="<?=$_GET['ID']?>" data-user="1" style="width:45%">Отклонить</button>
+                                <a href="http://anypact.ru/profile/aut_esia.php?returnurl=<?=$returnURL?>" class="btn btn-nfk" id="ref_esia" style="width:45%;">Подписать</a>
+                            <?}?>
+                            <button class="btn btn-nfk" id="close_sign_popup" data="<?=$_GET['ID']?>" data-user="1" style="width:45%">Отклонить</button>
                         </div>                        
                         </div>
                     </div>
@@ -74,39 +84,39 @@ switch ($arResult['SEND_CONTRACT']) {
 <?break;
 // контракт подписан
 case 'Y':
-        ?>
-<noindex>
-    <div class="d-flex flex-column align-items-center text-center mt-5 pt-5 mb-5">
-        <img src="<?=SITE_TEMPLATE_PATH?>/image/ok_send.png" alt="Необходима регистрация">
-        <h3 class="text-uppercase font-weight-bold mt-3" style="max-width: 550px">Ваша подпись поставлена!</h3>
-        <p>Сейчас автоматически откроется страница с вашими договорами.</p>
-        <p>Если страница не открылась перейдите самостоятельно по ссылке <a href="/my_pacts/">/my_pacts/</a></p>
-    </div>
-    <script>
-        $(document).ready(function() {
-            console.log('Редирект начало');
-            setTimeout(function () {
-                replaceMypact();
-            }, 7000);
-
-            function replaceMypact(){
-                console.log('Редирект');
-                location.replace('/my_pacts/');
-            }
-        });
-    </script>
+?>
     <noindex>
-        <?break;
+        <div class="d-flex flex-column align-items-center text-center mt-5 pt-5 mb-5">
+            <img src="<?=SITE_TEMPLATE_PATH?>/image/ok_send.png" alt="Необходима регистрация">
+            <h3 class="text-uppercase font-weight-bold mt-3" style="max-width: 550px">Ваша подпись поставлена!</h3>
+            <p>Сейчас автоматически откроется страница с вашими договорами.</p>
+            <p>Если страница не открылась перейдите самостоятельно по ссылке <a href="/my_pacts/">/my_pacts/</a></p>
+        </div>
+        <script>
+            $(document).ready(function() {
+                console.log('Редирект начало');
+                setTimeout(function () {
+                    replaceMypact();
+                }, 7000);
+
+                function replaceMypact(){
+                    console.log('Редирект');
+                    location.replace('/my_pacts/');
+                }
+            });
+        </script>
+    <noindex>
+<?break;
         // ошибка ид ЕСИА несовпадает с ИД в профиле
-        case 'ERR_ID':
-        ?>
-        <noindex>
-            <div class="d-flex flex-column align-items-center text-center mt-5 pt-5 mb-5">
-                <img src="<?=SITE_TEMPLATE_PATH?>/image/err_send.png" alt="Необходима регистрация">
-                <h3 class="text-uppercase font-weight-bold mt-3" style="max-width: 550px">Ошибка подписания!</h3>
-                <p>Учетная запись на «Госуслугах» не совпадает с вашим профилем.</p>
-            </div>
-            <noindex>
+case 'ERR_ID':
+?>
+    <noindex>
+        <div class="d-flex flex-column align-items-center text-center mt-5 pt-5 mb-5">
+            <img src="<?=SITE_TEMPLATE_PATH?>/image/err_send.png" alt="Необходима регистрация">
+            <h3 class="text-uppercase font-weight-bold mt-3" style="max-width: 550px">Ошибка подписания!</h3>
+            <p>Учетная запись на «Госуслугах» не совпадает с вашим профилем.</p>
+        </div>
+    <noindex>
 <? break;
 }
 ?>

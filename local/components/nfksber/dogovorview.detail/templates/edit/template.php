@@ -39,7 +39,7 @@
                         <?endforeach?>
                     </div>
                 <?else:?>
-                    <div class="cardDogovor-boxViewText" id="canvas" contenteditable="false">
+                    <div class="cardDogovor-boxViewText block" id="canvas" contenteditable="false">
                         <? echo $arResult["TEMPLATE_CONTENT"]["DETAIL_TEXT"] ;?>
                     </div>
                 <?endif?>

@@ -46,6 +46,34 @@ $(document).ready(function(){
         console.log('popup sign')
         $('#send_sms').css('display', 'none')
     });
+
+    $('#close_sign_popup, #signpopup_close').on('click', function(){
+        $('#send_sms').css('display', 'none');
+    });
+
+    $('#reg_button_deal').on('click', function () {
+        $('#send_sms').css('display', 'none');
+        $('#regpopup_bg_deal').css('display', 'block');
+    });
+
+    $('#regpopup_close_deal').on('click', function () {
+        $('#regpopup_bg_deal').css('display', 'none');
+    });
+
+    $(document).on('click', '#submit_button_aut_user_deal', function(){
+        let login = document.getElementById('user_aut_login_deal').value
+        let password  = document.getElementById('user_aut_pass_deal').value
+        var res = getAutorisation(login, password).then(function(data) {
+            $result = JSON.parse(data);
+            if($result['TYPE']=='ERROR'){
+                document.getElementById('message_error_aut_deal').innerHTML = '&#8226; '+$result['VALUE'];
+            }
+            if($result['TYPE']=='SUCCES'){
+                location.reload();
+            }
+        });
+    });
+
 });
 
 

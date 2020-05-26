@@ -110,18 +110,18 @@ function formatSelectText(id_name) {
                     console.log('test');
                     //$(nedittext).append(range.startContainer.parentNode);
                     $(range.startContainer.parentNode).wrapInner(nedittext);
-                    range.insertNode(range.startContainer.parentNode);
+                    //range.insertNode(range.startContainer.parentNode);
                 }
                 else{
                     //для запрета редактирования внутри выделеного жирного или курсива
                     console.log('test2');
-                    if(
+                    /*if(
                         range.startContainer.parentNode.tagName == range.endContainer.parentNode.tagName &&
                         (range.startContainer.parentNode.tagName == 'B' || range.startContainer.parentNode.tagName == 'I')
                     ){
                         let wrap_text_format = document.createElement(range.startContainer.parentNode.tagName);
-                        sel_html = $(wrap_text_format).append(sel_html);
-                    }
+                        //sel_html = $(wrap_text_format).append(sel_html);
+                    }*/
                     $(nedittext).append(sel_html);
 
                     //заглушка
@@ -151,13 +151,26 @@ function formatSelectText(id_name) {
                 }
             }
         }
-        else if(range.startContainer.parentNode.innerText == sel_string){
+        else if(range.startContainer.parentNode.innerText.trim().replace(new RegExp("\n",'g'), '').replace(new RegExp("\r",'g'), '') == sel_string.trim().replace(new RegExp("\n",'g'), '').replace(new RegExp("\r",'g'), '')){
             console.log('удаление2');
+
+            $(range.startContainer.parentNode).remove();
+            if(sel_html.querySelector('nedittext') === null){
+                sel_html = sel_html.textContent;
+            }else{
+                sel_html = sel_html.querySelector('nedittext');
+                sel_html = sel_html.innerHTML;
+            }
+
+            let insert_space = document.createElement('text');
+            insert_space.innerHTML = sel_html;
+            range.insertNode(insert_space);
         }
         else {
             console.log('удаление части');
-            let arrayText = range.startContainer.parentNode.innerText.split(sel_string);
+            let arrayText = range.startContainer.parentNode.innerText.replace(new RegExp("\r\n",'g'), '<br>').replace(new RegExp("\n",'g'), '<br>').replace(new RegExp(" <br>",'g'), '<br>').split(sel_string.trim().replace(new RegExp("\r\n",'g'), '<br>').replace(new RegExp("\n",'g'), '<br>').replace(new RegExp(" <br>",'g'), '<br>'));
             if(range.startContainer.parentNode.tagName == key.toUpperCase()){
+                console.log('у1');
                 //если родительский елемент nedittext
                 $(range.startContainer.parentNode).remove();
                 if (range.startContainer.parentNode.innerText != sel_string) {
@@ -166,7 +179,11 @@ function formatSelectText(id_name) {
                         text.innerHTML = arrayText[1];
                         range.insertNode(text);
                     }
-                    if (sel_string && sel_string != undefined) range.insertNode(document.createTextNode(sel_string));
+                    if (sel_string && sel_string != undefined){
+                        let text = document.createElement('text');
+                        $(text).append(sel_html);
+                        range.insertNode(text);
+                    } 
                     let text2 = document.createElement(key);
                     if (text2 && arrayText[0] != undefined) {
                         text2.innerHTML = arrayText[0];
@@ -174,7 +191,9 @@ function formatSelectText(id_name) {
                     }
                 }
             }
-            else{
+            else
+            {
+                console.log('у2');
                 //если родительский елемент не nedittext
                 let text = document.createElement('text'),
                     textWrap = document.createElement('text');
@@ -220,18 +239,27 @@ function formatSelectTitle(id_name) {
     let arrTegs = {
         title: 'h4',
     }
-    if(range.startContainer.parentElement.tagName != arrTegs[key].toUpperCase()){
-        // удаляем его, что бы замнить
-        range.deleteContents();
-        let insert_space = document.createElement(arrTegs[key]);
-        insert_space.setAttribute('class', 'subtitle_contract');
-        insert_space.setAttribute('style', 'font-family: Roboto, sans-serif;');
-        insert_space.innerHTML = sel_string;
-        range.insertNode(insert_space);
-    }else{
-        let text = range.startContainer.parentNode.innerText;
-        $(range.startContainer.parentNode).remove();
-        range.insertNode(document.createTextNode(text));
+
+    let parentStartN = $(range.startContainer.parentElement).parents('nedittext').eq(0);
+    let parentEndN = $(range.endContainer.parentElement).parents('nedittext').eq(0);
+    if(
+        range.startContainer.parentElement.tagName != "NEDITTEXT" &&
+        range.endContainer.parentElement.tagName != "NEDITTEXT" &&
+        (parentStartN.length!==1 && parentEndN.length!==1)
+    ){
+        if(range.startContainer.parentElement.tagName != arrTegs[key].toUpperCase()){
+            // удаляем его, что бы замнить
+            range.deleteContents();
+            let insert_space = document.createElement(arrTegs[key]);
+            insert_space.setAttribute('class', 'subtitle_contract');
+            insert_space.setAttribute('style', 'font-family: Roboto, sans-serif;');
+            insert_space.innerHTML = sel_string;
+            range.insertNode(insert_space);
+        }else{
+            let text = range.startContainer.parentNode.innerText;
+            $(range.startContainer.parentNode).remove();
+            range.insertNode(document.createTextNode(text));
+        }
     }
 
     selection.modify("move", "right", "character");
@@ -465,6 +493,12 @@ $(document).ready(function() {
     });
 
     $(document).on('click touchstart', '#save_btn', function() {
+        $('nedittext[contenteditable="false"]').each( function () {
+            if ($(this).text() == "") {
+                $(this).remove();
+            }
+            $(this).attr('blockedit', true);
+        });
         let canvas_contr = $('.cardDogovor-boxViewText');
         let canvas_contr_context = String(canvas_contr.html());
         let id = $(this).attr('data-id');
@@ -538,14 +572,28 @@ $(document).ready(function() {
         var onof = on_contenteditable(canvas);
         var span_icon = $(this).find('span');
 
+        if (canvas.hasClass("block")) canvas.removeClass("block");
+        else canvas.addClass("block");
+
         if (onof) {
-            $(this).css("backgroundColor", "#ff6416", );
+            $(this).css("backgroundColor", "#ff6416");
             $(span_icon).css("color", "#fff");
             $('.js-disabled').attr('disabled', false);
         } else {
-            $(this).css("backgroundColor", "#fff", );
+            $(this).css("backgroundColor", "#fff");
             $(span_icon).css("color", "#ff6416");
             $('.js-disabled').attr('disabled', true);
+        }
+    });
+    
+    //установка даты
+    $(document).on('click', '.js-btn-data', function() {
+        if($('.cardDogovor-boxViewText').attr('contenteditable') == 'true' && $(window.getSelection().focusNode).parents('.cardDogovor-boxViewText').length) {
+            /*var date_ins = new Date();
+            insertTextAtCursor(date_ins.getDate() + '.' + date_ins.getMonth() + '.' + date_ins.getFullYear());*/
+            //var data_ins = "<edbox contenteditable='false'>%DATE%</edbox>";
+            var data_ins = "%DATE%";
+            insertTextAtCursor(data_ins);
         }
     });
 
@@ -641,6 +689,26 @@ $(document).ready(function() {
         ev.preventDefault();
     }, false);
 
+function insertAfter(elementInstertAfter, parentElement) {
+	return parentElement.parentNode.insertBefore(elementInstertAfter, parentElement.nextSibling);
+}
+
+    var uploadbtn = document.getElementById("uploadbtn");
+        uploadbtn.addEventListener('change', e => {
+        let label = e.target.labels[0];
+        label.innerText = 'Заменить файл';
+        label.classList.add("btn-nfk-invert");
+        if(e.target.nextSibling.nodeName == "P31")
+            e.target.nextSibling.remove();
+        var file_name = document.createElement("p31");
+        file_name.innerText = e.target.files[0].name;
+        insertAfter(file_name, e.target);
+        let load_contract = document.getElementById("load-contract");
+        let label_lc = document.querySelector(`[for="load-contract"]`);
+        load_contract.removeAttribute("disabled");
+        label_lc.classList.remove("disabled");
+    })
+
     $(document).on('click touchstart', '.cardDogovor-boxViewText', function() {
         $('.tools_redactor .btn-nfk-invert').removeClass('btn-nfk-invert');
         // получаем выделенный текст
@@ -667,6 +735,38 @@ $(document).ready(function() {
         $('.tools_redactor').show();
         $('#canvas').empty();
         $('#btn-edit').click();
+    });
+
+    $('#canvas').keydown(function (eventObject) {
+        if (eventObject.which == 8 || eventObject.which == 46) {
+            let selection = window.getSelection();
+            if (eventObject.which == 8 && selection.anchorNode.previousElementSibling !== null && selection.anchorNode.previousElementSibling.tagName !== null && selection.anchorNode.previousElementSibling.tagName == "NEDITTEXT" && selection.anchorOffset == 0) return false;
+            if (eventObject.which == 46 && selection.anchorNode.nextElementSibling !== null && selection.anchorNode.nextElementSibling.tagName !== null && selection.anchorNode.nextElementSibling.tagName == "NEDITTEXT" && selection.anchorOffset == selection.anchorNode.length) return false;
+            let range = selection.getRangeAt(0);
+            let sel_html = range.cloneContents();
+            if (sel_html.children.length > 0){
+                for(var i in sel_html.children){
+                    if(sel_html.children[i].tagName !== null && sel_html.children[i].tagName == "NEDITTEXT"){
+                        return false;
+                    }
+                }
+            }
+            if (sel_html.firstElementChild !== null && sel_html.firstElementChild.tagName == "NEDITTEXT") return false;
+            if (sel_html.lastElementChild !== null && sel_html.lastElementChild.tagName == "NEDITTEXT") return false;
+        }
+        let arKey = [32, 49, 50, 51, 52, 53, 54, 55, 56, 57, 48, 189, 187, 81, 87, 69, 82, 84, 89, 85, 73, 79, 80, 219, 221, 65, 83, 68, 70, 71, 72, 74, 75, 76, 186, 222, 220, 226, 90, 88, 67, 86, 66, 78, 77, 188, 190, 191, 111, 106, 109, 103, 104, 105, 107, 100, 101, 102, 97, 98, 99, 96, 110, 13, 192];
+        if (arKey.indexOf( eventObject.which ) != -1) {
+            let selection = window.getSelection();
+            let range = selection.getRangeAt(0);
+            let sel_html = range.cloneContents();
+            if (sel_html.children.length > 0){
+                for(var i in sel_html.children){
+                    if(sel_html.children[i].tagName !== null && sel_html.children[i].tagName == "NEDITTEXT"){
+                        return false;
+                    }
+                }
+            }
+        }
     });
 
 });

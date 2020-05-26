@@ -35,7 +35,7 @@ $APPLICATION->SetTitle("Поиск");
 		),
 		"SHOW_WHEN" => "N",
 		"AJAX_OPTION_ADDITIONAL" => "",
-		"USE_LANGUAGE_GUESS" => "N",
+		"USE_LANGUAGE_GUESS" => "Y",
 		"SHOW_RATING" => "",
 		"RATING_TYPE" => "",
 		"PATH_TO_USER_PROFILE" => "",

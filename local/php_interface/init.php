@@ -60,3 +60,34 @@ function checkUserCompany(){
         }
     }
 }
+
+AddEventHandler("main", "OnBuildGlobalMenu", "OnBuildGlobalMenu");
+function OnBuildGlobalMenu(&$arGlobalMenu, &$arModuleMenu)
+{
+	global $USER;
+	if(!$USER->IsAdmin())
+    return;
+
+    $arItems[] = array(
+        'parent_menu' => 'global_menu_anypact',
+        'section' => 'gosuslugi',
+        'sort' => 1,
+        'url' => 'anypact_gosuslugi.php?lang=' . LANGUAGE_ID,
+        'text' => 'Госуслуги',
+        'title' => 'Настройка госуслуг',
+        'icon' => 'gosuslugi_menu_icon',
+        'page_icon' => 'gosuslugi_page_icon',
+        'items_id' => 'menu_gosuslugi',
+        'items' => array()
+    );
+
+    $arGlobalMenu[] = array(
+        'menu_id' => 'anypact',
+        'text' => 'AnyPact',
+        'title' => 'Настройки сайта AnyPact',
+        'sort' => 550,
+        'item_id' => 'global_menu_anypact',
+        'help_section' => 'anypact',
+        'items' => $arItems
+    );
+}

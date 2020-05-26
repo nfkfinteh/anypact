@@ -194,4 +194,20 @@ edbox {
      .regpopup_win a.ref_esia, .regpopup_win #sign_edit_contract   {        
          margin-right: 24px !important;
      }
- }
+}
+
+nedittext[blockedit="true"]{
+    background: #ff6416e0;
+}
+
+#canvas.block{
+    background-color: #f1f4f4;
+}
+
+.block nedittext{
+    background: none;
+}
+
+.block rededittext{
+    background: none;
+}
