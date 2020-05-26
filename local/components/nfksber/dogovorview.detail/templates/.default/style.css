@@ -243,3 +243,15 @@ edbox {
 .container-img img {
     width: 100%;
 }
+
+#canvas.block{
+    background-color: #f1f4f4;
+}
+
+.block nedittext{
+    background: none;
+}
+
+.block rededittext{
+    background: none;
+}

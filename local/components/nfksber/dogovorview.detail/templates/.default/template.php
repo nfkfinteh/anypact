@@ -66,7 +66,7 @@ switch ($arResult['SEND_CONTRACT']) {
                 */?>
                 <? // если договор в сканах или файлах изображений ?>
                 <?if(!empty($arResult["DOGOVOR_IMG"][0]['URL'])):?>
-                    <div class="cardDogovor-boxViewText" id="canvas" contenteditable="false">
+                    <div class="cardDogovor-boxViewText block" id="canvas" contenteditable="false">
                         <?foreach ($arResult["DOGOVOR_IMG"] as $item):?>
                             <div class="document-img" style="text-align: center">
                                 <img src="<?=$item['URL']?>">
@@ -75,7 +75,7 @@ switch ($arResult['SEND_CONTRACT']) {
                         <?endforeach?>
                     </div>
                 <?else:?>
-                    <div class="cardDogovor-boxViewText" id="canvas" contenteditable="false">
+                    <div class="cardDogovor-boxViewText block" id="canvas" contenteditable="false">
                         <?=$arResult["CONTRACT_PROPERTY"]["CONTRACT"]["DETAIL_TEXT"]?>
                         <?
                         // вывод видимых реквизитов пользователя                    
