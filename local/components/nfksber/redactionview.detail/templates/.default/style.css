@@ -4,6 +4,7 @@
 .cardDogovor .cardDogovor-boxTool .btn {
     width: 100%;
     margin-bottom: 30px;
+    padding: 10px;
 }
 
 .cardDogovor .cardDogovor-boxViewText {
@@ -26,8 +27,8 @@
 .regpopup_win {
     background: #fff;
     padding: 20px;
-    top: 50%;
-    position: fixed;
+    top: 200px;
+    position: absolute;
     margin-top: -80px;
 }
 
@@ -78,9 +79,9 @@ edbox {
     margin-bottom: 10px;
 }
 
-.cardDogovor-boxViewText span:hover {
+/*.cardDogovor-boxViewText span:hover {
     color: #ff6416;
-}
+}*/
 
 .cardDogovor-boxViewText span img {
     width: 35px;
@@ -179,4 +180,90 @@ edbox {
 .changed{
     background: rgba(255, 100, 22, 0.35);
     font-weight: unset;
+}
+
+#canvas .edit-buttons-container{
+	display: none;
+}
+#canvas[contenteditable="true"] .edit-buttons-container{
+	display: block;
+}
+.add-row, .delete-row{
+	color: #ff6416 !important;
+	background-color: #ffffff;
+	border-color: #ff6416 !important;
+	border-radius: .25rem;
+	cursor: pointer;
+	width: 20px;
+	height: 20px;
+	margin-top: 3px;
+	position: relative;
+	opacity: .3;
+	transition: opacity .3s;
+}
+.add-row:hover, .delete-row:hover{
+	opacity: 1;
+}
+.add-row::before, .delete-row::before{
+	content: "";
+	width: 10px;
+	height: 2px;
+	background-color: #ff6416;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+.add-row::after{
+	content: "";
+	width: 2px;
+	height: 10px;
+	background-color: #ff6416;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+#signpopup_close {
+    cursor: pointer;
+    float: right;
+}
+
+.regpopup_win a.ref_esia, .regpopup_win #sign_edit_contract   {        
+    margin-right: 40px;
+}
+
+@media screen and (max-width: 520px){
+    .regpopup_win {
+         top: 40px;    
+         margin-top: 0 !important;
+         width: 100%;
+         left: 0;
+     }
+ 
+     .regpopup_win a.ref_esia, .regpopup_win #sign_edit_contract   {        
+         margin-right: 24px !important;
+     }
+ }
+
+ .container-img {
+    margin-bottom: 100px;
+    margin-top: 15px;
+}
+
+.container-img img {
+    width: 100%;
+}
+
+#canvas.block{
+    background-color: #f1f4f4;
+}
+
+.block nedittext{
+    background: none;
+}
+
+.block rededittext{
+    background: none;
 }

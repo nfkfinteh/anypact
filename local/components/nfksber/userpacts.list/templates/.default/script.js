@@ -92,4 +92,30 @@ $(document).ready(function(){
 
         return false;
     });
+    $('.deactive_send').on('click', function(e){
+        console.log('Отзыв подписи')
+        let id = $(this).attr('data');
+        
+        e.preventDefault();
+        let url = '/response/ajax/active_pact.php';        
+        let data = {
+            IDItem: id,
+            Active: 'N'
+        };
+
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: data,
+            success: function(result){
+                console.log(result);
+                if(result==1){
+                    location.reload()
+                }
+            },
+
+        });
+
+        return false;
+    });
 });

@@ -209,9 +209,17 @@ $arrStatusAwait = array(
                 <div class="d-md-none text-gray">Статус</div>
                 <div class="d-md-table-cell"><?=$arrStatus[$red['UF_STATUS']]?></div>
                 <div class="d-md-table-cell">
-                    <a href="#" data="<?=$red["ID"]?>" class="recall_send">Отклонить</a>
-                </div>                
-                <div class="d-md-table-cell"><a class="button-link" href="/my_pacts/send_contract/?ID=<?=$red["ID"]?>">Посмотреть</a></div>
+                    <?if ($red["IS_REDACTION"] == "Y") {?>
+                        <a href="#" data="<?=$red["ID"]?>" class="deactive_send">Отклонить</a>
+                    <?}else{?>
+                        <a href="#" data="<?=$red["ID"]?>" class="recall_send">Отклонить</a>
+                    <?}?>
+                </div>
+                <?if ($red["IS_REDACTION"] == "Y") {?>
+                    <div class="d-md-table-cell"><a class="button-link" href="/my_pacts/send_redaction/?ID=<?=$red["ID"]?>">Посмотреть</a></div>
+                <?}else{?>
+                    <div class="d-md-table-cell"><a class="button-link" href="/my_pacts/send_contract/?ID=<?=$red["ID"]?>">Посмотреть</a></div>
+                <?}?>
             </div>
         <!--//Запись в таблице--->
         <? } ?>
