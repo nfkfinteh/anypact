@@ -14,7 +14,7 @@ switch ($arResult['SEND_CONTRACT']) {
                     <li class="icon-document">
                         <span>Договор №1</span>                        
                         <button class="btn btn-nfk" id="sign_contract"  style="width:100%">Подписать договор</button>
-                        <a class="btn btn-nfk" href="/my_pacts/send_contract/edit/?ID=<?=$arResult["ID"]?>" style="width:100%; min-height: 47px; margin-top: 26px; padding: 10px;">Внести изменения</a>
+                        <?/*?><a class="btn btn-nfk" href="/my_pacts/send_contract/edit/?ID=<?=$arResult["ID"]?>" style="width:100%; min-height: 47px; margin-top: 26px; padding: 10px;">Внести изменения</a><?*/?>
                         <button class="btn btn-nfk" id="recall_sign" data="<?=$_GET['ID']?>" data-user="1" style="width:100%">Отклонить</button>
                     </li>
                 </ul>

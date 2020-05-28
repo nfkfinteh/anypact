@@ -398,6 +398,11 @@ class CDemoSqr extends CBitrixComponent
         return $resultDataProfile;
     }
 
+    private function setCompliteStatus() {
+        $el = new CIBlockElement();
+        $el -> update($this -> ID_CONTRACT, array("ACTIVE" => "N"));
+    }
+
     public function executeComponent()
     {
         global $USER;
@@ -510,6 +515,7 @@ class CDemoSqr extends CBitrixComponent
 
                     $this->sendEditContract(3, $_GET['ID_SENDITEM'], $Params);
                     $this->arResult['SEND_CONTRACT'] = 'Y';
+                    $this->setCompliteStatus();
                 } else {
                     // выводим ошибку
                     $this->arResult['SEND_CONTRACT'] = 'ERR_ID';
@@ -572,6 +578,7 @@ class CDemoSqr extends CBitrixComponent
                         $id_add_item = $this->sendContract(7, $Contract_params);
                     }
                     $this->arResult['SEND_CONTRACT'] = 'Y';
+                    $this->setCompliteStatus();
                 } else {
                     // выводим ошибку
                     $this->arResult['SEND_CONTRACT'] = 'ERR_ID';

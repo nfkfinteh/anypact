@@ -22,7 +22,9 @@ switch ($arResult['SEND_CONTRACT']) {
                     */?>
                         <?//if($arResult["USER_ID"] != $arResult['PROPERTY']['USER_ID_INITIATOR']['VALUE']):?>
                             <?//if($arResult["USER_ID"] != $arResult['SIGN_DOGOVOR']['UF_ID_USER_B']):?>
+                            <?if($arResult['USER_ID'] != $arResult["PROPERTY"]['USER_A']['VALUE']){?>
                                 <button class="btn btn-nfk" id="popup_send_contract" data="signed">Подписать договор</button>
+                            <?}?>
                             <?//endif?>
                             <?/*?><button class="btn btn-nfk" id="new_redaction" data-id_element="<?=$_GET['ID']?>">Изменить редакцию</button><?*/?>
                             <a href="/my_pacts/send_redaction/edit/?ID=<?=$_GET['ID']?>" class="btn btn-nfk" >Изменить редакцию</a>
