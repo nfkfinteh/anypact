@@ -78,8 +78,8 @@ class CDemoSqr extends CBitrixComponent
         $array_props["DOGOVOR_IMG"]     = $array_img_dogovor;
         $array_props["INCLUDE_FILES"]   = $array_unclude_file;
 
-        if(!empty($array_props["ID"])){
-            $this->ID_CONTRACT = $array_props["ID"];            
+        if(true){
+            $this->ID_CONTRACT = $id_element;            
         }
 
         return $array_props;
@@ -441,7 +441,7 @@ class CDemoSqr extends CBitrixComponent
             if(!empty($this->ID_CONTRACT)){
                 $this->arResult["TEMPLATE_CONTENT"] = $this->getElement($this->ID_CONTRACT);
                 //$this->arResult["TEMPLATE_CONTENT_PROPERTY"]    = $this->getMultyProperty(4, $this->arResult['TEMPLATE_CONTENT']['ID']);
-                $this->arResult["DOGOVOR_IMG"] = $this->getProperty(6, $this->ID_CONTRACT)['DOGOVOR_IMG'];
+                $this->arResult["DOGOVOR_IMG"] = $this->getProperty(4, $this->ID_CONTRACT)['DOGOVOR_IMG'];
             }
 
             //ополучаем данные по контракту
@@ -450,7 +450,7 @@ class CDemoSqr extends CBitrixComponent
             if(!empty($_GET["ID_TEMPLATE"])){                
                 $this->arResult["TEMPLATE_CONTENT"] = $this->getElement($_GET["ID_TEMPLATE"]);
                 $this->arResult["TEMPLATE_CONTENT_PROPERTY"]    = $this->getMultyProperty(5, $_GET["ID_TEMPLATE"]);
-                $this->arResult["DOGOVOR_IMG"] = $this->getProperty(6, $this->arResult["ELEMENT_ID"])['DOGOVOR_IMG'];
+                $this->arResult["DOGOVOR_IMG"] = $this->getProperty(4, $this->arResult["ELEMENT_ID"])['DOGOVOR_IMG'];
             }
 
             #поиск имеющихся своих редакций для этой сделки по пользователю
@@ -472,13 +472,13 @@ class CDemoSqr extends CBitrixComponent
         // статус подписанного контракта
         $this->arResult['SEND_CONTRACT'] = 'N';
         // если пользователь вернулся после авторизации ЕСИА        
-        if($_GET['code']){
-            /*
-                подписываем контракт
-                статусы подписания 1-подписан с одной стороны, 2- подписан с двух сторон, 3- изменен
-                контракт может подписываться с измененым текстом процедура подписания немного другая, в этом случае ЕСИА возвращает
-                GET - ID_SENDITEM уже созданной записи с измененным текстом
-            */
+         if($_GET['code']){
+            
+                // подписываем контракт
+                // статусы подписания 1-подписан с одной стороны, 2- подписан с двух сторон, 3- изменен
+                // контракт может подписываться с измененым текстом процедура подписания немного другая, в этом случае ЕСИА возвращает
+                // GET - ID_SENDITEM уже созданной записи с измененным текстом
+            
             if(!empty($_GET['ID_SENDITEM'])){
                 $urlEsia = $_SERVER['DOCUMENT_ROOT'] . "/esia_test";
                 include $urlEsia . "/Esia.php";
@@ -532,12 +532,12 @@ class CDemoSqr extends CBitrixComponent
                 $ESIA_ID = $UserParams['UF_ESIA_ID'];
                 // проверим идентификаторы из есиа и из профиля пользователя
                 if ($info['user_id'] == $ESIA_ID) {
-                    /*
-                        подписываем контракт
-                        статусы подписания 1-подписан с одной стороны, 2- подписан с двух сторон, 3- изменен
-                        контракт может подписываться с измененым текстом процедура подписания немного другая, в этом случае ЕСИА возвращает
-                        GET - ID_SEND уже созданной записи с измененным текстом
-                    */
+                    
+                        // подписываем контракт
+                        // статусы подписания 1-подписан с одной стороны, 2- подписан с двух сторон, 3- изменен
+                        // контракт может подписываться с измененым текстом процедура подписания немного другая, в этом случае ЕСИА возвращает
+                        // GET - ID_SEND уже созданной записи с измененным текстом
+                    
                     if (!empty($_GET['ID_SEND'])) {
                         echo "Договор подписан с изменениями" . $_GET['ID_SEND'];
                     } else {
