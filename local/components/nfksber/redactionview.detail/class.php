@@ -441,7 +441,7 @@ class CDemoSqr extends CBitrixComponent
             if(!empty($this->ID_CONTRACT)){
                 $this->arResult["TEMPLATE_CONTENT"] = $this->getElement($this->ID_CONTRACT);
                 //$this->arResult["TEMPLATE_CONTENT_PROPERTY"]    = $this->getMultyProperty(4, $this->arResult['TEMPLATE_CONTENT']['ID']);
-                $this->arResult["DOGOVOR_IMG"] = $this->getProperty(4, $this->ID_CONTRACT)['DOGOVOR_IMG'];
+                $this->arResult["DOGOVOR_IMG"] = $this->getProperty(6, $this->ID_CONTRACT)['DOGOVOR_IMG'];
             }
 
             //ополучаем данные по контракту
@@ -450,7 +450,7 @@ class CDemoSqr extends CBitrixComponent
             if(!empty($_GET["ID_TEMPLATE"])){                
                 $this->arResult["TEMPLATE_CONTENT"] = $this->getElement($_GET["ID_TEMPLATE"]);
                 $this->arResult["TEMPLATE_CONTENT_PROPERTY"]    = $this->getMultyProperty(5, $_GET["ID_TEMPLATE"]);
-                $this->arResult["DOGOVOR_IMG"] = $this->getProperty(4, $this->arResult["ELEMENT_ID"])['DOGOVOR_IMG'];
+                $this->arResult["DOGOVOR_IMG"] = $this->getProperty(6, $this->arResult["ELEMENT_ID"])['DOGOVOR_IMG'];
             }
 
             #поиск имеющихся своих редакций для этой сделки по пользователю
