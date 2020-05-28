@@ -78,8 +78,8 @@ class CDemoSqr extends CBitrixComponent
         $array_props["DOGOVOR_IMG"]     = $array_img_dogovor;
         $array_props["INCLUDE_FILES"]   = $array_unclude_file;
 
-        if(!empty($array_props["ID_DOGOVORA"]["VALUE"])){
-            $this->ID_CONTRACT = $array_props["ID_DOGOVORA"]["VALUE"];            
+        if(!empty($array_props["ID"])){
+            $this->ID_CONTRACT = $array_props["ID"];            
         }
 
         return $array_props;
