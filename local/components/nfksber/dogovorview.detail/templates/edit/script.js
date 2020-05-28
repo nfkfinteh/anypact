@@ -730,11 +730,16 @@ $(document).ready(function() {
             let selection = window.getSelection();
             if (eventObject.which == 8 && selection.anchorNode.previousElementSibling !== null && selection.anchorNode.previousElementSibling.tagName !== null && selection.anchorNode.previousElementSibling.tagName == "NEDITTEXT" && selection.anchorOffset == 0) return false;
             if (eventObject.which == 46 && selection.anchorNode.nextElementSibling !== null && selection.anchorNode.nextElementSibling.tagName !== null && selection.anchorNode.nextElementSibling.tagName == "NEDITTEXT" && selection.anchorOffset == selection.anchorNode.length) return false;
+            if (eventObject.which == 46 && selection.anchorNode.nextElementSibling === null && selection.anchorOffset == selection.anchorNode.length && (selection.anchorNode.parentElement.nextElementSibling.childNodes[0].nodeName == "NEDITTEXT" || (selection.anchorNode.parentElement.nextElementSibling.childNodes[0].nodeName == "#text" && selection.anchorNode.parentElement.nextElementSibling.childNodes[0].textContent.trim() == ""))) return false;
+            if (eventObject.which == 8 && selection.anchorNode.previousElementSibling === null && selection.anchorOffset == selection.anchorNode.length && (selection.anchorNode.parentElement.previousElementSibling.childNodes[0].nodeName == "NEDITTEXT" || (selection.anchorNode.parentElement.previousElementSibling.childNodes[0].nodeName == "#text" && selection.anchorNode.parentElement.previousElementSibling.childNodes[0].textContent.trim() == ""))) return false;
             let range = selection.getRangeAt(0);
             let sel_html = range.cloneContents();
-            if (sel_html.children.length > 0){
-                for(var i in sel_html.children){
-                    if(sel_html.children[i].tagName !== null && sel_html.children[i].tagName == "NEDITTEXT"){
+            if (sel_html.childNodes.length > 0){
+                if($(sel_html.childNodes).find('NEDITTEXT').length > 0){
+                    return false;
+                }
+                for(var i in sel_html.childNodes){
+                    if(sel_html.childNodes[i].tagName !== null && sel_html.childNodes[i].tagName == "NEDITTEXT"){
                         return false;
                     }
                 }
@@ -747,9 +752,12 @@ $(document).ready(function() {
             let selection = window.getSelection();
             let range = selection.getRangeAt(0);
             let sel_html = range.cloneContents();
-            if (sel_html.children.length > 0){
-                for(var i in sel_html.children){
-                    if(sel_html.children[i].tagName !== null && sel_html.children[i].tagName == "NEDITTEXT"){
+            if (sel_html.childNodes.length > 0){
+                if($(sel_html.childNodes).find('NEDITTEXT').length > 0){
+                    return false;
+                }
+                for(var i in sel_html.childNodes){
+                    if(sel_html.childNodes[i].tagName !== null && sel_html.childNodes[i].tagName == "NEDITTEXT"){
                         return false;
                     }
                 }

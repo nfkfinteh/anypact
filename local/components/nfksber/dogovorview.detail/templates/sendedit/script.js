@@ -448,6 +448,12 @@ $(document).ready(function() {
 
     //setHeaderFullName();
 
+    $('#select_type_user').on('change', function() {
+        let value = $(this).val();
+        setHeaderFullName(value);
+    });
+
+    /*
     // попап с подписанием
     $('#popup_send_contract').on('click', function(){
         console.log('окно для подписания')
@@ -457,7 +463,9 @@ $(document).ready(function() {
     $('#close_sign_popup, #signpopup_close').on('click', function(){
         $('#send_sms').css('display', 'none');
     });
+    */
 
+    /*
     // подписание договора с измененным текстом
     $('#sign_edit_contract').on('click', function(){
         let textContract = $('#canvas').html();
@@ -483,6 +491,7 @@ $(document).ready(function() {
 
         });
     });
+    */
 
     $(document).on('click touchstart', '#save_btn', function() {
         let canvas_contr = $('.cardDogovor-boxViewText');
@@ -510,7 +519,7 @@ $(document).ready(function() {
             if(result['TYPE']=='SUCCESS'){
                 preload('hide');
                 showResult('#popup-success', result['VALUE']);
-                window.location.href = "/pacts/view_pact/view_dogovor/?ELEMENT_ID="+result['ID'];
+                window.location.href = "/my_pacts/";
             }
 
         }
@@ -549,6 +558,79 @@ $(document).ready(function() {
         }
     });
 
+        //таблица с реквизитами
+        $(document).on('click', '.js-btn-rquised', function() {
+            if($('.cardDogovor-boxViewText').attr('contenteditable') == 'true' && $(window.getSelection().focusNode).parents('.cardDogovor-boxViewText').length) {
+                var data_ins = '<table class="detail_contract" border="1" cellspacing="0" cellpadding="0" style="border-collapse: collapse; width: 90%;margin: 5%;">' +
+                    '<thead>' +
+                    '<tr>' +
+                    '<td colspan="2">Исполнитель</td>' +
+                    '<td colspan="2">Заказчик</td>' +
+                    '</tr>' +
+                    '</thead>' +
+                    '<tbody>' +
+                    '<tr>' +
+                    '<td style="width: 25%;">ФИО</td>' +
+                    '<td style="width: 25%;">[____]</td>' +
+                    '<td style="width: 25%;">ФИО</td>' +
+                    '<td style="width: 25%;">[____]</td>' +
+                    '</tr>' +
+                    '<tr>' +
+                    '<td>Адрес</td>' +
+                    '<td>[____]</td>' +
+                    '<td>Адрес</td>' +
+                    '<td>[____]</td>' +
+                    '</tr>' +
+                    '<tr>' +
+                    '<td>Телефон</td>' +
+                    '<td>[____]</td>' +
+                    '<td>Телефон</td>' +
+                    '<td>[____]</td>' +
+                    '</tr>' +
+                    '<tr>' +
+                    '<td>Расчетные реквизиты</td>' +
+                    '<td>[____]</td>' +
+                    '<td>Расчетные реквизиты</td>' +
+                    '<td>[____]</td>' +
+                    '</tr>' +
+                    '</tbody>' +
+                    '</table>';
+                insertTextAtCursorRedact(data_ins);
+            }
+        });
+    
+        //ФИО
+        $(document).on('click', '.js-btn-fio', function() {
+            if($('.cardDogovor-boxViewText').attr('contenteditable') == 'true' && $(window.getSelection().focusNode).parents('.cardDogovor-boxViewText').length) {
+                var data_ins = user_req.NAME.VALUE;
+                insertTextAtCursor(data_ins);
+            }
+        });
+    
+        //Адрес
+        $(document).on('click', '.js-btn-address', function() {
+            if($('.cardDogovor-boxViewText').attr('contenteditable') == 'true' && $(window.getSelection().focusNode).parents('.cardDogovor-boxViewText').length) {
+                var data_ins = user_req.INDEX.VALUE+', '+user_req.REGION.VALUE+', '+user_req.CITY.VALUE+', '+user_req.STREET.VALUE+', '+user_req.HOUSE.VALUE;
+                insertTextAtCursor(data_ins);
+            }
+        });
+    
+        //ФИО Контрагента
+        $(document).on('click', '.js-btn-fio-contr', function() {
+            if($('.cardDogovor-boxViewText').attr('contenteditable') == 'true' && $(window.getSelection().focusNode).parents('.cardDogovor-boxViewText').length) {
+                var data_ins = '%FIO_CONTRAGENT%';
+                insertTextAtCursor(data_ins);
+            }
+        });
+    
+        //Адрес Контрагента
+        $(document).on('click', '.js-btn-adress-contr', function() {
+            if($('.cardDogovor-boxViewText').attr('contenteditable') == 'true' && $(window.getSelection().focusNode).parents('.cardDogovor-boxViewText').length) {
+                var data_ins = '%ADDRESS_CONTRAGENT%';
+                insertTextAtCursor(data_ins);
+            }
+        });
+
     $('#btn-data').on('click', function() {
         if($('.cardDogovor-boxViewText').attr('contenteditable') == 'true' && $(window.getSelection().focusNode).parents('.cardDogovor-boxViewText').length) {
             /*var date_ins = new Date();
@@ -558,6 +640,7 @@ $(document).ready(function() {
         }
     });
 
+    //кнопки редактирования текста
     $('.form_text').on('click', function() {
         if($('.cardDogovor-boxViewText').attr('contenteditable') == 'true' && $(window.getSelection().focusNode).parents('.cardDogovor-boxViewText').length) {
             let id_name = $(this).attr('id');
@@ -579,6 +662,18 @@ $(document).ready(function() {
         $(dom_nodes).focus();
 
     });
+
+        // ввод текста во всплывающем окне
+        $(document).on('focusout', '.input_text', function() {
+            let variable = $(this);
+            loadTextBox(variable);
+        });
+        $("body").keypress(function(e) {
+            if (e.which == 13) {
+                let variable = $('.input_text');
+                loadTextBox(variable);
+            }
+        });
 
     $(document).on('click touchstart', '.cardDogovor-boxViewText', function() {
         $('.tools_redactor .btn-nfk-invert').removeClass('btn-nfk-invert');

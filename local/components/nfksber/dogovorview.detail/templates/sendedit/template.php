@@ -6,13 +6,17 @@ case 'N': ?>
  <div class="tender cardDogovor" style="margin-bottom: 100px;">
     <div class="row">
         <div class="col-lg-3 col-md-3 col-sm-12">
-            <div class="cardDogovor-boxTool cardPact" style="margin-top: 8px;">
-				<button class="btn btn-nfk <?if(!empty($arResult["DOGOVOR_IMG"][0]['URL'])):?>canvas-img<?endif?>" id="popup_send_contract" data="signed">
-                	Подписать договор
-                </button>
+            <div class="cardDogovor-boxTool cardPact">
                 <h5>Вставить в договор:</h5>
+                <p>Вы можете вставить в текст договора автоподстановку следующих реквизитов:</p>
+                <button class="btn btn-nfk js-btn-rquised" data="signed">Таблица с реквизитами</button>
+                <button class="btn btn-nfk js-btn-fio" data="signed">Моё ФИО</button>
+                <button class="btn btn-nfk js-btn-address" data="signed">Мой Адрес</button>
+                <?/*<button class="btn btn-nfk js-btn-data" data="signed">Текущую дату</button>*/?>
+                <button class="btn btn-nfk js-btn-fio-contr" data="signed">ФИО Контрагента</button>
+                <button class="btn btn-nfk js-btn-adress-contr" data="signed">Адрес Контрагента</button>
             </div>
-        </div>               
+        </div>
         <div class="col-lg-9 col-md-9 col-sm-12">
         <div class="tools_redactor">
             <button type="button" class="btn btn-nfk btn-default" data-toggle="tooltip" data-placement="left" title="Сохранить" id="save_btn" data-id="<?=$arResult['ELEMENT_ID']?>">
