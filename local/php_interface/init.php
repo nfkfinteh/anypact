@@ -140,7 +140,7 @@ if(file_exists($_SERVER['DOCUMENT_ROOT'].'/local/php_interface/libraries/PHPMail
 
 function custom_mail($to, $subject, $message, $additional_headers, $additional_parameters)
 {
-    define("LOG_FILENAME", $_SERVER["DOCUMENT_ROOT"]."/custom_mail.log");
+    //define("LOG_FILENAME", $_SERVER["DOCUMENT_ROOT"]."/custom_mail.log");
     // Создаем письмо
     $mail = new PHPMailer();
 	$mail->SMTPDebug = true;
@@ -151,8 +151,12 @@ function custom_mail($to, $subject, $message, $additional_headers, $additional_p
     $mail->SMTPAuth   = true;          // Enable SMTP authentication
     $mail->Username   = 'info@anypact.ru';       // ваше имя пользователя (без домена и @)
     $mail->Password   = 'PKmR5g3k42';    // ваш пароль
-    $mail->SMTPSecure = 'ssl';         // шифрование ssl
+    $mail->SMTPSecure = 'tls';         // шифрование ssl
     $mail->Port   = 587;
+    $mail->SMTPDebug = SMTP::DEBUG_CONNECTION;
+    $mail->Debugoutput = function($str, $level) {
+        //AddMessage2Log("$level: $str", "SMTP Error");
+    };
     
     $mail->From = 'info@anypact.ru';
 	$mail->FromName = 'AnyPact';
@@ -161,8 +165,8 @@ function custom_mail($to, $subject, $message, $additional_headers, $additional_p
 	$mail->Body    = $message;
 	$mail->addAddress($to);
 	if(!$mail->send()) {
-        AddMessage2Log($mail->ErrorInfo, "ErrorInfo");
-	}
+        //AddMessage2Log($mail->ErrorInfo, "ErrorInfo");
+    }
 	$mail->clearAddresses();
 	$mail->ClearCustomHeaders();
 
