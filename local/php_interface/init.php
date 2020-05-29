@@ -133,7 +133,7 @@ function custom_mail($to, $subject, $message, $additional_headers, $additional_p
     require $_SERVER['DOCUMENT_ROOT'].'/local/php_interface/libraries/PHPMailer/PHPMailer.php';
     require $_SERVER['DOCUMENT_ROOT'].'/local/php_interface/libraries/PHPMailer/SMTP.php';
     // Создаем письмо
-    $mail = new PHPMailer();
+    $mail = new PHPMailer\PHPMailer\PHPMailer();
 	$mail->SMTPDebug = true;
 	$mail->isSMTP();
 	$mail->CharSet  = 'UTF-8';
