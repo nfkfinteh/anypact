@@ -137,20 +137,22 @@ if(file_exists($_SERVER['DOCUMENT_ROOT'].'/local/php_interface/libraries/PHPMail
     require_once $_SERVER['DOCUMENT_ROOT'].'/local/php_interface/libraries/PHPMailer/PHPMailer.php';
 if(file_exists($_SERVER['DOCUMENT_ROOT'].'/local/php_interface/libraries/PHPMailer/SMTP.php'))
     require_once $_SERVER['DOCUMENT_ROOT'].'/local/php_interface/libraries/PHPMailer/SMTP.php';
+
 function custom_mail($to, $subject, $message, $additional_headers, $additional_parameters)
 {
+    define("LOG_FILENAME", $_SERVER["DOCUMENT_ROOT"]."/custom_mail.log");
     // Создаем письмо
     $mail = new PHPMailer();
 	$mail->SMTPDebug = true;
 	$mail->isSMTP();
 	$mail->CharSet  = 'UTF-8';
 	$mail->setLanguage('ru');
-    $mail->Host   = 'post.nflsber.ru';  // Адрес SMTP сервера
+    $mail->Host   = 'post.nfksber.ru';  // Адрес SMTP сервера
     $mail->SMTPAuth   = true;          // Enable SMTP authentication
     $mail->Username   = 'info@anypact.ru';       // ваше имя пользователя (без домена и @)
     $mail->Password   = 'PKmR5g3k42';    // ваш пароль
     $mail->SMTPSecure = 'ssl';         // шифрование ssl
-    $mail->Port   = 587;               // порт подключения
+    $mail->Port   = 587;
     
     $mail->From = 'info@anypact.ru';
 	$mail->FromName = 'AnyPact';
@@ -159,7 +161,7 @@ function custom_mail($to, $subject, $message, $additional_headers, $additional_p
 	$mail->Body    = $message;
 	$mail->addAddress($to);
 	if(!$mail->send()) {
-		echo $mail->ErrorInfo;
+        AddMessage2Log($mail->ErrorInfo, "ErrorInfo");
 	}
 	$mail->clearAddresses();
 	$mail->ClearCustomHeaders();
