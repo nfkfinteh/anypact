@@ -161,7 +161,7 @@
             <div class="col-xl-8 col-md-12 col-sm-12 offset-xl-3">
                 <div class="form-group">
                     <label>О компании</label>
-                    <textarea name="PREVIEW_TEXT" maxlength="2000"><?=$arResult["COMPANY"]["PREVIEW_TEXT"]?></textarea>
+                    <textarea name="PREVIEW_TEXT" maxlength="4000"><?=$arResult["COMPANY"]["PREVIEW_TEXT"]?></textarea>
                 </div>
             </div>
         </div>
