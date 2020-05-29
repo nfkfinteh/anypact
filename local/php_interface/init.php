@@ -127,7 +127,7 @@ function OnBuildGlobalMenu(&$arGlobalMenu, &$arModuleMenu)
 	// if(!empty($aMenu["items"]))
 	// $aModuleMenu[] = $aMenu;
 }
-
+/*
 function custom_mail($to, $subject, $message, $additional_headers, $additional_parameters)
 {
     require $_SERVER['DOCUMENT_ROOT'].'/local/php_interface/libraries/PHPMailer/PHPMailer.php';
@@ -158,3 +158,4 @@ function custom_mail($to, $subject, $message, $additional_headers, $additional_p
 	$mail->ClearCustomHeaders();
 
 }
+*/
