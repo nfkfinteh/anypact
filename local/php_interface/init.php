@@ -130,11 +130,6 @@ function OnBuildGlobalMenu(&$arGlobalMenu, &$arModuleMenu)
 
 function custom_mail($to, $subject, $message, $additional_headers, $additional_parameters)
 {
-    $elements = imap_mime_header_decode($subject);
-	$title =  '';
-	for ($i=0; $i<count($elements); $i++) {
-		$title .= $elements[$i]->text;
-	}
     require $_SERVER['DOCUMENT_ROOT'].'/local/php_interface/libraries/PHPMailer/PHPMailer.php';
     require $_SERVER['DOCUMENT_ROOT'].'/local/php_interface/libraries/PHPMailer/SMTP.php';
     // Создаем письмо
