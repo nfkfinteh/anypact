@@ -75,7 +75,7 @@ $(document).ready(function(){
             },
             INN: {
                 required: true,
-                minlength: 12
+                minlength: 10
             },
             OGRN:{
                 required: true,

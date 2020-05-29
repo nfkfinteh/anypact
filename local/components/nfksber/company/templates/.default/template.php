@@ -58,7 +58,7 @@
                         </div>
                         <div class="form-group">
                             <label>ИНН *</label>
-                            <input name="INN" type="text" value="<?=$CompanyProprties['INN']['VALUE']?>" required maxlength="12" class="js-number">
+                            <input name="INN" type="text" value="<?=$CompanyProprties['INN']['VALUE']?>" required maxlength="10" class="js-number">
                         </div>
                         <label>* — поля, обязательные для заполнения</label>
                     </div>
@@ -161,7 +161,7 @@
             <div class="col-xl-8 col-md-12 col-sm-12 offset-xl-3">
                 <div class="form-group">
                     <label>О компании</label>
-                    <textarea name="PREVIEW_TEXT" maxlength="1000"><?=$arResult["COMPANY"]["PREVIEW_TEXT"]?></textarea>
+                    <textarea name="PREVIEW_TEXT" maxlength="2000"><?=$arResult["COMPANY"]["PREVIEW_TEXT"]?></textarea>
                 </div>
             </div>
         </div>
