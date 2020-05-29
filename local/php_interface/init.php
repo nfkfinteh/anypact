@@ -127,13 +127,20 @@ function OnBuildGlobalMenu(&$arGlobalMenu, &$arModuleMenu)
 	// if(!empty($aMenu["items"]))
 	// $aModuleMenu[] = $aMenu;
 }
-/*
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\SMTP;
+if(file_exists($_SERVER['DOCUMENT_ROOT'].'/local/php_interface/libraries/PHPMailer/Exception.php'))
+    require_once $_SERVER['DOCUMENT_ROOT'].'/local/php_interface/libraries/PHPMailer/Exception.php';
+if(file_exists($_SERVER['DOCUMENT_ROOT'].'/local/php_interface/libraries/PHPMailer/PHPMailer.php'))
+    require_once $_SERVER['DOCUMENT_ROOT'].'/local/php_interface/libraries/PHPMailer/PHPMailer.php';
+if(file_exists($_SERVER['DOCUMENT_ROOT'].'/local/php_interface/libraries/PHPMailer/SMTP.php'))
+    require_once $_SERVER['DOCUMENT_ROOT'].'/local/php_interface/libraries/PHPMailer/SMTP.php';
 function custom_mail($to, $subject, $message, $additional_headers, $additional_parameters)
 {
-    require $_SERVER['DOCUMENT_ROOT'].'/local/php_interface/libraries/PHPMailer/PHPMailer.php';
-    require $_SERVER['DOCUMENT_ROOT'].'/local/php_interface/libraries/PHPMailer/SMTP.php';
     // Создаем письмо
-    $mail = new PHPMailer\PHPMailer\PHPMailer();
+    $mail = new PHPMailer();
 	$mail->SMTPDebug = true;
 	$mail->isSMTP();
 	$mail->CharSet  = 'UTF-8';
@@ -142,7 +149,7 @@ function custom_mail($to, $subject, $message, $additional_headers, $additional_p
     $mail->SMTPAuth   = true;          // Enable SMTP authentication
     $mail->Username   = 'info@anypact.ru';       // ваше имя пользователя (без домена и @)
     $mail->Password   = 'PKmR5g3k42';    // ваш пароль
-    $mail->SMTPSecure = 'STARTTLS';         // шифрование ssl
+    $mail->SMTPSecure = 'ssl';         // шифрование ssl
     $mail->Port   = 587;               // порт подключения
     
     $mail->From = 'info@anypact.ru';
@@ -158,4 +165,3 @@ function custom_mail($to, $subject, $message, $additional_headers, $additional_p
 	$mail->ClearCustomHeaders();
 
 }
-*/
