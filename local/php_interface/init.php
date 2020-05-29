@@ -149,9 +149,9 @@ function custom_mail($to, $subject, $message, $additional_headers, $additional_p
 	$mail->setLanguage('ru');
     $mail->Host   = 'post.nfksber.ru';  // Адрес SMTP сервера
     $mail->SMTPAuth   = true;          // Enable SMTP authentication
-    $mail->Username   = 'info';       // ваше имя пользователя (без домена и @)
+    $mail->Username   = 'info@anypact.ru';       // ваше имя пользователя (без домена и @)
     $mail->Password   = 'PKmR5g3k42';    // ваш пароль
-    $mail->SMTPSecure = 'tls';         // шифрование ssl
+    $mail->SMTPSecure = 'ssl';         // шифрование ssl
     $mail->Port   = 587;
     
     $mail->From = 'info@anypact.ru';
