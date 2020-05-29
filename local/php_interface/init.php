@@ -128,59 +128,33 @@ function OnBuildGlobalMenu(&$arGlobalMenu, &$arModuleMenu)
 	// $aModuleMenu[] = $aMenu;
 }
 
-require_once 'Net/SMTP.php';
-
-/**
- * Отпраляем почту через SMTP-сервер GMail (пользователь: user@gmail.com).
- *
- * @see CEvent::HandleEvent()
- * @see bxmail()
- *
- * @param string $to Адрес получателя.
- * @param string $subject Тема.
- * @param string $message Текст сообщения.
- * @param string $additionalHeaders Дополнительные заголовки передаются Битриксом почти всегда ("FROM" передаётся здесь).
- *
- * @return bool
- */
-function custom_mail($to, $subject, $message, $additionalHeaders = '')
+function custom_mail($to, $subject, $message, $additional_headers, $additional_parameters)
 {
-   /*
-    * Настройки можно (нужно) вынести в админку, но это уже домашнее задание :)
-    */
-   $smtpServerHost         = 'ssl://post.nflsber.ru';
-   $smtpServerHostPort      = 587;
-   $smtpServerUser         = 'info@anypact.ru';
-   $smtpServerUserPassword   = 'PKmR5g3k42';
+    require $_SERVER['DOCUMENT_ROOT'].'/local/php_interface/libraries/PHPMailer/PHPMailer.php';
+    require $_SERVER['DOCUMENT_ROOT'].'/local/php_interface/libraries/PHPMailer/SMTP.php';
+    // Создаем письмо
+    $mail = new PHPMailer\PHPMailer\PHPMailer();
+	$mail->SMTPDebug = true;
+	$mail->isSMTP();
+	$mail->CharSet  = 'UTF-8';
+	$mail->setLanguage('ru');
+    $mail->Host   = 'post.nflsber.ru';  // Адрес SMTP сервера
+    $mail->SMTPAuth   = true;          // Enable SMTP authentication
+    $mail->Username   = 'info@anypact.ru';       // ваше имя пользователя (без домена и @)
+    $mail->Password   = 'PKmR5g3k42';    // ваш пароль
+    $mail->SMTPSecure = 'STARTTLS';         // шифрование ssl
+    $mail->Port   = 587;               // порт подключения
+    
+    $mail->From = 'info@anypact.ru';
+	$mail->FromName = 'AnyPact';
+	$mail->isHTML(true);
+	$mail->Subject = $text;
+	$mail->Body    = $message;
+	$mail->addAddress($to);
+	if(!$mail->send()) {
+		echo $mail->ErrorInfo;
+	}
+	$mail->clearAddresses();
+	$mail->ClearCustomHeaders();
 
-   if (!($smtp = new Net_SMTP($smtpServerHost, $smtpServerHostPort))) {
-      return false;
-   }
-   if (PEAR::isError($e = $smtp->connect())) {
-      return false;
-   }
-   if (PEAR::isError($e = $smtp->auth($smtpServerUser, $smtpServerUserPassword))) {
-      return false;
-   }
-
-   preg_match('/From: (.+)\n/i', $additionalHeaders, $matches);
-   list(, $from) = $matches;
-
-   $smtp->mailFrom($from);
-   $smtp->rcptTo($to);
-
-   /*
-    * Получаем идентификатор конца строки у Битрикса.
-    */
-   $eol = CAllEvent::GetMailEOL();
-
-   $additionalHeaders .= $eol . 'Subject: ' . $subject;
-
-   if (PEAR::isError($e = $smtp->data($additionalHeaders . "\r\n\r\n" . $message))) {
-      return false;
-   }
-
-   $smtp->disconnect();
-
-   return true;
 }
