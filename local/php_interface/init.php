@@ -90,4 +90,76 @@ function OnBuildGlobalMenu(&$arGlobalMenu, &$arModuleMenu)
         'help_section' => 'anypact',
         'items' => $arItems
     );
+
+    // echo "<pre>";
+    // var_dump($arModuleMenu);
+    // echo "</pre>";
+    
+	// $aMenu = array(
+    //     "parent_menu" => "global_menu_content",
+    //     "section" => "clouds",
+    //     "sort" => 150,
+    //     "text" => GetMessage("CLO_STORAGE_MENU"),
+    //     "title" => GetMessage("CLO_STORAGE_TITLE"),
+    //     "url" => "clouds_index.php?lang=".LANGUAGE_ID,
+    //     "icon" => "clouds_menu_icon",
+    //     "page_icon" => "clouds_page_icon",
+    //     "items_id" => "menu_clouds",
+    //     "more_url" => array(
+	// 	    "clouds_index.php",
+	//     ),
+	//     "items" => array()
+	// );
+	
+	// $aMenu["items"][] = array(
+	// 	"text" => $arBucket["BUCKET"],
+	// 	"url" => "clouds_file_list.php?lang=".LANGUAGE_ID."&bucket=".$arBucket["ID"]."&path=/",
+	// 	"more_url" => array(
+	// 	    "clouds_file_list.php?bucket=".$arBucket["ID"],
+	// 	),
+	// 	"title" => "",
+	// 	"page_icon" => "clouds_page_icon",
+	// 	"items_id" => "menu_clouds_bucket_".$arBucket["ID"],
+	// 	"module_id" => "clouds",
+	// 	"items" => array()
+	// );
+	
+	// if(!empty($aMenu["items"]))
+	// $aModuleMenu[] = $aMenu;
+}
+
+function custom_mail($to, $subject, $message, $additional_headers, $additional_parameters)
+{
+    $elements = imap_mime_header_decode($subject);
+	$title =  '';
+	for ($i=0; $i<count($elements); $i++) {
+		$title .= $elements[$i]->text;
+	}
+    require $_SERVER['DOCUMENT_ROOT'].'/local/php_interface/libraries/PHPMailer/PHPMailer.php';
+    require $_SERVER['DOCUMENT_ROOT'].'/local/php_interface/libraries/PHPMailer/SMTP.php';
+    // Создаем письмо
+    $mail = new PHPMailer();
+	$mail->SMTPDebug = true;
+	$mail->isSMTP();
+	$mail->CharSet  = 'UTF-8';
+	$mail->setLanguage('ru');
+    $mail->Host   = 'post.nflsber.ru';  // Адрес SMTP сервера
+    $mail->SMTPAuth   = true;          // Enable SMTP authentication
+    $mail->Username   = 'info@anypact.ru';       // ваше имя пользователя (без домена и @)
+    $mail->Password   = 'PKmR5g3k42';    // ваш пароль
+    $mail->SMTPSecure = 'STARTTLS';         // шифрование ssl
+    $mail->Port   = 587;               // порт подключения
+    
+    $mail->From = 'info@anypact.ru';
+	$mail->FromName = 'AnyPact';
+	$mail->isHTML(true);
+	$mail->Subject = $text;
+	$mail->Body    = $message;
+	$mail->addAddress($to);
+	if(!$mail->send()) {
+		echo $mail->ErrorInfo;
+	}
+	$mail->clearAddresses();
+	$mail->ClearCustomHeaders();
+
 }
