@@ -163,5 +163,21 @@ $(document).ready(function() {
         }
     });
 
+    $('.btn-company-delete').on('click', function (e) {
+        e.preventDefault();
+        let id = $(this).attr('data-company-id');
+        let url = '/profile/company/?id=' + id + '&remove=Y';
+        $('#delete_contact').attr('href', url);
+        $('#companyDeleteWarning').show();
+    });
+
+    $('#signpopup_close').on('click', function () {
+        $('#companyDeleteWarning').hide();
+    });
+
+    $('#close_sign_popup').on('click', function () {
+        $('#companyDeleteWarning').hide();
+    });
+
 
 });

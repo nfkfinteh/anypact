@@ -330,7 +330,7 @@ if (!empty($arResult['arUser']['UF_ESIA_ID']) && $arResult['arUser']['UF_ESIA_AU
                     <p><?=$arCompany['NAME']?></p>
                     <?if($arCompany['PROPERTY_DIRECTOR_ID_VALUE'] == $arResult['ID']):?>
                         <a href="/profile/company/?id=<?=$arCompany['ID']?>" class="btn btn-aut" style="margin-bottom:15px;">Изменить компанию</a>
-                        <a href="/profile/company/?id=<?=$arCompany['ID']?>&remove=Y" class="btn btn-aut">Удалить компанию</a>
+                        <a href="#" class="btn btn-aut btn-company-delete" data-company-id="<?=$arCompany['ID']?>">Удалить компанию</a>
                     <?else:?>
                         <a href="/profile/company/?id=<?=$arCompany['ID']?>" class="btn btn-aut" style="margin-bottom:15px;">Реквизиты компаниии</a>
                     <?endif?>
@@ -347,3 +347,24 @@ if (!empty($arResult['arUser']['UF_ESIA_ID']) && $arResult['arUser']['UF_ESIA_AU
 </div>
 </div>
 </div>
+
+    <!-- окно предупреждения удаления компании -- -->
+    <noindex>
+        <div id="companyDeleteWarning" class="bgpopup" >
+            <div class="container">
+                <div class="row align-items-center justify-content-center">            
+                    <div class="col-sm-12 col-md-8 col-lg-6 col-xl-6">
+                        <div class="regpopup_win">     
+                            <div id="signpopup_close">Х</div>                                       
+                            <div class="regpopup_autorisation">
+                                <label>Вы уверены что хотите удалить компанию?</label>
+                                <a href="#" class="btn btn-nfk" id="delete_contact" style="width:45%;">Удалить</a>
+                                <button class="btn btn-nfk" id="close_sign_popup" style="width:45%">Отмена</button>                      
+                            </div>
+                        </div>
+                    </div>            
+                </div>
+            </div>
+        </div>
+    </noindex>
+    <!-- \\окно предупреждения подписания по ЕСИА -->   
