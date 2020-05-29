@@ -479,7 +479,7 @@ select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
     /*-webkit-text-fill-color: #fff;*/
-    -webkit-box-shadow: 0 0 0px 1000px #f1f4f4 inset;
+    /*-webkit-box-shadow: 0 0 0px 1000px #f1f4f4 inset;*/
     -webkit-transition: background-color 5000s ease-in-out 0s;
     transition: background-color 5000s ease-in-out 0s;
 }
@@ -520,8 +520,6 @@ select:-webkit-autofill:focus {
     text-align: right;
     padding: 7px 13px;
 }
-
-#regpopup_bg .regpopup_win .regpopup_content {}
 
 #regpopup_bg .regpopup_win input.regpopup_content_form_input {
     padding: 11px 18px;
@@ -1312,8 +1310,6 @@ input::-webkit-input-placeholder {
     margin-top: 15px;
     margin-bottom: 17px;
 }
-
-.contact-container {}
 
 .contact-container a {
     color: black;
@@ -2214,10 +2210,6 @@ table.detail_contract, table.detail_contract thead, table.detail_contract tr, ta
 }
 
 @media screen and (max-width: 767px) {
-    .search .btn-search {
-        /*float: none;
-        margin-left: calc(50% - 80px);*/
-    }
     .search .deal-type::after {
         display: none;
     }
@@ -2675,8 +2667,6 @@ input::-webkit-input-placeholder {
     margin-top: 15px;
     margin-bottom: 17px;
 }
-
-.contact-container {}
 
 .contact-container a {
     color: black;
@@ -3688,7 +3678,7 @@ h4.subtitle_contract{
 .create-pact-btn{
     display: inline-block;
     position: relative;
-    float: left;
+    /*float: left;*/
 }
 .create-pact-btn a{
     display: block;
