@@ -350,7 +350,7 @@ if (!empty($arResult['arUser']['UF_ESIA_ID']) && $arResult['arUser']['UF_ESIA_AU
 
     <!-- окно предупреждения удаления компании -- -->
     <noindex>
-        <div id="companyDeleteWarning" class="bgpopup" >
+        <div id="companyDeleteWarning" class="bgpopup" style="display:none;">
             <div class="container">
                 <div class="row align-items-center justify-content-center">            
                     <div class="col-sm-12 col-md-8 col-lg-6 col-xl-6">
