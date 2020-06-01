@@ -215,8 +215,6 @@ Content-Transfer-Encoding: 8bit", $message_new);
 * Оригинальная кодировка UTF-8
 */
 
-smtp_mail('post.nfksber.ru', 587, 'info@anypact.ru', 'PKmR5g3k42', 'info@anypact.ru', 'AnyPact', 'test.mail.bitrix13@yandex.ru', 'Тема', 'Тест', 'ЗБС');
-
 function smtp_mail ($smtp,			// SMTP-сервер
           $port,			// порт SMTP-сервера
           $login,			// имя пользователя для доступа к почтовому ящику
@@ -234,10 +232,10 @@ function smtp_mail ($smtp,			// SMTP-сервер
     ob_implicit_flush();					// необязательный параметр, включает неявную очистку
 
 //    блок для других кодировок, отличных от UTF-8
-    $message = iconv("UTF-8","KOI8-R",$message); // конвертируем в koi8-r
-    $message = "Content-Type: text/plain; charset=\"koi8-r\"\r\nContent-Transfer-Encoding: 8bit\r\n\r\n".$message; // конвертируем в koi8-r
-    $subject=base64_encode(iconv("UTF-8","KOI8-R",$subject)); // конвертируем в koi8-r
-    $subject=base64_encode($subject); // конвертируем в koi8-r
+    //$message = iconv("UTF-8","KOI8-R",$message); // конвертируем в koi8-r
+    //$message = "Content-Type: text/plain; charset=\"koi8-r\"\r\nContent-Transfer-Encoding: 8bit\r\n\r\n".$message; // конвертируем в koi8-r
+    //$subject=base64_encode(iconv("UTF-8","KOI8-R",$subject)); // конвертируем в koi8-r
+    //$subject=base64_encode($subject); // конвертируем в koi8-r
 
   $from_name = base64_encode($from_name);
   $subject = base64_encode($subject);
