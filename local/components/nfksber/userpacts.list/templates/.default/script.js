@@ -71,8 +71,15 @@ $(document).ready(function(){
         console.log('Отзыв подписи')
         let id = $(this).attr('data');
         
+        $('#delete_deal').attr('data-type', 'recall_send');
+        $('#delete_deal').attr('data', id);
+        $('#dealDeleteWarning').show();
+
+        $('#deactive_send_label').hide();
+        $('#recall_send_label').show();
+
         e.preventDefault();
-        let url = '/response/ajax/deactive_send.php';        
+        /*let url = '/response/ajax/deactive_send.php';        
         let data = {
             IDItem: id            
         };
@@ -88,16 +95,57 @@ $(document).ready(function(){
                 }
             },
 
-        });
+        });*/
 
         return false;
     });
+
+    $('#delete_deal').on('click', function (e) {
+        e.preventDefault();
+        var id = $(this).attr('data');
+        if($(this).attr('data-type') == 'deactive_send'){
+            var url = '/response/ajax/active_pact.php';        
+            var data = {
+                IDElement: id,
+                Active: 'N'
+            };
+        }else if($(this).attr('data-type') == 'recall_send'){
+            var url = '/response/ajax/deactive_send.php';        
+            var data = {
+                IDItem: id            
+            };
+        }
+        console.log(url);
+        console.log(data);
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: data,
+            success: function(result){
+                console.log(result);
+                if(result==1){
+                    location.reload()
+                }
+            },
+
+        });
+        
+        return false;
+    })
+
     $('.deactive_send').on('click', function(e){
         console.log('Отзыв подписи')
         let id = $(this).attr('data');
         
+        $('#delete_deal').attr('data-type', 'deactive_send');
+        $('#delete_deal').attr('data', id);
+        $('#dealDeleteWarning').show();
+
+        $('#recall_send_label').hide();
+        $('#deactive_send_label').show();
+        
         e.preventDefault();
-        let url = '/response/ajax/active_pact.php';        
+        /*let url = '/response/ajax/active_pact.php';        
         let data = {
             IDItem: id,
             Active: 'N'
@@ -114,8 +162,16 @@ $(document).ready(function(){
                 }
             },
 
-        });
+        });*/
 
         return false;
+    });
+
+    $('#signpopup_close').on('click', function () {
+        $('#dealDeleteWarning').hide();
+    });
+
+    $('#close_sign_popup').on('click', function () {
+        $('#dealDeleteWarning').hide();
     });
 });

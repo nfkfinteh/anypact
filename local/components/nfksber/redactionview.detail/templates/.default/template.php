@@ -115,6 +115,26 @@ switch ($arResult['SEND_CONTRACT']) {
             </div>
         </div>
     </noindex>
+    <!-- \\окно предупреждения подписания по ЕСИА -->
+    <!-- окно предупреждения удаления сделки -- -->
+    <noindex>
+        <div id="dealDeleteWarning" class="bgpopup" style="display:none;">
+            <div class="container">
+                <div class="row align-items-center justify-content-center">            
+                    <div class="col-sm-12 col-md-8 col-lg-6 col-xl-6">
+                        <div class="regpopup_win">     
+                            <div id="signpopup_close_deal">Х</div>                                       
+                            <div class="regpopup_autorisation">
+                                <label>Вы уверены что хотите отклонить договор?</label>
+                                <a href="#" class="btn btn-nfk" id="delete_deal" data="<?=$_GET['ID']?>" style="width:45%;">Отклонить</a>
+                                <button class="btn btn-nfk" id="close_sign_popup_deal" style="width:45%">Отмена</button>                      
+                            </div>
+                        </div>
+                    </div>            
+                </div>
+            </div>
+        </div>
+    </noindex>
     <!-- \\окно предупреждения подписания по ЕСИА -->   
 <?break;
 // контракт подписан

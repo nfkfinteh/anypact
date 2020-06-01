@@ -10,7 +10,7 @@ $arrStatus = array(
 );
 // статусы договоров ожидающих подписи контрагентов
 $arrStatusAwait = array(
-    '', 'Ожидает подписи контрагентом', '', 'Изменен Вами и ожидает подписи контрагентом'
+    '', 'Ожидает подписи контрагентом', '', '', 'Изменен Вами и ожидает подписи контрагентом'
 );
 ?>
 <div class="d-flex flex-wrap align-items-center">
@@ -286,10 +286,19 @@ $arrStatusAwait = array(
                 <div class="d-md-none text-gray">Статус</div>
                 <div class="d-md-table-cell" style="width: 18%;"><?=$arrStatusAwait[$red['UF_STATUS']]?></div>
                 <div class="d-md-table-cell">
-                <a href="#" data="<?=$red["ID"]?>" class="recall_send">Отозвать подпись</a>
+                <?if ($red["IS_REDACTION"] == "Y") {?>
+                    <a href="#" data="<?=$red["ID"]?>" class="deactive_send">Отменить</a>
+                <?}else{?>
+                    <a href="#" data="<?=$red["ID"]?>" class="recall_send">Отозвать подпись</a>
+                <?}?>
                 </div>
                 <div class="d-md-table-cell">
-                    <a class="button-link" href="/my_pacts/signature_contract/?ID=<?=$red["ID"]?>">Посмотреть</a>
+                    <?if ($red["IS_REDACTION"] == "Y") {?>
+                        <a class="button-link" href="/my_pacts/send_redaction/?ID=<?=$red["ID"]?>">Посмотреть</a>
+                    <?}else{?>
+                        <a class="button-link" href="/my_pacts/signature_contract/?ID=<?=$red["ID"]?>">Посмотреть</a>
+                    <?}?>
+                    
                 </div>
             </div>
         <!--//Запись в таблице--->
@@ -354,3 +363,25 @@ $arrStatusAwait = array(
         });
     });
 </script>
+
+    <!-- окно предупреждения удаления сделки -- -->
+    <noindex>
+        <div id="dealDeleteWarning" class="bgpopup" style="display:none;">
+            <div class="container">
+                <div class="row align-items-center justify-content-center">            
+                    <div class="col-sm-12 col-md-8 col-lg-6 col-xl-6">
+                        <div class="regpopup_win">     
+                            <div id="signpopup_close">Х</div>                                       
+                            <div class="regpopup_autorisation">
+                                <label id="deactive_send_label">Вы уверены что хотите отклонить договор?</label>
+                                <label id="recall_send_label">Вы уверены что хотите отозвать подпись?</label>
+                                <a href="#" class="btn btn-nfk" id="delete_deal" style="width:45%;">Да</a>
+                                <button class="btn btn-nfk" id="close_sign_popup" style="width:45%">Отмена</button>                      
+                            </div>
+                        </div>
+                    </div>            
+                </div>
+            </div>
+        </div>
+    </noindex>
+    <!-- \\окно предупреждения подписания по ЕСИА -->   

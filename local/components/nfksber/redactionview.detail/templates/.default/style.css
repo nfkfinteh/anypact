@@ -267,3 +267,26 @@ edbox {
 .block rededittext{
     background: none;
 }
+
+#dealDeleteWarning {
+    height: 100%;
+    position: fixed;
+    z-index: 1000;
+    width: 100%;
+    /* display: none; */
+    left: 0;
+    top: 0;
+}
+
+.regpopup_win{
+    background: #fff;
+    padding: 20px;
+    top: 200px;
+    position: absolute;
+    margin-top: -80px;
+}
+
+div#signpopup_close_deal {
+    cursor: pointer;
+    float: right;
+}

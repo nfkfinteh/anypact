@@ -6,6 +6,9 @@ use Bitrix\Main\Entity;
 
 class CDemoSqr extends CBitrixComponent
 {   
+
+    private $redactionMe = array();
+
     public function onPrepareComponentParams($arParams)
     {
         $result = array(
@@ -196,6 +199,12 @@ class CDemoSqr extends CBitrixComponent
                 $arRedaction[$arFields['ID']]['UF_STATUS'] = 3;
 
             $arRedaction[$arFields['ID']]['IS_REDACTION'] = "Y";
+
+            if($arRedaction[$arFields['ID']]['UF_STATUS'] == 4){
+                $this -> redactionMe[$arFields['ID']] = $arRedaction[$arFields['ID']];
+                unset($arRedaction[$arFields['ID']]);
+            }
+
         }
 
         // договора изменные несколько раз
@@ -259,7 +268,7 @@ class CDemoSqr extends CBitrixComponent
          );
         $arEdit_Send_Contract = $this->getSendContracts($UserID, $arFilter, false);        
         
-        $return_array = array_merge($arSend_Contract, $arEdit_Send_Contract);
+        $return_array = array_merge($arSend_Contract, $arEdit_Send_Contract, $this -> redactionMe);
         return $return_array;
     }
 
@@ -395,3 +404,5 @@ class CDemoSqr extends CBitrixComponent
         return $this->arResult;
     }
 };
+
+?>
