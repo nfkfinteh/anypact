@@ -140,6 +140,18 @@ function OnBuildGlobalMenu(&$arGlobalMenu, &$arModuleMenu)
 
 function custom_mail($to, $subject, $message, $additional_headers, $additional_parameters)
 {
+    $message_new = explode("Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit", $message)[1];
+
+    list($message_alt, $message_html) = explode("Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: 8bit", $message_new);
+
+     if(empty($message_html)){
+         $message_html = $message;
+    }else{
+         $message_html = substr($message_html, 0, -26);
+        $message_alt = substr($message_alt, 0, -24);
+     }
     smtp_mail('post.nfksber.ru', 587, 'info@anypact.ru', 'PKmR5g3k42', 'info@anypact.ru', 'AnyPact', $to, $subject, $message, 'ok');
 //     define("LOG_FILENAME", $_SERVER["DOCUMENT_ROOT"]."/custom_mail.log");
 //     // Создаем письмо
@@ -217,15 +229,15 @@ function smtp_mail ($smtp,			// SMTP-сервер
           $res)			// сообщение, выводимое при успешной отправке
 {	
 
-//    header('Content-Type: text/plain;');	// необязательный параметр, особенно если включаем через include()
-//    error_reporting(E_ALL ^ E_WARNING);	// необязательный параметр, включает отображение всех ошибок и предупреждений
-//    ob_implicit_flush();					// необязательный параметр, включает неявную очистку
+    header('Content-Type: text/plain;');	// необязательный параметр, особенно если включаем через include()
+    error_reporting(E_ALL ^ E_WARNING);	// необязательный параметр, включает отображение всех ошибок и предупреждений
+    ob_implicit_flush();					// необязательный параметр, включает неявную очистку
 
 //    блок для других кодировок, отличных от UTF-8
-//    $message = iconv("UTF-8","KOI8-R",$message); // конвертируем в koi8-r
-//    $message = "Content-Type: text/plain; charset=\"koi8-r\"\r\nContent-Transfer-Encoding: 8bit\r\n\r\n".$message; // конвертируем в koi8-r
-//    $subject=base64_encode(iconv("UTF-8","KOI8-R",$subject)); // конвертируем в koi8-r
-//    $subject=base64_encode($subject); // конвертируем в koi8-r
+    $message = iconv("UTF-8","KOI8-R",$message); // конвертируем в koi8-r
+    $message = "Content-Type: text/plain; charset=\"koi8-r\"\r\nContent-Transfer-Encoding: 8bit\r\n\r\n".$message; // конвертируем в koi8-r
+    $subject=base64_encode(iconv("UTF-8","KOI8-R",$subject)); // конвертируем в koi8-r
+    $subject=base64_encode($subject); // конвертируем в koi8-r
 
   $from_name = base64_encode($from_name);
   $subject = base64_encode($subject);
