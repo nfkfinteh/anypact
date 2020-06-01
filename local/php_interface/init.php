@@ -140,7 +140,7 @@ if(file_exists($_SERVER['DOCUMENT_ROOT'].'/local/php_interface/libraries/PHPMail
 
 function custom_mail($to, $subject, $message, $additional_headers, $additional_parameters)
 {
-    //define("LOG_FILENAME", $_SERVER["DOCUMENT_ROOT"]."/custom_mail.log");
+    define("LOG_FILENAME", $_SERVER["DOCUMENT_ROOT"]."/custom_mail.log");
     // Создаем письмо
     $mail = new PHPMailer();
 	$mail->SMTPDebug = true;
@@ -151,21 +151,36 @@ function custom_mail($to, $subject, $message, $additional_headers, $additional_p
     $mail->SMTPAuth   = true;          // Enable SMTP authentication
     $mail->Username   = 'info@anypact.ru';       // ваше имя пользователя (без домена и @)
     $mail->Password   = 'PKmR5g3k42';    // ваш пароль
-    $mail->SMTPSecure = 'tls';         // шифрование ssl
+    $mail->SMTPSecure = 'starttls';         // шифрование ssl
     $mail->Port   = 587;
-    $mail->SMTPDebug = SMTP::DEBUG_CONNECTION;
-    $mail->Debugoutput = function($str, $level) {
-        //AddMessage2Log("$level: $str", "SMTP Error");
-    };
-    
+    //$mail->SMTPDebug = SMTP::DEBUG_CONNECTION;
+
+    $message = explode("Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit", $message)[1];
+
+    list($message_alt, $message_html) = explode("Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: 8bit", $message);
+    AddMessage2Log($message_alt, "message_alt");
+    AddMessage2Log($message_html, "message_html");
+
+    if(empty($message_html)){
+        $message_html = $message;
+    }else{
+        $message_html = substr($message_html, 0, -26);
+        $message_alt = substr($message_alt, 0, -24);
+    }
+
+
     $mail->From = 'info@anypact.ru';
 	$mail->FromName = 'AnyPact';
 	$mail->isHTML(true);
-	$mail->Subject = $text;
-	$mail->Body    = $message;
+	$mail->Subject = $subject;
+    $mail->Body = $message_html;
+    $mail->AltBody = $message_alt;
+    $mail->addCustomHeader($additional_headers);
 	$mail->addAddress($to);
 	if(!$mail->send()) {
-        //AddMessage2Log($mail->ErrorInfo, "ErrorInfo");
+        AddMessage2Log($mail->ErrorInfo, "ErrorInfo");
     }
 	$mail->clearAddresses();
 	$mail->ClearCustomHeaders();
