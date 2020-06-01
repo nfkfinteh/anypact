@@ -154,12 +154,15 @@ function custom_mail($to, $subject, $message, $additional_headers, $additional_p
     $mail->SMTPSecure = 'tls';         // шифрование ssl
     $mail->Port   = 587;
     $mail->SMTPDebug = SMTP::DEBUG_CONNECTION;
+    $mail->Debugoutput = function($str, $level) {
+        AddMessage2Log("$level: $str", "SMTP Error");
+    };
 
-    $message = explode("Content-Type: text/plain; charset=UTF-8
+    $message_new = explode("Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit", $message)[1];
 
     list($message_alt, $message_html) = explode("Content-Type: text/html; charset=UTF-8
-Content-Transfer-Encoding: 8bit", $message);
+Content-Transfer-Encoding: 8bit", $message_new);
 
     if(empty($message_html)){
         $message_html = $message;
