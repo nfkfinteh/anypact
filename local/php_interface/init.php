@@ -137,7 +137,7 @@ if(file_exists($_SERVER['DOCUMENT_ROOT'].'/local/php_interface/libraries/PHPMail
     require_once $_SERVER['DOCUMENT_ROOT'].'/local/php_interface/libraries/PHPMailer/PHPMailer.php';
 if(file_exists($_SERVER['DOCUMENT_ROOT'].'/local/php_interface/libraries/PHPMailer/SMTP.php'))
     require_once $_SERVER['DOCUMENT_ROOT'].'/local/php_interface/libraries/PHPMailer/SMTP.php';
-/*
+
 function custom_mail($to, $subject, $message, $additional_headers, $additional_parameters)
 {
     define("LOG_FILENAME", $_SERVER["DOCUMENT_ROOT"]."/custom_mail.log");
@@ -185,4 +185,4 @@ Content-Transfer-Encoding: 8bit", $message_new);
 	$mail->clearAddresses();
 	$mail->ClearCustomHeaders();
 
-}*/
+}
