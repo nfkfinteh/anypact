@@ -151,7 +151,7 @@ function custom_mail($to, $subject, $message, $additional_headers, $additional_p
     $mail->SMTPAuth   = true;          // Enable SMTP authentication
     $mail->Username   = 'info@anypact.ru';       // ваше имя пользователя (без домена и @)
     $mail->Password   = 'PKmR5g3k42';    // ваш пароль
-    $mail->SMTPSecure = 'tls';         // шифрование ssl
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         // шифрование ssl
     $mail->Port   = 587;
     $mail->SMTPDebug = SMTP::DEBUG_CONNECTION;
     $mail->Debugoutput = function($str, $level) {
