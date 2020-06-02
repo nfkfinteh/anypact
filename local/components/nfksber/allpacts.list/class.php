@@ -51,7 +51,7 @@ class CDemoSqr extends CBitrixComponent
                 $arFilter['INCLUDE_SUBSECTIONS'] = 'Y';
             }
 
-            $res = CIBlockElement::GetList(Array(), array_merge($arFilter, $arrFilter), false, $arNavParams, $arSelect);
+            $res = CIBlockElement::GetList(Array("rand" => "asc"), array_merge($arFilter, $arrFilter), false, $arNavParams, $arSelect);
             // перебираем элементы
             while($ob = $res->GetNextElement())
             {
