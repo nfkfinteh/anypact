@@ -141,29 +141,25 @@ if(file_exists($_SERVER['DOCUMENT_ROOT'].'/local/php_interface/libraries/PHPMail
 function custom_mail($to, $subject, $message, $additional_headers, $additional_parameters)
 {
     define("LOG_FILENAME", $_SERVER["DOCUMENT_ROOT"]."/custom_mail.log");
-    // Создаем письмо
     $mail = new PHPMailer();
-	$mail->SMTPDebug = true;
-	$mail->isSMTP();
-	$mail->CharSet  = 'UTF-8';
-	$mail->setLanguage('ru');
-    $mail->Host   = 'post.nfksber.ru';  // Адрес SMTP сервера
-    $mail->SMTPAuth   = true;          // Enable SMTP authentication
-    $mail->Username   = 'info@anypact.ru';       // ваше имя пользователя (без домена и @)
-    $mail->Password   = 'PKmR5g3k42';    // ваш пароль
-    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         // шифрование ssl
-    $mail->Port   = 587;
-    $mail->SMTPDebug = SMTP::DEBUG_CONNECTION;
-    $mail->Debugoutput = function($str, $level) {
-        AddMessage2Log("$level: $str", "SMTP Error");
-    };
+    $mail->isSMTP();
+    $mail->SMTPDebug = 2;
+    $mail->Host = 'post.nfksber.ru';
+    $mail->Port = 587;
+    $mail->SMTPAuth = true;
+    $mail->Username = 'info@anypact.ru';
+    $mail->Password = 'PKmR5g3k42';
+    $mail->setFrom('info@anypact.ru', 'AnyPact');
+    $mail->addAddress($to);
+    $mail->CharSet  = 'UTF-8';
+    $mail->Subject = $subject;
 
     $message_new = explode("Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit", $message)[1];
-
+    
     list($message_alt, $message_html) = explode("Content-Type: text/html; charset=UTF-8
 Content-Transfer-Encoding: 8bit", $message_new);
-
+    
     if(empty($message_html)){
         $message_html = $message;
     }else{
@@ -171,16 +167,21 @@ Content-Transfer-Encoding: 8bit", $message_new);
         $message_alt = substr($message_alt, 0, -24);
     }
 
-    $mail->From = 'info@anypact.ru';
-	$mail->FromName = 'AnyPact';
-	$mail->isHTML(true);
-	$mail->Subject = $subject;
-    $mail->Body = $message_html;
+    $mail->msgHTML($message_html);
     $mail->AltBody = $message_alt;
-    $mail->addCustomHeader($additional_headers);
-	$mail->addAddress($to);
-	if(!$mail->send()) {
-        AddMessage2Log($mail->ErrorInfo, "ErrorInfo");
+
+    $mail->SMTPOptions = array(
+        'ssl' => array(
+        'verify_peer' => false,
+        'verify_peer_name' => false,
+        'allow_self_signed' => true
+    )
+    );
+
+    if (!$mail->send()) {
+        AddMessage2Log($mail->ErrorInfo, 'ErrorInfo');
+    } else {
+        //echo 'Message sent!';
     }
 	$mail->clearAddresses();
 	$mail->ClearCustomHeaders();
