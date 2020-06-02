@@ -143,7 +143,7 @@ function custom_mail($to, $subject, $message, $additional_headers, $additional_p
     define("LOG_FILENAME", $_SERVER["DOCUMENT_ROOT"]."/custom_mail.log");
     $mail = new PHPMailer();
     $mail->isSMTP();
-    $mail->SMTPDebug = 2;
+    //$mail->SMTPDebug = 2;
     $mail->Host = 'post.nfksber.ru';
     $mail->Port = 587;
     $mail->SMTPAuth = true;
