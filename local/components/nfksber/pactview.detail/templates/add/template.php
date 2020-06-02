@@ -103,7 +103,7 @@ if(!empty($arResult['FORM_SDELKA']['adCity'])){
                     <div id="header" class="search-map_input">
                         <input type="text" id="suggest" class="input-search_map" placeholder="Введите адрес">
                         <input type="hidden" id="COORDINATES_AD" name="COORDINATES_AD" value="<?=$arResult['FORM_SDELKA']['adCoordinates']?>">
-                        <button type="submit" id="check-button_map" class="btn btn-nfk btn-search_map">Поиск</button>
+                        <button type="button" id="check-button_map" class="btn btn-nfk btn-search_map">Поиск</button>
                     </div>
                     <div class="cardPact__title">
                         <h3>Местоположение</h3>

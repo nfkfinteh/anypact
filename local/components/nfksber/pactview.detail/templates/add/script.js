@@ -464,7 +464,7 @@ $(document).ready(function() {
 
     function displayButton(){
         $('#check-button_map').show();
-        $('.input-search_map').css('width', '70%');
+        //$('.input-search_map').css('width', '70%');
     }
 
     $(document).on('click', '#add_dogovor', function(e){
