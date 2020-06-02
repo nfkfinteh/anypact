@@ -14,7 +14,7 @@ $arrStatusAwait = array(
 );
 ?>
 <div class="d-flex flex-wrap align-items-center">
-    <h5>Мои предложения</h5>
+    <h5>Мои предложения <?if(!empty($arResult["INFOBLOCK_LIST"]["ARR_SDELKI"])){?>(<?=count($arResult["INFOBLOCK_LIST"]["ARR_SDELKI"])?>)<?}?></h5>
     <button class="info-btn">?</button>
     <div class="info-content">В данном разделе содержатся Ваши предложения о заключении сделок.</div>
     <a href="/my_pacts/edit_my_pact/?ACTION=ADD" class="btn btn-nfk btn-add-contract ml-auto <?if($arResult['USER']['UF_ESIA_AUT']!=1):?>disabled<?endif?>">
@@ -32,13 +32,13 @@ $arrStatusAwait = array(
                     <div class="d-md-table-cell"></div>
                     <!-- кнопки близко, удаление только из карточки <div class="d-md-table-cell"></div>  -->              
                 </div>
-                <? foreach ($arResult["INFOBLOCK_LIST"]["ARR_SDELKI"] as $pact) { // выборка объявлений ?>
+                <? foreach ($arResult["INFOBLOCK_LIST"]["ARR_SDELKI"] as $key => $pact) { // выборка объявлений ?>
                 <!--Запись в таблице--->
                     <div class="d-flex d-md-none justify-content-between collapse-header">
                         <div><?= $pact["NAME"] ?></div>
                         <div class="collapse-arrow position-relative"></div>
                     </div>
-                    <div class="d-md-table-row collapse-body">
+                    <div class="d-md-table-row collapse-body" <?if(array_key_first($arResult["INFOBLOCK_LIST"]["ARR_SDELKI"]) !== $key){?>style="display: none;"<?}?>>
                         <div class="d-md-none text-gray"></div>
                         <div class="first-face d-md-table-cell">
                             <span class="d-flex align-items-center">
@@ -80,6 +80,11 @@ $arrStatusAwait = array(
                 <!--//Запись в таблице--->
                 <? } ?>
             </div>
+            <?if(count($arResult["INFOBLOCK_LIST"]["ARR_SDELKI"]) > 1){?>
+                <div class="expand-list">
+                    <div class="hide-show-scroll">Показать все</div>
+                </div>
+            <?}?>
         <!------------------------>
     <?else:?>
         <h3>У Вас нет предложений</h3>
@@ -90,7 +95,7 @@ $arrStatusAwait = array(
 </div>
 <!-- Заключенные договоры -->
 <div class="d-flex flex-wrap align-items-center">
-    <h5>Заключенные договоры</h5>
+    <h5>Заключенные договоры <?if(!empty($arResult["SEND_CONTRACT"])){?>(<?=count($arResult["SEND_CONTRACT"])?>)<?}?></h5>
     <button class="info-btn">?</button>
     <div class="info-content">В данном разделе содержатся Договоры, которые подписаны с двух сторон.</div>
 </div>
@@ -104,13 +109,13 @@ $arrStatusAwait = array(
         <!-- <div class="d-md-table-cell">Статус</div>             -->
         <div class="d-md-table-cell"></div>
     </div>
-    <? foreach ($arResult["SEND_CONTRACT"] as $red) { // выборка договоров?>
+    <? foreach ($arResult["SEND_CONTRACT"] as $key => $red) { // выборка договоров?>
         <!--Запись в таблице--->
         <div class="d-flex d-md-none justify-content-between collapse-header">
             <div><?if(!empty($red['NAME_CONTRACT'])) echo '#'.$red['NAME_CONTRACT']['ID'].' '.$red['NAME_CONTRACT']['NAME']; ?></div>
             <div class="collapse-arrow position-relative"></div>
         </div>
-        <div class="d-md-table-row collapse-body">
+        <div class="d-md-table-row collapse-body" <?if(0 !== $key){?>style="display: none;"<?}?>>
             <?if($red['PARAMS_SEND_COMPANY']):?>
                 <div class="d-md-none text-gray"><?=$red['PARAMS_SEND_COMPANY']['IN']?></div>
                 <div class="first-face d-md-table-cell">
@@ -147,6 +152,11 @@ $arrStatusAwait = array(
     <!--//Запись в таблице--->
     <? } ?>
     </div>
+    <?if(count($arResult["SEND_CONTRACT"]) > 1){?>
+        <div class="expand-list">
+            <div class="hide-show-scroll">Показать все</div>
+        </div>
+    <?}?>
     <!------------------------>
 <?else:?>
     <div style="clear: both"></div>
@@ -156,7 +166,7 @@ $arrStatusAwait = array(
 >
 <!-- Договора которые подписал контрагент -->
 <div class="d-flex flex-wrap align-items-center">
-    <h5>Договоры, ожидающие подписания с моей стороны</h5>
+    <h5>Договоры, ожидающие подписания с моей стороны <?if(!empty($arResult["REDACTION"])){?>(<?=count($arResult["REDACTION"])?>)<?}?></h5>
     <button class="info-btn">?</button>
     <div class="info-content">В данном разделе содержатся Договоры, которые уже подписаны контрагентом и ожидают подписания с Вашей стороны.</div>
 </div>
@@ -171,13 +181,13 @@ $arrStatusAwait = array(
             <div class="d-md-table-cell"></div>
             <div class="d-md-table-cell"></div>
         </div>
-        <? foreach ($arResult["REDACTION"] as $red) { // выборка договоров?>
+        <? foreach ($arResult["REDACTION"] as $key => $red) { // выборка договоров?>
             <!--Запись в таблице--->
             <div class="d-flex d-md-none justify-content-between collapse-header">
                 <div><?if(!empty($red['NAME_CONTRACT'])) echo '#'.$red['NAME_CONTRACT']['ID'].' '.$red['NAME_CONTRACT']['NAME']; ?></div>
                 <div class="collapse-arrow position-relative"></div>
             </div>
-            <div class="d-md-table-row collapse-body">
+            <div class="d-md-table-row collapse-body" <?if(array_key_first($arResult["REDACTION"]) !== $key){?>style="display: none;"<?}?>>
                 <?if($red['PARAMS_SEND_COMPANY']):?>
                     <div class="d-md-none text-gray"><?=$red['PARAMS_SEND_COMPANY']['IN']?></div>
                     <div class="first-face d-md-table-cell">
@@ -224,6 +234,11 @@ $arrStatusAwait = array(
         <!--//Запись в таблице--->
         <? } ?>
     </div>
+    <?if(count($arResult["REDACTION"]) > 1){?>
+        <div class="expand-list">
+            <div class="hide-show-scroll">Показать все</div>
+        </div>
+    <?}?>
     <!------------------------>
 <?else:?>
     <div style="clear: both"></div>
@@ -233,7 +248,7 @@ $arrStatusAwait = array(
 
 <!-- Подписанные договоры -->
 <div class="d-flex flex-wrap align-items-center">
-    <h5>Договоры, подписанные с моей стороны и ожидающие подписания контрагентом</h5>
+<h5>Договоры, подписанные с моей стороны и ожидающие подписания контрагентом <?if(!empty($arResult["SEND_USER_PACT"])){?>(<?=count($arResult["SEND_USER_PACT"])?>)<?}?></h5>
     <button class="info-btn">?</button>
     <div class="info-content">В данном разделе содержатся Договоры, которые подписаны с Вашей стороны и ожидающие подписания со стороны контрагента.</div>
 </div>
@@ -248,13 +263,13 @@ $arrStatusAwait = array(
             <div class="d-md-table-cell"></div>
             <div class="d-md-table-cell"></div>
         </div>
-        <? foreach ($arResult["SEND_USER_PACT"] as $red) { // выборка договоров?>
+        <? foreach ($arResult["SEND_USER_PACT"] as $key => $red) { // выборка договоров?>
             <!--Запись в таблице--->
             <div class="d-flex d-md-none justify-content-between collapse-header">
                 <div><?if(!empty($red['NAME_CONTRACT'])) echo '#'.$red['NAME_CONTRACT']['ID'].' '.$red['NAME_CONTRACT']['NAME']; ?></div>
                 <div class="collapse-arrow position-relative"></div>
             </div>
-            <div class="d-md-table-row collapse-body">
+            <div class="d-md-table-row collapse-body" <?if(array_key_first($arResult["SEND_USER_PACT"]) !== $key){?>style="display: none;"<?}?>>
                 <?if($red['PARAMS_SEND_COMPANY']):?>
                     <div class="d-md-none text-gray"><?=$red['PARAMS_SEND_COMPANY']['IN']?></div>
                     <div class="first-face d-md-table-cell">
@@ -304,6 +319,11 @@ $arrStatusAwait = array(
         <!--//Запись в таблице--->
         <? } ?>
     </div>
+    <?if(count($arResult["SEND_USER_PACT"]) > 1){?>
+        <div class="expand-list">
+            <div class="hide-show-scroll">Показать все</div>
+        </div>
+    <?}?>
     <!------------------------>
 <?else:?>
     <div style="clear: both"></div>

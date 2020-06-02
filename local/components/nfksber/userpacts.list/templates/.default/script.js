@@ -174,4 +174,29 @@ $(document).ready(function(){
     $('#close_sign_popup').on('click', function () {
         $('#dealDeleteWarning').hide();
     });
+
+    $('.hide-show-scroll').on('click', function (e) { 
+        e.preventDefault();
+        var count = $(this).parent().prev().children('.d-md-table-row.collapse-body').length;
+        $(this).parent().prev().children('.d-md-table-row.collapse-body').each(function (index, el){
+            if(index !== 0){
+                if($(el).css('display') === 'none'){
+                    $(el).show(index * 100);
+                }else{
+                    $(el).hide((count - index - 1) * 40);
+                }
+            }
+        });
+        $(this).toggleClass('open');
+        if($(this).text() == "Скрыть"){
+            $(this).text("Показать все");
+        }else{
+            $(this).text("Скрыть");
+        }
+        return false;
+    });
+
+    if(document.documentElement.clientWidth < 768){
+        $('.d-md-table-row.collapse-body').show();
+    }
 });
