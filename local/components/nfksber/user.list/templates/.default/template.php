@@ -57,7 +57,7 @@
                 <? // кнопки только для авторизированных пользователей ?>
                 <? if($USER->IsAuthorized()):?>
                     <div class="people-s-photo-btn-block">
-                        <?if(!in_array($USER->GetID(), $arBlackList)):?>
+                        <?if(is_array($arBlackList) && !in_array($USER->GetID(), $arBlackList)):?>
                             <button class="btn btn-clean search-peaople__button" data-toggle="modal" data-target=".bd-message-modal-sm" data-login="<?=$user['LOGIN']?>">
                                 <img src="<?=SITE_TEMPLATE_PATH?>/image/people-search-message.png" alt="">
                             </button>

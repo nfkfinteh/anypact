@@ -46,7 +46,7 @@ class CDemoSqr extends CBitrixComponent
                 'PREVIEW_PICTURE'
             ];
 
-            $res = CIBlockElement::GetList([], $arrFilter, false, $arNavParams, $arSelect);
+            $res = CIBlockElement::GetList(['rand' => 'asc'], $arrFilter, false, $arNavParams, $arSelect);
             while($obj = $res->GetNext(true, false)) {
                 if(!empty($obj['PREVIEW_PICTURE'])){
                     $obj['PREVIEW_PICTURE'] = CFile::GetPath( $obj['PREVIEW_PICTURE']);
