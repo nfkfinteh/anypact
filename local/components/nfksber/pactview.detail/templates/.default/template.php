@@ -130,6 +130,7 @@ else{
             fade : true,
             thumbnailWidth : 164,
             thumbnailHeight : 101,
+            imageScaleMode: 'none',
             breakpoints: {
                 450: {
                     thumbnailWidth : 82,
