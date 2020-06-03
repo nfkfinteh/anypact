@@ -584,6 +584,37 @@ class CDemoSqr extends CBitrixComponent
                     $this->arResult['SEND_CONTRACT'] = 'ERR_ID';
                 }
             }
+        }elseif($_GET['PASSWORD_SIGNATURE']){
+            $arPassSign = unserialize(base64_decode($_GET['PASSWORD_SIGNATURE']));
+            $Params = array(
+                'UF_VER_CODE_USER_A' => '',
+                'UF_ID_USER_A' => $this->arResult["CONTRACT_PROPERTY"]["CONTRACT_PROPERTY"]["USER_A"]["VALUE"], // владелец договора
+                'UF_ID_COMPANY_A'=>$this->arResult["CONTRACT_PROPERTY"]["CONTRACT_PROPERTY"]["COMPANY_A"]["VALUE"],
+                'UF_TEL_CODE_USER_A' => '', //пока не заполняем авторизация через ЕСИА
+                'UF_TIME_SEND_USER_A' => ConvertTimeStamp(time(), "FULL"),
+                'UF_ID_CONTRACT' => $this->ID_CONTRACT,
+                'UF_ID_USER_B' => $userId, // подписавшая сторона
+                'UF_ID_COMPANY_B'=> $this->arResult['USER_PROP']['UF_CUR_COMPANY'],
+                'UF_VER_CODE_USER_B' => $arPassSign['eTag'],
+                'UF_TEL_CODE_USER_B' => '',
+                'UF_TIME_SEND_USER_B' => ConvertTimeStamp(time(), "FULL"),
+                'UF_STATUS' => 1,
+                'UF_HASH_SEND' => $arPassSign['hash'],
+                'UF_ID_SEND_USER' => $userId
+            );
+            // создание записи подписания контрака
+            $id_add_item = $this->sendContract(3, $Params);
+            // создание записи с текстом
+            $Contract_params = array(
+                'UF_ID_CONTRACT' => $this->ID_CONTRACT,
+                'UF_ID_SEND_ITEM' => $id_add_item,
+                'UF_TEXT_CONTRACT' => $this->arResult["CONTRACT_PROPERTY"]["CONTRACT"]["DETAIL_TEXT"],
+                'UF_HASH' => $arPassSign['hash'],
+                'UF_CANTRACT_IMG' => '',
+                'UF_ID_USER_SEND' => $userId,
+            );
+            $id_add_item = $this->sendContract(7, $Contract_params);
+            $this->arResult['SEND_CONTRACT'] = 'Y';
         }
 
         $this->arResult["SIGN_DOGOVOR"] = $this->getSendContractItem($this->arResult['PROPERTY']['ID_DOGOVORA']['VALUE'], $this->arResult['USER_ID']);

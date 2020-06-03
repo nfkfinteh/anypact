@@ -88,6 +88,27 @@ async function getAutorisation(login, password){
     return data
 }
 
+async function passwordSignature(login, password){
+    
+    var url = '/response/ajax/password_signature.php'
+    
+    var mainData = JSON.stringify({
+        LOGIN  : login,
+        PASSWORD : password,        
+    });
+
+    var formData = new FormData();
+        formData.append( 'main', mainData );
+
+    
+    const response = await fetch(url, {
+        method: 'post',
+        body:formData
+    });
+    const data = await response.text();
+    return data
+}
+
 async function getFree(strObject, type){
     
     var url = '/response/ajax/check_login.php'
@@ -354,6 +375,21 @@ window.onload = function() {
                 }
                 if($result['TYPE']=='SUCCES'){
                     location.reload();
+                }
+            });
+        });
+
+        $(document).on('click', '#submit_button_aut_user_deal', function(){
+            let login = document.getElementById('user_aut_login_deal').value
+            let password  = document.getElementById('user_aut_pass_deal').value
+            var res = passwordSignature(login, password).then(function(data) {
+                $result = JSON.parse(data);
+                if($result['TYPE']=='ERROR'){
+                    document.getElementById('message_error_aut_deal').innerHTML = '&#8226; '+$result['VALUE'];
+                }
+                if($result['TYPE']=='SUCCES'){
+                    document.location.href = document.location.href.replace(new RegExp("#",'g'), '') + '&PASSWORD_SIGNATURE=' + $result['PASSWORD_SIGNATURE'];
+                    //location.reload();
                 }
             });
         });

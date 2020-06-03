@@ -58,20 +58,6 @@ $(document).ready(function() {
         $('#regpopup_bg_deal').css('display', 'block');
     });
 
-    $(document).on('click', '#submit_button_aut_user_deal', function(){
-        let login = document.getElementById('user_aut_login_deal').value
-        let password  = document.getElementById('user_aut_pass_deal').value
-        var res = getAutorisation(login, password).then(function(data) {
-            $result = JSON.parse(data);
-            if($result['TYPE']=='ERROR'){
-                document.getElementById('message_error_aut_deal').innerHTML = '&#8226; '+$result['VALUE'];
-            }
-            if($result['TYPE']=='SUCCES'){
-                location.reload();
-            }
-        });
-    });
-
     $('#regpopup_close_deal').on('click', function () {
         $('#regpopup_bg_deal').css('display', 'none');
     });

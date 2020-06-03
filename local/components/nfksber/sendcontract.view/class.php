@@ -286,6 +286,16 @@ class CDemoSqr extends CBitrixComponent
                 // выводим ошибку
                 $this->arResult['SEND_CONTRACT'] = 'ERR_ID';
             }
+        }elseif($_GET['PASSWORD_SIGNATURE']){
+            $arPassSign = unserialize(base64_decode($_GET['PASSWORD_SIGNATURE']));
+            $Params = array(
+                'UF_VER_CODE_USER_A' => $arPassSign['eTag'],
+                'UF_TIME_SEND_USER_A' => ConvertTimeStamp(time(), "FULL"),
+                'UF_STATUS' => 2, // статус подписанного с двух сторон контракта
+                'UF_ID_SEND_USER' => $this->arResult["ID_USER"] // кто подписал последним
+            );
+            $this->sendContract($Params);
+            $this->arResult['SEND_CONTRACT'] = 'Y';
         }
 
 
