@@ -400,7 +400,7 @@ $(document).ready(function() {
             fade : true,
             thumbnailWidth : 164,
             thumbnailHeight : 101,
-            imageScaleMode: 'none',
+            imageScaleMode: 'contain',
             //thumbnailPointer : true,
             keyboard : false,
             breakpoints: {
