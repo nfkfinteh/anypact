@@ -74,6 +74,7 @@ if(in_array( 1, $arGroups) || in_array( 6, $arGroups)){
     //дополнительные свойства
     $data['PROPERTY_VALUES']['PACT_USER'] = $data['MODIFIED_BY'];
     $data['PROPERTY_VALUES']['ID_COMPANY'] = $arUser['UF_CUR_COMPANY'];
+    $data['PROPERTY_VALUES']['CONDITIONS_PACT'] = str_replace(array("\n\r", "\r\n", "\n", "\r"), "<br>", $data['PROPERTY_VALUES']['CONDITIONS_PACT']);
 
     $el = new CIBlockElement;
     $elDogovor = new CIBlockElement;
@@ -93,7 +94,7 @@ if(in_array( 1, $arGroups) || in_array( 6, $arGroups)){
         "NAME"           => $data['NAME'],
         "CODE"           => $data['CODE'],
         "ACTIVE"         => $data['ACTIVE'],
-        "DETAIL_TEXT"    => $data['DETAIL_TEXT']['TEXT'],
+        "DETAIL_TEXT"    => str_replace(array("\n\r", "\r\n", "\n", "\r"), "<br>", $data['DETAIL_TEXT']['TEXT']),
         "DETAIL_TEXT_TYPE" => $data['DETAIL_TEXT']['TYPE'],
         /*"DETAIL_PICTURE" => $detailPicture,
         "PREVIEW_PICTURE" => $detailPicture,*/
