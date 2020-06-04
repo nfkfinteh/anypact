@@ -23,7 +23,7 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)
 	$CONFIRM_PASSWORD = $arResult["SHOW_FIELDS"][3];
 ?>
 <div class="regpopup_content_form">
-	<form method="post" action="<?=POST_FORM_ACTION_URI?>" name="regform" enctype="multipart/form-data">
+	<form method="post" action="<?=POST_FORM_ACTION_URI?>" name="regform" enctype="multipart/form-data" onsubmit="ym(64629523,'reachGoal','reg');">
 		<div class="regpopup_content_form_fild">
 		<? // print_r($arResult["SHOW_FIELDS"]);?>
 			<input hidden size="30" class="regpopup_content_form_input" id="user_login_fild" name="REGISTER[<?=$LOGIN?>]" value="<?=$arResult["VALUES"][$LOGIN]?>" placeholder="<?=GetMessage($LOGIN)?>"  autocomplete="off" />

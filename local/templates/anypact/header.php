@@ -52,6 +52,21 @@ global $USER;
     $APPLICATION->ShowHead();
     ?>
     <link href="<?=SITE_TEMPLATE_PATH?>/css/jquery.datetimepicker.css" type="text/css"  rel="stylesheet" />
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript" >
+    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+    m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+    (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+    ym(64629523, "init", {
+            clickmap:true,
+            trackLinks:true,
+            accurateTrackBounce:true,
+            webvisor:true
+    });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/64629523" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
 </head>
 <body>
 <div id="panel"><?$APPLICATION->ShowPanel();?></div>
@@ -180,7 +195,7 @@ global $USER;
                     <?} else {?>
                         <div class="col-md-5">
                             <a href="tel:+78002008484" class="phone">8(800) 200-84-84</a>
-                            <button class="btn btn-nfk btn-login" id="reg_button">Регистрация / Вход</button>
+                            <button class="btn btn-nfk btn-login" id="reg_button" onclick="ym(64629523,'reachGoal','reg_btn');">Регистрация / Вход</button>
                         </div>
                     <?}?>                    
             </div>

@@ -34,6 +34,6 @@ CJSCore::Init();
                     <!-- <input type="submit" id="submit_button_aut_user" class="regpopup_content_form_submit" value="<?=GetMessage("AUTH_LOGIN_BUTTON")?>" /> -->
                     <a href="#" class="regpopup_content_form_submit" id="submit_button_aut_user"><?=GetMessage("AUTH_LOGIN_BUTTON")?></a>
         </form>
-        <p class="text-center">Нет аккаунта? <a href="#" id="regpopup_btn_reg">Зарегистриуйтесь</a></p>
+        <p class="text-center">Нет аккаунта? <a href="#" id="regpopup_btn_reg" onclick="ym(64629523,'reachGoal','reg_link');">Зарегистриуйтесь</a></p>
 
 </div>
