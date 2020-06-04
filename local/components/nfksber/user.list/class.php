@@ -1,5 +1,8 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die();
 
+if(file_exists($_SERVER['DOCUMENT_ROOT'].'/local/class/CCustUser.php'))
+    require_once $_SERVER['DOCUMENT_ROOT'].'/local/class/CCustUser.php';
+
 class CDemoSqr extends CBitrixComponent
 {
     public function onPrepareComponentParams($arParams)
@@ -36,7 +39,7 @@ class CDemoSqr extends CBitrixComponent
                 $arrFilter['NAME'] = "_";
             }
 
-            $res = CUser::GetList($by="personal_country", $order="desc", $arrFilter, ['SELECT'=>['UF_*'] ]);
+            $res = CCustUser::GetList($by="RAND", $order="desc", $arrFilter, ['SELECT'=>['UF_*'] ]);
             $res->NavStart($arNavParams['nPageSize']);
             while($obj = $res->NavNext(true)) {
                 $arUser[] = $obj;
