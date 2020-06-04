@@ -195,7 +195,7 @@ global $USER;
                     <?} else {?>
                         <div class="col-md-5">
                             <a href="tel:+78002008484" class="phone">8(800) 200-84-84</a>
-                            <button class="btn btn-nfk btn-login" id="reg_button">Регистрация / Вход</button>
+                            <button class="btn btn-nfk btn-login" id="reg_button" onclick="ym(64629523,'reachGoal','reg_btn');">Регистрация / Вход</button>
                         </div>
                     <?}?>                    
             </div>

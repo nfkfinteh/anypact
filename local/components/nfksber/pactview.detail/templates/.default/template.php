@@ -53,7 +53,7 @@ else{
         <?//скрытие кнопки при окончане активности?>
         <? if($USER->IsAuthorized()):?>
             <?if($arResult['ELEMENT']['ACTIVE']=='Y' && $DATE_ACTIVE_TO>=time()):?>
-                <a href="/pacts/view_pact/view_dogovor/?ELEMENT_ID=<?=$arResult["ELEMENT"]["ID"]?>" class="btn btn-nfk cardPact-bBtn <?=$disable_a?>">Посмотреть или подписать договор</a>
+                <a href="/pacts/view_pact/view_dogovor/?ELEMENT_ID=<?=$arResult["ELEMENT"]["ID"]?>" class="btn btn-nfk cardPact-bBtn <?=$disable_a?>" onclick="ym(64629523,'reachGoal','docs_link');">Посмотреть или подписать договор</a>
             <?endif?>
         <?endif?>
 
@@ -88,7 +88,7 @@ else{
         <?//скрытие кнопки при окончане активности?>
         <? if($USER->IsAuthorized()):?>
             <? if($arResult['ELEMENT']['ACTIVE']=='Y' && $DATE_ACTIVE_TO>=time() && !in_array($arResult['USER']['ID'], $arBlackList)): ?>
-                <button type="button" class="btn btn-nfk d-block cardPact-bBtn" data-toggle="modal" data-target=".bd-message-modal-sm">
+                <button type="button" class="btn btn-nfk d-block cardPact-bBtn" data-toggle="modal" data-target=".bd-message-modal-sm" onclick="ym(64629523,'reachGoal','message_post');">
                     Написать сообщение
                 </button>
             <? endif ?>
