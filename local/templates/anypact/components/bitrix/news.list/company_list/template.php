@@ -84,12 +84,15 @@ $this->setFrameMode(true);
         */?>
         <!------------------профили пользователей------------------>
         <div class="view-item col-lg-2 col-sm-4 col-6 mt-4 pb-3">
+            <?
+                $rsUser = CUser::GetList(($by="personal_country"), ($order="desc"), array("ID" => $USER -> GetId()), array("FIELDS" => array("PERSONAL_PHOTO")));
+                $arUser = $rsUser -> GetNext();
+            ?>
             <div class="people-s-photo">
                 <div class="people-s-photo-img <?if(empty($arParams['COMPANY_ID'])):?>js-auth_user<?endif?>">
-                    <img src="<?=SITE_TEMPLATE_PATH?>/image/people-search-no-phpto.png">
+                    <img src="<?=CFile::GetPath($arUser['PERSONAL_PHOTO']);?>">
                 </div>
             </div>
-            <?$USER->Get?>
             <div class="people-s-photo-text">
                 <div class="people-s-photo-text-block">
                     <h6><?=$USER->GetFullName()?></h6>
