@@ -3949,11 +3949,12 @@ footer p{
     padding-bottom: 7px;
     font-weight: 900;
 }
-
+.navbar-nav>li>a.manual {
+    color: #ff6416 !important;
+}
 @media screen and (min-width: 768px) {
     a.manual {
         margin-left: 25px;
-        color: #ff6416 !important;
     }
     .navbar-nav>li>a.manual {
         display: none;
