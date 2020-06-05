@@ -219,22 +219,22 @@ $APPLICATION->IncludeComponent(
             <div class="col-md-3 col-sm-6">
                 <span class="big-number">1.</span>
                 <div class="short-divider"></div>
-                <p>Предоставьте данные Вашего паспорта, ИНН и СНИЛС в МФЦ.</p>
+                <p>Зарегистрируйтесь на сайте AnyPact.</p>
             </div>
             <div class="col-md-3 col-sm-6">
                 <span class="big-number">2.</span>
                 <div class="short-divider"></div>
-                <p>Получите уведомление с Вашим личным логином и паролем.</p>
+                <p>Заполните анкету со своими данными.</p>
             </div>
             <div class="col-md-3 col-sm-6">
                 <span class="big-number">3.</span>
                 <div class="short-divider"></div>
-                <p>Введите эти данные в личном кабинете на сайте Госуслуг.</p>
+                <p>Пройдите авторизацию на сайте AnyPact с использованием своей подтвержденной учетной записи на Госуслугах.</p>
             </div>
             <div class="col-md-3 col-sm-6">
                 <span class="big-number">4.</span>
                 <div class="short-divider"></div>
-                <p>Зарегистрируйтесь на сайте AnyPact и заключайте сделки онлайн.</p>
+                <p>Начните заключать сделки онлайн с использованием нашего сервиса.</p>
             </div>
         </div>
     </div>
