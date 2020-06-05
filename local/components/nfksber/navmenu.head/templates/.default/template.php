@@ -9,5 +9,5 @@
 			<a class="nav-link <?=$MenuItem["CLASS"]?>" href="<?=$MenuItem["URL"]?>"><?=$MenuItem["NAME"]?></a> 
 		</li>
 	<?}?>
-	<li class="nav-item"><a href="/AnyPact инструкция.pdf" class="manual" target="_blank" onclick="ym(64629523,'reachGoal','manual');">Инструкция</a></li>
+	<li class="nav-item"><a href="/AnyPact инструкция.pdf" class="manual nav-link" target="_blank" onclick="ym(64629523,'reachGoal','manual');">Инструкция</a></li>
 </ul>
