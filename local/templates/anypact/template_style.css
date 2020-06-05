@@ -3960,3 +3960,8 @@ footer p{
         display: none;
     }
 }
+.gos_img{
+    border: none;
+    border-radius: 0;
+    height: 100%;
+}
