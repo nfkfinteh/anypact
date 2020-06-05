@@ -3949,3 +3949,6 @@ footer p{
     padding-bottom: 7px;
     font-weight: 900;
 }
+a.manual {
+    margin-left: 25px;
+}
