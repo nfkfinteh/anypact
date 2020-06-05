@@ -32,7 +32,7 @@
                                     <div class="check-esia-img-info">
                                         <span>Подтвержденная авторизация</span>
                                         <img src="<?=SITE_TEMPLATE_PATH?>/img/check-esia-min.png" alt="">
-                                        ЕСИА
+                                        ГОСУСЛУГИ
                                     </div>
                                 </div>
                         <?endif?>
@@ -48,7 +48,7 @@
                         <?endif?>
                         <?if($user['UF_ESIA_AUT']):?>
                             <span class="d-block font-weight-bold mt-4">Подтвержденная регистрация</span>
-                            <span class="d-block registration-checked mt-2">ЕСИА</span>
+                            <span class="d-block registration-checked mt-2">ГОСУСЛУГИ</span>
                         <?else:?>
                             <span class="d-block font-weight-bold mt-4">Регистрация не подтверждена</span>
                         <?endif?>
