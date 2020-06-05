@@ -142,7 +142,7 @@ global $USER;
                     <?else:?>
                         <span class="location">Выберите город</span>
                     <?endif?>
-                    <a href="/AnyPact инструкция.pdf" class="manual" target="_blank">Инструкция</a>
+                    <a href="/AnyPact инструкция.pdf" class="manual" target="_blank" onclick="ym(64629523,'reachGoal','manual');">Инструкция</a>
                 </div>
                 <? if ($USER->IsAuthorized()){ 
                     $res = CUser::GetList($by="personal_country", $order="desc", [ 'ID' => $USER->GetID() ], [ 'SELECT' => ['UF_ESIA_AUT'], 'FIELDS' => ['ID'] ]);
