@@ -90,7 +90,11 @@ $this->setFrameMode(true);
             ?>
             <div class="people-s-photo">
                 <div class="people-s-photo-img <?if(empty($arParams['COMPANY_ID'])):?>js-auth_user<?endif?>">
-                    <img src="<?=CFile::GetPath($arUser['PERSONAL_PHOTO']);?>">
+                    <?if(!empty($arUser['PERSONAL_PHOTO'])){?>
+                        <img src="<?=CFile::GetPath($arUser['PERSONAL_PHOTO']);?>">
+                    <?}else{?>
+                        <img src="<?=SITE_TEMPLATE_PATH?>/image/people-search-no-phpto.png">
+                    <?}?>
                 </div>
             </div>
             <div class="people-s-photo-text">
