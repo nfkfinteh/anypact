@@ -124,11 +124,11 @@ class CDemoSqr extends CBitrixComponent
             "nPageSize" => $this->arParams["NEWS_COUNT"],
         );
         $arNavigation = CDBResult::GetNavParams($arNavParams);
-        /*if($arNavigation["PAGEN"]==0)
-            $arParams["CACHE_TIME"] = 36000;
+        if($arNavigation["PAGEN"]==0)
+            $arParams["CACHE_TIME"] = 86400;
 
         if($this->startResultCache(false, array($arrFilter, $arNavigation)))
-        {*/
+        {
             $this->arResult["BLACKLIST"] = $this->getBlackList();
             if($_REQUEST["ajax_result"] === "y"){
                 $APPLICATION->RestartBuffer();
@@ -141,9 +141,9 @@ class CDemoSqr extends CBitrixComponent
                 $this->arResult["USER"] = $this->listAllUser($arNavParams);
                 $this->includeComponentTemplate();
             }
-        //}
+        }
 
-        //$this->setTemplateCachedData($this->arResult["NAV_CACHED_DATA"]);
+        $this->setTemplateCachedData($this->arResult["NAV_CACHED_DATA"]);
         
         return $this->arResult;
     }
