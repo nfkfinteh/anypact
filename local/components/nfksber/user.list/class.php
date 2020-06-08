@@ -124,7 +124,7 @@ class CDemoSqr extends CBitrixComponent
             "nPageSize" => $this->arParams["NEWS_COUNT"],
         );
         $arNavigation = CDBResult::GetNavParams($arNavParams);
-        if($arNavigation["PAGEN"]==0)
+        //if($arNavigation["PAGEN"]==0)
             $arParams["CACHE_TIME"] = 86400;
 
         if($this->startResultCache(false, array($arrFilter, $arNavigation)))
