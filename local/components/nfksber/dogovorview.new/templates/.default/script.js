@@ -105,7 +105,7 @@ function formatSelectText(id_name) {
                     }
                 }
 
-                if(range.startContainer.parentNode.innerText == range.endContainer.parentNode.innerText && range.startContainer.parentNode.innerText == sel_string){
+                if(range.startContainer.parentNode.innerText == range.endContainer.parentNode.innerText && range.startContainer.parentNode.innerText == sel_string && false){
                     //если какой либо селектор совподает с выделением
                     console.log('test');
                     //$(nedittext).append(range.startContainer.parentNode);
