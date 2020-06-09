@@ -94,6 +94,19 @@ function OnBuildGlobalMenu(&$arGlobalMenu, &$arModuleMenu)
         'items' => array()
     );
 
+    $arItems[] = array(
+        'parent_menu' => 'global_menu_anypact',
+        'section' => 'moderation_deal',
+        'sort' => 10,
+        'url' => 'moderation_deal.php?lang=' . LANGUAGE_ID,
+        'text' => 'Модерация сделок',
+        'title' => 'Модерация сделок',
+        'icon' => 'moderation_deal_menu_icon',
+        'page_icon' => 'moderation_deal_page_icon',
+        'items_id' => 'menu_moderation_deal',
+        'items' => array()
+    );
+
     $arGlobalMenu[] = array(
         'menu_id' => 'anypact',
         'text' => 'AnyPact',

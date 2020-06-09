@@ -8,5 +8,5 @@ $MESS['moderation_company_ACTION'] = "Действия";
 $MESS['moderation_company_COMPANY_DELETE'] = "Удалить компанию";
 $MESS['moderation_company_EMPTY_DATA'] = "Нет данных";
 $MESS['moderation_company_COMPANY_DELETE_WARNING'] = "Вы уверены что хотите удалить компанию?";
-
+$MESS['moderation_company_COMPANY_ACCEPT_WARNING'] = "Вы уверены что проверили компанию и хотите её опубликовать?";
 ?>
