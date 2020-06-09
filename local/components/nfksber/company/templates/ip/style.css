@@ -1,0 +1,185 @@
+.b-where__search_right{
+    display: inline-flex;
+    float: right;
+}
+.b-where__search-list{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+div.search-list{
+    z-index: 100;
+}
+table.search-list{
+    overflow-x: hidden;
+    overflow-y: auto;
+    border-radius: 0 0 0.9375rem 0.9375rem;
+    background-color: #fff;
+    -webkit-box-shadow: 0 0.0625rem 0.0625rem rgba(0,0,0,.02), 0 0.125rem 0.125rem rgba(0,0,0,.02), 0 0.25rem 0.25rem rgba(0,0,0,.02), 0 0.5rem 0.5rem rgba(0,0,0,.02), 0 1rem 1rem rgba(0,0,0,.02), 0 2rem 2rem rgba(0,0,0,.02);
+    box-shadow: 0 0.0625rem 0.0625rem rgba(0,0,0,.02), 0 0.125rem 0.125rem rgba(0,0,0,.02), 0 0.25rem 0.25rem rgba(0,0,0,.02), 0 0.5rem 0.5rem rgba(0,0,0,.02), 0 1rem 1rem rgba(0,0,0,.02), 0 2rem 2rem rgba(0,0,0,.02);
+}
+.search-list__item{
+    cursor: pointer;
+    padding: 10px 20px;
+    width: 100%;
+    vertical-align: middle;
+}
+.search-list__item-selected{
+    color: #fff;
+    background-color: #e41117;
+}
+.search-list__item-selected .search-list__text{
+    color: inherit;
+    background-color: inherit;
+}
+.search-list__text{
+    display: block;
+    padding: 1.25rem 1.5rem 1.25rem 1.8125rem;
+    font-family: "GothamPro",Arial,sans-serif;
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 0.875rem;
+    color: #000;
+}
+.b-where__search {
+    position: relative;
+    display: inline-flex;
+    height: 50px;
+    width: 279px;
+    margin-left: 18px;
+    margin-right: 18px;
+}
+.b-where__search-submit {
+    width: 50px;
+    height: 50px;
+    border: 0;
+    background: #F0F8F7;
+    color: #83BEBA;
+    font-family: "FontAwesome", serif;
+    font-size: 16px;
+    transition: .3s;
+}
+
+.form-group .form-group{
+    display: flex;
+}
+div.btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.staff_man{
+    display: flex;
+    justify-content: space-between;
+}
+.staff_man p{
+    margin: 0;
+}
+.staff_znak_block{
+    display: flex;
+    justify-content: stretch;
+    cursor: pointer;
+    align-items: center;
+}
+.staff_znak{
+    height: 100%;
+    width: 18px;
+    position: relative;
+    content: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="lightgrey"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg>');
+}
+/*.add_staff .staff_znak:before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    right: 0;
+    left: 0;
+    margin-right: auto;
+    margin-left: auto;
+    height: 18px;
+    width: 2px;
+    background-color: #C4C4C4;
+}*/
+.staff_znak-ok .staff_znak, .add_staff.staff_znak-ok .staff_znak:before {
+    content: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="green"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg>');
+}
+.company-logo-input{
+    padding: 9px;
+}
+.company-logo{
+    max-height: 400px;
+    max-width: 100%;
+    display: block;
+    margin: 10px auto;
+}
+.staff_list{
+    margin: 10px 0;
+}
+.editbox {
+    width: 100%;
+    border: none;
+    color: #9fa1a1;
+    border-radius: 0.25rem;
+    background: #f8f9fa;
+    min-height: 200px;
+    padding: 10px;
+}
+.company_profile label {
+    padding-left: 10px;
+    padding-bottom: 4px;
+    font-weight: 100;
+}
+
+.company_profile input {
+    padding: 14px 18px;
+    margin-bottom: 6px;
+    background: #f1f4f4;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #ff6416;
+    height: 52px;
+}
+
+.company_profile h3 {
+    font-size: 24px;
+    font-weight: 900;
+    margin-top: 0;
+    padding-top: 0;
+    padding-bottom: 27px;
+}
+
+.company-logo img{
+    max-height: 150px;
+    max-width: 200px;
+}
+
+.company-logo.edit-photo{
+    max-width: 165px;
+}
+
+button#save_company {
+    width: 164px;
+    border: 1px solid #ff6416;
+    color: #ff6416;
+    background: none;
+    border-radius: 5px;
+    padding: 10px 30px;
+    float: right;
+}
+
+button#save_company:hover{
+    color: #fff;
+    background: #ff6416;
+}
+.company_profile .error-message{
+    font-size: 11px;
+}
+.company_profile textarea{
+    padding: 14px 18px;
+    margin-bottom: 6px;
+    background: #f1f4f4;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #ff6416;
+    height: 200px;
+}

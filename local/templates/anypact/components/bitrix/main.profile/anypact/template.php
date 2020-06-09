@@ -326,16 +326,18 @@ if (!empty($arResult['arUser']['UF_ESIA_ID']) && $arResult['arUser']['UF_ESIA_AU
     <div class="row">
         <?if($arResult['COMPANIES']){?>
             <?foreach($arResult['COMPANIES'] as $key => $arCompany){?>
-                <div class="col-xl-4 col-md-6 col-sm-12 <?if($key==0 || $key % 2 === 0):?>offset-xl-3<?endif?>">
-                    <p><?=$arCompany['NAME']?></p>
-                    <?if($arCompany['PROPERTY_DIRECTOR_ID_VALUE'] == $arResult['ID']):?>
-                        <a href="/profile/company/?id=<?=$arCompany['ID']?>" class="btn btn-aut" style="margin-bottom:15px;">Изменить компанию</a>
-                        <a href="#" class="btn btn-aut btn-company-delete" data-company-id="<?=$arCompany['ID']?>">Удалить компанию</a>
-                    <?else:?>
-                        <a href="/profile/company/?id=<?=$arCompany['ID']?>" class="btn btn-aut" style="margin-bottom:15px;">Реквизиты компаниии</a>
-                    <?endif?>
-                    <?if($key + 1 != count($arResult['COMPANIES'])){?><hr><?}?>
-                </div>
+                <?if($arCompany['PROPERTY_TYPE_VALUE'] != "ИП"){?>
+                    <div class="col-xl-4 col-md-6 col-sm-12 <?if($key==0 || $key % 2 === 0):?>offset-xl-3<?endif?>">
+                        <p><?=$arCompany['NAME']?></p>
+                        <?if($arCompany['PROPERTY_DIRECTOR_ID_VALUE'] == $arResult['ID']):?>
+                            <a href="/profile/company/?id=<?=$arCompany['ID']?>" class="btn btn-aut" style="margin-bottom:15px;">Изменить компанию</a>
+                            <a href="#" class="btn btn-aut btn-company-delete" data-company-id="<?=$arCompany['ID']?>" data-type="Компанию">Удалить компанию</a>
+                        <?else:?>
+                            <a href="/profile/company/?id=<?=$arCompany['ID']?>" class="btn btn-aut" style="margin-bottom:15px;">Реквизиты компаниии</a>
+                        <?endif?>
+                        <?if($key + 1 != count($arResult['COMPANIES'])){?><hr><?}?>
+                    </div>
+                <?}?>
             <?}?>
         <?}?>
     </div>
@@ -345,6 +347,42 @@ if (!empty($arResult['arUser']['UF_ESIA_ID']) && $arResult['arUser']['UF_ESIA_AU
         </div>
     </div>
 </div>
+<!-- ИП -->
+<?if($arResult['IS_IP'] != "Y"){?>
+<div class="user_profile_form_editdata" style="margin-bottom:50px;">
+    <div class="row">
+        <div class="col-xl-2 col-md-6 col-sm-12 offset-xl-3">
+            <h3>ИП</h3>
+        </div>
+    </div>
+    <div class="row">
+        <?if($arResult['COMPANIES']){?>
+            <?foreach($arResult['COMPANIES'] as $key => $arCompany){?>
+                <?if($arCompany['PROPERTY_TYPE_VALUE'] == "ИП"){?>
+                    <?$is_ip = true;?>
+                    <div class="col-xl-4 col-md-6 col-sm-12 <?if($key==0 || $key % 2 === 0):?>offset-xl-3<?endif?>">
+                        <p><?=$arCompany['NAME']?></p>
+                        <?if($arCompany['PROPERTY_DIRECTOR_ID_VALUE'] == $arResult['ID']):?>
+                            <a href="/profile/ip/?id=<?=$arCompany['ID']?>" class="btn btn-aut" style="margin-bottom:15px;">Изменить ИП</a>
+                            <a href="#" class="btn btn-aut btn-company-delete" data-company-id="<?=$arCompany['ID']?>" data-type="ИП">Удалить ИП</a>
+                        <?else:?>
+                            <a href="/profile/ip/?id=<?=$arCompany['ID']?>" class="btn btn-aut" style="margin-bottom:15px;">Реквизиты ИП</a>
+                        <?endif?>
+                        <?if($key + 1 != count($arResult['COMPANIES'])){?><hr><?}?>
+                    </div>
+                <?}?>
+            <?}?>
+        <?}?>
+    </div>
+    <?if(!$is_ip){?>
+        <div class="row add_company">
+            <div class="col-xl-4 col-md-6 col-sm-12 offset-xl-3 add_company-button">
+                <a href="/profile/ip/" class="btn btn-aut <?if($arResult['arUser']['UF_ESIA_AUT']==0):?>disabled<?endif?>">+ Добавить ИП</a>
+            </div>
+        </div>
+    <?}?>
+</div>
+<?}?>
 </div>
 </div>
 
@@ -357,7 +395,7 @@ if (!empty($arResult['arUser']['UF_ESIA_ID']) && $arResult['arUser']['UF_ESIA_AU
                         <div class="regpopup_win">     
                             <div id="signpopup_close">Х</div>                                       
                             <div class="regpopup_autorisation">
-                                <label>Вы уверены что хотите удалить компанию?</label>
+                                <label>Вы уверены что хотите удалить <span></span>?</label>
                                 <a href="#" class="btn btn-nfk" id="delete_contact" style="width:45%;">Удалить</a>
                                 <button class="btn btn-nfk" id="close_sign_popup" style="width:45%">Отмена</button>                      
                             </div>

@@ -79,10 +79,10 @@ class CompanySber extends CBitrixComponent
 
                 die();
             }
-        // добавление / редактирование компании
+        // добавление / редактирование компании и ИП
         }elseif($_REQUEST['DIRECTOR_ID'] && $_REQUEST['NAME']){
             #скрытые поля
-            $addition_props = ['DIRECTOR_NAME', 'DIRECTOR_ID', 'STAFF', 'STAFF_NO_ACTIVE'];
+            $addition_props = ['DIRECTOR_NAME', 'DIRECTOR_ID', 'STAFF', 'STAFF_NO_ACTIVE', 'TYPE'];
             $props_empty = [];
 
             foreach($_REQUEST as $key => $req){
@@ -92,13 +92,16 @@ class CompanySber extends CBitrixComponent
                 $arProps[$key] = $req;
             }
 
+            define("LOG_FILENAME", $_SERVER["DOCUMENT_ROOT"]."/company_class.log");
+            AddMessage2Log($arProps, "arProps");
+
             if($props_empty){
                 $output = implode(', ', $props_empty);
-                LocalRedirect("/profile/company/?error=props_empty&props=".$output."&id=".$_REQUEST['ID_EXIST']);
+                LocalRedirect("?error=props_empty&props=".$output."&id=".$_REQUEST['ID_EXIST']);
             }
             if($props_no_number){
                 $output = implode(', ', $props_no_number);
-                LocalRedirect("/profile/company/?error=props_no_number&props=".$output."&id=".$_REQUEST['ID_EXIST']);
+                LocalRedirect("?error=props_no_number&props=".$output."&id=".$_REQUEST['ID_EXIST']);
             }
             if($arProps){
 
@@ -153,10 +156,15 @@ class CompanySber extends CBitrixComponent
                             }
                         }
                         #добавлена компания - редирект на неё
-                        LocalRedirect("/profile/infopage/?typepage=new_company");
+                        if($arProps['TYPE'] == 9){
+                            LocalRedirect("/profile/infopage/?typepage=new_ip");
+                        }else{
+                            LocalRedirect("/profile/infopage/?typepage=new_company");
+                        }
+                        
                         //LocalRedirect("/profile/company/?id=" . $arElm["ID"]);
                     } else {
-                        LocalRedirect("/profile/company/?error=".$el->LAST_ERROR);
+                        LocalRedirect("?error=".$el->LAST_ERROR);
                     }
 
 
@@ -180,7 +188,7 @@ class CompanySber extends CBitrixComponent
                     }
 
                     if ($arCompany['PROPERTIES']['DIRECTOR_ID']['VALUE']!=$USER->GetID()) {
-                        LocalRedirect("/profile/company/");
+                        LocalRedirect("");
                     }
 
                     $arEl = array(
@@ -208,9 +216,9 @@ class CompanySber extends CBitrixComponent
                             }
                         }
 
-                        LocalRedirect("/profile/company/?id=" . $_REQUEST["ID_EXIST"]);
+                        LocalRedirect("?id=" . $_REQUEST["ID_EXIST"]);
                     } else {
-                        LocalRedirect("/profile/company/?error=".$el->LAST_ERROR);
+                        LocalRedirect("?error=".$el->LAST_ERROR);
                     }
 
                 }
@@ -235,11 +243,11 @@ class CompanySber extends CBitrixComponent
                 if ($arCompany = $rsCompany->GetNext(true, false)) {
                     if($arCompany['PROPERTY_DIRECTOR_ID_VALUE'] != $USER->GetID()){
                         #не директор - редирект
-                        LocalRedirect("/profile/company/");
+                        LocalRedirect("");
                     }
                 }else{
                     #не существует компании - на страницу создания
-                    LocalRedirect("/profile/company/");
+                    LocalRedirect("");
                 }
             }
 
@@ -279,7 +287,7 @@ class CompanySber extends CBitrixComponent
                     }
                 }else{
                     #не существует компании - на страницу создания
-                    LocalRedirect("/profile/company/");
+                    LocalRedirect("");
                 }
             }
 
@@ -331,6 +339,15 @@ class CompanySber extends CBitrixComponent
 
             $this->arResult['PROPERTIES'] = $arProps;
             $this->arResult['IS_DIRECTOR'] = 'Y';
+            //Получаем данные пользователя для ИП
+            $rsUser = CUser::GetList($by="ID", $order="asc", array("ID" => $USER->GetID()));
+            $this->arResult['USER'] = $rsUser -> GetNext();
+
+            $res = CIBlockElement::GetList(array(), array('IBLOCK_ID' => 8, "=PROPERTY_DIRECTOR_ID" => $this->arResult['USER']['ID'], "=PROPERTY_TYPE" => 9), false, false, array("ID", "ACTIVE"));
+            if($ob = $res -> GetNext()){
+                $this->arResult['IP_ID'] = $ob['ID'];
+                $this->arResult['ACTIVE'] = $ob['ACTIVE'];
+            }
 
             $APPLICATION->AddHeadScript($this->GetPath().'/script.js');
             CUtil::InitJSCore(array('ajax'));

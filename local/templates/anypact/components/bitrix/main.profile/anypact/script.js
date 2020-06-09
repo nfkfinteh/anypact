@@ -166,8 +166,10 @@ $(document).ready(function() {
     $('.btn-company-delete').on('click', function (e) {
         e.preventDefault();
         let id = $(this).attr('data-company-id');
+        let type = $(this).attr('data-type');
         let url = '/profile/company/?id=' + id + '&remove=Y';
         $('#delete_contact').attr('href', url);
+        $('#companyDeleteWarning').find('label').children('span').text(type);
         $('#companyDeleteWarning').show();
     });
 

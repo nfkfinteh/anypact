@@ -4,19 +4,28 @@
  *  $AdressCompany -  адрес компании
  *  $BanksParamsCompany - банковские реквизиты компании
  * */
-    $arrGlobalParamsKey = ['NAME', 'INN', 'KPP', 'OGRN' ];
+    $arrGlobalParamsKey = ['NAME', 'INN', 'OGRNIP' ];
     $GlobalParamsCompany  = array_intersect_key($arResult['PROPERTIES'], $arrGlobalParamsKey);
     $CompanyProprties   = $arResult['COMPANY']['PROPERTIES'];
     $prevImage = $_GET['img'] ? "/upload/tmp/company_profile/".$_GET['img'] : $arResult['COMPANY']['PREVIEW_PICTURE'];
+?>
+<?
+if(empty($arResult['COMPANY']) && !empty($arResult['IP_ID'])){
+    if($arResult['ACTIVE'] == "Y"){
+        LocalRedirect("?id=" . $arResult['IP_ID']);
+    }else{
+        LocalRedirect("/profile/infopage/?typepage=new_ip");
+    }
+}else{
 ?>
 <div class="company_profile">
     <div class="company_profile_header">
         <div class="row">
             <div class="col">
                 <?if($arResult['COMPANY']){?>
-                    <h1>Компания</h1>
+                    <h1>Индивидуальный предприниматель</h1>
                 <?}else{?>
-                    <h1>Добавить компанию</h1>
+                    <h1>Добавить ИП</h1>
                 <?}?>
             </div>
         </div>
@@ -33,13 +42,13 @@
             </div>
         </div>
         <? ////////////////////// поля общих реквизитов /////////////////////////?>
-        <input type="hidden" name="TYPE" value="8">
+        <input type="hidden" name="TYPE" value="9">
         <div class="row">
             <div class="col-xl-7 col-md-12 col-sm-12">
                 <div class="row">
                     <div class="col-xl-5 col-md-6 col-sm-12">
                         <div class="form-group">
-                            <label>Логотип компании</label>
+                            <label>Логотип</label>
                             <?if($prevImage){?>
                                 <a href="/profile/edit_photo/?action=company&id=<?=$arResult['COMPANY']['ID']?>" class="company-logo js-addphoto">
                                     <img src="<?=$prevImage?>">
@@ -54,12 +63,18 @@
                     </div>
                     <div class="col-xl-7 col-md-6 col-sm-12">
                         <div class="form-group">
-                            <label>Название компании *</label>
-                            <input name="NAME" type="text" value="<?=$arResult['COMPANY']['NAME']?>" required maxlength="50">
+                            <label>Название ИП</label>
+                            <?if(empty($arResult['COMPANY']['NAME'])){?>
+                                <input disabled type="text" value="<?echo "ИП " . $arResult['USER']['LAST_NAME'] . " " . substr($arResult['USER']['NAME'], 0, 1) . "." . substr($arResult['USER']['SECOND_NAME'], 0, 1) . ".";?>">
+                                <input name="NAME" type="hidden" value="<?echo "ИП " . $arResult['USER']['LAST_NAME'] . " " . substr($arResult['USER']['NAME'], 0, 1) . "." . substr($arResult['USER']['SECOND_NAME'], 0, 1) . ".";?>">
+                            <?}else{?>
+                                <input disabled type="text" value="<?=$arResult['COMPANY']['NAME']?>">
+                                <input name="NAME" type="hidden" value="<?=$arResult['COMPANY']['NAME']?>">
+                            <?}?>
                         </div>
                         <div class="form-group">
                             <label>ИНН *</label>
-                            <input name="INN" type="text" value="<?=$CompanyProprties['INN']['VALUE']?>" required maxlength="10" class="js-number">
+                            <input name="INN" type="text" value="<?=$CompanyProprties['INN']['VALUE']?>" required maxlength="12" class="js-number">
                         </div>
                         <label>* — поля, обязательные для заполнения</label>
                     </div>
@@ -67,19 +82,15 @@
             </div>
             <div class="col-xl-4 col-md-12 col-sm-12">
                 <div class="form-group">
-                    <label>ОГРН *</label>
-                    <input name="OGRN" type="text" value="<?=$CompanyProprties['OGRN']['VALUE']?>" required maxlength="13" class="js-number">
-                </div>
-                <div class="form-group">
-                    <label>КПП *</label>
-                    <input name="KPP" type="text" value="<?=$CompanyProprties['KPP']['VALUE']?>" required maxlength="9" class="js-number">
+                    <label>ОГРНИП *</label>
+                    <input name="OGRNIP" type="text" value="<?=$CompanyProprties['OGRNIP']['VALUE']?>" required maxlength="13" class="js-number">
                 </div>
             </div>
         </div>
         <? ////////////////////// поля адреса /////////////////////////?>
         <div class="row" style="margin-top: 40px;">
             <div class="col-xl-4 col-md-6 col-sm-12 offset-xl-3"">
-                <h3>Юридический адрес</h3>
+                <h3>Фактический адрес</h3>
             </div>
         </div>
         <div class="row">
@@ -101,7 +112,7 @@
                     <input name="HOUSE" type="text" value="<?=$CompanyProprties['HOUSE']['VALUE']?>" required maxlength="50">
                 </div>
                 <div class="form-group">
-                    <label>Офис</label>
+                    <label>Квартира/Офис</label>
                     <input name="OFFICE" type="text" value="<?=$CompanyProprties['OFFICE']['VALUE']?>" maxlength="50">
                 </div>
                 <label>* — поля, обязательные для заполнения</label>
@@ -248,3 +259,4 @@
             </div>
     <?endif?>
 </div>
+<?}?>

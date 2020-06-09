@@ -20,8 +20,13 @@ $res = CIBlockElement::GetList(
     ],
     false,
     false,
-    ['ID', 'IBLOCK_ID', 'NAME', 'PROPERTY_DIRECTOR_ID']);
+    ['ID', 'IBLOCK_ID', 'NAME', 'PROPERTY_DIRECTOR_ID', 'PROPERTY_TYPE']);
 while($arCompany = $res->GetNext(true, false)){
     $arResult['COMPANIES'][] = $arCompany;
+}
+
+$rs = CIBlockElement::GetList(array(), array('IBLOCK_ID' => 8, "ACTIVE" => "N", "=PROPERTY_DIRECTOR_ID" => $arResult['arUser']['ID'], "=PROPERTY_TYPE" => 9), false, false, array("ID"));
+if($ob = $rs -> GetNext(true, false)){
+    $arResult['IS_IP'] = "Y";
 }
 ?>
