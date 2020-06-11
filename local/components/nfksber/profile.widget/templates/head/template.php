@@ -52,6 +52,9 @@ $MessURL = '/list_message/';
                         <?if($arResult['UF_ESIA_AUT']==1):?>
                             <li><a href="/profile/select_company/">Переключить профиль</a></li>
                         <?endif?>
+                        <li data-href="/my_pacts/"><a href="/my_pacts/">Мои сделки</a></li>
+                        <li data-href="/friends/"><a href="/friends/">Мои друзья</a></li>
+                        <li data-href="/list_message/"><a href="/list_message/">Сообщения</a></li>
                     </ul>
                     <a href="<?echo $APPLICATION->GetCurPageParam("logout=yes", 
                         array(

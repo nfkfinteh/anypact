@@ -780,7 +780,7 @@ select:-webkit-autofill:focus {
         text-align: center;
     }
     .mobile-location .location{
-        display: block;
+        /*display: block;*/
         color: #ff6416;
         text-decoration: none;
     }
@@ -3965,4 +3965,135 @@ footer p{
     border-radius: 0 !important;
     height: 21px !important;
     width: 134px !important;
+}
+
+.tablet_ver_tel .location {
+    display: none;
+}
+
+.tablet_ver_tel_login .location {
+    display: none;
+}
+
+.widget_user_profile_select ul li[data-href="/my_pacts/"], .widget_user_profile_select ul li[data-href="/friends/"], .widget_user_profile_select ul li[data-href="/list_message/"]{
+    display: none;
+}
+
+@media (max-width: 1200px){
+    .navbar-brand-block{
+        display: none;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) { 
+    .col-md-7.tablet_ver_logo {
+        max-width: 200px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .tablet_ver_logo .location {
+        display: none;
+    }
+
+    .tablet_ver_logo .manual {
+        margin-left: 76px;
+    }
+
+    .col-md-5.tablet_ver_tel_login {
+        max-width: 490px;
+        flex: 0 0 490px;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .tablet_ver_tel_login .phone {
+        margin-left: 0;
+        float: none;
+        margin-right: 25px;
+    }
+
+    .tablet_ver_tel_login .location {
+        display: block;
+        position: absolute;
+        left: 159px;
+        top: 44px;
+    }
+
+    .col-md-2.tablet_ver_tel {
+        max-width: 220px;
+        flex: 0 0 220px;
+    }
+
+    .tablet_ver_tel .phone {
+        margin-left: 0;
+        float: none;
+    }
+    
+    .tablet_ver_tel .location {
+        display: block;
+        position: absolute;
+        left: 120px;
+        top: 44px;
+    }
+
+    .col-md-3.tablet_ver_profile {
+        max-width: 270px;
+        flex: 0 0 270px;
+    }
+
+    .navbar-nav>li[data-href="/my_pacts/"], .navbar-nav>li[data-href="/friends/"], .navbar-nav>li[data-href="/list_message/"]{
+        display: none;
+    }
+
+    .widget_user_profile_select ul li[data-href="/my_pacts/"], .widget_user_profile_select ul li[data-href="/friends/"], .widget_user_profile_select ul li[data-href="/list_message/"]{
+        display: list-item;
+    }
+
+    .search>form>input {
+        width: 260px;
+    }
+
+    a.region.d-none.d-md-inline {
+        display: none!important;
+    }
+
+    .new-auth{
+        position: initial;
+        float: right;
+    }
+
+    .lock-img {
+        left: -42px;
+    }
+    
+    .contact-el {
+        margin-bottom: 20px;
+    }
+
+    .category{
+        white-space: nowrap;
+    }
+    
+    a.cotragent__button, .cotragent__button_active {
+        font-size: 14px;
+        padding: 12px 5px;
+    }
+
+    .list-view .view-item .people-s-photo-btn-block {
+        flex-direction: row;
+    }
+
+    .d-md-table.tablet_adaptive .d-md-table-row>div:last-child, .d-md-table.tablet_adaptive .d-md-table-row>div:nth-last-child(2){
+        display: block!important;
+    }
+
+    input#cardPact-EditText-Summ { 
+        max-width: 116px;
+    }
+
+    ul#choice_category {
+        padding-left: 20px;
+    }
+    
 }

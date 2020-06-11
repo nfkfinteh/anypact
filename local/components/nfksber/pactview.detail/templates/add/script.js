@@ -64,6 +64,7 @@ $(document).ready(function() {
             var wrap = document.createElement('div');
             var img = document.createElement('img');
             var div = document.createElement('div');
+            var block = document.createElement('div');
 
             wrap.setAttribute('class', 'cardPact-box-BoxMainImg');
             wrap.setAttribute('data-id', file.name);
@@ -71,15 +72,27 @@ $(document).ready(function() {
             img.setAttribute('class', 'cardPact-box-BoxPrewImg-img');
             img.setAttribute('src', e.target.result);
 
-            div.setAttribute('class', 'cardPact-box-edit-rem_img');
-            div.innerHTML = ['<span>-</span>'].join('');
+            div.setAttribute('class', 'ardPact-box-edit-block-rem_img');
+
+            block.setAttribute('class', 'cardPact-box-edit-rem_img');
+            block.innerHTML = ['<span>-</span>'].join('');
+
+            div.insertBefore(block, null);
 
             wrap.insertBefore(img, null);
+            
             wrap.insertBefore(div, null);
 
             document.getElementById('cardPact-box-BoxPrewImg').insertBefore(wrap, null);
 
             arFiles[file.name] = file;
+            arFiles.length++;
+            
+            console.log(arFiles);
+
+            if(arFiles.length  >= 10){
+                $('.cardPact-box-edit').hide();
+            }
 
         });
         reader.readAsDataURL(file);
@@ -92,11 +105,18 @@ $(document).ready(function() {
     });
 
     //удаление изображения
-    $(document).on('click', '.cardPact-box-edit-rem_img',  function(){
+    $(document).on('click', '.ardPact-box-edit-block-rem_img',  function(){
         var item = $(this).parents('.cardPact-box-BoxMainImg').eq(0);
         var id = $(item).attr('data-id');
 
         delete arFiles[id];
+        arFiles.length--;
+
+        if(arFiles.length  < 10){
+            if($('.cardPact-box-edit').css('display') == 'none'){
+                $('.cardPact-box-edit').show();
+            }
+        }
 
         item.remove();
 

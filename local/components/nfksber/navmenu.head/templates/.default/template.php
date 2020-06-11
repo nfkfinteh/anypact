@@ -5,7 +5,7 @@
         <span class="location">Выберите город</span>
     </li>
 	<?foreach($arResult["ARR_ITEM_MENU"] as $MenuItem) {?>
-		<li class="nav-item">
+		<li class="nav-item" data-href="<?=$MenuItem["URL"]?>">
 			<a class="nav-link <?=$MenuItem["CLASS"]?>" href="<?=$MenuItem["URL"]?>"><?=$MenuItem["NAME"]?></a> 
 		</li>
 	<?}?>

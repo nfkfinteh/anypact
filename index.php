@@ -286,7 +286,7 @@ $APPLICATION->IncludeComponent(
         <h2>Контакты</h2>
         <div class="short-divider"></div>
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-6 contact-el">
                 <a href="tel:88000000000">
                     <div class="contact-phone-icon">
                         <i class="icon-main icon-11"></i>
@@ -301,7 +301,7 @@ $APPLICATION->IncludeComponent(
                     </div>
                 </a>
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-6 contact-el">
                 <a href="mailto:info@anypact.ru">
                     <div class="contact-mail-icon">
                         <i class="icon-main icon-12"></i>

@@ -52,6 +52,7 @@ global $USER;
     $APPLICATION->ShowHead();
     ?>
     <link href="<?=SITE_TEMPLATE_PATH?>/css/jquery.datetimepicker.css" type="text/css"  rel="stylesheet" />
+    <?/*?>
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript" >
     (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
@@ -67,6 +68,7 @@ global $USER;
     </script>
     <noscript><div><img src="https://mc.yandex.ru/watch/64629523" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
     <!-- /Yandex.Metrika counter -->
+    </*/?>
 </head>
 <body>
 <div id="panel"><?$APPLICATION->ShowPanel();?></div>
@@ -135,32 +137,32 @@ global $USER;
         <!--Шапка-->
         <header class="header" id="header" style="width: 100%;">
             <div class="row">
-                <div class="col-md-7">
+                <div class="col-md-7 tablet_ver_logo">
                     <a href="/" class="logo"><img src="<?=SITE_TEMPLATE_PATH?>/image/logo_ap.svg" alt="" style="width: 166px;"></a>
                     <?if(!empty($getGeo['cityName'])):?>
                         <span class="location"><?=$getGeo['cityName']?></span>
                     <?else:?>
                         <span class="location">Выберите город</span>
                     <?endif?>
-                    <a href="/AnyPact инструкция.pdf" class="manual" target="_blank" onclick="ym(64629523,'reachGoal','manual');">Инструкция</a>
+                    <a href="/AnyPact инструкция.pdf" class="manual" target="_blank" onclick="">Инструкция</a>
                 </div>
                 <? if ($USER->IsAuthorized()){ 
                     $res = CUser::GetList($by="personal_country", $order="desc", [ 'ID' => $USER->GetID() ], [ 'SELECT' => ['UF_ESIA_AUT'], 'FIELDS' => ['ID'] ]);
                     if ( $u = $res -> getNext() )
                         $userEsiaAut = $u['UF_ESIA_AUT'];
                     ?>
-                    <div class="col-md-2">
-                        <!-- <?if(!empty($getGeo['cityName'])):?>
+                    <div class="col-md-2 tablet_ver_tel">
+                        <?if(!empty($getGeo['cityName'])):?>
                             <span class="location"><?=$getGeo['cityName']?></span>
                         <?else:?>
                             <span class="location">Выберите город</span>
-                        <?endif?> -->
+                        <?endif?>
                         <a href="tel:+78002008484" class="phone">8(800) 200-84-84</a>
 
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-3 tablet_ver_profile">
                         <div class="row">     
-                            <?if ( $userEsiaAut != 1 ) {?>                       
+                            <?if ( $userEsiaAut != 1 ) {?>
                                 <div class="col-md-12">
                                     <?                                
                                         $APPLICATION->IncludeComponent("nfksber:profile.widget",
@@ -194,9 +196,14 @@ global $USER;
                         </div>
                     </div>
                     <?} else {?>
-                        <div class="col-md-5">
+                        <div class="col-md-5 tablet_ver_tel_login">
                             <a href="tel:+78002008484" class="phone">8(800) 200-84-84</a>
-                            <button class="btn btn-nfk btn-login" id="reg_button" onclick="ym(64629523,'reachGoal','reg_btn');">Регистрация / Вход</button>
+                            <?if(!empty($getGeo['cityName'])):?>
+                                <span class="location"><?=$getGeo['cityName']?></span>
+                            <?else:?>
+                                <span class="location">Выберите город</span>
+                            <?endif?>
+                            <button class="btn btn-nfk btn-login" id="reg_button" onclick="">Регистрация / Вход</button>
                         </div>
                     <?}?>                    
             </div>

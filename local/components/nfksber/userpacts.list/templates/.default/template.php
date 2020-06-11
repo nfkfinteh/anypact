@@ -172,7 +172,7 @@ $arrStatusAwait = array(
 </div>
 <?if(!empty($arResult["REDACTION"])):?>
     <!--Адаптивная табличка--->
-    <div class="d-md-table">
+    <div class="d-md-table tablet_adaptive">
         <div class="d-none d-md-table-row t-head">
             <div class="d-md-table-cell">Контрагент</div>
             <div class="d-md-table-cell">Наименование</div>
@@ -254,7 +254,7 @@ $arrStatusAwait = array(
 </div>
 <?if(!empty($arResult["SEND_USER_PACT"])):?>
     <!--Адаптивная табличка--->
-    <div class="d-md-table">
+    <div class="d-md-table tablet_adaptive">
         <div class="d-none d-md-table-row t-head">
             <div class="d-md-table-cell">Контрагент</div>
             <div class="d-md-table-cell">Наименование</div>
@@ -369,7 +369,12 @@ $arrStatusAwait = array(
         var Y = e.pageY;
         var top = Y  + 10 + 'px';
         var left = X  + 10 + 'px';
+       
         var id = $(this).next();
+        if(X  + 10 + id.width() >= $('body').width()){
+            left = X - ((X  + 10 + id.width()) - $('body').width()) - 40;
+            left = left + 'px';
+        }
         id.css({
             display:"block",
             top: top,
