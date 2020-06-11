@@ -287,7 +287,7 @@ $APPLICATION->IncludeComponent(
         <div class="short-divider"></div>
         <div class="row">
             <div class="col-lg-6 contact-el">
-                <a href="tel:88000000000">
+                <a href="tel:88002008484">
                     <div class="contact-phone-icon">
                         <i class="icon-main icon-11"></i>
                     </div>
