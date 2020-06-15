@@ -52,7 +52,6 @@ global $USER;
     $APPLICATION->ShowHead();
     ?>
     <link href="<?=SITE_TEMPLATE_PATH?>/css/jquery.datetimepicker.css" type="text/css"  rel="stylesheet" />
-    <?/*?>
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript" >
     (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
@@ -68,7 +67,6 @@ global $USER;
     </script>
     <noscript><div><img src="https://mc.yandex.ru/watch/64629523" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
     <!-- /Yandex.Metrika counter -->
-    </*/?>
 </head>
 <body>
 <div id="panel"><?$APPLICATION->ShowPanel();?></div>
@@ -144,7 +142,7 @@ global $USER;
                     <?else:?>
                         <span class="location">Выберите город</span>
                     <?endif?>
-                    <a href="/AnyPact инструкция.pdf" class="manual" target="_blank" onclick="">Инструкция</a>
+                    <a href="/AnyPact инструкция.pdf" class="manual" target="_blank" onclick=""ym(64629523,'reachGoal','manual');">Инструкция</a>
                 </div>
                 <? if ($USER->IsAuthorized()){ 
                     $res = CUser::GetList($by="personal_country", $order="desc", [ 'ID' => $USER->GetID() ], [ 'SELECT' => ['UF_ESIA_AUT'], 'FIELDS' => ['ID'] ]);
@@ -203,7 +201,7 @@ global $USER;
                             <?else:?>
                                 <span class="location">Выберите город</span>
                             <?endif?>
-                            <button class="btn btn-nfk btn-login" id="reg_button" onclick="">Регистрация / Вход</button>
+                            <button class="btn btn-nfk btn-login" id="reg_button" onclick="ym(64629523,'reachGoal','reg_btn');">Регистрация / Вход</button>
                         </div>
                     <?}?>                    
             </div>
