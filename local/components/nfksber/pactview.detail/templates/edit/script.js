@@ -6,6 +6,60 @@ $(document).ready(function() {
     });
     var control_location_city = select_lcation_city[0].selectize;
 
+    $(document).on('click', '.onActive', function(e){        
+        var buttonActive = $(this).attr('private');
+
+        console.log(this);
+
+        e.preventDefault();
+
+        if(buttonActive == "Y"){
+            $.post(
+                "/response/ajax/up_pact_text.php", {                    
+                    id_element: ID_Object,
+                    atrr_text: 'up_private',
+                    PRIVATE: ""
+                },
+                onAjaxSuccess
+            );
+            
+        }else{
+            $.post(
+                "/response/ajax/up_pact_text.php", {                    
+                    id_element: ID_Object,
+                    atrr_text: 'up_private',
+                    PRIVATE: "10"
+                },
+                onAjaxSuccess
+            );
+            
+        }
+
+        function onAjaxSuccess(data) {
+            $result = JSON.parse(data);
+            if($result['TYPE']=='ERROR'){
+                preload('hide');
+                showResult('#popup-error','Ошибка сохранения', $result['VALUE']);
+            }
+            if($result['TYPE']=='SUCCESS'){
+                if(buttonActive == "Y"){
+                    $('.onActive').children('img').attr('src', '/local/templates/anypact/image/DontActive.png');
+                    $('.onActive').children('input').val("");
+                    $('.onActive').attr('private', '');
+                }else{
+                    $('.onActive').children('img').attr('src', '/local/templates/anypact/image/Active.png');
+                    $('.onActive').children('input').val("10");
+                    $('.onActive').attr('private', 'Y');
+                }
+                preload('hide');
+                $('.date-active').text($result['DATA']);
+                showResult('#popup-success', 'Изменения сохранены');
+            }
+        }
+
+        return false;
+    });
+
     $("#save_descript").on('click', function() {
         var text_descript = $(".cardPact-EditText-Descript .editbox").html().trim();
         cntDescript = $(".cardPact-EditText-Descript .editbox").text().trim().length;

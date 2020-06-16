@@ -109,7 +109,7 @@ $(document).ready(function(){
         }
     });
 
-    $(document).on('change', '.company-list__select', function(){
+    $(document).on('change', '.company.list__select', function(){
         let idCompany = $(this).val(),
             wrap_btn = $('.js-company__btn'),
             idUser = wrap_btn.attr('data-user'),
@@ -135,6 +135,96 @@ $(document).ready(function(){
             html = '<a href="#" class="btn btn-nfk btn-uprofile js-add-staff" data-company="'+ currentCompany.ID +'">' + 'Сделать представителем' + '</a>';
             wrap_btn.html(html);
         }
+    });
+
+    $(document).on('change', '.deal.list__select', function(){
+        let idDeal = $(this).val(),
+            wrap_btn = $('.js-deal__btn'),
+            idUser = wrap_btn.attr('data-user'),
+            currentDeal,
+            html;
+
+        for (i in bitrixDealList) {
+            let deal = bitrixDealList[i];
+            if (deal.ID == idDeal) {
+                currentDeal = deal;
+                break;
+            }
+        }
+        if(currentDeal.ACCESS){
+            html = '<a href="#" class="btn btn-nfk btn-uprofile js-delete-access" data-deal="'+ currentDeal.ID +'">' + 'Закрыть доступ' + '</a>';
+            wrap_btn.html(html);
+        }
+        else{
+            html = '<a href="#" class="btn btn-nfk btn-uprofile js-add-access" data-deal="'+ currentDeal.ID +'">' + 'Предоставить доступ' + '</a>';
+            wrap_btn.html(html);
+        }
+    });
+
+    $(document).on('click', '.js-add-access', function(e){
+        e.preventDefault();
+        let data = {
+            idUser : $('.js-deal__btn').attr('data-user'),
+            idDeal : $(this).attr('data-deal'),
+            action : 'add'
+        };
+        let that = $(this);
+        preload('show');
+        $.ajax({
+            type:'POST',
+            url: '/response/ajax/access.php',
+            data: data,
+            dataType: 'JSON',
+            success: function(data){
+                preload('hide');
+                if(data['TYPE']=='SUCCESS'){
+                    //that.text('Заявка на модерации');
+                    that.removeClass('js-add-access');
+                    that.addClass('disabled');
+                    that.attr('disabled', true);
+                    showResult('#popup-success', data['VALUE']);
+                }else if(data['TYPE']=='ERROR'){
+                    showResult('#popup-error','Ошибка сохранения', data['VALUE']);
+                }
+            },
+            error:function(data){
+                preload('hide');
+                console.log(data); //ошибки сервера
+            }
+        });
+    });
+
+    $(document).on('click', '.js-delete-access', function(e){
+        e.preventDefault();
+        let data = {
+            idUser : $('.js-deal__btn').attr('data-user'),
+            idDeal : $(this).attr('data-deal'),
+            action : 'delete'
+        };
+        let that = $(this);
+        preload('show');
+        $.ajax({
+            type:'POST',
+            url: '/response/ajax/access.php',
+            data: data,
+            dataType: 'JSON',
+            success: function(data){
+                preload('hide');
+                if(data['TYPE']=='SUCCESS'){
+                    //that.text('Заявка на модерации');
+                    that.removeClass('js-add-access');
+                    that.addClass('disabled');
+                    that.attr('disabled', true);
+                    showResult('#popup-success', data['VALUE']);
+                }else if(data['TYPE']=='ERROR'){
+                    showResult('#popup-error','Ошибка сохранения', data['VALUE']);
+                }
+            },
+            error:function(data){
+                preload('hide');
+                console.log(data); //ошибки сервера
+            }
+        });
     });
 
     $(document).on('click', '.js-add-staff', function(e){

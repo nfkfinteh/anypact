@@ -158,6 +158,18 @@
     position: relative;
 }
 
+.cardPact__title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+button.onActive {
+    border: none;
+    background: #fff;
+    cursor: pointer;
+}
+
 .wrap-map_adress .error_form{
     display: none;
     margin-bottom: 5px;

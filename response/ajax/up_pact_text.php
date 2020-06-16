@@ -91,6 +91,16 @@ switch ($_POST['atrr_text']) {
 
         $checkUpdate = CIBlockElement::SetPropertyValuesEx($PRODUCT_ID, false, $arProperty);
         break;
+    case 'up_private':
+        $arProperty = [
+            'PRIVATE'=>$_POST['PRIVATE']
+        ];
+        $arLoadProductArray = Array(
+             "MODIFIED_BY"    => $USER->GetID(),
+        );
+    
+        $checkUpdate = CIBlockElement::SetPropertyValuesEx($PRODUCT_ID, false, $arProperty);
+        break;
 }
 
 // код свойства

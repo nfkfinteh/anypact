@@ -43,8 +43,8 @@ else{
                             <a href="#" class="btn btn-nfk btn-uprofile" data-toggle="modal" data-target=".bd-message-modal-sm">Отправить сообщение</a>
                         <?endif?>
                         <?if(!empty($arResult['COMPANY_CURRENT_USER'])):?>
-                            <label class="company-list__title">Выбор компании</label>
-                            <select class="company-list__select">
+                            <label class="company list__title">Выбор компании</label>
+                            <select class="company list__select">
                                 <?foreach($arResult['COMPANY_CURRENT_USER'] as $comp):?>
                                     <option value="<?=$comp['ID']?>"><?=$comp['NAME']?></option>
                                 <?endforeach?>
@@ -62,6 +62,26 @@ else{
                                 <?else:?>
                                     <a href="#" class="btn btn-nfk btn-uprofile js-add-staff" data-company="<?=$arResult['COMPANY_CURRENT_USER'][0]['ID']?>">
                                         Сделать представителем
+                                    </a>
+                                <?endif?>
+                            </div>
+                        <?endif?>
+                        <?if(!empty($arResult['DEAL_CURRENT_USER'])):?>
+                            <label class="deal list__title">Выбор сделки</label>
+                            <select class="deal list__select">
+                                <?foreach($arResult['DEAL_CURRENT_USER'] as $deal):?>
+                                    <option value="<?=$deal['ID']?>"><?=$deal['NAME']?></option>
+                                <?endforeach?>
+                            </select>
+
+                            <div class="js-deal__btn" data-user="<?=$arResult['USER']['ID']?>">
+                                <?if($arResult['DEAL_CURRENT_USER'][0]['ACCESS']):?>
+                                    <a href="#" class="btn btn-nfk btn-uprofile js-delete-access" data-deal="<?=$arResult['DEAL_CURRENT_USER'][0]['ID']?>">
+                                        Закрыть доступ
+                                    </a>
+                                <?else:?>
+                                    <a href="#" class="btn btn-nfk btn-uprofile js-add-access" data-deal="<?=$arResult['DEAL_CURRENT_USER'][0]['ID']?>">
+                                        Предоставить доступ
                                     </a>
                                 <?endif?>
                             </div>
@@ -188,6 +208,7 @@ else{
 
 <script>
     var bitrixCompanyList = <?=CUtil::PhpToJSObject($arResult['COMPANY_CURRENT_USER'])?>
+    var bitrixDealList = <?=CUtil::PhpToJSObject($arResult['DEAL_CURRENT_USER'])?>
 </script>
 
 <div class="modal fade bd-message-modal-sm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

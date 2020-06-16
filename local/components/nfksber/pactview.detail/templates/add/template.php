@@ -164,6 +164,16 @@ if(!empty($arResult['FORM_SDELKA']['adCity'])){
                     <span>(По умолчанию 10 дней)</span>
                 </div>
                 <div class="cardPact__item">
+                    <div class="cardPact__title">
+                        <h3>Приватность</h3> 
+                        <button class="onActive" private="">
+                            <img src="<?=SITE_TEMPLATE_PATH?>/image/DontActive.png" />
+                            <input name="PRIVATE" id="PRIVATE" type="hidden" value=""/>
+                        </button>
+                    </div>
+                    <span>(Скрыть от других пользователей)</span>
+                </div>
+                <div class="cardPact__item">
                     <?if(empty($arResult['DOGOVOR'])):?>
                         <button class="btn btn-nfk" id="add_dogovor" data-url="/my_pacts/add_new_dogovor/?ADD=ADD">Добавить договор</button>
                     <?else:?>
