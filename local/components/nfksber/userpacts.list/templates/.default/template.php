@@ -50,23 +50,27 @@ $arrStatusAwait = array(
                         </div>
                         <div class="d-md-none text-gray">Активно до:</div>
                         <div class="d-md-table-cell"><?=$pact["ACTIVE_TO"]?></div>
-                        
+                        <?if($pact['PROPERTIES']['MODERATION']['VALUE'] =='Y'):?>
                             <div class="d-md-none text-gray">Видимость</div>
                             <div class="d-md-table-cell">
-                                <?if($pact['PROPERTIES']['MODERATION']['VALUE'] =='Y'):?>
-                                    <button iditem="<?= $pact["ID"]?>" active="<?= $pact["ACTIVE"]?>" class="onActive">
-                                        <img src="<?=SITE_TEMPLATE_PATH?>/image/<?=$PactStatus[$pact["ACTIVE"]]?>" />
-                                    </button>
-                                <?else:?>
-                                    <button class="onActive" disabled>
-                                        <img src="<?=SITE_TEMPLATE_PATH?>/image/<?=$PactStatus['N']?>" />
-                                    </button>
-                                <?endif?>
+                                <button iditem="<?= $pact["ID"]?>" active="<?= $pact["ACTIVE"]?>" class="onActive">
+                                    <img src="<?=SITE_TEMPLATE_PATH?>/image/<?=$PactStatus[$pact["ACTIVE"]]?>" />
+                                </button>
                             </div>
                             <div class="d-md-table-cell">
                                 <a class="button-link" href="/my_pacts/edit_my_pact/?ELEMENT_ID=<?= $pact['ID'] ?>&ACTION=EDIT">Посмотреть</a>
                             </div>
-                        
+                        <?else:?>
+                            <div class="d-md-none text-gray">Видимость</div>
+                            <div class="d-md-table-cell">
+                                <button class="onActive" disabled>
+                                    <img src="<?=SITE_TEMPLATE_PATH?>/image/<?=$PactStatus['N']?>" />
+                                </button>
+                            </div>
+                            <div class="d-md-table-cell">
+                                <a class="button-link" href="/my_pacts/edit_my_pact/?ELEMENT_ID=<?= $pact['ID'] ?>&ACTION=EDIT">Посмотреть</a>
+                            </div>
+                        <?endif?>
                         <?/*кнопки близко, удаление только из карточки
                         <div class="d-md-table-cell">
                             <a href="#" class="button-link" data-id="<?=$pact['ID']?>" data-toggle="modal" data-target=".bd-message-modal-sm" class="modal_deleteItem">Удалить</a>

@@ -6,25 +6,6 @@ $(document).ready(function() {
     var control_location_city = select_lcation_city[0].selectize;
     var city = adData['CITY'];
 
-    $(document).on('click', '.onActive', function(e){        
-        var buttonActive = $(this).attr('private');
-
-        console.log(this);
-
-        e.preventDefault();
-
-        if(buttonActive == "Y"){
-            $(this).children('img').attr('src', '/local/templates/anypact/image/DontActive.png');
-            $(this).children('input').val("");
-            $(this).attr('private', '');
-        }else{
-            $(this).children('img').attr('src', '/local/templates/anypact/image/Active.png');
-            $(this).children('input').val("10");
-            $(this).attr('private', 'Y');
-        }
-
-        return false;
-    });
 
     // Выбор категории
     $('#choice_category li a').on('click', function() {
@@ -160,7 +141,6 @@ $(document).ready(function() {
             adCity : $('#LOCATION_CITY').val(),
             adCoordinates : $('#COORDINATES_AD').val(),
             DOGOVOR_KEY : $('#DOGOVOR_KEY').val(),
-            PRIVATE : $('#PRIVATE').val(),
         };
         return arResult;
     }
@@ -196,7 +176,6 @@ $(document).ready(function() {
             prop['LOCATION_CITY'] = arFormData.adCity;
             prop['COORDINATES_AD'] = arFormData.adCoordinates;
             prop['CONDITIONS_PACT'] = arFormData.adCondition;
-            prop['PRIVATE'] = arFormData.PRIVATE;
 
             if(prop['COORDINATES_AD'].length>0){
                 let arCoordinate = prop['COORDINATES_AD'].split(',');

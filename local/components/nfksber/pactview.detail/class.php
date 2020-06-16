@@ -32,25 +32,7 @@ class CDemoSqr extends CBitrixComponent
         $arPact = array();        
         if(CModule::IncludeModule("iblock"))
             {
-                $arFilter = Array(
-                    "ID" => $id_element,
-                    "ACTIVE"=>"Y",
-                    ">=DATE_ACTIVE_TO" => new \Bitrix\Main\Type\DateTime(),
-                    "PROPERTY_MODERATION_VALUE" => 'Y',
-                    array(
-                        'LOGIC' => 'OR',
-                        array("!=PROPERTY_PRIVATE_VALUE" => "Y"),
-                        array(
-                            "PROPERTY_PRIVATE_VALUE" => "Y",
-                            "=PROPERTY_ACCESS_USER" => empty( $this->arResult["USER_ID"] ) ? 0 : $this->arResult["USER_ID"]
-                        ),
-                        array(
-                            "PROPERTY_PRIVATE_VALUE" => "Y",
-                            "=CREATED_BY" => empty( $this->arResult["USER_ID"] ) ? 0 : $this->arResult["USER_ID"]
-                        ),
-                    )
-                );
-                $res = CIBlockElement::GetList(array(), $arFilter);
+                $res = CIBlockElement::GetByID($id_element);
                 if($ar_res = $res->GetNext()){
                     return $ar_res;
                 }
@@ -243,16 +225,6 @@ class CDemoSqr extends CBitrixComponent
 
             $this->arResult["USER_LOGIN"] =$this->arResult['USER']['LOGIN'];
             $this->arResult["ELEMENT"] = $this->getElement($this->arResult["ELEMENT_ID"]);
-
-            if(empty($this->arResult["ELEMENT"])){
-                Iblock\Component\Tools::process404(
-                    '',
-                    true,
-                    true,
-                    true
-                );
-            }
-
             $this->arResult["PROPERTY"] = $this->getProperty($this->arResult["INFOBLOCK_ID"], $this->arResult["ELEMENT_ID"]);
 
             $arDataDisplay = [

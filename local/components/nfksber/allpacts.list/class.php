@@ -37,25 +37,12 @@ class CDemoSqr extends CBitrixComponent
                     $arrFilter = array();
             }
 
-            global $USER;
 
             $arFilter = Array(
                 "IBLOCK_ID"=>IntVal($id_iblock),
                 "ACTIVE"=>"Y",
                 ">=DATE_ACTIVE_TO" => new \Bitrix\Main\Type\DateTime(),
-                "PROPERTY_MODERATION_VALUE" => 'Y',
-                array(
-                    'LOGIC' => 'OR',
-                    array("!=PROPERTY_PRIVATE_VALUE" => "Y"),
-                    array(
-                        "PROPERTY_PRIVATE_VALUE" => "Y",
-                        "=PROPERTY_ACCESS_USER" => empty($USER -> GetID()) ? 0 : $USER -> GetID()
-                    ),
-                    array(
-                        "PROPERTY_PRIVATE_VALUE" => "Y",
-                        "=CREATED_BY" => empty($USER -> GetID()) ? 0 : $USER -> GetID()
-                    ),
-                )
+                "PROPERTY_MODERATION_VALUE" => 'Y'
             );
 
             if ($_GET['SECTION_ID'] > 0){
@@ -113,9 +100,7 @@ class CDemoSqr extends CBitrixComponent
         if($arNavigation["PAGEN"]==0)
             $arParams["CACHE_TIME"] = 36000;
 
-        global $USER;
-
-        if($this->startResultCache(false, array($arrFilter, $arNavigation, $USER->GetID())))
+        if($this->startResultCache(false, array($arrFilter, $arNavigation)))
         {
             $this->arResult = array_merge($this->arResult, $this->paramsUser($this->arParams));
             $this->arResult["USER_ID"] = CUser::GetID();
