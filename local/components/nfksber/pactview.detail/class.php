@@ -34,7 +34,9 @@ class CDemoSqr extends CBitrixComponent
             {
                 $arFilter = Array(
                     "ID" => $id_element,
-                    "ACTIVE"=>"Y",
+                );
+                if($_REQUEST['ACTION']!='ADD' && $_REQUEST['ACTION']!='EDIT'){
+                    $arFilter = array_merge($arFilter, array("ACTIVE"=>"Y",
                     ">=DATE_ACTIVE_TO" => new \Bitrix\Main\Type\DateTime(),
                     "PROPERTY_MODERATION_VALUE" => 'Y',
                     array(
@@ -48,8 +50,8 @@ class CDemoSqr extends CBitrixComponent
                             "PROPERTY_PRIVATE_VALUE" => "Y",
                             "=CREATED_BY" => empty( $this->arResult["USER_ID"] ) ? 0 : $this->arResult["USER_ID"]
                         ),
-                    )
-                );
+                    )));
+                }
                 $res = CIBlockElement::GetList(array(), $arFilter);
                 if($ar_res = $res->GetNext()){
                     return $ar_res;

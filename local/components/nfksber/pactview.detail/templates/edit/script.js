@@ -52,7 +52,6 @@ $(document).ready(function() {
                     $('.onActive').attr('private', 'Y');
                 }
                 preload('hide');
-                $('.date-active').text($result['DATA']);
                 showResult('#popup-success', 'Изменения сохранены');
             }
         }

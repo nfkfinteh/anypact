@@ -174,3 +174,34 @@ button.onActive {
     display: none;
     margin-bottom: 5px;
 }
+
+.cardPact h3 {
+    padding-right: 1px;
+}
+
+@media screen and (max-width: 1200px){
+    
+    .label-title{
+        width: 92%;
+    }
+
+}
+@media screen and (max-width: 992px){
+    
+    .label-title{
+        width: 89%;
+    }
+    .cardPact__title{
+        flex-wrap: wrap;
+    }
+    .onActive{
+        padding: 1px 0;
+    }
+
+}
+
+@media screen and (max-width: 768px){
+    .label-title{
+        width: 84%;
+    }
+}
