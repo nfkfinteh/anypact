@@ -14,6 +14,7 @@ if ($USER->IsAuthorized()):
             Array(
                 "IBLOCK_ID" => 3,
                 "IBLOCK_ID_COMPANY" => 8,
+                "IBLOCK_ID_DEAL" => 3,
                 "USER_ID" => $_REQUEST['ID'],
                 'CURRENT_USER'=>$USER->GetID(),
                 "CACHE_TIME"=>3600000,

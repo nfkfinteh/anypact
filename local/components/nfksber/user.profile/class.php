@@ -18,6 +18,7 @@ class CDemoSqr extends CBitrixComponent
             'CURRENT_USER'=>intval($arParams['CURRENT_USER']),
             "IBLOCK_ID" => intval($arParams['IBLOCK_ID']),
             "IBLOCK_ID_COMPANY" => intval($arParams['IBLOCK_ID_COMPANY']),
+            "IBLOCK_ID_DEAL" => intval($arParams['IBLOCK_ID_DEAL']),
             "ITEM_COUNT" => intval($arParams['ITEM_COUNT']),
             "PAGER_TEMPLATE" => $arParams["PAGER_TEMPLATE"],
             'TYPE' => htmlspecialchars($arParams['TYPE'])
@@ -379,6 +380,29 @@ class CDemoSqr extends CBitrixComponent
                         }
 
                         $arResult['COMPANY_CURRENT_USER'][] = $arr;
+                    }
+                    $res = CIBlockElement::GetList(
+                        [],
+                        [
+                            'IBLOCK_ID'=>$this->arParams['IBLOCK_ID_DEAL'],
+                            'ACTIVE'=>'Y',
+                            'CREATED_BY'=>$this->arParams['CURRENT_USER'],
+                            'PROPERTY_MODERATION' => 7,
+                            'PROPERTY_PRIVATE' => 10,
+                        ],
+                        false,
+                        false,
+                        ['IBLOCK_ID', 'ID', 'NAME']
+                    );
+                    while($obj = $res->GetNextElement()){
+                        $arr = $obj->GetFields();
+                        $arr['PROPERTY_ACCESS_USER'] = $obj->GetProperty('ACCESS_USER')['VALUE'];
+
+                        if(!empty($arr['PROPERTY_ACCESS_USER']) && in_array($this->arParams['USER_ID'], $arr['PROPERTY_ACCESS_USER'])){
+                            $arr['ACCESS'] = true;
+                        }
+
+                        $arResult['DEAL_CURRENT_USER'][] = $arr;
                     }
                 }
             }

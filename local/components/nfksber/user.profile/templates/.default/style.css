@@ -60,10 +60,10 @@
     border-radius: 5px;
     padding: 10px;
 }
-.company-list__title{
+.list__title{
     margin-top: 17px;
 }
-.company-list__select{
+.list__select{
     border: 1px solid #ff6416;
     border-radius: 2px;
     padding: 10px;

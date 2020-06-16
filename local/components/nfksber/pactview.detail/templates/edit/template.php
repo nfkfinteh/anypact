@@ -103,6 +103,23 @@
             <!--Срок объявления -->
             <h4>Объявление активно до: <span class="date-active"><?=$arResult["ELEMENT"]["DATE_ACTIVE_TO"]?></span></h4>
             <button class="btn btn-nfk" id="up_date_active">Продлить на 10 дней</button>
+            <div class="cardPact__item">
+                    <div class="cardPact__title">
+                        <h3>Приватность</h3>
+                        <?if($arResult['PROPERTY']['PRIVATE']['VALUE'] == 10):?>
+                            <button class="onActive" private="Y">
+                                <img src="<?=SITE_TEMPLATE_PATH?>/image/Active.png" />
+                                <input name="PRIVATE" id="PRIVATE" type="hidden" value="10"/>
+                            </button>
+                        <?else:?>
+                            <button class="onActive" private="">
+                                <img src="<?=SITE_TEMPLATE_PATH?>/image/DontActive.png" />
+                                <input name="PRIVATE" id="PRIVATE" type="hidden" value=""/>
+                            </button>
+                        <?endif;?>
+                    </div>
+                    <h4>(Скрыть от других пользователей)</h4>
+                </div>
             <!-- Добавление договора -->
             <h4>Вы можете добавить договор из шаблона или загрузить свой</h4>
                 <?
