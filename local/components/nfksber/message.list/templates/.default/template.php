@@ -8,8 +8,8 @@
                 <thead>
                 <tr>
                     <th class="d-none d-sm-table-cell" scope="col" colspan="2">Контактное лицо</th>
-                    <th class="d-none d-lg-table-cell" scope="col">Последнее сообщение</th>
-                    <th class="d-none d-sm-table-cell" scope="col">Время</th>
+                    <th class="d-none d-sm-table-cell" scope="col">Последнее сообщение</th>
+                    <th class="d-none d-lg-table-cell" scope="col">Время</th>
                     <th class="d-none d-sm-table-cell" scope="col"></th>
                 </tr>
                 </thead>
@@ -30,13 +30,16 @@
                             <?}?>
                         </td>
                         <td><?=$message["PARAMS_SENDER_USER"]["FIO"]?><br>
-                            <span class="text-gray d-lg-none"><a href="/list_message/view_message/?id=<?= $message["ID"] ?>" target="_blank"><?= $message["UF_TITLE_MESSAGE"] ?></a></span>
+                            <span class="text-gray d-lg-none"><a href="/list_message/view_message/?id=<?= $message["ID"] ?>"><?= $message["UF_TITLE_MESSAGE"] ?></a></span>
                         </td>
                         <td class="d-none d-lg-table-cell <?if($message['UNREAD']=='Y'):?>unread-message<?else:?>text-gray<?endif?>">
                             <?= $message["LAST_MESSAGE"] ?>
+                            <span class="text-gray d-lg-none"><a href="/list_message/view_message/?id=<?= $message["ID"] ?>"><?= $message["LAST_MESSAGE"] ?></a></span>
+                            <span class="text-gray d-lg-none"><p class="small-text"><?= $message["UF_TIME_CREATE_MSG"]->toString() ?></p></span>
                         </td>
                         <td>
-                            <?= $message["UF_TIME_CREATE_MSG"]->toString() ?>
+                            <span class="text-gray d-lg-none"><a href="/list_message/view_message/?id=<?= $message["ID"] ?>"><?= $message["LAST_MESSAGE"] ?></a><br></span>
+                            <span class="small-mb-text text-mb-gray"><?= $message["UF_TIME_CREATE_MSG"]->toString() ?></span>
                         </td>
                         <td class="text-gray d-none d-lg-table-cell"><a href="/list_message/view_message/?id=<?= $message["ID"] ?>">Посмотреть</a></td>
                     </tr>

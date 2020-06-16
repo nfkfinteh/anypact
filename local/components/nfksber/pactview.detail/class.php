@@ -244,7 +244,7 @@ class CDemoSqr extends CBitrixComponent
             $this->arResult["USER_LOGIN"] =$this->arResult['USER']['LOGIN'];
             $this->arResult["ELEMENT"] = $this->getElement($this->arResult["ELEMENT_ID"]);
 
-            if(empty($this->arResult["ELEMENT"])){
+            if($_REQUEST['ACTION']!='ADD' && $_REQUEST['ACTION']!='EDIT' && empty($this->arResult["ELEMENT"])){
                 Iblock\Component\Tools::process404(
                     '',
                     true,
