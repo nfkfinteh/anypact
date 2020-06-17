@@ -119,6 +119,22 @@ class CDemoSqr extends CBitrixComponent
                 $arFilter['>=DATE_ACTIVE_TO'] = ConvertTimeStamp(time(), "SHORT");
             };
 
+            global $USER;
+
+            $arFilter = array_merge($arFilter, array(
+            array(
+                'LOGIC' => 'OR',
+                array("!=PROPERTY_PRIVATE_VALUE" => "Y"),
+                array(
+                    "PROPERTY_PRIVATE_VALUE" => "Y",
+                    "=PROPERTY_ACCESS_USER" => empty( $USER->GetID() ) ? 0 : $USER->GetID()
+                ),
+                array(
+                    "PROPERTY_PRIVATE_VALUE" => "Y",
+                    "=CREATED_BY" => empty( $USER->GetID() ) ? 0 : $USER->GetID()
+                ),
+            )));
+            
             $res = CIBlockElement::GetList([], $arFilter, false, $arNavParams);
             while ($obj = $res->GetNextElement()) {
                 $arFields = $obj->GetFields();
