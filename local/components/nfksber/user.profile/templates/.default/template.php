@@ -174,6 +174,7 @@ else{
                         <h4>Записей нет</h4>
                     <?}?>
                 </div>
+                <?=$arResult["NAV_STRING"]?>
                 <div class="mt-4 tenders__row">
                     <?if($arResult['TYPE_HOLDER']=='user'):?>
                         <?if($arResult['USER']['UF_ABOUT']):?>
@@ -203,7 +204,6 @@ else{
         </div>
     <?endif?>
 </div>
-<?=$arResult["NAV_STRING"]?>
 </div>
 
 <script>
@@ -262,6 +262,3 @@ else{
         </div>
     </div>
 </div>
-
-
-

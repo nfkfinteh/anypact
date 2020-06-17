@@ -220,3 +220,25 @@ button.onActive {
         display: block;
     }
 }
+
+@media screen and (max-width: 992px){
+    .cardPact__title{
+        flex-wrap: wrap;
+    }
+    .onActive{
+        padding: 1px 0;
+    }
+}
+
+@media (max-width: 767px){
+    .col-sm-8 {
+        -ms-flex: none!important;
+        flex: none!important;
+        max-width: none!important;
+    }
+    .col-sm-4 {
+        -ms-flex: none!important;
+        flex: none!important;
+        max-width: none!important;
+    }
+}

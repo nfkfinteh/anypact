@@ -3895,6 +3895,7 @@ footer p{
     -webkit-transition: all .1s;
     transition: all .1s;
     color: #fff;
+    border: 1px solid #ff6416;
 }
 .new-auth-block .regpopup_content_form_submit:hover{
     border: 1px solid #ff6416;

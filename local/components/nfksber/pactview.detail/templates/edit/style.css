@@ -200,8 +200,15 @@ button.onActive {
 
 }
 
-@media screen and (max-width: 768px){
-    .label-title{
-        width: 84%;
+@media screen and (max-width: 767px){
+    .col-sm-8 {
+        -ms-flex: none!important;
+        flex: none!important;
+        max-width: none!important;
+    }
+    .col-sm-4 {
+        -ms-flex: none!important;
+        flex: none!important;
+        max-width: none!important;
     }
 }
