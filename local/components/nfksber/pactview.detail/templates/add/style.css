@@ -92,7 +92,7 @@
     max-height: 35px;
     padding: 0 5px;
     background: #e7ecec;
-    max-width: 220px;
+    max-width: calc(100% - 65px);
     display: inline-block;
     margin-right: 5px;
 }

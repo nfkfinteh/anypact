@@ -4143,6 +4143,12 @@ footer p{
     }
 }
 
+@media screen and (max-width: 370px){
+    .cardPact .cardPact-comment-submit {
+        width: 100%;
+    }
+}
+
 .user-menu-overflow {
     position: fixed;
     top: 0;
