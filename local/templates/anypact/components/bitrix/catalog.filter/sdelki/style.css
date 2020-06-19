@@ -23,3 +23,37 @@
 .filter-date_reset:hover{
     text-decoration: none;
 }
+button.btn-filter{
+    display: none;
+}
+@media screen and (max-width: 767px){
+    .filter-tender{
+        display: none;
+    }
+    .filter-tender .container-img {
+        display: none;
+    }
+    button.btn-filter{
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 50px;
+        height: 50px;
+        border-color: #e8e8e8;
+        background: url(/local/templates/anypact/image/filter-icon.png) no-repeat center;
+    }
+    .btn-filter.active {
+        background-image: url(/local/templates/anypact/image/filter-icon-active.png)!important;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-color: #ffffff;
+        border-color: #ff6416;
+    }
+}
+
+@media screen and (max-width: 374px){
+    .ads-type-name {
+        display: none;
+    }
+}

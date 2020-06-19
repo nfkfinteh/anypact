@@ -138,6 +138,10 @@
     }
 }
 
+.tenders-list .container-img {
+    display: none;
+}
+
 @media screen and (max-width: 767px) {
     .search .btn-search {
         float: none;
@@ -148,6 +152,9 @@
     }
     .phone {
         float: right;
+    }
+    .tenders-list .container-img {
+        display: block;
     }
 }
 

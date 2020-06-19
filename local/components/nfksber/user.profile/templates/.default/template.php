@@ -43,7 +43,7 @@ else{
                             <a href="#" class="btn btn-nfk btn-uprofile" data-toggle="modal" data-target=".bd-message-modal-sm">Отправить сообщение</a>
                         <?endif?>
                         <?if(!empty($arResult['COMPANY_CURRENT_USER'])):?>
-                            <label class="company list__title">Выбор компании</label>
+                            <label class="company list__title">Назначить представителем компании:</label>
                             <select class="company list__select">
                                 <?foreach($arResult['COMPANY_CURRENT_USER'] as $comp):?>
                                     <option value="<?=$comp['ID']?>"><?=$comp['NAME']?></option>

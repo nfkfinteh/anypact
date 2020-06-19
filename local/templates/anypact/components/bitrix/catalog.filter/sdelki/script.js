@@ -47,5 +47,14 @@ $(document).ready(function(){
         sortField: 'text'
     });
 
+    $('.btn-filter').on('click', function(){
+        if($(this).hasClass('active')){
+            $(this).removeClass('active');
+            $('.filter-tender').hide(500);
+        }else{
+            $(this).addClass('active');
+            $('.filter-tender').show(500);
+        }
+    })
 
 });

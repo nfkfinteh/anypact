@@ -119,6 +119,12 @@ textarea.message-textarea{
     .list-view .view-item .people-s-photo-text h6 {
         font-size: 16px;
     }
+    .people-s-photo-text h6 {
+        height: 50px;
+    }
+    .list-view .view-item .people-s-photo-text-block h6 {
+        height: auto;
+    }
 }
 @media screen and (min-width: 767px) {
     .btn-view{

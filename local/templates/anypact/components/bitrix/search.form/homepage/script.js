@@ -21,3 +21,9 @@ $(document).ready(function() {
         }
     });
 });
+
+if(window.innerWidth < 767){
+    $('.magnifier').on('click', function(){
+        $(this).parent('form').submit();
+    })
+}

@@ -18,21 +18,51 @@ $MessURL = '/list_message/';
                     </div>
                 <?endif?>
             <?else:?>
-                <? if(empty($arResult["PERSONAL_PHOTO"])):?>
-                    <a href="<?=$MessURL?>" class="link-messageList">
+                
+                <a href="<?=$MessURL?>" class="link-messageList">
+                    <? if(empty($arResult["PERSONAL_PHOTO"])):?>
                         <div class="widget_user_profile_avatar container_prof">
                             <span><?=$arResult["IN_NAME"]?></span>
-                            <div class="count_unread <?if($arResult['UNREAD_MESSAGE']>0):?>active<?endif?>"><?=$arResult['UNREAD_MESSAGE']?></div>
-                        </div>
-                    </a>
-                <?else:?>
-                    <a href="<?=$MessURL?>" class="link-messageList">
+                    <?else:?>
                         <div class="login-information-photo container_prof">
                             <img src="<?=$arResult["PERSONAL_PHOTO"]?>">
+                    <?endif?>
                             <div class="count_unread <?if($arResult['UNREAD_MESSAGE']>0):?>active<?endif?>"><?=$arResult['UNREAD_MESSAGE']?></div>
                         </div>
-                    </a>
-                <?endif?>
+                </a>
+                <div class="user-menu-overflow">
+                    <div class="user-menu-block" onclick="event.stopPropagation()">
+                        <a class="user-info" href="<?=$MessURL?>">
+                        <? if(empty($arResult["PERSONAL_PHOTO"])):?>
+                            <div class="widget_user_profile_avatar container_prof">
+                                <span><?=$arResult["IN_NAME"]?></span>
+                        <?else:?>
+                            <div class="login-information-photo container_prof">
+                                <img src="<?=$arResult["PERSONAL_PHOTO"]?>">
+                        <?endif?>
+                                <div class="count_unread <?if($arResult['UNREAD_MESSAGE']>0):?>active<?endif?>"><?=$arResult['UNREAD_MESSAGE']?></div>
+                            </div>
+                            <div class="user-fio">
+                                <?if(!empty($arResult['ACTIVE_COMPANY'])):?><?=$arResult['ACTIVE_COMPANY']['NAME']?>,   <?endif?> <?=$arResult["LAST_NAME"]?> <?=$arResult["IN_NAMES"]?>
+                            </div>
+                        </a>
+                        <div class="user-menu">
+                            <ul>
+                                <li><a href="/profile/">Редактировать профиль</a></li>
+                                <?if($arResult['UF_ESIA_AUT']==1):?>
+                                    <li><a href="/profile/select_company/">Переключить профиль</a></li>
+                                <?endif?>
+                            </ul>
+                            <a href="<?echo $APPLICATION->GetCurPageParam("logout=yes", 
+                            array(
+                                "login",
+                                "logout",
+                                "register",
+                                "forgot_password",
+                                "change_password"));?>" class="exit-profile">Выйти</a>
+                        </div>
+                    </div>
+                </div>
             <?endif?>
 
             <div class="login-information-text widget_user_profile_name">

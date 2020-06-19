@@ -31,7 +31,8 @@ $APPLICATION->SetPageProperty("description", "Заключить договор 
             )
     );
     ?>
-    <div class="ads-type d-flex justify-content-end align-middle">
+    <div class="ads-type d-flex justify-content-end align-middle position-relative">
+        <button class="btn btn-filter"></button>
         <span class="ads-type-name">Вид обьявлений</span>
         <button class="btn btn-tiled active"></button>
         <button class="btn btn-list"></button>

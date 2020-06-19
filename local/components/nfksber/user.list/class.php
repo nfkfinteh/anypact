@@ -47,6 +47,8 @@ class CDemoSqr extends CBitrixComponent
 
             $navComponentParameters = array();
 
+            $res->nPageWindow = 3;
+
             $this->arResult["NAV_STRING"] = $res->GetPageNavStringEx(
                 $navComponentObject,
                 '',

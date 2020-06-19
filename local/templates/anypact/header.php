@@ -68,7 +68,13 @@ global $USER;
     <noscript><div><img src="https://mc.yandex.ru/watch/64629523" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
     <!-- /Yandex.Metrika counter -->
 </head>
-<body>
+<?
+    $page = explode('/', $_SERVER['REQUEST_URI']);
+    $class_container = '';
+    if(!empty($page[1]) && $page[1] == 'pacts' ){ $class_container = 'bg-russia';}
+    if(!empty($page[2]) && $page[2] == 'view_pact' ){ $class_container = '';}
+?>
+<body class="<?=$class_container?>">
 <div id="panel"><?$APPLICATION->ShowPanel();?></div>
 <?$getGeo = $APPLICATION->IncludeComponent("nfksber:location","",Array(
         'CACHE_TYPE'=>'Y'
@@ -125,13 +131,7 @@ global $USER;
     </div>
 </noindex>
 <!--/Окно регистрации-->
-    <?
-        $page = explode('/', $_SERVER['REQUEST_URI']);
-        $class_container = '';
-        if(!empty($page[1]) && $page[1] == 'pacts' ){ $class_container = 'bg-russia';}
-        if(!empty($page[2]) && $page[2] == 'view_pact' ){ $class_container = '';}
-    ?>
-<div class="container <?=$class_container?>">
+<div class="container">
         <!--Шапка-->
         <header class="header" id="header" style="width: 100%;">
             <div class="row">

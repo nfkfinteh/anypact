@@ -54,6 +54,7 @@ class CDemoSqr extends CBitrixComponent
                 $arCompany[] = $obj;
             }
             $navComponentParameters = array();
+            $res->nPageWindow = 3;
             $this->arResult["NAV_STRING_COMPANY"] = $res->GetPageNavStringEx(
                 $navComponentObject,
                 '',

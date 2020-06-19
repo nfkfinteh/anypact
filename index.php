@@ -452,6 +452,16 @@ $APPLICATION->IncludeComponent(
 
        });
     }
+
+    var mh = 0;
+    $('.deal-container').find(".card-deal").find("p").each(function () {
+        var h_block = parseInt($(this).height());
+        if(h_block > mh) {
+           mh = h_block;
+        };
+    });
+    $('.deal-container').find(".card-deal").find("p").height(mh);
+
     })
 </script>
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

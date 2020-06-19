@@ -351,38 +351,63 @@ $arrStatusAwait = array(
         $(this).toggleClass("open");
         $(this).next().toggleClass("open");
     });
-    $(".info-btn").click(function () {
-        if (window.innerWidth <= 767)
+    if (window.innerWidth <= 767) {
+        $(".info-btn").click(function (e) {
             $(this).next().slideToggle();
-    });
+            var X = e.pageX;
+            var Y = e.pageY;
+            var top = Y  + 10 + 'px';
+            var left = X  + 10 + 'px';
+            
+            var width = $('body').width() - 100;
+
+            var id = $(this).next();
+            if(X  + 10 + width >= $('body').width()){
+                left = X - ((X  + 10 + width) - $('body').width()) - 40;
+                left = left + 'px';
+            }
+            id.css({
+                top: top,
+                left: left,
+                width: width
+            });
+        });
+        $(document).click( function(event){
+            if( $(event.target).closest(".info-content").length ) return;
+            if( $(event.target).closest(".info-btn").length ) return;
+            $(".info-content").slideUp();
+            event.stopPropagation();
+        });
+    }
     // $(".info-btn").hover(function () {
     //     if (window.innerWidth > 767)
     //         $(this).next().fadeToggle(50);
     // });
-
-    $('.info-btn').mousemove(function(e){
-        var X = e.pageX;
-        var Y = e.pageY;
-        var top = Y  + 10 + 'px';
-        var left = X  + 10 + 'px';
-       
-        var id = $(this).next();
-        if(X  + 10 + id.width() >= $('body').width()){
-            left = X - ((X  + 10 + id.width()) - $('body').width()) - 40;
-            left = left + 'px';
-        }
-        id.css({
-            display:"block",
-            top: top,
-            left: left
+    if (window.innerWidth > 767){
+        $('.info-btn').mousemove(function(e){
+            var X = e.pageX;
+            var Y = e.pageY;
+            var top = Y  + 10 + 'px';
+            var left = X  + 10 + 'px';
+        
+            var id = $(this).next();
+            if(X  + 10 + id.width() >= $('body').width()){
+                left = X - ((X  + 10 + id.width()) - $('body').width()) - 40;
+                left = left + 'px';
+            }
+            id.css({
+                display:"block",
+                top: top,
+                left: left
+            });
         });
-    });
-    $('.info-btn').mouseout (function(){
-        var id = $(this).next();
-        id.css({
-            display:"none"
+        $('.info-btn').mouseout (function(){
+            var id = $(this).next();
+            id.css({
+                display:"none"
+            });
         });
-    });
+    }
 </script>
 
     <!-- окно предупреждения удаления сделки -- -->

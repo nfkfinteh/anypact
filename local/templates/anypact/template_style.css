@@ -1780,6 +1780,7 @@ input::-webkit-input-placeholder {
     font-size: 14px;
     background-color: #ffffff;
     display: none;
+    z-index: 1;
 }
 .lk-contracts .info-btn:active, .lk-contracts .info-btn:focus.lk-contracts .info-btn:active, .lk-contracts .info-btn:hover {
     outline: none;
@@ -1880,9 +1881,6 @@ table.detail_contract, table.detail_contract thead, table.detail_contract tr, ta
     }
 }
 @media screen and (max-width: 767px){
-    .lk-contracts .info-content{
-        position: static;
-    }
     .lk-contracts .d-md-table .d-md-table-row .d-md-table-cell {
         padding: 0 0 1rem;
     }
@@ -1919,7 +1917,7 @@ table.detail_contract, table.detail_contract thead, table.detail_contract tr, ta
     }
 }
 @media screen and (max-width: 543px){
-    .lk-contracts .btn-add-contract, .lk-contracts .btn-db{
+    .lk-contracts .btn-db{
         width: 100%;
         margin-top: 10px;
     }
@@ -2223,7 +2221,13 @@ table.detail_contract, table.detail_contract thead, table.detail_contract tr, ta
         display: none;
     }
     .search>form>input {
-        width: calc(100% - 85px);
+        width: calc(100% - 120px);
+        padding-left: 10px;
+    }
+    .magnifier{
+        padding: 15px 0;
+        margin-right: 10px;
+        cursor: pointer;
     }
     .search .deal-type {
         border-left: none;
@@ -2293,7 +2297,7 @@ body,
     background-color: #ffffff !important;
 }
 
-.container.bg-russia {
+body.bg-russia {
     background: url("image/bg.png") no-repeat fixed center center;
 }
 
@@ -3493,6 +3497,9 @@ input::-webkit-input-placeholder {
         min-height: 405px;
         padding: 35px 20px 5px;
     }
+    .contact-container .contact-big-text {
+        font-size: 39px;
+    }
 }
 @media screen and (max-width: 991px) {
     .map-space {
@@ -3989,9 +3996,25 @@ footer p{
     display: none;
 }
 
-@media (max-width: 1200px){
+@media (max-width: 1199px){
     .navbar-brand-block{
         display: none;
+    }
+    .list-view .view-item .people-s-photo-btn-block {
+        flex-direction: row;
+    }
+}
+
+@media screen and (max-width: 991px) { 
+    .contact-el {
+        margin-bottom: 20px;
+    }
+    .new-auth{
+        position: initial;
+        float: right;
+    }
+    .category{
+        white-space: nowrap;
     }
 }
 
@@ -4068,30 +4091,13 @@ footer p{
         display: none!important;
     }
 
-    .new-auth{
-        position: initial;
-        float: right;
-    }
-
     .lock-img {
         left: -42px;
-    }
-    
-    .contact-el {
-        margin-bottom: 20px;
-    }
-
-    .category{
-        white-space: nowrap;
     }
     
     a.cotragent__button, .cotragent__button_active {
         font-size: 14px;
         padding: 12px 5px;
-    }
-
-    .list-view .view-item .people-s-photo-btn-block {
-        flex-direction: row;
     }
 
     .d-md-table.tablet_adaptive .d-md-table-row>div:last-child, .d-md-table.tablet_adaptive .d-md-table-row>div:nth-last-child(2){
@@ -4106,4 +4112,99 @@ footer p{
         padding-left: 20px;
     }
     
+}
+@media screen and (max-width: 767px){
+    .new-auth{
+        float: none;
+        margin-left: 0;
+        margin-top: 40px;
+    }
+    #open_reg_form{
+        margin: 89px auto 0;
+    }
+    .lock-img{
+        right: 0;
+    }
+    .page-item:nth-child(2){
+        display: none;
+    }
+    .page-item:nth-last-child(2){
+        display: none;
+    }
+    .lk-contracts .btn-add-contract{
+        width: 100%;
+        margin-top: 10px;
+    }
+}
+
+@media screen and (max-width: 424px){
+    .new-auth-block {
+        margin: 0 auto;
+    }
+}
+
+.user-menu-overflow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #cccccccc;
+    z-index: 1000;
+    display: none;
+}
+.user-menu-block {
+    height: 100%;
+    width: calc(100% - 65px);
+    background: #fff;
+    float: right;
+    -webkit-transition: all .5s ease-out 0.5s;
+    -moz-transition: all .5s ease-out 0.5s;
+    -o-transition: all .5s ease-out 0.5s;
+    transition: all .5s  ease-out 0.5s;
+    margin-right: -100vw;
+}
+.user-menu-block-show {
+    margin-right: 0vw;
+}
+a.user-info {
+    height: 45px;
+    display: flex;
+    padding: 10px 20px;
+    box-sizing: content-box;
+    align-items: center;
+    border-bottom: 1px #ff6416 solid;
+}
+.user-fio {
+    margin-left: 15px;
+    font-size: 14px;
+}
+.user-menu ul {
+    list-style: none;
+    padding: 0;
+}
+.user-menu ul li, a.exit-profile{
+    padding: 10px 30px;
+    display: block;
+}
+.user-menu-overflow:after {
+    transform: rotate(-45deg);
+}
+.user-menu-overflow:before{
+    transform: rotate(45deg);
+}
+.user-menu-overflow:before, .user-menu-overflow:after {
+    top: 20px;
+    position: absolute;
+    left: 31px;
+    content: ' ';
+    height: 33px;
+    width: 2px;
+    background-color: #fff;
+}
+.user-menu ul li a, .user-menu ul li a:hover, .user-fio{
+    color: #000;
+}
+.row.mt-4.tenders__row > h4 {
+    padding: 0 15px;
 }

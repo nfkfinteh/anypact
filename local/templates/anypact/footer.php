@@ -12,7 +12,7 @@
 				Аnypact.ru</a></span>
 		</p>		
 	</div>
-	<a href="#header" class="up-arrow"></a>
+	<a href="#panel" class="up-arrow"></a>
 </footer>
 <?require_once($_SERVER['DOCUMENT_ROOT']."/local/include/form_modal.php");?>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
