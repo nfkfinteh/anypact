@@ -371,6 +371,7 @@ div.add_company{
 .user_profile_form_editdata a.btn {
     padding: 10px 30px;
     border-radius: 5px;
+    max-width: 100%;
 }
 
 #companyDeleteWarning {

@@ -38,7 +38,7 @@
                             <span class="text-gray d-lg-none"><p class="small-text"><?= $message["UF_TIME_CREATE_MSG"]->toString() ?></p></span>
                         </td>
                         <td>
-                            <span class="text-gray d-lg-none"><a href="/list_message/view_message/?id=<?= $message["ID"] ?>"><?= $message["LAST_MESSAGE"] ?></a><br></span>
+                            <span class="text-gray d-lg-none"><a href="/list_message/view_message/?id=<?= $message["ID"] ?>" class="<?if($message['UNREAD']=='Y'):?>unread-message<?else:?>text-gray<?endif?>"><?= $message["LAST_MESSAGE"] ?></a><br></span>
                             <span class="small-mb-text text-mb-gray"><?= $message["UF_TIME_CREATE_MSG"]->toString() ?></span>
                         </td>
                         <td class="text-gray d-none d-lg-table-cell"><a href="/list_message/view_message/?id=<?= $message["ID"] ?>">Посмотреть</a></td>
