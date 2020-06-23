@@ -31,11 +31,23 @@ $APPLICATION->SetPageProperty("description", "Заключить договор 
             )
     );
     ?>
-    <div class="ads-type d-flex justify-content-end align-middle position-relative">
-        <button class="btn btn-filter"></button>
-        <span class="ads-type-name">Вид обьявлений</span>
-        <button class="btn btn-tiled active"></button>
-        <button class="btn btn-list"></button>
+    <div class="ads-type d-flex justify-content-between position-relative deal-btn-block">
+        <div class="d-flex justify-content-start align-middle">
+            <span class="d-flex align-middle align-items-center">Сортировать:</span>
+            <select class="deal-sort" name="sort">
+                <option value="default" default>По умолчанию</option>
+                <option value="PRICE" data-order="asc">По возростанию цены</option>
+                <option value="PRICE" data-order="desc">По убыванию цены</option>
+                <option value="NAME" data-order="asc">От А до Я</option>
+                <option value="NAME" data-order="desc">От Я до А</option>
+            </select>
+        </div>
+        <div class="d-flex justify-content-end align-middle">
+            <button class="btn btn-filter"></button>
+            <span class="ads-type-name">Вид обьявлений</span>
+            <button class="btn btn-tiled active"></button>
+            <button class="btn btn-list"></button>
+        </div>
     </div>
     <?//компонент выводит список всех предложений
     $APPLICATION->IncludeComponent("nfksber:pacts", 

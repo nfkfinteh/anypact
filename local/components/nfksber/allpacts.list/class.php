@@ -64,7 +64,32 @@ class CDemoSqr extends CBitrixComponent
                 $arFilter['INCLUDE_SUBSECTIONS'] = 'Y';
             }
 
-            $res = CIBlockElement::GetList(Array("rand" => "asc"), array_merge($arFilter, $arrFilter), false, $arNavParams, $arSelect);
+            $sort = 'RAND';
+            $order = 'asc';
+            
+            if(isset($_GET['sort'])){
+                if($_GET['sort'] == "NAME"){
+                    $sort = $_GET['sort'];
+                }
+                if($_GET['sort'] == "PRICE"){
+                    $sort = "PROPERTY_SUMM_PACT";
+                }
+                if(isset($_GET['order'])){
+                    if($_GET['order'] == "asc" && $_GET['order'] == "desc"){
+                        $order = $_GET['order'];
+                    }
+                }
+                $arSort[$sort] = $order;
+                $_SESSION['DEAL_SORT'] = $arSort;
+            }elseif(isset($_SESSION['DEAL_SORT'])){
+                $arSort = $_SESSION['DEAL_SORT'];
+            }else{
+                $arSort[$sort] = $order;
+                $_SESSION['DEAL_SORT'] = $arSort;
+            }
+            
+
+            $res = CIBlockElement::GetList($arSort, array_merge($arFilter, $arrFilter), false, $arNavParams, $arSelect);
             // перебираем элементы
             while($ob = $res->GetNextElement())
             {
@@ -117,7 +142,7 @@ class CDemoSqr extends CBitrixComponent
 
         global $USER;
 
-        if($this->startResultCache(false, array($arrFilter, $arNavigation, $USER->GetID())))
+        if($this->startResultCache(false, array($arrFilter, $arNavigation, $USER->GetID(), $_SESSION['DEAL_SORT'])))
         {
             $this->arResult = array_merge($this->arResult, $this->paramsUser($this->arParams));
             $this->arResult["USER_ID"] = CUser::GetID();

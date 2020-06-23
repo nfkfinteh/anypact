@@ -344,6 +344,10 @@ input {
     box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.2);
 }
 
+.tender-post:hover .tender-img::before{
+    background-color: rgba(0, 0, 0, 0);
+}
+
 .tender-post a {
     color: #000000;
 }
@@ -357,6 +361,11 @@ input {
     position: relative;
     /* overflow: hidden;
      height: 174px;*/
+}
+
+.tender-post .tender-img::before {
+    -webkit-transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
 .tender-post .tender-text {
@@ -4135,6 +4144,13 @@ footer p{
         width: 100%;
         margin-top: 10px;
     }
+    .deal-btn-block{
+        justify-content: flex-end!important;
+        flex-wrap: wrap-reverse;
+    }
+    .deal-btn-block div:first-child{
+        margin-top: 25px;
+    }
 }
 
 @media screen and (max-width: 424px){
@@ -4213,4 +4229,10 @@ a.user-info {
 }
 .row.mt-4.tenders__row > h4 {
     padding: 0 15px;
+}
+.deal-sort {
+    margin-left: 10px;
+    border: none;
+    background: none;
+    color: #ff6416;
 }

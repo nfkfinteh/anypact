@@ -177,10 +177,12 @@ $(document).ready(function(){
             $('.blacklist').hide();
             $('.js-friends__list').show();
             $(this).removeClass('active');
+            $(this).text('Черный список');
         }else{
             $('.js-friends__list').hide();
             $('.blacklist').show();
             $(this).addClass('active');
+            $(this).text('Список друзей');
         }
     })
 

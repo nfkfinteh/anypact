@@ -28,7 +28,7 @@ $arrStatusAwait = array(
                 <div class="d-none d-md-table-row t-head">
                     <div class="d-md-table-cell">Наименование</div>
                     <div class="d-md-table-cell">Активно до</div>
-                    <div class="d-md-table-cell">Видимость</div>
+                    <div class="d-md-table-cell">Активность</div>
                     <div class="d-md-table-cell"></div>
                     <!-- кнопки близко, удаление только из карточки <div class="d-md-table-cell"></div>  -->              
                 </div>
@@ -51,7 +51,7 @@ $arrStatusAwait = array(
                         <div class="d-md-none text-gray">Активно до:</div>
                         <div class="d-md-table-cell"><?=$pact["ACTIVE_TO"]?></div>
                         
-                            <div class="d-md-none text-gray">Видимость</div>
+                            <div class="d-md-none text-gray">Активность</div>
                             <div class="d-md-table-cell">
                                 <?if($pact['PROPERTIES']['MODERATION']['VALUE'] =='Y'):?>
                                     <button iditem="<?= $pact["ID"]?>" active="<?= $pact["ACTIVE"]?>" class="onActive">

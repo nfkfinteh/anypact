@@ -10,9 +10,10 @@ CModule::IncludeModule('iblock');
 $el = new CIBlockElement;
 
 $arLoadProductArray = Array(
-    "MODIFIED_BY"     => $USER->GetID(),     // элемент изменен текущим пользователем    
-    "PROPERTY_VALUES" => array("MODERATION" => $_POST['Moderation'])    // активен
-    );
+    "MODIFIED_BY"     => $USER->GetID(),     // элемент изменен текущим пользователем
+    "ACTIVE"          => "Y",     // активен
+    "PROPERTY_VALUES" => array("MODERATION" => $_POST['Moderation'])    // Промодерирован
+);
   
   $PRODUCT_ID = $_POST['IDElement'];  // изменяем элемент с кодом (ID) 2
   $res = $el->Update($PRODUCT_ID, $arLoadProductArray);

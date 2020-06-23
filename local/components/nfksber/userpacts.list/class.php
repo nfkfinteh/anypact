@@ -24,14 +24,14 @@ class CDemoSqr extends CBitrixComponent
         $arPact = array();
         if(CModule::IncludeModule("iblock"))
             {
-                if(empty($this->arResult['ID_CUR_COMPANY'])){
+                /*if(empty($this->arResult['ID_CUR_COMPANY'])){
                     // выборку объявлений делаем по свойству "Владелец договора", так как создавать и модифицировать может администратор
                     $arFilter = Array("IBLOCK_ID"=>IntVal($id_iblock), "PROPERTY_PACT_USER"=>$id_user);
                 }
-                else{
+                else{*/
                     // выборку объявлений делаем по свойству "Владелец договора", так как создавать и модифицировать может администратор
-                    $arFilter = Array("IBLOCK_ID"=>IntVal($id_iblock), "PROPERTY_ID_COMPANY"=>$id_user);
-                }
+                    $arFilter = Array("IBLOCK_ID"=>IntVal($id_iblock), array("LOGIC" => "OR", array("PROPERTY_ID_COMPANY"=>$id_user), array("PROPERTY_ID_COMPANY"=>false, "CREATED_BY"=>$id_user)));
+                //}
                 $res = CIBlockElement::GetList(Array(), $arFilter, false, Array("nPageSize"=>50));
                 
                 while($ob = $res->GetNextElement())

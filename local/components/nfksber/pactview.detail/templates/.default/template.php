@@ -30,6 +30,7 @@ else{
                         ?>
                         <?if(!empty($url_img['URL'])):?>
                             <div class="sp-slide">
+                            <span class="gallery-img-cover" style="background-image: url('<?=$url_img["URL"]?>');"></span>
                                 <img class="sp-image" src="<?=$url_img["URL"]?>">
                                 <img class="sp-thumbnail" src="<?=$url_img['THUMB_URL']?>">
                             </div>
@@ -136,6 +137,12 @@ else{
                     thumbnailWidth : 82,
                     thumbnailHeight : 50
                 }
+            },
+            init: function( event ) {
+                $('.sp-slide').each(function(index,value){
+                    $(value).prepend($(value).children('.gallery-img-cover'));
+
+                });
             }
         });
     });
