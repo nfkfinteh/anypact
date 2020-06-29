@@ -64,30 +64,11 @@ class CDemoSqr extends CBitrixComponent
                 $arFilter['INCLUDE_SUBSECTIONS'] = 'Y';
             }
 
-            $sort = 'RAND';
-            $order = 'asc';
-            
-            if(isset($_GET['sort'])){
-                if($_GET['sort'] == "NAME"){
-                    $sort = $_GET['sort'];
-                }
-                if($_GET['sort'] == "PRICE"){
-                    $sort = "PROPERTY_SUMM_PACT";
-                }
-                if(isset($_GET['order'])){
-                    if($_GET['order'] == "asc" && $_GET['order'] == "desc"){
-                        $order = $_GET['order'];
-                    }
-                }
-                $arSort[$sort] = $order;
-                $_SESSION['DEAL_SORT'] = $arSort;
-            }elseif(isset($_SESSION['DEAL_SORT'])){
+            if($_SESSION['DEAL_SORT']){
                 $arSort = $_SESSION['DEAL_SORT'];
             }else{
-                $arSort[$sort] = $order;
-                $_SESSION['DEAL_SORT'] = $arSort;
+                $arSort = array('RAND' => 'asc');
             }
-            
 
             $res = CIBlockElement::GetList($arSort, array_merge($arFilter, $arrFilter), false, $arNavParams, $arSelect);
             // перебираем элементы
