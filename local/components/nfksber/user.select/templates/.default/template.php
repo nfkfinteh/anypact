@@ -81,9 +81,10 @@ if($arResult['IS_AJAX_REQUEST'] == 'Y'){
     </div>
 </div>
 <div class="cardPact__title">
-    <h3>Выберите пользователей</h3>
+    <h3 style="margin-bottom: 0;">Выберите пользователей</h3>
 </div>
-<h4>Только выбранным ползователям будет видно данное предложение (необязательно)</h4>
+<h4 style="margin-bottom: .5rem;">(Необязательно)</h4>
+<h4>Только выбранным пользователям будет видно данное предложение</h4>
 
 <?
 $signer = new \Bitrix\Main\Security\Sign\Signer;

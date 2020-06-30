@@ -18,14 +18,12 @@ $(document).ready(function() {
             $(this).children('img').attr('src', '/local/templates/anypact/image/DontActive.png');
             $(this).children('input').val("");
             $(this).attr('private', '');
-            $('#us_name').hide(300);
-            $('.select-user').hide(300);
+            $('#user_select').hide(300);
         }else{
             $(this).children('img').attr('src', '/local/templates/anypact/image/Active.png');
             $(this).children('input').val("10");
             $(this).attr('private', 'Y');
-            $('#us_name').show(300);
-            $('.select-user').show(300);
+            $('#user_select').show(300);
         }
 
         return false;

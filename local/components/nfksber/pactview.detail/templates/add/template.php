@@ -173,7 +173,7 @@ if(!empty($arResult['FORM_SDELKA']['adCity'])){
                     </div>
                     <span>(Скрыть от других пользователей)</span>
                 </div>
-                <div class="cardPact__item">
+                <div class="cardPact__item" id="user_select">
                     <?
                     $APPLICATION->IncludeComponent(
                         "nfksber:user.select",
