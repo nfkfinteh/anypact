@@ -6,6 +6,7 @@ $(document).ready(function() {
     var control_location_city = select_lcation_city[0].selectize;
     var city = adData['CITY'];
 
+    //Приватность
     $(document).on('click', '.onActive', function(e){        
         var buttonActive = $(this).attr('private');
 
@@ -17,10 +18,14 @@ $(document).ready(function() {
             $(this).children('img').attr('src', '/local/templates/anypact/image/DontActive.png');
             $(this).children('input').val("");
             $(this).attr('private', '');
+            $('#us_name').hide(300);
+            $('.select-user').hide(300);
         }else{
             $(this).children('img').attr('src', '/local/templates/anypact/image/Active.png');
             $(this).children('input').val("10");
             $(this).attr('private', 'Y');
+            $('#us_name').show(300);
+            $('.select-user').show(300);
         }
 
         return false;
@@ -150,6 +155,12 @@ $(document).ready(function() {
     });
 
     function getFormData(){
+        let arID = new Array();
+        if($('#PRIVATE').val() == 10) {
+            $('input[name="SELECTED_USER[]"]').each(function(){
+                arID.push($(this).val());
+            });
+        }
         let arResult = {
             adName : $('#ad_name').val(),
             adDescript : $('#ad_descript').val(),
@@ -161,6 +172,7 @@ $(document).ready(function() {
             adCoordinates : $('#COORDINATES_AD').val(),
             DOGOVOR_KEY : $('#DOGOVOR_KEY').val(),
             PRIVATE : $('#PRIVATE').val(),
+            ACCESS_USER : arID,
         };
         return arResult;
     }
@@ -197,6 +209,7 @@ $(document).ready(function() {
             prop['COORDINATES_AD'] = arFormData.adCoordinates;
             prop['CONDITIONS_PACT'] = arFormData.adCondition;
             prop['PRIVATE'] = arFormData.PRIVATE;
+            prop['ACCESS_USER'] = arFormData.ACCESS_USER;
 
             if(prop['COORDINATES_AD'].length>0){
                 let arCoordinate = prop['COORDINATES_AD'].split(',');

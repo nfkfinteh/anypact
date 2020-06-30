@@ -174,6 +174,19 @@ if(!empty($arResult['FORM_SDELKA']['adCity'])){
                     <span>(Скрыть от других пользователей)</span>
                 </div>
                 <div class="cardPact__item">
+                    <?
+                    $APPLICATION->IncludeComponent(
+                        "nfksber:user.select",
+                        "",
+                        Array(
+                            "IBLOCK_ID" => $arResult["INFOBLOCK_ID"],
+                            "ELEMENT_ID" => $arResult["ELEMENT_ID"],
+                            "ACTION_VARIABLE" => "action"
+                        )
+                    );
+                    ?>
+                </div>
+                <div class="cardPact__item">
                     <?if(empty($arResult['DOGOVOR'])):?>
                         <button class="btn btn-nfk" id="add_dogovor" data-url="/my_pacts/add_new_dogovor/?ADD=ADD">Добавить договор</button>
                     <?else:?>

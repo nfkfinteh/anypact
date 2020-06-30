@@ -179,6 +179,10 @@ button.onActive {
     padding-right: 1px;
 }
 
+#user_select{
+    display: none;
+}
+
 @media screen and (max-width: 1200px){
     
     .label-title{

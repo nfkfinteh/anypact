@@ -215,6 +215,10 @@ button.onActive {
     cursor: pointer;
 }
 
+#us_name{
+    display: none;
+}
+
 @media screen and (max-width: 991px) { 
     .cardPact-box-BoxMainImg .ardPact-box-edit-block-rem_img {
         display: block;

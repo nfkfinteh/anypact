@@ -1,0 +1,104 @@
+#us_name{
+    background: #ffffff;
+    margin-bottom: 0;
+}
+#us_name.focus, #us_name:focus{
+    border-bottom: none;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    outline: none;
+}
+.select-user{
+    position: relative;
+}
+.select-user-popup {
+    background: #ffffff;
+    border-left: solid 1px #ff6416;
+    border-right: solid 1px #ff6416;
+    border-bottom: solid 1px #ff6416;
+    border-bottom-left-radius: 0.25em;
+    border-bottom-right-radius: 0.25em;
+    height: 0;
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    max-height: 500px;
+    overflow-y: scroll;
+    -webkit-transition: height ease-out 0.5s;
+    -moz-transition: height ease-out 0.5s;
+    -o-transition: height ease-out 0.5s;
+    transition: height ease-out 0.5s;
+}
+.select-user-popup .user-el {
+    cursor: pointer;
+}
+.user-el {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    position: relative;
+    border-bottom: 1px solid #ddd;
+}
+.user-el:last-of-type {
+    border: none;
+}
+.user-el.selected {
+    background: #FF6600;
+}
+.user-photo{
+    display: inline-block;
+}
+.user-photo img {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+}
+.user-photo h3{
+    font-weight: 400;
+    color: #0d0d0d;
+}
+.user-photo a{
+    text-decoration: none;
+}
+.user-fio {
+    display: inline-block;
+    max-width: 220px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.selected .user-fio {
+    color: #fff;
+}
+.user-delete {
+    cursor: pointer;
+    height: 28px;
+    width: 28px;
+    position: absolute;
+    right: 22px;
+}
+.user-delete:before, .user-delete:after {
+    content: ' ';
+    position: absolute;
+    height: 33px;
+    width: 2px;
+    background-color: #8f8f8f;
+    right: 13px;
+    top: -2px;
+}
+.user-delete:before {
+    transform: rotate(45deg);
+}
+.user-delete:after {
+    transform: rotate(-45deg);
+}
+.profile-link:hover, .profile-link:focus{
+    text-decoration: none;
+}
+.user-not_found {
+    height: 61px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

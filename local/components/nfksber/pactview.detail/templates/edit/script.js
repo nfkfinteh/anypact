@@ -6,6 +6,7 @@ $(document).ready(function() {
     });
     var control_location_city = select_lcation_city[0].selectize;
 
+    //Сохранение Приватности
     $(document).on('click', '.onActive', function(e){        
         var buttonActive = $(this).attr('private');
 
@@ -51,6 +52,45 @@ $(document).ready(function() {
                     $('.onActive').children('input').val("10");
                     $('.onActive').attr('private', 'Y');
                 }
+                preload('hide');
+                showResult('#popup-success', 'Изменения сохранены');
+            }
+        }
+
+        return false;
+    });
+
+    //Сохранение пользователей которм будет отображаться сделка
+    $(document).on('click', '#save_user_select', function(e){        
+        e.preventDefault();
+
+        var ID_Object = $("#params_object").attr("data")
+
+        var arUser = new Array();
+        $('input[name="SELECTED_USER[]"]').each(function(){
+            arUser.push($(this).val());
+        });
+
+        console.log();
+
+        if($('#PRIVATE').val() == 10) {
+            $.post(
+                "/response/ajax/up_pact_text.php", {                    
+                    id_element: ID_Object,
+                    atrr_text: 'access_user',
+                    ACCESS_USER: arUser
+                },
+                onAjaxSuccess
+            );
+        }
+
+        function onAjaxSuccess(data) {
+            $result = JSON.parse(data);
+            if($result['TYPE']=='ERROR'){
+                preload('hide');
+                showResult('#popup-error','Ошибка сохранения', $result['VALUE']);
+            }
+            if($result['TYPE']=='SUCCESS'){
                 preload('hide');
                 showResult('#popup-success', 'Изменения сохранены');
             }
