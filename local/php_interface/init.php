@@ -178,3 +178,39 @@ Content-Transfer-Encoding: 8bit", $message_new);
 	$mail->ClearCustomHeaders();
 
 }
+
+AddEventHandler("iblock", "OnBeforeIBlockElementUpdate", "OnBeforeIBlockElementUpdateHandler");
+function OnBeforeIBlockElementUpdateHandler(&$arFields){
+    if($arFields['IBLOCK_ID'] == 8 || $arFields['IBLOCK_ID'] == 3){
+        define("LOG_FILENAME", $_SERVER["DOCUMENT_ROOT"]."/updateEl.log");
+        AddMessage2Log($arFields, "arFields");
+        $check = false;
+        if($arFields["ACTIVE"] == "Y"){
+            if($arFields['IBLOCK_ID'] == 3){
+                if($arFields['PROPERTY_VALUES']['MODERATION'] == 7){
+                    $check = true;
+                    $type = "ваше предложение успешно размещено";
+                    $theme = "Ваше предложение опубликовано";
+                    $link = "https://anypact.ru/profile_user/?ID=".$arFields['ID']."&type=company";
+                }
+            }else{
+                $check = true;
+                $type = "ваша компания/ИП успешно размещена";
+                $theme = "Ваша компания/ИП прошла проверку";
+                $link = "https://anypact.ru/pacts/view_pact/?ELEMENT_ID=".$arFields['ID'];
+            }
+        }
+        AddMessage2Log($check, "check");
+        if($check){
+            $rsEl = CIBlockElement::GetList(Array(), array("ID" => $arFields['ID']), false, false, array("ID", "CREATED_BY"));
+            if($el = $rsEl->GetNext())
+            {
+                $rsUser = CUser::GetList($order = array('LAST_NAME' => 'asc', 'NAME'=> 'asc'), $tmp = "asc", array("ID" => $el['CREATED_BY']), [ 'FIELDS' => ['ID', 'EMAIL']]);
+                if($user = $rsUser->getNext())
+                {
+                    CEvent::Send("MODERATION_COMPLETE", "s1", array("EMAIL" => $user['EMAIL'], "TYPE" => $type, "LINK" => $link, "THEME" => $theme));
+                }
+            }
+        }
+    }
+}
