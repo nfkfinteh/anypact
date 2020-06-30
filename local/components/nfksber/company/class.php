@@ -155,6 +155,10 @@ class CompanySber extends CBitrixComponent
                                 }
                             }
                         }
+
+                        //Отправка письма о модерации
+                        CEvent::Send("NEW_COMPANY_IP", "s1", array("NAME" => $_REQUEST['NAME'], "ID" => $arElm["ID"]));
+
                         #добавлена компания - редирект на неё
                         if($arProps['TYPE'] == 9){
                             LocalRedirect("/profile/infopage/?typepage=new_ip");
