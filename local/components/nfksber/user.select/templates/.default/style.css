@@ -55,8 +55,15 @@
     border-radius: 50%;
 }
 .user-photo h3{
-    font-weight: 400;
-    color: #0d0d0d;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background: #dddddd;
+    font-weight: 900;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .user-photo a{
     text-decoration: none;

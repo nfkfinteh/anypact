@@ -22,7 +22,7 @@ function bindSelectUser(){
         $(el_html).children('.user-delete').on('click', function(){
             var id = $(this).parent('.user-el').attr('data-id');
             $(this).parent('.user-el').remove();
-            $('.select-user-popup .user-el[data-id="'+id+'"]').remove();
+            $('.select-user-popup .user-el[data-id="'+id+'"]').removeClass('selected');
         });
     }
 }
@@ -55,7 +55,7 @@ $(document).ready(function(){
     $('.user-delete').on('click', function(){
         var id = $(this).parent('.user-el').attr('data-id');
         $(this).parent('.user-el').remove();
-        $('.select-user-popup .user-el[data-id="'+id+'"]').remove();
+        $('.select-user-popup .user-el[data-id="'+id+'"]').removeClass('selected');
     });
     $('#us_name').on('change paste keyup', function(eventObject){
         let arKey = [8, 46, 32, 49, 50, 51, 52, 53, 54, 55, 56, 57, 48, 189, 187, 81, 87, 69, 82, 84, 89, 85, 73, 79, 80, 219, 221, 65, 83, 68, 70, 71, 72, 74, 75, 76, 186, 222, 220, 226, 90, 88, 67, 86, 66, 78, 77, 188, 190, 191, 111, 106, 109, 103, 104, 105, 107, 100, 101, 102, 97, 98, 99, 96, 110, 13, 192];

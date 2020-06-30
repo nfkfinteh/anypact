@@ -9,7 +9,7 @@ if($arResult['IS_AJAX_REQUEST'] == 'Y'){
                             $renderImage = CFile::ResizeImageGet($user["PERSONAL_PHOTO"], Array("width" => 261, "height" => 261), BX_RESIZE_IMAGE_EXACT, false);
                             $html .= '<img src="'.$renderImage["src"].'" height="60" alt="">';
                         } else {
-                            $html .= '<h3 style="text-align: center; width: 40px;">'.substr($user['NAME'], 0, 1).'</h3>';
+                            $html .= '<h3>'.substr($user['NAME'], 0, 1).'</h3>';
                         }
                     $html .= '</div>
                     <div class="user-fio">
@@ -25,7 +25,7 @@ if($arResult['IS_AJAX_REQUEST'] == 'Y'){
 }else{
 ?>
 <div>
-    <input type="text" class="editbox" id="us_name" value="" name="us_name">
+    <input type="text" class="editbox" id="us_name" value="" name="us_name" placeholder="Выбрать">
 </div>
 <div class="select-user">
     <div class="select-user-list">
@@ -40,7 +40,7 @@ if($arResult['IS_AJAX_REQUEST'] == 'Y'){
                                 <? $renderImage = CFile::ResizeImageGet($user["PERSONAL_PHOTO"], Array("width" => 261, "height" => 261), BX_RESIZE_IMAGE_EXACT, false); ?>
                                 <img src="<?=$renderImage["src"]?>" height="60" alt="">
                             <?} else {?>
-                                <h3 style="text-align: center; width: 40px;"><?=substr($user['NAME'], 0, 1);?></h3>
+                                <h3><?=substr($user['NAME'], 0, 1);?></h3>
                             <?}?>
                         </div>
                         <div class="user-fio">
@@ -67,7 +67,7 @@ if($arResult['IS_AJAX_REQUEST'] == 'Y'){
                             <? $renderImage = CFile::ResizeImageGet($user["PERSONAL_PHOTO"], Array("width" => 261, "height" => 261), BX_RESIZE_IMAGE_EXACT, false); ?>
                             <img src="<?=$renderImage["src"]?>" height="60" alt="">
                         <?} else {?>
-                            <h3 style="text-align: center; width: 40px;"><?=substr($user['NAME'], 0, 1);?></h3>
+                            <h3><?=substr($user['NAME'], 0, 1);?></h3>
                         <?}?>
                     </div>
                     <div class="user-fio">
