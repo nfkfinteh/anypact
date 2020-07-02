@@ -325,9 +325,10 @@ if (!empty($arResult['arUser']['UF_ESIA_ID']) && $arResult['arUser']['UF_ESIA_AU
     </div>
     <div class="row">
         <?if($arResult['COMPANIES']){?>
+            <?$i=0;?>
             <?foreach($arResult['COMPANIES'] as $key => $arCompany){?>
                 <?if($arCompany['PROPERTY_TYPE_VALUE'] != "ИП"){?>
-                    <div class="col-xl-4 col-md-6 col-sm-12 <?if($key==0 || $key % 2 === 0):?>offset-xl-3<?endif?>">
+                    <div class="col-xl-4 col-md-6 col-sm-12 <?if($i==0 || $i % 2 === 0):?>offset-xl-3<?endif?>">
                         <p><?=$arCompany['NAME']?></p>
                         <?if($arCompany['PROPERTY_DIRECTOR_ID_VALUE'] == $arResult['ID']):?>
                             <a href="/profile/company/?id=<?=$arCompany['ID']?>" class="btn btn-aut" style="margin-bottom:15px;">Изменить компанию</a>
@@ -335,8 +336,9 @@ if (!empty($arResult['arUser']['UF_ESIA_ID']) && $arResult['arUser']['UF_ESIA_AU
                         <?else:?>
                             <a href="/profile/company/?id=<?=$arCompany['ID']?>" class="btn btn-aut" style="margin-bottom:15px;">Реквизиты компаниии</a>
                         <?endif?>
-                        <?if($key + 1 != count($arResult['COMPANIES'])){?><hr><?}?>
+                        <?if($i + 1 != count($arResult['COMPANIES'])){?><hr><?}?>
                     </div>
+                    <?$i++;?>
                 <?}?>
             <?}?>
         <?}?>
@@ -368,7 +370,6 @@ if (!empty($arResult['arUser']['UF_ESIA_ID']) && $arResult['arUser']['UF_ESIA_AU
                         <?else:?>
                             <a href="/profile/ip/?id=<?=$arCompany['ID']?>" class="btn btn-aut" style="margin-bottom:15px;">Реквизиты ИП</a>
                         <?endif?>
-                        <?if($key + 1 != count($arResult['COMPANIES'])){?><hr><?}?>
                     </div>
                 <?}?>
             <?}?>

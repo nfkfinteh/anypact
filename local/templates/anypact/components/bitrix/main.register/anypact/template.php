@@ -39,6 +39,9 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)
 						case 'CONFIRM_PASSWORD':
 							?><input size="30" class="regpopup_content_form_input" id="user_con_password_fild" type="password" name="REGISTER[<?=$FIELD?>]" value="<?=$arResult["VALUES"][$FIELD]?>" autocomplete="off" placeholder="<?=GetMessage($FIELD)?>" disabled/><?
 						break;
+						case 'PERSONAL_PHONE':
+							?><input type="text" placeholder="<?=GetMessage($FIELD)?>" name="REGISTER[<?=$FIELD?>]" maxlength="50" value="<?=$arResult["VALUES"][$FIELD]?>" class="js-mask__phone"><?
+						break;
 						/*case 'LOGIN':
 							?><input size="30" class="regpopup_content_form_input" id="user_login_fild" name="REGISTER[<?=$FIELD?>]" value="<?=$arResult["VALUES"][$FIELD]?> " placeholder="<?=GetMessage($FIELD)?>"  autocomplete="off" /><?
 						break;

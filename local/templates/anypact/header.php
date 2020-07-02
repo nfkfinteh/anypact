@@ -99,7 +99,7 @@ global $USER;
                                 Array( 
                                     "USER_PROPERTY_NAME" => "", 
                                     "SEF_MODE" => "N", 
-                                    "SHOW_FIELDS" => Array(), 
+                                    "SHOW_FIELDS" => Array("LOGIN", "EMAIL", "PASSWORD", "CONFIRM_PASSWORD", "PERSONAL_PHONE"), 
                                     "REQUIRED_FIELDS" => Array(), 
                                     "AUTH" => "Y", 
                                     "USE_BACKURL" => "N", 
