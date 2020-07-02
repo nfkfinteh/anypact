@@ -179,11 +179,9 @@ Content-Transfer-Encoding: 8bit", $message_new);
 
 }
 
-AddEventHandler("iblock", "OnBeforeIBlockElementUpdate", "OnBeforeIBlockElementUpdateHandler");
-function OnBeforeIBlockElementUpdateHandler(&$arFields){
+AddEventHandler("iblock", "OnBeforeIBlockElementUpdate", "SendEmailForDealModeration");
+function SendEmailForDealModeration(&$arFields){
     if($arFields['IBLOCK_ID'] == 8 || $arFields['IBLOCK_ID'] == 3){
-        define("LOG_FILENAME", $_SERVER["DOCUMENT_ROOT"]."/updateEl.log");
-        AddMessage2Log($arFields, "arFields");
         $check = false;
         if($arFields["ACTIVE"] == "Y"){
             if($arFields['IBLOCK_ID'] == 3){
@@ -191,16 +189,15 @@ function OnBeforeIBlockElementUpdateHandler(&$arFields){
                     $check = true;
                     $type = "ваше предложение успешно размещено";
                     $theme = "Ваше предложение опубликовано";
-                    $link = "https://anypact.ru/profile_user/?ID=".$arFields['ID']."&type=company";
+                    $link = "https://anypact.ru/pacts/view_pact/?ELEMENT_ID=".$arFields['ID'];
                 }
             }else{
                 $check = true;
                 $type = "ваша компания/ИП успешно размещена";
                 $theme = "Ваша компания/ИП прошла проверку";
-                $link = "https://anypact.ru/pacts/view_pact/?ELEMENT_ID=".$arFields['ID'];
+                $link = "https://anypact.ru/profile_user/?ID=".$arFields['ID']."&type=company";
             }
         }
-        AddMessage2Log($check, "check");
         if($check){
             $rsEl = CIBlockElement::GetList(Array(), array("ID" => $arFields['ID']), false, false, array("ID", "CREATED_BY"));
             if($el = $rsEl->GetNext())
