@@ -11,11 +11,11 @@ $el = new CIBlockElement;
 
 $arLoadProductArray = Array(
     "MODIFIED_BY"     => $USER->GetID(),     // элемент изменен текущим пользователем
-    "ACTIVE"          => "Y",     // активен
-    "PROPERTY_VALUES" => array("MODERATION" => $_POST['Moderation'])    // Промодерирован
+    "ACTIVE"          => "Y"     // активен
 );
   
   $PRODUCT_ID = $_POST['IDElement'];  // изменяем элемент с кодом (ID) 2
   $res = $el->Update($PRODUCT_ID, $arLoadProductArray);
+  $el -> SetPropertyValuesEx($PRODUCT_ID, 3, array("MODERATION" => $_POST['Moderation']));    // Промодерирован
 
 print_r($res);

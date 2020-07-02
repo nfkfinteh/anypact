@@ -53,10 +53,10 @@ $APPLICATION->SetPageProperty("description", "Заключить договор 
             <span class="d-flex align-middle align-items-center">Сортировать:</span>
             <select class="deal-sort" name="sort">
                 <option value="default" data-order="asc" default>По умолчанию</option>
-                <option value="PRICE" data-order="asc" <?if(key($_SESSION['DEAL_SORT']) == 'PROPERTY_SUMM_PACT' && current($_SESSION['DEAL_SORT']) == 'asc'){?>selected<?}?>>По возростанию цены</option>
-                <option value="PRICE" data-order="desc" <?if(key($_SESSION['DEAL_SORT']) == 'PROPERTY_SUMM_PACT' && current($_SESSION['DEAL_SORT']) == 'desc'){?>selected<?}?>>По убыванию цены</option>
-                <option value="NAME" data-order="asc" <?if(key($_SESSION['DEAL_SORT']) == 'NAME' && current($_SESSION['DEAL_SORT']) == 'asc'){?>selected<?}?>>От А до Я</option>
-                <option value="NAME" data-order="desc" <?if(key($_SESSION['DEAL_SORT']) == 'NAME' && current($_SESSION['DEAL_SORT']) == 'desc'){?>selected<?}?>>От Я до А</option>
+                <option value="PRICE" data-order="asc" <?if(is_array($_SESSION['DEAL_SORT'])){if(key($_SESSION['DEAL_SORT']) == 'PROPERTY_SUMM_PACT' && current($_SESSION['DEAL_SORT']) == 'asc'){?>selected<?}}?>>По возростанию цены</option>
+                <option value="PRICE" data-order="desc" <?if(is_array($_SESSION['DEAL_SORT'])){if(key($_SESSION['DEAL_SORT']) == 'PROPERTY_SUMM_PACT' && current($_SESSION['DEAL_SORT']) == 'desc'){?>selected<?}}?>>По убыванию цены</option>
+                <option value="NAME" data-order="asc" <?if(is_array($_SESSION['DEAL_SORT'])){if(key($_SESSION['DEAL_SORT']) == 'NAME' && current($_SESSION['DEAL_SORT']) == 'asc'){?>selected<?}}?>>От А до Я</option>
+                <option value="NAME" data-order="desc" <?if(is_array($_SESSION['DEAL_SORT'])){if(key($_SESSION['DEAL_SORT']) == 'NAME' && current($_SESSION['DEAL_SORT']) == 'desc'){?>selected<?}}?>>От Я до А</option>
             </select>
         </div>
         <div class="d-flex justify-content-end align-middle">
