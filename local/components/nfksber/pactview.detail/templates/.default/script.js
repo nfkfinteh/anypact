@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
     $(document).on('click', '.submit_message', function(){
-        let form = $('#message_user');
+        let form = $(this).parents('.modal-content').find('form');
         let url = form.attr('action');
         let data = form.serialize();
         preload('show');
@@ -19,7 +19,7 @@ $(document).ready(function(){
                     form.find('textarea').val('');
                     form.parents('.modal-content').eq(0).find('button.close').click();
                     preload('hide');
-                    showResult('#popup-success', 'Сообщение отправлено');
+                    showResult('#popup-success', $result['VALUE']);
                 }
             },
 

@@ -73,4 +73,4 @@ $data = array(
     "UF_ID_RECIPIENT"       => $idUser
 );
 $result = $entity_data_class::add($data);
-echo json_encode([ 'VALUE'=>'', 'TYPE'=> 'SUCCESS']);
+echo json_encode([ 'VALUE'=>'Сообщение отправлено', 'TYPE'=> 'SUCCESS']);

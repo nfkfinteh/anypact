@@ -71,3 +71,6 @@
     filter: blur(20px);
     opacity: .4;
 }
+.complaints_type-select{
+    margin-bottom: 10px;
+}

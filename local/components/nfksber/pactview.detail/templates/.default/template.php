@@ -93,6 +93,9 @@ else{
                     Написать сообщение
                 </button>
             <? endif ?>
+            <button type="button" class="btn btn-nfk d-block cardPact-bBtn" data-toggle="modal" data-target=".bd-complaints-modal" style="margin-top: 35px;">
+                Пожаловаться на предложение
+            </button>
         <? endif?>
     </div>
 </div>
@@ -109,6 +112,45 @@ else{
             <div class="modal-body">
                 <form id="message_user" action="/response/ajax/add_new_messag_user.php">
                     <input type="hidden" name="login" value="<?=$arResult['CONTRACT_HOLDER']['LOGIN']?>">
+                    <div class="form-group">
+                        <textarea class="form-control " name="message-text"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-nfk d-block cardPact-bBtn submit_message">Отправить</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade bd-complaints-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">Жалоба на предложение</div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="complaints_on_deal" action="/response/ajax/complaints_on_deal.php">
+                    <?=bitrix_sessid_post()?>
+                    <input type="hidden" name="id" value="<?=$arResult["ELEMENT"]["ID"]?>">
+                    <div class="complaints_type-select">
+                        <lable>Тип нарушения:</lable>
+                        <select name="complaints_type">
+                            <?
+                            $rsEnum = CIBlockPropertyEnum::GetList(array(), array("IBLOCK_ID" => 9, "CODE" => "TYPE"));
+                            while($enum = $rsEnum->Fetch())
+                            {
+                            ?>
+                                <option value="<?=$enum['ID'];?>"><?=$enum['VALUE'];?></option>
+                            <?
+                            }
+                            ?>
+                        </select>
+                    </div>
                     <div class="form-group">
                         <textarea class="form-control " name="message-text"></textarea>
                     </div>
