@@ -128,6 +128,31 @@ div#signpopup_close {
     transform: rotate(45deg);
 }
 
+.new-pact-block{
+    margin-left: auto;
+}
+
+.new-pact-block:hover > .not_auth-error {
+    visibility: visible;
+}
+
+.not_auth-error {
+    visibility: hidden;
+    position: absolute;
+    top: 58px;
+    right: 0;
+    width: 270px;
+    text-align: justify;
+    background: #ffffff;
+    box-shadow: 1px 3px 11px rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+    padding: 17px;
+    -webkit-transition: all .5s ease-out 0.1s;
+    -moz-transition: all .5s ease-out 0.1s;
+    -o-transition: all .5s ease-out 0.1s;
+    transition: all .5s ease-out 0.1s;
+}
+
 @media (min-width: 768px){
     .d-md-table-row.collapse-body[style="display: none;"] {
         display: none!important;

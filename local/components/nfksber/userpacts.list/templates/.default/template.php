@@ -17,9 +17,15 @@ $arrStatusAwait = array(
     <h5>Мои предложения <?if(!empty($arResult["INFOBLOCK_LIST"]["ARR_SDELKI"])){?>(<?=count($arResult["INFOBLOCK_LIST"]["ARR_SDELKI"])?>)<?}?></h5>
     <button class="info-btn">?</button>
     <div class="info-content">В данном разделе содержатся Ваши предложения о заключении сделок.</div>
-    <a href="/my_pacts/edit_my_pact/?ACTION=ADD" class="btn btn-nfk btn-add-contract ml-auto <?if($arResult['USER']['UF_ESIA_AUT']!=1):?>disabled<?endif?>">
-        + создать новое предложение
-    </a>
+    <div class="position-relative new-pact-block">
+        <a href="/my_pacts/edit_my_pact/?ACTION=ADD" class="btn btn-nfk btn-add-contract ml-auto <?if($arResult['USER']['UF_ESIA_AUT']!=1):?>disabled<?endif?>">
+            + создать новое предложение
+        </a>
+        <div class="not_auth-error">
+            <span class="triangle" style="display: block; z-index: 1;">▲</span>
+            <div>Для размещения предложения необходимо <a target="__blank" href="/profile/#aut_esia">подтвердить свой аккаунт с помощью учетной записи портала Госуслуг</a></div>
+        </div>
+    </div>
 </div>
     <? $count_pacts = count($arResult["INFOBLOCK_LIST"]["ARR_SDELKI"]);
     if ($count_pacts > 0):?>

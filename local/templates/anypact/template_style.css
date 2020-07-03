@@ -4140,9 +4140,18 @@ footer p{
     .page-item:nth-last-child(2){
         display: none;
     }
-    .lk-contracts .btn-add-contract{
+    .new-pact-block{
         width: 100%;
         margin-top: 10px;
+    }
+    .lk-contracts .btn-add-contract{
+        width: 100%;
+    }
+    .not_auth-error {
+        -webkit-transition: none;
+        -moz-transition: none;
+        -o-transition: none;
+        transition: none;
     }
     .deal-btn-block{
         justify-content: flex-end!important;
