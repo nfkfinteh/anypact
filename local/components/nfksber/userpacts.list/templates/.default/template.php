@@ -21,10 +21,12 @@ $arrStatusAwait = array(
         <a href="/my_pacts/edit_my_pact/?ACTION=ADD" class="btn btn-nfk btn-add-contract ml-auto <?if($arResult['USER']['UF_ESIA_AUT']!=1):?>disabled<?endif?>">
             + создать новое предложение
         </a>
-        <div class="not_auth-error">
-            <span class="triangle" style="display: block; z-index: 1;">▲</span>
-            <div>Для размещения предложения необходимо <a target="__blank" href="/profile/#aut_esia">подтвердить свой аккаунт с помощью учетной записи портала Госуслуг</a></div>
-        </div>
+        <?if($arResult['USER']['UF_ESIA_AUT']!=1):?>
+            <div class="not_auth-error">
+                <span class="triangle" style="display: block; z-index: 1;">▲</span>
+                <div>Для размещения предложения необходимо <a target="__blank" href="/profile/#aut_esia">подтвердить свой аккаунт с помощью учетной записи портала Госуслуг</a></div>
+            </div>
+        <?endif;?>
     </div>
 </div>
     <? $count_pacts = count($arResult["INFOBLOCK_LIST"]["ARR_SDELKI"]);
