@@ -4663,3 +4663,9 @@ a.exit-profile {
     -o-transition: all .5s ease-out 0.1s;
     transition: all .5s ease-out 0.1s;
 }
+.container:before,
+.container:after,
+.row:before,
+.row:after {
+   content: normal;
+}
