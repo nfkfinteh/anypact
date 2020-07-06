@@ -33,7 +33,9 @@
                             <?endif?>
                         <?}
                     }?>
-                    <img id="cardPact-box-edit-add_img" class="sp-thumbnail js-add_img" src="<?=SITE_TEMPLATE_PATH?>/image/add_img.png">
+                    <?if(count($arr_img) < 20){?>
+                        <img id="cardPact-box-edit-add_img" class="sp-thumbnail js-add_img" src="<?=SITE_TEMPLATE_PATH?>/image/add_img.png">
+                    <?}?>
                 </div>
             </div>     
             <!--//Слайдер изображений -->

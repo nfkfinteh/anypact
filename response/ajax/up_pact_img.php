@@ -56,18 +56,22 @@ switch ($arData['atrr_text']) {
                             <img class="sp-thumbnail" src="<?=$arImg["URL"]?>">
                         <?endif?>
                     <?endforeach?>
-                    <img id="cardPact-box-edit-add_img" class="sp-thumbnail js-add_img" src="<?=SITE_TEMPLATE_PATH?>/image/add_img.png">
+                    <?if(count($result) < 20){?>
+                        <img id="cardPact-box-edit-add_img" class="sp-thumbnail js-add_img" src="<?=SITE_TEMPLATE_PATH?>/image/add_img.png">
+                    <?}?>
                 </div>
             <?else:?>
-                <div class="sp-slides">
-                    <div class="sp-slide">
-                        <img class="sp-image js-add_img" src="<?=SITE_TEMPLATE_PATH?>/image/add_img.png">
-                    </div>
+                <?if(count($result) < 20){?>
+                    <div class="sp-slides">
+                        <div class="sp-slide">
+                            <img class="sp-image js-add_img" src="<?=SITE_TEMPLATE_PATH?>/image/add_img.png">
+                        </div>
 
-                </div>
-                <div class="sp-thumbnails">
-                    <img id="cardPact-box-edit-add_img" class="sp-thumbnail js-add_img" src="<?=SITE_TEMPLATE_PATH?>/image/add_img.png">
-                </div>
+                    </div>
+                    <div class="sp-thumbnails">
+                        <img id="cardPact-box-edit-add_img" class="sp-thumbnail js-add_img" src="<?=SITE_TEMPLATE_PATH?>/image/add_img.png">
+                    </div>
+                <?}?>
             <?endif?>
             <?
             die();
@@ -128,7 +132,9 @@ switch ($arData['atrr_text']) {
                             <img class="sp-thumbnail" src="<?=$arImg["URL"]?>">
                         <?endif?>
                     <?endforeach?>
-                    <img id="cardPact-box-edit-add_img" class="sp-thumbnail js-add_img" src="<?=SITE_TEMPLATE_PATH?>/image/add_img.png">
+                    <?if(count($result) < 20){?>
+                        <img id="cardPact-box-edit-add_img" class="sp-thumbnail js-add_img" src="<?=SITE_TEMPLATE_PATH?>/image/add_img.png">
+                    <?}?>
                 </div>
                 <?
                 die();

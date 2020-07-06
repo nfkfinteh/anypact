@@ -82,40 +82,40 @@ $(document).ready(function() {
     function preview(file) {
         var reader = new FileReader();
         reader.addEventListener('load', function(e) {
+            if(arFiles.length  <= 20){
+                var wrap = document.createElement('div');
+                var img = document.createElement('img');
+                var div = document.createElement('div');
+                var block = document.createElement('div');
 
-            var wrap = document.createElement('div');
-            var img = document.createElement('img');
-            var div = document.createElement('div');
-            var block = document.createElement('div');
+                wrap.setAttribute('class', 'cardPact-box-BoxMainImg');
+                wrap.setAttribute('data-id', file.name);
 
-            wrap.setAttribute('class', 'cardPact-box-BoxMainImg');
-            wrap.setAttribute('data-id', file.name);
+                img.setAttribute('class', 'cardPact-box-BoxPrewImg-img');
+                img.setAttribute('src', e.target.result);
 
-            img.setAttribute('class', 'cardPact-box-BoxPrewImg-img');
-            img.setAttribute('src', e.target.result);
+                div.setAttribute('class', 'ardPact-box-edit-block-rem_img');
 
-            div.setAttribute('class', 'ardPact-box-edit-block-rem_img');
+                block.setAttribute('class', 'cardPact-box-edit-rem_img');
+                block.innerHTML = ['<span>-</span>'].join('');
 
-            block.setAttribute('class', 'cardPact-box-edit-rem_img');
-            block.innerHTML = ['<span>-</span>'].join('');
+                div.insertBefore(block, null);
 
-            div.insertBefore(block, null);
+                wrap.insertBefore(img, null);
+                
+                wrap.insertBefore(div, null);
 
-            wrap.insertBefore(img, null);
-            
-            wrap.insertBefore(div, null);
+                document.getElementById('cardPact-box-BoxPrewImg').insertBefore(wrap, null);
 
-            document.getElementById('cardPact-box-BoxPrewImg').insertBefore(wrap, null);
+                arFiles[file.name] = file;
+                arFiles.length++;
+                
+                console.log(arFiles);
 
-            arFiles[file.name] = file;
-            arFiles.length++;
-            
-            console.log(arFiles);
-
-            if(arFiles.length  >= 10){
-                $('.cardPact-box-edit').hide();
+                if(arFiles.length  >= 20){
+                    $('.cardPact-box-edit').hide();
+                }
             }
-
         });
         reader.readAsDataURL(file);
     }
@@ -134,7 +134,7 @@ $(document).ready(function() {
         delete arFiles[id];
         arFiles.length--;
 
-        if(arFiles.length  < 10){
+        if(arFiles.length  < 20){
             if($('.cardPact-box-edit').css('display') == 'none'){
                 $('.cardPact-box-edit').show();
             }

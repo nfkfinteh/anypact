@@ -47,12 +47,10 @@ $(document).ready(function() {
                     $('.onActive').children('img').attr('src', '/local/templates/anypact/image/DontActive.png');
                     $('.onActive').children('input').val("");
                     $('.onActive').attr('private', '');
-                    $('#user_select').hide(300);
                 }else{
                     $('.onActive').children('img').attr('src', '/local/templates/anypact/image/Active.png');
                     $('.onActive').children('input').val("10");
                     $('.onActive').attr('private', 'Y');
-                    $('#user_select').show(300);
                 }
                 preload('hide');
                 showResult('#popup-success', 'Изменения сохранены');
@@ -366,33 +364,44 @@ $(document).ready(function() {
 
     //добавление изображения
     $('#filePicture').on('change', function () {
+        arFiles = $('.cardPact-box-edit-rem_img');
         var files = this.files;
-        // ничего не делаем если files пустой
-        if( typeof arFiles != 'undefined' ){
-            var mainData = JSON.stringify({
-                id_element: ID_Object,
-                atrr_text: 'add'
-            });
 
-            var formData = new FormData();
+        console.log(arFiles);
+        console.log(files);
 
-            formData.append( 'arr', mainData );
+        if(arFiles.length <= 20){
+            // ничего не делаем если files пустой
+            if( typeof arFiles != 'undefined' ){
+                var mainData = JSON.stringify({
+                    id_element: ID_Object,
+                    atrr_text: 'add'
+                });
 
-            // заполняем объект данных файлами в подходящем для отправки формате
-            for (var id in files) {
-                formData.append(id, files[id]);
+                var formData = new FormData();
+
+                formData.append( 'arr', mainData );
+
+                // заполняем объект данных файлами в подходящем для отправки формате
+                for (var id in files) {
+                    formData.append(id, files[id]);
+                    arFiles.length++;
+                    if(arFiles.length >= 20){
+                        break;
+                    }
+                }
+
+                updateImage(formData);
             }
+            //$('#cardPact-box-edit').empty();
 
-            updateImage(formData);
+            /*for (var i = 0; i < files.length; i++) {
+                preview(files[i]);
+            }*/
+
+
+            this.value = '';
         }
-        //$('#cardPact-box-edit').empty();
-
-        /*for (var i = 0; i < files.length; i++) {
-            preview(files[i]);
-        }*/
-
-
-        this.value = '';
     });
 
     // Создание превью

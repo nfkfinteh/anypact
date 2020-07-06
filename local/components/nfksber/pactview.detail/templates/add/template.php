@@ -62,7 +62,7 @@ if(!empty($arResult['FORM_SDELKA']['adCity'])){
                     <div class="cardPact__title">
                         <h3>Фотографии</h3>
                     </div>
-                    <span>(не более 10)</span>
+                    <span>(не более 20)</span>
                 </div>
                 <div class="cardPact__item">
                     <div class="cardPact-EditText-Descript">
