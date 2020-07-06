@@ -47,10 +47,12 @@ $(document).ready(function() {
                     $('.onActive').children('img').attr('src', '/local/templates/anypact/image/DontActive.png');
                     $('.onActive').children('input').val("");
                     $('.onActive').attr('private', '');
+                    $('#user_select').hide(300);
                 }else{
                     $('.onActive').children('img').attr('src', '/local/templates/anypact/image/Active.png');
                     $('.onActive').children('input').val("10");
                     $('.onActive').attr('private', 'Y');
+                    $('#user_select').show(300);
                 }
                 preload('hide');
                 showResult('#popup-success', 'Изменения сохранены');
