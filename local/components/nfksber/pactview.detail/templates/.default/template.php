@@ -1,6 +1,6 @@
 <?
 $disable_a = "";
-if (empty($arResult["PROPERTY"]["ID_DOGOVORA"]["VALUE"])){
+if (empty($arResult["PROPERTY"]["ID_DOGOVORA"]["VALUE"]) || $arResult['USER']['UF_ESIA_AUT'] != 1){
     $disable_a = 'disabled';
 }
 
