@@ -17,7 +17,7 @@ $arrStatusAwait = array(
     <h5>Мои предложения <?if(!empty($arResult["INFOBLOCK_LIST"]["ARR_SDELKI"])){?>(<?=count($arResult["INFOBLOCK_LIST"]["ARR_SDELKI"])?>)<?}?></h5>
     <button class="info-btn">?</button>
     <div class="info-content">В данном разделе содержатся Ваши предложения о заключении сделок.</div>
-    <div class="position-relative new-pact-block">
+    <div class="position-relative not_auth-error-block new-pact-block">
         <a href="/my_pacts/edit_my_pact/?ACTION=ADD" class="btn btn-nfk btn-add-contract ml-auto <?if($arResult['USER']['UF_ESIA_AUT']!=1):?>disabled<?endif?>">
             + создать новое предложение
         </a>

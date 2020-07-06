@@ -54,7 +54,13 @@ else{
         <?//скрытие кнопки при окончане активности?>
         <? if($USER->IsAuthorized()):?>
             <?if($arResult['ELEMENT']['ACTIVE']=='Y' && $DATE_ACTIVE_TO>=time()):?>
-                <a href="/pacts/view_pact/view_dogovor/?ELEMENT_ID=<?=$arResult["ELEMENT"]["ID"]?>" class="btn btn-nfk cardPact-bBtn <?=$disable_a?>" onclick="ym(64629523,'reachGoal','docs_link');">Посмотреть или подписать договор</a>
+                <div class="position-relative not_auth-error-block">
+                    <a href="/pacts/view_pact/view_dogovor/?ELEMENT_ID=<?=$arResult["ELEMENT"]["ID"]?>" class="btn btn-nfk cardPact-bBtn <?=$disable_a?>" onclick="ym(64629523,'reachGoal','docs_link');">Посмотреть или подписать договор</a>
+                    <div class="not_auth-error">
+                        <span class="triangle" style="display: block; z-index: 1;">▲</span>
+                        <div>Для подписания предложения необходимо <a target="__blank" href="/profile/#aut_esia">подтвердить свой аккаунт с помощью учетной записи портала Госуслуг</a></div>
+                    </div>
+                </div>
             <?endif?>
         <?endif?>
 
