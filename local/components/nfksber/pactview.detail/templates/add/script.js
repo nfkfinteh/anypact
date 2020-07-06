@@ -82,7 +82,7 @@ $(document).ready(function() {
     function preview(file) {
         var reader = new FileReader();
         reader.addEventListener('load', function(e) {
-            if(arFiles.length  <= 20){
+            if(arFiles.length  < 20){
                 var wrap = document.createElement('div');
                 var img = document.createElement('img');
                 var div = document.createElement('div');
@@ -109,8 +109,6 @@ $(document).ready(function() {
 
                 arFiles[file.name] = file;
                 arFiles.length++;
-                
-                console.log(arFiles);
 
                 if(arFiles.length  >= 20){
                     $('.cardPact-box-edit').hide();
