@@ -6,8 +6,9 @@ if (empty($arResult["PROPERTY"]["ID_DOGOVORA"]["VALUE"]) || $arResult['USER']['U
 
 foreach ($arResult["PROPERTY"]["IMG_FILE"] as $item){
     $file =CFile::ResizeImageGet($item['PROPERTY']['VALUE'], array('width'=>'180', 'height'=>'110'), BX_RESIZE_IMAGE_EXACT);
+    $resize_img =CFile::ResizeImageGet($item['PROPERTY']['VALUE'], array('width'=>'730', 'height'=>'500'), BX_RESIZE_IMAGE_EXACT);
     $arr_img[] =[
-        'URL' => $item['URL'],
+        'URL' => $resize_img['src'],
         'THUMB_URL'=>$file['src']
     ];
 }
