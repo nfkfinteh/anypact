@@ -57,7 +57,12 @@ if(in_array( 1, $arGroups) || in_array( 6, $arGroups)){
         foreach($dopPicture as $key => $file){
             $image_src = $file['tmp_name'];
             $tmp_image = $_SERVER['DOCUMENT_ROOT'] . "/upload/image/" . $file['name'];
-            $resize_img = CFile::ResizeImageFile($image_src, $tmp_image, array('width'=>'730', 'height'=>'500'), BX_RESIZE_IMAGE_EXACT);
+            $resize_img = CFile::ResizeImageFile($image_src, $tmp_image, array('width'=>'730', 'height'=>'500'), BX_RESIZE_IMAGE_EXACT, array(
+                'type' => 'image',
+                'size' => 'small',
+                'position' => 'bottomright',
+                'file' => $_SERVER['DOCUMENT_ROOT'] . '/local/templates/anypact/img/logo3.png'
+            ));
             if($resize_img){
                 $dopPicture[$key]['tmp_name'] = $tmp_image;
             }
