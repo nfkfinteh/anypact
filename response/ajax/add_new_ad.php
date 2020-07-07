@@ -54,6 +54,14 @@ if(in_array( 1, $arGroups) || in_array( 6, $arGroups)){
     //unset($dopPicture[$keyDetailPicture]);
 
     if(count($dopPicture)>0){
+        foreach($dopPicture as $key => $file){
+            $image_src = $file['tmp_name'];
+            $tmp_image = $_SERVER['DOCUMENT_ROOT'] . "/upload/image/" . $file['name'];
+            $resize_img = CFile::ResizeImageFile($image_src, $tmp_image, array('width'=>'730', 'height'=>'500'), BX_RESIZE_IMAGE_EXACT);
+            if($resize_img){
+                $dopPicture[$key]['tmp_name'] = $tmp_image;
+            }
+        }
         $data['PROPERTY_VALUES']['INPUT_FILES'] = $dopPicture;
     }
 

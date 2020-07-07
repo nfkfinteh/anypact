@@ -98,6 +98,15 @@ switch ($arData['atrr_text']) {
             $arLoadProductArray['DETAIL_PICTURE'] = $detailImg;
         }*/
 
+        foreach($arFiles as $key => $file){
+            $image_src = $file['tmp_name'];
+            $tmp_image = $_SERVER['DOCUMENT_ROOT'] . "/upload/image/" . $file['name'];
+            $resize_img = CFile::ResizeImageFile($image_src, $tmp_image, array('width'=>'730', 'height'=>'500'), BX_RESIZE_IMAGE_EXACT);
+            if($resize_img){
+                $arFiles[$key]['tmp_name'] = $tmp_image;
+            }
+        }
+
         if($res = $el->Update($ELEMENT_ID, $arLoadProductArray)){
             $checkUpdate = CIBlockElement::SetPropertyValueCode($ELEMENT_ID, "INPUT_FILES", $arFiles);
 
