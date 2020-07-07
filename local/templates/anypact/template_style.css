@@ -3873,6 +3873,7 @@ input::-webkit-input-placeholder {
 .tender-horizon .tender-post .tender-img img {
     width: 360px;
     height: 200px;
+    object-fit: cover;
 }
 
 .tender-horizon .tender-post .tender-img span {
