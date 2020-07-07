@@ -79,7 +79,7 @@
                     <div class="people-s-photo-btn-block">
                         <?if(!in_array($USER->GetID(), $arBlackList)):?>
                             <button class="btn btn-clean search-peaople__button" data-toggle="modal" data-target=".bd-message-modal-sm" data-login="<?=$user['LOGIN']?>">
-                                <img src="<?=SITE_TEMPLATE_PATH?>/image/people-search-message.png" alt="">
+                                <img src="<?=SITE_TEMPLATE_PATH?>/image/people-search-message.png" alt="Отправить сообщение" title="Отправить сообщение">
                             </button>
                         <?endif?>
                         <!-- <button class="btn btn-clean"><img src="<?=SITE_TEMPLATE_PATH?>/image/people-search-document.png" alt=""></button> -->
