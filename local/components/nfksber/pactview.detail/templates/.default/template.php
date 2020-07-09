@@ -21,6 +21,20 @@ else{
 }
 ?>
 <h1 class="d-inline-block"><?=$arResult["ELEMENT"]["NAME"]?></h1>
+<?
+$APPLICATION->IncludeComponent(
+    "nfksber:breadcrumb", 
+    "", 
+    array(
+        "IBLOCK_TYPE" => "4",
+        "IBLOCK_ID" => "3",
+        "SECTION_ID" => "",
+        "ELEMENT_ID" => $_GET['ELEMENT_ID'],
+        "SITE_ID" => "s1"
+    ),
+    false
+);
+?>
 <div class="row">
     <div class="col-md-7 col-lg-8">
         <? if(!empty($arr_img)){ ?>

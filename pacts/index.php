@@ -20,9 +20,24 @@ $APPLICATION->SetPageProperty("description", "Заключить договор 
         Array()
     );*/
     ?>
-    <?//компонент выводит список всех предложений
+    <?
     $Section = $_GET['SECTION_ID'];    
     
+    // Компонент Хлебные крошки
+    $APPLICATION->IncludeComponent(
+        "nfksber:breadcrumb", 
+        "", 
+        array(
+            "IBLOCK_TYPE" => "4",
+            "IBLOCK_ID" => "3",
+            "SECTION_ID" => $Section,
+            "ELEMENT_ID" => "",
+            "SITE_ID" => "s1"
+        ),
+        false
+    );
+    
+    //компонент выводит список всех предложений
     $APPLICATION->IncludeComponent("nfksber:sectionlist", 
     "", 
         Array(
