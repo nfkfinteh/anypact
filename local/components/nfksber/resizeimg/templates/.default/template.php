@@ -2,6 +2,9 @@
 if($_GET['action']=='company'){
     $action = 'company';
 }
+elseif($_GET['action']=='ip'){
+    $action = 'ip';
+}
 else{
     $action = '';
 }

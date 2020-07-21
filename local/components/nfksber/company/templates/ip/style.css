@@ -183,3 +183,6 @@ button#save_company:hover{
     border: 1px solid #ff6416;
     height: 200px;
 }
+button#save_company_img{
+    width: 100%;
+}

@@ -50,16 +50,21 @@ if(empty($arResult['COMPANY']) && !empty($arResult['IP_ID'])){
                         <div class="form-group">
                             <label>Логотип</label>
                             <?if($prevImage){?>
-                                <a href="/profile/edit_photo/?action=company&id=<?=$arResult['COMPANY']['ID']?>" class="company-logo js-addphoto">
+                                <a href="/profile/edit_photo/?action=ip&id=<?=$arResult['COMPANY']['ID']?>" class="company-logo js-addphoto">
                                     <img src="<?=$prevImage?>">
                                 </a>
                                 <input name="PREVIEW_PICTURE" type="hidden" value="<?=$prevImage?>">
                             <?}else{?>
-                                <a href="/profile/edit_photo/?action=company&id=<?=$arResult['COMPANY']['ID']?>" class="company-logo edit-photo js-addphoto">
+                                <a href="/profile/edit_photo/?action=ip&id=<?=$arResult['COMPANY']['ID']?>" class="company-logo edit-photo js-addphoto">
                                     <img src="/local/templates/anypact/img/user_profile_no_foto.png">
                                 </a>
                             <?}?>
                         </div>
+                        <?if($_GET['img']){?>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-aut edit-profile__btn" id="save_company_img">Сохранить</button>
+                            </div>
+                        <?}?>
                     </div>
                     <div class="col-xl-7 col-md-6 col-sm-12">
                         <div class="form-group">

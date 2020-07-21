@@ -51,6 +51,11 @@
                                 </a>
                             <?}?>
                         </div>
+                        <?if($_GET['img']){?>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-aut edit-profile__btn" id="save_company_img">Сохранить</button>
+                            </div>
+                        <?}?>
                     </div>
                     <div class="col-xl-7 col-md-6 col-sm-12">
                         <div class="form-group">

@@ -19,13 +19,13 @@ $(document).ready(function(){
             idCompany = $(this).attr('data-id'),
             url;
 
-        if(action == 'company'){
+        if(action == 'company' || action == 'ip'){
             url = '/response/ajax/resizeimg_company.php';
             if(idCompany){
-                url_reload = '/profile/company/?id='+idCompany;
+                url_reload = '/profile/' + action + '/?id='+idCompany;
             }
             else{
-                url_reload = '/profile/company/?';
+                url_reload = '/profile/' + action + '/?';
             }
 
         }
