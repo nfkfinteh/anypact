@@ -119,19 +119,19 @@ $(document).ready(function() {
     $('#UF_SNILS').inputmask({ mask:'999-999-999 99'});
 
     //валидация для полей формы с масками
-    $(document).on('focusout keypress', '#UF_SNILS', function(){
-        //let unformattedDate = Inputmask.unmask($(this).val(), { alias: $(this).inputmask("getmetadata")});
-        if(!$(this).inputmask("isComplete")){
-            if(!$(this).hasClass('validate-error')) {
-                $(this).addClass('validate-error');
-                $(this).before('<label class="error-message">Данные введены не полностью</label>');
-            }
-        }
-        else{
-            $(this).removeClass('validate-error');
-            $(this).prev('.error-message').remove();
-        }
-    });
+    // $(document).on('focusout keypress', '#UF_SNILS', function(){
+    //     //let unformattedDate = Inputmask.unmask($(this).val(), { alias: $(this).inputmask("getmetadata")});
+    //     if(!$(this).inputmask("isComplete")){
+    //         if(!$(this).hasClass('validate-error')) {
+    //             $(this).addClass('validate-error');
+    //             $(this).before('<label class="error-message">Данные введены не полностью</label>');
+    //         }
+    //     }
+    //     else{
+    //         $(this).removeClass('validate-error');
+    //         $(this).prev('.error-message').remove();
+    //     }
+    // });
 
 
     //валидация для простых полей формы

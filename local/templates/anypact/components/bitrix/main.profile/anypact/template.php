@@ -49,7 +49,7 @@ if (!empty($arResult['arUser']['UF_ESIA_ID']) && $arResult['arUser']['UF_ESIA_AU
                             <div class="col-xl-7 col-md-12 col-sm-12">
                                 <h3>Личные данные</h3>
                                 <div class="form-group">
-                                    <label><?=GetMessage("LOGIN")?></label>
+                                    <label><?=GetMessage("LOGIN")?>:</label>
                                     <input type="text" name="LOGIN" maxlength="50" value="<?=$arResult["arUser"]["LOGIN"]?>" disabled>
                                 </div>
                                 <div class="form-group">
@@ -103,7 +103,7 @@ if (!empty($arResult['arUser']['UF_ESIA_ID']) && $arResult['arUser']['UF_ESIA_AU
                     <div class="col-xl-4 col-md-6 col-sm-12">
                         <div class="form-group left_blok_margin_ub">
                             <label><?=GetMessage("SNILS")?></label>
-                            <input type="text" id='UF_SNILS' class="ignore-validate" name="UF_SNILS" maxlength="50" value="<?=$arResult["arUser"]["UF_SNILS"]?>" >
+                            <input type="text" id='UF_SNILS' name="UF_SNILS" maxlength="50" value="<?=$arResult["arUser"]["UF_SNILS"]?>" >
                         </div>
                         <div class="form-group">
                             <label><?=GetMessage("INN")?></label>
@@ -142,7 +142,7 @@ if (!empty($arResult['arUser']['UF_ESIA_ID']) && $arResult['arUser']['UF_ESIA_AU
                     </div>
                     <div class="col-xl-4 col-md-6 col-sm-12">
                         <div class="form-group left_blok_margin_first">
-                            <label>Изменить эл.почту</label>
+                            <label>Изменить эл.почту:</label>
                             <input type="text" name="EMAIL" maxlength="50" value="<?=$arResult["arUser"]["EMAIL"]?>" class="js-mask__email">
                         </div>
                         <button type="submit" class="btn btn-aut edit-profile__btn save_profile_button">Сохранить</button>
@@ -161,7 +161,7 @@ if (!empty($arResult['arUser']['UF_ESIA_ID']) && $arResult['arUser']['UF_ESIA_AU
                     </div>
                     <div class="col-xl-4 col-md-6 col-sm-12">
                         <div class="form-group">
-                            <label>Повторите введеный пароль</label>
+                            <label>Повторите введеный пароль:</label>
                             <input type="password" name="CONFIRM_PASSWORD" maxlength="50" value="" autocomplete="off">
                         </div>
                         <button type="submit" class="btn btn-aut edit-profile__btn save_profile_button">Сохранить</button>
@@ -264,7 +264,7 @@ if (!empty($arResult['arUser']['UF_ESIA_ID']) && $arResult['arUser']['UF_ESIA_AU
                 <div class="row">
                     <div class="col-xl-8 col-md-12 col-sm-12 offset-xl-3">
                         <div class="form-group">
-                            <label>О себе</label>
+                            <label>О себе:</label>
                             <textarea name="UF_ABOUT" maxlength="1000"><?=$arResult["arUser"]["UF_ABOUT"]?></textarea>
                         </div>
                     </div>
