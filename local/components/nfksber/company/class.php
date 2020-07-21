@@ -92,9 +92,6 @@ class CompanySber extends CBitrixComponent
                 $arProps[$key] = $req;
             }
 
-            define("LOG_FILENAME", $_SERVER["DOCUMENT_ROOT"]."/company_class.log");
-            AddMessage2Log($arProps, "arProps");
-
             if($props_empty){
                 $output = implode(', ', $props_empty);
                 LocalRedirect("?error=props_empty&props=".$output."&id=".$_REQUEST['ID_EXIST']);
@@ -200,13 +197,14 @@ class CompanySber extends CBitrixComponent
                         "IBLOCK_ID" => intval($this->arParams['IBLOCK_ID']),
                         "NAME" => $_REQUEST['NAME'],
                         "CODE" => $code,
-                        "PREVIEW_TEXT"=>htmlspecialcharsEx($_REQUEST['PREVIEW_TEXT']),
-                        "PROPERTY_VALUES" => $arProps,
+                        "PREVIEW_TEXT"=>htmlspecialcharsEx($_REQUEST['PREVIEW_TEXT'])
                     );
                     if($_REQUEST["PREVIEW_PICTURE"]) $arEl["PREVIEW_PICTURE"] = CFile::MakeFileArray($_SERVER["DOCUMENT_ROOT"].$_REQUEST["PREVIEW_PICTURE"]);
 
 
                     if ($el->Update(intval($_REQUEST["ID_EXIST"]), $arEl)) {
+
+                        $el->SetPropertyValuesEx(intval($_REQUEST["ID_EXIST"]), intval($this->arParams['IBLOCK_ID']), $arProps);
 
                         //подчищаем пакпку со временными фалами
                         deleteTmpFile('/upload/tmp/company_profile/', 1);
