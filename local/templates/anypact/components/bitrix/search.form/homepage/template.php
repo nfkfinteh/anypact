@@ -15,7 +15,7 @@ $this->setFrameMode(true);?>
 <div class="search">
     <form action="<?=$arResult["FORM_ACTION"]?>" onsubmit="ym(64629523,'reachGoal','search');">
         <span class="magnifier"></span>
-        <input type="text" name="q" placeholder="Введите название сделки" value="">
+        <input type="text" name="q" placeholder="Введите ваш запрос" value="">
         <input name="s" type="submit" class="btn btn-nfk btn-search d-none d-md-inline" value="<?=GetMessage("BSF_T_SEARCH_BUTTON");?>" style="border: 1px solid #ff6416 !important;"/>
         <a class="region d-none d-md-inline" href="#city_choose"><?=$arParams['LOCATION']?></a>
         <span class="deal-type" id="button_select_category">
