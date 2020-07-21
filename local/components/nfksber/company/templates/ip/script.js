@@ -79,7 +79,7 @@ $(document).ready(function(){
             },
             OGRNIP:{
                 required: true,
-                minlength: 13
+                minlength: 15
             },
             INDEX:{
                 required: true,

@@ -83,7 +83,7 @@ if(empty($arResult['COMPANY']) && !empty($arResult['IP_ID'])){
             <div class="col-xl-4 col-md-12 col-sm-12">
                 <div class="form-group">
                     <label>ОГРНИП *</label>
-                    <input name="OGRNIP" type="text" value="<?=$CompanyProprties['OGRNIP']['VALUE']?>" required maxlength="13" class="js-number">
+                    <input name="OGRNIP" type="text" value="<?=$CompanyProprties['OGRNIP']['VALUE']?>" required maxlength="15" class="js-number">
                 </div>
             </div>
         </div>
