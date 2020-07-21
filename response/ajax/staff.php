@@ -17,7 +17,7 @@ function sendMessageAddStaff($idUser, $arCompany){
     $send_data = Array(
         'EMAIL' => $arUser['EMAIL'],
         'NAME_COMPANY'=> htmlspecialchars($arCompany['NAME']),
-        'LINK_COMPANY'=>'https://'.SITE_SERVER_NAME.'/bitrix/admin/iblock_element_edit.php?IBLOCK_ID='.$arCompany['IBLOCK_ID'].'&type='.$arCompany['TYPE'].'&ID='.$arCompany['ID']
+        'LINK_COMPANY'=>'https://'.SITE_SERVER_NAME.'/bitrix/admin/iblock_element_edit.php?IBLOCK_ID='.$arCompany['IBLOCK_ID'].'&type=sprav&ID='.$arCompany['ID']
     );
 
     CEvent::Send("ADD_STAFF", "s1", $send_data);
@@ -73,7 +73,7 @@ switch ($data['action']) {
         $GLOBALS['CACHE_MANAGER']->ClearByTag("iblock_id_8");
 
         //сообщения для модерации
-        sendMessageAddStaff($data['idUser'], $arCompany);
+        sendMessageAddStaff($data['idUser'], $arCompany['FIELDS']);
 
         die(json_encode(['VALUE' => "Заявка на добавление представителя компании принята и будет рассмотрена в течении 2 дней", 'TYPE' => 'SUCCESS']));
         break;
