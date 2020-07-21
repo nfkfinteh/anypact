@@ -25,7 +25,8 @@ class sectionPacts extends CBitrixComponent
                 // $ID будет =0, выбираем корневые разделы
                 $ID =  $section_id; //false;
                 // выберем папки из информационного блока $BID и раздела $ID
-                $items = GetIBlockSectionList($id_iblock, $ID, Array("sort"=>"asc"), 10);
+                $items = CIBlockSection::GetList(array("sort"=>"asc"), array("IBLOCK_ID" => $id_iblock, "SECTION_ID" => $ID, "ACTIVE" => "Y"), false);
+                //$items = GetIBlockSectionList($id_iblock, $ID, Array("sort"=>"asc"), 10);
                 $arr_section_value['PROP_ONE_ITEM'] = 'Y';
                 //
                 // для отображения всех элементов в подкаталогах получим их ид
