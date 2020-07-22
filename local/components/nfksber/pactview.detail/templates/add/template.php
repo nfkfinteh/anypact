@@ -120,8 +120,18 @@ if(!empty($arResult['FORM_SDELKA']['adCity'])){
 
             </div>
             <div class="col-lg-4 col-md-4 col-sm-4 cardPact-rightPanel">
-
+                
                 <div class="cardPact__item">
+                    <div class="cardPact__title">
+                        <h3>Цена по запросу</h3> 
+                        <button class="onActive" active="" data-block-id="price_block" data-value-id="16">
+                            <img src="<?=SITE_TEMPLATE_PATH?>/image/DontActive.png" />
+                            <input name="PRICE_ON_REQUEST" id="PRICE_ON_REQUEST" type="hidden" value=""/>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="cardPact__item" id="price_block">
                     <div class="scardPact-rightPanel__sum">
                         <input type="text" class="editbox_sum js-number" id="cardPact-EditText-Summ" data-code="<?=$arResult['PROPERTY']['SUMM_PACT']['CODE']?>" value="<?=$arResult['FORM_SDELKA']['adSum']?>">
                         <div style="float:right;">руб.</div>
@@ -166,7 +176,7 @@ if(!empty($arResult['FORM_SDELKA']['adCity'])){
                 <div class="cardPact__item">
                     <div class="cardPact__title">
                         <h3>Приватность</h3> 
-                        <button class="onActive" private="">
+                        <button class="onActive" active="" data-block-id="user_select" data-value-id="10">
                             <img src="<?=SITE_TEMPLATE_PATH?>/image/DontActive.png" />
                             <input name="PRIVATE" id="PRIVATE" type="hidden" value=""/>
                         </button>

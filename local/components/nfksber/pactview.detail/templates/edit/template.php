@@ -99,9 +99,27 @@
         </div>
         <!-- Правая часть карточки -->
         <div class="col-lg-4 col-md-4 col-sm-4 cardPact-rightPanel">
-            <h1><span id="cardPact-EditText-Summ" contenteditable="true"><?=$arResult["PROPERTY"]["SUMM_PACT"]["VALUE"]?></span> руб.</h1>
+            <div class="cardPact__item">
+                <div class="cardPact__title">
+                    <h3>Цена по запросу</h3>
+                    <?if($arResult['PROPERTY']['PRICE_ON_REQUEST']['VALUE'] == 16):?>
+                        <button class="onActive" active="Y" data-block-id="price_block" data-value-id="16">
+                            <img src="<?=SITE_TEMPLATE_PATH?>/image/Active.png" />
+                            <input name="PRICE_ON_REQUEST" id="PRICE_ON_REQUEST" type="hidden" value="16"/>
+                        </button>
+                    <?else:?>
+                        <button class="onActive" active="" data-block-id="price_block" data-value-id="16">
+                            <img src="<?=SITE_TEMPLATE_PATH?>/image/DontActive.png" />
+                            <input name="PRICE_ON_REQUEST" id="PRICE_ON_REQUEST" type="hidden" value=""/>
+                        </button>
+                    <?endif;?>
+                </div>
+            </div>
+            <div class="cardPact__item" id="price_block"<?if($arResult['PROPERTY']['PRICE_ON_REQUEST']['VALUE'] == 16):?> style="display: none;"<?endif;?>>
+                <h1><span id="cardPact-EditText-Summ" contenteditable="true"><?=$arResult["PROPERTY"]["SUMM_PACT"]["VALUE"]?></span> руб.</h1>
 
-            <button class="btn btn-nfk " id="save_summ" style="margin-top:30px;">Сохранить</button>
+                <button class="btn btn-nfk " id="save_summ" style="margin-top:30px;">Сохранить</button>
+            </div>
             <!--Срок объявления -->
             <h4>Объявление активно до: <span class="date-active"><?=$arResult["ELEMENT"]["DATE_ACTIVE_TO"]?></span></h4>
             <button class="btn btn-nfk" id="up_date_active">Продлить на 10 дней</button>
@@ -110,12 +128,12 @@
                 <div class="cardPact__title">
                     <h3>Приватность</h3>
                     <?if($arResult['PROPERTY']['PRIVATE']['VALUE'] == 10):?>
-                        <button class="onActive" private="Y">
+                        <button class="onActive" active="Y" data-block-id="user_select" data-value-id="10">
                             <img src="<?=SITE_TEMPLATE_PATH?>/image/Active.png" />
                             <input name="PRIVATE" id="PRIVATE" type="hidden" value="10"/>
                         </button>
                     <?else:?>
-                        <button class="onActive" private="">
+                        <button class="onActive" active="" data-block-id="user_select" data-value-id="10">
                             <img src="<?=SITE_TEMPLATE_PATH?>/image/DontActive.png" />
                             <input name="PRIVATE" id="PRIVATE" type="hidden" value=""/>
                         </button>

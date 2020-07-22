@@ -64,7 +64,13 @@ $APPLICATION->IncludeComponent(
         <? } ?>        
     </div>
     <div class="col-md-5 col-lg-4">
-        <span class="cardPact-price"><?=$arResult["PROPERTY"]["SUMM_PACT"]["VALUE"]?> руб.</span>
+        <span class="cardPact-price">
+            <?if($arResult['PROPERTY']['PRICE_ON_REQUEST']['VALUE_ENUM'] == "Y"){?>
+                Цена по запросу
+            <?}else{?>
+                <?=$arResult["PROPERTY"]["SUMM_PACT"]["VALUE"]?> руб.
+            <?}?>
+        </span>
 
         <?//скрытие кнопки при окончане активности?>
         <? if($USER->IsAuthorized()):?>

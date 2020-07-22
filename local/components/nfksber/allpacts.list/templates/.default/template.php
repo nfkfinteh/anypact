@@ -17,7 +17,13 @@
                     <a href="/pacts/view_pact/?ELEMENT_ID=<?=$pact['ID']?>">
                         <h3 title="<?=$pact["NAME"]?>"><?=TruncateText($pact["NAME"], 30)?></h3>
                         <p><?=$pact["CREATED_DATE"]?></p>
-                        <span class="tender-price"><?=$pact['PROPERTIES']['SUMM_PACT']['VALUE']?> руб.</span>
+                        <span class="tender-price">
+                            <?if($pact['PROPERTIES']['PRICE_ON_REQUEST']['VALUE_ENUM'] == "Y"){?>
+                                Цена по запросу
+                            <?}else{?>
+                                <?=$pact['PROPERTIES']['SUMM_PACT']['VALUE']?> руб.
+                            <?}?>
+                        </span>
                     </a>
                 </div>
             </div>

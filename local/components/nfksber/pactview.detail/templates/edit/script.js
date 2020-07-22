@@ -8,33 +8,43 @@ $(document).ready(function() {
 
     //Сохранение Приватности
     $(document).on('click', '.onActive', function(e){        
-        var buttonActive = $(this).attr('private');
-
-        console.log(this);
+        var buttonActive = $(this).attr('active');
+        var blockId = $(this).attr('data-block-id');
+        var valueId = $(this).attr('data-value-id');
+        var type = $(this).find('input').attr('name');
+        var self = this;
 
         e.preventDefault();
 
-        if(buttonActive == "Y"){
-            $.post(
-                "/response/ajax/up_pact_text.php", {                    
-                    id_element: ID_Object,
-                    atrr_text: 'up_private',
-                    PRIVATE: ""
-                },
-                onAjaxSuccess
-            );
-            
+        if(buttonActive != "Y"){
+            var val = valueId;
         }else{
+            var val = "";
+        }
+
+        if(type == 'PRICE_ON_REQUEST'){
+            var postObj =  {                
+                id_element: ID_Object,
+                atrr_text: 'up_priceOnRequest',
+                PRICE_ON_REQUEST: val
+            };
+        }else if(type == 'PRIVATE'){
+            var postObj =  {                
+                id_element: ID_Object,
+                atrr_text: 'up_private',
+                PRIVATE: val
+            };
+        }
+
+        console.log(postObj);
+
+        if(typeof postObj !== "undefined" && postObj !== null){
             $.post(
-                "/response/ajax/up_pact_text.php", {                    
-                    id_element: ID_Object,
-                    atrr_text: 'up_private',
-                    PRIVATE: "10"
-                },
+                "/response/ajax/up_pact_text.php", postObj,
                 onAjaxSuccess
             );
-            
         }
+
 
         function onAjaxSuccess(data) {
             $result = JSON.parse(data);
@@ -44,14 +54,15 @@ $(document).ready(function() {
             }
             if($result['TYPE']=='SUCCESS'){
                 if(buttonActive == "Y"){
-                    $('.onActive').children('img').attr('src', '/local/templates/anypact/image/DontActive.png');
-                    $('.onActive').children('input').val("");
-                    $('.onActive').attr('private', '');
+                    $(self).children('img').attr('src', '/local/templates/anypact/image/DontActive.png');
+                    $(self).children('input').val("");
+                    $(self).attr('active', '');
                 }else{
-                    $('.onActive').children('img').attr('src', '/local/templates/anypact/image/Active.png');
-                    $('.onActive').children('input').val("10");
-                    $('.onActive').attr('private', 'Y');
+                    $(self).children('img').attr('src', '/local/templates/anypact/image/Active.png');
+                    $(self).children('input').val(valueId);
+                    $(self).attr('active', 'Y');
                 }
+                $('#'+blockId).toggle(300);
                 preload('hide');
                 showResult('#popup-success', 'Изменения сохранены');
             }

@@ -8,23 +8,24 @@ $(document).ready(function() {
 
     //Приватность
     $(document).on('click', '.onActive', function(e){        
-        var buttonActive = $(this).attr('private');
-
-        console.log(this);
+        var buttonActive = $(this).attr('active');
+        var blockId = $(this).attr('data-block-id');
+        var valueId = $(this).attr('data-value-id');
 
         e.preventDefault();
 
         if(buttonActive == "Y"){
             $(this).children('img').attr('src', '/local/templates/anypact/image/DontActive.png');
             $(this).children('input').val("");
-            $(this).attr('private', '');
-            $('#user_select').hide(300);
+            $(this).attr('active', '');
         }else{
             $(this).children('img').attr('src', '/local/templates/anypact/image/Active.png');
-            $(this).children('input').val("10");
-            $(this).attr('private', 'Y');
-            $('#user_select').show(300);
+            $(this).children('input').val(valueId);
+            $(this).attr('active', 'Y');
+            
         }
+
+        $('#'+blockId).toggle(300);
 
         return false;
     });
