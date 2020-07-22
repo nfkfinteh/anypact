@@ -197,10 +197,14 @@ window.onload = function() {
         var regpopup_bg = document.getElementById('regpopup_bg');
         var regpopup_open_btn = document.getElementById('reg_button');
         var regpopup_btn_open_aut = document.getElementById('regpopup_btn_aut');
+        var regpopup_btn_open_aut_fgpw = document.getElementById('regpopup_btn_aut_fgpw');
         var regpopup_form_autorisation = document.getElementById('regpopup_autarisation');
         var regpopup_btn_open_reg = document.getElementById('regpopup_btn_reg');
+        var regpopup_btn_open_fgpw = document.getElementById('regpopup_btn_fgpw');
         var regpopup_form_registration = document.getElementById('regpopup_registration');
+        var regpopup_form_forgotpassword = document.getElementById('regpopup_forgotpassword');
         var open_reg_form = document.getElementById('open_reg_form');
+        var open_fgpw_form = document.getElementById('open_fgpw_form');
         var regpopup_open_link_mobile = document.querySelector('.nav-link[href="#"]');
         
         document.getElementById('user_password_fild').value = '';
@@ -241,12 +245,35 @@ window.onload = function() {
             regpopup_form_registration.style.display = 'block';
             return false;
         };
+        // открываем форму восстановления пароля
+        regpopup_btn_open_fgpw.onclick = function(event) {
+            regpopup_form_autorisation.style.display = 'none';
+            regpopup_form_forgotpassword.style.display = 'block';
+            return false;
+        };
+        // открываем форму авторизации
+        regpopup_btn_open_aut_fgpw.onclick = function() {
+            regpopup_form_autorisation.style.display = 'block';
+            regpopup_form_forgotpassword.style.display = 'none';
+            return false;
+        };
 
         if(document.getElementById('open_reg_form')){
             open_reg_form.onclick = function(event) {
                 regpopup_bg.style.display = 'block';
                 regpopup_form_autorisation.style.display = 'none';
+                regpopup_form_forgotpassword.style.display = 'none';
                 regpopup_form_registration.style.display = 'block';
+                return false;
+            };
+        }
+        //открываем форму восстановления пароля
+        if(document.getElementById('open_fgpw_form')){
+            open_fgpw_form.onclick = function(event) {
+                regpopup_bg.style.display = 'block';
+                regpopup_form_autorisation.style.display = 'none';
+                regpopup_form_registration.style.display = 'none';
+                regpopup_form_forgotpassword.style.display = 'block';
                 return false;
             };
         }
@@ -348,6 +375,12 @@ window.onload = function() {
         $("#user_aut_pass").keyup(function(event) {
             if (event.keyCode === 13) {
                 $("#submit_button_aut_user").click();
+            }
+        });
+        //восстановление пароля по enter
+        $("#user_email_fgpw").keyup(function(event) {
+            if (event.keyCode === 13) {
+                $("#submit_forgot_password").click();
             }
         });
         // авторизация пользователя и вывод ошибок

@@ -4670,3 +4670,7 @@ a.exit-profile {
 .row:after {
    content: normal;
 }
+p.forgetpass-text {
+    margin: 0;
+    margin-top: 25px;
+}

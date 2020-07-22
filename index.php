@@ -166,40 +166,20 @@ $APPLICATION->IncludeComponent(
                 </div>*/?>
                 <div class="new-auth">
                     <div class="new-auth-block">
-                        <form name="system_auth_form<?=$arResult["RND"]?>" method="post" target="_top" action="<?=$arResult["AUTH_URL"]?>">
-                            <!-- <?if($arResult["BACKURL"] <> ''):?>
-                                <input type="hidden" name="backurl" value="<?=$arResult["BACKURL"]?>" />
-                            <?endif?>
-                            <?foreach ($arResult["POST"] as $key => $value):?>
-                                <input type="hidden" name="<?=$key?>" value="<?=$value?>" />
-                            <?endforeach?>
-                                <input type="hidden" name="AUTH_FORM" value="Y" />
-                                <input type="hidden" name="TYPE" value="AUTH" /> -->
-                                <div class="user_credentials"><img src="<?=SITE_TEMPLATE_PATH?>/image/icons8_user_credentials_100px.png"></div>
-                                <h2>Авторизация</h2>
-                                <!--Логин-->
-                                <p>Логин</p>
-                                <input type="text" name="USER_LOGIN_ERROR" class="regpopup_content_form_input" data-mess="" value="" id="user_aut_login_main" placeholder="" />
-                                        <script>
-                                            BX.ready(function() {
-                                                var loginCookie = BX.getCookie("<?=CUtil::JSEscape($arResult["~LOGIN_COOKIE_NAME"])?>");
-                                                if (loginCookie)
-                                                {
-                                                    var form = document.forms["system_auth_form<?=$arResult["RND"]?>"];
-                                                    var loginInput = form.elements["USER_LOGIN"];
-                                                    loginInput.value = loginCookie;
-                                                }
-                                            });
-                                        </script>
-                                <!--Пароль-->
-                                <p>Пароль</p>
-                                <input type="password" name="USER_PASSWORD" class="regpopup_content_form_input"  autocomplete="off" id="user_aut_pass_main" placeholder=""/>
-                            <?if ($arResult["STORE_PASSWORD"] == "Y"):?>
-                                    <input type="checkbox" id="USER_REMEMBER_frm" name="USER_REMEMBER" value="Y" /></td>
-                                    <label for="USER_REMEMBER_frm" title="<?=GetMessage("AUTH_REMEMBER_ME")?>"><?echo GetMessage("AUTH_REMEMBER_SHORT")?></label>
-                            <?endif?>
+                        <form name="system_auth_form" method="post" target="_top" action="">
+                            <!--<input type="hidden" name="AUTH_FORM" value="Y" />
+                            <input type="hidden" name="TYPE" value="AUTH" /> -->
+                            <div class="user_credentials"><img src="<?=SITE_TEMPLATE_PATH?>/image/icons8_user_credentials_100px.png"></div>
+                            <h2>Авторизация</h2>
+                            <!--Логин-->
+                            <p>Логин</p>
+                            <input type="text" name="USER_LOGIN_ERROR" class="regpopup_content_form_input" data-mess="" value="" id="user_aut_login_main" placeholder="" />
+                            <!--Пароль-->
+                            <p>Пароль</p>
+                            <input type="password" name="USER_PASSWORD" class="regpopup_content_form_input"  autocomplete="off" id="user_aut_pass_main" placeholder=""/>    
                             <div id="message_error_aut_main"></div>
                             <a href="javascript:undefined" class="regpopup_content_form_submit" id="submit_button_aut_user_main"><?=GetMessage("AUTH_LOGIN_BUTTON")?></a>
+                            <p class="text-center forgetpass-text">Забыли пароль? <a href="#" id="open_fgpw_form">Восстановить</a></p>
                         </form>
                     </div>
                     <div class="lock-img">

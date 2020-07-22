@@ -83,9 +83,9 @@ global $USER;
 <noindex>
     <div id="regpopup_bg">
         <div class="container">
-        <div class="row align-items-center justify-content-center">            
-            <div class="col-sm-12 col-md-8 col-lg-6 col-xl-6">
-                <div class="regpopup_win">
+            <div class="row align-items-center justify-content-center">            
+                <div class="col-sm-12 col-md-8 col-lg-6 col-xl-6">
+                    <div class="regpopup_win">
                         <div id="regpopup_close">Х</div>
                         <!--Регистрационная форма-->
                         <div class="regpopup_content" id="regpopup_registration" style="display:none;">
@@ -119,6 +119,19 @@ global $USER;
                                 "REGISTER_URL" => "register.php",
                                 "FORGOT_PASSWORD_URL" => "",
                                 "PROFILE_URL" => "profile.php",
+                                "SHOW_ERRORS" => "Y",
+                                "STORE_PASSWORD" => "Y"
+                                )
+                            );?>
+                        </div>
+                        <div class="regpopup_content" id="regpopup_forgotpassword" style="display:none;">
+                            <h2>Восстановление пароля</h2>
+                            <?$APPLICATION->IncludeComponent("bitrix:system.auth.forgotpasswd",
+                            "anypact",
+                            Array(
+                                "REGISTER_URL" => "",
+                                "FORGOT_PASSWORD_URL" => "",
+                                "PROFILE_URL" => "/profile/",
                                 "SHOW_ERRORS" => "Y",
                                 "STORE_PASSWORD" => "Y"
                                 )
