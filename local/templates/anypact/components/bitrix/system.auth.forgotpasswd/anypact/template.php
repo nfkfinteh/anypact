@@ -44,7 +44,7 @@ CJSCore::Init();
 	$(document).on('click', '#submit_forgot_password', function(){
 		let formData = $('#form_forgotpwd').serialize();
 		$.ajax({
-			url: '<?=CUtil::JSEscape($component->getPath().'/component.php'.substr($arResult["AUTH_URL"], 1))?>',
+			url: '/?forgot_password=yes',
 			data: formData,
 			type: 'GET',
 			success: function(data, textStatus, jqXHR ) {
