@@ -169,6 +169,7 @@ $(document).ready(function() {
             adCoordinates : $('#COORDINATES_AD').val(),
             DOGOVOR_KEY : $('#DOGOVOR_KEY').val(),
             PRIVATE : $('#PRIVATE').val(),
+            PRICE_ON_REQUEST : $('#PRICE_ON_REQUEST').val(),
             ACCESS_USER : arID,
         };
         return arResult;
@@ -206,6 +207,7 @@ $(document).ready(function() {
             prop['COORDINATES_AD'] = arFormData.adCoordinates;
             prop['CONDITIONS_PACT'] = arFormData.adCondition;
             prop['PRIVATE'] = arFormData.PRIVATE;
+            prop['PRICE_ON_REQUEST'] = arFormData.PRICE_ON_REQUEST;
             prop['ACCESS_USER'] = arFormData.ACCESS_USER;
 
             if(prop['COORDINATES_AD'].length>0){
