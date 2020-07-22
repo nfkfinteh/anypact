@@ -42,7 +42,7 @@ else{
                 <?if($type=='user'):?>
                     <?
                     $GLOBALS['arrFilter']['!ID'] = $USER->GetID();
-                    $GLOBALS['arrFilter']['UF_HIDE_PROFILE'] = 0;
+                    // $GLOBALS['arrFilter']['UF_HIDE_PROFILE'] = 0;
                     ?>
                     <? $APPLICATION->IncludeComponent(
                         "nfksber:user.list",
