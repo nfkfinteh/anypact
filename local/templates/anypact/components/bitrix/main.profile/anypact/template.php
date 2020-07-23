@@ -212,7 +212,7 @@ if (!empty($arResult['arUser']['UF_ESIA_ID']) && $arResult['arUser']['UF_ESIA_AU
                                 id="UF_HIDE_PROFILE"
                                 class="js-checkbox"
                             >
-                            <label for="UF_HIDE_PROFILE">не показывать меня в результатах глобального поиска</label>
+                            <label for="UF_HIDE_PROFILE">не показывать меня в результатах по итогам запроса через глобальный поиск</label>
                             <input type="hidden" name="UF_HIDE_PROFILE" value="<?=$arResult["arUser"]["UF_HIDE_PROFILE"]?>" class="js-input_checkbox">
                         </div>
                         <div class="form-group form-checkbox" style="padding-left: 21px;">

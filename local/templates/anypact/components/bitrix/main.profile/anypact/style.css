@@ -164,6 +164,7 @@ input:disabled {
 .form-checkbox input{
     width: 20px;
     height: 20px;
+    min-width: 20px;
 }
 .form-checkbox label{
     margin-bottom: 0;
