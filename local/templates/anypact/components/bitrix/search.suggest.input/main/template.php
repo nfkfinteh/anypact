@@ -38,5 +38,5 @@ CJSCore::Init(array("ajax"));
 	type="text"
 	autocomplete="off"
 	placeholder="Введите ваш запрос"
-	style="width: 100%"
+	style="width: 100%;height: 45px;"
 />
