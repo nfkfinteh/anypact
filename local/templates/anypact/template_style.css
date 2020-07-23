@@ -4528,6 +4528,10 @@ footer p {
     .deal-btn-block div:first-child {
         margin-top: 25px;
     }
+
+    .category{
+        font-size: 13px;
+    }
 }
 
 @media screen and (max-width: 424px) {
