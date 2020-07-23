@@ -4334,6 +4334,10 @@ footer p {
     display: none;
 }
 
+.category {
+    white-space: nowrap;
+}
+
 @media (max-width: 1199px) {
     .navbar-brand-block {
         display: none;
@@ -4355,10 +4359,6 @@ footer p {
     .new-auth {
         position: initial;
         float: right;
-    }
-
-    .category {
-        white-space: nowrap;
     }
 }
 
