@@ -179,23 +179,29 @@ Content-Transfer-Encoding: 8bit", $message_new);
 
 }
 
-AddEventHandler("iblock", "OnBeforeIBlockElementUpdate", "SendEmailForDealModeration");
-function SendEmailForDealModeration(&$arFields){
+AddEventHandler("iblock", "OnBeforeIBlockElementUpdate", "SendEmailForCompanyAndDealModeration");
+function SendEmailForCompanyAndDealModeration(&$arFields){
     if($arFields['IBLOCK_ID'] == 8 || $arFields['IBLOCK_ID'] == 3){
         $check = false;
-        if($arFields["ACTIVE"] == "Y"){
-            if($arFields['IBLOCK_ID'] == 3){
-                if($arFields['PROPERTY_VALUES']['MODERATION'] == 7){
-                    $check = true;
-                    $type = "ваше предложение успешно размещено";
-                    $theme = "Ваше предложение опубликовано";
-                    $link = "https://anypact.ru/pacts/view_pact/?ELEMENT_ID=".$arFields['ID'];
+        if($arFields["ACTIVE"] == "Y" || $arFields['IBLOCK_ID'] == 3){
+            $res = CIBlockElement::GetList(Array(), array("ID" => $arFields['ID']), false, false, array("ID", "IBLOCK_ID", "ACTIVE", "PROPERTY_MODERATION"));
+            if($El = $res->GetNext())
+            {
+                if($El['ACTIVE'] == "N" || $arFields['IBLOCK_ID'] == 3){
+                    if($arFields['IBLOCK_ID'] == 3){
+                        if($arFields['PROPERTY_VALUES'][62][0]['VALUE'] == 7 && $El['PROPERTY_MODERATION_VALUE'] != 'Y'){
+                            $check = true;
+                            $type = "ваше предложение успешно размещено";
+                            $theme = "Ваше предложение опубликовано";
+                            $link = "https://anypact.ru/pacts/view_pact/?ELEMENT_ID=".$arFields['ID'];
+                        }
+                    }else{
+                        $check = true;
+                        $type = "ваша компания/ИП успешно размещена";
+                        $theme = "Ваша компания/ИП прошла проверку";
+                        $link = "https://anypact.ru/profile_user/?ID=".$arFields['ID']."&type=company";
+                    }
                 }
-            }else{
-                $check = true;
-                $type = "ваша компания/ИП успешно размещена";
-                $theme = "Ваша компания/ИП прошла проверку";
-                $link = "https://anypact.ru/profile_user/?ID=".$arFields['ID']."&type=company";
             }
         }
         if($check){
@@ -206,6 +212,40 @@ function SendEmailForDealModeration(&$arFields){
                 if($user = $rsUser->getNext())
                 {
                     CEvent::Send("MODERATION_COMPLETE", "s1", array("EMAIL" => $user['EMAIL'], "TYPE" => $type, "LINK" => $link, "THEME" => $theme));
+                }
+            }
+        }
+    }
+    if($arFields['IBLOCK_ID'] == 8){
+        if($arFields["ACTIVE"] == "Y"){
+            $rsEl = CIBlockElement::GetList(Array(), array("ID" => $arFields['ID']), false, false, array("ID", "IBLOCK_ID", "CREATED_BY", "ACTIVE"));
+            if($El = $rsEl->GetNext())
+            {
+                if($El['ACTIVE'] == "N"){
+                    $rsUser = CUser::GetList($order = array('LAST_NAME' => 'asc', 'NAME'=> 'asc'), $tmp = "asc", array("ID" => $El['CREATED_BY']), [ 'FIELDS' => ['ID', 'EMAIL']]);
+                    if($user = $rsUser->getNext())
+                    {
+                        CEvent::Send("MODERATION_COMPLETE", "s1", array("EMAIL" => $user['EMAIL'], "TYPE" => "ваша компания/ИП успешно размещена", "LINK" => "https://anypact.ru/profile_user/?ID=".$arFields['ID']."&type=company", "THEME" => "Ваша компания/ИП прошла проверку"));
+                    }
+                }
+            }
+        }
+    }
+}
+
+AddEventHandler("iblock", "OnIBlockElementSetPropertyValuesEx", "SendEmailForDealModeration");
+function SendEmailForDealModeration($ELEMENT_ID, $IBLOCK_ID, $PROPERTY_VALUES, $propertyList, $arDBProps){
+    if($IBLOCK_ID == 3){
+        if($PROPERTY_VALUES["MODERATION"] == "7"){
+            $res = CIBlockElement::GetList(Array(), array("ID" => $ELEMENT_ID), false, false, array("ID", "IBLOCK_ID", "CREATED_BY", "PROPERTY_MODERATION"));
+            if($El = $res->GetNext())
+            {
+                if($El['PROPERTY_MODERATION_VALUE'] != 'Y'){
+                    $rsUser = CUser::GetList($order = array('LAST_NAME' => 'asc', 'NAME'=> 'asc'), $tmp = "asc", array("ID" => $El['CREATED_BY']), [ 'FIELDS' => ['ID', 'EMAIL']]);
+                    if($user = $rsUser->getNext())
+                    {
+                        CEvent::Send("MODERATION_COMPLETE", "s1", array("EMAIL" => $user['EMAIL'], "TYPE" => "ваше предложение успешно размещено", "LINK" => "https://anypact.ru/pacts/view_pact/?ELEMENT_ID=".$arFields['ID'], "THEME" => "Ваше предложение опубликовано"));
+                    }
                 }
             }
         }
