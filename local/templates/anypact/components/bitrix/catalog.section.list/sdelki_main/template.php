@@ -18,7 +18,7 @@ $this->setFrameMode(true);
             <?if(!empty($arResult['UF_FIELDS'][$section['ID']]['UF_ICON'])):?>
                 <i class="icon-main <?=$arResult['UF_FIELDS'][$section['ID']]['UF_ICON']?>"></i>
             <?endif?>
-            <h5><?=$section['NAME']?></h5>
+            <h5 style="min-height: 54px;"><?=$section['NAME']?></h5>
             <?=$section['DESCRIPTION']?>
             <?
                 $URL_Section = '/pacts/?SECTION_ID='.$section['ID'];
