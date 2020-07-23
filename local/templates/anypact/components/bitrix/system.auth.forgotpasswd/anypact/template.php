@@ -4,6 +4,7 @@ CJSCore::Init();
 ?>
 <div class="regpopup_content_auform">
 	<form name="bform" id="form_forgotpwd" method="post" target="_top" action="<?=$arResult["AUTH_URL"]?>">
+		<p class="regpopup_content_text">На указанную вами при регистрации почту будет отправлена ссылка на восстановление пароля</p>
 		<?
 		if (strlen($arResult["BACKURL"]) > 0)
 		{
