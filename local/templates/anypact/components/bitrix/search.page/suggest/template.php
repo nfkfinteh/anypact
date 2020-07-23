@@ -12,72 +12,76 @@
 /** @var CBitrixComponent $component */
 ?>
 <div class="search-page">
-<form action="" method="get">
-	<?$APPLICATION->IncludeComponent(
-		"bitrix:search.suggest.input",
-		"",
-		array(
-			"NAME" => "q",
-			"VALUE" => $arResult["REQUEST"]["~QUERY"],
-			"INPUT_SIZE" => 40,
-			"DROPDOWN_SIZE" => 10,
-			"FILTER_MD5" => $arResult["FILTER_MD5"],
-		),
-		$component
-	);?>
-<input type="submit" value="<?=GetMessage("SEARCH_GO")?>" />
-<input type="hidden" name="how" value="<?echo $arResult["REQUEST"]["HOW"]=="d"? "d": "r"?>" />
-<?if($arParams["SHOW_WHEN"]):?>
-	<script>
-	var switch_search_params = function()
-	{
-		var sp = document.getElementById('search_params');
-		var flag;
-		var i;
-
-		if(sp.style.display == 'none')
-		{
-			flag = false;
-			sp.style.display = 'block'
-		}
-		else
-		{
-			flag = true;
-			sp.style.display = 'none';
-		}
-		/*
-		var from = document.getElementsByName('from');
-		for(i = 0; i < from.length; i++)
-			if(from[i].type.toLowerCase() == 'text')
-				from[i].disabled = flag;
-*/
-		var to = document.getElementsByName('to');
-		for(i = 0; i < to.length; i++)
-			if(to[i].type.toLowerCase() == 'text')
-				to[i].disabled = flag;
-
-		return false;
-	}
-	</script>
-	<br /><a class="search-page-params" href="#" onclick="return switch_search_params()"><?echo GetMessage('CT_BSP_ADDITIONAL_PARAMS')?></a>
-	<div id="search_params" class="search-page-params" style="display:<?echo $arResult["REQUEST"]["FROM"] || $arResult["REQUEST"]["TO"]? 'block': 'none'?>">
-		<?$APPLICATION->IncludeComponent(
-			'bitrix:main.calendar',
-			'',
+<div class="search">
+    <form action="" method="get">
+        <span class="magnifier"></span>
+        <?$APPLICATION->IncludeComponent(
+			"bitrix:search.suggest.input",
+			"main",
 			array(
-				'SHOW_INPUT' => 'Y',
-				'INPUT_NAME' => 'from',
-				'INPUT_VALUE' => $arResult["REQUEST"]["~FROM"],
-				'INPUT_NAME_FINISH' => 'to',
-				'INPUT_VALUE_FINISH' =>$arResult["REQUEST"]["~TO"],
-				'INPUT_ADDITIONAL_ATTR' => 'size="10"',
+				"NAME" => "q",
+				"VALUE" => $arResult["REQUEST"]["~QUERY"],
+				"INPUT_SIZE" => 40,
+				"DROPDOWN_SIZE" => 10,
+				"FILTER_MD5" => $arResult["FILTER_MD5"],
 			),
-			null,
-			array('HIDE_ICONS' => 'Y')
+			$component
 		);?>
-	</div>
-<?endif?>
-</form><br />
+		<input type="submit" class="btn btn-nfk btn-search d-none d-md-inline" style="border: 1px solid #ff6416 !important;" value="<?=GetMessage("SEARCH_GO")?>" />
+		<input type="hidden" name="how" value="<?echo $arResult["REQUEST"]["HOW"]=="d"? "d": "r"?>" />
+        <?if($arParams["SHOW_WHEN"]):?>
+			<script>
+			var switch_search_params = function()
+			{
+				var sp = document.getElementById('search_params');
+				var flag;
+				var i;
+
+				if(sp.style.display == 'none')
+				{
+					flag = false;
+					sp.style.display = 'block'
+				}
+				else
+				{
+					flag = true;
+					sp.style.display = 'none';
+				}
+				/*
+				var from = document.getElementsByName('from');
+				for(i = 0; i < from.length; i++)
+					if(from[i].type.toLowerCase() == 'text')
+						from[i].disabled = flag;
+		*/
+				var to = document.getElementsByName('to');
+				for(i = 0; i < to.length; i++)
+					if(to[i].type.toLowerCase() == 'text')
+						to[i].disabled = flag;
+
+				return false;
+			}
+			</script>
+			<br /><a class="search-page-params" href="#" onclick="return switch_search_params()"><?echo GetMessage('CT_BSP_ADDITIONAL_PARAMS')?></a>
+			<div id="search_params" class="search-page-params" style="display:<?echo $arResult["REQUEST"]["FROM"] || $arResult["REQUEST"]["TO"]? 'block': 'none'?>">
+				<?$APPLICATION->IncludeComponent(
+					'bitrix:main.calendar',
+					'',
+					array(
+						'SHOW_INPUT' => 'Y',
+						'INPUT_NAME' => 'from',
+						'INPUT_VALUE' => $arResult["REQUEST"]["~FROM"],
+						'INPUT_NAME_FINISH' => 'to',
+						'INPUT_VALUE_FINISH' =>$arResult["REQUEST"]["~TO"],
+						'INPUT_ADDITIONAL_ATTR' => 'size="10"',
+					),
+					null,
+					array('HIDE_ICONS' => 'Y')
+				);?>
+			</div>
+		<?endif?>
+    </form>
+</div>
+<br />
 
 <?if(isset($arResult["REQUEST"]["ORIGINAL_QUERY"])):
 	?>

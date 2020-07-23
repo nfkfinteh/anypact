@@ -6,3 +6,10 @@ div.search-page-params {
 	margin-top: 6px;
 }
 .search-item-rate {font-size: 11px;}
+.search>form{
+	display: flex;
+}
+.search>form>input{
+	width: 100%;
+	margin-right: 20px;
+}

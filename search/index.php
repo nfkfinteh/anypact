@@ -1,7 +1,9 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$APPLICATION->SetTitle("Поиск");
+$APPLICATION->SetTitle("Поиск людей, компаний и сделок");
 ?>
+<h1 class="mb-4">Поиск людей, компаний и сделок</h1>
+<div class="short-divider"></div>
 <?$APPLICATION->IncludeComponent(
 	"bitrix:search.page", 
 	"suggest", 
