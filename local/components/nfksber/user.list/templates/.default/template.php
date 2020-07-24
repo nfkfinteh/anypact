@@ -32,7 +32,7 @@
                                     <div class="check-esia-img-info">
                                         <span>Подтвержденная авторизация</span>
                                         <img src="<?=SITE_TEMPLATE_PATH?>/img/check-esia-min.png" alt="">
-                                        <img src="https://gu-st.ru/st/img/logo_nobeta.0a1f5dfe6b.svg" style="width:50%;"
+                                        <img src="<?=SITE_TEMPLATE_PATH?>/img/gosuslugi.svg" style="width:50%;"
                                             class="gos_img"/>
                                     </div>
                                 </div>
@@ -49,7 +49,7 @@
                         <?endif?>
                         <?if($user['UF_ESIA_AUT']):?>
                             <span class="d-block font-weight-bold mt-4">Подтвержденная регистрация</span>
-                            <span class="d-block registration-checked mt-2"><img src="https://gu-st.ru/st/img/logo_nobeta.0a1f5dfe6b.svg" style="width:50%;" class="gos_img"/></span>
+                            <span class="d-block registration-checked mt-2"><img src="<?=SITE_TEMPLATE_PATH?>/img/gosuslugi.svg" style="width:50%;" class="gos_img"/></span>
                         <?else:?>
                             <span class="d-block font-weight-bold mt-4">Регистрация не подтверждена</span>
                         <?endif?>

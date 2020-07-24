@@ -115,7 +115,7 @@ else{
                     <?endif?>
                     <?if($arResult['USER']['UF_ESIA_AUT']==1):?>
                         <span class="d-block font-weight-bold mt-4">Подтвержденная регистрация</span>
-                        <span class="d-block registration-checked mt-2"><img src="https://gu-st.ru/st/img/logo_nobeta.0a1f5dfe6b.svg" style="width:50%;"/></span>
+                        <span class="d-block registration-checked mt-2"><img src="<?=SITE_TEMPLATE_PATH?>/img/gosuslugi.svg" style="width:50%;"/></span>
                     <?endif?>
                 <?elseif($arResult['TYPE_HOLDER'] == 'company'):?>
                     <span class="d-block mt-4">Юридическое лицо</span>
