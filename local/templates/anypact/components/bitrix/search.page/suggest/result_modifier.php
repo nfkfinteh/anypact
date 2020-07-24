@@ -40,7 +40,7 @@ if(!empty($arResult["SEARCH"])){
     if(!empty($arEls)){
         foreach($arResult["SEARCH"] as $key => $value){
             if(in_array($value['ITEM_ID'], $arElIds)){
-                $arResult["SEARCH"][$key]['URL_IMG_PREVIEW'] = CFile::ResizeImageGet($arEls[$value['ITEM_ID']]['PROPERTY_INPUT_FILES_VALUE'], ['width'=>500, 'height'=>500], BX_RESIZE_IMAGE_PROPORTIONAL )['src'];
+                $arResult["SEARCH"][$key]['URL_IMG_PREVIEW'] = CFile::GetPath($arEls[$value['ITEM_ID']]['PROPERTY_INPUT_FILES_VALUE']);
             }else{
                 unset($arResult["SEARCH"][$key]);
             }
