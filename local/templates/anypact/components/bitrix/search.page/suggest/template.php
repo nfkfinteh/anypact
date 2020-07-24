@@ -165,12 +165,12 @@ endif;?>
                     <div class="tender-post">
                         <a href="/pacts/view_pact/?ELEMENT_ID=<?=$arItem['ITEM_ID']?>">
                             <div class="tender-img">
-                              <?if (!isset($pact['URL_IMG_PREVIEW'])){ ?>
+                              <?if (!isset($arItem['URL_IMG_PREVIEW'])){ ?>
                                 <img src="<?=SITE_TEMPLATE_PATH?>/img/no_img_pacts.jpg" alt="">
                               <?} else {?>
-                                <img src="<?=$pact['URL_IMG_PREVIEW']?>" alt="">
+                                <img src="<?=$arItem['URL_IMG_PREVIEW']?>" alt="">
                               <?}?>
-                                <span><?=$pact["CREATED_DATE"]?></span>
+                                <span><?=$arItem["CREATED_DATE"]?></span>
                             </div>
                         </a>
                         <div class="tender-text">

@@ -16,7 +16,6 @@ $APPLICATION->SetTitle("Поиск людей, компаний и сделок"
 		"arrWHERE" => "",
 		"arrFILTER" => array(
 			0 => "iblock_4",
-			1 => "iblock_sprav",
 		),
 		"SHOW_WHERE" => "N",
 		"PAGE_RESULT_COUNT" => "50",
@@ -33,7 +32,7 @@ $APPLICATION->SetTitle("Поиск людей, компаний и сделок"
 		"NO_WORD_LOGIC" => "N",
 		"FILTER_NAME" => "",
 		"arrFILTER_iblock_4" => array(
-			0 => "all",
+			0 => "3",
 		),
 		"SHOW_WHEN" => "N",
 		"AJAX_OPTION_ADDITIONAL" => "",
