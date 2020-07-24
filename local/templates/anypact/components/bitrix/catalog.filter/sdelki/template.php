@@ -18,6 +18,8 @@ $this->setFrameMode(true);
 			echo $arItem["INPUT"];
 		endif;
 	endforeach;?>
+    <span style="margin-top: 0">Ключевое слово</span>
+    <input type="text" name="<?=$arResult['ITEMS']['NAME']['INPUT_NAME']?>" value="<?=$arResult['ITEMS']['NAME']['INPUT_VALUE']?>" size="15" maxlength="50" class="filter-key" placeholder="Например, продать автомобиль" />
     <span class="filter-date__title">
         Дата <a href="javascript:undefined" class="filter-date_reset" style="display: none">Сбросить</a>
     </span>

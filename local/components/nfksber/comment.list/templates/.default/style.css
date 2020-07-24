@@ -6,3 +6,6 @@
 .cardPact-comment-edit:hover, .cardPact-comment-delete:hover{
     color: #ff6416;
 }
+#comment_container{
+    margin-bottom: 50px;
+}

@@ -3,13 +3,13 @@
 	<div class="row">
         <div class="col-lg-3 col-md-4 col-sm-12">
             <div class="filter-tender">
-                <span>Ключевое слово</span>
+                <!-- <span>Ключевое слово</span> -->
                 <!--<input class="filter-key" type="text" placeholder="Например, продать автомобиль">-->
-                <?$APPLICATION->IncludeComponent(
+                <?/*$APPLICATION->IncludeComponent(
                     "bitrix:search.form",
                     "main",
                     Array()
-                );?>
+                );*/?>
                 <?$APPLICATION->IncludeComponent (
                     "bitrix:catalog.filter",
                     "sdelki",
@@ -17,7 +17,7 @@
                         "IBLOCK_TYPE" => "news",
                         "IBLOCK_ID" => "3",
                         "FILTER_NAME" => "arrFilter",
-                        "FIELD_CODE" => array('DATE_ACTIVE_FROM'),
+                        "FIELD_CODE" => array("NAME",'DATE_ACTIVE_FROM'),
                         "PROPERTY_CODE" => array('SUMM_PACT', 'LOCATION_CITY'),
                         "OFFERS_FIELD_CODE" => array(),
                         "OFFERS_PROPERTY_CODE" => array(),
