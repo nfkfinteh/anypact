@@ -21,7 +21,7 @@ if(isset($_GET['PAGEN_1']) && $_GET['IS_AJAX'] == 'Y'){
             for (const item of array) {
                 await Promise.all([
                     ajaxRequest(item),
-                    timeout(15000)
+                    timeout(30000)
                 ]);
             }
             console.log('done');
