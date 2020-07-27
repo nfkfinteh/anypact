@@ -33,6 +33,10 @@ if(!empty($data) || !empty($imgData)){
         $fields = array_merge($fields, $imgData);
     }
 
+    if(!empty($fields['NAME'])) $fields['NAME'] = mb_convert_case($fields['NAME'], MB_CASE_TITLE);
+    if(!empty($fields['LAST_NAME'])) $fields['LAST_NAME'] = mb_convert_case($fields['LAST_NAME'], MB_CASE_TITLE);
+    if(!empty($fields['SECOND_NAME'])) $fields['SECOND_NAME'] = mb_convert_case($fields['SECOND_NAME'], MB_CASE_TITLE);
+
     $user = new CUser;
     $satus = $user->Update($idUser, $fields);
 
