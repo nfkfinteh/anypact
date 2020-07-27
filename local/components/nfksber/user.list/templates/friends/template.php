@@ -42,7 +42,7 @@
                 $arBlackList = [];
             }
         ?>
-        <div class="view-item col-lg-3 col-sm-6 col-6 mt-4 pb-3">
+        <div class="view-item col-md-5th col-sm-6 col-6 mt-4 pb-3">
             <div class="people-s-photo">
                 <a href="/profile_user/?ID=<?=$user['ID']?>">
                     <div class="people-s-photo-img">
