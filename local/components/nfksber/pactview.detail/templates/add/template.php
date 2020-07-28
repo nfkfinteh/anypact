@@ -161,12 +161,18 @@ if(!empty($arResult['FORM_SDELKA']['adCity'])){
                         <h3>Категория</h3>
                     </div>
                     <span>(Выберите подходящую категорию)</span>
-                    <input name="CATEGORY" value="<?=$arResult['FORM_SDELKA']['adSection']?>" class="param_selected_category__input" style="width: 0; height: 0;">
+                    <input name="CATEGORY" value="<?=$arResult['FORM_SDELKA']['adSection']?>" type="hidden" class="param_selected_category__input" style="width: 0; height: 0;">
                 </div>
 
                 <div class="cardPact__item">
                     <div class="selectbox">
-                        <div id="param_selected_activ_date" class="view_text">Активно до: <input type="text" id="param_selected_activ_date_input" name="ACTIVE_DATE" value="<?=$arResult['FORM_SDELKA']['date']?>" disabled ><span class="glyphicon glyphicon-calendar"></span></div>
+                        <div id="param_selected_activ_date" class="view_text">
+                            <div class="date-text">Активно до:</div>
+                            <div class="date-input">
+                                <input type="text" id="param_selected_activ_date_input" name="ACTIVE_DATE" value="<?=$arResult['FORM_SDELKA']['date']?>" disabled >
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </div>
+                        </div>
                     </div>
                     <div class="cardPact__title">
                         <h3>Дата активности объявления</h3>

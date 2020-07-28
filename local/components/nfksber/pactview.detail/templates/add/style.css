@@ -104,15 +104,16 @@
     padding: 0px;
     margin-bottom: 20px;
     border-radius: 0.25rem;
-    background: #f1f4f4;
+    background: #e8e8e8;
     overflow: hidden;
     margin: 20px;
+    cursor: pointer;
 }
 
 .cardPact-box-edit #cardPact-box-edit-add_img,
 .cardPact-box-edit #cardPact-box-edit-rem_img,
 .cardPact-box-BoxMainImg .cardPact-box-edit-rem_img{
-    border: 4px #ccc dashed;
+    border: 4px #fff dashed;
     width: 100px;
     height: 100px;
     border-radius: 50%;
@@ -130,19 +131,19 @@
 .cardPact-box-BoxMainImg .cardPact-box-edit-rem_img span {
     font-size: 50px;
     font-weight: 900;
-    color: #ccc;
+    color: #fff;
 }
 
 .cardPact-box-BoxMainImg .cardPact-box-edit-rem_img {
     display: block;
 }
 
-.cardPact-box-BoxMainImg .ardPact-box-edit-block-rem_img {
+.cardPact-box-BoxMainImg .CardPact-box-edit-block-rem_img {
     display: none;
     cursor: pointer;
 }
 
-.cardPact-box-BoxMainImg:hover .ardPact-box-edit-block-rem_img {
+.cardPact-box-BoxMainImg:hover .CardPact-box-edit-block-rem_img {
     display: block;
 }
 
@@ -181,10 +182,11 @@
 
 #param_selected_activ_date_input{
     border: none;
-    width: 140px;
+    width: 100%;
     height: auto;
     outline:none;
     background-color: initial;
+    margin-right: 15px;
 }
 
 .wrap-map_adress .error_form{
@@ -201,8 +203,8 @@
     justify-content: space-between;
 }
 
-.ardPact-box-edit-block-rem_img {
-    background: #f1f4f4cc;
+.CardPact-box-edit-block-rem_img {
+    background: #0000004f;
     position: absolute;
     z-index: 100;
     width: 100%;
@@ -219,8 +221,23 @@ button.onActive {
     display: none;
 }
 
+div#param_selected_activ_date{
+    display: flex;
+}
+
+.date-text{
+    white-space: nowrap;
+    margin-right: 10px;
+}
+
+.date-input {
+    display: flex;
+    min-width: 153px;
+    width: 100%;
+}
+
 @media screen and (max-width: 991px) { 
-    .cardPact-box-BoxMainImg .ardPact-box-edit-block-rem_img {
+    .cardPact-box-BoxMainImg .CardPact-box-edit-block-rem_img {
         display: block;
     }
 }
@@ -234,6 +251,12 @@ button.onActive {
     }
 }
 
+@media (min-width: 768px) and (max-width: 991px){
+    div#param_selected_activ_date{
+        flex-wrap: wrap;
+    }
+}
+
 @media (max-width: 767px){
     .col-sm-8 {
         -ms-flex: none!important;
@@ -244,5 +267,11 @@ button.onActive {
         -ms-flex: none!important;
         flex: none!important;
         max-width: none!important;
+    }
+}
+
+@media screen and (max-width: 350px){
+    div#param_selected_activ_date{
+        flex-wrap: wrap;
     }
 }

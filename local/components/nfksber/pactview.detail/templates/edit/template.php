@@ -13,7 +13,9 @@
                                 <?if(!empty($url_img["URL"])):?>
                                     <div class="sp-slide">
                                         <img class="sp-image" src="<?=$url_img["URL"]?>">
-                                        <span class="cardPact-box-edit-rem_img" data-id="<?=$url_img['PROPERTY']['PROPERTY_VALUE_ID']?>">-</span>
+                                        <div class="CardPact-box-edit-block-rem_img">
+                                            <span class="cardPact-box-edit-rem_img" data-id="<?=$url_img['PROPERTY']['PROPERTY_VALUE_ID']?>">-</span>
+                                        </div>
                                     </div>
                                 <?endif?>
                             <?}?>
@@ -48,6 +50,7 @@
                         <?=$arResult["ELEMENT"]["DETAIL_TEXT"]?>
                     </div>
                     <button class="btn btn-nfk save" id="save_descript">Сохранить</button>
+                    <div style="clear: both;"></div>
                 </div>
                 <div class="cardPact-EditText-Сonditions">
                     <h3>Условия</h3><span>(режим редактирования)</span>
@@ -55,6 +58,7 @@
                         <?=$arResult["PROPERTY"]["CONDITIONS_PACT"]["VALUE"]["TEXT"]?>
                     </div>
                     <button class="btn btn-nfk save" id="save_conditions">Сохранить</button>
+                    <div style="clear: both;"></div>
                 </div>
 
                 <div class="editbox-wrap">

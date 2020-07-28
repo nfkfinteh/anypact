@@ -95,7 +95,7 @@ $(document).ready(function() {
                 img.setAttribute('class', 'cardPact-box-BoxPrewImg-img');
                 img.setAttribute('src', e.target.result);
 
-                div.setAttribute('class', 'ardPact-box-edit-block-rem_img');
+                div.setAttribute('class', 'CardPact-box-edit-block-rem_img');
 
                 block.setAttribute('class', 'cardPact-box-edit-rem_img');
                 block.innerHTML = ['<span>-</span>'].join('');
@@ -126,7 +126,7 @@ $(document).ready(function() {
     });
 
     //удаление изображения
-    $(document).on('click', '.ardPact-box-edit-block-rem_img',  function(){
+    $(document).on('click', '.CardPact-box-edit-block-rem_img',  function(){
         var item = $(this).parents('.cardPact-box-BoxMainImg').eq(0);
         var id = $(item).attr('data-id');
 

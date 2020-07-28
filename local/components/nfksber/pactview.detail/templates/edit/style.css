@@ -60,7 +60,7 @@
 
 .cardPact-EditText-Descript,
 .cardPact-EditText-Сonditions {
-    margin-bottom: 66px;
+    /* margin-bottom: 66px; */
 }
 
 .cardPact-rightPanel h1 {
@@ -90,25 +90,25 @@
 }
 
 .cardPact-box-edit-rem_img{
-    display: none;
+    display: block;
     border: 4px #fff dashed;
     width: 150px;
     height: 150px;
     border-radius: 50%;
-    margin: 150px auto;
     cursor: pointer;
     padding: 34px 59px;
     position: absolute;
     z-index: 100;
-    top: 0;
+    top: 50%;
     left: 50%;
-    margin-left: -75px;
+    margin: -75px;
+    text-align: center;
     font-size: 50px;
     font-weight: 900;
     color: #fff;
 }
 
-#my-slider .sp-slide:hover .cardPact-box-edit-rem_img{
+#my-slider .sp-slide:hover .CardPact-box-edit-block-rem_img{
     display: block;
 }
 
@@ -183,6 +183,20 @@ button.onActive {
     display: none;
 }
 
+.CardPact-box-edit-block-rem_img {
+    background: #0000004f;
+    position: absolute;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    display: none;
+}
+
+.editbox-wrap{
+    margin: 0!important;
+}
+
 @media screen and (max-width: 1200px){
     
     .label-title{
@@ -204,6 +218,12 @@ button.onActive {
 
 }
 
+@media screen and (max-width: 991px) { 
+    .CardPact-box-edit-block-rem_img {
+        display: block;
+    }
+}
+
 @media screen and (max-width: 767px){
     .col-sm-8 {
         -ms-flex: none!important;
@@ -214,5 +234,14 @@ button.onActive {
         -ms-flex: none!important;
         flex: none!important;
         max-width: none!important;
+    }
+}
+
+@media screen and (max-width: 375px){
+    .cardPact-box-edit-rem_img{
+        width: 100px;
+        height: 100px;
+        margin: -50px;
+        padding: 9px 38px;
     }
 }
