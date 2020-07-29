@@ -4354,6 +4354,12 @@ footer p {
     white-space: nowrap;
 }
 
+@media screen and (min-width: 1200px){
+    .people-s-photo {
+        margin: 0 10%;
+    }
+}
+
 @media (max-width: 1199px) {
     .navbar-brand-block {
         display: none;
@@ -4553,6 +4559,12 @@ footer p {
 @media screen and (max-width: 424px) {
     .new-auth-block {
         margin: 0 auto;
+    }
+}
+
+@media (min-width: 424px) and (max-width: 767px) {
+    .people-s-photo {
+        margin: 0 10%;
     }
 }
 

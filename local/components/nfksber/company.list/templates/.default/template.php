@@ -6,7 +6,7 @@
 <?if(!empty($arResult["COMPANY"])):?>
     <div class="row grid-view">
         <?foreach($arResult["COMPANY"] as $company):?>
-            <div class="view-item col-md-5th col-sm-6 col-6 mt-4 pb-3">
+            <div class="view-item col-lg-3 col-md-4 col-sm-6 col-6 mt-4 pb-3">
                 <div class="people-s-photo">
                     <a href="/profile_user/?ID=<?=$company['ID']?>&type=company">
                         <div class="people-s-photo-img">
