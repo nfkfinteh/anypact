@@ -46,7 +46,7 @@ $(document).ready(function(){
                     elNode.attr('href', "tel:"+$result['VALUE'].replace(new RegExp("[- ()]",'g'), ''));
                     elNode.text($result['VALUE']);
                     elNode.off();
-                    elNode.css('font-size', '28px');
+                    elNode.css('font-size', '24px');
                 }
             },
 

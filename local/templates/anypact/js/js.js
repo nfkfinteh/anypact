@@ -231,4 +231,4 @@ $('.js-mask__email').inputmask({
         }
     }
 });
-$('.js-mask__phone').inputmask('8(999) 999-9999');
+$('.js-mask__phone').inputmask('8(999) 999-99-99');
