@@ -4,6 +4,10 @@ if (empty($arResult["PROPERTY"]["ID_DOGOVORA"]["VALUE"]) || $arResult['USER']['U
     $disable_a = 'disabled';
 }
 
+if($USER->IsAuthorized()){
+    $is_aut = true;
+}
+
 foreach ($arResult["PROPERTY"]["IMG_FILE"] as $item){
     $file =CFile::ResizeImageGet($item['PROPERTY']['VALUE'], array('width'=>'180', 'height'=>'110'), BX_RESIZE_IMAGE_EXACT);
     $resize_img =CFile::ResizeImageGet($item['PROPERTY']['VALUE'], array('width'=>'730', 'height'=>'500'), BX_RESIZE_IMAGE_EXACT);
@@ -72,8 +76,20 @@ $APPLICATION->IncludeComponent(
             <?}?>
         </span>
 
+        <?if($arResult["PROPERTY"]["SHOW_PHONE"]["VALUE_ENUM"] == "Y"){?>
+            <div class="position-relative not_auth-error-block">
+                <a href="#" class="btn btn-nfk cardPact-bBtn <?if(!$is_aut){?>disabled<?}?>" id="show_phone" data-user-id="<?=$arResult["CONTRACT_HOLDER"]["ID"]?>">Показать телефон<br>8(XXX) XXX-XX-XX</a>
+                <? if(!$is_aut):?>
+                    <div class="not_auth-error">
+                        <span class="triangle" style="display: block; z-index: 1;">▲</span>
+                        <div>Для просмотра телефона необходимо <a id="open_reg_form_new" href="#">зарегистрироваться</a></div>
+                    </div>
+                <?endif;?>
+            </div>
+        <?}?>
+
         <?//скрытие кнопки при окончане активности?>
-        <? if($USER->IsAuthorized()):?>
+        <? if($is_aut):?>
             <?if($arResult['ELEMENT']['ACTIVE']=='Y' && $DATE_ACTIVE_TO>=time()):?>
                 <div class="position-relative not_auth-error-block">
                     <a href="/pacts/view_pact/view_dogovor/?ELEMENT_ID=<?=$arResult["ELEMENT"]["ID"]?>" class="btn btn-nfk cardPact-bBtn <?=$disable_a?>" onclick="ym(64629523,'reachGoal','docs_link');">Посмотреть или подписать договор</a>
@@ -116,7 +132,7 @@ $APPLICATION->IncludeComponent(
             <?/*<span>9 оценок</span>*/?>
         </div>
         <?//скрытие кнопки при окончане активности?>
-        <? if($USER->IsAuthorized()):?>
+        <? if($is_aut):?>
             <? if($arResult['ELEMENT']['ACTIVE']=='Y' && $DATE_ACTIVE_TO>=time() && !in_array($arResult['USER']['ID'], $arBlackList)): ?>
                 <button type="button" class="btn btn-nfk d-block cardPact-bBtn" data-toggle="modal" data-target=".bd-message-modal-sm" onclick="ym(64629523,'reachGoal','message_post');">
                     Написать сообщение

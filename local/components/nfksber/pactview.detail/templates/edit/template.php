@@ -124,6 +124,22 @@
 
                 <button class="btn btn-nfk " id="save_summ" style="margin-top:30px;">Сохранить</button>
             </div>
+            <div class="cardPact__item">
+                <div class="cardPact__title">
+                    <h3>Показать телефон</h3> 
+                    <?if($arResult['PROPERTY']['SHOW_PHONE']['VALUE'] == 17):?>
+                        <button class="onActive" active="Y" data-block-id="" data-value-id="17">
+                            <img src="<?=SITE_TEMPLATE_PATH?>/image/Active.png" />
+                            <input name="SHOW_PHONE" id="SHOW_PHONE" type="hidden" value="17"/>
+                        </button>
+                    <?else:?>
+                        <button class="onActive" active="" data-block-id="" data-value-id="17">
+                            <img src="<?=SITE_TEMPLATE_PATH?>/image/DontActive.png" />
+                            <input name="SHOW_PHONE" id="SHOW_PHONE" type="hidden" value=""/>
+                        </button>
+                    <?endif;?>
+                </div>
+            </div>
             <!--Срок объявления -->
             <h4>Объявление активно до: <span class="date-active"><?=$arResult["ELEMENT"]["DATE_ACTIVE_TO"]?></span></h4>
             <button class="btn btn-nfk" id="up_date_active">Продлить на 10 дней</button>

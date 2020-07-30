@@ -111,6 +111,16 @@ switch ($_POST['atrr_text']) {
     
         $checkUpdate = CIBlockElement::SetPropertyValuesEx($PRODUCT_ID, false, $arProperty);
         break;
+    case 'up_showPhone':
+        $arProperty = [
+            'SHOW_PHONE'=>$_POST['SHOW_PHONE']
+        ];
+        $arLoadProductArray = Array(
+             "MODIFIED_BY"    => $USER->GetID(),
+        );
+    
+        $checkUpdate = CIBlockElement::SetPropertyValuesEx($PRODUCT_ID, false, $arProperty);
+        break;
     case 'access_user':
         $arProperty = [
             'ACCESS_USER'=>$_POST['ACCESS_USER']

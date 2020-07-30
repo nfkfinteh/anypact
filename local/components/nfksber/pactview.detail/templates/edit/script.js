@@ -22,18 +22,28 @@ $(document).ready(function() {
             var val = "";
         }
 
-        if(type == 'PRICE_ON_REQUEST'){
-            var postObj =  {                
-                id_element: ID_Object,
-                atrr_text: 'up_priceOnRequest',
-                PRICE_ON_REQUEST: val
-            };
-        }else if(type == 'PRIVATE'){
-            var postObj =  {                
-                id_element: ID_Object,
-                atrr_text: 'up_private',
-                PRIVATE: val
-            };
+        switch(type){
+            case 'PRICE_ON_REQUEST':
+                var postObj =  {                
+                    id_element: ID_Object,
+                    atrr_text: 'up_priceOnRequest',
+                    PRICE_ON_REQUEST: val
+                };
+                break;
+            case 'PRIVATE':
+                var postObj =  {                
+                    id_element: ID_Object,
+                    atrr_text: 'up_private',
+                    PRIVATE: val
+                };
+                break;
+            case 'SHOW_PHONE':
+                var postObj =  {                
+                    id_element: ID_Object,
+                    atrr_text: 'up_showPhone',
+                    SHOW_PHONE: val
+                };
+                break;
         }
 
         console.log(postObj);
@@ -62,7 +72,8 @@ $(document).ready(function() {
                     $(self).children('input').val(valueId);
                     $(self).attr('active', 'Y');
                 }
-                $('#'+blockId).toggle(300);
+                if(blockId !== undefined && blockId.length > 0)
+                    $('#'+blockId).toggle(300);
                 preload('hide');
                 showResult('#popup-success', 'Изменения сохранены');
             }

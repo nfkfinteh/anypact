@@ -74,3 +74,6 @@
 .complaints_type-select{
     margin-bottom: 10px;
 }
+a#show_phone {
+    height: 60px;
+}

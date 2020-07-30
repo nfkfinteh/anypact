@@ -26,4 +26,32 @@ $(document).ready(function(){
         });
     });
 
+    $('#show_phone').on('click', function(el){
+        el.preventDefault;
+        var user_id = $(this).attr('data-user-id');
+        var elNode = $(this);
+        $.ajax({
+            type: 'POST',
+            url: '/response/ajax/get_user_phone.php',
+            data:{
+                USER_ID: user_id,
+                sessid: BX.bitrix_sessid()
+            },
+            success: function(result){
+                $result = JSON.parse(result);
+                if($result['TYPE']=='ERROR'){
+                    console.log($result['VALUE']);
+                }
+                if($result['TYPE']=='SUCCESS'){
+                    elNode.attr('href', "tel:"+$result['VALUE'].replace(new RegExp("[- ()]",'g'), ''));
+                    elNode.text($result['VALUE']);
+                    elNode.off();
+                    elNode.css('font-size', '28px');
+                }
+            },
+
+        });
+        return false;
+    });
+
 });

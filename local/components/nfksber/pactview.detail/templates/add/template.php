@@ -141,6 +141,17 @@ if(!empty($arResult['FORM_SDELKA']['adCity'])){
                     </div>
                     <span>(укажите единицы)</span>
                 </div>
+
+                <div class="cardPact__item">
+                    <div class="cardPact__title">
+                        <h3>Показать телефон</h3> 
+                        <button class="onActive" active="" data-block-id="" data-value-id="17">
+                            <img src="<?=SITE_TEMPLATE_PATH?>/image/DontActive.png" />
+                            <input name="SHOW_PHONE" id="SHOW_PHONE" type="hidden" value=""/>
+                        </button>
+                    </div>
+                </div>
+                
                 <div class="cardPact__item">
                     <div class="selectbox">
                         <div id="param_selected_category" class="view_text" data="close" data-id="<?=$arResult['FORM_SDELKA']['adSection']?>">
