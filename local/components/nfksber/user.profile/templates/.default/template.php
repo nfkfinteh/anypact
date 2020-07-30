@@ -164,7 +164,13 @@ else{
                                             <?else: ?>
                                                 <p><?=strip_tags(TruncateText($item['DETAIL_TEXT'], 150))?></p>
                                             <?endif?>
-                                            <span class="tender-price">до <?=$item['SUMM_PACT']['VALUE'].' руб.'?></span>
+                                            <span class="tender-price">
+                                                <?if($item['PRICE_ON_REQUEST']['VALUE_ENUM'] == "Y"){?>
+                                                    Цена по запросу
+                                                <?}else{?>
+                                                    <?=$item['SUMM_PACT']['VALUE'].' руб.'?>
+                                                <?}?>
+                                            </span>
                                         </a>
                                     </div>
                                 </div>
