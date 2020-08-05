@@ -26,6 +26,8 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)
 	<form method="post" action="<?=POST_FORM_ACTION_URI?>" name="regform" enctype="multipart/form-data" onsubmit="ym(64629523,'reachGoal','reg');">
 		<div class="regpopup_content_form_fild">
 		<? // print_r($arResult["SHOW_FIELDS"]);?>
+			<?=bitrix_sessid_post();?>
+			<input type="text" name="fax" style="display:none;">
 			<input hidden size="30" class="regpopup_content_form_input" id="user_login_fild" name="REGISTER[<?=$LOGIN?>]" value="<?=$arResult["VALUES"][$LOGIN]?>" placeholder="<?=GetMessage($LOGIN)?>"  autocomplete="off" />
             <input hidden class="regpopup_content_form_input" name="UF_TYPE_REGISTR" value="<?=$_GET['type_registr']?>"  autocomplete="off" />
 			<input size="30" class="regpopup_content_form_input" id="user_email_fild" name="REGISTER[<?=$EMAIL?>]" value="<?=$arResult["VALUES"][$EMAIL]?>" placeholder="<?=GetMessage($EMAIL)?>"  autocomplete="off" />

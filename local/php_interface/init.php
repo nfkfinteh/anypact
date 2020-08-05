@@ -1,6 +1,10 @@
 <?php define("PREFIX_PATH_404", "/404.php");
 include_once 'function.php';
 
+define("HLB_USER_FRIENDS_ACCEPT_Y", "1");
+define("HLB_USER_FRIENDS_ACCEPT_N", "2");
+define("HLB_USER_FRIENDS_ACCEPT_A", "3");
+
 $eventManager = \Bitrix\Main\EventManager::getInstance();
 $eventManager->addEventHandler("main", "OnAfterEpilog", "Prefix_FunctionName");
 
@@ -250,4 +254,15 @@ function SendEmailForDealModeration($ELEMENT_ID, $IBLOCK_ID, $PROPERTY_VALUES, $
             }
         }
     }
+}
+
+AddEventHandler("main", "OnBeforeUserRegister", "OnBeforeUserRegisterHandler");
+function OnBeforeUserRegisterHandler(&$arFields)
+{
+    global $APPLICATION;
+    if(!check_bitrix_sessid() || (!empty($_REQUEST['fax'])) || (!isset($_REQUEST['fax']))){
+        $APPLICATION->ThrowException('Ошибка регистрации.');
+        return false;
+    }
+
 }
