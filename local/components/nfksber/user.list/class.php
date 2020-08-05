@@ -43,13 +43,17 @@ class CDemoSqr extends CBitrixComponent
             $by="RAND";
 
             if(!empty($this->arParams['FRIENDS_STATUS'])){
-                if(empty($this->arResult["FRENDS"]))
+                if(empty($this->arResult["FRENDS"]) && $this->arParams['FRIENDS_STATUS'] != 'B')
                     return array();
                 
-                if($this->arParams['FRIENDS_STATUS'] != 'B')
+                if($this->arParams['FRIENDS_STATUS'] == 'B'){
+                    if(!empty($this->arResult["BLACKLIST"]['UF_USER_B']))
+                        $arrFilter = array_merge($arrFilter, array("ID" => implode("|", $this->arResult["BLACKLIST"]['UF_USER_B'])));
+                    else
+                        return array();
+                }else
                     $arrFilter = array_merge($arrFilter, array("ID" => implode("|", $this->arResult["FRENDS"])));
-                else
-                    $arrFilter = array_merge($arrFilter, array("ID" => implode("|", $this->arResult["BLACKLIST"]['UF_USER_B'])));
+                    
                 
                 $by = array("LAST_NAME" => "asc", "NAME" => "asc", "SECOND_NAME" => "asc");
             }
