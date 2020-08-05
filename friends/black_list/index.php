@@ -1,15 +1,15 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$APPLICATION->SetTitle("AnyPact || Мои друзья");
+$APPLICATION->SetTitle("Черный список");
 ?>
-<!--Мои друзья-->
+<!--Черный список-->
 <?
     global $USER;
     if (!$USER->IsAuthorized()){
         LocalRedirect("/");
     }?>
     <div class="tender" style="margin-bottom: 100px;">
-        <h1 class="mb-4">Мои друзья</h1>
+        <h1 class="mb-4">Черный список</h1>
         <div class="row">
             <div class="col-lg-3 col-md-4 col-sm-12">
                 <?$APPLICATION->IncludeComponent(
@@ -41,7 +41,7 @@ $APPLICATION->SetTitle("AnyPact || Мои друзья");
                         "FILTER_NAME" => "arrFilter",
                         "NEWS_COUNT" => 12,
                         "PAGER_TEMPLATE" => "anypact_pagination",
-                        "FRIENDS_STATUS" => "Y",
+                        "FRIENDS_STATUS" => "B",
                         "CACHE_TIME" => 0,
                     )
                 );
@@ -49,5 +49,4 @@ $APPLICATION->SetTitle("AnyPact || Мои друзья");
             </div>
         </div>
     </div>
-    </div>
- <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
+    </div><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

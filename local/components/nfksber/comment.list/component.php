@@ -92,6 +92,8 @@ $arResult['JS_DATA'] = [
         $arResult['ITEMS'][] = $arData;
     }
 
+    $arResult['BLACKLIST'] = $this::getBlackList($arResult['USER_CREATE_SDELKA'], $arResult['CURENT_USER']['ID']);
+
  /*   $this->EndResultCache();
 }*/
 $arResult['EDIT_COMMENT'] = $this::getEditSdelka($_POST['EDIT_ID'], $arResult['IBLOCK_ID']);

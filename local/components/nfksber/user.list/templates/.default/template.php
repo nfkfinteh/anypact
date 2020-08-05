@@ -5,14 +5,6 @@
 </div>
 <div class="row grid-view">
     <?foreach($arResult["USER"] as $user):?>
-        <?
-            if(!empty($user['UF_BLACKLIST'])){
-                $arBlackList = json_decode($user['UF_BLACKLIST']);
-            }
-            else{
-                $arBlackList = [];
-            }
-        ?>
         <div class="view-item col-lg-3 col-md-4 col-sm-6 col-6 mt-4 pb-3">
             <div class="people-s-photo">
                 <a href="/profile_user/?ID=<?=$user['ID']?>">
@@ -58,26 +50,28 @@
                 <? // кнопки только для авторизированных пользователей ?>
                 <? if($USER->IsAuthorized()):?>
                     <div class="people-s-photo-btn-block">
-                        <?if(is_array($arBlackList) && !in_array($USER->GetID(), $arBlackList)):?>
+                        <?if(!in_array($user['ID'], $arResult["BLACKLIST"]['UF_USER_A'])):?>
                             <button class="btn btn-clean search-peaople__button" data-toggle="modal" data-target=".bd-message-modal-sm" data-login="<?=$user['LOGIN']?>">
                                 <img src="<?=SITE_TEMPLATE_PATH?>/image/people-search-message.png" alt="Отправить сообщение" title="Отправить сообщение">
                             </button>
                         <?endif?>
                         <!-- <button class="btn btn-clean"><img src="<?=SITE_TEMPLATE_PATH?>/image/people-search-document.png" alt=""></button> -->
-                        <?if(!in_array($user['ID'], $arResult['FRENDS']) && $USER->GetID() != $user['ID']):?>
-                            <button class="btn btn-clean js-add-frends" data-login="<?=$user['LOGIN']?>">
-                                <img src="<?=SITE_TEMPLATE_PATH?>/image/people-search-add-people.png" alt="Добавить в друзья" title="Добавить в друзья">
-                            </button>
-                        <?elseif(in_array($user['ID'], $arResult['FRENDS'])):?>
-                            <button class="btn btn-clean js-delete-frends" data-login="<?=$user['LOGIN']?>">
-                                <img src="<?=SITE_TEMPLATE_PATH?>/image/people-search-delete-people.png" alt="Удалить из друзей" title="Удалить из друзей">
-                            </button>
-                        <?endif?>
-                        <?if(!in_array($user['ID'], $arResult['BLACKLIST']) && $USER->GetID() != $user['ID']):?>
+                        <?if(!in_array($user['ID'], $arResult["BLACKLIST"]['UF_USER_A'])):?>
+                            <?if(!in_array($user['ID'], $arResult['FRENDS']) && $USER->GetID() != $user['ID']):?>
+                                <button class="btn btn-clean js-add-frends" <?if(in_array($user['ID'], $arResult["BLACKLIST"]['UF_USER_B'])){?>style="display:none;"<?}?> data-login="<?=$user['LOGIN']?>">
+                                    <img src="<?=SITE_TEMPLATE_PATH?>/image/people-search-add-people.png" alt="Добавить в друзья" title="Добавить в друзья">
+                                </button>
+                            <?elseif(in_array($user['ID'], $arResult['FRENDS'])):?>
+                                <button class="btn btn-clean js-delete-frends" data-login="<?=$user['LOGIN']?>">
+                                    <img src="<?=SITE_TEMPLATE_PATH?>/image/people-search-delete-people.png" alt="Удалить из друзей" title="Удалить из друзей">
+                                </button>
+                            <?endif?>
+                        <?endif;?>
+                        <?if(!in_array($user['ID'], $arResult['BLACKLIST']['UF_USER_B']) && $USER->GetID() != $user['ID']):?>
                             <button class="btn btn-clean js-add-blacklist" data-login="<?=$user['LOGIN']?>">
                                 <img src="<?=SITE_TEMPLATE_PATH?>/image/black-list-add.png" alt="Добавить в черный список" title="Добавить в черный список">
                             </button>
-                        <?elseif(in_array($user['ID'], $arResult['BLACKLIST'])):?>
+                        <?elseif(in_array($user['ID'], $arResult['BLACKLIST']['UF_USER_B'])):?>
                             <button class="btn btn-clean js-delete-blacklist" data-login="<?=$user['LOGIN']?>">
                                 <img src="<?=SITE_TEMPLATE_PATH?>/image/black-list.png" alt="Удалить из черного списка" title="Удалить из черного списка">
                             </button>

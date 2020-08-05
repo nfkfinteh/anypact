@@ -1,0 +1,14 @@
+#vertical-multilevel-menu{
+	padding-inline-start: 0;
+}
+#vertical-multilevel-menu .nav-item{
+	list-style: none;
+	margin-bottom: 10px;
+}
+#vertical-multilevel-menu .nav-link{
+	display: inline-block;
+	padding: 0!important;
+}
+#vertical-multilevel-menu .nav-link.nav-link-activ{
+	cursor: default;
+}

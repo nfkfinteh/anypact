@@ -17,7 +17,7 @@ IncludeTemplateLangFile(__FILE__);
                             <span><a href="/profile_user/?ID=<?=$item['USER']['ID']?>"><?=$item['USER']['FULL_NAME']?></a></span>
                         </div>
                         <div style="float:right">
-                            <?if($item['USER']['ID'] == $arResult['CURENT_USER']['ID']):?>
+                            <?if($item['USER']['ID'] == $arResult['CURENT_USER']['ID'] && !$arResult['BLACKLIST']):?>
                                 <span class="cardPact-comment-edit" data-comment="<?=$item['ID']?>">Редактировать</span><br>
                             <?endif?>
                             <?if($item['USER']['ID'] == $arResult['CURENT_USER']['ID'] || $arResult['CURENT_USER']['ID'] == $arResult['USER_CREATE_SDELKA']):?>
@@ -35,22 +35,23 @@ IncludeTemplateLangFile(__FILE__);
                 </div>
             </div>
         <?endforeach?>
-        <?if($_POST['COMMENT_EDIT']=='Y'):?>
-            <div class="offset-sm-2 offset-lg-1 col-sm-10 col-lg-7" id="edit_comment_container">
-                <textarea placeholder="Оставьте Ваш комментарий"  maxlength="500">
-                    <?=trim($arResult['EDIT_COMMENT']['UF_TEXT_MESSAGE'])?>
-                </textarea>
-                <input type='hidden' name='ACTION' value='add' />
-                <button class="btn btn-nfk cardPact-comment-submit" data-coment_id="<?=$arResult['EDIT_COMMENT']['ID']?>">Сохранить</button>
-            </div>
-        <?else:?>
-            <div class="offset-sm-2 offset-lg-1 col-sm-10 col-lg-7" id="comment_container">
-                <textarea placeholder="Оставьте Ваш комментарий"  maxlength="500"></textarea>
-                <input type='hidden' name='ACTION' value='add' />
-                <button class="btn btn-nfk cardPact-comment-submit">Комментировать</button>
-            </div>
-        <?endif?>
-
+        <?if(!$arResult['BLACKLIST']){?>
+            <?if($_POST['COMMENT_EDIT']=='Y'):?>
+                <div class="offset-sm-2 offset-lg-1 col-sm-10 col-lg-7" id="edit_comment_container">
+                    <textarea placeholder="Оставьте Ваш комментарий"  maxlength="500">
+                        <?=trim($arResult['EDIT_COMMENT']['UF_TEXT_MESSAGE'])?>
+                    </textarea>
+                    <input type='hidden' name='ACTION' value='add' />
+                    <button class="btn btn-nfk cardPact-comment-submit" data-coment_id="<?=$arResult['EDIT_COMMENT']['ID']?>">Сохранить</button>
+                </div>
+            <?else:?>
+                <div class="offset-sm-2 offset-lg-1 col-sm-10 col-lg-7" id="comment_container">
+                    <textarea placeholder="Оставьте Ваш комментарий"  maxlength="500"></textarea>
+                    <input type='hidden' name='ACTION' value='add' />
+                    <button class="btn btn-nfk cardPact-comment-submit">Комментировать</button>
+                </div>
+            <?endif?>
+        <?}?>
         <script>
             var bitrixJS = <?=CUtil::PhpToJSObject($arResult['JS_DATA'])?>
         </script>

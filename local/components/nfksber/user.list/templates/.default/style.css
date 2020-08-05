@@ -141,3 +141,7 @@ textarea.message-textarea{
 .btn-list {
     background-image: url(/local/templates/anypact/image/sprite.png) !important;
 }
+.people-s-photo-btn-block .btn img {
+    max-width: 24px;
+    max-height: 24px;
+}

@@ -12,7 +12,8 @@ class CDemoSqr extends CBitrixComponent
             "CACHE_TIME" => isset($arParams["CACHE_TIME"]) ?$arParams["CACHE_TIME"]: 36000000,
             "FILTER_NAME"=> $arParams["FILTER_NAME"],
             "NEWS_COUNT" => intval($arParams["NEWS_COUNT"]),
-            "PAGER_TEMPLATE" => $arParams["PAGER_TEMPLATE"]
+            "PAGER_TEMPLATE" => $arParams["PAGER_TEMPLATE"],
+            "FRIENDS_STATUS" => $arParams["FRIENDS_STATUS"],
         );
         return $result;
     }
@@ -39,7 +40,21 @@ class CDemoSqr extends CBitrixComponent
                 $arrFilter['NAME'] = "_";
             }
 
-            $res = CCustUser::GetList($by="RAND", $order="desc", $arrFilter, ['SELECT'=>['UF_*'] ]);
+            $by="RAND";
+
+            if(!empty($this->arParams['FRIENDS_STATUS'])){
+                if(empty($this->arResult["FRENDS"]))
+                    return array();
+                
+                if($this->arParams['FRIENDS_STATUS'] != 'B')
+                    $arrFilter = array_merge($arrFilter, array("ID" => implode("|", $this->arResult["FRENDS"])));
+                else
+                    $arrFilter = array_merge($arrFilter, array("ID" => implode("|", $this->arResult["BLACKLIST"]['UF_USER_B'])));
+                
+                $by = array("LAST_NAME" => "asc", "NAME" => "asc", "SECOND_NAME" => "asc");
+            }
+
+            $res = CCustUser::GetList($by, $order="desc", $arrFilter, ['SELECT'=>['UF_*'] ]);
             $res->NavStart($arNavParams['nPageSize']);
             while($obj = $res->NavNext(true)) {
                 $arUser[] = $obj;
@@ -68,19 +83,60 @@ class CDemoSqr extends CBitrixComponent
     public function getFrends(){
         global $USER;
         $current_user = $USER->GetID();
-        $arFilter = array("ID" => $current_user);
-        $arParams["SELECT"] = array("ID", "UF_FRENDS");
-        $res = CUser::GetList($by ="timestamp_x", $order = "desc", $arFilter, $arParams);
-        $result = [];
-        if($obj=$res->GetNext()){
-            if(!empty($obj['UF_FRENDS'])){
-               $result = json_decode($obj['~UF_FRENDS']);
+        if(CModule::IncludeModule("highloadblock"))
+        {
+            $filter_a = array("UF_USER_A" => $current_user);
+            $filter_b = array("UF_USER_B" => $current_user, "UF_ACCEPT" => HLB_USER_FRIENDS_ACCEPT_Y);
+
+            switch($this->arParams['FRIENDS_STATUS']){
+                case "Y":
+                    $filter_a = array("UF_USER_A" => $current_user, "UF_ACCEPT" => HLB_USER_FRIENDS_ACCEPT_Y);
+                    $filter_b = array("UF_USER_B" => $current_user, "UF_ACCEPT" => HLB_USER_FRIENDS_ACCEPT_Y);
+                    break;
+                case "O":
+                    $filter_a = array("UF_USER_A" => $current_user, "UF_ACCEPT" => HLB_USER_FRIENDS_ACCEPT_A);
+                    $filter_b = array();
+                    break;
+                case "N":
+                    $filter_a = array("UF_USER_A" => $current_user, "UF_ACCEPT" => HLB_USER_FRIENDS_ACCEPT_N);
+                    $filter_b = array();
+                    break;
+                case "I":
+                    $filter_a = array("UF_USER_B" => $current_user, "UF_ACCEPT" => HLB_USER_FRIENDS_ACCEPT_A);
+                    $filter_b = array();
+                    break;
+                case "S":
+                    $filter_a = array();
+                    $filter_b = array("UF_USER_B" => $current_user, "UF_ACCEPT" => HLB_USER_FRIENDS_ACCEPT_N);
+                    break;
+            }
+
+            $hlblock = Bitrix\Highloadblock\HighloadBlockTable::getById(14)->fetch();
+            $entity = Bitrix\Highloadblock\HighloadBlockTable::compileEntity($hlblock);
+            $entity_data_class = $entity->getDataClass();
+            $rsData = $entity_data_class::getList(array(
+                "select" => array("UF_USER_A", "UF_USER_B"),
+                "order" => array("ID" => "ASC"),
+                "filter" => array(array(
+                    "LOGIC" => "OR",
+                    $filter_a,
+                    $filter_b,
+                ))
+            ));
+            while($arData = $rsData->Fetch()){
+                $result[] = $arData["UF_USER_A"];
+                $result[] = $arData["UF_USER_B"];
             }
         }
 
         if(empty($result)){
             $result = [];
         }
+
+        $result = array_unique($result);
+
+        if(isset($result[array_search($current_user, $result)]))
+            unset($result[array_search($current_user, $result)]);
 
         return $result;
     }
@@ -88,30 +144,38 @@ class CDemoSqr extends CBitrixComponent
     public function getBlackList(){
         global $USER;
         $current_user = $USER->GetID();
-        $arFilter = array("ID" => $current_user);
-        $arParams["SELECT"] = array("ID", "UF_BLACKLIST");
-        $res = CUser::GetList($by ="timestamp_x", $order = "desc", $arFilter, $arParams);
-        $result = [];
-        if($obj=$res->GetNext()){
-            if(!empty($obj['UF_BLACKLIST'])){
-                $result = json_decode($obj['~UF_BLACKLIST']);
+        if(CModule::IncludeModule("highloadblock"))
+        {
+            $hlblock = Bitrix\Highloadblock\HighloadBlockTable::getById(15)->fetch();
+            $entity = Bitrix\Highloadblock\HighloadBlockTable::compileEntity($hlblock);
+            $entity_data_class = $entity->getDataClass();
+            $rsData = $entity_data_class::getList(array(
+                "select" => array("*"),
+                "order" => array("ID" => "ASC"),
+                "filter" => array(array(
+                    "LOGIC" => "OR",
+                    array("UF_USER_A" => $current_user),
+                    array("UF_USER_B" => $current_user)
+                ))
+            ));
+            while($arData = $rsData->Fetch()){
+                $result['UF_USER_B'][] = $arData["UF_USER_B"];
+                $result['UF_USER_A'][] = $arData["UF_USER_A"];
             }
         }
+        if(empty($result['UF_USER_B']))
+            $result['UF_USER_B'] = [];
+        if(empty($result['UF_USER_A']))
+            $result['UF_USER_A'] = [];
+        
+        $result['UF_USER_B'] = array_unique($result['UF_USER_B']);
+        if(isset($result['UF_USER_B'][array_search($current_user, $result['UF_USER_B'])]))
+            unset($result['UF_USER_B'][array_search($current_user, $result['UF_USER_B'])]);
 
-        if(empty($result)){
-            $result = [];
-            $this->arResult['BLACK_LIST_FULL'] = [];
-        }else{
-            foreach($result as $idUser){
-                if($obj = CUser::GetByID($idUser)->GetNext()){
-                    $this->arResult['BLACK_LIST_FULL'][] = [
-                        'ID'=>$obj['ID'],
-                        'NAME'=>$obj['NAME'].' '.$obj['LAST_NAME'],
-                        'LOGIN'=>$obj['LOGIN']
-                    ];
-                }
-            }
-        }
+        $result['UF_USER_A'] = array_unique($result['UF_USER_A']);
+        if(isset($result['UF_USER_A'][array_search($current_user, $result['UF_USER_A'])]))
+            unset($result['UF_USER_A'][array_search($current_user, $result['UF_USER_A'])]);
+        
 
         return $result;
     }
@@ -127,11 +191,14 @@ class CDemoSqr extends CBitrixComponent
         );
         $arNavigation = CDBResult::GetNavParams($arNavParams);
         //if($arNavigation["PAGEN"]==0)
+        if(empty($arParams["CACHE_TIME"]))
             $arParams["CACHE_TIME"] = 86400;
 
-        if($this->startResultCache(false, array($arrFilter, $arNavigation)))
+        $this->arResult["FRENDS"] = $this->getFrends();
+        $this->arResult["BLACKLIST"] = $this->getBlackList();
+
+        if($this->startResultCache(false, array($arrFilter, $arNavigation, $this->arResult["FRENDS"], $this->arResult["BLACKLIST"])))
         {
-            $this->arResult["BLACKLIST"] = $this->getBlackList();
             if($_REQUEST["ajax_result"] === "y"){
                 $APPLICATION->RestartBuffer();
                 $this->IncludeComponentTemplate('ajax_result');
@@ -139,7 +206,7 @@ class CDemoSqr extends CBitrixComponent
                 die();
             }
             else{
-                $this->arResult["FRENDS"] = $this->getFrends();
+               
                 $this->arResult["USER"] = $this->listAllUser($arNavParams);
                 $this->includeComponentTemplate();
             }

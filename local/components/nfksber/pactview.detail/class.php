@@ -190,6 +190,30 @@ class CDemoSqr extends CBitrixComponent
 
     }
 
+    public function getBlackList(){
+        global $USER;
+        $current_user = $USER->GetID();
+        if(CModule::IncludeModule("highloadblock"))
+        {
+            $hlblock = Bitrix\Highloadblock\HighloadBlockTable::getById(15)->fetch();
+            $entity = Bitrix\Highloadblock\HighloadBlockTable::compileEntity($hlblock);
+            $entity_data_class = $entity->getDataClass();
+            $rsData = $entity_data_class::getList(array(
+                "select" => array("*"),
+                "order" => array("ID" => "ASC"),
+                "filter" => array("UF_USER_A" => $this->arResult["PROPERTY"]["PACT_USER"]["VALUE"], "UF_USER_B" => $this->arResult["USER_ID"])
+            ));
+            while($arData = $rsData->Fetch()){
+                $result = true;
+            }
+        }
+        if(empty($result)){
+            $result = false;
+        }
+
+        return $result;
+    }
+
     #функция получения данных владельца договора (компании или физ лица)
     public function getContractHolder(){
         if(empty($this->arResult["PROPERTY"]["ID_COMPANY"]["VALUE"])){
@@ -302,6 +326,7 @@ class CDemoSqr extends CBitrixComponent
                 $this->arResult['DOGOVOR_KEY_CASHE'] = $cacheName;
             }
 
+            $this->arResult["BLACKLIST"] = $this->getBlackList();
 
             /*$GLOBALS['CACHE_MANAGER']->StartTagCache("/".SITE_ID.$this->GetRelativePath());
             $GLOBALS['CACHE_MANAGER']->RegisterTag('iblock_id_4');//Кеш будет зависить от изменений инфоблока 9

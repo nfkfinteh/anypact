@@ -68,6 +68,7 @@ $(document).ready(function(){
                         console.log($result['VALUE']);
                     }
                     if ($result['TYPE'] == 'SUCCESS') {
+                        $(this_btn).parent().find('.js-delete-frends').remove();
                         $(this_btn).addClass('js-delete-frends');
                         $(this_btn).removeClass('js-add-frends');
                         $(this_btn).children('img').attr({'src':'/local/templates/anypact/image/people-search-delete-people.png','title':'Удалить из друзей','alt':'Удалить из друзей'});
@@ -94,10 +95,14 @@ $(document).ready(function(){
                         console.log($result['VALUE']);
                     }
                     if ($result['TYPE'] == 'SUCCESS') {
-                        $(this_btn).removeClass('js-delete-frends');
-                        $(this_btn).addClass('js-add-frends');
-                        $(this_btn).children('img').attr({'src':'/local/templates/anypact/image/people-search-add-people.png','title':'Добавить в друзья','alt':'Добавить в друзья'});
-                        if(window.location.pathname == '/friends/') $(this_btn).parents('.view-item').remove();
+                        if($(this_btn).parent().find('.js-add-frends').length > 0){
+                            $(this_btn).remove();
+                        }else{
+                            $(this_btn).removeClass('js-delete-frends');
+                            $(this_btn).addClass('js-add-frends');
+                            $(this_btn).children('img').attr({'src':'/local/templates/anypact/image/people-search-add-people.png','title':'Добавить в друзья','alt':'Добавить в друзья'});
+                            if(window.location.pathname == '/friends/') $(this_btn).parents('.view-item').remove();
+                        }
                         preload('hide');
                     }
                 },
@@ -124,8 +129,24 @@ $(document).ready(function(){
                         $(this_btn).addClass('js-delete-blacklist');
                         $(this_btn).removeClass('js-add-blacklist');
                         $(this_btn).children('img').attr({'src':'/local/templates/anypact/image/black-list.png','title':'Удалить из черного списка','alt':'Удалить из черного списка'});
-
+                        $(this_btn).parent().find('');
                         updateBlackList();
+                        if($(this_btn).parent().find('.js-add-frends').length > 0){
+                            if($(this_btn).parent().find('.js-delete-frends').length > 0){
+                                $(this_btn).parent().find('.js-delete-frends').remove();
+                            }
+                            var add_btn = $(this_btn).parent().find('.js-add-frends');
+                        }
+                        if($(this_btn).parent().find('.js-delete-frends').length > 0){
+                            var add_btn = $(this_btn).parent().find('.js-delete-frends');
+                        }
+                        if(add_btn !== undefined){
+                            add_btn.removeClass('js-delete-frends');
+                            add_btn.addClass('js-add-frends');
+                            add_btn.children('img').attr({'src':'/local/templates/anypact/image/people-search-add-people.png','title':'Добавить в друзья','alt':'Добавить в друзья'});
+
+                            add_btn.hide();
+                        }
 
                         preload('hide');
                     }
@@ -164,6 +185,9 @@ $(document).ready(function(){
                             $(this_btn).addClass('js-add-blacklist');
                             $(this_btn).children('img').attr({'src':'/local/templates/anypact/image/black-list-add.png','title':'Добавить в черный список','alt':'Добавить в черный список'});
                             updateBlackList();
+                        }
+                        if($(this_btn).parent().find('.js-add-frends').length > 0){
+                            $(this_btn).parent().find('.js-add-frends').show();
                         }
                         preload('hide');
                     }

@@ -75,33 +75,34 @@ $APPLICATION->IncludeComponent(
                 <?=$arResult["PROPERTY"]["SUMM_PACT"]["VALUE"]?> руб.
             <?}?>
         </span>
-
-        <?if($arResult["PROPERTY"]["SHOW_PHONE"]["VALUE_ENUM"] == "Y"){?>
-            <div class="position-relative not_auth-error-block">
-                <a href="#" class="btn btn-nfk cardPact-bBtn <?if(!$is_aut){?>disabled<?}?>" id="show_phone" data-user-id="<?=$arResult["CONTRACT_HOLDER"]["ID"]?>">Показать телефон<br>8(XXX) XXX-XX-XX</a>
-                <? if(!$is_aut):?>
-                    <div class="not_auth-error not_auth-error-phone">
-                        <span class="triangle" style="display: block; z-index: 1;">▲</span>
-                        <div>Для просмотра телефона необходимо <a id="open_reg_form" href="#">зарегистрироваться</a></div>
-                    </div>
-                <?endif;?>
-            </div>
-        <?}?>
-
-        <?//скрытие кнопки при окончане активности?>
-        <? if($is_aut):?>
-            <?if($arResult['ELEMENT']['ACTIVE']=='Y' && $DATE_ACTIVE_TO>=time()):?>
+        <?if(!$arResult['BLACKLIST']):?>
+            <?if($arResult["PROPERTY"]["SHOW_PHONE"]["VALUE_ENUM"] == "Y"){?>
                 <div class="position-relative not_auth-error-block">
-                    <a href="/pacts/view_pact/view_dogovor/?ELEMENT_ID=<?=$arResult["ELEMENT"]["ID"]?>" class="btn btn-nfk cardPact-bBtn <?=$disable_a?>" onclick="ym(64629523,'reachGoal','docs_link');">Посмотреть или подписать договор</a>
-                    <?if($arResult['USER']['UF_ESIA_AUT'] != 1):?>
-                        <div class="not_auth-error">
+                    <a href="#" class="btn btn-nfk cardPact-bBtn <?if(!$is_aut){?>disabled<?}?>" id="show_phone" data-user-id="<?=$arResult["CONTRACT_HOLDER"]["ID"]?>">Показать телефон<br>8(XXX) XXX-XX-XX</a>
+                    <? if(!$is_aut):?>
+                        <div class="not_auth-error not_auth-error-phone">
                             <span class="triangle" style="display: block; z-index: 1;">▲</span>
-                            <div>Для подписания предложения необходимо <a target="__blank" href="/profile/#aut_esia">подтвердить свой аккаунт с помощью учетной записи портала Госуслуг</a></div>
+                            <div>Для просмотра телефона необходимо <a id="open_reg_form" href="#">зарегистрироваться</a></div>
                         </div>
                     <?endif;?>
                 </div>
+            <?}?>
+
+            <?//скрытие кнопки при окончане активности?>
+            <? if($is_aut):?>
+                <?if($arResult['ELEMENT']['ACTIVE']=='Y' && $DATE_ACTIVE_TO>=time()):?>
+                    <div class="position-relative not_auth-error-block">
+                        <a href="/pacts/view_pact/view_dogovor/?ELEMENT_ID=<?=$arResult["ELEMENT"]["ID"]?>" class="btn btn-nfk cardPact-bBtn <?=$disable_a?>" onclick="ym(64629523,'reachGoal','docs_link');">Посмотреть или подписать договор</a>
+                        <?if($arResult['USER']['UF_ESIA_AUT'] != 1):?>
+                            <div class="not_auth-error">
+                                <span class="triangle" style="display: block; z-index: 1;">▲</span>
+                                <div>Для подписания предложения необходимо <a target="__blank" href="/profile/#aut_esia">подтвердить свой аккаунт с помощью учетной записи портала Госуслуг</a></div>
+                            </div>
+                        <?endif;?>
+                    </div>
+                <?endif?>
             <?endif?>
-        <?endif?>
+        <?endif;?>
 
         <!-- <a href="#" class="btn btn-nfk cardPact-bBtn">Посмотреть спецификацию</a> -->
         <div class="cardPact-person">
@@ -132,8 +133,8 @@ $APPLICATION->IncludeComponent(
             <?/*<span>9 оценок</span>*/?>
         </div>
         <?//скрытие кнопки при окончане активности?>
-        <? if($is_aut):?>
-            <? if($arResult['ELEMENT']['ACTIVE']=='Y' && $DATE_ACTIVE_TO>=time() && !in_array($arResult['USER']['ID'], $arBlackList)): ?>
+        <? if($is_aut && !$arResult['BLACKLIST']):?>
+            <? if($arResult['ELEMENT']['ACTIVE']=='Y' && $DATE_ACTIVE_TO>=time()): ?>
                 <button type="button" class="btn btn-nfk d-block cardPact-bBtn" data-toggle="modal" data-target=".bd-message-modal-sm" onclick="ym(64629523,'reachGoal','message_post');">
                     Написать сообщение
                 </button>

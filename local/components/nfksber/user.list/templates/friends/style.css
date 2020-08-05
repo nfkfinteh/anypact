@@ -16,7 +16,6 @@
 .people-s-photo{
     position: relative;
     border-radius: 50%;
-    overflow: hidden;
 }
 .people-s-photo img{
     width: 100%;
@@ -131,6 +130,9 @@ textarea.message-textarea{
 .blacklist .btn{
     background: none;
 }
+.tender .text-right.btn-view.mt-3{
+    justify-content: flex-end;
+}
 @media screen and (max-width: 520px){
     .list-view .view-item .people-s-photo {
         width: 100px;
@@ -151,15 +153,7 @@ textarea.message-textarea{
         right: 15px;
     }
 }
-@media screen and (max-width: 767px) {
-    .tender .text-right.btn-view.mt-3{
-        justify-content: space-between;
-    }
-}
 @media screen and (max-width: 370px) {
-    .tender .text-right.btn-view.mt-3{
-        justify-content: space-between;
-    }
     .tender .text-right.btn-view.mt-3 .btn-view__wrap span{
         display: none;
     }
@@ -170,4 +164,8 @@ textarea.message-textarea{
 
 .btn-list {
     background-image: url(/local/templates/anypact/image/sprite.png) !important;
+}
+.people-s-photo-btn-block .btn img {
+    max-width: 24px;
+    max-height: 24px;
 }

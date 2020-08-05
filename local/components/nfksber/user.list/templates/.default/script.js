@@ -101,6 +101,21 @@ $(document).ready(function(){
                         console.log($result['VALUE']);
                     }
                     if ($result['TYPE'] == 'SUCCESS') {
+                        if($(this_btn).parent().find('.js-add-frends').length > 0){
+                            var add_btn = $(this_btn).parent().find('.js-add-frends');
+                        }
+                        if($(this_btn).parent().find('.js-delete-frends').length > 0){
+                            var add_btn = $(this_btn).parent().find('.js-delete-frends');
+                        }
+
+                        if(add_btn !== undefined){
+                            add_btn.removeClass('js-delete-frends');
+                            add_btn.addClass('js-add-frends');
+                            add_btn.children('img').attr({'src':'/local/templates/anypact/image/people-search-add-people.png','title':'Добавить в друзья','alt':'Добавить в друзья'});
+
+                            add_btn.hide();
+                        }
+
                         $(this_btn).addClass('js-delete-blacklist');
                         $(this_btn).removeClass('js-add-blacklist');
                         $(this_btn).children('img').attr({'src':'/local/templates/anypact/image/black-list.png','title':'Удалить из черного списка','alt':'Удалить из черного списка'});
@@ -130,6 +145,11 @@ $(document).ready(function(){
                         $(this_btn).removeClass('js-delete-blacklist');
                         $(this_btn).addClass('js-add-blacklist');
                         $(this_btn).children('img').attr({'src':'/local/templates/anypact/image/black-list-add.png','title':'Добавить в черный список','alt':'Добавить в черный список'});
+                        
+                        if($(this_btn).parent().find('.js-add-frends').length > 0){
+                            $(this_btn).parent().find('.js-add-frends').show();
+                        }
+
                         preload('hide');
                     }
                 },

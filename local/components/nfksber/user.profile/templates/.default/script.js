@@ -312,6 +312,7 @@ $(document).ready(function(){
                         $(this_btn).addClass('js-delete-blacklist');
                         $(this_btn).removeClass('js-add-blacklist');
                         $(this_btn).text('Удалить из ЧС');
+                        $('.black-list-show_hide').hide();
                         showResult('#popup-success','Пользователь добавлен в ЧС');
                         preload('hide');
                     }
@@ -339,6 +340,7 @@ $(document).ready(function(){
                         $(this_btn).removeClass('js-delete-blacklist');
                         $(this_btn).addClass('js-add-blacklist');
                         $(this_btn).text('Добавить в ЧС');
+                        $('.black-list-show_hide').show();
                         showResult('#popup-success','Пользователь удален из ЧС');
                         preload('hide');
                     }

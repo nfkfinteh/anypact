@@ -205,19 +205,33 @@ class CDemoSqr extends CBitrixComponent
     public function getFrends(){
         global $USER;
         $current_user = $USER->GetID();
-        $arFilter = array("ID" => $current_user);
-        $arParams["SELECT"] = array("ID", "UF_FRENDS");
-        $res = CUser::GetList($by ="timestamp_x", $order = "desc", $arFilter, $arParams);
-        $result = [];
-        if($obj=$res->GetNext()){
-            if(!empty($obj['UF_FRENDS'])){
-                $result = json_decode($obj['~UF_FRENDS']);
+        if(CModule::IncludeModule("highloadblock"))
+        {
+            $hlblock = Bitrix\Highloadblock\HighloadBlockTable::getById(14)->fetch();
+            $entity = Bitrix\Highloadblock\HighloadBlockTable::compileEntity($hlblock);
+            $entity_data_class = $entity->getDataClass();
+            $rsData = $entity_data_class::getList(array(
+                "select" => array("UF_USER_A", "UF_USER_B"),
+                "order" => array("ID" => "ASC"),
+                "filter" => array(array(
+                    "LOGIC" => "OR",
+                    array("UF_USER_A" => $current_user),
+                    array("UF_USER_B" => $current_user, "UF_ACCEPT" => HLB_USER_FRIENDS_ACCEPT_Y),
+                ))
+            ));
+            while($arData = $rsData->Fetch()){
+                $result[] = $arData["UF_USER_A"];
+                $result[] = $arData["UF_USER_B"];
             }
         }
-
         if(empty($result)){
             $result = [];
         }
+
+        $result = array_unique($result);
+
+        if(isset($result[array_search($current_user, $result)]))
+            unset($result[array_search($current_user, $result)]);
 
         return $result;
     }
@@ -225,13 +239,23 @@ class CDemoSqr extends CBitrixComponent
     public function getBlackList(){
         global $USER;
         $current_user = $USER->GetID();
-        $arFilter = array("ID" => $current_user);
-        $arParams["SELECT"] = array("ID", "UF_BLACKLIST");
-        $res = CUser::GetList($by ="timestamp_x", $order = "desc", $arFilter, $arParams);
-        $result = [];
-        if($obj=$res->GetNext()){
-            if(!empty($obj['UF_BLACKLIST'])){
-                $result = json_decode($obj['~UF_BLACKLIST']);
+        $hlblock = HL\HighloadBlockTable::getById(15)->fetch();
+        $entity = HL\HighloadBlockTable::compileEntity($hlblock);
+        $entity_data_class = $entity->getDataClass();
+        $rsData = $entity_data_class::getList(array(
+            "select" => array("*"),
+            "order" => array("ID" => "ASC"),
+            "filter" => array(array(
+                "LOGIC" => "OR",
+                array("UF_USER_A" => $current_user, "UF_USER_B" => $this->arParams['USER_ID']),
+                array("UF_USER_A" => $this->arParams['USER_ID'], "UF_USER_B" => $current_user),
+            ))
+        ));
+        while($arData = $rsData->Fetch()){
+            if($arData['UF_USER_A'] == $current_user){
+                $result['CLOSE'] = true;
+            }elseif($arData['UF_USER_B'] == $current_user){
+                $result['CLOSED'] = true;
             }
         }
 

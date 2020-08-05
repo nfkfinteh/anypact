@@ -21,12 +21,6 @@
     }
     $arImgFormat = ['jpg', 'png', 'svg', 'jpeg'];
 ?>
-<?if(in_array($UserID, $arResult['FastUserParams'][$UserID_B]['BLACKLIST'])):?>
-    <?
-    $APPLICATION->IncludeFile(SITE_TEMPLATE_PATH."/include/dont_chat_balcklist.php", Array());
-    return;
-    ?>
-<?endif?>
 
 <? // если пользователь входит в масив то открываем ему сообщения?>
 <?if(in_array($UserID, $arrIDUserChat)){?>
@@ -151,6 +145,7 @@
                         <?if ($_REQUEST["ACTION"] == 'up_message') die();?>
                         <!------>
                     </div>
+                    <?if(!$arResult['BLACKLIST']):?>
                     <div class="message-chat-input">
                         <textarea id="textMessage" placeholder="Введите сообщение"></textarea>
                         <input type="file" id="uploadFile" name="uploadFile[]" multiple="multiple" style="display: none">
@@ -159,6 +154,7 @@
                             <button class="ml-1 mr-0 mx-sm-4 message-chat-input__buttons_clip" id="sendFile"><img src="<?=SITE_TEMPLATE_PATH?>/image/icon-image-file.png"></button>
                         </div>
                     </div>
+                    <?endif;?>
                 </div>
             </div>
         </div>

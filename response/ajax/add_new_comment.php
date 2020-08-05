@@ -37,6 +37,19 @@ if (!\Bitrix\Main\Loader::includeModule('highloadblock')) {
     die();
 }
 
+$hlblock = Bitrix\Highloadblock\HighloadBlockTable::getById(15)->fetch();
+$entity = Bitrix\Highloadblock\HighloadBlockTable::compileEntity($hlblock);
+$entity_data_class = $entity->getDataClass();
+$rsData = $entity_data_class::getList(array(
+    "select" => array("*"),
+    "order" => array("ID" => "ASC"),
+    "filter" => array("UF_USER_A" => $idUser, "UF_USER_B" => $curentUser['ID'])
+));
+if($arData = $rsData->Fetch()){
+    echo json_encode([ 'VALUE'=>'Вы не можете оставить комментарий, т.к. вы находитесь в черном списке', 'TYPE'=> 'ERROR']);
+    die;
+}
+
 $res = CUser::GetByID($curentUser['ID']);
 $curentUser['DATA'] = $res->GetNext(true, false);
 

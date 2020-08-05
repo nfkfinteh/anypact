@@ -64,6 +64,36 @@ class CDemoSqr extends CBitrixComponent
         return $arParams;
     }
 
+    private function getBlackList(){
+        global $USER;
+        $current_user = $USER->GetID();
+        
+        if(CModule::IncludeModule("highloadblock"))
+        {
+            foreach($this->arResult['UsersChart'] as $user){
+                if($user['ID'] != $current_user){
+                    $hlblock = Bitrix\Highloadblock\HighloadBlockTable::getById(15)->fetch();
+                    $entity = Bitrix\Highloadblock\HighloadBlockTable::compileEntity($hlblock);
+                    $entity_data_class = $entity->getDataClass();
+                    $rsData = $entity_data_class::getList(array(
+                        "select" => array("*"),
+                        "order" => array("ID" => "ASC"),
+                        "filter" => array("UF_USER_B" => $current_user, "UF_USER_A" => $user['ID'])
+                    ));
+                    while($arData = $rsData->Fetch()){
+                        $result = true;
+                    }
+                }
+            }
+        }
+
+        if(empty($result)){
+            $result = [];
+        }
+
+        return $result;
+    }
+
     public function executeComponent()
     {
         /*if($this->startResultCache())
@@ -102,14 +132,8 @@ class CDemoSqr extends CBitrixComponent
         foreach($this->arResult['UsersChart'] as $user){
             $this->arResult['FastUserParams'][$user['ID']]['FIO'] = $user['LAST_NAME'] .' '.$user['NAME'] ;
             $this->arResult['FastUserParams'][$user['ID']]['InitialName'] = substr($user['NAME'], 0, 1);
-            if(!empty($user['UF_BLACKLIST'])){
-                $this->arResult['FastUserParams'][$user['ID']]['BLACKLIST'] = json_decode($user['UF_BLACKLIST']);
-            }
-            else{
-                $this->arResult['FastUserParams'][$user['ID']]['BLACKLIST'] = [];
-            }
-
         }
+        $this->arResult['BLACKLIST'] = $this->getBlackList();
         $this->includeComponentTemplate();
         
         return $this->arResult;

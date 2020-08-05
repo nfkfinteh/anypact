@@ -45,4 +45,26 @@ class AllOkCommentList extends CBitrixComponent
         }
         return $result;
     }
+
+    public function getBlackList($user_a, $user_b){
+        if(CModule::IncludeModule("highloadblock"))
+        {
+            $hlblock = Bitrix\Highloadblock\HighloadBlockTable::getById(15)->fetch();
+            $entity = Bitrix\Highloadblock\HighloadBlockTable::compileEntity($hlblock);
+            $entity_data_class = $entity->getDataClass();
+            $rsData = $entity_data_class::getList(array(
+                "select" => array("*"),
+                "order" => array("ID" => "ASC"),
+                "filter" => array("UF_USER_A" => $user_a, "UF_USER_B" => $user_b)
+            ));
+            while($arData = $rsData->Fetch()){
+                $result = true;
+            }
+        }
+        if(empty($result)){
+            $result = false;
+        }
+
+        return $result;
+    }
 }

@@ -16,10 +16,10 @@ $APPLICATION->IncludeComponent("nfksber:message.list",
     )
 );
 ?>
-</div>
 <?
 } else {
     // заглушка на авторизацию доступа
     $APPLICATION->IncludeFile(SITE_TEMPLATE_PATH."/not_access.php", Array());
 }?>
+</div>
 <? require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php");?>

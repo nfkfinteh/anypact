@@ -4355,7 +4355,7 @@ footer p {
 }
 
 @media screen and (min-width: 1200px){
-    .people-s-photo {
+    .grid-view .people-s-photo {
         margin: 0 10%;
     }
 }
@@ -4563,7 +4563,7 @@ footer p {
 }
 
 @media (min-width: 424px) and (max-width: 767px) {
-    .people-s-photo {
+    .grid-view .people-s-photo {
         margin: 0 10%;
     }
 }
