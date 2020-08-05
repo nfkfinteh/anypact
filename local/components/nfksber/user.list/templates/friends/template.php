@@ -174,7 +174,7 @@
                 break;
         }
     ?>
-    <p>Список <?=$text?> пуст.</p><?if($arParams['FRIENDS_STATUS'] != "B" && $arParams['FRIENDS_STATUS'] != "S"){?><p>Воспользуйтейтесь <a href="/search_people/">поиском</a>.</p><?}?>
+    <p>Список <?=$text?> пуст.</p><?if($arParams['FRIENDS_STATUS'] == "Y" && $arParams['FRIENDS_STATUS'] == "O"){?><p>Воспользуйтейтесь <a href="/search_people/">поиском</a>.</p><?}?>
 <?}?>
 </div>
 
