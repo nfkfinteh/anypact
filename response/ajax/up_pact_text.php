@@ -131,6 +131,16 @@ switch ($_POST['atrr_text']) {
     
         $checkUpdate = CIBlockElement::SetPropertyValuesEx($PRODUCT_ID, false, $arProperty);
         break;
+    case 'deal_phone':
+        $arProperty = [
+            'DEAL_PHONE'=>$_POST['DEAL_PHONE']
+        ];
+        $arLoadProductArray = Array(
+                "MODIFIED_BY"    => $USER->GetID(),
+        );
+    
+        $checkUpdate = CIBlockElement::SetPropertyValuesEx($PRODUCT_ID, false, $arProperty);
+        break;
 }
 
 // код свойства

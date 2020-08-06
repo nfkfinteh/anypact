@@ -172,6 +172,7 @@ $(document).ready(function() {
             PRIVATE : $('#PRIVATE').val(),
             PRICE_ON_REQUEST : $('#PRICE_ON_REQUEST').val(),
             SHOW_PHONE : $('#SHOW_PHONE').val(),
+            DEAL_PHONE : $('#DEAL_PHONE').val(),
             ACCESS_USER : arID,
         };
         return arResult;
@@ -211,6 +212,7 @@ $(document).ready(function() {
             prop['PRIVATE'] = arFormData.PRIVATE;
             prop['PRICE_ON_REQUEST'] = arFormData.PRICE_ON_REQUEST;
             prop['SHOW_PHONE'] = arFormData.SHOW_PHONE;
+            prop['DEAL_PHONE'] = arFormData.DEAL_PHONE;
             prop['ACCESS_USER'] = arFormData.ACCESS_USER;
 
             if(prop['COORDINATES_AD'].length>0){

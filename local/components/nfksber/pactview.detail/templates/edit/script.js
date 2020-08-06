@@ -82,6 +82,40 @@ $(document).ready(function() {
         return false;
     });
 
+    //Сохранение номера телефона
+    $(document).on('click', '#save_deal_phone', function(e){        
+        e.preventDefault();
+
+        var ID_Object = $("#params_object").attr("data");
+
+        var deal_phone = $("#DEAL_PHONE").val();
+        
+        if($('#SHOW_PHONE').val() == 17) {
+            $.post(
+                "/response/ajax/up_pact_text.php", {                    
+                    id_element: ID_Object,
+                    atrr_text: 'deal_phone',
+                    DEAL_PHONE: deal_phone
+                },
+                onAjaxSuccess
+            );
+        }
+
+        function onAjaxSuccess(data) {
+            $result = JSON.parse(data);
+            if($result['TYPE']=='ERROR'){
+                preload('hide');
+                showResult('#popup-error','Ошибка сохранения', $result['VALUE']);
+            }
+            if($result['TYPE']=='SUCCESS'){
+                preload('hide');
+                showResult('#popup-success', 'Изменения сохранены');
+            }
+        }
+
+        return false;
+    });    
+
     //Сохранение пользователей которм будет отображаться сделка
     $(document).on('click', '#save_user_select', function(e){        
         e.preventDefault();

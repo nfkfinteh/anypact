@@ -128,17 +128,27 @@
                 <div class="cardPact__title">
                     <h3>Показать телефон</h3> 
                     <?if($arResult['PROPERTY']['SHOW_PHONE']['VALUE'] == 17):?>
-                        <button class="onActive" active="Y" data-block-id="" data-value-id="17">
+                        <button class="onActive" active="Y" data-block-id="phone_block" data-value-id="17">
                             <img src="<?=SITE_TEMPLATE_PATH?>/image/Active.png" />
                             <input name="SHOW_PHONE" id="SHOW_PHONE" type="hidden" value="17"/>
                         </button>
                     <?else:?>
-                        <button class="onActive" active="" data-block-id="" data-value-id="17">
+                        <button class="onActive" active="" data-block-id="phone_block" data-value-id="17">
                             <img src="<?=SITE_TEMPLATE_PATH?>/image/DontActive.png" />
                             <input name="SHOW_PHONE" id="SHOW_PHONE" type="hidden" value=""/>
                         </button>
                     <?endif;?>
                 </div>
+            </div>
+            <div class="cardPact__item" id="phone_block"<?if($arResult['PROPERTY']['SHOW_PHONE']['VALUE'] != 17):?> style="display: none;"<?endif;?>>
+                <div>
+                    <input type="text" class="editbox js-mask__phone" id="DEAL_PHONE" name="DEAL_PHONE" value="<?=$arResult['PROPERTY']['DEAL_PHONE']['VALUE']?>">
+                </div>
+                <div class="cardPact__title">
+                    <h3>Номер телефона</h3>
+                </div>
+                <button class="btn btn-nfk save" id="save_deal_phone">Сохранить</button>
+                <div style="clear: both;"></div>
             </div>
             <!--Срок объявления -->
             <h4>Объявление активно до: <span class="date-active"><?=$arResult["ELEMENT"]["DATE_ACTIVE_TO"]?></span></h4>

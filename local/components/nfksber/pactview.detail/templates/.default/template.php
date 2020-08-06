@@ -76,9 +76,9 @@ $APPLICATION->IncludeComponent(
             <?}?>
         </span>
         <?if(!$arResult['BLACKLIST']):?>
-            <?if($arResult["PROPERTY"]["SHOW_PHONE"]["VALUE_ENUM"] == "Y"){?>
+            <?if($arResult["PROPERTY"]["SHOW_PHONE"]["VALUE_ENUM"] == "Y" && !empty(str_replace(array("+", "-", "(", ")", " ", 8), '', $arResult["PROPERTY"]["DEAL_PHONE"]["VALUE"]))){?>
                 <div class="position-relative not_auth-error-block">
-                    <a href="#" class="btn btn-nfk cardPact-bBtn <?if(!$is_aut){?>disabled<?}?>" id="show_phone" data-user-id="<?=$arResult["CONTRACT_HOLDER"]["ID"]?>">Показать телефон<br>8(XXX) XXX-XX-XX</a>
+                    <a href="#" class="btn btn-nfk cardPact-bBtn <?if(!$is_aut){?>disabled<?}?>" id="show_phone" data-pact-id="<?=$arResult["ELEMENT"]["ID"]?>">Показать телефон<br>8(XXX) XXX-XX-XX</a>
                     <? if(!$is_aut):?>
                         <div class="not_auth-error not_auth-error-phone">
                             <span class="triangle" style="display: block; z-index: 1;">▲</span>

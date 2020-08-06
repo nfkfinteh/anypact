@@ -145,10 +145,19 @@ if(!empty($arResult['FORM_SDELKA']['adCity'])){
                 <div class="cardPact__item">
                     <div class="cardPact__title">
                         <h3>Показать телефон</h3> 
-                        <button class="onActive" active="" data-block-id="" data-value-id="17">
+                        <button class="onActive" active="" data-block-id="phone_block" data-value-id="17">
                             <img src="<?=SITE_TEMPLATE_PATH?>/image/DontActive.png" />
                             <input name="SHOW_PHONE" id="SHOW_PHONE" type="hidden" value=""/>
                         </button>
+                    </div>
+                </div>
+
+                <div class="cardPact__item" id="phone_block" style="display: none;">
+                    <div>
+                        <input type="text" class="editbox js-mask__phone" id="DEAL_PHONE" name="DEAL_PHONE" value="<?=$arResult['PROPERTY']['DEAL_PHONE']['VALUE']?>">
+                    </div>
+                    <div class="cardPact__title">
+                        <h3>Номер телефона</h3>
                     </div>
                 </div>
                 

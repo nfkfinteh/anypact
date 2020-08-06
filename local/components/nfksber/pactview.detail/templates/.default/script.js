@@ -28,13 +28,13 @@ $(document).ready(function(){
 
     $('#show_phone').on('click', function(el){
         el.preventDefault;
-        var user_id = $(this).attr('data-user-id');
+        var el_id = $(this).attr('data-pact-id');
         var elNode = $(this);
         $.ajax({
             type: 'POST',
             url: '/response/ajax/get_user_phone.php',
             data:{
-                USER_ID: user_id,
+                EL_ID: el_id,
                 sessid: BX.bitrix_sessid()
             },
             success: function(result){
