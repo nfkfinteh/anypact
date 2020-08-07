@@ -13,7 +13,6 @@ IncludeTemplateLangFile(__FILE__);
                 <div class="col-9 col-sm-10 col-lg-7">
                     <div class="cardPact-comment-header">
                         <div style="float:left">
-                            <span><?=$item['USER']['LOGIN']?></span><br>
                             <span><a href="/profile_user/?ID=<?=$item['USER']['ID']?>"><?=$item['USER']['FULL_NAME']?></a></span>
                         </div>
                         <div style="float:right">
