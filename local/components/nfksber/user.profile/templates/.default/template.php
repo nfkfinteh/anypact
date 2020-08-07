@@ -26,16 +26,18 @@ if($arResult["BLACK_LIST"]['CLOSE']){
                                 <?endif?>
                             </div>
                         <?}?>
-
-                        <?if(!$arResult["BLACK_LIST"]['CLOSE'] && $arParams['CURRENT_USER'] != $arResult['USER']['ID']):?>
-                            <button class="btn btn-nfk btn-uprofile js-add-blacklist" data-login="<?=$arResult['USER']['LOGIN']?>">
-                                Добавить в ЧС
-                            </button>
-                        <?else:?>
-                            <button class="btn btn-nfk btn-uprofile js-delete-blacklist" data-login="<?=$arResult['USER']['LOGIN']?>">
-                                Удалить из ЧС
-                            </button>
-                        <?endif?>
+                        
+                        <?if($arParams['CURRENT_USER'] != $arResult['USER']['ID']){?>
+                            <?if(!$arResult["BLACK_LIST"]['CLOSE']):?>
+                                <button class="btn btn-nfk btn-uprofile js-add-blacklist" data-login="<?=$arResult['USER']['LOGIN']?>">
+                                    Добавить в ЧС
+                                </button>
+                            <?else:?>
+                                <button class="btn btn-nfk btn-uprofile js-delete-blacklist" data-login="<?=$arResult['USER']['LOGIN']?>">
+                                    Удалить из ЧС
+                                </button>
+                            <?endif?>
+                        <?}?>
                         <?if(!$arResult["BLACK_LIST"]['CLOSED']){?>
                             <?if(!empty($arParams['CURRENT_USER']) && $arResult['USER']['ID'] !=$arParams['CURRENT_USER']):?>
                                 <?if(!in_array($arParams['CURRENT_USER'], $arBlackList)):?>
