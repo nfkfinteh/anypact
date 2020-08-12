@@ -16,6 +16,7 @@ use Bitrix\Main\Entity;
 
 $arParams["IBLOCK_ID"] = intval($arParams["IBLOCK_ID"]);
 $arParams["ELEMENT_ID"] = htmlspecialcharsEx($arParams["ELEMENT_ID"]);
+$arParams["ELEMENT_CODE"] = htmlspecialcharsEx($arParams["ELEMENT_CODE"]);
 $arParams["COUNT"] = intval($arParams["COUNT"]);
 if ($arParams["COUNT"] <= 0)
 	$arParams["COUNT"] = 5;
@@ -57,6 +58,15 @@ else
 
 $arResult['CURENT_USER'] = $this::GetAuthor($GLOBALS["USER"]->GetID());
 $arResult['IBLOCK_ID'] = $arParams['IBLOCK_ID'];
+$arFilter = array();
+if($arParams["ELEMENT_ID"] <= 0)
+    $arParams["ELEMENT_ID"] = CIBlockFindTools::GetElementID(
+    $arParams["ELEMENT_ID"],
+    $arParams["ELEMENT_CODE"],
+    $arParams["STRICT_SECTION_CHECK"]? $arParams["SECTION_ID"]: false,
+    $arParams["STRICT_SECTION_CHECK"]? $arParams["~SECTION_CODE"]: false,
+    $arFilter
+);
 $arResult['ID_SDELKA'] = $arParams['ELEMENT_ID'];
 $arResult['USER_CREATE_SDELKA'] = $this::getAuthorSdelka($arResult['ID_SDELKA']);
 

@@ -51,7 +51,8 @@ $this->setFrameMode(true);
 			array(
 				"COMPONENT_TEMPLATE" => ".default",
 				"IBLOCK_ID" => "9",
-				"ELEMENT_ID" => $_GET['ELEMENT_ID'],
+				"ELEMENT_ID" => $arResult["VARIABLES"]["ELEMENT_ID"],
+				"ELEMENT_CODE" => $arResult["VARIABLES"]["ELEMENT_CODE"],
 				"LOAD_MARK" => "N",
 				"COUNT" => "5",
 				"ACTIVE_DATE_FORMAT" => "d.m.Y/ H:i",
