@@ -273,7 +273,7 @@ function onEpilog() {
     //301 редирект со старых новостей
     $curPage = $GLOBALS['APPLICATION']->GetCurPage();
     $curDir = $APPLICATION->GetCurDir();
-    if (stripos($curPage, '/pacts/') !== false || stripos($curPage, '/pacts/view_pact/') !== false) {
+    if (stripos($curPage, '/pacts/') !== false || $curPage == '/pacts/view_pact/') {
         CModule::IncludeModule("iblock");
         if (!empty($_GET["SECTION_ID"]) && stripos($curPage, '/pacts/') !== false) {
             $arFilter = Array("IBLOCK_ID"=>3, "ID" => $_GET["SECTION_ID"]);
@@ -281,15 +281,12 @@ function onEpilog() {
             $arNavParams = Array("nPageSize" => 1);
             $rsSections = CIBlockSection::GetList(Array(), $arFilter, false, $arSelect, $arNavParams);
             if ($arSect = $rsSections->GetNext())  {
-                echo "<pre>";
-                var_dump($arSect);
-                echo "</pre>";
                 if ($curDir != $arSect["~SECTION_PAGE_URL"]) {
                     localredirect($arSect["~SECTION_PAGE_URL"], false, '301 Moved permanently');
                 }
             }
             
-        } elseif (!empty($_GET["ELEMENT_ID"]) && stripos($curPage, '/pacts/view_pact/') !== false) {
+        } elseif (!empty($_GET["ELEMENT_ID"]) && $curPage == '/pacts/view_pact/') {
             $arFilter = Array("IBLOCK_ID"=>3, "ID" => $_GET["ELEMENT_ID"]);
             $rsEl = CIBlockElement::GetList(
                 array(),
