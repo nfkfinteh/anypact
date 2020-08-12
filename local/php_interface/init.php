@@ -266,3 +266,44 @@ function OnBeforeUserRegisterHandler(&$arFields)
     }
 
 }
+
+AddEventHandler('main', 'OnEpilog', 'onEpilog');
+function onEpilog() {
+    global $APPLICATION;
+    //301 редирект со старых новостей
+    $curPage = $GLOBALS['APPLICATION']->GetCurPage();
+    $curDir = $APPLICATION->GetCurDir();
+    if (stripos($curPage, '/pacts/') !== false || stripos($curPage, '/pacts/view_pact/') !== false) {
+        CModule::IncludeModule("iblock");
+        if (!empty($_GET["SECTION_ID"]) && stripos($curPage, '/pacts/') !== false) {
+            $arFilter = Array("IBLOCK_ID"=>3, "ID" => $_GET["SECTION_ID"]);
+            $arSelect = Array("ID", "SECTION_PAGE_URL");
+            $arNavParams = Array("nPageSize" => 1);
+            $rsSections = CIBlockSection::GetList(Array(), $arFilter, false, $arSelect, $arNavParams);
+            if ($arSect = $rsSections->GetNext())  {
+                echo "<pre>";
+                var_dump($arSect);
+                echo "</pre>";
+                if ($curDir != $arSect["~SECTION_PAGE_URL"]) {
+                    localredirect($arSect["~SECTION_PAGE_URL"], false, '301 Moved permanently');
+                }
+            }
+            
+        } elseif (!empty($_GET["ELEMENT_ID"]) && stripos($curPage, '/pacts/view_pact/') !== false) {
+            $arFilter = Array("IBLOCK_ID"=>3, "ID" => $_GET["ELEMENT_ID"]);
+            $rsEl = CIBlockElement::GetList(
+                array(),
+                $arFilter,
+                false,
+                false,
+                Array("ID", "DETAIL_PAGE_URL")
+            );
+            if ($obEl = $rsEl->GetNextElement()) {
+                $arEl = $obEl->GetFields();
+                if ($curDir != $arEl["~DETAIL_PAGE_URL"]) {
+                    localredirect($arEl["~DETAIL_PAGE_URL"], false, '301 Moved permanently');
+                }
+            }
+        }
+    }
+}

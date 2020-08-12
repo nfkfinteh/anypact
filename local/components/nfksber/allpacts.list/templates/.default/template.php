@@ -4,7 +4,7 @@
         ?>
         <div class="col-lg-4 col-md-6 col-sm-12 tender-block">
             <div class="tender-post">
-                <a href="/pacts/view_pact/?ELEMENT_ID=<?=$pact['ID']?>">
+                <a href="<?=$pact['DETAIL_PAGE_URL']?>">
                     <div class="tender-img">
                         <?if (!isset($pact['URL_IMG_PREVIEW'])){ ?>
                             <img src="<?=SITE_TEMPLATE_PATH?>/img/no_img_pacts.jpg" alt="">
@@ -14,7 +14,7 @@
                     </div>
                 </a>
                 <div class="tender-text">
-                    <a href="/pacts/view_pact/?ELEMENT_ID=<?=$pact['ID']?>">
+                    <a href="<?=$pact['DETAIL_PAGE_URL']?>">
                         <h3 title="<?=$pact["NAME"]?>"><?=TruncateText($pact["NAME"], 30)?></h3>
                         <p><?=$pact["CREATED_DATE"]?></p>
                         <span class="tender-price">

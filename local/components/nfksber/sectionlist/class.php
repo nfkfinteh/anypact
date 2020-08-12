@@ -13,6 +13,9 @@ class sectionPacts extends CBitrixComponent
             "X" => intval($arParams["X"]),
             "IBLOCK_ID" => intval($arParams["IBLOCK_ID"]),
             "SECTION_ID" => intval($arParams["SECTION_ID"]),
+            "SECTION_CODE" => $arParams["SECTION_CODE"],
+            "SECTION_URL" => $arParams["SECTION_URL"],
+            "FILTER_NAME" => $arParams["FILTER_NAME"],
         );
         return $result;
     }
@@ -30,14 +33,28 @@ class sectionPacts extends CBitrixComponent
                 $arr_section_value['PROP_ONE_ITEM'] = 'Y';
                 //
                 // для отображения всех элементов в подкаталогах получим их ид
-                if ($_GET['SECTION_ID'] == 0){
+                if ($section_id == 0){
                     $arFilter = Array("IBLOCK_ID"=>IntVal($id_iblock));
                 }
+
+                //внешняя фильтрация
+                if(strlen($this->arParams['FILTER_NAME'])<=0)
+                {
+                    $arrFilter = array();
+                }
+                else
+                {
+                    $arrFilter = $GLOBALS[$this->arParams['FILTER_NAME']];
+                    if(!is_array($arrFilter))
+                        $arrFilter = array();
+                }
+
+                $items->SetUrlTemplates("", $this->arParams["SECTION_URL"]);
                 // фильтр для отбора всех записей включая подкатегории                 
                 while($arItem = $items->GetNext())
                 {                  
                     $arFilter = Array("IBLOCK_ID"=>IntVal($id_iblock), "SECTION_ID"=> $arItem['ID'], "INCLUDE_SUBSECTIONS" => "Y", "ACTIVE"=>"Y", ">DATE_ACTIVE_TO"=>ConvertTimeStamp(time(),"FULL") );                    
-                    $res = CIBlockElement::GetList(Array(), $arFilter, false, Array(), $arSelect);                    
+                    $res = CIBlockElement::GetList(Array(), array_merge($arFilter, $arrFilter), false, Array(), $arSelect);                    
                     $arr_Count_Iten = array();
                     // перебераем категории и считаем сколько там элементов
                     while($ob = $res->GetNextElement())
@@ -45,9 +62,9 @@ class sectionPacts extends CBitrixComponent
                         $arFields = $ob->GetFields();
                         $arr_Count_Iten[]['ID'] = $arFields['ID'];                     
                     }                    
-                    $arItem['COUNT_IN_ITEM'] = count($arr_Count_Iten);                    
+                    $arItem['ELEMENT_CNT'] = count($arr_Count_Iten);                    
                     //
-                    $arr_section_value['SECTION_LIST'][] = $arItem;                    
+                    $arr_section_value['SECTIONS'][] = $arItem;                    
                     $arr_section_value['PROP_ONE_ITEM'] = 'N';
                 }
                            
@@ -79,10 +96,11 @@ class sectionPacts extends CBitrixComponent
 
     public function executeComponent()
     {
-        if($this->startResultCache())
+        global $USER;
+        if($this->startResultCache(false, array($USER->GetID())))
         {
             $this->arResult = array_merge($this->arResult, $this->paramsUser($this->arParams));                                 
-            $this->arResult["INFOBLOCK_SECTION_LIST"] = $this->listSection($this->arResult["INFOBLOCK_ID"], $this->arResult["SECTION_ID"]);
+            $this->arResult = $this->listSection($this->arResult["INFOBLOCK_ID"], $this->arResult["SECTION_ID"]);
             $this->arResult["TREE_CATEGORY"] = $this->getTreeCategory($this->arResult["INFOBLOCK_ID"]);
             $this->includeComponentTemplate();
         }

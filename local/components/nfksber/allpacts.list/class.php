@@ -1,4 +1,5 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die();
+    Bitrix\Iblock;
 
 class CDemoSqr extends CBitrixComponent
 {
@@ -15,7 +16,20 @@ class CDemoSqr extends CBitrixComponent
             "SECTION_ID" => intval($arParams["SECTION_ID"]),
             "FILTER_NAME"=> $arParams["FILTER_NAME"],
             "NEWS_COUNT" => intval($arParams["NEWS_COUNT"]),
-            "PAGER_TEMPLATE" => $arParams["PAGER_TEMPLATE"]
+            "PAGER_TEMPLATE" => $arParams["PAGER_TEMPLATE"],
+            "PARENT_SECTION" => intval($arParams["PARENT_SECTION"]),
+            "PARENT_SECTION_CODE" => $arParams["PARENT_SECTION_CODE"],
+            "SET_TITLE" => $arParams["SET_TITLE"],
+            "SET_BROWSER_TITLE" => $arParams["SET_BROWSER_TITLE"],
+            "SET_META_KEYWORDS" => $arParams["SET_META_KEYWORDS"],
+            "SET_META_DESCRIPTION" => $arParams["SET_META_DESCRIPTION"],
+            "INCLUDE_IBLOCK_INTO_CHAIN" => $arParams["INCLUDE_IBLOCK_INTO_CHAIN"],
+            "ADD_SECTIONS_CHAIN" => $arParams["ADD_SECTIONS_CHAIN"],
+            "SET_LAST_MODIFIED" => $arParams["SET_LAST_MODIFIED"],
+            "SECTION_URL" => $arParams["SECTION_URL"],
+            "IBLOCK_URL" => $arParams["IBLOCK_URL"],
+            "DETAIL_URL" => $arParams["DETAIL_URL"],
+            "ADDITIONAL_FILTER" => $arParams["ADDITIONAL_FILTER"],
         );
         return $result;
     }
@@ -37,31 +51,58 @@ class CDemoSqr extends CBitrixComponent
                     $arrFilter = array();
             }
 
+            //Доп фильтр
+            if(strlen($this->arParams['ADDITIONAL_FILTER'])<=0)
+            {
+                $arrFilterN = array();
+            }
+            else
+            {
+                $arrFilterN = $GLOBALS[$this->arParams['ADDITIONAL_FILTER']];
+                if(!is_array($arrFilterN))
+                    $arrFilterN = array();
+            }
+
             global $USER;
 
             $arFilter = Array(
                 "IBLOCK_ID"=>IntVal($id_iblock),
                 "ACTIVE"=>"Y",
                 ">=DATE_ACTIVE_TO" => new \Bitrix\Main\Type\DateTime(),
-                "PROPERTY_MODERATION_VALUE" => 'Y',
+            );
+
+            $PARENT_SECTION = CIBlockFindTools::GetSectionID(
+                $this -> arParams["PARENT_SECTION"],
+                $this -> arParams["PARENT_SECTION_CODE"],
                 array(
-                    'LOGIC' => 'OR',
-                    array("!=PROPERTY_PRIVATE_VALUE" => "Y"),
-                    array(
-                        "PROPERTY_PRIVATE_VALUE" => "Y",
-                        "=PROPERTY_ACCESS_USER" => empty($USER -> GetID()) ? 0 : $USER -> GetID()
-                    ),
-                    array(
-                        "PROPERTY_PRIVATE_VALUE" => "Y",
-                        "=CREATED_BY" => empty($USER -> GetID()) ? 0 : $USER -> GetID()
-                    ),
+                    "GLOBAL_ACTIVE" => "Y",
+                    "IBLOCK_ID" => $id_iblock,
                 )
             );
 
-            if ($_GET['SECTION_ID'] > 0){
-                // фильтр для отбора всех записей включая подкатегории
-                $arFilter['SECTION_ID'] = $section_id;
-                $arFilter['INCLUDE_SUBSECTIONS'] = 'Y';
+            $this -> arParams["PARENT_SECTION"] = $PARENT_SECTION;
+
+            if($this -> arParams["PARENT_SECTION"]>0)
+            {
+                $arFilter["SECTION_ID"] = $this -> arParams["PARENT_SECTION"];
+                $arFilter["INCLUDE_SUBSECTIONS"] = "Y";
+
+                $this -> arResult["SECTION"]= array("PATH" => array());
+                $rsPath = CIBlockSection::GetNavChain($this -> arResult["ID"], $this -> arParams["PARENT_SECTION"]);
+                $rsPath->SetUrlTemplates("", $this -> arParams["SECTION_URL"], $this -> arParams["IBLOCK_URL"]);
+                while($arPath = $rsPath->GetNext())
+                {
+                    $ipropValues = new Iblock\InheritedProperty\SectionValues($id_iblock, $arPath["ID"]);
+                    $arPath["IPROPERTY_VALUES"] = $ipropValues->getValues();
+                    $this -> arResult["SECTION"]["PATH"][] = $arPath;
+                }
+
+                $ipropValues = new Iblock\InheritedProperty\SectionValues($this -> arResult["ID"], $this -> arParams["PARENT_SECTION"]);
+                $this -> arResult["IPROPERTY_VALUES"] = $ipropValues->getValues();
+            }
+            else
+            {
+                $arResult["SECTION"]= false;
             }
 
             if($_SESSION['DEAL_SORT']){
@@ -70,11 +111,19 @@ class CDemoSqr extends CBitrixComponent
                 $arSort = array('RAND' => 'asc');
             }
 
-            $res = CIBlockElement::GetList($arSort, array_merge($arFilter, $arrFilter), false, $arNavParams, $arSelect);
+            $res = CIBlockElement::GetList($arSort, array_merge($arFilter, $arrFilter, $arrFilterN), false, $arNavParams, $arSelect);
             // перебираем элементы
             while($ob = $res->GetNextElement())
             {
                 $arFields   = $ob->GetFields();
+                $ipropValues = new Iblock\InheritedProperty\ElementValues($arFields["IBLOCK_ID"], $arFields["ID"]);
+                $arFields["IPROPERTY_VALUES"] = $ipropValues->getValues();
+                Iblock\Component\Tools::getFieldImageData(
+                    $arFields,
+                    array('PREVIEW_PICTURE', 'DETAIL_PICTURE'),
+                    Iblock\Component\Tools::IPROPERTY_ENTITY_ELEMENT,
+                    'IPROPERTY_VALUES'
+                );
                 $id_element = $arFields["ID"];
                 $arFields['PROPERTIES'] = $ob->GetProperties();
 
@@ -105,6 +154,41 @@ class CDemoSqr extends CBitrixComponent
     }
 
     function paramsUser($arParams){
+        if(!Loader::includeModule("iblock"))
+        {
+            $this->abortResultCache();
+            ShowError(GetMessage("IBLOCK_MODULE_NOT_INSTALLED"));
+            return;
+        }
+        if(is_numeric($arParams["IBLOCK_ID"]))
+        {
+            $rsIBlock = CIBlock::GetList(array(), array(
+                "ACTIVE" => "Y",
+                "ID" => $arParams["IBLOCK_ID"],
+            ));
+        }
+        else
+        {
+            $rsIBlock = CIBlock::GetList(array(), array(
+                "ACTIVE" => "Y",
+                "CODE" => $arParams["IBLOCK_ID"],
+                "SITE_ID" => SITE_ID,
+            ));
+        }
+
+        $arResult = $rsIBlock->GetNext();
+        if (!$arResult)
+        {
+            $this->abortResultCache();
+            Iblock\Component\Tools::process404(
+                trim($arParams["MESSAGE_404"]) ?: GetMessage("T_NEWS_NEWS_NA")
+                ,true
+                ,$arParams["SET_STATUS_404"] === "Y"
+                ,$arParams["SHOW_404"] === "Y"
+                ,$arParams["FILE_404"]
+            );
+            return;
+        }
         $arResult["INFOBLOCK_ID"] = $arParams["IBLOCK_ID"];
         $arResult["SECTION_ID"] = $arParams["SECTION_ID"];
         return $arResult;
@@ -121,7 +205,7 @@ class CDemoSqr extends CBitrixComponent
         if($arNavigation["PAGEN"]==0)
             $arParams["CACHE_TIME"] = 36000;
 
-        global $USER;
+        global $USER, $APPLICATION;
 
         if($this->startResultCache(false, array($arrFilter, $arNavigation, $USER->GetID(), $_SESSION['DEAL_SORT'])))
         {
@@ -134,6 +218,98 @@ class CDemoSqr extends CBitrixComponent
 
         $this->setTemplateCachedData($this->arResult["NAV_CACHED_DATA"]);
         
+        if(isset($this->arResult["ID"]))
+        {
+            $arTitleOptions = null;
+            if($USER->IsAuthorized())
+            {
+                if(
+                    $APPLICATION->GetShowIncludeAreas()
+                    || (is_object($GLOBALS["INTRANET_TOOLBAR"]) && $this->arParams["INTRANET_TOOLBAR"]!=="N")
+                    || $this->arParams["SET_TITLE"]
+                )
+                {
+                    if(Loader::includeModule("iblock"))
+                    {
+                        $arButtons = CIBlock::GetPanelButtons(
+                            $this->arResult["ID"],
+                            0,
+                            $this->arParams["PARENT_SECTION"],
+                            array("SECTION_BUTTONS"=>false)
+                        );
+        
+                        if($APPLICATION->GetShowIncludeAreas())
+                            $this->addIncludeAreaIcons(CIBlock::GetComponentMenu($APPLICATION->GetPublicShowMode(), $arButtons));
+        
+                        if(
+                            is_array($arButtons["intranet"])
+                            && is_object($INTRANET_TOOLBAR)
+                            && $this->arParams["INTRANET_TOOLBAR"]!=="N"
+                        )
+                        {
+                            $APPLICATION->AddHeadScript('/bitrix/js/main/utils.js');
+                            foreach($arButtons["intranet"] as $arButton)
+                                $INTRANET_TOOLBAR->AddButton($arButton);
+                        }
+        
+                        if($this->arParams["SET_TITLE"])
+                        {
+                            $arTitleOptions = array(
+                                'ADMIN_EDIT_LINK' => $arButtons["submenu"]["edit_iblock"]["ACTION"],
+                                'PUBLIC_EDIT_LINK' => "",
+                                'COMPONENT_NAME' => $this->getName(),
+                            );
+                        }
+                    }
+                }
+            }
+
+            if($this->arParams["SET_TITLE"])
+            {
+                if ($this->arResult["IPROPERTY_VALUES"] && $this->arResult["IPROPERTY_VALUES"]["SECTION_PAGE_TITLE"] != "")
+                    $APPLICATION->SetTitle($this->arResult["IPROPERTY_VALUES"]["SECTION_PAGE_TITLE"], $arTitleOptions);
+            }
+        
+            if ($this->arResult["IPROPERTY_VALUES"])
+            {
+                if ($this->arParams["SET_BROWSER_TITLE"] === 'Y' && $this->arResult["IPROPERTY_VALUES"]["SECTION_META_TITLE"] != "")
+                    $APPLICATION->SetPageProperty("title", $this->arResult["IPROPERTY_VALUES"]["SECTION_META_TITLE"], $arTitleOptions);
+        
+                if ($this->arParams["SET_META_KEYWORDS"] === 'Y' && $this->arResult["IPROPERTY_VALUES"]["SECTION_META_KEYWORDS"] != "")
+                    $APPLICATION->SetPageProperty("keywords", $this->arResult["IPROPERTY_VALUES"]["SECTION_META_KEYWORDS"], $arTitleOptions);
+        
+                if ($this->arParams["SET_META_DESCRIPTION"] === 'Y' && $this->arResult["IPROPERTY_VALUES"]["SECTION_META_DESCRIPTION"] != "")
+                    $APPLICATION->SetPageProperty("description", $this->arResult["IPROPERTY_VALUES"]["SECTION_META_DESCRIPTION"], $arTitleOptions);
+            }
+        
+            if($this->arParams["INCLUDE_IBLOCK_INTO_CHAIN"] && isset($this->arResult["NAME"]))
+            {
+                if($this->arParams["ADD_SECTIONS_CHAIN"] && is_array($this->arResult["SECTION"]))
+                    $APPLICATION->AddChainItem(
+                        $this->arResult["NAME"]
+                        ,strlen($this->arParams["IBLOCK_URL"]) > 0? $this->arParams["IBLOCK_URL"]: $this->arResult["LIST_PAGE_URL"]
+                    );
+                else
+                    $APPLICATION->AddChainItem($this->arResult["NAME"]);
+            }
+        
+            if($this->arParams["ADD_SECTIONS_CHAIN"] && is_array($this->arResult["SECTION"]))
+            {
+                foreach($this->arResult["SECTION"]["PATH"] as $arPath)
+                {
+                    if ($arPath["IPROPERTY_VALUES"]["SECTION_PAGE_TITLE"] != "")
+                        $APPLICATION->AddChainItem($arPath["IPROPERTY_VALUES"]["SECTION_PAGE_TITLE"], $arPath["~SECTION_PAGE_URL"]);
+                    else
+                        $APPLICATION->AddChainItem($arPath["NAME"], $arPath["~SECTION_PAGE_URL"]);
+                }
+            }
+        
+            if ($this->arParams["SET_LAST_MODIFIED"] && $this->arResult["ITEMS_TIMESTAMP_X"])
+            {
+                Context::getCurrent()->getResponse()->setLastModified($this->arResult["ITEMS_TIMESTAMP_X"]);
+            }
+        }
+
         return $this->arResult;
     }
 };

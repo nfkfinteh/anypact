@@ -41,44 +41,13 @@ while($arUGroups = $dbUGroups -> Fetch())
 }
 
 $arComponentParameters = array(
-	"GROUPS" => array(
-		"RSS_SETTINGS" => array(
-			"SORT" => 110,
-			"NAME" => GetMessage("T_IBLOCK_DESC_RSS_SETTINGS"),
-		),
-		"RATING_SETTINGS" => array(
-			"SORT" => 120,
-			"NAME" => GetMessage("T_IBLOCK_DESC_RATING_SETTINGS"),
-		),
-		"CATEGORY_SETTINGS" => array(
-			"SORT" => 130,
-			"NAME" => GetMessage("T_IBLOCK_DESC_CATEGORY_SETTINGS"),
-		),
-		"REVIEW_SETTINGS" => array(
-			"SORT" => 140,
-			"NAME" => GetMessage("T_IBLOCK_DESC_REVIEW_SETTINGS"),
-		),
-		"FILTER_SETTINGS" => array(
-			"SORT" => 150,
-			"NAME" => GetMessage("T_IBLOCK_DESC_FILTER_SETTINGS"),
-		),
-		"LIST_SETTINGS" => array(
-			"NAME" => GetMessage("CN_P_LIST_SETTINGS"),
-		),
-		"DETAIL_SETTINGS" => array(
-			"NAME" => GetMessage("CN_P_DETAIL_SETTINGS"),
-		),
-		"DETAIL_PAGER_SETTINGS" => array(
-			"NAME" => GetMessage("CN_P_DETAIL_PAGER_SETTINGS"),
-		),
-	),
 	"PARAMETERS" => array(
 		"VARIABLE_ALIASES" => Array(
 			"SECTION_ID" => Array("NAME" => GetMessage("BN_P_SECTION_ID_DESC")),
 			"ELEMENT_ID" => Array("NAME" => GetMessage("NEWS_ELEMENT_ID_DESC")),
 		),
 		"SEF_MODE" => Array(
-			"news" => array(
+			"pacts" => array(
 				"NAME" => GetMessage("T_IBLOCK_SEF_PAGE_NEWS"),
 				"DEFAULT" => "",
 				"VARIABLES" => array(),
@@ -92,21 +61,6 @@ $arComponentParameters = array(
 				"NAME" => GetMessage("T_IBLOCK_SEF_PAGE_NEWS_DETAIL"),
 				"DEFAULT" => "#ELEMENT_ID#/",
 				"VARIABLES" => array("ELEMENT_ID", "SECTION_ID"),
-			),
-			"search" => array(
-				"NAME" => GetMessage("T_IBLOCK_SEF_PAGE_SEARCH"),
-				"DEFAULT" => "search/",
-				"VARIABLES" => array(),
-			),
-			"rss" => array(
-				"NAME" => GetMessage("T_IBLOCK_SEF_PAGE_RSS"),
-				"DEFAULT" => "rss/",
-				"VARIABLES" => array(),
-			),
-			"rss_section" => array(
-				"NAME" => GetMessage("T_IBLOCK_SEF_PAGE_RSS_SECTION"),
-				"DEFAULT" => "#SECTION_ID#/rss/",
-				"VARIABLES" => array("SECTION_ID"),
 			),
 		),
 		"AJAX_MODE" => array(),
@@ -131,37 +85,9 @@ $arComponentParameters = array(
 			"TYPE" => "STRING",
 			"DEFAULT" => "20",
 		),
-		"USE_SEARCH" => Array(
-			"PARENT" => "BASE",
-			"NAME" => GetMessage("T_IBLOCK_DESC_USE_SEARCH"),
-			"TYPE" => "CHECKBOX",
-			"DEFAULT" => "N",
-			"REFRESH" => "Y",
-		),
-		"USE_RSS" => Array(
-			"PARENT" => "RSS_SETTINGS",
-			"NAME" => GetMessage("T_IBLOCK_DESC_USE_RSS"),
-			"TYPE" => "CHECKBOX",
-			"DEFAULT" => "N",
-			"REFRESH" => "Y",
-		),
-		"USE_RATING" => Array(
-			"PARENT" => "RATING_SETTINGS",
-			"NAME" => GetMessage("T_IBLOCK_DESC_USE_RATING"),
-			"TYPE" => "CHECKBOX",
-			"DEFAULT" => "N",
-			"REFRESH" => "Y",
-		),
 		"USE_CATEGORIES" => Array(
 			"PARENT" => "CATEGORY_SETTINGS",
 			"NAME" => GetMessage("T_IBLOCK_DESC_USE_CATEGORIES"),
-			"TYPE" => "CHECKBOX",
-			"DEFAULT" => "N",
-			"REFRESH" => "Y",
-		),
-		"USE_REVIEW" => Array(
-			"PARENT" => "REVIEW_SETTINGS",
-			"NAME" => GetMessage("T_IBLOCK_DESC_USE_REVIEW"),
 			"TYPE" => "CHECKBOX",
 			"DEFAULT" => "N",
 			"REFRESH" => "Y",
@@ -404,65 +330,6 @@ if($arCurrentValues["USE_FILTER"]=="Y")
 if($arCurrentValues["USE_PERMISSIONS"]!="Y")
 	unset($arComponentParameters["PARAMETERS"]["GROUP_PERMISSIONS"]);
 
-if($arCurrentValues["USE_RSS"]=="Y")
-{
-	$arComponentParameters["PARAMETERS"]["NUM_NEWS"] = array(
-		"PARENT" => "RSS_SETTINGS",
-		"NAME" => GetMessage("T_IBLOCK_DESC_RSS_NUM_NEWS1"),
-		"TYPE" => "STRING",
-		"DEFAULT"=>'20',
-	);
-	$arComponentParameters["PARAMETERS"]["NUM_DAYS"] = array(
-		"PARENT" => "RSS_SETTINGS",
-		"NAME" => GetMessage("T_IBLOCK_DESC_RSS_NUM_DAYS"),
-		"TYPE" => "STRING",
-		"DEFAULT"=>'30',
-	);
-	$arComponentParameters["PARAMETERS"]["YANDEX"] = array(
-		"PARENT" => "RSS_SETTINGS",
-		"NAME" => GetMessage("T_IBLOCK_DESC_RSS_YANDEX"),
-		"TYPE" => "CHECKBOX",
-		"DEFAULT"=>"N",
-	);
-}
-else
-{
-	unset($arComponentParameters["PARAMETERS"]["SEF_MODE"]["rss"]);
-	unset($arComponentParameters["PARAMETERS"]["SEF_MODE"]["rss_section"]);
-}
-
-if($arCurrentValues["USE_SEARCH"]!="Y")
-{
-	unset($arComponentParameters["PARAMETERS"]["SEF_MODE"]["search"]);
-}
-
-if($arCurrentValues["USE_RATING"]=="Y")
-{
-	$arComponentParameters["PARAMETERS"]["MAX_VOTE"] = array(
-		"PARENT" => "RATING_SETTINGS",
-		"NAME" => GetMessage("IBLOCK_MAX_VOTE"),
-		"TYPE" => "STRING",
-		"DEFAULT" => "5",
-	);
-	$arComponentParameters["PARAMETERS"]["VOTE_NAMES"] = array(
-		"PARENT" => "RATING_SETTINGS",
-		"NAME" => GetMessage("IBLOCK_VOTE_NAMES"),
-		"TYPE" => "STRING",
-		"VALUES" => array(),
-		"MULTIPLE" => "Y",
-		"DEFAULT" => array("1","2","3","4","5"),
-		"ADDITIONAL_VALUES" => "Y",
-	);
-	$arComponentParameters["PARAMETERS"]["DISPLAY_AS_RATING"] = array(
-		"NAME" => GetMessage("CP_BN_DISPLAY_AS_RATING"),
-		"TYPE" => "LIST",
-		"VALUES" => array(
-			"rating" => GetMessage("CP_BN_RATING"),
-			"vote_avg" => GetMessage("CP_BN_AVERAGE"),
-		),
-		"DEFAULT" => "rating",
-	);
-}
 if($arCurrentValues["USE_CATEGORIES"]=="Y")
 {
 	$arIBlockEx=array();
@@ -506,64 +373,5 @@ if($arCurrentValues["USE_CATEGORIES"]=="Y")
 					"DEFAULT" => "list",
 				);
 			}
-}
-
-if(!IsModuleInstalled("forum"))
-{
-	unset($arComponentParameters["GROUPS"]["REVIEW_SETTINGS"]);
-	unset($arComponentParameters["PARAMETERS"]["USE_REVIEW"]);
-}
-elseif($arCurrentValues["USE_REVIEW"]=="Y")
-{
-	$arForumList = array();
-	if(CModule::IncludeModule("forum"))
-	{
-		$rsForum = CForumNew::GetList();
-		while($arForum=$rsForum->Fetch())
-			$arForumList[$arForum["ID"]]=$arForum["NAME"];
-	}
-	$arComponentParameters["PARAMETERS"]["MESSAGES_PER_PAGE"] = Array(
-		"PARENT" => "REVIEW_SETTINGS",
-		"NAME" => GetMessage("F_MESSAGES_PER_PAGE"),
-		"TYPE" => "STRING",
-		"DEFAULT" => intVal(COption::GetOptionString("forum", "MESSAGES_PER_PAGE", "10"))
-	);
-	$arComponentParameters["PARAMETERS"]["USE_CAPTCHA"] = Array(
-		"PARENT" => "REVIEW_SETTINGS",
-		"NAME" => GetMessage("F_USE_CAPTCHA"),
-		"TYPE" => "CHECKBOX",
-		"DEFAULT" => "Y"
-	);
-	$arComponentParameters["PARAMETERS"]["REVIEW_AJAX_POST"] = Array(
-		"PARENT" => "REVIEW_SETTINGS",
-		"NAME" => GetMessage("F_REVIEW_AJAX_POST"),
-		"TYPE" => "CHECKBOX",
-		"DEFAULT" => "Y"
-	);
-	$arComponentParameters["PARAMETERS"]["PATH_TO_SMILE"] = Array(
-		"PARENT" => "REVIEW_SETTINGS",
-		"NAME" => GetMessage("F_PATH_TO_SMILE"),
-		"TYPE" => "STRING",
-		"DEFAULT" => "/bitrix/images/forum/smile/",
-	);
-	$arComponentParameters["PARAMETERS"]["FORUM_ID"] = Array(
-		"PARENT" => "REVIEW_SETTINGS",
-		"NAME" => GetMessage("F_FORUM_ID"),
-		"TYPE" => "LIST",
-		"VALUES" => $arForumList,
-		"DEFAULT" => "",
-	);
-	$arComponentParameters["PARAMETERS"]["URL_TEMPLATES_READ"] = Array(
-		"PARENT" => "REVIEW_SETTINGS",
-		"NAME" => GetMessage("F_READ_TEMPLATE"),
-		"TYPE" => "STRING",
-		"DEFAULT" => "",
-	);
-	$arComponentParameters["PARAMETERS"]["SHOW_LINK_TO_FORUM"] = Array(
-		"PARENT" => "REVIEW_SETTINGS",
-		"NAME" => GetMessage("F_SHOW_LINK_TO_FORUM"),
-		"TYPE" => "CHECKBOX",
-		"DEFAULT" => "Y",
-	);
 }
 ?>

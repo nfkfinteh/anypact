@@ -1,28 +1,40 @@
-<? //print_r($arResult);
+<?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
+/** @var array $arParams */
+/** @var array $arResult */
+/** @global CMain $APPLICATION */
+/** @global CUser $USER */
+/** @global CDatabase $DB */
+/** @var CBitrixComponentTemplate $this */
+/** @var string $templateName */
+/** @var string $templateFile */
+/** @var string $templateFolder */
+/** @var string $componentPath */
+/** @var CBitrixComponent $component */
+$this->setFrameMode(true);
+
+$strSectionEdit = CIBlock::GetArrayByID($arParams["IBLOCK_ID"], "SECTION_EDIT");
+$strSectionDelete = CIBlock::GetArrayByID($arParams["IBLOCK_ID"], "SECTION_DELETE");
+$arSectionDeleteParams = array("CONFIRM" => GetMessage('CT_BCSL_ELEMENT_DELETE_CONFIRM'));
 ?>
-<div class="category">
+<?if(!empty($arResult['SECTIONS'])){?>
+    <div class="category">
         <span class="category-name">Категории:</span>
         <div class="row">
             <div class="col-lg-7 col-md-9 col-sm-12">
                 <div class="row">
-                  <? if($arResult['INFOBLOCK_SECTION_LIST']['PROP_ONE_ITEM'] == 'N') { 
-                    foreach($arResult['INFOBLOCK_SECTION_LIST']['SECTION_LIST'] as $item_section) {?>
-                        <div class="col-sm-4">
-                            <a href="/pacts/?SECTION_ID=<?=$item_section['ID']?>">
-                                <?=$item_section['NAME']?>
-                                <span><?=$item_section['COUNT_IN_ITEM']?></span>
+                  <?foreach ($arResult['SECTIONS'] as $arSection) {
+                        $this->AddEditAction($arSection['ID'], $arSection['EDIT_LINK'], $strSectionEdit);
+                        $this->AddDeleteAction($arSection['ID'], $arSection['DELETE_LINK'], $strSectionDelete, $arSectionDeleteParams);
+                    ?>
+                        <div class="col-sm-4" id="<? echo $this->GetEditAreaId($arSection['ID']); ?>">
+                            <a href="<?=$arSection['SECTION_PAGE_URL']?>">
+                                <?=$arSection['NAME']?>
+                                <span><?=$arSection['ELEMENT_CNT']?></span>
                             </a>                            
                         </div>  
-                  <?    } 
-                    }else {?>                        
-                        <div class="col-sm-4">                            
-                            <a href="/pacts/?SECTION_ID=<?=$arResult['INFOBLOCK_SECTION_LIST']['ARR_ONE_ITEM']['ID']?>">
-                                <?=$arResult['INFOBLOCK_SECTION_LIST']['ARR_ONE_ITEM']['NAME']?>
-                                <span><?=$item_section['COUNT_IN_ITEM']?></span>
-                            </a>
-                        </div>
-                    <?}?>
+                  <?}?>
                 </div>
             </div>
         </div>
     </div>
+<?}?>

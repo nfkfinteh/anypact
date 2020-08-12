@@ -47,8 +47,6 @@ class CUserSelect extends CBitrixComponent
                 $arFilter = array_merge($arrFilter, array("NAME" => "_"));
             }
 
-            AddMessage2Log($arFilter, "arFilter");
-
             $res = CUser::GetList($order = array('LAST_NAME' => 'asc', 'NAME'=> 'asc'), $tmp = "asc", $arFilter, [ 'FIELDS' => ['ID', 'LAST_NAME', 'NAME', 'SECOND_NAME', 'PERSONAL_PHOTO'], 'NAV_PARAMS' => ['nTopCount' => $nTopCount] ]);
             while($obj = $res->getNext()) {
                 $arUser[] = $obj;
@@ -77,8 +75,6 @@ class CUserSelect extends CBitrixComponent
     {
         global $APPLICATION;
         $arrFilter = $GLOBALS[$this->arParams['FILTER_NAME']];
-
-        define("LOG_FILENAME", $_SERVER["DOCUMENT_ROOT"]."/class_user_select.log");
 
         $this->checkSession = check_bitrix_sessid();
         $this->isRequestViaAjax = $this->request->isPost() && $this->request->get('via_ajax') == 'Y';

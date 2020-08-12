@@ -14,6 +14,20 @@ class CDemoSqr extends CBitrixComponent
     
     public function onPrepareComponentParams($arParams)
     {
+        if(!Loader::includeModule("iblock"))
+        {
+            $this->abortResultCache();
+            ShowError(GetMessage("IBLOCK_MODULE_NOT_INSTALLED"));
+            return;
+        }
+        if($arParams["ELEMENT_ID"] <= 0)
+		    $arParams["ELEMENT_ID"] = CIBlockFindTools::GetElementID(
+			$arParams["ELEMENT_ID"],
+			$arParams["ELEMENT_CODE"],
+			$arParams["STRICT_SECTION_CHECK"]? $arParams["SECTION_ID"]: false,
+			$arParams["STRICT_SECTION_CHECK"]? $arParams["~SECTION_CODE"]: false,
+			$arFilter
+		);
         $result = array(
             "CACHE_TYPE" => $arParams["CACHE_TYPE"],
             "CACHE_TIME" => isset($arParams["CACHE_TIME"]) ?$arParams["CACHE_TIME"]: 36000000,
@@ -23,7 +37,19 @@ class CDemoSqr extends CBitrixComponent
             "ELEMENT_ID" => intval($arParams["ELEMENT_ID"]),
             "LOCATION" => htmlspecialcharsEx($arParams["LOCATION"]),
             "FORM_SDELKA"=>$arParams["FORM_SDELKA"],
-            "DOGOVOR"=>$arParams["DOGOVOR"]
+            "DOGOVOR"=>$arParams["DOGOVOR"],
+            "DETAIL_URL"=>$arParams["DETAIL_URL"],
+            "SECTION_URL"=>$arParams["SECTION_URL"],
+            "SET_CANONICAL_URL" => $arParams["SET_CANONICAL_URL"],
+            "SET_TITLE" => $arParams["SET_TITLE"],
+            "SET_BROWSER_TITLE" => $arParams["SET_BROWSER_TITLE"],
+            "SET_META_KEYWORDS" => $arParams["SET_META_KEYWORDS"],
+            "SET_META_DESCRIPTION" => $arParams["SET_META_DESCRIPTION"],
+            "INCLUDE_IBLOCK_INTO_CHAIN" => $arParams["INCLUDE_IBLOCK_INTO_CHAIN"],
+            "ADD_SECTIONS_CHAIN" => $arParams["ADD_SECTIONS_CHAIN"],
+            "ADD_ELEMENT_CHAIN" => $arParams["ADD_ELEMENT_CHAIN"],
+            "SET_LAST_MODIFIED" => $arParams["SET_LAST_MODIFIED"],
+            "ADDITIONAL_FILTER" => $arParams["ADDITIONAL_FILTER"],
         );
         return $result;
     }
@@ -32,31 +58,149 @@ class CDemoSqr extends CBitrixComponent
         $arPact = array();        
         if(CModule::IncludeModule("iblock"))
             {
-                $arFilter = Array(
+
+                //внешняя фильтрация
+                if(strlen($this->arParams['FILTER_NAME'])<=0)
+                {
+                    $arrFilter = array();
+                }
+                else
+                {
+                    $arrFilter = $GLOBALS[$this->arParams['FILTER_NAME']];
+                    if(!is_array($arrFilter))
+                        $arrFilter = array();
+                }
+
+                 //Доп фильтр
+                if(strlen($this->arParams['ADDITIONAL_FILTER'])<=0)
+                {
+                    $arrFilterN = array();
+                }
+                else
+                {
+                    $arrFilterN = $GLOBALS[$this->arParams['ADDITIONAL_FILTER']];
+                    if(!is_array($arrFilterN))
+                        $arrFilterN = array();
+                }
+
+                $arFilter = array_merge(Array(
                     "ID" => $id_element,
-                );
+                ), $arrFilter, $arrFilterN);
                 if($_REQUEST['ACTION']!='ADD' && $_REQUEST['ACTION']!='EDIT'){
                     $arFilter = array_merge($arFilter, array("ACTIVE"=>"Y",
                     ">=DATE_ACTIVE_TO" => new \Bitrix\Main\Type\DateTime(),
-                    "PROPERTY_MODERATION_VALUE" => 'Y',
-                    array(
-                        'LOGIC' => 'OR',
-                        array("!=PROPERTY_PRIVATE_VALUE" => "Y"),
-                        array(
-                            "PROPERTY_PRIVATE_VALUE" => "Y",
-                            "=PROPERTY_ACCESS_USER" => empty( $this->arResult["USER_ID"] ) ? 0 : $this->arResult["USER_ID"]
-                        ),
-                        array(
-                            "PROPERTY_PRIVATE_VALUE" => "Y",
-                            "=CREATED_BY" => empty( $this->arResult["USER_ID"] ) ? 0 : $this->arResult["USER_ID"]
-                        ),
-                    )));
+                    ), $arrFilter);
                 }
                 $res = CIBlockElement::GetList(array(), $arFilter);
+                $res->SetUrlTemplates($this -> arParams["DETAIL_URL"], "", $this -> arParams["IBLOCK_URL"]);
                 if($ar_res = $res->GetNext()){
-                    return $ar_res;
+                    $ipropValues = new Iblock\InheritedProperty\ElementValues($ar_res["IBLOCK_ID"], $ar_res["ID"]);
+                    $this->arResult["IPROPERTY_VALUES"] = $ipropValues->getValues();
+
+                    Iblock\Component\Tools::getFieldImageData(
+                        $ar_res,
+                        array('PREVIEW_PICTURE', 'DETAIL_PICTURE'),
+                        Iblock\Component\Tools::IPROPERTY_ENTITY_ELEMENT,
+                        'IPROPERTY_VALUES'
+                    );
                 }
-                
+
+                $this->arResult["IBLOCK"] = GetIBlock($ar_res["IBLOCK_ID"], $ar_res["IBLOCK_TYPE"]);
+
+                $this -> arResult["SECTION"] = array("PATH" => array());
+                $this -> arResult["SECTION_URL"] = "";
+                if($this -> arParams["ADD_SECTIONS_CHAIN"] && $ar_res["IBLOCK_SECTION_ID"] > 0)
+                {
+                    $rsPath = CIBlockSection::GetNavChain(
+                        $ar_res["IBLOCK_ID"],
+                        $ar_res["IBLOCK_SECTION_ID"],
+                        array(
+                            "ID", "CODE", "XML_ID", "EXTERNAL_ID", "IBLOCK_ID",
+                            "IBLOCK_SECTION_ID", "SORT", "NAME", "ACTIVE",
+                            "DEPTH_LEVEL", "SECTION_PAGE_URL"
+                        )
+                    );
+                    $rsPath->SetUrlTemplates("", $this -> arParams["SECTION_URL"]);
+                    while($arPath = $rsPath->GetNext())
+                    {
+                        $ipropValues = new Iblock\InheritedProperty\SectionValues($ar_res["IBLOCK_ID"], $arPath["ID"]);
+                        $arPath["IPROPERTY_VALUES"] = $ipropValues->getValues();
+                        $this -> arResult["SECTION"]["PATH"][] = $arPath;
+                        $this -> arResult["SECTION_URL"] = $arPath["~SECTION_PAGE_URL"];
+                    }
+                }
+
+                if (
+                    $this->arParams["SET_TITLE"]
+                    || $this->arParams["ADD_ELEMENT_CHAIN"]
+                    || $this->arParams["SET_BROWSER_TITLE"] === 'Y'
+                    || $this->arParams["SET_META_KEYWORDS"] === 'Y'
+                    || $this->arParams["SET_META_DESCRIPTION"] === 'Y'
+                )
+                {
+                    $this->arResult["META_TAGS"] = array();
+                    $resultCacheKeys[] = "META_TAGS";
+        
+                    if ($this->arParams["SET_TITLE"])
+                    {
+                        $this->arResult["META_TAGS"]["TITLE"] = (
+                            $this->arResult["IPROPERTY_VALUES"]["ELEMENT_PAGE_TITLE"] != ""
+                            ? $this->arResult["IPROPERTY_VALUES"]["ELEMENT_PAGE_TITLE"]
+                            : $ar_res["NAME"]
+                        );
+                    }
+        
+                    if ($this->arParams["ADD_ELEMENT_CHAIN"])
+                    {
+                        $this->arResult["META_TAGS"]["ELEMENT_CHAIN"] = (
+                            $this->arResult["IPROPERTY_VALUES"]["ELEMENT_PAGE_TITLE"] != ""
+                            ? $this->arResult["IPROPERTY_VALUES"]["ELEMENT_PAGE_TITLE"]
+                            : $ar_res["NAME"]
+                        );
+                    }
+        
+                    if ($this->arParams["SET_BROWSER_TITLE"] === 'Y')
+                    {
+                        $browserTitle = \Bitrix\Main\Type\Collection::firstNotEmpty(
+                            $this->arResult["PROPERTIES"], array($this->arParams["BROWSER_TITLE"], "VALUE")
+                            ,$this->arResult, $this->arParams["BROWSER_TITLE"]
+                            ,$this->arResult["IPROPERTY_VALUES"], "ELEMENT_META_TITLE"
+                        );
+                        $this->arResult["META_TAGS"]["BROWSER_TITLE"] = (
+                            is_array($browserTitle)
+                            ? implode(" ", $browserTitle)
+                            : $browserTitle
+                        );
+                        unset($browserTitle);
+                    }
+                    if ($this->arParams["SET_META_KEYWORDS"] === 'Y')
+                    {
+                        $metaKeywords = \Bitrix\Main\Type\Collection::firstNotEmpty(
+                            $this->arResult["PROPERTIES"], array($this->arParams["META_KEYWORDS"], "VALUE")
+                            ,$this->arResult["IPROPERTY_VALUES"], "ELEMENT_META_KEYWORDS"
+                        );
+                        $this->arResult["META_TAGS"]["KEYWORDS"] = (
+                            is_array($metaKeywords)
+                            ? implode(" ", $metaKeywords)
+                            : $metaKeywords
+                        );
+                        unset($metaKeywords);
+                    }
+                    if ($this->arParams["SET_META_DESCRIPTION"] === 'Y')
+                    {
+                        $metaDescription = \Bitrix\Main\Type\Collection::firstNotEmpty(
+                            $this->arResult["PROPERTIES"], array($this->arParams["META_DESCRIPTION"], "VALUE")
+                            ,$this->arResult["IPROPERTY_VALUES"], "ELEMENT_META_DESCRIPTION"
+                        );
+                        $this->arResult["META_TAGS"]["DESCRIPTION"] = (
+                            is_array($metaDescription)
+                            ? implode(" ", $metaDescription)
+                            : $metaDescription
+                        );
+                        unset($metaDescription);
+                    }
+                }
+                return $ar_res;
             }        
     }
 
@@ -251,6 +395,7 @@ class CDemoSqr extends CBitrixComponent
     {
         /*if($this->startResultCache())
         {*/
+            global $USER, $APPLICATION;
             $this->arResult = array_merge($this->arResult, $this->paramsUser($this->arParams));
             $this->arResult["USER_ID"] = CUser::GetID();
             $rsUser = CUser::GetByID($this->arResult["USER_ID"]);
@@ -328,6 +473,105 @@ class CDemoSqr extends CBitrixComponent
 
             $this->arResult["BLACKLIST"] = $this->getBlackList();
 
+            if($_REQUEST['ACTION']!='ADD' && $_REQUEST['ACTION']!='EDIT' && isset($this->arResult["ELEMENT_ID"]))
+            {
+                $arTitleOptions = null;
+                if(Loader::includeModule("iblock"))
+                {
+                    CIBlockElement::CounterInc($this->arResult["ID"]);
+
+                    if($USER->IsAuthorized())
+                    {
+                        if(
+                            $APPLICATION->GetShowIncludeAreas()
+                            || $this->arParams["SET_TITLE"]
+                            || isset($this->arResult[$this->arParams["BROWSER_TITLE"]])
+                        )
+                        {
+                            $arReturnUrl = array(
+                                "add_element" => CIBlock::GetArrayByID($this->arResult["IBLOCK_ID"], "DETAIL_PAGE_URL"),
+                                "delete_element" => (
+                                    empty($this->arResult["SECTION_URL"])?
+                                    $this->arResult["LIST_PAGE_URL"]:
+                                    $this->arResult["SECTION_URL"]
+                                ),
+                            );
+
+                            $arButtons = CIBlock::GetPanelButtons(
+                                $this->arResult["IBLOCK_ID"],
+                                $this->arResult["ID"],
+                                $this->arResult["IBLOCK_SECTION_ID"],
+                                Array(
+                                    "RETURN_URL" => $arReturnUrl,
+                                    "SECTION_BUTTONS" => false,
+                                )
+                            );
+
+                            if($APPLICATION->GetShowIncludeAreas())
+                                $this->addIncludeAreaIcons(CIBlock::GetComponentMenu($APPLICATION->GetPublicShowMode(), $arButtons));
+
+                            if($this->arParams["SET_TITLE"] || isset($this->arResult[$this->arParams["BROWSER_TITLE"]]))
+                            {
+                                $arTitleOptions = array(
+                                    'ADMIN_EDIT_LINK' => $arButtons["submenu"]["edit_element"]["ACTION"],
+                                    'PUBLIC_EDIT_LINK' => $arButtons["edit"]["edit_element"]["ACTION"],
+                                    'COMPONENT_NAME' => $this->getName(),
+                                );
+                            }
+                        }
+                    }
+                }
+
+                if ($this->arParams['SET_CANONICAL_URL'] === 'Y' && $this->arResult["CANONICAL_PAGE_URL"])
+                {
+                    $APPLICATION->SetPageProperty('canonical', $this->arResult["CANONICAL_PAGE_URL"]);
+                }
+
+                if($this->arParams["SET_TITLE"])
+                    $APPLICATION->SetTitle($this->arResult["META_TAGS"]["TITLE"], $arTitleOptions);
+
+                if ($this->arParams["SET_BROWSER_TITLE"] === 'Y')
+                {
+                    if ($this->arResult["META_TAGS"]["BROWSER_TITLE"] !== '')
+                        $APPLICATION->SetPageProperty("title", $this->arResult["META_TAGS"]["BROWSER_TITLE"], $arTitleOptions);
+                }
+
+                if ($this->arParams["SET_META_KEYWORDS"] === 'Y')
+                {
+                    if ($this->arResult["META_TAGS"]["KEYWORDS"] !== '')
+                        $APPLICATION->SetPageProperty("keywords", $this->arResult["META_TAGS"]["KEYWORDS"], $arTitleOptions);
+                }
+
+                if ($this->arParams["SET_META_DESCRIPTION"] === 'Y')
+                {
+                    if ($this->arResult["META_TAGS"]["DESCRIPTION"] !== '')
+                        $APPLICATION->SetPageProperty("description", $this->arResult["META_TAGS"]["DESCRIPTION"], $arTitleOptions);
+                }
+
+                if($this->arParams["INCLUDE_IBLOCK_INTO_CHAIN"] && isset($this->arResult["IBLOCK"]["NAME"]))
+                {
+                    $APPLICATION->AddChainItem($this->arResult["IBLOCK"]["NAME"], $this->arResult["ELEMENT"]["~LIST_PAGE_URL"]);
+                }
+
+                if($this->arParams["ADD_SECTIONS_CHAIN"] && is_array($this->arResult["SECTION"]))
+                {
+                    foreach($this->arResult["SECTION"]["PATH"] as $arPath)
+                    {
+                        if ($arPath["IPROPERTY_VALUES"]["SECTION_PAGE_TITLE"] != "")
+                            $APPLICATION->AddChainItem($arPath["IPROPERTY_VALUES"]["SECTION_PAGE_TITLE"], $arPath["~SECTION_PAGE_URL"]);
+                        else
+                            $APPLICATION->AddChainItem($arPath["NAME"], $arPath["~SECTION_PAGE_URL"]);
+                    }
+                }
+                if ($this->arParams["ADD_ELEMENT_CHAIN"])
+                    $APPLICATION->AddChainItem($this->arResult["META_TAGS"]["ELEMENT_CHAIN"]);
+
+                if ($this->arParams["SET_LAST_MODIFIED"] && $this->arResult["TIMESTAMP_X"])
+                {
+                    Context::getCurrent()->getResponse()->setLastModified(DateTime::createFromUserTime($this->arResult["TIMESTAMP_X"]));
+                }
+
+            }
             /*$GLOBALS['CACHE_MANAGER']->StartTagCache("/".SITE_ID.$this->GetRelativePath());
             $GLOBALS['CACHE_MANAGER']->RegisterTag('iblock_id_4');//Кеш будет зависить от изменений инфоблока 9
             $GLOBALS['CACHE_MANAGER']->EndTagCache();*/
