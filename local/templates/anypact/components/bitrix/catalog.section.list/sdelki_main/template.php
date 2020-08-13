@@ -21,7 +21,7 @@ $this->setFrameMode(true);
             <h5 style="min-height: 54px;"><?=$section['NAME']?></h5>
             <?=$section['DESCRIPTION']?>
             <?
-                $URL_Section = '/pacts/?SECTION_ID='.$section['ID'];
+                $URL_Section = $section['SECTION_PAGE_URL'];
                 // частный случай
                 if($section['ID'] == "29"){
                     $URL_Section = 'https://nfksber.ru/open_account/';
