@@ -101,7 +101,7 @@ switch ($arData['atrr_text']) {
         foreach($arFiles as $key => $file){
             $image_src = $file['tmp_name'];
             $tmp_image = $_SERVER['DOCUMENT_ROOT'] . "/upload/image/" . $file['name'];
-            $resize_img = CFile::ResizeImageFile($image_src, $tmp_image, array('width'=>'730', 'height'=>'500'), BX_RESIZE_IMAGE_EXACT, array(
+            $resize_img = CFile::ResizeImageFile($image_src, $tmp_image, array('width'=>'730', 'height'=>'500'), BX_RESIZE_IMAGE_PROPORTIONAL, array(
                 'type' => 'image',
                 'size' => 'small',
                 'position' => 'bottomright',
