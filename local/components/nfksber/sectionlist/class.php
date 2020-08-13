@@ -85,7 +85,7 @@ class sectionPacts extends CBitrixComponent
     private function getTreeCategory($id_iblock){
         $tree = CIBlockSection::GetTreeList(
             $arFilter=Array('IBLOCK_ID' => $id_iblock, 'ACTIVE' => 'Y'),
-            $arSelect=Array('LEFT_MARGIN', 'NAME', 'DEPTH_LEVEL', 'ID')
+            $arSelect=Array('LEFT_MARGIN', 'NAME', 'DEPTH_LEVEL', 'ID', 'IBLOCK_ID', 'SECTION_PAGE_URL')
         );
         $arrTree = array();
         while($section = $tree->GetNext()) {
@@ -100,7 +100,7 @@ class sectionPacts extends CBitrixComponent
         if($this->startResultCache(false, array($USER->GetID())))
         {
             $this->arResult = array_merge($this->arResult, $this->paramsUser($this->arParams));                                 
-            $this->arResult = $this->listSection($this->arResult["INFOBLOCK_ID"], $this->arResult["SECTION_ID"]);
+            $this->arResult['INFOBLOCK_SECTION_LIST'] = $this->listSection($this->arResult["INFOBLOCK_ID"], $this->arResult["SECTION_ID"]);
             $this->arResult["TREE_CATEGORY"] = $this->getTreeCategory($this->arResult["INFOBLOCK_ID"]);
             $this->includeComponentTemplate();
         }

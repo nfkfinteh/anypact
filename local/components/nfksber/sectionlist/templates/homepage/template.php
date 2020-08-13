@@ -3,7 +3,7 @@
     <li><a href="/pacts/">Все категории</a></li>
     <? foreach ($arResult['TREE_CATEGORY'] as $item_category){?>
         <li style = "padding-left:<?echo $item_category["DEPTH_LEVEL"]*5?>px">
-            <a href="/pacts/?SECTION_ID=<?=$item_category["ID"]?>">
+            <a href="<?=$item_category["SECTION_PAGE_URL"]?>">
                 <?=$item_category["NAME"]?>
                 <?if ($item_category["DEPTH_LEVEL"]==1) echo '<span></span>'; //class="chevron-down"?>
             </a>

@@ -16,13 +16,13 @@ $strSectionEdit = CIBlock::GetArrayByID($arParams["IBLOCK_ID"], "SECTION_EDIT");
 $strSectionDelete = CIBlock::GetArrayByID($arParams["IBLOCK_ID"], "SECTION_DELETE");
 $arSectionDeleteParams = array("CONFIRM" => GetMessage('CT_BCSL_ELEMENT_DELETE_CONFIRM'));
 ?>
-<?if(!empty($arResult['SECTIONS'])){?>
+<?if(!empty($arResult['INFOBLOCK_SECTION_LIST']['SECTIONS'])){?>
     <div class="category">
         <span class="category-name">Категории:</span>
         <div class="row">
             <div class="col-lg-7 col-md-9 col-sm-12">
                 <div class="row">
-                  <?foreach ($arResult['SECTIONS'] as $arSection) {
+                  <?foreach ($arResult['INFOBLOCK_SECTION_LIST']['SECTIONS'] as $arSection) {
                         $this->AddEditAction($arSection['ID'], $arSection['EDIT_LINK'], $strSectionEdit);
                         $this->AddDeleteAction($arSection['ID'], $arSection['DELETE_LINK'], $strSectionDelete, $arSectionDeleteParams);
                     ?>
