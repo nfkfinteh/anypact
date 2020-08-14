@@ -4,6 +4,13 @@ if(!empty($arResult['FORM_SDELKA']['adCity'])){
 }elseif(!empty($arParams['LOCATION'])){
     $city = $arParams['LOCATION'];
 }
+$this->addExternalCss(SITE_TEMPLATE_PATH."/module/trumbowyg/dist/ui/trumbowyg.min.css");
+$this->addExternalCss(SITE_TEMPLATE_PATH."/module/trumbowyg/dist/plugins/table/ui/trumbowyg.table.min.css");
+$this->addExternalJS(SITE_TEMPLATE_PATH."/module/trumbowyg/dist/trumbowyg.min.js");
+$this->addExternalJS(SITE_TEMPLATE_PATH."/module/trumbowyg/dist/langs/ru.min.js");
+$this->addExternalJS(SITE_TEMPLATE_PATH."/module/trumbowyg/dist/plugins/history/trumbowyg.history.min.js");
+$this->addExternalJS(SITE_TEMPLATE_PATH."/module/trumbowyg/dist/plugins/pasteimage/trumbowyg.pasteimage.min.js");
+$this->addExternalJS(SITE_TEMPLATE_PATH."/module/trumbowyg/dist/plugins/table/trumbowyg.table.min.js");
 ?>
 <h1>Новое предложение</h1>
 <div class="tender cardPact">
@@ -243,4 +250,24 @@ $jsParams = [
 ?>
 <script type="text/javascript">
     var adData = <?=CUtil::PhpToJSObject($jsParams)?>;
+</script>
+<script>
+    $.trumbowyg.svgPath = "<?=SITE_TEMPLATE_PATH?>/module/trumbowyg/dist/ui/icons.svg";
+    var editorSettings = {
+        btns: [
+            ['historyUndo','historyRedo'],
+            ['strong', 'em'],
+            ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull'],
+            ['unorderedList', 'orderedList'],
+            ['insertImage', 'link'],
+            ['table'],
+            ['horizontalRule'],
+            ['removeformat'],
+            ['fullscreen']
+        ],
+        defaultLinkTarget: '_blank',
+        lang: 'ru'
+    };
+    $('#ad_descript').trumbowyg(editorSettings);
+    $('#ad_condition').trumbowyg(editorSettings);
 </script>

@@ -1,3 +1,12 @@
+<?
+$this->addExternalCss(SITE_TEMPLATE_PATH."/module/trumbowyg/dist/ui/trumbowyg.min.css");
+$this->addExternalCss(SITE_TEMPLATE_PATH."/module/trumbowyg/dist/plugins/table/ui/trumbowyg.table.min.css");
+$this->addExternalJS(SITE_TEMPLATE_PATH."/module/trumbowyg/dist/trumbowyg.min.js");
+$this->addExternalJS(SITE_TEMPLATE_PATH."/module/trumbowyg/dist/langs/ru.min.js");
+$this->addExternalJS(SITE_TEMPLATE_PATH."/module/trumbowyg/dist/plugins/history/trumbowyg.history.min.js");
+$this->addExternalJS(SITE_TEMPLATE_PATH."/module/trumbowyg/dist/plugins/pasteimage/trumbowyg.pasteimage.min.js");
+$this->addExternalJS(SITE_TEMPLATE_PATH."/module/trumbowyg/dist/plugins/table/trumbowyg.table.min.js");
+?>
 <div id="params_object" style="display:none" data="<?=$arResult["ELEMENT"]["ID"]?>"></div>
 <h1><?=$arResult["ELEMENT"]["NAME"]?></h1>
 <div class="tender cardPact">
@@ -46,17 +55,13 @@
             <div class="cardPact-EditText">
                 <div class="cardPact-EditText-Descript">
                     <h3>Описание</h3><span>(режим редактирования)</span>
-                    <div class="editbox" contenteditable="true">
-                        <?=$arResult["ELEMENT"]["DETAIL_TEXT"]?>
-                    </div>
+                    <textarea class="editbox" id="ad_descript"><?=$arResult["ELEMENT"]["DETAIL_TEXT"]?></textarea>
                     <button class="btn btn-nfk save" id="save_descript">Сохранить</button>
                     <div style="clear: both;"></div>
                 </div>
                 <div class="cardPact-EditText-Сonditions">
                     <h3>Условия</h3><span>(режим редактирования)</span>
-                    <div class="editbox" contenteditable="true">
-                        <?=$arResult["PROPERTY"]["CONDITIONS_PACT"]["VALUE"]["TEXT"]?>
-                    </div>
+                    <textarea class="editbox" id="ad_condition" data-code="<?=$arResult['PROPERTY']['CONDITIONS_PACT']['CODE']?>"><?=$arResult["PROPERTY"]["CONDITIONS_PACT"]["VALUE"]["TEXT"]?></textarea>
                     <button class="btn btn-nfk save" id="save_conditions">Сохранить</button>
                     <div style="clear: both;"></div>
                 </div>
@@ -253,4 +258,24 @@ $jsParams = [
 <script>
     var adData = <?=CUtil::PhpToJSObject($jsParams)?>;
     var arImg = <?=CUtil::PhpToJSObject($arResult['JS_DATA']['IMG_FILE'])?>
+</script>
+<script>
+    $.trumbowyg.svgPath = "<?=SITE_TEMPLATE_PATH?>/module/trumbowyg/dist/ui/icons.svg";
+    var editorSettings = {
+        btns: [
+            ['historyUndo','historyRedo'],
+            ['strong', 'em'],
+            ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull'],
+            ['unorderedList', 'orderedList'],
+            ['insertImage', 'link'],
+            ['table'],
+            ['horizontalRule'],
+            ['removeformat'],
+            ['fullscreen']
+        ],
+        defaultLinkTarget: '_blank',
+        lang: 'ru'
+    };
+    $('#ad_descript').trumbowyg(editorSettings);
+    $('#ad_condition').trumbowyg(editorSettings);
 </script>

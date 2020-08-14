@@ -1,6 +1,6 @@
 <?
 require_once($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/include/prolog_before.php");
-
+require($_SERVER["DOCUMENT_ROOT"] . "/local/class/CFormatHTMLText.php");
 CModule::IncludeModule('iblock');
 
 $el = new CIBlockElement;
@@ -11,7 +11,7 @@ switch ($_POST['atrr_text']) {
         $arLoadProductArray = Array(
             "MODIFIED_BY"    => $USER->GetID(),
             "DETAIL_TEXT_TYPE" =>"html",
-            "DETAIL_TEXT" => html_entity_decode($_POST['text'])
+            "DETAIL_TEXT" => CFormatHTMLText::TextFormatting(html_entity_decode($_POST['text']))
             //"DETAIL_TEXT"    => $_POST['text']
         );        
         break;
@@ -23,7 +23,7 @@ switch ($_POST['atrr_text']) {
 
         $ELEMENT_ID = $_POST['id_element']; 
         $PROPERTY_CODE = "CONDITIONS_PACT";
-        $PROPERTY_VALUE = html_entity_decode($_POST['text']);  // значение свойства
+        $PROPERTY_VALUE = CFormatHTMLText::TextFormatting(html_entity_decode($_POST['text']));  // значение свойства
 
         $value="text";
         CIBlockElement::SetPropertyValueCode($ELEMENT_ID, $PROPERTY_CODE, array("VALUE"=>array("TEXT"=>$PROPERTY_VALUE, "TYPE"=>"html")));

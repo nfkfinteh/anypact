@@ -236,6 +236,11 @@ div#param_selected_activ_date{
     width: 100%;
 }
 
+.trumbowyg-box.trumbowyg-editor-visible .trumbowyg-textarea {
+    margin: 0;
+    border: 0;
+}
+
 @media screen and (max-width: 991px) { 
     .cardPact-box-BoxMainImg .CardPact-box-edit-block-rem_img {
         display: block;

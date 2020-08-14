@@ -197,6 +197,11 @@ button.onActive {
     margin: 0!important;
 }
 
+.trumbowyg-box.trumbowyg-editor-visible .trumbowyg-textarea {
+    margin: 0;
+    border: 0;
+}
+
 @media screen and (max-width: 1200px){
     
     .label-title{

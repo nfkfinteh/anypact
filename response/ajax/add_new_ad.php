@@ -1,4 +1,5 @@
 <?php require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/include/prolog_before.php");
+require($_SERVER["DOCUMENT_ROOT"] . "/local/class/CFormatHTMLText.php");
 global $USER;
 $postData = $_POST['main'];
 $data = json_decode($postData, true);
@@ -87,7 +88,7 @@ if(in_array( 1, $arGroups) || in_array( 6, $arGroups)){
     //дополнительные свойства
     $data['PROPERTY_VALUES']['PACT_USER'] = $data['MODIFIED_BY'];
     $data['PROPERTY_VALUES']['ID_COMPANY'] = $arUser['UF_CUR_COMPANY'];
-    $data['PROPERTY_VALUES']['CONDITIONS_PACT'] = str_replace(array("\n\r", "\r\n", "\n", "\r"), "<br>", $data['PROPERTY_VALUES']['CONDITIONS_PACT']);
+    $data['PROPERTY_VALUES']['CONDITIONS_PACT'] = CFormatHTMLText::TextFormatting($data['PROPERTY_VALUES']['CONDITIONS_PACT']);
 
     $el = new CIBlockElement;
     $elDogovor = new CIBlockElement;
@@ -107,7 +108,7 @@ if(in_array( 1, $arGroups) || in_array( 6, $arGroups)){
         "NAME"           => $data['NAME'],
         "CODE"           => $data['CODE'],
         "ACTIVE"         => $data['ACTIVE'],
-        "DETAIL_TEXT"    => str_replace(array("\n\r", "\r\n", "\n", "\r"), "<br>", $data['DETAIL_TEXT']['TEXT']),
+        "DETAIL_TEXT"    => CFormatHTMLText::TextFormatting($data['DETAIL_TEXT']['TEXT']),
         "DETAIL_TEXT_TYPE" => $data['DETAIL_TEXT']['TYPE'],
         /*"DETAIL_PICTURE" => $detailPicture,
         "PREVIEW_PICTURE" => $detailPicture,*/

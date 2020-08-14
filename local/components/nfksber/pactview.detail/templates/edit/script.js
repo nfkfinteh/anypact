@@ -156,8 +156,8 @@ $(document).ready(function() {
     });
 
     $("#save_descript").on('click', function() {
-        var text_descript = $(".cardPact-EditText-Descript .editbox").html().trim();
-        cntDescript = $(".cardPact-EditText-Descript .editbox").text().trim().length;
+        var text_descript = $("#ad_descript").val();
+        cntDescript = $("#ad_descript").val().trim().length;
 
         preload('show');
         if(cntDescript==0) {
@@ -189,8 +189,8 @@ $(document).ready(function() {
     });
 
     $("#save_conditions").on('click', function() {
-        var text_descript = $(".cardPact-EditText-Сonditions .editbox").html().trim();
-        cntDescript = $(".cardPact-EditText-Сonditions .editbox").text().trim().length;
+        var text_descript = $("#ad_condition").val();
+        cntDescript = $("#ad_condition").val().trim().length;
         preload('show');
         if(cntDescript==0) {
             preload('hide');

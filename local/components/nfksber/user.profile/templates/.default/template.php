@@ -150,7 +150,7 @@ if($arResult["BLACK_LIST"]['CLOSE']){
                             foreach ($arResult['ITEMS'] as $item):?>
                                 <div class="col-lg-4 col-md-6 col-sm-12 tender-block">
                                     <div class="tender-post">
-                                        <a href="/pacts/view_pact/?ELEMENT_ID=<?=$item['ID']?>">
+                                        <a href="<?=$item['DETAIL_PAGE_URL']?>">
                                             <div class="tender-img">
                                                 <?if(!empty($item['INPUT_FILES']['VALUE'])):?>
                                                     <img src="<?=CFile::GetPath($item['INPUT_FILES']['VALUE'][0])?>">
@@ -160,7 +160,7 @@ if($arResult["BLACK_LIST"]['CLOSE']){
                                             </div>
                                         </a>
                                         <div class="tender-text">
-                                            <a href="/pacts/view_pact/?ELEMENT_ID=<?=$item['ID']?>">
+                                            <a href="<?=$item['DETAIL_PAGE_URL']?>">
                                                 <h3><?=substr($item["NAME"], 0, 30)?></h3>
                                                 <p><?=$item["CREATED_DATE"]?></p>
                                                 <?if(!empty($item['PREVIEW_TEXT'])):?>
