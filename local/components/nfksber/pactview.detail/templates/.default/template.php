@@ -172,7 +172,7 @@ else{
                         <lable>Тип нарушения:</lable>
                         <select name="complaints_type">
                             <?
-                            $rsEnum = CIBlockPropertyEnum::GetList(array(), array("IBLOCK_ID" => 9, "CODE" => "TYPE"));
+                            $rsEnum = CIBlockPropertyEnum::GetList(array("ID" => "asc"), array("IBLOCK_ID" => 9, "CODE" => "TYPE"));
                             while($enum = $rsEnum->Fetch())
                             {
                             ?>

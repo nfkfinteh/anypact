@@ -37,9 +37,7 @@ IncludeTemplateLangFile(__FILE__);
         <?if(!$arResult['BLACKLIST']){?>
             <?if($_POST['COMMENT_EDIT']=='Y'):?>
                 <div class="offset-sm-2 offset-lg-1 col-sm-10 col-lg-7" id="edit_comment_container">
-                    <textarea placeholder="Оставьте Ваш комментарий"  maxlength="500">
-                        <?=trim($arResult['EDIT_COMMENT']['UF_TEXT_MESSAGE'])?>
-                    </textarea>
+                    <textarea placeholder="Оставьте Ваш комментарий"  maxlength="500"><?=trim($arResult['EDIT_COMMENT']['UF_TEXT_MESSAGE'])?></textarea>
                     <input type='hidden' name='ACTION' value='add' />
                     <button class="btn btn-nfk cardPact-comment-submit" data-coment_id="<?=$arResult['EDIT_COMMENT']['ID']?>">Сохранить</button>
                 </div>

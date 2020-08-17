@@ -318,8 +318,8 @@ $(document).ready(function() {
             prop = {},
             auto_delete_button = $('#avtomatic_delete').prop("checked");
 
-        DETAIL_TEXT = $(".cardPact-EditText-Descript .editbox").html().trim();
-        prop['CONDITIONS_PACT'] = $(".cardPact-EditText-Сonditions .editbox").html().trim();
+        DETAIL_TEXT = $("#ad_descript").val();
+        prop['CONDITIONS_PACT'] = $("#ad_condition").val();
 
         prop['SUMM_PACT'] = $("#cardPact-EditText-Summ").text().trim();
         prop['SUMM_PACT'] = Number(prop['SUMM_PACT']);
