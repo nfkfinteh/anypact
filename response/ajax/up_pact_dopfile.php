@@ -1,5 +1,5 @@
 <?require_once($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/include/prolog_before.php");
-
+require_once($_SERVER["DOCUMENT_ROOT"] . "/local/class/CFormatHTMLText.php");
 CModule::IncludeModule('iblock');
 
 $arData = json_decode($_POST['arr'], true);
@@ -90,11 +90,13 @@ switch ($arData['atrr_text']) {
         $arLoadProductArray = Array(
             "MODIFIED_BY"    => $USER->GetID(),
             "DETAIL_TEXT_TYPE" =>"html",
-            "DETAIL_TEXT" => html_entity_decode($arData['DETAIL_TEXT'])
+            "DETAIL_TEXT" => CFormatHTMLText::TextFormatting(html_entity_decode($arData['DETAIL_TEXT']))
             //"DETAIL_TEXT"    => $_POST['text']
         );
         $PROPERTY_CODE  = "MAIN_FILES";
         $PROPERTY_VALUE = $arFiles;
+        if(isset($arData['PROPERTY']['CONDITIONS_PACT']))
+            $arData['PROPERTY']['CONDITIONS_PACT'] = CFormatHTMLText::TextFormatting(html_entity_decode($arData['PROPERTY']['CONDITIONS_PACT']));
 
         if($el->Update($ELEMENT_ID, $arLoadProductArray)){
             CIBlockElement::SetPropertyValuesEx($ELEMENT_ID, false, $arData['PROPERTY']);
