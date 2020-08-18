@@ -50,7 +50,10 @@ else{
         <? if(isset($arResult["PROPERTY"]["CONDITIONS_PACT"]["VALUE"]["TEXT"])){ ?>
             <h5>Условия</h5>
             <?=$arResult["PROPERTY"]["CONDITIONS_PACT"]["VALUE"]["TEXT"]?>
-        <? } ?>        
+        <? } ?>
+        <div class="detail-share">
+            <div class="ya-share2" data-services="vkontakte,facebook,odnoklassniki,twitter,viber,whatsapp,telegram"></div>
+        </div>     
     </div>
     <div class="col-md-5 col-lg-4">
         <span class="cardPact-price">

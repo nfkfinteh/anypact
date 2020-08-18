@@ -36,6 +36,8 @@ global $USER;
     $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH.'/module/cropper/cropper.min.css');
     $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH.'/module/selectize/selectize.css');
     $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH.'/css/jquery.datetimepicker.css');
+
+	$APPLICATION->AddHeadString('<script src="https://yastatic.net/share2/share.js" async="async"></script>',true);
     $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/module/jquery/jquery-3.3.1.min.js');
     $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/module/selectize/selectize.min.js');
     $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/bootstrap.min.js');
