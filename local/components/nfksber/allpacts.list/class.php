@@ -69,7 +69,11 @@ class CDemoSqr extends CBitrixComponent
             $arFilter = Array(
                 "IBLOCK_ID"=>IntVal($id_iblock),
                 "ACTIVE"=>"Y",
-                ">=DATE_ACTIVE_TO" => new \Bitrix\Main\Type\DateTime(),
+                array(
+                    "LOGIC" => "OR",
+                    array("PROPERTY_INDEFINITELY" => 18),
+                    array(">=DATE_ACTIVE_TO" => new \Bitrix\Main\Type\DateTime())
+                ),
             );
 
             $PARENT_SECTION = CIBlockFindTools::GetSectionID(

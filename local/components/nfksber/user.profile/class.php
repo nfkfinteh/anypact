@@ -116,7 +116,11 @@ class CDemoSqr extends CBitrixComponent
             }
             elseif($activeSdel == 'Y') {
                 $arFilter['ACTIVE'] = 'Y';
-                $arFilter['>=DATE_ACTIVE_TO'] = ConvertTimeStamp(time(), "SHORT");
+                $arFilter[0] = array(
+                    "LOGIC" => "OR",
+                    array("PROPERTY_INDEFINITELY" => 18),
+                    array(">=DATE_ACTIVE_TO" => new \Bitrix\Main\Type\DateTime())
+                );
             };
 
             global $USER;

@@ -88,7 +88,11 @@ class CDemoSqr extends CBitrixComponent
                 ), $arrFilter, $arrFilterN);
                 if($_REQUEST['ACTION']!='ADD' && $_REQUEST['ACTION']!='EDIT'){
                     $arFilter = array_merge($arFilter, array("ACTIVE"=>"Y",
-                    ">=DATE_ACTIVE_TO" => new \Bitrix\Main\Type\DateTime(),
+                    array(
+                        "LOGIC" => "OR",
+                        array("PROPERTY_INDEFINITELY" => 18),
+                        array(">=DATE_ACTIVE_TO" => new \Bitrix\Main\Type\DateTime())
+                    ),
                     ), $arrFilter);
                 }
                 $res = CIBlockElement::GetList(array(), $arFilter);
