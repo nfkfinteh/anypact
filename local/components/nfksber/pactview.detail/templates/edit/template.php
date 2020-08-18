@@ -146,11 +146,11 @@ $this->addExternalJS(SITE_TEMPLATE_PATH."/module/trumbowyg/dist/plugins/table/tr
                 </div>
             </div>
             <div class="cardPact__item" id="phone_block"<?if($arResult['PROPERTY']['SHOW_PHONE']['VALUE'] != 17):?> style="display: none;"<?endif;?>>
-                <div>
-                    <input type="text" class="editbox js-mask__phone" id="DEAL_PHONE" name="DEAL_PHONE" value="<?=$arResult['PROPERTY']['DEAL_PHONE']['VALUE']?>">
-                </div>
                 <div class="cardPact__title">
                     <h3>Номер телефона</h3>
+                </div>
+                <div>
+                    <input type="text" class="editbox js-mask__phone" id="DEAL_PHONE" name="DEAL_PHONE" value="<?=$arResult['PROPERTY']['DEAL_PHONE']['VALUE']?>">
                 </div>
                 <button class="btn btn-nfk save" id="save_deal_phone">Сохранить</button>
                 <div style="clear: both;"></div>
@@ -174,7 +174,7 @@ $this->addExternalJS(SITE_TEMPLATE_PATH."/module/trumbowyg/dist/plugins/table/tr
                 </div>
             </div>
             <div class="cardPact__item" id="date_block"<?if($arResult['PROPERTY']['INDEFINITELY']['VALUE'] == 18):?> style="display: none;"<?endif;?>>
-                <h4>Объявление активно до: <span class="date-active"><?=$arResult["ELEMENT"]["DATE_ACTIVE_TO"]?></span></h4>
+                <h4>Объявление активно до: <span class="date-active"><?if($arResult["ELEMENT"]["DATE_ACTIVE_TO"]){echo $arResult["ELEMENT"]["DATE_ACTIVE_TO"];}else{echo date('d.m.Y', strtotime("+10 days"));}?></span></h4>
                 <button class="btn btn-nfk" id="up_date_active">Продлить на 10 дней</button>
             </div>
             <!--Привтность сделки-->

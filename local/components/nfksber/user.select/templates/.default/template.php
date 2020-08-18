@@ -24,6 +24,11 @@ if($arResult['IS_AJAX_REQUEST'] == 'Y'){
     echo json_encode($html);
 }else{
 ?>
+<div class="cardPact__title">
+    <h3 style="margin-bottom: 0;">Выберите пользователей</h3>
+</div>
+<h4 style="margin-bottom: .5rem;">(Необязательно)</h4>
+<h4 style="margin-bottom: .5rem;">Только выбранным пользователям будет видно данное предложение</h4>
 <div>
     <input type="text" class="editbox" id="us_name" value="" name="us_name" placeholder="Выбрать">
 </div>
@@ -80,11 +85,6 @@ if($arResult['IS_AJAX_REQUEST'] == 'Y'){
         ?>
     </div>
 </div>
-<div class="cardPact__title">
-    <h3 style="margin-bottom: 0;">Выберите пользователей</h3>
-</div>
-<h4 style="margin-bottom: .5rem;">(Необязательно)</h4>
-<h4>Только выбранным пользователям будет видно данное предложение</h4>
 
 <?
 $signer = new \Bitrix\Main\Security\Sign\Signer;

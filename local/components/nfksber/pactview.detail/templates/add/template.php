@@ -18,15 +18,19 @@ $this->addExternalJS(SITE_TEMPLATE_PATH."/module/trumbowyg/dist/plugins/table/tr
         <div class="row">
             <div class="col-lg-8 col-md-8 col-sm-8">
                 <div class="cardPact__item">
-                    <div>
-                        <input type="text" class="editbox" id="ad_name" value="<?=$arResult['FORM_SDELKA']['adName']?>" name="ad_name">
-                    </div>
                     <div class="cardPact__title">
                         <h3>Название</h3>
                     </div>
                     <span>(введите описание сделки и/или предмета сделки)</span>
+                    <div>
+                        <input type="text" class="editbox" id="ad_name" value="<?=$arResult['FORM_SDELKA']['adName']?>" name="ad_name">
+                    </div>
                 </div>
                 <div class="cardPact__item">
+                    <div class="cardPact__title">
+                        <h3>Фотографии</h3>
+                    </div>
+                    <span>(не более 20)</span>
                     <div class="cardPact-box cardPact-box_img" data="<?=$arResult["ELEMENT"]["ID"]?>">
                         <div class="cardPact-box-edit" data-code="<?=$arResult['PROPERTY']['IMG_FILE']['CODE']?>">
                             <?
@@ -66,31 +70,31 @@ $this->addExternalJS(SITE_TEMPLATE_PATH."/module/trumbowyg/dist/plugins/table/tr
                             ?>
                         </div>
                     </div>
-                    <div class="cardPact__title">
-                        <h3>Фотографии</h3>
-                    </div>
-                    <span>(не более 20)</span>
                 </div>
                 <div class="cardPact__item">
-                    <div class="cardPact-EditText-Descript">
-                        <textarea class="editbox" id="ad_descript"><?=$arResult['FORM_SDELKA']['adDescript']?></textarea>
-                    </div>
                     <div class="cardPact__title">
                         <h3>Описание</h3>
                     </div>
                     <span>(добавьте краткое описание сделки или предмета сделки в произвольной форме)</span>
+                    <div class="cardPact-EditText-Descript">
+                        <textarea class="editbox" id="ad_descript"><?=$arResult['FORM_SDELKA']['adDescript']?></textarea>
+                    </div>
                 </div>
                 <div class="cardPact__item">
-                    <div class="cardPact-EditText-Сonditions">
-                        <textarea class="editbox" id="ad_condition" data-code="<?=$arResult['PROPERTY']['CONDITIONS_PACT']['CODE']?>"><?=$arResult['FORM_SDELKA']['adCondition']?></textarea>
-                    </div>
                     <div class="cardPact__title">
                         <h3>Условия</h3>
                     </div>
                     <span>(добавьте описание любых важных для вас Условий совершения сделки, например, необходима ли предоплата и т.п.)</span>
+                    <div class="cardPact-EditText-Сonditions">
+                        <textarea class="editbox" id="ad_condition" data-code="<?=$arResult['PROPERTY']['CONDITIONS_PACT']['CODE']?>"><?=$arResult['FORM_SDELKA']['adCondition']?></textarea>
+                    </div>
                 </div>
                 <div class="cardPact__item">
                     <div class="editbox-wrap">
+                        <div class="cardPact__title">
+                            <h3>Город</h3>
+                        </div>
+                        <span>(обязательно укажите населенный пункт)</span>
                         <select id="LOCATION_CITY" name="LOCATION_CITY" class="selectbox-select select-bottom js-location-city" placeholder="Выберите город">
                             <option value="">Выбор города</option>
                             <? foreach($arResult['LIST_CITY'] as $item):?>
@@ -100,22 +104,18 @@ $this->addExternalJS(SITE_TEMPLATE_PATH."/module/trumbowyg/dist/plugins/table/tr
                             <? endforeach?>
                         </select>
                     </div>
-                    <div class="cardPact__title">
-                        <h3>Город</h3>
-                    </div>
-                    <span>(обязательно укажите населенный пункт)</span>
                 </div>
 
                 <div class="wrap-map_adress">
+                    <div class="cardPact__title">
+                        <h3>Местоположение</h3>
+                    </div>
+                    <span>(желательно также указать адрес)</span>
                     <div id="header" class="search-map_input">
                         <input type="text" id="suggest" class="input-search_map" placeholder="Введите адрес">
                         <input type="hidden" id="COORDINATES_AD" name="COORDINATES_AD" value="<?=$arResult['FORM_SDELKA']['adCoordinates']?>">
                         <button type="button" id="check-button_map" class="btn btn-nfk btn-search_map">Поиск</button>
                     </div>
-                    <div class="cardPact__title">
-                        <h3>Местоположение</h3>
-                    </div>
-                    <span>(желательно также указать адрес)</span>
                     <p id="notice" class="error_form"></p>
                     <div id="map" style="height: 400px"></div>
                     <button class="btn btn-nfk" id="save_ad__button" style="margin-top:50px;" type="submit">Сохранить</button>
@@ -139,14 +139,14 @@ $this->addExternalJS(SITE_TEMPLATE_PATH."/module/trumbowyg/dist/plugins/table/tr
                 </div>
 
                 <div class="cardPact__item" id="price_block">
-                    <div class="scardPact-rightPanel__sum">
-                        <input type="text" class="editbox_sum js-number" id="cardPact-EditText-Summ" data-code="<?=$arResult['PROPERTY']['SUMM_PACT']['CODE']?>" value="<?=$arResult['FORM_SDELKA']['adSum']?>">
-                        <div style="float:right;">руб.</div>
-                    </div>
                     <div class="cardPact__title">
                         <h3>Сумма</h3>
                     </div>
                     <span>(укажите единицы)</span>
+                    <div class="scardPact-rightPanel__sum">
+                        <input type="text" class="editbox_sum js-number" id="cardPact-EditText-Summ" data-code="<?=$arResult['PROPERTY']['SUMM_PACT']['CODE']?>" value="<?=$arResult['FORM_SDELKA']['adSum']?>">
+                        <div style="float:right;">руб.</div>
+                    </div>
                 </div>
 
                 <div class="cardPact__item">
@@ -160,15 +160,19 @@ $this->addExternalJS(SITE_TEMPLATE_PATH."/module/trumbowyg/dist/plugins/table/tr
                 </div>
 
                 <div class="cardPact__item" id="phone_block" style="display: none;">
-                    <div>
-                        <input type="text" class="editbox js-mask__phone" id="DEAL_PHONE" name="DEAL_PHONE" value="<?=$arResult['PROPERTY']['DEAL_PHONE']['VALUE']?>">
-                    </div>
                     <div class="cardPact__title">
                         <h3>Номер телефона</h3>
+                    </div>
+                    <div>
+                        <input type="text" class="editbox js-mask__phone" id="DEAL_PHONE" name="DEAL_PHONE" value="<?=$arResult['PROPERTY']['DEAL_PHONE']['VALUE']?>">
                     </div>
                 </div>
                 
                 <div class="cardPact__item">
+                    <div class="cardPact__title">
+                        <h3>Категория</h3>
+                    </div>
+                    <span>(Выберите подходящую категорию)</span>
                     <div class="selectbox">
                         <div id="param_selected_category" class="view_text" data="close" data-id="<?=$arResult['FORM_SDELKA']['adSection']?>">
                             Выбор категории
@@ -184,10 +188,6 @@ $this->addExternalJS(SITE_TEMPLATE_PATH."/module/trumbowyg/dist/plugins/table/tr
                             </ul>
                         </div>
                     </div>
-                    <div class="cardPact__title">
-                        <h3>Категория</h3>
-                    </div>
-                    <span>(Выберите подходящую категорию)</span>
                     <input name="CATEGORY" value="<?=$arResult['FORM_SDELKA']['adSection']?>" type="hidden" class="param_selected_category__input" style="width: 0; height: 0;">
                 </div>
 
@@ -202,6 +202,10 @@ $this->addExternalJS(SITE_TEMPLATE_PATH."/module/trumbowyg/dist/plugins/table/tr
                 </div>
 
                 <div class="cardPact__item" id="date_block" style="display: none;">
+                    <div class="cardPact__title">
+                        <h3>Дата активности объявления</h3>
+                    </div>
+                    <span>(По умолчанию 10 дней)</span>
                     <div class="selectbox">
                         <div id="param_selected_activ_date" class="view_text">
                             <div class="date-text">Активно до:</div>
@@ -211,10 +215,6 @@ $this->addExternalJS(SITE_TEMPLATE_PATH."/module/trumbowyg/dist/plugins/table/tr
                             </div>
                         </div>
                     </div>
-                    <div class="cardPact__title">
-                        <h3>Дата активности объявления</h3>
-                    </div>
-                    <span>(По умолчанию 10 дней)</span>
                 </div>
 
                 <div class="cardPact__item">
