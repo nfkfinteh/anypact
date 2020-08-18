@@ -30,18 +30,18 @@ if($arResult["BLACK_LIST"]['CLOSE']){
                         <?if($arParams['CURRENT_USER'] != $arResult['USER']['ID']){?>
                             <?if(!$arResult["BLACK_LIST"]['CLOSE']):?>
                                 <button class="btn btn-nfk btn-uprofile js-add-blacklist" data-login="<?=$arResult['USER']['LOGIN']?>">
-                                    Добавить в ЧС
+                                    Заблокировать
                                 </button>
                             <?else:?>
                                 <button class="btn btn-nfk btn-uprofile js-delete-blacklist" data-login="<?=$arResult['USER']['LOGIN']?>">
-                                    Удалить из ЧС
+                                    Разблокировать
                                 </button>
                             <?endif?>
                         <?}?>
                         <?if(!$arResult["BLACK_LIST"]['CLOSED']){?>
                             <?if(!empty($arParams['CURRENT_USER']) && $arResult['USER']['ID'] !=$arParams['CURRENT_USER']):?>
                                 <?if(!in_array($arParams['CURRENT_USER'], $arBlackList)):?>
-                                    <a href="#" class="btn btn-nfk btn-uprofile" data-toggle="modal" data-target=".bd-comment-modal-sm">Оставить отзыв</a>
+                                    <?/*?><a href="#" class="btn btn-nfk btn-uprofile" data-toggle="modal" data-target=".bd-comment-modal-sm">Оставить отзыв</a><?*/?>
                                     <a href="#" class="btn btn-nfk btn-uprofile" data-toggle="modal" data-target=".bd-message-modal-sm">Отправить сообщение</a>
                                 <?endif?>
                                 <div class="black-list-show_hide" <?=$black_list_display;?>>
@@ -161,7 +161,7 @@ if($arResult["BLACK_LIST"]['CLOSE']){
                                         </a>
                                         <div class="tender-text">
                                             <a href="<?=$item['DETAIL_PAGE_URL']?>">
-                                                <h3><?=substr($item["NAME"], 0, 30)?></h3>
+                                                <h3 title="<?=$item["NAME"]?>"><?=TruncateText($item["NAME"], 30)?></h3>
                                                 <p><?=$item["CREATED_DATE"]?></p>
                                                 <?if(!empty($item['PREVIEW_TEXT'])):?>
                                                     <p><?=TruncateText($item['PREVIEW_TEXT'], 150)?></p>
@@ -251,7 +251,7 @@ if($arResult["BLACK_LIST"]['CLOSE']){
         </div>
     </div>
 </div>
-
+<?/*?>
 <div class="modal fade bd-comment-modal-sm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -275,3 +275,4 @@ if($arResult["BLACK_LIST"]['CLOSE']){
         </div>
     </div>
 </div>
+<?*/?>

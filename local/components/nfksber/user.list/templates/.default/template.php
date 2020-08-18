@@ -69,11 +69,11 @@
                         <?endif;?>
                         <?if(!in_array($user['ID'], $arResult['BLACKLIST']['UF_USER_B']) && $USER->GetID() != $user['ID']):?>
                             <button class="btn btn-clean js-add-blacklist" data-login="<?=$user['LOGIN']?>">
-                                <img src="<?=SITE_TEMPLATE_PATH?>/image/black-list-add.png" alt="Добавить в черный список" title="Добавить в черный список">
+                                <img src="<?=SITE_TEMPLATE_PATH?>/image/black-list-add.png" alt="Заблокировать" title="Заблокировать">
                             </button>
                         <?elseif(in_array($user['ID'], $arResult['BLACKLIST']['UF_USER_B'])):?>
                             <button class="btn btn-clean js-delete-blacklist" data-login="<?=$user['LOGIN']?>">
-                                <img src="<?=SITE_TEMPLATE_PATH?>/image/black-list.png" alt="Удалить из черного списка" title="Удалить из черного списка">
+                                <img src="<?=SITE_TEMPLATE_PATH?>/image/black-list.png" alt="Разблокировать" title="Разблокировать">
                             </button>
                         <?endif?>
                     </div>

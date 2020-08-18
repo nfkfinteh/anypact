@@ -151,7 +151,7 @@ $this->addExternalJS(SITE_TEMPLATE_PATH."/module/trumbowyg/dist/plugins/table/tr
 
                 <div class="cardPact__item">
                     <div class="cardPact__title">
-                        <h3>Показать телефон</h3> 
+                        <h3>Указать телефон</h3> 
                         <button class="onActive" active="" data-block-id="phone_block" data-value-id="17">
                             <img src="<?=SITE_TEMPLATE_PATH?>/image/DontActive.png" />
                             <input name="SHOW_PHONE" id="SHOW_PHONE" type="hidden" value=""/>

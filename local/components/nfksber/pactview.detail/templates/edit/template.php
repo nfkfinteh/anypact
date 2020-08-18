@@ -131,7 +131,7 @@ $this->addExternalJS(SITE_TEMPLATE_PATH."/module/trumbowyg/dist/plugins/table/tr
             </div>
             <div class="cardPact__item">
                 <div class="cardPact__title">
-                    <h3>Показать телефон</h3> 
+                    <h3>Указать телефон</h3> 
                     <?if($arResult['PROPERTY']['SHOW_PHONE']['VALUE'] == 17):?>
                         <button class="onActive" active="Y" data-block-id="phone_block" data-value-id="17">
                             <img src="<?=SITE_TEMPLATE_PATH?>/image/Active.png" />
