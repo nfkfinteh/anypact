@@ -44,6 +44,13 @@ $(document).ready(function() {
                     SHOW_PHONE: val
                 };
                 break;
+            case 'INDEFINITELY':
+                var postObj =  {                
+                    id_element: ID_Object,
+                    atrr_text: 'up_indefinitely',
+                    INDEFINITELY: val
+                };
+                break;
         }
 
         console.log(postObj);

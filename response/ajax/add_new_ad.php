@@ -92,12 +92,15 @@ if(in_array( 1, $arGroups) || in_array( 6, $arGroups)){
 
     $el = new CIBlockElement;
     $elDogovor = new CIBlockElement;
-
-    if(empty($data['DATE_ACTIVE_TO'])){
-        $dateFormat = time()+(86400*10);
-    }
-    else{
-        $dateFormat = MakeTimeStamp($data['DATE_ACTIVE_TO'], "DD.MM.YYYY");
+    if($data['PROPERTY_VALUES'] == 18){
+        $time = "";
+    }else{
+        if(empty($data['DATE_ACTIVE_TO'])){
+            $time = ConvertTimeStamp(time()+(86400*10), "SHORT");
+        }
+        else{
+            $time = ConvertTimeStamp(MakeTimeStamp($data['DATE_ACTIVE_TO'], "DD.MM.YYYY"), "SHORT");
+        }
     }
 
     $arLoadProductArray = Array(
@@ -113,7 +116,7 @@ if(in_array( 1, $arGroups) || in_array( 6, $arGroups)){
         /*"DETAIL_PICTURE" => $detailPicture,
         "PREVIEW_PICTURE" => $detailPicture,*/
         "DATE_ACTIVE_FROM" => ConvertTimeStamp(time(), "SHORT"),
-        "DATE_ACTIVE_TO" => ConvertTimeStamp($dateFormat, "SHORT")
+        "DATE_ACTIVE_TO" => $time
     );
 
     if($PRODUCT_ID = $el->Add($arLoadProductArray)){

@@ -61,9 +61,14 @@ switch ($_POST['atrr_text']) {
         break;
     // продление срока объявления
     case 'up_date_active':
-        $res = CIBlockElement::GetList([], ['IBLOCK_ID'=>3, 'ID'=>$PRODUCT_ID], false, false, ['IBLOCK_ID', 'ID', 'DATE_ACTIVE_TO']);
+        $res = CIBlockElement::GetList([], ['IBLOCK_ID'=>3, 'ID'=>$PRODUCT_ID], false, false, ['IBLOCK_ID', 'ID', 'DATE_ACTIVE_TO', 'PROPERTY_INDEFINITELY']);
         if($obj=$res->GetNext()){
             $arSdelka = $obj;
+        }
+
+        if($arSdelka['PROPERTY_INDEFINITELY_VALUE'] == "Y"){
+            echo json_encode([ 'VALUE' => "Нельзя продлить. Сделка бессрочная", 'TYPE'=> 'ERROR']);
+            die();
         }
 
         if(empty($arSdelka['DATE_ACTIVE_TO'])){
@@ -137,6 +142,22 @@ switch ($_POST['atrr_text']) {
         ];
         $arLoadProductArray = Array(
                 "MODIFIED_BY"    => $USER->GetID(),
+        );
+    
+        $checkUpdate = CIBlockElement::SetPropertyValuesEx($PRODUCT_ID, false, $arProperty);
+        break;
+    case 'up_indefinitely':
+        $arProperty = [
+            'INDEFINITELY'=>$_POST['INDEFINITELY']
+        ];
+        if($_POST['INDEFINITELY'] == 18){
+            $time = "";
+        }else{
+            $time = ConvertTimeStamp(time()+(86400*10), "SHORT");    
+        }
+        $arLoadProductArray = Array(
+            "MODIFIED_BY"    => $USER->GetID(),
+            "DATE_ACTIVE_TO" => $time
         );
     
         $checkUpdate = CIBlockElement::SetPropertyValuesEx($PRODUCT_ID, false, $arProperty);

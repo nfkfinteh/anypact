@@ -192,6 +192,16 @@ $this->addExternalJS(SITE_TEMPLATE_PATH."/module/trumbowyg/dist/plugins/table/tr
                 </div>
 
                 <div class="cardPact__item">
+                    <div class="cardPact__title">
+                        <h3>Бессрочно</h3> 
+                        <button class="onActive" active="Y" data-block-id="date_block" data-value-id="18">
+                            <img src="<?=SITE_TEMPLATE_PATH?>/image/Active.png" />
+                            <input name="INDEFINITELY" id="INDEFINITELY" type="hidden" value="18"/>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="cardPact__item" id="date_block" style="display: none;">
                     <div class="selectbox">
                         <div id="param_selected_activ_date" class="view_text">
                             <div class="date-text">Активно до:</div>
@@ -206,6 +216,7 @@ $this->addExternalJS(SITE_TEMPLATE_PATH."/module/trumbowyg/dist/plugins/table/tr
                     </div>
                     <span>(По умолчанию 10 дней)</span>
                 </div>
+
                 <div class="cardPact__item">
                     <div class="cardPact__title">
                         <h3>Приватность</h3> 

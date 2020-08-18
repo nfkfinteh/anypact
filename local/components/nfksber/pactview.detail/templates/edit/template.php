@@ -155,9 +155,28 @@ $this->addExternalJS(SITE_TEMPLATE_PATH."/module/trumbowyg/dist/plugins/table/tr
                 <button class="btn btn-nfk save" id="save_deal_phone">Сохранить</button>
                 <div style="clear: both;"></div>
             </div>
+
             <!--Срок объявления -->
-            <h4>Объявление активно до: <span class="date-active"><?=$arResult["ELEMENT"]["DATE_ACTIVE_TO"]?></span></h4>
-            <button class="btn btn-nfk" id="up_date_active">Продлить на 10 дней</button>
+            <div class="cardPact__item">
+                <div class="cardPact__title">
+                    <h3>Бессрочно</h3> 
+                    <?if($arResult['PROPERTY']['INDEFINITELY']['VALUE'] == 18):?>
+                        <button class="onActive" active="Y" data-block-id="date_block" data-value-id="18">
+                            <img src="<?=SITE_TEMPLATE_PATH?>/image/Active.png" />
+                            <input name="INDEFINITELY" id="INDEFINITELY" type="hidden" value="18"/>
+                        </button>
+                    <?else:?>
+                        <button class="onActive" active="" data-block-id="date_block" data-value-id="18">
+                            <img src="<?=SITE_TEMPLATE_PATH?>/image/DontActive.png" />
+                            <input name="INDEFINITELY" id="INDEFINITELY" type="hidden" value=""/>
+                        </button>
+                    <?endif;?>
+                </div>
+            </div>
+            <div class="cardPact__item" id="date_block"<?if($arResult['PROPERTY']['INDEFINITELY']['VALUE'] == 18):?> style="display: none;"<?endif;?>>
+                <h4>Объявление активно до: <span class="date-active"><?=$arResult["ELEMENT"]["DATE_ACTIVE_TO"]?></span></h4>
+                <button class="btn btn-nfk" id="up_date_active">Продлить на 10 дней</button>
+            </div>
             <!--Привтность сделки-->
             <div class="cardPact__item">
                 <div class="cardPact__title">

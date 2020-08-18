@@ -697,13 +697,25 @@ $(document).ready(function() {
         }
     });
 
+    // Блокировка удаления заблокированного текста
     $('#canvas').keydown(function (eventObject) {
         if (eventObject.which == 8 || eventObject.which == 46) {
             let selection = window.getSelection();
             //console.log(selection);
+            //console.log($(selection.focusNode).text());
+            //console.log($(selection.focusNode).parent().text());
+            //console.log($(selection.focusNode).next().find('nedittext'));
             //return false;
-            if (eventObject.which == 8 && selection.focusNode.previousElementSibling !== null && selection.focusNode.previousElementSibling.tagName !== null && selection.focusNode.previousElementSibling.tagName == "NEDITTEXT" && selection.focusOffset == 0) return false;
+            if (eventObject.which == 8 && selection.focusNode.previousElementSibling !== null && selection.focusNode.previousElementSibling.tagName !== null && selection.focusOffset == 0){
+                if(selection.focusNode.previousElementSibling.tagName == "NEDITTEXT"){
+                    return false;
+                }else if($(selection.focusNode.previousElementSibling).find('nedittext').length > 0){
+                    var ndt_str = $(selection.focusNode.previousElementSibling).find('nedittext').text().trim().replace(new RegExp("\n",'g'), '').replace(new RegExp("\r",'g'), '');
+                    if(selection.focusNode.previousElementSibling.textContent.trim().replace(new RegExp("\n",'g'), '').replace(new RegExp("\r",'g'), '').match(new RegExp('\\'+ndt_str+'$','ig')) !== null) return false;
+                }
+            }
             if (eventObject.which == 46 && selection.focusNode.nextElementSibling !== null && selection.focusNode.nextElementSibling.tagName !== null && selection.focusNode.nextElementSibling.tagName == "NEDITTEXT" && selection.focusOffset == selection.focusNode.length) return false;
+            if(eventObject.which == 46 && $(selection.focusNode).text().trim().replace(new RegExp("\n",'g'), '').replace(new RegExp("\r",'g'), '') == $(selection.focusNode).parent().text().trim().replace(new RegExp("\n",'g'), '').replace(new RegExp("\r",'g'), '') && $(selection.focusNode).parent().next('nedittext').length > 0) return false;
             if (eventObject.which == 46 && selection.focusNode.nextElementSibling === null && selection.focusNode == selection.focusNode.length && selection.focusNode.parentElement.nextElementSibling !== null && (selection.focusNode.parentElement.nextElementSibling.childNodes[0].nodeName == "NEDITTEXT" || (selection.focusNode.parentElement.nextElementSibling.childNodes[0].nodeName == "#text" && selection.focusNode.parentElement.nextElementSibling.childNodes[0].textContent.trim() == ""))) return false;
             if (eventObject.which == 8 && selection.anchorNode.previousElementSibling === null && selection.anchorOffset == selection.anchorNode.length && selection.focusNode.parentElement.previousElementSibling !== null && (selection.anchorNode.parentElement.previousElementSibling.childNodes[0].nodeName == "NEDITTEXT" || (selection.anchorNode.parentElement.previousElementSibling.childNodes[0].nodeName == "#text" && selection.anchorNode.parentElement.previousElementSibling.childNodes[0].textContent.trim() == ""))) return false;
             if ($(selection.focusNode).find('nedittext').length > 0 && selection.focusNode.textContent !== undefined){
