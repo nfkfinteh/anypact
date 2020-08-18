@@ -219,7 +219,7 @@ class CDemoSqr extends CBitrixComponent
             $entity = Bitrix\Highloadblock\HighloadBlockTable::compileEntity($hlblock);
             $entity_data_class = $entity->getDataClass();
             $rsData = $entity_data_class::getList(array(
-                "select" => array("UF_USER_A", "UF_USER_B"),
+                "select" => array("UF_USER_A", "UF_USER_B", "UF_ACCEPT"),
                 "order" => array("ID" => "ASC"),
                 "filter" => array(array(
                     "LOGIC" => "OR",
@@ -228,18 +228,25 @@ class CDemoSqr extends CBitrixComponent
                 ))
             ));
             while($arData = $rsData->Fetch()){
-                $result[] = $arData["UF_USER_A"];
-                $result[] = $arData["UF_USER_B"];
+                if($arData["UF_USER_A"] == $current_user && $arData['UF_ACCEPT'] == HLB_USER_FRIENDS_ACCEPT_A){
+                    $result['FRIENDS_REQUEST'][] = $arData["UF_USER_B"];
+                }else{
+                    $result['FRENDS'][] = $arData["UF_USER_A"];
+                    $result['FRENDS'][] = $arData["UF_USER_B"];
+                }
             }
         }
-        if(empty($result)){
-            $result = [];
+        if(empty($result['FRENDS'])){
+            $result['FRENDS'] = [];
+        }
+        if(empty($result['FRIENDS_REQUEST'])){
+            $result['FRIENDS_REQUEST'] = [];
         }
 
-        $result = array_unique($result);
+        $result['FRENDS'] = array_unique($result['FRENDS']);
 
-        if(isset($result[array_search($current_user, $result)]))
-            unset($result[array_search($current_user, $result)]);
+        if(isset($result['FRENDS'][array_search($current_user, $result['FRENDS'])]))
+            unset($result['FRENDS'][array_search($current_user, $result['FRENDS'])]);
 
         return $result;
     }
@@ -378,7 +385,7 @@ class CDemoSqr extends CBitrixComponent
                 $arItems  =  $this->getUserSdel($ajaxData, $arNavParams, 'user');
                 $arResult["ITEMS"] = $arItems['ITEMS'];
                 //$arResult["FRENDS"] = $this->getFrends();
-                $arResult["FRENDS"] =$arFrends;
+                $arResult = array_merge($arResult, $arFrends);
                 $arResult["BLACK_LIST"] = $arBlackList;
 
                 $res = CIBlockElement::GetList(

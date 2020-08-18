@@ -53,7 +53,8 @@ $(document).ready(function(){
         });
     });
 
-    $(document).on('click', '.js-add-frends', function(){
+    $(document).on('click', '.js-add-frends', function(e){
+        e.preventDefault();
         let login = $(this).attr('data-login');
         if(login) {
             let this_btn = $(this);
@@ -70,21 +71,34 @@ $(document).ready(function(){
                         console.log($result['VALUE']);
                     }
                     if ($result['TYPE'] == 'SUCCESS') {
-                        $(this_btn).addClass('js-delete-frends');
-                        $(this_btn).removeClass('js-add-frends');
-                        $(this_btn).text('Удалить из друзей');
+                        if($result['ST'] == 'NEW'){
+                            $(this_btn).removeClass('js-add-frends');
+                            $(this_btn).addClass('disabled');
+                            $(this_btn).text('Заявка отправлена');
+                            $(this_btn).parent().append('<div class="not_auth-error"><span class="triangle" style="display: block; z-index: 1;">▲</span><a href="#" class="js-delete-frends" data-login="'+login+'">Отменить заявку</a></div>');
+                        }else{
+                            $(this_btn).addClass('js-delete-frends');
+                            $(this_btn).removeClass('js-add-frends');
+                            $(this_btn).text('Удалить из друзей');
+                        }
                         preload('hide');
                         showResult('#popup-success','Добавлен в друзья');
                     }
                 },
             });
         }
+        return false;
     });
 
-    $(document).on('click', '.js-delete-frends', function(){
+    $(document).on('click', '.js-delete-frends', function(e){
+        e.preventDefault();
         let login = $(this).attr('data-login');
         if(login) {
             let this_btn = $(this);
+            if(!this_btn.hasClass('btn-nfk')){
+                this_btn = $(this).parents('.request_sent').children('.btn-nfk');
+                $(this).parent().remove();
+            }
             preload('show');
             $.ajax({
                 type: 'POST',
@@ -99,6 +113,7 @@ $(document).ready(function(){
                     }
                     if ($result['TYPE'] == 'SUCCESS') {
                         $(this_btn).removeClass('js-delete-frends');
+                        $(this_btn).removeClass('disabled');
                         $(this_btn).addClass('js-add-frends');
                         $(this_btn).text('Добавить в друзья');
                         preload('hide');
@@ -107,6 +122,7 @@ $(document).ready(function(){
                 },
             });
         }
+        return false;
     });
 
     $(document).on('change', '.company.list__select', function(){

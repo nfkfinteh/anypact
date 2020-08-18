@@ -132,15 +132,17 @@ if(isset($arFields['ID'])){
     $id = $arFields['ID'];
     unset($arFields['ID']);
     $result = $entity_data_class::update($id, $arFields);
+    $ST = "ACCEPT";
 }elseif($data['action']=='add'){
     $result = $entity_data_class::add($arFields);
+    $ST = "NEW";
 }elseif(!empty($delete) && $data['action']=='delete'){
     $result = $entity_data_class::Delete($delete);
 }
 
 if($result->isSuccess()){
     if($data['action']=='add'){
-        echo json_encode([ 'VALUE'=>'добавлен в друзья', 'TYPE'=> 'SUCCESS']);
+        echo json_encode([ 'VALUE'=>'добавлен в друзья', 'TYPE'=> 'SUCCESS', 'ST' => $ST]);
     }elseif($data['action']=='delete'){
         echo json_encode([ 'VALUE'=>'удален из друзей', 'TYPE'=> 'SUCCESS']);
     }

@@ -69,3 +69,12 @@
     padding: 10px;
     width: 100%;
 }
+.request_sent{
+    position: relative;
+}
+.request_sent .not_auth-error{
+    width: 100%;
+}
+.request_sent:hover>.not_auth-error {
+    visibility: visible;
+}

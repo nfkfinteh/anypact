@@ -14,16 +14,26 @@ if($arResult["BLACK_LIST"]['CLOSE']){
                 <h3 class="font-weight-bold mt-4"><?=$arResult['USER']['LAST_NAME']?> <?=$arResult['USER']['NAME']?> <?=$arResult['USER']['SECOND_NAME']?></h3>
                     <?if($arResult['TYPE_HOLDER'] == 'user'):?>
                         <?if(!$arResult["BLACK_LIST"]['CLOSED']){?>
-                            <div class="black-list-show_hide" <?=$black_list_display;?>>
-                                <?if(!in_array($arResult['USER']['ID'], $arResult['FRENDS']) && $arParams['CURRENT_USER'] != $arResult['USER']['ID']):?>
-                                    <a href="#" class="btn btn-nfk btn-uprofile js-add-frends" data-login="<?=$arResult['USER']['LOGIN']?>">
-                                        Добавить в друзья
-                                    </a>
-                                <?elseif(in_array($arResult['USER']['ID'], $arResult['FRENDS'])):?>
+                            <div class="black-list-show_hide request_sent" <?=$black_list_display;?>>
+                                <?if(in_array($arResult['USER']['ID'], $arResult['FRENDS'])):?>
                                     <a href="#" class="btn btn-nfk btn-uprofile js-delete-frends" data-login="<?=$arResult['USER']['LOGIN']?>">
                                         Удалить из друзей
                                     </a>
-                                <?endif?>
+                                <?elseif(in_array($arResult['USER']['ID'], $arResult['FRIENDS_REQUEST'])):?>
+                                    <a href="#" class="btn btn-nfk btn-uprofile disabled" data-login="<?=$arResult['USER']['LOGIN']?>">
+                                        Заявка отправлена
+                                    </a>
+                                    <div class="not_auth-error">
+                                        <span class="triangle" style="display: block; z-index: 1;">▲</span>
+                                        <a href="#" class="js-delete-frends" data-login="<?=$arResult['USER']['LOGIN']?>">
+                                            Отменить заявку
+                                        </a>
+                                    </div>
+                                <?elseif($arParams['CURRENT_USER'] != $arResult['USER']['ID']):?>
+                                    <a href="#" class="btn btn-nfk btn-uprofile js-add-frends" data-login="<?=$arResult['USER']['LOGIN']?>">
+                                        Добавить в друзья
+                                    </a>
+                                <?endif;?>
                             </div>
                         <?}?>
                         
