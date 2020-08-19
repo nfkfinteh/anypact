@@ -180,10 +180,42 @@ $this->addExternalJS(SITE_TEMPLATE_PATH."/module/trumbowyg/dist/plugins/table/tr
                         </div>
                         <div class="select_category">
                             <ul id="choice_category">
+                                <?
+                                $arChild = array();
+                                $div = 0;
+                                ?>
                                 <? foreach($arResult["INFOBLOCK_SECTION_LIST"] as $item){?>
-                                <li style="margin-left:<?=$item["DEPTH_LEVEL"]?>0px;">
-                                    <a href="#" data-id="<?=$item['ID'];?>"><?=$item['NAME'];?></a>
-                                </li>
+                                    <?if(isset($item['CHILD'])){?>
+                                        <li>
+                                            <a href="#" class="category-parent" data-parent-id="<?=$item['ID'];?>"><?=$item['NAME'];?> <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
+                                            
+                                        </li>
+                                        <?
+                                        foreach($item['CHILD'] as $child){
+                                            $arChild[$child] = $item['ID'];
+                                        }
+                                        ?>
+                                        <div class="category-childs" data-parent-id="<?=$item['ID'];?>">
+                                        <?$div++;?>
+                                    <?}else{?>
+                                        <li>
+                                            <a href="#" class="category-select" data-id="<?=$item['ID'];?>"><?=$item['NAME'];?></a>
+                                        </li>
+                                    <?}?>
+                                    <?php
+                                    if(isset($arChild[$item['ID']])){
+                                        unset($arChild[$item['ID']]);
+                                        if(array_search($item['IBLOCK_SECTION_ID'], $arChild) === false && array_search($item['ID'], $arChild) === false){
+                                            echo "</div>";
+                                            $div--;
+                                        }
+                                    }
+                                    if($div > 0 && empty($arChild)){
+                                        for($i = 1; $i <= $div; $i++)
+                                            echo "</div>";
+                                        $div = 0;
+                                    }
+                                    ?>
                                 <?}?>
                             </ul>
                         </div>

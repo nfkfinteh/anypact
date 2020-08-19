@@ -31,12 +31,20 @@ $(document).ready(function() {
         return false;
     });
 
+    // Раскрытие списка
+    $('#choice_category li a.category-parent').on('click', function() {
+        var id = $(this).attr('data-parent-id');
+        $(this).toggleClass('category-section-open');
+        $('#choice_category .category-childs[data-parent-id="'+id+'"]').slideToggle();
+        return false;
+    });
+
     // Выбор категории
-    $('#choice_category li a').on('click', function() {
+    $('#choice_category li a.category-select').on('click', function() {
         let selected_item = $(this);
         let selected_item_text = selected_item.text();
         let selected_item_id = selected_item.attr('data-id');
-        $('.select_category').css('display', 'none');
+        $('.select_category').slideToggle();
         $('#param_selected_category').html(selected_item_text + '<span class="glyphicon glyphicon-chevron-down"></span>');
         $('#param_selected_category').attr('data-id', selected_item_id);
 
@@ -54,17 +62,8 @@ $(document).ready(function() {
 
     // открытие списка категорий
     $('#param_selected_category').on('click', function() {
-        let status = $(this).attr("data");
-        if(status == 'close'){
-            // открытие списка
-            $('.select_category').css({ 'display': 'table', 'height': '0px' });
-            $(this).attr("data", "open");
-        }else {
-            // закрытие списка
-            $('.select_category').css({ 'display': 'none', 'height': '0px' });            
-            $(this).attr("data", "close");
-        }
-        
+        $(this).find('.glyphicon').toggleClass('transform-rotate-180deg');
+        $('.select_category').slideToggle();
     });
 
     var arFiles = [];

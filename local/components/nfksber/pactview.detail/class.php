@@ -290,7 +290,16 @@ class CDemoSqr extends CBitrixComponent
         );
         while($section = $tree->GetNext()) {
             $arTree[] = $section;
+            if(!empty($section['IBLOCK_SECTION_ID']))
+                $arChild[$section['IBLOCK_SECTION_ID']][] = $section['ID'];
         }
+
+        foreach($arTree as $key => $value){
+            if(isset($arChild[$value['ID']])){
+                $arTree[$key]['CHILD'] = $arChild[$value['ID']];
+            }
+        }
+
         //print_r($arTree);
         return $arTree;
     }

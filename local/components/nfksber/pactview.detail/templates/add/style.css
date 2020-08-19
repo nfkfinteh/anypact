@@ -155,18 +155,12 @@
 }
 
 .select_category {
-    position: absolute;
-    z-index: 500;
-    background: #fff;
-    border: 1px solid #ff6416;
-    padding: 14px;
-    font-size: 16px;
-    width: calc(100% + 2px);
-    top: 50px;
-    left: -1px;
-    border-top: none;
-    border-radius: 0 0 5px 5px;
     display: none;
+    background: #fff;
+    padding-top: 14px;
+    font-size: 16px;
+    width: 100%;
+    overflow: hidden;
 }
 
 .view_text {
@@ -178,6 +172,10 @@
     color: #9E9E9E;
     float: right;
     font-size: 20px;
+    -webkit-transition: all ease-out 0.4s;
+    -moz-transition: all ease-out 0.4s;
+    -o-transition: all ease-out 0.4s;
+    transition: all ease-out 0.4s;
 }
 
 #param_selected_activ_date_input{
@@ -239,6 +237,44 @@ div#param_selected_activ_date{
 .trumbowyg-box.trumbowyg-editor-visible .trumbowyg-textarea {
     margin: 0;
     border: 0;
+}
+
+ul#choice_category {
+    padding-left: 30px;
+}
+
+#choice_category li {
+    list-style: none;
+    margin: 5px 0;
+}
+
+#choice_category li a.category-parent .glyphicon{
+    color: #ff6416;
+    font-size: 13px;
+    -webkit-transition: all ease-out 0.4s;
+    -moz-transition: all ease-out 0.4s;
+    -o-transition: all ease-out 0.4s;
+    transition: all ease-out 0.4s;
+}
+
+#choice_category li a.category-section-open .glyphicon {
+    transform: rotate(90deg);
+}
+
+#choice_category li a.category-section-open .glyphicon {
+    transform: rotate(90deg);
+}
+
+.transform-rotate-180deg{
+    transform: rotate(180deg);
+}
+
+.category-childs {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    margin-left: 10px;
+    display: none;
 }
 
 @media screen and (max-width: 991px) { 
