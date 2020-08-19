@@ -10,6 +10,7 @@ IncludeTemplateLangFile(__FILE__);
                 <div class="col-3 col-sm-2  col-lg-1">
                     <?
                     $resizeImg = "/upload/resize_image/".$item['USER']['ID']."/resize_image_65px.img";
+                    if(mkdir($_SERVER['DOCUMENT_ROOT']."/upload/resize_image/".$item['USER']['ID'], 0755, true));
                     $res = CFile::ResizeImageFile($item['USER']['PERSONAL_PHOTO'], $resizeImg, array("width" => "65", "height" => "65"), BX_RESIZE_IMAGE_EXACT);
                     ?>
                     <img src="<?=$resizeImg?>" class="cardPact-comment-avatar" alt="">
