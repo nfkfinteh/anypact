@@ -16,7 +16,7 @@ class AllOkCommentList extends CBitrixComponent
                 $result["LOGIN"] = $user["LOGIN"];
                 $result["NAME"] = ($user["NAME"] ? $user["NAME"] : $user["LOGIN"]);
                 $result["FULL_NAME"] = ($user["NAME"] || $user["LAST_NAME"] ? $user["NAME"].($user["NAME"] && $user["LAST_NAME"] ? " " : "").$user["LAST_NAME"] : $user["LOGIN"]);
-                $result["PERSONAL_PHOTO"] = CFile::GetPath($user['PERSONAL_PHOTO']);
+                $result["PERSONAL_PHOTO"] = $user['PERSONAL_PHOTO'];
             }
         }
         return $result;

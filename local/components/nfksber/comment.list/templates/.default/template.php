@@ -9,10 +9,9 @@ IncludeTemplateLangFile(__FILE__);
             <div class="row align-items-center mt-4 comment-block">
                 <div class="col-3 col-sm-2  col-lg-1">
                     <?
-                    $resizeImg = "/upload/resize_image/".$item['USER']['ID']."/resize_image_65px.img";
-                    $res = CFile::ResizeImageFile($item['USER']['PERSONAL_PHOTO'], $resizeImg, array("width" => "65", "height" => "65"), BX_RESIZE_IMAGE_EXACT);
+                    $resizeImg = CFile::ResizeImageGet($item['USER']['PERSONAL_PHOTO'], array("width" => "65", "height" => "65"), BX_RESIZE_IMAGE_EXACT);
                     ?>
-                    <img src="<?=$resizeImg?>" class="cardPact-comment-avatar" alt="">
+                    <img src="<?=$resizeImg['src']?>" class="cardPact-comment-avatar" alt="">
                 </div>
                 <div class="col-9 col-sm-10 col-lg-7">
                     <div class="cardPact-comment-header">
