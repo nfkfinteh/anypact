@@ -701,7 +701,7 @@ $(document).ready(function() {
     $('#canvas').keydown(function (eventObject) {
         if (eventObject.which == 8 || eventObject.which == 46) {
             let selection = window.getSelection();
-            //console.log(selection);
+            console.log(selection);
             //console.log($(selection.focusNode).text());
             //console.log($(selection.focusNode).parent().text());
             //console.log($(selection.focusNode).next().find('nedittext'));
@@ -714,18 +714,35 @@ $(document).ready(function() {
                     if(selection.focusNode.previousElementSibling.textContent.trim().replace(new RegExp("\n",'g'), '').replace(new RegExp("\r",'g'), '').match(new RegExp('\\'+ndt_str+'$','ig')) !== null) return false;
                 }
             }
-            if (eventObject.which == 46 && selection.focusNode.nextElementSibling !== null && selection.focusNode.nextElementSibling.tagName !== null && selection.focusNode.nextElementSibling.tagName == "NEDITTEXT" && selection.focusOffset == selection.focusNode.length) return false;
-            if(eventObject.which == 46 && $(selection.focusNode).text().trim().replace(new RegExp("\n",'g'), '').replace(new RegExp("\r",'g'), '') == $(selection.focusNode).parent().text().trim().replace(new RegExp("\n",'g'), '').replace(new RegExp("\r",'g'), '') && $(selection.focusNode).parent().next('nedittext').length > 0) return false;
-            if (eventObject.which == 46 && selection.focusNode.nextElementSibling === null && selection.focusNode == selection.focusNode.length && selection.focusNode.parentElement.nextElementSibling !== null && (selection.focusNode.parentElement.nextElementSibling.childNodes[0].nodeName == "NEDITTEXT" || (selection.focusNode.parentElement.nextElementSibling.childNodes[0].nodeName == "#text" && selection.focusNode.parentElement.nextElementSibling.childNodes[0].textContent.trim() == ""))) return false;
-            if (eventObject.which == 8 && selection.anchorNode.previousElementSibling === null && selection.anchorOffset == selection.anchorNode.length && selection.focusNode.parentElement.previousElementSibling !== null && (selection.anchorNode.parentElement.previousElementSibling.childNodes[0].nodeName == "NEDITTEXT" || (selection.anchorNode.parentElement.previousElementSibling.childNodes[0].nodeName == "#text" && selection.anchorNode.parentElement.previousElementSibling.childNodes[0].textContent.trim() == ""))) return false;
+            if (eventObject.which == 8 && selection.focusNode.previousSibling === null && selection.focusNode.parentElement.textContent == selection.focusNode.textContent && selection.focusNode.parentElement.previousSibling !== null && selection.focusNode.parentElement.previousSibling.tagName !== null && selection.focusOffset == 0){
+                if(selection.focusNode.parentElement.previousElementSibling.tagName == "NEDITTEXT"){
+                    return false;
+                }else if($(selection.focusNode.parentElement.previousElementSibling).find('nedittext').length > 0){
+                    var ndt_str = $(selection.focusNode.parentElement.previousElementSibling).find('nedittext').text().trim().replace(new RegExp("\n",'g'), '').replace(new RegExp("\r",'g'), '');
+                    if(selection.focusNode.parentElement.previousElementSibling.textContent.trim().replace(new RegExp("\n",'g'), '').replace(new RegExp("\r",'g'), '').match(new RegExp('\\'+ndt_str+'$','ig')) !== null) return false;
+                }
+            }
+            if (eventObject.which == 46 && selection.focusNode.nextSibling !== null && selection.focusNode.nextSibling.tagName !== null && selection.focusNode.nextSibling.tagName == "NEDITTEXT" && selection.focusOffset == selection.focusNode.length) return false;
+            if (eventObject.which == 46 && selection.focusNode.nextSibling === null && selection.focusNode.parentElement.textContent == selection.focusNode.textContent && selection.focusNode.parentElement.nextSibling !== null && selection.focusNode.parentElement.nextSibling.tagName !== null && selection.focusOffset == selection.focusNode.length){
+                if(selection.focusNode.parentElement.nextSibling.tagName == "NEDITTEXT")
+                    return false;
+                if($(selection.focusNode.parentElement.nextSibling).find('nedittext').length > 0){
+                    var ndt_str = $(selection.focusNode.parentElement.nextSibling).find('nedittext').text().trim().replace(new RegExp("\n",'g'), '').replace(new RegExp("\r",'g'), '');
+                    if(selection.focusNode.parentElement.nextSibling.textContent.trim().replace(new RegExp("\n",'g'), '').replace(new RegExp("\r",'g'), '').match(new RegExp('^\\'+ndt_str,'ig')) !== null) return false;
+                }
+
+            }
+            
+            //if (eventObject.which == 46 && selection.focusNode.nextElementSibling === null && selection.focusNode == selection.focusNode.length && selection.focusNode.parentElement.nextElementSibling !== null && (selection.focusNode.parentElement.nextElementSibling.childNodes[0].nodeName == "NEDITTEXT" || (selection.focusNode.parentElement.nextElementSibling.childNodes[0].nodeName == "#text" && selection.focusNode.parentElement.nextElementSibling.childNodes[0].textContent.trim() == ""))) return false;
+            //if (eventObject.which == 8 && selection.anchorNode.previousElementSibling === null && selection.anchorOffset == selection.anchorNode.length && selection.focusNode.parentElement.previousElementSibling !== null && (selection.anchorNode.parentElement.previousElementSibling.childNodes[0].nodeName == "NEDITTEXT" || (selection.anchorNode.parentElement.previousElementSibling.childNodes[0].nodeName == "#text" && selection.anchorNode.parentElement.previousElementSibling.childNodes[0].textContent.trim() == ""))) return false;
             if ($(selection.focusNode).find('nedittext').length > 0 && selection.focusNode.textContent !== undefined){
                 if (selection.focusNode.textContent.trim().replace(new RegExp("\n",'g'), '').replace(new RegExp("\r",'g'), '') == $(selection.focusNode).find('nedittext').text().trim().replace(new RegExp("\n",'g'), '').replace(new RegExp("\r",'g'), '')) return false;
                 var ndt_str = $(selection.focusNode).find('nedittext').text().trim().replace(new RegExp("\n",'g'), '').replace(new RegExp("\r",'g'), '');
                 if(eventObject.which == 8 && selection.focusNode.textContent.trim().replace(new RegExp("\n",'g'), '').replace(new RegExp("\r",'g'), '').match(new RegExp('\\'+ndt_str+'$','ig')) !== null) return false;
                 if(eventObject.which == 46 && selection.focusNode.textContent.trim().replace(new RegExp("\n",'g'), '').replace(new RegExp("\r",'g'), '').match(new RegExp('^\\'+ndt_str,'ig')) !== null) return false;
             }
-            if ($(selection.focusNode).find('nedittext').length > 0 && selection.focusNode.textContent !== undefined && selection.focusNode.textContent.trim().replace(new RegExp("\n",'g'), '').replace(new RegExp("\r",'g'), '').match(/^\$(selection.focusNode).find('nedittext').text().trim().replace(new RegExp("\n",'g'), '').replace(new RegExp("\r",'g'), '')/ig) == $(selection.focusNode).find('nedittext').text().trim().replace(new RegExp("\n",'g'), '').replace(new RegExp("\r",'g'), '')) return false;
-            if (selection.focusNode.textContent !== undefined && selection.focusNode.textContent.trim().replace(new RegExp("\n",'g'), '').replace(new RegExp("\r",'g'), '') == '' && selection.focusNode.parentNode.id != "canvas" && $(selection.focusNode.parentNode).find('nedittext').length > 0 && selection.focusNode.parentNode.textContent.trim().replace(new RegExp("\n",'g'), '').replace(new RegExp("\r",'g'), '') == $(selection.focusNode.parentNode).find('nedittext').text().trim().replace(new RegExp("\n",'g'), '').replace(new RegExp("\r",'g'), '')) return false;
+            //if ($(selection.focusNode).find('nedittext').length > 0 && selection.focusNode.textContent !== undefined && selection.focusNode.textContent.trim().replace(new RegExp("\n",'g'), '').replace(new RegExp("\r",'g'), '').match(/^\$(selection.focusNode).find('nedittext').text().trim().replace(new RegExp("\n",'g'), '').replace(new RegExp("\r",'g'), '')/ig) == $(selection.focusNode).find('nedittext').text().trim().replace(new RegExp("\n",'g'), '').replace(new RegExp("\r",'g'), '')) return false;
+            //if (selection.focusNode.textContent !== undefined && selection.focusNode.textContent.trim().replace(new RegExp("\n",'g'), '').replace(new RegExp("\r",'g'), '') == '' && selection.focusNode.parentNode.id != "canvas" && $(selection.focusNode.parentNode).find('nedittext').length > 0 && selection.focusNode.parentNode.textContent.trim().replace(new RegExp("\n",'g'), '').replace(new RegExp("\r",'g'), '') == $(selection.focusNode.parentNode).find('nedittext').text().trim().replace(new RegExp("\n",'g'), '').replace(new RegExp("\r",'g'), '')) return false;
             let range = selection.getRangeAt(0);
             let sel_html = range.cloneContents();
             if (sel_html.childNodes.length > 0){

@@ -664,4 +664,78 @@ $(document).ready(function() {
         $('#btn-edit').click();
     });
 
+        // Блокировка удаления заблокированного текста
+        $('#canvas').keydown(function (eventObject) {
+            if (eventObject.which == 8 || eventObject.which == 46) {
+                let selection = window.getSelection();
+                if (eventObject.which == 8 && selection.focusNode.previousElementSibling !== null && selection.focusNode.previousElementSibling.tagName !== null && selection.focusOffset == 0){
+                    if(selection.focusNode.previousElementSibling.tagName == "NEDITTEXT"){
+                        return false;
+                    }else if($(selection.focusNode.previousElementSibling).find('nedittext').length > 0){
+                        var ndt_str = $(selection.focusNode.previousElementSibling).find('nedittext').text().trim().replace(new RegExp("\n",'g'), '').replace(new RegExp("\r",'g'), '');
+                        if(selection.focusNode.previousElementSibling.textContent.trim().replace(new RegExp("\n",'g'), '').replace(new RegExp("\r",'g'), '').match(new RegExp('\\'+ndt_str+'$','ig')) !== null) return false;
+                    }
+                }
+                if (eventObject.which == 8 && selection.focusNode.previousSibling === null && selection.focusNode.parentElement.textContent == selection.focusNode.textContent && selection.focusNode.parentElement.previousSibling !== null && selection.focusNode.parentElement.previousSibling.tagName !== null && selection.focusOffset == 0){
+                    if(selection.focusNode.parentElement.previousElementSibling.tagName == "NEDITTEXT"){
+                        return false;
+                    }else if($(selection.focusNode.parentElement.previousElementSibling).find('nedittext').length > 0){
+                        var ndt_str = $(selection.focusNode.parentElement.previousElementSibling).find('nedittext').text().trim().replace(new RegExp("\n",'g'), '').replace(new RegExp("\r",'g'), '');
+                        if(selection.focusNode.parentElement.previousElementSibling.textContent.trim().replace(new RegExp("\n",'g'), '').replace(new RegExp("\r",'g'), '').match(new RegExp('\\'+ndt_str+'$','ig')) !== null) return false;
+                    }
+                }
+                if (eventObject.which == 46 && selection.focusNode.nextSibling !== null && selection.focusNode.nextSibling.tagName !== null && selection.focusNode.nextSibling.tagName == "NEDITTEXT" && selection.focusOffset == selection.focusNode.length) return false;
+                if (eventObject.which == 46 && selection.focusNode.nextSibling === null && selection.focusNode.parentElement.textContent == selection.focusNode.textContent && selection.focusNode.parentElement.nextSibling !== null && selection.focusNode.parentElement.nextSibling.tagName !== null && selection.focusOffset == selection.focusNode.length){
+                    if(selection.focusNode.parentElement.nextSibling.tagName == "NEDITTEXT")
+                        return false;
+                    if($(selection.focusNode.parentElement.nextSibling).find('nedittext').length > 0){
+                        var ndt_str = $(selection.focusNode.parentElement.nextSibling).find('nedittext').text().trim().replace(new RegExp("\n",'g'), '').replace(new RegExp("\r",'g'), '');
+                        if(selection.focusNode.parentElement.nextSibling.textContent.trim().replace(new RegExp("\n",'g'), '').replace(new RegExp("\r",'g'), '').match(new RegExp('^\\'+ndt_str,'ig')) !== null) return false;
+                    }
+    
+                }
+                
+                //if (eventObject.which == 46 && selection.focusNode.nextElementSibling === null && selection.focusNode == selection.focusNode.length && selection.focusNode.parentElement.nextElementSibling !== null && (selection.focusNode.parentElement.nextElementSibling.childNodes[0].nodeName == "NEDITTEXT" || (selection.focusNode.parentElement.nextElementSibling.childNodes[0].nodeName == "#text" && selection.focusNode.parentElement.nextElementSibling.childNodes[0].textContent.trim() == ""))) return false;
+                //if (eventObject.which == 8 && selection.anchorNode.previousElementSibling === null && selection.anchorOffset == selection.anchorNode.length && selection.focusNode.parentElement.previousElementSibling !== null && (selection.anchorNode.parentElement.previousElementSibling.childNodes[0].nodeName == "NEDITTEXT" || (selection.anchorNode.parentElement.previousElementSibling.childNodes[0].nodeName == "#text" && selection.anchorNode.parentElement.previousElementSibling.childNodes[0].textContent.trim() == ""))) return false;
+                if ($(selection.focusNode).find('nedittext').length > 0 && selection.focusNode.textContent !== undefined){
+                    if (selection.focusNode.textContent.trim().replace(new RegExp("\n",'g'), '').replace(new RegExp("\r",'g'), '') == $(selection.focusNode).find('nedittext').text().trim().replace(new RegExp("\n",'g'), '').replace(new RegExp("\r",'g'), '')) return false;
+                    var ndt_str = $(selection.focusNode).find('nedittext').text().trim().replace(new RegExp("\n",'g'), '').replace(new RegExp("\r",'g'), '');
+                    if(eventObject.which == 8 && selection.focusNode.textContent.trim().replace(new RegExp("\n",'g'), '').replace(new RegExp("\r",'g'), '').match(new RegExp('\\'+ndt_str+'$','ig')) !== null) return false;
+                    if(eventObject.which == 46 && selection.focusNode.textContent.trim().replace(new RegExp("\n",'g'), '').replace(new RegExp("\r",'g'), '').match(new RegExp('^\\'+ndt_str,'ig')) !== null) return false;
+                }
+                //if ($(selection.focusNode).find('nedittext').length > 0 && selection.focusNode.textContent !== undefined && selection.focusNode.textContent.trim().replace(new RegExp("\n",'g'), '').replace(new RegExp("\r",'g'), '').match(/^\$(selection.focusNode).find('nedittext').text().trim().replace(new RegExp("\n",'g'), '').replace(new RegExp("\r",'g'), '')/ig) == $(selection.focusNode).find('nedittext').text().trim().replace(new RegExp("\n",'g'), '').replace(new RegExp("\r",'g'), '')) return false;
+                //if (selection.focusNode.textContent !== undefined && selection.focusNode.textContent.trim().replace(new RegExp("\n",'g'), '').replace(new RegExp("\r",'g'), '') == '' && selection.focusNode.parentNode.id != "canvas" && $(selection.focusNode.parentNode).find('nedittext').length > 0 && selection.focusNode.parentNode.textContent.trim().replace(new RegExp("\n",'g'), '').replace(new RegExp("\r",'g'), '') == $(selection.focusNode.parentNode).find('nedittext').text().trim().replace(new RegExp("\n",'g'), '').replace(new RegExp("\r",'g'), '')) return false;
+                let range = selection.getRangeAt(0);
+                let sel_html = range.cloneContents();
+                if (sel_html.childNodes.length > 0){
+                    if($(sel_html.childNodes).find('NEDITTEXT').length > 0){
+                        return false;
+                    }
+                    for(var i in sel_html.childNodes){
+                        if(sel_html.childNodes[i].tagName !== null && sel_html.childNodes[i].tagName == "NEDITTEXT"){
+                            return false;
+                        }
+                    }
+                }
+                if (sel_html.firstElementChild !== null && sel_html.firstElementChild.tagName == "NEDITTEXT") return false;
+                if (sel_html.lastElementChild !== null && sel_html.lastElementChild.tagName == "NEDITTEXT") return false;
+            }
+            let arKey = [32, 49, 50, 51, 52, 53, 54, 55, 56, 57, 48, 189, 187, 81, 87, 69, 82, 84, 89, 85, 73, 79, 80, 219, 221, 65, 83, 68, 70, 71, 72, 74, 75, 76, 186, 222, 220, 226, 90, 88, 67, 86, 66, 78, 77, 188, 190, 191, 111, 106, 109, 103, 104, 105, 107, 100, 101, 102, 97, 98, 99, 96, 110, 13, 192];
+            if (arKey.indexOf( eventObject.which ) != -1) {
+                let selection = window.getSelection();
+                let range = selection.getRangeAt(0);
+                let sel_html = range.cloneContents();
+                if (sel_html.childNodes.length > 0){
+                    if($(sel_html.childNodes).find('NEDITTEXT').length > 0){
+                        return false;
+                    }
+                    for(var i in sel_html.childNodes){
+                        if(sel_html.childNodes[i].tagName !== null && sel_html.childNodes[i].tagName == "NEDITTEXT"){
+                            return false;
+                        }
+                    }
+                }
+            }
+        });
+
 });
