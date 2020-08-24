@@ -22,6 +22,9 @@
 <?if($USER->IsAuthorized()):?>
 <script src="<?=SITE_TEMPLATE_PATH.'/js/update_unread.js'?>" ></script>
 <?endif?>
-
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WWQFXKG"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 </body>
 </html>
