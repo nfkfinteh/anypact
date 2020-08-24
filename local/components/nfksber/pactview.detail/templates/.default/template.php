@@ -36,7 +36,9 @@ else{
                             <div class="sp-slide">
                             <span class="gallery-img-cover" style="background-image: url('<?=$url_img["URL"]?>');"></span>
                                 <img class="sp-image" src="<?=$url_img["URL"]?>">
-                                <img class="sp-thumbnail" src="<?=$url_img['THUMB_URL']?>">
+                                <?if(count($arr_img) > 1){?>
+                                    <img class="sp-thumbnail" src="<?=$url_img['THUMB_URL']?>">
+                                <?}?>
                             </div>
                         <?endif?>
                         <?
