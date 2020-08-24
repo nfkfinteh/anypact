@@ -4712,3 +4712,18 @@ p.forgetpass-text {
 span.ya-share2__badge {
     background: #9fa6ad !important;
 }
+
+form.form-filter .selectize-dropdown .option, form.form-filter .selectize-dropdown .optgroup-header {
+    padding: 12px 5px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+form.form-filter .selectize-dropdown-content{
+    max-height: 500px;
+}
+
+form.form-filter .selectbox-select .selectize-input input::placeholder {
+    -webkit-font-smoothing: inherit;
+    color: #a6a6a6;
+}
