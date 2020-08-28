@@ -98,7 +98,8 @@ else{
         <div class="cardPact-person">
             <a href="/profile_user/?ID=<?=$arResult["CONTRACT_HOLDER"]["ID"]?>&type=<?=$arResult["CONTRACT_HOLDER"]["TYPE"]?>">
                 <?if(!empty($arResult["CONTRACT_HOLDER"]["PERSONAL_PHOTO"])):?>
-                    <img src="<?=$arResult["CONTRACT_HOLDER"]["PERSONAL_PHOTO"]?>">
+                    <?$resizeImg = CFile::ResizeImageGet($arResult["CONTRACT_HOLDER"]["PERSONAL_PHOTO"], array("width" => "68", "height" => "68"), BX_RESIZE_IMAGE_EXACT);?>
+                    <img src="<?=$resizeImg["src"]?>">
                 <?else:?>
                     <div class="cardPact-person__avatar">
                         <span><?=substr($arResult["CONTRACT_HOLDER"]["NAME"], 0, 1)?></span>
