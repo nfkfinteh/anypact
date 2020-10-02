@@ -1,0 +1,32 @@
+a.search-page-params {
+	border-bottom: 1px dashed blue;
+	text-decoration: none;
+}
+div.search-page-params {
+	margin-top: 6px;
+}
+.search-item-rate {font-size: 11px;}
+.search>form{
+	display: flex;
+	align-items: center;
+}
+.search form input{
+	margin-right: 20px;
+	margin-left: 5px;
+}
+span.magnifier{
+	padding: 0;
+	height: 25px;
+	width: 25px;
+}
+span.magnifier::after{
+	top: 0!important;
+}
+input.btn.btn-nfk.btn-search.d-none.d-md-inline{
+	display: block!important;
+	margin-right: 0;
+}
+
+.search-language-guess.search-language-guess-replace span {
+    font-weight: 500;
+}
