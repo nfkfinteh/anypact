@@ -121,12 +121,12 @@ if($arResult['TYPE'] == 'NEW_MESSAGE'){
                                     Редактировать беседу
                                 </div>
                             <?}?>
-                            <?if($arResult['DISCUSSION_USER_STATUS'] == 4){?>
+                            <?if($arResult['DISCUSSION_USER_STATUS'] == DIALOGUSERSTATUS_I){?>
                                 <div class="menu-item" id="leave_discussion">
                                     Покинуть беседу
                                 </div>
                             <?}?>
-                            <?if($arResult['DISCUSSION_USER_STATUS'] == 5){?>
+                            <?if($arResult['DISCUSSION_USER_STATUS'] == DIALOGUSERSTATUS_L){?>
                                 <div class="menu-item" id="join_discussion">
                                     Вернуться в беседу
                                 </div>
@@ -161,7 +161,7 @@ if($arResult['TYPE'] == 'NEW_MESSAGE'){
                                     <? }?>
                                 </a>
                             </div>
-                            <div class="message-container<?if($Message['STATUS'] == 9){?> not-read<?}?>">
+                            <div class="message-container<?if($Message['STATUS'] == MESSAGESTATUS_N){?> not-read<?}?>">
                                 <div class="message-message">
                                     <div class="name-date">
                                         <p class="user-name-<?=$class?>"><?=$Message['AUTHOR_NAME'] . " " . $Message['AUTHOR_LAST_NAME'];?></p>
@@ -209,7 +209,7 @@ if($arResult['TYPE'] == 'NEW_MESSAGE'){
     <?if($arResult['PAGE'] == 1){?>
                 </div>
             </div>
-            <?if(!$arResult['BLACKLIST'] && $arResult['DISCUSSION_USER_STATUS'] == 4):?>
+            <?if(!$arResult['BLACKLIST'] && $arResult['DISCUSSION_USER_STATUS'] == DIALOGUSERSTATUS_I):?>
                 <form id="new_message_form" action="" method="post">
                     <div class="message-chat-input">
                         <div class="message-chat-input__buttons">

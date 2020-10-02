@@ -83,7 +83,7 @@ class MessengerHLDialogList extends CBitrixComponent
                 "select" => array("UF_MESSAGE_ID"),
                 "order" => array("UF_MESSAGE_ID" => "DESC"),
                 'limit' => '1',
-                "filter" => array("UF_DIALOG_ID" => $dialog['ID'], "UF_USER_ID" => $user_id, "!UF_STATUS" => 13)
+                "filter" => array("UF_DIALOG_ID" => $dialog['ID'], "UF_USER_ID" => $user_id, "!UF_STATUS" => MESSAGESTATUS_D)
             ));
             if($arData = $rsData -> fetch()){
                 $messageID = $arData['UF_MESSAGE_ID'];
@@ -118,7 +118,7 @@ class MessengerHLDialogList extends CBitrixComponent
                         $rsData = $entity_data_class::getList(array(
                             "select" => array("UF_STATUS"),
                             "order" => array("ID" => "DESC"),
-                            "filter" => array("UF_MESSAGE_ID" => $messageID, "!UF_USER_ID" => $user_id, "UF_STATUS" => 11)
+                            "filter" => array("UF_MESSAGE_ID" => $messageID, "!UF_USER_ID" => $user_id, "UF_STATUS" => MESSAGESTATUS_R)
                         ));
                         if($arData = $rsData->Fetch())
                             $dialog['LAST_MESSAGE_STATUS'] = "R";
@@ -128,7 +128,7 @@ class MessengerHLDialogList extends CBitrixComponent
                         $rsData = $entity_data_class::getList(array(
                             "select" => array("ID"),
                             "order" => array("ID" => "DESC"),
-                            "filter" => array("UF_MESSAGE_ID" => $messageID, "UF_USER_ID" => $user_id, "UF_STATUS" => 9)
+                            "filter" => array("UF_MESSAGE_ID" => $messageID, "UF_USER_ID" => $user_id, "UF_STATUS" => MESSAGESTATUS_N)
                         ));
                         if($arData = $rsData->Fetch()){
                             $dialog['LAST_MESSAGE_STATUS'] = "N";
@@ -139,7 +139,7 @@ class MessengerHLDialogList extends CBitrixComponent
                             $rsData = $entity_data_class::getList(array(
                                 "select" => array("ID"),
                                 "order" => array("ID" => "DESC"),
-                                "filter" => array("UF_DIALOG_ID" => $dialog['ID'], "UF_USER_ID" => $user_id, "UF_STATUS" => 9)
+                                "filter" => array("UF_DIALOG_ID" => $dialog['ID'], "UF_USER_ID" => $user_id, "UF_STATUS" => MESSAGESTATUS_N)
                             ));
                             $dialog['UNREAD_MESSAGE_COUNT'] = 0;
                             while($arData = $rsData->Fetch()){
@@ -223,7 +223,7 @@ class MessengerHLDialogList extends CBitrixComponent
             $rsData = $entity_data_class::getList(array(
                 "select" => array("UF_DIALOG_ID", "UF_USER_ID"),
                 "order" => array("ID" => "DESC"),
-                "filter" => array("UF_USER_ID" => array($arFields['AUTHOR_ID'], $user_id), "UF_STATUS" => 4)
+                "filter" => array("UF_USER_ID" => array($arFields['AUTHOR_ID'], $user_id), "UF_STATUS" => DIALOGUSERSTATUS_I)
             ));
             while($arData = $rsData->Fetch()){
                 $arDialogs[$arData["UF_DIALOG_ID"]][] = $arData["UF_USER_ID"];
@@ -271,7 +271,7 @@ class MessengerHLDialogList extends CBitrixComponent
                 $entity_data_class::add(array(
                     "UF_DIALOG_ID" => $dialog_id,
                     "UF_USER_ID" => $user_id,
-                    "UF_STATUS" => 4
+                    "UF_STATUS" => DIALOGUSERSTATUS_I
                 ));
             }
 
@@ -330,7 +330,7 @@ class MessengerHLDialogList extends CBitrixComponent
                         "UF_DIALOG_ID" => $dialog_id,
                         "UF_MESSAGE_ID" => $message_id,
                         "UF_USER_ID" => $user_id,
-                        "UF_STATUS" => ($arFields['AUTHOR_ID'] == $user_id) ? 10 : 9,
+                        "UF_STATUS" => ($arFields['AUTHOR_ID'] == $user_id) ? MESSAGESTATUS_A : MESSAGESTATUS_N,
                     ));
                 }
                 return $dialog_id;
@@ -396,7 +396,7 @@ class MessengerHLDialogList extends CBitrixComponent
                 "select" => array("UF_MESSAGE_ID"),
                 "order" => array("UF_MESSAGE_ID" => "DESC"),
                 'limit' => '1',
-                "filter" => array("UF_DIALOG_ID" => $dialog['ID'], "UF_USER_ID" => $user_id, "!UF_STATUS" => 13)
+                "filter" => array("UF_DIALOG_ID" => $dialog['ID'], "UF_USER_ID" => $user_id, "!UF_STATUS" => MESSAGESTATUS_D)
             ));
             if($arData = $rsData -> fetch()){
                 $messageID = $arData['UF_MESSAGE_ID'];
@@ -435,7 +435,7 @@ class MessengerHLDialogList extends CBitrixComponent
                         $rsData = $entity_data_class::getList(array(
                             "select" => array("UF_STATUS"),
                             "order" => array("ID" => "DESC"),
-                            "filter" => array("UF_MESSAGE_ID" => $messageID, "!UF_USER_ID" => $user_id, "UF_STATUS" => 11)
+                            "filter" => array("UF_MESSAGE_ID" => $messageID, "!UF_USER_ID" => $user_id, "UF_STATUS" => MESSAGESTATUS_R)
                         ));
                         if($arData = $rsData->Fetch())
                             $dialog['MESSAGE_STATUS'] = "R";
@@ -445,7 +445,7 @@ class MessengerHLDialogList extends CBitrixComponent
                         $rsData = $entity_data_class::getList(array(
                             "select" => array("ID"),
                             "order" => array("ID" => "DESC"),
-                            "filter" => array("UF_MESSAGE_ID" => $messageID, "UF_USER_ID" => $user_id, "UF_STATUS" => 9)
+                            "filter" => array("UF_MESSAGE_ID" => $messageID, "UF_USER_ID" => $user_id, "UF_STATUS" => MESSAGESTATUS_N)
                         ));
                         if($arData = $rsData->Fetch()){
                             $dialog['MESSAGE_STATUS'] = "N";
@@ -456,7 +456,7 @@ class MessengerHLDialogList extends CBitrixComponent
                             $rsData = $entity_data_class::getList(array(
                                 "select" => array("ID"),
                                 "order" => array("ID" => "DESC"),
-                                "filter" => array("UF_DIALOG_ID" => $dialog['ID'], "UF_USER_ID" => $user_id, "UF_STATUS" => 9)
+                                "filter" => array("UF_DIALOG_ID" => $dialog['ID'], "UF_USER_ID" => $user_id, "UF_STATUS" => MESSAGESTATUS_N)
                             ));
                             $UNREAD_MESSAGE_COUNT = 0;
                             while($arData = $rsData->Fetch()){

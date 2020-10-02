@@ -35,7 +35,7 @@ class MessengerHLUnreadWiget extends CBitrixComponent
         $rsData = $entity_data_class::getList(array(
             "select" => array("ID", "UF_DIALOG_ID", "UF_MESSAGE_ID"),
             "order" => array("ID" => "ASC"),
-            "filter" => array("UF_USER_ID" => $user_id, "UF_STATUS" => 9)
+            "filter" => array("UF_USER_ID" => $user_id, "UF_STATUS" => MESSAGESTATUS_N)
         ));
         while($arData = $rsData->Fetch()){
             $arMessages[] = $arData['UF_MESSAGE_ID'];

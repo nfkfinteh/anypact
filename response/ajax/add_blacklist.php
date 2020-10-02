@@ -110,12 +110,12 @@ if($data['action']=='add'){
             ));
             if($arData = $rsData->Fetch()){
                 $entity_data_class::update($arData["ID"], array(
-                    "UF_STATUS" => 6
+                    "UF_STATUS" => DIALOGUSERSTATUS_K
                 ));
                 $rsData = $entity_data_class::getList(array(
                     "select" => array("UF_USER_ID"),
                     "order" => array("ID" => "ASC"),
-                    "filter" => array("UF_DIALOG_ID" => $dialog_id, "UF_STATUS" => 4)
+                    "filter" => array("UF_DIALOG_ID" => $dialog_id, "UF_STATUS" => DIALOGUSERSTATUS_I)
                 ));
                 while($arData = $rsData->Fetch()){
                     $arUsers[] = $arData["UF_USER_ID"];
@@ -146,7 +146,7 @@ if($data['action']=='add'){
                             "UF_DIALOG_ID" => $dialog_id,
                             "UF_MESSAGE_ID" => $message_id,
                             "UF_USER_ID" => $id,
-                            "UF_STATUS" => ($arFields['UF_USER_A'] == $id) ? 10 : 9,
+                            "UF_STATUS" => ($arFields['UF_USER_A'] == $id) ? MESSAGESTATUS_A : MESSAGESTATUS_N,
                         ));
                     }
                 }

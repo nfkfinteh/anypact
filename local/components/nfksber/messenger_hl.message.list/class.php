@@ -108,23 +108,23 @@ class MessengerHLMessageList extends CBitrixComponent
                 $rsData = $entity_data_class::getList(array(
                     "select" => array("UF_STATUS", 'UF_MESSAGE_ID'),
                     "order" => array("ID" => "ASC"),
-                    "filter" => array("UF_MESSAGE_ID" => $arMessageIDs, "UF_USER_ID" => $user_id, "!UF_STATUS" => 13)
+                    "filter" => array("UF_MESSAGE_ID" => $arMessageIDs, "UF_USER_ID" => $user_id, "!UF_STATUS" => MESSAGESTATUS_D)
                 ));
                 while($arData = $rsData->Fetch()){
                     $arMessage[$arData['UF_MESSAGE_ID']]['STATUS'] = $arData['UF_STATUS'];
-                    if($arData['UF_STATUS'] == 10){
+                    if($arData['UF_STATUS'] == MESSAGESTATUS_A){
                         $arStatus[] = $arData['UF_MESSAGE_ID'];
-                        $arMessage[$arData['UF_MESSAGE_ID']]['STATUS'] = 9;
+                        $arMessage[$arData['UF_MESSAGE_ID']]['STATUS'] = MESSAGESTATUS_N;
                     }
                 }
 
                 $rsData = $entity_data_class::getList(array(
                     "select" => array('UF_MESSAGE_ID'),
                     "order" => array("ID" => "ASC"),
-                    "filter" => array("UF_MESSAGE_ID" => $arStatus, "!UF_USER_ID" => $user_id, "UF_STATUS" => 11)
+                    "filter" => array("UF_MESSAGE_ID" => $arStatus, "!UF_USER_ID" => $user_id, "UF_STATUS" => MESSAGESTATUS_R)
                 ));
                 while($arData = $rsData->Fetch()){
-                    $arMessage[$arData['UF_MESSAGE_ID']]['STATUS'] = 11;
+                    $arMessage[$arData['UF_MESSAGE_ID']]['STATUS'] = MESSAGESTATUS_R;
                 }
 
                 $arUsers = array_unique($arUsers);
@@ -167,7 +167,7 @@ class MessengerHLMessageList extends CBitrixComponent
         $rsData = $entity_data_class::getList(array(
             "select" => array("UF_USER_ID"),
             "order" => array("ID" => "ASC"),
-            "filter" => array("UF_DIALOG_ID" => $dialog_id, "UF_STATUS" => 4)
+            "filter" => array("UF_DIALOG_ID" => $dialog_id, "UF_STATUS" => DIALOGUSERSTATUS_I)
         ));
         while($arData = $rsData->Fetch()){
             $arUsers[] = $arData['UF_USER_ID'];
@@ -204,7 +204,7 @@ class MessengerHLMessageList extends CBitrixComponent
                         "UF_DIALOG_ID" => $dialog_id,
                         "UF_MESSAGE_ID" => $message_id,
                         "UF_USER_ID" => $user,
-                        "UF_STATUS" => ($user_id == $user) ? 10 : 9,
+                        "UF_STATUS" => ($user_id == $user) ? MESSAGESTATUS_A : MESSAGESTATUS_N,
                     ));
                 }
                 if(is_array($_FILES) && !empty($_FILES) && is_array($arFields['NEED_FILES']) && !empty($arFields['NEED_FILES'])){
@@ -217,7 +217,7 @@ class MessengerHLMessageList extends CBitrixComponent
                         $entity_data_class = self::GetEntityDataClass(ATTACHMENTS_HLB_ID);
                         $rsData = $entity_data_class::add(array(
                             "UF_MESSAGE_ID" => $message_id,
-                            "UF_TYPE" => 8,
+                            "UF_TYPE" => DISCUSSIONTYPE_F,
                             //"UF_LINK" => $arLink,
                             "UF_IMAGE" => $arFile,
                         ));
@@ -280,11 +280,11 @@ class MessengerHLMessageList extends CBitrixComponent
             $rsData = $entity_data_class::getList(array(
                 "select" => array("ID"),
                 "order" => array("ID" => "ASC"),
-                "filter" => array("UF_DIALOG_ID" => $dialog_id, "UF_USER_ID" => $user_id, "UF_STATUS" => 9)
+                "filter" => array("UF_DIALOG_ID" => $dialog_id, "UF_USER_ID" => $user_id, "UF_STATUS" => MESSAGESTATUS_N)
             ));
             while($arData = $rsData->Fetch()){
                 $entity_data_class::update($arData['ID'], array(
-                    "UF_STATUS" => 11,
+                    "UF_STATUS" => MESSAGESTATUS_R,
                 ));
             }
             return true;
@@ -326,22 +326,22 @@ class MessengerHLMessageList extends CBitrixComponent
             $rsData = $entity_data_class::getList(array(
                 "select" => array("UF_STATUS", 'UF_MESSAGE_ID'),
                 "order" => array("ID" => "ASC"),
-                "filter" => array("UF_MESSAGE_ID" => $arMessageIDs, "UF_USER_ID" => $user_id, "!UF_STATUS" => 13)
+                "filter" => array("UF_MESSAGE_ID" => $arMessageIDs, "UF_USER_ID" => $user_id, "!UF_STATUS" => MESSAGESTATUS_D)
             ));
             while($arData = $rsData->Fetch()){
                 $arMessage[$arData['UF_MESSAGE_ID']]['STATUS'] = $arData['UF_STATUS'];
-                if($arData['UF_STATUS'] == 10){
+                if($arData['UF_STATUS'] == MESSAGESTATUS_A){
                     $arStatus[] = $arData['UF_MESSAGE_ID'];
-                    $arMessage[$arData['UF_MESSAGE_ID']]['STATUS'] = 9;
+                    $arMessage[$arData['UF_MESSAGE_ID']]['STATUS'] = MESSAGESTATUS_N;
                 }
             }
             $rsData = $entity_data_class::getList(array(
                 "select" => array('UF_MESSAGE_ID'),
                 "order" => array("ID" => "ASC"),
-                "filter" => array("UF_MESSAGE_ID" => $arStatus, "!UF_USER_ID" => $user_id, "UF_STATUS" => 11)
+                "filter" => array("UF_MESSAGE_ID" => $arStatus, "!UF_USER_ID" => $user_id, "UF_STATUS" => MESSAGESTATUS_R)
             ));
             while($arData = $rsData->Fetch()){
-                $arMessage[$arData['UF_MESSAGE_ID']]['STATUS'] = 11;
+                $arMessage[$arData['UF_MESSAGE_ID']]['STATUS'] = MESSAGESTATUS_R;
             }
             
 
@@ -386,7 +386,7 @@ class MessengerHLMessageList extends CBitrixComponent
         $rsData = $entity_data_class::getList(array(
             "select" => array("UF_USER_ID"),
             "order" => array("UF_USER_ID" => "DESC"), 
-            "filter" => array("UF_DIALOG_ID" => $dialog_id, "UF_STATUS" => 4)
+            "filter" => array("UF_DIALOG_ID" => $dialog_id, "UF_STATUS" => DIALOGUSERSTATUS_I)
         ));
         while($arUser = $rsData -> fetch()){
             $arUserIDs[] = $arUser["UF_USER_ID"];

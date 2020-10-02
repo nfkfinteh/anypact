@@ -44,7 +44,7 @@ class CDemoSqr extends CBitrixComponent
             $rsData = $entity_data_class::getList(array(
                 "select" => array("UF_USER_ID"),
                 "order" => array("ID" => "ASC"),
-                "filter" => array("UF_DIALOG_ID" => $arDiscussion['UF_DIALOG_ID'], "UF_STATUS" => 4)
+                "filter" => array("UF_DIALOG_ID" => $arDiscussion['UF_DIALOG_ID'], "UF_STATUS" => DIALOGUSERSTATUS_I)
             ));
             while($arData = $rsData->Fetch()){
                 $arUser[] = $arData['UF_USER_ID'];
@@ -106,14 +106,14 @@ class CDemoSqr extends CBitrixComponent
                 ));
                 if($arData = $rsData->Fetch()){
                     $entity_data_class::update($arData['ID'], array(
-                        "UF_STATUS" => 4
+                        "UF_STATUS" => DIALOGUSERSTATUS_I
                     ));
                     $result = true;
                 }elseif($user_id != $current_user){
                     $entity_data_class::add(array(
                         "UF_DIALOG_ID" => $dialog_id,
                         "UF_USER_ID" => $user_id,
-                        "UF_STATUS" => 4
+                        "UF_STATUS" => DIALOGUSERSTATUS_I
                     ));
 
                     $result = true;
@@ -123,7 +123,7 @@ class CDemoSqr extends CBitrixComponent
                     $rsData = $entity_data_class::getList(array(
                         "select" => array("UF_USER_ID"),
                         "order" => array("ID" => "ASC"),
-                        "filter" => array("UF_DIALOG_ID" => $dialog_id, "!UF_STATUS" => 4)
+                        "filter" => array("UF_DIALOG_ID" => $dialog_id, "!UF_STATUS" => DIALOGUSERSTATUS_I)
                     ));
                     while($arData = $rsData->Fetch()){
                         $arUsers[] = $arData["UF_USER_ID"];
@@ -155,7 +155,7 @@ class CDemoSqr extends CBitrixComponent
                                 "UF_DIALOG_ID" => $dialog_id,
                                 "UF_MESSAGE_ID" => $message_id,
                                 "UF_USER_ID" => $id,
-                                "UF_STATUS" => ($current_user == $id) ? 10 : 9,
+                                "UF_STATUS" => ($current_user == $id) ? MESSAGESTATUS_A : MESSAGESTATUS_N,
                             ));
                         }
                         $result = true;
@@ -202,12 +202,12 @@ class CDemoSqr extends CBitrixComponent
                 ));
                 if($arData = $rsData->Fetch()){
                     $entity_data_class::update($arData["ID"], array(
-                        "UF_STATUS" => ($user_id == $current_user) ? 5 : 6
+                        "UF_STATUS" => ($user_id == $current_user) ? DIALOGUSERSTATUS_L : DIALOGUSERSTATUS_K
                     ));
                     $rsData = $entity_data_class::getList(array(
                         "select" => array("UF_USER_ID"),
                         "order" => array("ID" => "ASC"),
-                        "filter" => array("UF_DIALOG_ID" => $dialog_id, "UF_STATUS" => 4)
+                        "filter" => array("UF_DIALOG_ID" => $dialog_id, "UF_STATUS" => DIALOGUSERSTATUS_I)
                     ));
                     while($arData = $rsData->Fetch()){
                         $arUsers[] = $arData["UF_USER_ID"];
@@ -238,7 +238,7 @@ class CDemoSqr extends CBitrixComponent
                                 "UF_DIALOG_ID" => $dialog_id,
                                 "UF_MESSAGE_ID" => $message_id,
                                 "UF_USER_ID" => $id,
-                                "UF_STATUS" => ($current_user == $id) ? 10 : 9,
+                                "UF_STATUS" => ($current_user == $id) ? MESSAGESTATUS_A : MESSAGESTATUS_N,
                             ));
                         }
                         return true;

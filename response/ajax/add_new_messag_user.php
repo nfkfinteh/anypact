@@ -112,7 +112,7 @@ $entity_data_class = GetEntityDataClass(DIALOGUSERS_HLB_ID);
 $rsData = $entity_data_class::getList(array(
     "select" => array("UF_DIALOG_ID", "UF_USER_ID"),
     "order" => array("ID" => "DESC"),
-    "filter" => array("UF_USER_ID" => array($curentUser, $idUser), "UF_STATUS" => 4)
+    "filter" => array("UF_USER_ID" => array($curentUser, $idUser), "UF_STATUS" => DIALOGUSERSTATUS_I)
 ));
 while($arData = $rsData->Fetch()){
     $arDialogs[$arData["UF_DIALOG_ID"]][] = $arData["UF_USER_ID"];
@@ -159,7 +159,7 @@ if(!$dialog_id){
             $entity_data_class::add(array(
                 "UF_DIALOG_ID" => $dialog_id,
                 "UF_USER_ID" => $user_id,
-                "UF_STATUS" => 4
+                "UF_STATUS" => DIALOGUSERSTATUS_I
             ));
         }
     }
@@ -186,7 +186,7 @@ if($dialog_id){
                 "UF_DIALOG_ID" => $dialog_id,
                 "UF_MESSAGE_ID" => $message_id,
                 "UF_USER_ID" => $user_id,
-                "UF_STATUS" => ($curentUser == $user_id) ? 10 : 9,
+                "UF_STATUS" => ($curentUser == $user_id) ? MESSAGESTATUS_A : MESSAGESTATUS_N,
             ));
         }
         echo json_encode([ 'VALUE'=>'Сообщение отправлено', 'TYPE'=> 'SUCCESS']);
