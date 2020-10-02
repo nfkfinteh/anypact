@@ -12,11 +12,11 @@ define("MESSAGES_HLB_ID", "19");
 define("ATTACHMENTS_HLB_ID", "20");
 define("MESSAGESTATUS_HLB_ID", "21");
 
-define("MESSAGESTATUS_N", "9");
-define("MESSAGESTATUS_A", "10");
-define("MESSAGESTATUS_R", "11");
-define("MESSAGESTATUS_E", "12");
-define("MESSAGESTATUS_D", "13");
+define("MESSAGESTATUS_N", "14");
+define("MESSAGESTATUS_A", "15");
+define("MESSAGESTATUS_R", "16");
+define("MESSAGESTATUS_E", "17");
+define("MESSAGESTATUS_D", "18");
 
 define("DIALOGUSERSTATUS_I", "4");
 define("DIALOGUSERSTATUS_L", "5");

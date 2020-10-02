@@ -209,6 +209,15 @@ a#new_dialog {
 a#new_dialog:hover, a#new_dialog:focus {
     text-decoration: none;
 }
+.no_active_dialogs p {
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 28px;
+    color: #131313;
+}
+.no_active_dialogs a {
+    font-weight: 300;
+}
 @media screen and (max-width: 991px) {
     .dialog-block {
         max-width: 235px;

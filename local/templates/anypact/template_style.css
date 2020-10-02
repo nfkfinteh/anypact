@@ -4954,7 +4954,6 @@ form.form-filter .selectbox-select .selectize-input input::placeholder {
 .dropdown-arrow-profile {
     content: "";
     background: url(/local/components/nfksber/profile.widget/templates/head/arr_profile.svg) no-repeat center;
-    position: static !important;
     width: 12px;
     height: 12px;
 }
