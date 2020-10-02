@@ -4,7 +4,7 @@
         <h2>Выберите город</h2>
         <div class="row">
             <div class="col-md-12">
-                <div class="row">
+                <div class="row-column">
                     <?foreach ($arResult['CITY'] as $city):?>
                         <div class="col-6 col-sm-4 col-md-6 col-xl-2">
                             <button class="city-choose-btn-city <?if($city['PROPERTY_BOLD_VALUE']=='Y'):?>font-weight-bold<?endif?>"><?=$city['NAME']?></button>

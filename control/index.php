@@ -4,7 +4,7 @@ $APPLICATION->SetTitle("AnyPact");
 // проверяем авторизован ли пользователь
 global $USER;
 
-if ($USER->IsAuthorized() && $USER->IsAdmin()){
+if ($USER->IsAuthorized() && ($USER->IsAdmin() || $USER->GetID() == 257)){
 ?>
 <h3>Панель управления пользователями</h3>
     <? $APPLICATION->IncludeComponent(
@@ -14,5 +14,7 @@ if ($USER->IsAuthorized() && $USER->IsAdmin()){
     ); ?>
 
 </div>
+<?}else{?>
+    </div>
 <?}?>
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

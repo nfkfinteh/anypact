@@ -32,6 +32,12 @@ window.onload = function(){
 };
 */
 
-window.onload = function() {
+$(document).ready(function(){
     console.log('window - onload'); // 4th
-  };
+    $('input[name="DATE_REGISTER_FROM"]').on('click', function(){
+        BX.calendar({node:this, field:'DATE_REGISTER_FROM', form: '', bTime: false})
+    });
+    $('input[name="DATE_REGISTER_TO"]').on('click', function(){
+        BX.calendar({node:this, field:'DATE_REGISTER_TO', form: '', bTime: false})
+    });
+});

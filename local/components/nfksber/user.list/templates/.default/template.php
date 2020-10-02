@@ -51,28 +51,28 @@
                 <? if($USER->IsAuthorized()):?>
                     <div class="people-s-photo-btn-block">
                         <?if(!in_array($user['ID'], $arResult["BLACKLIST"]['UF_USER_A'])):?>
-                            <button class="btn btn-clean search-peaople__button" data-toggle="modal" data-target=".bd-message-modal-sm" data-login="<?=$user['LOGIN']?>">
+                            <button class="btn btn-clean search-people__button" data-id="<?=$user['ID']?>">
                                 <img src="<?=SITE_TEMPLATE_PATH?>/image/people-search-message.png" alt="Отправить сообщение" title="Отправить сообщение">
                             </button>
                         <?endif?>
                         <!-- <button class="btn btn-clean"><img src="<?=SITE_TEMPLATE_PATH?>/image/people-search-document.png" alt=""></button> -->
                         <?if(!in_array($user['ID'], $arResult["BLACKLIST"]['UF_USER_A'])):?>
                             <?if(!in_array($user['ID'], $arResult['FRENDS']) && $USER->GetID() != $user['ID']):?>
-                                <button class="btn btn-clean js-add-frends" <?if(in_array($user['ID'], $arResult["BLACKLIST"]['UF_USER_B'])){?>style="display:none;"<?}?> data-login="<?=$user['LOGIN']?>">
+                                <button class="btn btn-clean js-add-frends" <?if(in_array($user['ID'], $arResult["BLACKLIST"]['UF_USER_B'])){?>style="display:none;"<?}?> data-id="<?=$user['ID']?>">
                                     <img src="<?=SITE_TEMPLATE_PATH?>/image/people-search-add-people.png" alt="Добавить в друзья" title="Добавить в друзья">
                                 </button>
                             <?elseif(in_array($user['ID'], $arResult['FRENDS'])):?>
-                                <button class="btn btn-clean js-delete-frends" data-login="<?=$user['LOGIN']?>">
+                                <button class="btn btn-clean js-delete-frends" data-id="<?=$user['ID']?>">
                                     <img src="<?=SITE_TEMPLATE_PATH?>/image/people-search-delete-people.png" alt="Удалить из друзей" title="Удалить из друзей">
                                 </button>
                             <?endif?>
                         <?endif;?>
                         <?if(!in_array($user['ID'], $arResult['BLACKLIST']['UF_USER_B']) && $USER->GetID() != $user['ID']):?>
-                            <button class="btn btn-clean js-add-blacklist" data-login="<?=$user['LOGIN']?>">
+                            <button class="btn btn-clean js-add-blacklist" data-id="<?=$user['ID']?>">
                                 <img src="<?=SITE_TEMPLATE_PATH?>/image/black-list-add.png" alt="Заблокировать" title="Заблокировать">
                             </button>
                         <?elseif(in_array($user['ID'], $arResult['BLACKLIST']['UF_USER_B'])):?>
-                            <button class="btn btn-clean js-delete-blacklist" data-login="<?=$user['LOGIN']?>">
+                            <button class="btn btn-clean js-delete-blacklist" data-id="<?=$user['ID']?>">
                                 <img src="<?=SITE_TEMPLATE_PATH?>/image/black-list.png" alt="Разблокировать" title="Разблокировать">
                             </button>
                         <?endif?>
@@ -83,34 +83,3 @@
     <?endforeach?>
 </div>
 <?=$arResult["NAV_STRING"]?>
-
-<div class="modal fade bd-message-modal-sm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <div class="modal-title">Новое сообщение</div>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form id="message_user" action="/response/ajax/add_new_messag_user.php">
-                    <input class="login__input" type="hidden" name="login" value="">
-                    <div class="form-group">
-                        <label>Тема сообщения</label>
-                        <input class="form-control" name="title" value="">
-                    </div>
-                    <div class="form-group">
-                        <label>Текст сообщения</label>
-                        <textarea class="form-control message-textarea" name="message-text"></textarea>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-nfk d-block cardPact-bBtn submit_message">Отправить</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-

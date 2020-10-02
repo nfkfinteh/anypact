@@ -267,7 +267,9 @@ $this->addExternalJS(SITE_TEMPLATE_PATH."/module/trumbowyg/dist/plugins/table/tr
                         Array(
                             "IBLOCK_ID" => $arResult["INFOBLOCK_ID"],
                             "ELEMENT_ID" => $arResult["ELEMENT_ID"],
-                            "ACTION_VARIABLE" => "action"
+                            "ACTION_VARIABLE" => "action",
+                            "OUTPUT_FIELD_NAME" => "ACCESS_USER",
+                            "INPUT_NAME" => "SELECTED_USER",
                         )
                     );
                     ?>

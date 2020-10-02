@@ -8,7 +8,7 @@ use Bitrix\Main\Entity;
 class UserProfile extends CBitrixComponent
 {
     public $IBLOCK_ID_MESSAGE = 6;//id HL с сообщениями
-    
+
     public function onPrepareComponentParams($arParams)
     {
         $result = array(
@@ -30,6 +30,9 @@ class UserProfile extends CBitrixComponent
         $arrUserInfo["IN_NAMES"] = substr($UserParams['NAME'], 0, 1).'.'.substr($arrUserInfo["SECOND_NAME"], 0, 1).'.'; // Инициалы
         $arrUserInfo["PERSONAL_PHOTO"] = CFile::GetPath($UserParams["PERSONAL_PHOTO"]);
         $arrUserInfo["UF_ESIA_AUT"] = $UserParams['UF_ESIA_AUT'];
+        if ((empty($UserParams['NAME'])) && (empty($arrUserInfo["SECOND_NAME"]))) {
+            $arrUserInfo["IN_NAMES"] = $UserParams['EMAIL'];
+        }
 
         if(!empty($UserParams['UF_CUR_COMPANY'])){
             if(CModule::IncludeModule('iblock')){
@@ -90,7 +93,7 @@ class UserProfile extends CBitrixComponent
         $this->arResult['UNREAD_MESSAGE'] = $this->getCntUnreadMessage( $this->arResult['ID']);
         $this->includeComponentTemplate();
 
-        
+
         return $this->arResult;
     }
 };

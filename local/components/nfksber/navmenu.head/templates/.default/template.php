@@ -4,10 +4,18 @@
     <li class="mobile-location">
         <span class="location">Выберите город</span>
     </li>
-	<?foreach($arResult["ARR_ITEM_MENU"] as $MenuItem) {?>
-		<li class="nav-item" data-href="<?=$MenuItem["URL"]?>">
-			<a class="nav-link <?=$MenuItem["CLASS"]?>" href="<?=$MenuItem["URL"]?>"><?=$MenuItem["NAME"]?></a> 
+	<?
+	$n = 0;
+	foreach($arResult["ARR_ITEM_MENU"] as $MenuItem) {
+		$class = "";
+		$n++;
+		if ((count($arResult["ARR_ITEM_MENU"])) == $n) {
+			$class = "last";
+		}
+		?>
+		<li class="nav-item <?= $class ?>" data-href="<?=$MenuItem["URL"]?>">
+			<a class="nav-link <?=$MenuItem["CLASS"]?>" href="<?=$MenuItem["URL"]?>"><?=$MenuItem["NAME"]?></a>
 		</li>
 	<?}?>
-	<li class="nav-item"><a href="/AnyPact инструкция.pdf" class="manual nav-link" target="_blank" onclick="ym(64629523,'reachGoal','manual');">Инструкция</a></li>
+	<li class="nav-item manual-nav-item"><a href="/AnyPact инструкция.pdf" class="manual nav-link" target="_blank" onclick="ym(64629523,'reachGoal','manual');">Инструкция</a></li>
 </ul>

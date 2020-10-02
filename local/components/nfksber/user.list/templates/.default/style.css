@@ -145,3 +145,14 @@ textarea.message-textarea{
     max-width: 24px;
     max-height: 24px;
 }
+form#message_user {
+    position: relative;
+}
+.message-text-input{
+    width: 360px!important;
+}
+@media screen and (max-width: 500px) {
+    .message-text-input{
+        width: 100%!important;
+    }
+}

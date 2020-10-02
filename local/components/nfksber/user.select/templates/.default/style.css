@@ -3,7 +3,7 @@
     margin-bottom: 0;
 }
 #us_name.focus, #us_name:focus{
-    border-bottom: none;
+    border-bottom: 1px solid #ffffff00;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
     outline: none;
@@ -16,19 +16,15 @@
     border-left: solid 1px #ff6416;
     border-right: solid 1px #ff6416;
     border-bottom: solid 1px #ff6416;
-    border-bottom-left-radius: 0.25em;
-    border-bottom-right-radius: 0.25em;
-    height: 0;
-    visibility: hidden;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
     position: absolute;
     top: 0;
     width: 100%;
     max-height: 500px;
     overflow-y: scroll;
-    -webkit-transition: height ease-out 0.5s;
-    -moz-transition: height ease-out 0.5s;
-    -o-transition: height ease-out 0.5s;
-    transition: height ease-out 0.5s;
+    display: none;
+    z-index: 2;
 }
 .select-user-popup .user-el {
     cursor: pointer;
@@ -91,8 +87,6 @@
     height: 33px;
     width: 2px;
     background-color: #8f8f8f;
-    right: 13px;
-    top: -2px;
 }
 .user-delete:before {
     transform: rotate(45deg);

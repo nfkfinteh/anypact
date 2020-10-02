@@ -4,6 +4,17 @@ use Bitrix\Highloadblock as HL;
 use Bitrix\Main\Entity;
 include_once ('class/payYandex.php');
 
+$count = COption::GetOptionInt("main", "pay_count");
+if(empty($count)){
+    $count = 0;
+}
+if($count > 1000){
+    die();
+}else{
+    $count++;
+    COption::SetOptionInt("main", "pay_count", $count);
+}
+
 // классы для соединения с посредником платежной системы.
 $ConnectPayYandex = new payYandex();
 

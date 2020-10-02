@@ -15,8 +15,8 @@ if (!$USER->IsAuthorized()){
 }
 
 #получаем необходимые данные
-if(!empty($data['login'])){
-    $rsUser = CUser::GetByLogin($data['login']);
+if(!empty($data['id'])){
+    $rsUser = CUser::GetByID($data['id']);
     $idUser = $rsUser->GetNext(true, false)['ID'];
     $data['UF_USER_B'] = $idUser;
 }

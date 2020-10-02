@@ -16,21 +16,21 @@ if($arResult["BLACK_LIST"]['CLOSE']){
                         <?if(!$arResult["BLACK_LIST"]['CLOSED']){?>
                             <div class="black-list-show_hide request_sent" <?=$black_list_display;?>>
                                 <?if(in_array($arResult['USER']['ID'], $arResult['FRENDS'])):?>
-                                    <a href="#" class="btn btn-nfk btn-uprofile js-delete-frends" data-login="<?=$arResult['USER']['LOGIN']?>">
+                                    <a href="#" class="btn btn-nfk btn-uprofile js-delete-frends" data-id="<?=$arResult['USER']['ID']?>">
                                         Удалить из друзей
                                     </a>
                                 <?elseif(in_array($arResult['USER']['ID'], $arResult['FRIENDS_REQUEST'])):?>
-                                    <a href="#" class="btn btn-nfk btn-uprofile disabled" data-login="<?=$arResult['USER']['LOGIN']?>">
+                                    <a href="#" class="btn btn-nfk btn-uprofile disabled" data-id="<?=$arResult['USER']['ID']?>">
                                         Заявка отправлена
                                     </a>
                                     <div class="not_auth-error">
                                         <span class="triangle" style="display: block; z-index: 1;">▲</span>
-                                        <a href="#" class="js-delete-frends" data-login="<?=$arResult['USER']['LOGIN']?>">
+                                        <a href="#" class="js-delete-frends" data-id="<?=$arResult['USER']['ID']?>">
                                             Отменить заявку
                                         </a>
                                     </div>
                                 <?elseif($arParams['CURRENT_USER'] != $arResult['USER']['ID']):?>
-                                    <a href="#" class="btn btn-nfk btn-uprofile js-add-frends" data-login="<?=$arResult['USER']['LOGIN']?>">
+                                    <a href="#" class="btn btn-nfk btn-uprofile js-add-frends" data-id="<?=$arResult['USER']['ID']?>">
                                         Добавить в друзья
                                     </a>
                                 <?endif;?>
@@ -39,21 +39,20 @@ if($arResult["BLACK_LIST"]['CLOSE']){
                         
                         <?if($arParams['CURRENT_USER'] != $arResult['USER']['ID']){?>
                             <?if(!$arResult["BLACK_LIST"]['CLOSE']):?>
-                                <button class="btn btn-nfk btn-uprofile js-add-blacklist" data-login="<?=$arResult['USER']['LOGIN']?>">
+                                <button class="btn btn-nfk btn-uprofile js-add-blacklist" data-id="<?=$arResult['USER']['ID']?>">
                                     Заблокировать
                                 </button>
                             <?else:?>
-                                <button class="btn btn-nfk btn-uprofile js-delete-blacklist" data-login="<?=$arResult['USER']['LOGIN']?>">
+                                <button class="btn btn-nfk btn-uprofile js-delete-blacklist" data-id="<?=$arResult['USER']['ID']?>">
                                     Разблокировать
                                 </button>
                             <?endif?>
                         <?}?>
                         <?if(!$arResult["BLACK_LIST"]['CLOSED']){?>
                             <?if(!empty($arParams['CURRENT_USER']) && $arResult['USER']['ID'] !=$arParams['CURRENT_USER']):?>
-                                <?if(!in_array($arParams['CURRENT_USER'], $arBlackList)):?>
+                                
                                     <?/*?><a href="#" class="btn btn-nfk btn-uprofile" data-toggle="modal" data-target=".bd-comment-modal-sm">Оставить отзыв</a><?*/?>
-                                    <a href="#" class="btn btn-nfk btn-uprofile" data-toggle="modal" data-target=".bd-message-modal-sm">Отправить сообщение</a>
-                                <?endif?>
+                                <a href="#" class="btn btn-nfk btn-uprofile search-people__button" data-id="<?=$arResult['USER']['ID']?>">Отправить сообщение</a>
                                 <div class="black-list-show_hide" <?=$black_list_display;?>>
                                     <?if(!empty($arResult['COMPANY_CURRENT_USER'])):?>
                                         <label class="company list__title">Назначить представителем компании:</label>
@@ -233,34 +232,6 @@ if($arResult["BLACK_LIST"]['CLOSE']){
     var bitrixCompanyList = <?=CUtil::PhpToJSObject($arResult['COMPANY_CURRENT_USER'])?>
     var bitrixDealList = <?=CUtil::PhpToJSObject($arResult['DEAL_CURRENT_USER'])?>
 </script>
-
-<div class="modal fade bd-message-modal-sm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <div class="modal-title">Новое сообщение пользователю</div>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form action="/response/ajax/add_new_messag_user.php">
-                    <div class="form-group">
-                        <label>Тема сообщения</label>
-                        <input class="form-control" name="title" value="">
-                    </div>
-                    <input type="hidden" name="login" value="<?=$arResult['USER']['LOGIN']?>">
-                    <div class="form-group">
-                        <textarea class="form-control " name="message-text"></textarea>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-nfk d-block cardPact-bBtn submit_message">Отправить</button>
-            </div>
-        </div>
-    </div>
-</div>
 <?/*?>
 <div class="modal fade bd-comment-modal-sm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">

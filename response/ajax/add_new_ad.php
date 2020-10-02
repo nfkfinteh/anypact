@@ -84,7 +84,6 @@ if(in_array( 1, $arGroups) || in_array( 6, $arGroups)){
         "use_google" => "false", // отключаем использование google
     );
     $data['CODE'] = CUtil::translit($data['NAME'], "ru" , $paramsCode);
-
     //дополнительные свойства
     $data['PROPERTY_VALUES']['PACT_USER'] = $data['MODIFIED_BY'];
     $data['PROPERTY_VALUES']['ID_COMPANY'] = $arUser['UF_CUR_COMPANY'];
@@ -92,6 +91,13 @@ if(in_array( 1, $arGroups) || in_array( 6, $arGroups)){
 
     $el = new CIBlockElement;
     $elDogovor = new CIBlockElement;
+
+    $res = $el -> GetList(Array(), array("IBLOCK_ID" => 3, "CODE" => $data['CODE']), false, false, array("ID", "CODE"));
+    if($ob = $res->GetNext())
+    {
+        $data['CODE'] = $data['CODE'] . '-' . rand(1000, 9999);
+    }
+
     if($data['PROPERTY_VALUES'] == 18){
         $time = "";
     }else{

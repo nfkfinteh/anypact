@@ -5,6 +5,14 @@ define("HLB_USER_FRIENDS_ACCEPT_Y", "1");
 define("HLB_USER_FRIENDS_ACCEPT_N", "2");
 define("HLB_USER_FRIENDS_ACCEPT_A", "3");
 
+define("DIALOGS_HLB_ID", "16");
+define("DIALOGUSERS_HLB_ID", "17");
+define("DISCUSSION_HLB_ID", "18");
+define("MESSAGES_HLB_ID", "19");
+define("ATTACHMENTS_HLB_ID", "21");
+define("MESSAGESTATUS_HLB_ID", "22");
+
+
 $eventManager = \Bitrix\Main\EventManager::getInstance();
 $eventManager->addEventHandler("main", "OnAfterEpilog", "Prefix_FunctionName");
 

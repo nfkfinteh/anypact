@@ -78,3 +78,14 @@
 .request_sent:hover>.not_auth-error {
     visibility: visible;
 }
+form#message_user {
+    position: relative;
+}
+.message-text-input{
+    width: 360px!important;
+}
+@media screen and (max-width: 500px) {
+    .message-text-input{
+        width: 100%!important;
+    }
+}

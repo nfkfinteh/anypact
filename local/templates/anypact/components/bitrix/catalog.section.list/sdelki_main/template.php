@@ -23,9 +23,9 @@ $this->setFrameMode(true);
             <?
                 $URL_Section = $section['SECTION_PAGE_URL'];
                 // частный случай
-                if($section['ID'] == "29"){
-                    $URL_Section = 'https://nfksber.ru/open_account/';
-                }
+                // if($section['ID'] == "29"){
+                //     $URL_Section = 'https://nfksber.ru/open_account/';
+                // }
             ?>
             <a href="<?=$URL_Section?>" class="card-deal__button">Перейти</a>
         </div>

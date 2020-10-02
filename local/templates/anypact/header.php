@@ -21,21 +21,24 @@ global $USER;
     <link rel="preload" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'" data-font="g-font-pt-sans-caption" data-protected="true" href="https://fonts.googleapis.com/css?family=PT+Sans+Caption:400,700&subset=cyrillic-ext,latin-ext">
     <link rel="preload" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'" data-font="g-font-pt-sans-narrow" data-protected="true" href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700|PT+Sans:400,700&subset=cyrillic-ext,latin-ext">
     <link rel="preload" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'" data-font="g-font-pt-sans" data-protected="true" href="https://fonts.googleapis.com/css?family=PT+Sans:400,700&subset=cyrillic-ext,latin-ext">
-    <link rel="preload" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'" data-font="g-font-lobster" data-protected="true" href="https://fonts.googleapis.com/css?family=Lobster&subset=cyrillic-ext,latin-ext">    
+    <link rel="preload" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'" data-font="g-font-lobster" data-protected="true" href="https://fonts.googleapis.com/css?family=Lobster&subset=cyrillic-ext,latin-ext">
     <noscript>
         <link data-font="g-font-open-sans" data-protected="true" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&subset=cyrillic" rel="stylesheet">
     </noscript>
 
-    <?    
-    $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH.'/css/bootstrap.css'); 
-    $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH.'/template_style.css'); 
-    $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH.'/css/slider-pro.min.css'); 
+    <?
+    $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH.'/css/bootstrap.css');
+    $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH.'/template_style.css');
+    $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH.'/css/slider-pro.min.css');
     $APPLICATION->SetAdditionalCSS('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css');
     $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH.'/css/owl.carousel.min.css');
     $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH.'/css/owl.theme.default.css');
     $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH.'/module/cropper/cropper.min.css');
     $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH.'/module/selectize/selectize.css');
     $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH.'/css/jquery.datetimepicker.css');
+    $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH.'/css/croppie.css');
+    $APPLICATION->SetAdditionalCSS('https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css');
+    $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH.'/css/emoji.css');
     ?>
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -45,7 +48,7 @@ global $USER;
     })(window,document,'script','dataLayer','GTM-WWQFXKG');</script>
     <!-- End Google Tag Manager -->
     <?
-	$APPLICATION->AddHeadString('<script src="https://yastatic.net/share2/share.js" async="async"></script>',true);
+    $APPLICATION->AddHeadString('<script src="https://yastatic.net/share2/share.js" async="async"></script>',true);
     $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/module/jquery/jquery-3.3.1.min.js');
     $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/module/selectize/selectize.min.js');
     $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/bootstrap.min.js');
@@ -57,6 +60,13 @@ global $USER;
     $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/module/jquery.validation/jquery.validate.min.js');
     $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/jquery.datetimepicker.js');
     $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/module/jquery.ui/jquery-ui.js');
+    $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/new_popup.js');
+    $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/croppie.min.js');
+    $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/config.js');
+    $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/util.js');
+    $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/jquery.emojiarea.js');
+    $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/emoji-picker.js');
+
     CJSCore::Init(array('popup', 'date'));
 
     $APPLICATION->ShowHead();
@@ -94,31 +104,31 @@ global $USER;
 <noindex>
     <div id="regpopup_bg">
         <div class="container">
-            <div class="row align-items-center justify-content-center">            
+            <div class="row align-items-center justify-content-center">
                 <div class="col-sm-12 col-md-8 col-lg-6 col-xl-6">
                     <div class="regpopup_win">
                         <div id="regpopup_close">Х</div>
                         <!--Регистрационная форма-->
                         <div class="regpopup_content" id="regpopup_registration" style="display:none;">
                             <h2>Регистрация</h2>
-                            <?  
-                                ShowMessage($arParams["~AUTH_RESULT"]); 
+                            <?
+                                ShowMessage($arParams["~AUTH_RESULT"]);
 
-                                $APPLICATION->IncludeComponent( 
+                                $APPLICATION->IncludeComponent(
                                 "bitrix:main.register",
-                                "anypact", 
-                                Array( 
-                                    "USER_PROPERTY_NAME" => "", 
-                                    "SEF_MODE" => "N", 
-                                    "SHOW_FIELDS" => Array("LOGIN", "EMAIL", "PASSWORD", "CONFIRM_PASSWORD", "PERSONAL_PHONE"), 
-                                    "REQUIRED_FIELDS" => Array(), 
-                                    "AUTH" => "Y", 
-                                    "USE_BACKURL" => "N", 
-                                    "SUCCESS_PAGE" => "/informaciya_o_registracii",//$APPLICATION->GetCurPageParam('',array('backurl')), 
-                                    "SET_TITLE" => "N", 
+                                "anypact",
+                                Array(
+                                    "USER_PROPERTY_NAME" => "",
+                                    "SEF_MODE" => "N",
+                                    "SHOW_FIELDS" => Array("LOGIN", "EMAIL", "PASSWORD", "CONFIRM_PASSWORD", "PERSONAL_PHONE"),
+                                    "REQUIRED_FIELDS" => Array(),
+                                    "AUTH" => "Y",
+                                    "USE_BACKURL" => "N",
+                                    "SUCCESS_PAGE" => "/informaciya_o_registracii",//$APPLICATION->GetCurPageParam('',array('backurl')),
+                                    "SET_TITLE" => "N",
                                     "USER_PROPERTY" => Array()
-                                ) 
-                                ); 
+                                )
+                                );
                             ?>
                         </div>
                         <!--форма авторизации-->
@@ -150,7 +160,7 @@ global $USER;
                         </div>
                     </div>
                 </div>
-            </div>            
+            </div>
         </div>
     </div>
 </noindex>
@@ -158,88 +168,100 @@ global $USER;
 <div class="container">
         <!--Шапка-->
         <header class="header" id="header" style="width: 100%;">
-            <div class="row">
-                <div class="col-md-7 tablet_ver_logo">
-                    <a href="/" class="logo"><img src="<?=SITE_TEMPLATE_PATH?>/image/logo_ap.svg" alt="" style="width: 166px;"></a>
-                    <?if(!empty($getGeo['cityName'])):?>
-                        <span class="location"><?=$getGeo['cityName']?></span>
-                    <?else:?>
-                        <span class="location">Выберите город</span>
-                    <?endif?>
-                    <a href="/AnyPact инструкция.pdf" class="manual" target="_blank" onclick="ym(64629523,'reachGoal','manual');">Инструкция</a>
-                </div>
-                <? if ($USER->IsAuthorized()){ 
-                    $res = CUser::GetList($by="personal_country", $order="desc", [ 'ID' => $USER->GetID() ], [ 'SELECT' => ['UF_ESIA_AUT'], 'FIELDS' => ['ID'] ]);
-                    if ( $u = $res -> getNext() )
-                        $userEsiaAut = $u['UF_ESIA_AUT'];
-                    ?>
-                    <div class="col-md-2 tablet_ver_tel">
-                        <?if(!empty($getGeo['cityName'])):?>
-                            <span class="location"><?=$getGeo['cityName']?></span>
-                        <?else:?>
-                            <span class="location">Выберите город</span>
-                        <?endif?>
-                        <a href="tel:+78002008484" class="phone">8(800) 200-84-84</a>
-
-                    </div>
-                    <div class="col-md-3 tablet_ver_profile">
-                        <div class="row">     
-                            <?if ( $userEsiaAut != 1 ) {?>
-                                <div class="col-md-12">
-                                    <?                                
-                                        $APPLICATION->IncludeComponent("nfksber:profile.widget",
-                                        "head",
-                                        Array(
-                                                'IS_PAGE_MESSAGE' => $APPLICATION->GetCurPage() == '/list_message/view_message/' ? 'Y' : 'N'
-                                            )
-                                        );
-                                    ?>
-                                </div>
-                            <?} else {?>
-                                <div class="col-md-9">
-                                    <?                                
-                                        $APPLICATION->IncludeComponent("nfksber:profile.widget",
-                                        "head",
-                                        Array(
-                                                'IS_PAGE_MESSAGE' => $APPLICATION->GetCurPage() == '/list_message/view_message/' ? 'Y' : 'N'
-                                            )
-                                        );
-                                    ?>
-                                </div>
-                                <div class="col-md-3">
-                                    <!--Кнопка создать новое предложение-->
-                                    <div class="create-pact-btn">
-                                        <a href="/my_pacts/edit_my_pact/?ACTION=ADD"></a>
-                                        <div>Создать предложение</div>
-                                    </div>
-                                    <!------------>                   
-                                </div>
-                            <? } ?>
-                        </div>
-                    </div>
-                    <?} else {?>
-                        <div class="col-md-5 tablet_ver_tel_login">
-                            <a href="tel:+78002008484" class="phone">8(800) 200-84-84</a>
-                            <?if(!empty($getGeo['cityName'])):?>
-                                <span class="location"><?=$getGeo['cityName']?></span>
-                            <?else:?>
-                                <span class="location">Выберите город</span>
-                            <?endif?>
-                            <button class="btn btn-nfk btn-login" id="reg_button" onclick="ym(64629523,'reachGoal','reg_btn');">Регистрация / Вход</button>
-                        </div>
-                    <?}?>                    
+            <div class="header_item tablet_ver_logo">
+                <a href="/" class="logo"><img src="<?=SITE_TEMPLATE_PATH?>/image/logo_ap.svg" alt=""
+                        style="width: 166px;"></a>
+                <?if(!empty($getGeo['cityName'])):?>
+                <span class="location"><?=$getGeo['cityName']?></span>
+                <?else:?>
+                <span class="location">Выберите город</span>
+                <?endif?>
+                <a href="/AnyPact инструкция.pdf" class="manual" target="_blank"
+                    onclick="ym(64629523,'reachGoal','manual');">Инструкция</a>
             </div>
+            <? if ($USER->IsAuthorized()){
+                $res = CUser::GetList($by="personal_country", $order="desc", [ 'ID' => $USER->GetID() ], [ 'SELECT' => ['UF_ESIA_AUT'], 'FIELDS' => ['ID'] ]);
+                if ( $u = $res -> getNext() )
+                    $userEsiaAut = $u['UF_ESIA_AUT'];
+                ?>
+            <div class="header_item tablet_ver_profile">
+                <div class="tablet_ver_tel">
+                    <?if(!empty($getGeo['cityName'])):?>
+                    <span class="location"><?=$getGeo['cityName']?></span>
+                    <?else:?>
+                    <span class="location">Выберите город</span>
+                    <?endif?>
+                    <a href="tel:+78002008484" class="phone">8(800) 200-84-84</a>
+
+                </div>
+                <?if ( $userEsiaAut != 1 ) {?>
+                <div class="profile_item">
+                    <?
+                            $APPLICATION->IncludeComponent("nfksber:profile.widget",
+                            "head",
+                            Array(
+                                    'IS_PAGE_MESSAGE' => $APPLICATION->GetCurPage() == '/list_message/view_message/' ? 'Y' : 'N'
+                                )
+                            );
+                        ?>
+                </div>
+                <div class="profile_item">
+                    <div class="create-pact-btn">
+                        <a href="/first-help/"></a>
+                        <div>Помощь в создании объявления</div>
+                    </div>
+                </div>
+                <?} else {?>
+                <div class="profile_item">
+                    <?
+                            $APPLICATION->IncludeComponent("nfksber:profile.widget",
+                            "head",
+                            Array(
+                                    'IS_PAGE_MESSAGE' => $APPLICATION->GetCurPage() == '/list_message/view_message/' ? 'Y' : 'N'
+                                )
+                            );
+                        ?>
+                </div>
+                <div class="profile_item">
+                    <!--Кнопка создать новое предложение-->
+                    <div class="create-pact-btn">
+                        <a href="/my_pacts/edit_my_pact/?ACTION=ADD"></a>
+                        <div>Создать предложение</div>
+                    </div>
+                    <!------------>
+                </div>
+                <? } ?>
+            </div>
+            <?} else {?>
+            <div class="header_item tablet_ver_tel_login tablet_ver_tel_login_custom">
+                <div class="create-pact-btn">
+                    <a href="/first-help/"></a>
+                    <div>Помощь в создании объявления</div>
+                </div>
+
+                <a href="tel:+78002008484" class="phone">8(800) 200-84-84</a>
+
+                <?if(!empty($getGeo['cityName'])):?>
+                <span class="location"><?=$getGeo['cityName']?></span>
+                <?else:?>
+                <span class="location">Выберите город</span>
+                <?endif?>
+                <button class="btn btn-nfk btn-login" id="reg_button"
+                    onclick="ym(64629523,'reachGoal','reg_btn');">Регистрация / Вход</button>
+
+            </div>
+            <?}?>
         </header>
         <!--Меню навигации-->
         <nav class="navbar navbar-expand-md" style="width: 100%;">
             <div class="navbar-brand-block">
                 <?
                     $Section = $_GET['SECTION_ID'];
-                    $APPLICATION->IncludeComponent("nfksber:stepback", 
-                    "", 
+                    $APPLICATION->IncludeComponent("nfksber:stepback",
+                    "",
                         Array(
                             "IBLOCK_ID" => "3",
-                            "SECTION_ID" => $Section,   
+                            "SECTION_ID" => $Section,
                             )
                     );
                 ?>
@@ -275,25 +297,27 @@ global $USER;
                             '/friends/'         => 'Мои друзья',
                             '/list_message/'    => 'Сообщения',
                             '/service/'         => 'О сервисе',
-                            '/help/'            => 'Контакты'                            
+                            '/help/'            => 'Контакты'
                         );
                     }else {
                         // неавторизованный пользователь
                         $arUrlMenu = array(
-                            '/pacts/'           => 'Все предложения',  
-                            '/search_people/'   => 'Поиск контрагентов',                             
+                            '/pacts/'           => 'Все предложения',
+                            '/search_people/'   => 'Поиск контрагентов',
                             '/service/'         => 'О сервисе',
                             '/help/'            => 'Контакты',
                             '#'                 => 'Регистрация/вход'
                         );
                     }
-                    $APPLICATION->IncludeComponent("nfksber:navmenu.head", 
-                    "", 
+                    $APPLICATION->IncludeComponent("nfksber:navmenu.head",
+                    "",
                         Array(
                             "ArURL_MENU"         => $arUrlMenu,
                             )
                     );
                 ?>
+                <?$APPLICATION->IncludeComponent("nfksber:messenger_hl.unread.wiget", "", array('ACTION_VARIABLE' => 'action'));?>
+                <?$APPLICATION->IncludeComponent("nfksber:friends.incoming.wiget", "", array('ACTION_VARIABLE' => 'action'));?>
             </div>
         </nav>
         <!--//Меню навигации-->
