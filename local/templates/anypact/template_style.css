@@ -5034,13 +5034,6 @@ form.form-filter .selectbox-select .selectize-input input::placeholder {
     .widget_user_profile_select ul .nav-item:last-of-type a{
         margin-right: 0 !important;
     }
-<<<<<<< HEAD
-    .global-unread-message-count {
-        top: -16px !important;
-        right: 166px !important;
-    }
-=======
->>>>>>> d9fc60356232591f7133ff592e5fe98c9f412c53
     .tablet_ver_tel_login.tablet_ver_tel_login_custom .create-pact-btn a {
         width: 35px;
         height: 35px;
@@ -5060,15 +5053,6 @@ form.form-filter .selectbox-select .selectize-input input::placeholder {
         padding-top: 10px !important;
         padding-bottom: 10px !important;
     }
-<<<<<<< HEAD
-    .global-unread-message-count {
-        top: 185px !important;
-        left: 100px;
-    }
-}
-.navbar-nav li>a[href="/help/"]{
-    margin-right: 0 !important;
-=======
 }
 .navbar-nav li>a[href="/help/"]{
     margin-right: 0 !important;
@@ -5166,5 +5150,4 @@ form.form-filter .selectbox-select .selectize-input input::placeholder {
 }
 #navbarSupportedContent .count_unread.active {
     right: 210px;
->>>>>>> d9fc60356232591f7133ff592e5fe98c9f412c53
 }

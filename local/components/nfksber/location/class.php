@@ -44,6 +44,7 @@ class Location extends \CBitrixComponent
             $ipAddress = \Bitrix\Main\Service\GeoIp\Manager::getRealIp();
             // Получение геоинформации по этому IP
 <<<<<<< HEAD
+<<<<<<< HEAD
             global $APPLICATION, $USER;
             $result = file_get_contents("http://ipgeobase.ru:7020/geo?ip=".$ipAddress."&json=1");
             $resultstr = $APPLICATION->ConvertCharset($result, "windows-1251", "UTF-8");
@@ -54,10 +55,15 @@ class Location extends \CBitrixComponent
             //     echo "</pre>";
             // }
 =======
+=======
+>>>>>>> d9fc60356232591f7133ff592e5fe98c9f412c53
             global $APPLICATION;
             $result = file_get_contents("http://ipgeobase.ru:7020/geo?ip=".$ipAddress."&json=1");
             $resultstr = $APPLICATION->ConvertCharset($result, "windows-1251", "UTF-8");
             $result_decode = json_decode($resultstr, true)[$ipAddress];
+<<<<<<< HEAD
+>>>>>>> d9fc60356232591f7133ff592e5fe98c9f412c53
+=======
 >>>>>>> d9fc60356232591f7133ff592e5fe98c9f412c53
             $cityName = $result_decode['city'];
             if(empty($result_decode['city'])){

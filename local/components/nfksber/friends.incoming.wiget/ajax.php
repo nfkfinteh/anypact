@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <?php
 define('STOP_STATISTICS', true);
 define('NO_KEEP_STATISTIC', 'Y');
@@ -44,6 +45,8 @@ $APPLICATION->IncludeComponent(
 	'.default',
 	$params
 =======
+=======
+>>>>>>> d9fc60356232591f7133ff592e5fe98c9f412c53
 <?php
 define('STOP_STATISTICS', true);
 define('NO_KEEP_STATISTIC', 'Y');
@@ -88,5 +91,8 @@ $APPLICATION->IncludeComponent(
 	'nfksber:friends.incoming.wiget',
 	'.default',
 	$params
+<<<<<<< HEAD
+>>>>>>> d9fc60356232591f7133ff592e5fe98c9f412c53
+=======
 >>>>>>> d9fc60356232591f7133ff592e5fe98c9f412c53
 );

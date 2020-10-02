@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 function uploadIncomingFriends(){
     BX.ajax(
         {
@@ -42,6 +43,8 @@ function uploadIncomingFriends(){
 $(document).ready(function(){
     setInterval(uploadIncomingFriends, 1000*29);
 =======
+=======
+>>>>>>> d9fc60356232591f7133ff592e5fe98c9f412c53
 function uploadIncomingFriends(){
     BX.ajax(
         {
@@ -84,5 +87,8 @@ function uploadIncomingFriends(){
 
 $(document).ready(function(){
     setInterval(uploadIncomingFriends, 1000*29);
+<<<<<<< HEAD
+>>>>>>> d9fc60356232591f7133ff592e5fe98c9f412c53
+=======
 >>>>>>> d9fc60356232591f7133ff592e5fe98c9f412c53
 });

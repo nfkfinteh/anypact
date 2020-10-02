@@ -317,6 +317,10 @@ global $USER;
                     );
                 ?>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+                <?$APPLICATION->IncludeComponent("nfksber:messenger_hl.unread.wiget", "", array('ACTION_VARIABLE' => 'action'));?>
+>>>>>>> d9fc60356232591f7133ff592e5fe98c9f412c53
 =======
                 <?$APPLICATION->IncludeComponent("nfksber:messenger_hl.unread.wiget", "", array('ACTION_VARIABLE' => 'action'));?>
 >>>>>>> d9fc60356232591f7133ff592e5fe98c9f412c53

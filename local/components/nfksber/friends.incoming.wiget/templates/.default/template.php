@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <? if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) die();
 
 use \Bitrix\Main\Localization\Loc;
@@ -30,6 +31,8 @@ $signedParams = $signer->sign(base64_encode(serialize($arParams)), 'friends.inco
         templateFolder: '<?=CUtil::JSEscape($templateFolder)?>',
     };
 =======
+=======
+>>>>>>> d9fc60356232591f7133ff592e5fe98c9f412c53
 <? if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) die();
 
 use \Bitrix\Main\Localization\Loc;
@@ -60,5 +63,8 @@ $signedParams = $signer->sign(base64_encode(serialize($arParams)), 'friends.inco
         ajaxUrl: '<?=CUtil::JSEscape($component->getPath().'/ajax.php')?>',
         templateFolder: '<?=CUtil::JSEscape($templateFolder)?>',
     };
+<<<<<<< HEAD
+>>>>>>> d9fc60356232591f7133ff592e5fe98c9f412c53
+=======
 >>>>>>> d9fc60356232591f7133ff592e5fe98c9f412c53
 </script>

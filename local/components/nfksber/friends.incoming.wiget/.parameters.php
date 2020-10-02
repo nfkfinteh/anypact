@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <?
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die();
 
@@ -18,6 +19,8 @@ if(!CModule::IncludeModule("iblock"))
 )
 
 =======
+=======
+>>>>>>> d9fc60356232591f7133ff592e5fe98c9f412c53
 <?
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die();
 
@@ -36,5 +39,8 @@ if(!CModule::IncludeModule("iblock"))
       ),
 )
 
+<<<<<<< HEAD
+>>>>>>> d9fc60356232591f7133ff592e5fe98c9f412c53
+=======
 >>>>>>> d9fc60356232591f7133ff592e5fe98c9f412c53
 ?>
