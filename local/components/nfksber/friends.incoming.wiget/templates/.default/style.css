@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .global-incoming_friends-count {
     position: absolute;
     top: 0px;
@@ -28,4 +29,40 @@
         top: 187px;
         left: 103px;
     }
+=======
+.global-incoming_friends-count {
+    position: absolute;
+    top: -11px;
+    right: 306px;
+    color: #ff6600;
+    font-size: 14px;
+}
+.freind-count .global-incoming_friends-count {
+    top: 38px;
+    left: 154px;
+}
+@media screen and (max-width: 1022px) {
+    .global-incoming_friends-count {
+        top: 4px;
+    }
+}
+@media screen and (max-width: 991px) {
+    .global-incoming_friends-count {
+        top: -6px;
+        right: 243px;
+        font-size: 10px;
+    }
+    .freind-count .global-incoming_friends-count {
+        top: 33px;
+        left: 138px;
+        font-size: 14px;
+    }
+}
+@media screen and (max-width: 767px) {
+    .global-incoming_friends-count {
+        top: 143px;
+        left: 103px;
+        font-size: 14px;
+    }
+>>>>>>> d9fc60356232591f7133ff592e5fe98c9f412c53
 }

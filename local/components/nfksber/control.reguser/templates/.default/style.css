@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .date-block {
     display: flex;
     align-items: center;
@@ -17,4 +18,25 @@
 }
 .date-input input[name="DATE_REGISTER_TO"]{
     margin-left: 10px;
+=======
+.date-block {
+    display: flex;
+    align-items: center;
+}
+.date-text {
+    margin-right: 10px;
+}
+.date-input {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-right: 10px;
+}
+.date-input input {
+    margin-right: 10px;
+    cursor: pointer!important;
+}
+.date-input input[name="DATE_REGISTER_TO"]{
+    margin-left: 10px;
+>>>>>>> d9fc60356232591f7133ff592e5fe98c9f412c53
 }

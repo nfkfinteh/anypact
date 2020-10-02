@@ -12,7 +12,7 @@ function bindSelectUser(){
     $(el_html).prepend(aOne);
     $(el_html).children('.user-photo').remove();
     $(el_html).children('.user-fio').remove();
-    $(el_html).append('<div class="user-delete"></div><input name="SELECTED_USER[]" type="hidden" value="'+id+'"/>');
+    $(el_html).append('<div class="user-delete"></div><input name="'+US_component.inputName+'[]" type="hidden" value="'+id+'"/>');
     if($(this).hasClass('selected')){
         $(this).removeClass('selected');
         $('.select-user-list .user-el[data-id="'+id+'"]').remove();
@@ -34,18 +34,16 @@ $(document).ready(function(){
     });
 
     $('#us_name').on('click', function(){
-        $('.select-user-popup').css('visibility', "visible");
-        $('.select-user-popup').css('height', "500px");
+        $('.select-user-popup').slideDown();
         $(this).addClass('focus');
     });
 
     $(document).click(function(event) {
         if ($(event.target).closest("#us_name").length) return;
         if ($(event.target).closest(".select-user-popup").length) return;
-        $('.select-user-popup').css('height', "0px");
+        $('.select-user-popup').slideUp();
         setTimeout(function(){
             $("#us_name").removeClass('focus');
-            $('.select-user-popup').css('visibility', "hidden");
         }, 500);
         event.stopPropagation();
     });

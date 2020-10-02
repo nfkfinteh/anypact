@@ -19,9 +19,20 @@ if (!\Bitrix\Main\Loader::includeModule('highloadblock')) {
     die();
 }
 
+function GetEntityDataClass($HlBlockId) {
+    if (empty($HlBlockId) || $HlBlockId < 1)
+    {
+        return false;
+    }
+    $hlblock = HL\HighloadBlockTable::getById($HlBlockId)->fetch();   
+    $entity = HL\HighloadBlockTable::compileEntity($hlblock);
+    $entity_data_class = $entity->getDataClass();
+    return $entity_data_class;
+}
+
 #получаем необходимые данные
-if(!empty($data['login'])){
-    $rsUser = CUser::GetByLogin($data['login']);
+if(!empty($data['id'])){
+    $rsUser = CUser::GetByID($data['id']);
     $idUser = $rsUser->GetNext(true, false)['ID'];
     $data['UF_USER_B'] = $idUser;
 }else{
@@ -36,9 +47,7 @@ if($data['UF_USER_A'] == $data['UF_USER_B']){
     die();
 }
 
-$hlblock = HL\HighloadBlockTable::getById(14)->fetch();
-$entity = HL\HighloadBlockTable::compileEntity($hlblock);
-$entity_data_class = $entity->getDataClass();
+$entity_data_class = GetEntityDataClass(14);
 $rsData = $entity_data_class::getList(array(
     "select" => array("*"),
     "order" => array("ID" => "ASC"),
@@ -58,9 +67,7 @@ if(is_array($arDeleteFriends) && !empty($arDeleteFriends)){
     }
 }
 
-$hlblock = HL\HighloadBlockTable::getById(15)->fetch();
-$entity = HL\HighloadBlockTable::compileEntity($hlblock);
-$entity_data_class = $entity->getDataClass();
+$entity_data_class = GetEntityDataClass(15);
 $rsData = $entity_data_class::getList(array(
     "select" => array("*"),
     "order" => array("ID" => "ASC"),
@@ -85,9 +92,71 @@ if($data['action']=='add'){
         "UF_USER_B" => $data['UF_USER_B'],
         "UF_DATE_CREATE" => date("d.m.Y"),
     );
+
+    $entity_data_class = GetEntityDataClass(DISCUSSION_HLB_ID);
+    $rsData = $entity_data_class::getList(array(
+        "select" => array("ID", "UF_DIALOG_ID", "UF_AUTHOR_ID"),
+        "order" => array("ID" => "ASC"),
+        "filter" => array("UF_AUTHOR_ID" => $arFields['UF_USER_A'])
+    ));
+    if($arData = $rsData -> fetch()){
+        if(true){
+            $dialog_id = $arData['UF_DIALOG_ID'];            
+            $entity_data_class = GetEntityDataClass(DIALOGUSERS_HLB_ID);
+            $rsData = $entity_data_class::getList(array(
+                "select" => array("ID"),
+                "order" => array("ID" => "ASC"),
+                "filter" => array("UF_DIALOG_ID" => $dialog_id, "UF_USER_ID" => $arFields['UF_USER_B'])
+            ));
+            if($arData = $rsData->Fetch()){
+                $entity_data_class::update($arData["ID"], array(
+                    "UF_STATUS" => DIALOGUSERSTATUS_K
+                ));
+                $rsData = $entity_data_class::getList(array(
+                    "select" => array("UF_USER_ID"),
+                    "order" => array("ID" => "ASC"),
+                    "filter" => array("UF_DIALOG_ID" => $dialog_id, "UF_STATUS" => DIALOGUSERSTATUS_I)
+                ));
+                while($arData = $rsData->Fetch()){
+                    $arUsers[] = $arData["UF_USER_ID"];
+                }
+                $arUsers[] = $arFields['UF_USER_B'];
+                $arUsers = array_unique($arUsers);
+                $rsUser = CUser::GetList(($by="ID"), ($order="ASC"), array("ID" => $arFields['UF_USER_B']), array("FIELDS" => array("ID", "NAME", "LAST_NAME")));
+                if($arRes = $rsUser -> GetNext())
+                    $MESSAGE_TEXT = $arRes['NAME'] . " " . $arRes['LAST_NAME'] . " выгнан(а) из беседы";
+                $entity_data_class = GetEntityDataClass(MESSAGES_HLB_ID);
+                $result = $entity_data_class::add(array(
+                    "UF_DIALOG_ID" => $dialog_id,
+                    "UF_AUTHOR_ID" => $arFields['UF_USER_A'],
+                    "UF_MESSAGE_TEXT" => $MESSAGE_TEXT,
+                    "UF_TIMESTAMP_X" => date("d.m.Y H:i:s"),
+                    "UF_DATE_CREATE" => date("d.m.Y H:i:s"),
+                    "UF_IS_SYSTEM" => 1
+                ));
+                $message_id = $result->getId();
+                if($message_id){
+                    $entity_data_class = GetEntityDataClass(DIALOGS_HLB_ID);
+                    $entity_data_class::update($dialog_id, array(
+                        "UF_LAST_MESSAGE_DATE" => date("d.m.Y H:i:s"),
+                    ));
+                    $entity_data_class = GetEntityDataClass(MESSAGESTATUS_HLB_ID);
+                    foreach ($arUsers as $id) {
+                        $entity_data_class::add(array(
+                            "UF_DIALOG_ID" => $dialog_id,
+                            "UF_MESSAGE_ID" => $message_id,
+                            "UF_USER_ID" => $id,
+                            "UF_STATUS" => ($arFields['UF_USER_A'] == $id) ? MESSAGESTATUS_A : MESSAGESTATUS_N,
+                        ));
+                    }
+                }
+            }
+        }
+    }
 }
 
 if($data['action']=='add'){
+    $entity_data_class = GetEntityDataClass(15);
     $result = $entity_data_class::add($arFields);
 
     if (!\Bitrix\Main\Loader::includeModule('iblock')) {
@@ -128,6 +197,8 @@ if($data['action']=='add'){
         }
         CIBlockElement::SetPropertyValuesEx($arEl['ID'], $arEl['IBLOCK_ID'], $arFields);
     }
+
+
 
 }elseif(!empty($delete) && $data['action']=='delete'){
     $result = $entity_data_class::Delete($delete);

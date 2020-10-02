@@ -36,6 +36,9 @@ global $USER;
     $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH.'/module/cropper/cropper.min.css');
     $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH.'/module/selectize/selectize.css');
     $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH.'/css/jquery.datetimepicker.css');
+    $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH.'/css/croppie.css');
+    $APPLICATION->SetAdditionalCSS('https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css');
+    $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH.'/css/emoji.css');
     ?>
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -57,6 +60,13 @@ global $USER;
     $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/module/jquery.validation/jquery.validate.min.js');
     $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/jquery.datetimepicker.js');
     $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/module/jquery.ui/jquery-ui.js');
+    $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/new_popup.js');
+    $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/croppie.min.js');
+    $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/config.js');
+    $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/util.js');
+    $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/jquery.emojiarea.js');
+    $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/emoji-picker.js');
+
     CJSCore::Init(array('popup', 'date'));
 
     $APPLICATION->ShowHead();
@@ -306,6 +316,10 @@ global $USER;
                             )
                     );
                 ?>
+<<<<<<< HEAD
+=======
+                <?$APPLICATION->IncludeComponent("nfksber:messenger_hl.unread.wiget", "", array('ACTION_VARIABLE' => 'action'));?>
+>>>>>>> d9fc60356232591f7133ff592e5fe98c9f412c53
                 <?$APPLICATION->IncludeComponent("nfksber:friends.incoming.wiget", "", array('ACTION_VARIABLE' => 'action'));?>
             </div>
         </nav>

@@ -1,0 +1,256 @@
+/* Ширина слайдера */
+
+#slider {
+    width: 100%;
+    margin: 30px auto;
+}
+
+
+/* Контейнер слайдера */
+
+.ui-slider {
+    position: relative;
+}
+
+
+/* Ползунок */
+
+.ui-slider .ui-slider-handle {
+    position: absolute;
+    z-index: 2;
+    width: 18px;
+    /* Задаем нужную ширину */
+    height: 18px;
+    /* и высоту */
+    /*background: url(../slider/ui-slider_img.png) no-repeat; /* картинка изображающая ползунок. Или можно залить цветом, задать бордюр и скругления */
+    border: 2px solid #fd6600;
+    border-radius: 90px;
+    background-color: #ffffff;
+    cursor: pointer
+}
+
+.ui-slider .ui-slider-handle:hover {
+    background-color: #fd6600!important;
+}
+
+.ui-slider .ui-slider-range {
+    position: absolute;
+    z-index: 1;
+    font-size: .7em;
+    display: block;
+    border: 0;
+    overflow: hidden;
+}
+
+
+/* горизонтальный слайдер (сама полоса по которой бегает ползунок) */
+
+.ui-slider-horizontal {
+    height: 2px;
+    /* задаем высоту согласно дизайна */
+}
+
+
+/* позиционируем ползунки */
+
+.ui-slider-horizontal .ui-slider-handle {
+    top: -8px;
+    margin-left: -6px;
+}
+
+.ui-slider-horizontal .ui-slider-range {
+    top: 0px;
+    height: 100%;
+}
+
+.ui-slider-horizontal .ui-slider-range-min {
+    left: 0;
+}
+
+.ui-slider-horizontal .ui-slider-range-max {
+    right: 0;
+}
+
+
+/* оформление полосы по которой ходит ползунок */
+
+.ui-widget-content {
+    background: #f1f4f4;
+}
+
+
+/* оформление активного участка (между двумя ползунками) */
+
+.ui-widget-header {
+    background: #fd6600;
+}
+
+
+/* скругление для полосы слайдера */
+
+.ui-corner-all {
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+}
+
+#minCost,
+#maxCost {
+    width: 67px;
+    padding: 6px 2px;
+    text-align: center;
+    color: #6c6c6c;
+    font-size: 90%;
+    border: 1px solid #ccc;
+}
+
+#minCost:hover,
+#maxCost:hover {
+    border: 1px solid #000;
+}
+
+
+/*
+.container span {
+    display: inline-block;
+    margin: 0 9px;
+    font-size: 90%;
+}
+*/
+
+.container input {
+    border: 1px solid #ccc;
+    padding: 5px 7px;
+    font-size: 90%;
+    letter-spacing: 0.5px;
+    color: #2A2A2A;
+}
+
+@media screen and (max-width: 991px) {
+    .search>form>input {
+        width: calc(100% - 29px);
+    }
+    .location {
+        float: right;
+    }
+    .phone {
+        float: left;
+    }
+}
+
+.tenders-list .container-img {
+    display: none;
+}
+
+@media screen and (max-width: 767px) {
+    .search .btn-search {
+        float: none;
+        margin-left: calc(50% - 80px);
+    }
+    .location {
+        float: none;
+    }
+    .phone {
+        float: right;
+    }
+    .tenders-list .container-img {
+        display: block;
+    }
+}
+
+.btn-tiled {
+    background-image: url(/local/templates/anypact/image/sprite.png) !important;
+}
+
+.btn-list {
+    background-image: url(/local/templates/anypact/image/sprite.png) !important;
+}
+.discussion{
+    display: none;
+}
+.name-allow-change {
+    position: absolute;
+    width: 30px;
+    height: 40px;
+    right: 0;
+    bottom: 0;
+    color: #ff6416;
+    font-size: 22px;
+    text-align: center;
+    cursor: pointer;
+    line-height: 36px;
+    opacity: 0.6;
+}
+.name-allow-change:hover {
+    opacity: 1;
+}
+.discussion-photo {
+    width: 65px;
+    height: 65px;
+    background-color: #e8e8e8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+}
+.discussion-name {
+    border-bottom: 2px solid #ff6416;
+    width: 175px;
+}
+.discussion-name div {
+    padding-bottom: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.select-user{
+    position: relative;
+}
+.user-el {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    position: relative;
+    border-bottom: 1px solid #ddd;
+}
+.user-el:last-of-type {
+    border: none;
+}
+.user-el a {
+    width: 240px;
+    text-decoration: none;
+}
+.user-photo{
+    display: inline-block;
+}
+.user-photo img {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+}
+.user-photo h3{
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background: #dddddd;
+    font-weight: 900;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.user-photo a{
+    text-decoration: none;
+}
+.user-fio {
+    display: inline-block;
+    max-width: 220px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.profile-link:hover, .profile-link:focus{
+    text-decoration: none;
+}

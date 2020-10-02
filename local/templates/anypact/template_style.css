@@ -5034,10 +5034,13 @@ form.form-filter .selectbox-select .selectize-input input::placeholder {
     .widget_user_profile_select ul .nav-item:last-of-type a{
         margin-right: 0 !important;
     }
+<<<<<<< HEAD
     .global-unread-message-count {
         top: -16px !important;
         right: 166px !important;
     }
+=======
+>>>>>>> d9fc60356232591f7133ff592e5fe98c9f412c53
     .tablet_ver_tel_login.tablet_ver_tel_login_custom .create-pact-btn a {
         width: 35px;
         height: 35px;
@@ -5057,6 +5060,7 @@ form.form-filter .selectbox-select .selectize-input input::placeholder {
         padding-top: 10px !important;
         padding-bottom: 10px !important;
     }
+<<<<<<< HEAD
     .global-unread-message-count {
         top: 185px !important;
         left: 100px;
@@ -5064,4 +5068,103 @@ form.form-filter .selectbox-select .selectize-input input::placeholder {
 }
 .navbar-nav li>a[href="/help/"]{
     margin-right: 0 !important;
+=======
+}
+.navbar-nav li>a[href="/help/"]{
+    margin-right: 0 !important;
+}
+.new-pu-overflow {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.7);
+    z-index: 100;
+}
+.new-anypact-popup {
+    background: #fff;
+    border-radius: 5px;
+    margin: auto 14px;
+}
+.new-pu-title-block {
+    padding: 20px 25px;
+    background: #ff6416;
+    color: white;
+    border-radius: 5px 5px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.new-pu-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.new-pu-body {
+    padding: 20px 25px;
+}
+.new-pu-buttons {
+    padding: 14px 23px 14px 25px;
+    background-color: #fafbfc;
+    border-top: 1px solid #e7e8ec;
+    border-radius: 0 0 5px 5px;
+    display: flex;
+    justify-content: flex-end;
+}
+.flat_button {
+    margin-left: 10px;
+    color: #fff;
+    border: 0;
+    background: #ff6416;
+    padding: 5px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.flat_button:hover {
+    opacity: .88;
+}
+.flat_button.secondary {
+    color: #ff6416;
+    background: transparent;
+}
+.flat_button.secondary:hover {
+    background-color: #f1eae5;
+}
+.new-pu-x-button {
+    background: url(image/cross.png) no-repeat;
+    cursor: pointer;
+    width: 12px;
+    height: 12px;
+    opacity: .75;
+    outline: 0;
+}
+.new-pu-x-button:hover {
+    opacity: 1;
+}
+#croppie_img_editor .cr-boundary {
+    width: 100%!important;
+}
+.custom-scroll::-webkit-scrollbar {
+    background-color: #fff;
+    width: 6px;
+    height: 6px;
+}
+.custom-scroll::-webkit-scrollbar-track {
+    background-color: #fff;
+}
+.custom-scroll::-webkit-scrollbar-button {
+    display:none;
+}
+.custom-scroll::-webkit-scrollbar-thumb {
+    background-color: #a0a0a5;
+    border-radius:200px;
+}
+#navbarSupportedContent{
+    position: relative;
+}
+#navbarSupportedContent .count_unread.active {
+    right: 210px;
+>>>>>>> d9fc60356232591f7133ff592e5fe98c9f412c53
 }

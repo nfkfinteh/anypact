@@ -701,11 +701,6 @@ $(document).ready(function() {
     $('#canvas').keydown(function (eventObject) {
         if (eventObject.which == 8 || eventObject.which == 46) {
             let selection = window.getSelection();
-            console.log(selection);
-            //console.log($(selection.focusNode).text());
-            //console.log($(selection.focusNode).parent().text());
-            //console.log($(selection.focusNode).next().find('nedittext'));
-            //return false;
             if (eventObject.which == 8 && selection.focusNode.previousElementSibling !== null && selection.focusNode.previousElementSibling.tagName !== null && selection.focusOffset == 0){
                 if(selection.focusNode.previousElementSibling.tagName == "NEDITTEXT"){
                     return false;

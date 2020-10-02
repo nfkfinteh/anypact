@@ -1,4 +1,16 @@
-<?
+<? if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) die();
+
+use \Bitrix\Main\Localization\Loc;
+
+/**
+ * @global CMain $APPLICATION
+ * @var array $arParams
+ * @var array $arResult
+ * @var CatalogSectionComponent $component
+ * @var CBitrixComponentTemplate $this
+ * @var string $templateName
+ * @var string $componentPath
+ */
 if($arResult['IS_AJAX_REQUEST'] == 'Y'){
     $html = '';
     if(!empty($arResult['USER'])):
@@ -30,7 +42,7 @@ if($arResult['IS_AJAX_REQUEST'] == 'Y'){
 <h4 style="margin-bottom: .5rem;">(Необязательно)</h4>
 <h4 style="margin-bottom: .5rem;">Только выбранным пользователям будет видно данное предложение</h4>
 <div>
-    <input type="text" class="editbox" id="us_name" value="" name="us_name" placeholder="Выбрать">
+    <input type="text" class="editbox" id="us_name" value="" name="us_name" placeholder="Выбрать" autocomplete="off">
 </div>
 <div class="select-user">
     <div class="select-user-list">
@@ -54,14 +66,14 @@ if($arResult['IS_AJAX_REQUEST'] == 'Y'){
                     </a>
                     <div class="user-delete">
                     </div>
-                    <input name="SELECTED_USER[]" type="hidden" value="<?=$user['ID'];?>"/>
+                    <input name="<?=$arParams['INPUT_NAME']?>[]" type="hidden" value="<?=$user['ID'];?>"/>
                 </div>
         <?
             endforeach;
         endif;
         ?>
     </div>
-    <div class="select-user-popup">
+    <div class="select-user-popup custom-scroll">
         <?
         if(!empty($arResult['USER'])):
             foreach($arResult['USER'] as $user):
@@ -97,6 +109,7 @@ $signedParams = $signer->sign(base64_encode(serialize($arParams)), 'user.select'
 		siteID: '<?=CUtil::JSEscape($component->getSiteId())?>',
 		ajaxUrl: '<?=CUtil::JSEscape($component->getPath().'/ajax.php')?>',
         templateFolder: '<?=CUtil::JSEscape($templateFolder)?>',
+        inputName: '<?=$arParams['INPUT_NAME']?>',
     };
 </script>
 <?}?>
