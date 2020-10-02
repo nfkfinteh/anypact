@@ -1,0 +1,31 @@
+.global-incoming_friends-count {
+    position: absolute;
+    top: 0px;
+    right: 306px;
+    background-color: #ff6600;
+    color: #fff;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    font-size: 14px;
+}
+.freind-count .global-incoming_friends-count {
+    top: 37px;
+    left: 154px;
+}
+@media screen and (max-width: 991px) {
+    .global-incoming_friends-count {
+        right: 238px;
+    }
+    .freind-count .global-incoming_friends-count {
+        top: 32px;
+        left: 138px;
+    }
+}
+@media screen and (max-width: 767px) {
+    .global-incoming_friends-count {
+        top: 187px;
+        left: 103px;
+    }
+}
