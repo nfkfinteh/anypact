@@ -47,10 +47,36 @@ class ControlRegUser extends CBitrixComponent
 
         // цифры для статистики
         // всего зарегистированных через рекламный канал
-        $arFilter= array(                     
+        // $arFilter= array(                     
+        // );
+
+        if(!empty($this->request->get('DATE_REGISTER_FROM'))){
+            $dateFrom = $this->request->get('DATE_REGISTER_FROM');
+        }else{
+            $dateFrom = '01.01.1900';
+        }
+        if(!empty($this->request->get('DATE_REGISTER_TO'))){
+            $dateTo = $this->request->get('DATE_REGISTER_TO');
+        }else{
+            $dateTo = '01.01.2900';
+        }
+
+        $arFilter= array(
+            array(
+                "LOGIC" => "AND",
+                '>=DATE_REGISTER' => $dateFrom,
+                '<=DATE_REGISTER' => $dateTo
+            )
         );
         $arParams["SELECT"] = array("UF_TYPE_REGISTR");        
-        $arrAllRegistUsers = CUser::GetList(($by="ID"), ($order="ASC"), $arFilter, $arParams);
+        // $arrAllRegistUsers = CUser::GetList(($by="ID"), ($order="ASC"), $arFilter, $arParams);
+        $arrAllRegistUsers = Bitrix\Main\UserTable::getList(
+            array(
+                "order" => array("DATE_REGISTER" => "DESC"),
+                'select' => $arParams["SELECT"],
+                'filter' => $arFilter
+            )
+        );
         $AllRegistrActionUsers = array();
         while($allRegUsers = $arrAllRegistUsers->Fetch()){
             $AllRegistrActionUsers[] = $allRegUsers;
@@ -62,11 +88,27 @@ class ControlRegUser extends CBitrixComponent
         $this->arResult["ALL_REGIST_USERS"] = $arrParamsAllRegistUsers;
         
         // зарегистриованных через рекламный канал и актвированных
+        // $arFilter= array(
+        //     "ACTIVE" => 'Y'       
+        // );
+        // $arParams["SELECT"] = array("UF_ESIA_ID", "UF_TYPE_REGISTR", "UF_ESIA_AUT", "UF_PAY_YANDEX");      
+        // $arrAllRegistESIAUsers = CUser::GetList(($by="ID"), ($order="ASC"), $arFilter, $arParams);
         $arFilter= array(
-            "ACTIVE" => 'Y'       
+            "ACTIVE" => 'Y',
+            array(
+                "LOGIC" => "AND",
+                '>=DATE_REGISTER' => $dateFrom,
+                '<=DATE_REGISTER' => $dateTo
+            )
         );
-        $arParams["SELECT"] = array("UF_ESIA_ID", "UF_TYPE_REGISTR", "UF_ESIA_AUT", "UF_PAY_YANDEX");      
-        $arrAllRegistESIAUsers = CUser::GetList(($by="ID"), ($order="ASC"), $arFilter, $arParams);
+        $arParams["SELECT"] = array("*", "UF_ESIA_ID", "UF_TYPE_REGISTR", "UF_ESIA_AUT", "UF_PAY_YANDEX");
+        $arrAllRegistESIAUsers = Bitrix\Main\UserTable::getList(
+            array(
+                "order" => array("DATE_REGISTER" => "DESC"),
+                'select' => $arParams["SELECT"],
+                'filter' => $arFilter
+            )
+        );
         
         $AllRegistESIAUsers = array();
         $ESIAverifUser = array();
@@ -80,8 +122,11 @@ class ControlRegUser extends CBitrixComponent
                 $ESIAverifUser[] = $allRegUsersESIA;                
             }            
             // заполнен один из параметров
-            if(!empty($allRegUsersESIA["PERSONAL_PHONE"]) || $allRegUsersESIA["UF_ESIA_AUT"]==1 || !empty($allRegUsersESIA["PERSONAL_PHOTO"])){
+            if(!empty($allRegUsersESIA["PERSONAL_PHONE"]) && $allRegUsersESIA["UF_ESIA_AUT"]==1 && !empty($allRegUsersESIA["PERSONAL_PHOTO"])){
                 $FillUserProfile[] = $allRegUsersESIA;
+            }
+            if(!empty($allRegUsersESIA["PERSONAL_PHONE"])){
+                $PhoneUserProfile[] = $allRegUsersESIA;
             }
             // выплачено вознаграждение
             if($allRegUsersESIA["UF_PAY_YANDEX"] == "Y"){
@@ -104,6 +149,11 @@ class ControlRegUser extends CBitrixComponent
             "COUNT_ARR_ALL_USERS"   => count($FillUserProfile)
         ];
 
+        $paramsUsersPhone = [
+            "ARR_ALL_USERS"         => $PhoneUserProfile,
+            "COUNT_ARR_ALL_USERS"   => count($PhoneUserProfile)
+        ];
+
         $paramsUsersPay = [
             "ARR_ALL_USERS"         => $UsersPay,
             "COUNT_ARR_ALL_USERS"   => count($UsersPay)
@@ -112,16 +162,29 @@ class ControlRegUser extends CBitrixComponent
         $this->arResult["ALL_REGIST_ESIA_USERS"]    = $arrParamsAllRegistESIAUsers;
         $this->arResult["ALL_VERIF_ESIA_USERS"]     = $ParamsVerifESIAUsers;
         $this->arResult["ALL_FILL_PARAMS_USERS"]    = $paramsUsersFill;
+        $this->arResult["ALL_PHONE_USERS"]          = $paramsUsersPhone;
         $this->arResult["ALL_PAY_USERS"]            = $paramsUsersPay;
 
         // данные для таблицы
         $arFilter= array(
-            "ACTIVE" => 'Y'          
+            "ACTIVE" => 'Y',
+            array(
+                "LOGIC" => "AND",
+                '>=DATE_REGISTER' => $dateFrom,
+                '<=DATE_REGISTER' => $dateTo
+            )
         );
 
-        $arParams["SELECT"] = array("UF_ESIA_ID", "UF_TYPE_REGISTR", "UF_ESIA_AUT", "UF_PAY_YANDEX");
+        $arParams["SELECT"] = array("*", "UF_ESIA_ID", "UF_TYPE_REGISTR", "UF_ESIA_AUT", "UF_PAY_YANDEX");
         
-        $elementsResult = CUser::GetList(($by="ID"), ($order="ASC"), $arFilter, $arParams);
+        // $elementsResult = CUser::GetList(($by="ID"), ($order="ASC"), $arFilter, $arParams);.
+        $elementsResult = Bitrix\Main\UserTable::getList(
+            array(
+                "order" => array("DATE_REGISTER" => "ASC"),
+                'select' => $arParams["SELECT"],
+                'filter' => $arFilter
+            )
+        );
         
         $FilterSumPay = array();
         $SummPay =  $this->getHLSingl(13, $FilterSumPay); //'100.00' сумма должна быть строкой с точкой и двумя знаками после нее        

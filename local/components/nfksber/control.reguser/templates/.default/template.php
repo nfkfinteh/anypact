@@ -1,11 +1,24 @@
+<form class="date-block" name="byDate" method="get">
+    <div class="date-text">Дата регистрации:</div>
+    <div class="date-input">
+        <input type="text" name="DATE_REGISTER_FROM" value="<?=$_GET['DATE_REGISTER_FROM'];?>">
+        <span> - </span>
+        <input type="text" name="DATE_REGISTER_TO" value="<?=$_GET['DATE_REGISTER_TO'];?>">
+        <span class="glyphicon glyphicon-calendar"></span>
+    </div>
+    <button class="btn btn-nfk" type="submit">
+        Применить
+    </button>
+</form>
 <table class="table">
   <thead>
     <tr>
       <th scope="col">Всего зарегистрированных</th>
-      <th scope="col">Из них активированных</th>
-      <th scope="col">Из них Верифицированных ЕСИА</th>      
-      <th scope="col">Из них Верифицированных ЕСИА или с фото или с номером телефона</th>
-      <th scope="col">Из них Выплачено</th>
+      <th scope="col">Активированных</th>
+      <th scope="col">Верифицированных ЕСИА</th>      
+      <th scope="col">Верифицированных ЕСИА, с фото, с номером телефона</th>
+      <th scope="col">С номером телефона</th>
+      <th scope="col">Выплачено</th>
     </tr>
   </thead>
   <tbody>
@@ -21,6 +34,9 @@
         </td>
         <td>
             <?=$arResult["ALL_FILL_PARAMS_USERS"]["COUNT_ARR_ALL_USERS"]?>
+        </td>
+        <td>
+            <?=$arResult["ALL_PHONE_USERS"]["COUNT_ARR_ALL_USERS"]?>
         </td>
         <td>
             <?=$arResult["ALL_PAY_USERS"]["COUNT_ARR_ALL_USERS"]?>
@@ -96,7 +112,15 @@
                     <?if($UserRegAction["UF_PAY_YANDEX"] == "Y"){ ?>
                         <button class="btn btn-nfk" disabled>Выплата произведена</button>
                     <?}else { ?>
-                        <button class="btn btn-nfk buttonSebdPay" data=<?=$UserRegAction["PAY_PARAMS"]?>>Выплатить вознаграждение</button>
+                        <?php
+                        $count = COption::GetOptionInt("main", "pay_count");
+                        if(empty($count)){
+                            $count = 1;
+                        }
+                        if($count <= 1000){
+                        ?>
+                            <button class="btn btn-nfk buttonSebdPay" data=<?=$UserRegAction["PAY_PARAMS"]?>>Выплатить вознаграждение</button>
+                        <?}?>
                     <?}?>
                 <? } ?>
             </td>

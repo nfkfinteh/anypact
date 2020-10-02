@@ -31,6 +31,9 @@ $APPLICATION->SetTitle("Черный список");
                     ),
                     false
                 );?>
+                <div class="freind-count">
+                    <?$APPLICATION->IncludeComponent("nfksber:friends.incoming.wiget", "", array('ACTION_VARIABLE' => 'action'));?>  
+                </div>
             </div>
             <div class="col-lg-9 col-md-8 col-sm-12">
                 <?

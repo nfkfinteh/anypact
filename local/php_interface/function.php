@@ -90,4 +90,11 @@ function isDisplayElement($arDataDisplay){
 
     return $result;
 }
-?>
+
+if (!function_exists("cdump")) {
+    function cdump($var){
+        echo "<script>";
+        echo "console.log(" . json_encode($var) . ");";
+        echo "</script>";
+    }
+}

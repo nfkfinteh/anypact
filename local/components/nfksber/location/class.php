@@ -43,8 +43,20 @@ class Location extends \CBitrixComponent
             // Для определения местоположения требуется IP пользователя
             $ipAddress = \Bitrix\Main\Service\GeoIp\Manager::getRealIp();
             // Получение геоинформации по этому IP
-            $resultheader = \Bitrix\Main\Service\GeoIp\Manager::getDataResult($ipAddress, "ru", array('cityName'));
-            $cityName = \Bitrix\Main\Service\GeoIp\Manager::getcityName($ipAddress, "ru");
+            global $APPLICATION, $USER;
+            $result = file_get_contents("http://ipgeobase.ru:7020/geo?ip=".$ipAddress."&json=1");
+            $resultstr = $APPLICATION->ConvertCharset($result, "windows-1251", "UTF-8");
+            $result_decode = json_decode($resultstr, true)[$ipAddress];
+            // if($USER -> IsAdmin()){
+            //     echo "<pre>";
+            //     var_dump($result_decode);
+            //     echo "</pre>";
+            // }
+            $cityName = $result_decode['city'];
+            if(empty($result_decode['city'])){
+                $resultheader = \Bitrix\Main\Service\GeoIp\Manager::getDataResult($ipAddress, "ru", array('cityName'));
+                $cityName = \Bitrix\Main\Service\GeoIp\Manager::getcityName($ipAddress, "ru");
+            }
             if (empty($cityName)) $cityName = "Москва";
             $this->arResult['GEO']['cityName'] = $cityName;
         }
@@ -54,7 +66,7 @@ class Location extends \CBitrixComponent
 
     public function getLocation($ipAddress)
     {
-        $obj = GeoIp\Manager::getDataResult($ipAddress, "ru", array('cityName', 'zipCode'));
+        //$obj = GeoIp\Manager::getDataResult($ipAddress, "ru", array('cityName', 'zipCode'));
         $geoData = ''; //$obj->getGeoData();
         return $geoData;
     }

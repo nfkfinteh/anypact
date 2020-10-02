@@ -68,6 +68,7 @@ $(document).ready(function(){
                         console.log($result['VALUE']);
                     }
                     if ($result['TYPE'] == 'SUCCESS') {
+                        uploadIncomingFriends();
                         $(this_btn).parent().find('.js-delete-frends').remove();
                         $(this_btn).addClass('js-delete-frends');
                         $(this_btn).removeClass('js-add-frends');
@@ -95,6 +96,7 @@ $(document).ready(function(){
                         console.log($result['VALUE']);
                     }
                     if ($result['TYPE'] == 'SUCCESS') {
+                        uploadIncomingFriends();
                         if($(this_btn).parent().find('.js-add-frends').length > 0){
                             $(this_btn).remove();
                         }else{
@@ -126,6 +128,7 @@ $(document).ready(function(){
                         console.log($result['VALUE']);
                     }
                     if ($result['TYPE'] == 'SUCCESS') {
+                        uploadIncomingFriends();
                         $(this_btn).addClass('js-delete-blacklist');
                         $(this_btn).removeClass('js-add-blacklist');
                         $(this_btn).children('img').attr({'src':'/local/templates/anypact/image/black-list.png','title':'Удалить из черного списка','alt':'Удалить из черного списка'});

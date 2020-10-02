@@ -1,6 +1,12 @@
 <?
 /*Ссылки на ресурсы*/
 $MessURL = '/list_message/';
+$profileURL = '/profile/';
+if(!empty($arResult['ACTIVE_COMPANY']['ID'])){
+    $profileURL = '/profile_user/?ID='.$arResult['ACTIVE_COMPANY']['ID'].'&type=company';
+}else{
+    $profileURL = '/profile_user/?ID='.$arResult["ID"];
+}
 ?>
 <div class="widget_user_profile">
     <div class="login-information">
@@ -18,11 +24,13 @@ $MessURL = '/list_message/';
                     </div>
                 <?endif?>
             <?else:?>
-                
-                <a href="<?=$MessURL?>" class="link-messageList">
+
+                <a href="<?=$profileURL?>" class="link-messageList">
                     <? if(empty($arResult["PERSONAL_PHOTO"])):?>
-                        <div class="widget_user_profile_avatar container_prof">
-                            <span><?=$arResult["IN_NAME"]?></span>
+                        <?/*?><div class="widget_user_profile_avatar container_prof">
+                            <span><?=$arResult["IN_NAME"]?></span><?*/?>
+                        <div class="login-information-photo container_prof">
+                            <img src="<?= SITE_TEMPLATE_PATH ?>/image/people-search-no-phpto.png">
                     <?else:?>
                         <div class="login-information-photo container_prof">
                             <img src="<?=$arResult["PERSONAL_PHOTO"]?>">
@@ -32,7 +40,7 @@ $MessURL = '/list_message/';
                 </a>
                 <div class="user-menu-overflow">
                     <div class="user-menu-block" onclick="event.stopPropagation()">
-                        <a class="user-info" href="<?=$MessURL?>">
+                        <a class="user-info" href="<?=$profileURL?>">
                         <? if(empty($arResult["PERSONAL_PHOTO"])):?>
                             <div class="widget_user_profile_avatar container_prof">
                                 <span><?=$arResult["IN_NAME"]?></span>
@@ -48,12 +56,13 @@ $MessURL = '/list_message/';
                         </a>
                         <div class="user-menu">
                             <ul>
+                                <li><a href="<?=$profileURL?>">Мой профиль</a></li>
                                 <li><a href="/profile/">Редактировать профиль</a></li>
                                 <?if($arResult['UF_ESIA_AUT']==1):?>
                                     <li><a href="/profile/select_company/">Переключить профиль</a></li>
                                 <?endif?>
                             </ul>
-                            <a href="<?echo $APPLICATION->GetCurPageParam("logout=yes", 
+                            <a href="<?echo $APPLICATION->GetCurPageParam("logout=yes",
                             array(
                                 "login",
                                 "logout",
@@ -70,7 +79,9 @@ $MessURL = '/list_message/';
                     <?if(!empty($arResult['ACTIVE_COMPANY'])):?><?=$arResult['ACTIVE_COMPANY']['NAME']?>,   <?endif?> <?=$arResult["LAST_NAME"]?> <?=$arResult["IN_NAMES"]?>
                 </a> -->
                 <span class="widget_user_profile_name__title">
-                    <?if(!empty($arResult['ACTIVE_COMPANY'])):?><?=$arResult['ACTIVE_COMPANY']['NAME']?>,   <?endif?> <?=$arResult["LAST_NAME"]?> <?=$arResult["IN_NAMES"]?>
+                    <span>
+                        <?if(!empty($arResult['ACTIVE_COMPANY'])):?><?=$arResult['ACTIVE_COMPANY']['NAME']?>,   <?endif?> <?=$arResult["LAST_NAME"]?> <?=$arResult["IN_NAMES"]?>
+                    </span>
                     <span class="dropdown-arrow-profile"></span>
                 </span>
                 <?/*<span class="widget_user_profile_url_profile">Профиль</span>*/?>
@@ -78,15 +89,16 @@ $MessURL = '/list_message/';
                 <div class="widget_user_profile_select" style="display: none;">
                     <span class="triangle">▲</span>
                     <ul>
+                        <li><a href="<?=$profileURL?>">Мой профиль</a></li>
                         <li><a href="/profile/">Редактировать профиль</a></li>
                         <?if($arResult['UF_ESIA_AUT']==1):?>
                             <li><a href="/profile/select_company/">Переключить профиль</a></li>
                         <?endif?>
-                        <li data-href="/my_pacts/"><a href="/my_pacts/">Мои сделки</a></li>
+                        <!-- <li data-href="/my_pacts/"><a href="/my_pacts/">Мои сделки</a></li>
                         <li data-href="/friends/"><a href="/friends/">Мои друзья</a></li>
-                        <li data-href="/list_message/"><a href="/list_message/">Сообщения</a></li>
+                        <li data-href="/list_message/"><a href="/list_message/">Сообщения</a></li> -->
                     </ul>
-                    <a href="<?echo $APPLICATION->GetCurPageParam("logout=yes", 
+                    <a href="<?echo $APPLICATION->GetCurPageParam("logout=yes",
                         array(
                             "login",
                             "logout",
@@ -105,7 +117,7 @@ $MessURL = '/list_message/';
     //клик по профилю в шапке
     // $('#widget_user_profile_name__title').on('click', function(){
     //     let select = $('#widget_user_profile_select');
-    //     let visual = $(select).css('display');        
+    //     let visual = $(select).css('display');
     //     if(visual == 'none'){
     //         $(select).css('display', 'block');
     //     }else {
