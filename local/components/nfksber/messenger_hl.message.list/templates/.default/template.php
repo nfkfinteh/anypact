@@ -255,7 +255,7 @@ if($arResult['TYPE'] == 'NEW_MESSAGE'){
     <div class="no_active_dialogs">
         <img src="/local/templates/anypact/image/dont_chat.png" alt="Нет активных диалогов"/>
         <p class="dont_chat">У вас нет активных чатов</p>
-        <p class="chose_dialog">Выберите диалог или <a href="?action=new_dialog">создайте групповой чат</a></p>
+        <p class="chose_dialog">Выберите диалог или <a href="?action=new_dialog">создайте чат</a></p>
     </div>
 <?
 }elseif($arResult['PAGE'] >= $arResult['TOTAL_PAGE']){

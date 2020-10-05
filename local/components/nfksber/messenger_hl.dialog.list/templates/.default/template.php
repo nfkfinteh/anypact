@@ -13,7 +13,7 @@ use \Bitrix\Main\Localization\Loc;
  */
 if($_GET['action'] == "new_dialog"){?>
     <div id="dialog_new">
-        <h3 class="font-weight-bold">Создание беседы</h3>
+        <h3 class="font-weight-bold">Создание чата</h3>
         <div>
             <form action="?new_dialog=Y" method="post" name="new_dialog">
                 <div class="avatar-name-block">
