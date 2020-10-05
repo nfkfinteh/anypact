@@ -113,7 +113,7 @@
                 ?>
             </td>
             <td>
-                <? if($UserRegAction["UF_ESIA_AUT"] == 1 && $UserRegAction["PERSONAL_PHOTO"] !='' && $UserRegAction['PERSONAL_PHONE'] !=''){ ?>
+                <? if($UserRegAction["UF_ESIA_AUT"] == 1 && $UserRegAction["PERSONAL_PHOTO"] !='' && $UserRegAction['PERSONAL_PHONE'] !='' && $UserRegAction['DEAL_WITH_PHOTOS'] == "Y"){ ?>
                     <?if($UserRegAction["UF_PAY_YANDEX"] == "Y"){ ?>
                         <button class="btn btn-nfk" disabled>Выплата произведена</button>
                     <?}else { ?>

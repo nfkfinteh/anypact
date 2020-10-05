@@ -210,7 +210,7 @@ class ControlRegUser extends CBitrixComponent
             $ID_ORDER = rand(100000, 999999);
             $rsUser["PAY_PARAMS"] = base64_encode($rsUser["ID"].'#'.$SummPay["UF_SUMM_PAY"].'#'.$rsUser["ID"].'#'.$rsUser["PERSONAL_PHONE"].'#'.$ID_ORDER);
             if(!empty($arDealWithPhotos[$rsUser['ID']]))
-                $arDeal = array("DEAL_WITH_PHOTOS" => "Y");
+                $arDeal = array("DEAL_WITH_PHOTOS" => $arDealWithPhotos[$rsUser['ID']]);
             else
                 $arDeal = array();
             $arFilterUserRegistAction[] = array_merge($rsUser, $arDeal);
