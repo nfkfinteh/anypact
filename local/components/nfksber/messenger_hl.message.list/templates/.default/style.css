@@ -72,7 +72,6 @@
 .name-date {
     display: flex;
     width: 100%;
-    justify-content: space-between;
 }
 .message-block-right .name-date{
     flex-direction: row-reverse;
@@ -476,6 +475,9 @@ a.message-text__file:hover, a.message-text__file:focus{
     }
     .discussion-user .users-container {
         padding: 30px 0;
+    }
+    .message-message time{
+        line-height: 24px;
     }
 }
 @media screen and (max-width: 767px) {
