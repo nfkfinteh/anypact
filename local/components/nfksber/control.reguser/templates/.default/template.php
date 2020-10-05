@@ -16,7 +16,7 @@
       <th scope="col">Всего зарегистрированных</th>
       <th scope="col">Активированных</th>
       <th scope="col">Верифицированных ЕСИА</th>      
-      <th scope="col">ЕСИА, фото, телефон, объявление с фото</th>
+      <th scope="col">ЕСИА, фото профиля, телефон, сделка с фото</th>
       <th scope="col">С номером телефона</th>
       <th scope="col">Выплачено</th>
     </tr>
@@ -104,6 +104,11 @@
                         echo "<br>".$UserRegAction['PERSONAL_PHONE'];
                     }else {
                         echo "<br> нет телефона";
+                    }
+                    if($UserRegAction['DEAL_WITH_PHOTOS'] == "Y"){
+                        echo "<br>Сделка с фото";
+                    }else {
+                        echo "<br> нет сделки с фото";
                     }
                 ?>
             </td>

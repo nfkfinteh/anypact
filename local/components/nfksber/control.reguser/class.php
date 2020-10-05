@@ -119,7 +119,8 @@ class ControlRegUser extends CBitrixComponent
             $AllRegistESIAUsers[] = $allRegUsersESIA;            
             // верифицорован через ЕСИА
             if($allRegUsersESIA["UF_ESIA_AUT"]==1){
-                $ESIAverifUser[] = $allRegUsersESIA;                
+                $ESIAverifUser[] = $allRegUsersESIA;
+                $arUserIDs[] = $allRegUsers['ID'];
             }            
             // заполнен один из параметров
             if(!empty($allRegUsersESIA["PERSONAL_PHONE"]) && $allRegUsersESIA["UF_ESIA_AUT"]==1 && !empty($allRegUsersESIA["PERSONAL_PHOTO"])){
@@ -132,6 +133,22 @@ class ControlRegUser extends CBitrixComponent
             if($allRegUsersESIA["UF_PAY_YANDEX"] == "Y"){
                 $UsersPay[] = $allRegUsersESIA;
             }
+        }
+
+        $rs = CIBlockElement::GetList (
+            Array("ID" => "ASC"),
+            Array("IBLOCK_ID" => 3, "PROPERTY_PACT_USER" => $arUserIDs, "!=PROPERTY_INPUT_FILES" => false),
+            false,
+            false,
+            array("ID", "IBLOCK_ID", "PROPERTY_PACT_USER", "PROPERTY_INPUT_FILES")
+        );
+        while($ar = $rs->GetNext()) {
+            $arDealWithPhotos[$ar['PROPERTY_PACT_USER_VALUE']] = "Y";
+        }
+
+        foreach($FillUserProfile as $key => $user){
+            if(empty($arDealWithPhotos[$user['ID']]))
+                unset($FillUserProfile[$key]);
         }
 
         $arrParamsAllRegistESIAUsers = [
@@ -187,12 +204,16 @@ class ControlRegUser extends CBitrixComponent
         );
         
         $FilterSumPay = array();
-        $SummPay =  $this->getHLSingl(13, $FilterSumPay); //'100.00' сумма должна быть строкой с точкой и двумя знаками после нее        
+        $SummPay =  $this->getHLSingl(13, $FilterSumPay); //'50.00' сумма должна быть строкой с точкой и двумя знаками после нее        
         
         while ($rsUser = $elementsResult->Fetch()) {
             $ID_ORDER = rand(100000, 999999);
             $rsUser["PAY_PARAMS"] = base64_encode($rsUser["ID"].'#'.$SummPay["UF_SUMM_PAY"].'#'.$rsUser["ID"].'#'.$rsUser["PERSONAL_PHONE"].'#'.$ID_ORDER);
-            $arFilterUserRegistAction[] = $rsUser;
+            if(!empty($arDealWithPhotos[$rsUser['ID']]))
+                $arDeal = array("DEAL_WITH_PHOTOS" => "Y");
+            else
+                $arDeal = array();
+            $arFilterUserRegistAction[] = array_merge($rsUser, $arDeal);
         } 
         $this->arResult["USER_REGIST_ACTION"] = $arFilterUserRegistAction;
 
