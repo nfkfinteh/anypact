@@ -12,7 +12,7 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 ?>
-<form name="<?echo $arResult["FILTER_NAME"]."_form"?>" action="<?echo $arResult["FORM_ACTION"]?>" method="post" class="form-filter">
+<form name="<?echo $arResult["FILTER_NAME"]."_form"?>" action="<?echo $arResult["FORM_ACTION"]?>" method="get" class="form-filter">
 	<?foreach($arResult["ITEMS"] as $arItem):
 		if(array_key_exists("HIDDEN", $arItem)):
 			echo $arItem["INPUT"];
