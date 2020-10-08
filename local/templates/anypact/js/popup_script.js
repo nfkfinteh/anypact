@@ -204,6 +204,7 @@ window.onload = function() {
         var regpopup_form_registration = document.getElementById('regpopup_registration');
         var regpopup_form_forgotpassword = document.getElementById('regpopup_forgotpassword');
         var open_reg_form = document.getElementById('open_reg_form');
+        var open_reg_form2 = document.getElementById('open_reg_form2');
         var open_fgpw_form = document.getElementById('open_fgpw_form');
         var regpopup_open_link_mobile = document.querySelector('.nav-link[href="#"]');
         
@@ -260,6 +261,15 @@ window.onload = function() {
 
         if(document.getElementById('open_reg_form')){
             open_reg_form.onclick = function(event) {
+                regpopup_bg.style.display = 'block';
+                regpopup_form_autorisation.style.display = 'none';
+                regpopup_form_forgotpassword.style.display = 'none';
+                regpopup_form_registration.style.display = 'block';
+                return false;
+            };
+        }
+        if(document.getElementById('open_reg_form2')){
+            open_reg_form2.onclick = function(event) {
                 regpopup_bg.style.display = 'block';
                 regpopup_form_autorisation.style.display = 'none';
                 regpopup_form_forgotpassword.style.display = 'none';
