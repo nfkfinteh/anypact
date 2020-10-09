@@ -146,7 +146,6 @@
 			async:false,
 			success: function(result){
                 var $result = JSON.parse(result);
-                console.log($result);
                 if($result['STATUS'] == "SUCCESS"){
                     ButtonPay.prop('disabled', 'true');
                 }else{
