@@ -145,15 +145,23 @@
 			data: {'payParams': PayParams},
 			async:false,
 			success: function(result){
-                console.log(result);
-                ButtonPay.prop('disabled', 'true');
-				// $result = JSON.parse(result);
-				// if($result['TYPE']=='ERROR'){
-				// 	console.log($result['VALUE']);
-				// }
-				// if($result['TYPE']=='SUCCESS'){
-				// 	console.log($result);
-				// }
+                var $result = JSON.parse(result);
+                console.log($result);
+                if($result['STATUS'] == "SUCCESS"){
+                    ButtonPay.prop('disabled', 'true');
+                }else{
+                    var data = {
+                        TITLE: 'Ошибка!',
+                        BODY: '<p>'.$result['DESCRIPTION'].'</p>',
+                        BUTTONS: [
+                            {
+                                NAME: 'Закрыть',
+                                CLOSE: 'Y'
+                            }
+                        ]
+                    };
+                    newAnyPactPopUp(data);
+                }
 			}
         });        
     });
