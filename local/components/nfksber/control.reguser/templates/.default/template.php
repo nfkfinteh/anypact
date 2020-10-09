@@ -152,7 +152,7 @@
                 }else{
                     var data = {
                         TITLE: 'Ошибка!',
-                        BODY: '<p>'.$result['DESCRIPTION'].'</p>',
+                        BODY: '<p>'+$result['DESCRIPTION']+'</p>',
                         BUTTONS: [
                             {
                                 NAME: 'Закрыть',
