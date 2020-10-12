@@ -3,6 +3,10 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("AnyPact || 50 рублей на телефон за 5 минут!");
 ?>
 </div>
+<?
+global $USER;
+if(!$USER -> IsAuthorized() || $USER -> IsAdmin()){
+?>
 <section class="section-50r">
     <div class="container-akcii">
         <div class="row-akcii">
@@ -71,5 +75,5 @@ $APPLICATION->SetTitle("AnyPact || 50 рублей на телефон за 5 м
         </div>
     </div>
 </section>
-
+<?}?>
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
