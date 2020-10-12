@@ -166,3 +166,14 @@
     });
         
 </script>
+<?
+$APPLICATION->IncludeComponent(
+   "bitrix:main.pagenavigation",
+   "",
+   array(
+      "NAV_OBJECT" => $arResult['NAVIGATION'],
+      "SEF_MODE" => "N",
+   ),
+   false
+);
+?>

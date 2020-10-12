@@ -195,13 +195,24 @@ class ControlRegUser extends CBitrixComponent
         $arParams["SELECT"] = array("*", "UF_ESIA_ID", "UF_TYPE_REGISTR", "UF_ESIA_AUT", "UF_PAY_YANDEX");
         
         // $elementsResult = CUser::GetList(($by="ID"), ($order="ASC"), $arFilter, $arParams);.
+        $nav = new \Bitrix\Main\UI\PageNavigation("nav-users");
+        $nav->allowAllRecords(true)
+            ->setPageSize(100)
+            ->initFromUri();
         $elementsResult = Bitrix\Main\UserTable::getList(
             array(
-                "order" => array("DATE_REGISTER" => "ASC"),
+                "order" => array("DATE_REGISTER" => "DESC"),
                 'select' => $arParams["SELECT"],
-                'filter' => $arFilter
+                'filter' => $arFilter,
+                "count_total" => true,
+                "offset" => $nav->getOffset(),
+                "limit" => $nav->getLimit(),
             )
         );
+
+        $nav->setRecordCount($elementsResult->getCount());
+
+        $this -> arResult['NAVIGATION'] = $nav;
         
         $FilterSumPay = array();
         $SummPay =  $this->getHLSingl(13, $FilterSumPay); //'50.00' сумма должна быть строкой с точкой и двумя знаками после нее        

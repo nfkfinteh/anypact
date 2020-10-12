@@ -9,6 +9,7 @@ if(empty($count)){
     $count = 0;
 }
 if($count > 1000){
+    echo json_encode(array("STATUS" => "ERROR", "DESCRIPTION" => "Достигнут лимит в 1000 выплат"));
     die();
 }
 
