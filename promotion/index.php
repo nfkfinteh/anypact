@@ -4,7 +4,6 @@ $APPLICATION->SetTitle("AnyPact || 50 рублей на телефон за 5 м
 ?>
 <?
 global $USER;
-if(!$USER -> IsAuthorized() || $USER -> IsAdmin()){
 ?>
 </div>
 <section class="section-50r">
@@ -23,7 +22,9 @@ if(!$USER -> IsAuthorized() || $USER -> IsAdmin()){
         </div>
         <div class="regbox-akcii">
             <span class="text-desc">Зарегистрируйся на сайте AnyPact.ru и получи деньги<br> на мобильный телефон, при выполнении указанных ниже условий.*</span>
-            <button class="btn btn-nfk reg-btn-akcii" id="open_reg_form2">Регистрация</button>
+            <?if(!$USER -> IsAuthorized()){?>
+                <button class="btn btn-nfk reg-btn-akcii" id="open_reg_form2">Регистрация</button>
+            <?}?>
         </div>
         <h2>Для этого необходимо<br> пройти четыре обязательных шага!</h2>
         <div class="row-steps">
@@ -67,7 +68,9 @@ if(!$USER -> IsAuthorized() || $USER -> IsAdmin()){
                     Как только объявление будет проверено и опубликовано, баланс телефона будет пополнен.
                 </span>
             </h2>
-            <button class="btn btn-nfk reg-btn-akcii" id="open_reg_form">Регистрация</button>
+            <?if(!$USER -> IsAuthorized()){?>
+                <button class="btn btn-nfk reg-btn-akcii" id="open_reg_form">Регистрация</button>
+            <?}?>
             <p>
                 AnyPact.ru – это новая и очень удобная площадка, позволяющая совершать дистанционные сделки купли/продажи различных товаров, работ или услуг, а также совершать другие операции с использованием простой идентификации участников сделок через ГОСУСЛУГИ.
             </p>
@@ -75,12 +78,12 @@ if(!$USER -> IsAuthorized() || $USER -> IsAdmin()){
         </div>
     </div>
 </section>
-<?}else{?>
+<?/*}else{?>
     <div class="d-flex flex-column align-items-center text-center mt-5 pt-5 mb-5">
         <img src="/local/templates/anypact/image/forbidden.png" alt="Регистрация пройдена">
         <h3 class="text-uppercase font-weight-bold mt-3" style="max-width: 550px">Вы уже прошли регистрацию на сайте</h3>
         <a href="/" class="mt-3">Вернуться на главную страницу</a>
     </div>
 </div>
-<?}?>
+<?}*/?>
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
