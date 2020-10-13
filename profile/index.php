@@ -24,9 +24,6 @@ if ($USER->IsAuthorized() || ($_GET["change_password"] == "yes" && !empty($_GET[
         //print_r($info);
         if( isset( $info['user_docs']['elements'] ) > 0 && $info['user_info']['trusted']){
 
-            define("LOG_FILENAME", "/var/log/php-fpm/user-info.log");
-            AddMessage2Log($info, "info");
-
             $info_form = $info;
             $number_pass = $info['user_docs']['elements'][0]['series']." ".$info['user_docs']['elements'][0]['number'] ;
             $pass_by = "Выдан: ".$info['user_docs']['elements'][0]['issuedBy'];
@@ -50,8 +47,7 @@ if ($USER->IsAuthorized() || ($_GET["change_password"] == "yes" && !empty($_GET[
                     "NAME" => $info['user_info']['firstName'], // Имя
                     "SECOND_NAME" => $info['user_info']['middleName'], // Отчество
                     "UF_PASSPORT" => $number_pass,
-                    "UF_ESIA_ID" => $info['user_id'],
-                    "PERSONAL_BIRTHDAY" => $info['user_info']['birthDate']
+                    "UF_ESIA_ID" => $info['user_id']
                 );        
                 $USER->Update($USER->GetID(), $fields);
                 $arGroups[] = 6; // ID группы которые авторизовались через ЕСИА
