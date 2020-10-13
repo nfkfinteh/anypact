@@ -2,11 +2,11 @@
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("AnyPact || 50 рублей на телефон за 5 минут!");
 ?>
-</div>
 <?
 global $USER;
 if(!$USER -> IsAuthorized() || $USER -> IsAdmin()){
 ?>
+</div>
 <section class="section-50r">
     <div class="container-akcii">
         <div class="row-akcii">
@@ -52,7 +52,7 @@ if(!$USER -> IsAuthorized() || $USER -> IsAdmin()){
                 <span>4</span>
                 <div class="desc-box">
                     <h3>Размещение</h3>
-                    <p>Размещаем объявление с фотографией о реальном намерении продать или купить товар/работу/услугу.</p>
+                    <p>Размещаем объявление с изображением о реальном намерении продать или купить товар/работу/услугу.</p>
                 </div>
             </div>
         </div>
@@ -75,5 +75,12 @@ if(!$USER -> IsAuthorized() || $USER -> IsAdmin()){
         </div>
     </div>
 </section>
+<?}else{?>
+    <div class="d-flex flex-column align-items-center text-center mt-5 pt-5 mb-5">
+        <img src="/local/templates/anypact/image/forbidden.png" alt="Регистрация пройдена">
+        <h3 class="text-uppercase font-weight-bold mt-3" style="max-width: 550px">Вы уже прошли регистрацию на сайте</h3>
+        <a href="/" class="mt-3">Вернуться на главную страницу</a>
+    </div>
+</div>
 <?}?>
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
