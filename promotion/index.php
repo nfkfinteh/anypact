@@ -19,6 +19,13 @@ global $USER;
             <div class="col-50r">
                 <img src="<?=SITE_TEMPLATE_PATH?>/image/iphone-50r.png" alt="">
             </div>
+            <a href="#steps">
+                <div class="arrow-7">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </a>
         </div>
         <div class="regbox-akcii">
             <span class="text-desc">Зарегистрируйся на сайте AnyPact.ru и получи деньги<br> на мобильный телефон, при выполнении указанных ниже условий.*</span>
@@ -27,7 +34,7 @@ global $USER;
             <?}?>
         </div>
         <h2>Для этого необходимо<br> пройти четыре обязательных шага!</h2>
-        <div class="row-steps">
+        <div class="row-steps" id="steps">
             <div class="steps_item">
                 <span>1</span>
                 <div class="desc-box">

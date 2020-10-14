@@ -5054,7 +5054,7 @@ form.form-filter .selectbox-select .selectize-input input::placeholder {
         padding-bottom: 10px !important;
     }
 }
-.navbar-nav li>a[href="/help/"]{
+.navbar-nav li>a[href="/promotion/"]{
     margin-right: 0 !important;
 }
 .new-pu-overflow {
@@ -5165,6 +5165,7 @@ form.form-filter .selectbox-select .selectize-input input::placeholder {
     margin: 0 auto;
 }
 .row-akcii{
+    position: relative;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -5200,6 +5201,42 @@ form.form-filter .selectbox-select .selectize-input input::placeholder {
 .container-50r img{
     padding-left: 20px;
 }
+.arrow-7 {
+    position: absolute;
+    bottom: 0;
+    left: 48%;
+    width: 38px;
+    height: 100px;
+}
+.arrow-7 span {
+    display: block;
+    width: 30px;
+    height: 30px;
+    border-bottom: 5px solid#FF6600;
+    border-right: 5px solid#FF6600;
+    transform: rotate(45deg);
+    margin: -16px 0;
+    animation: arrow-7 2s infinite;
+}
+.arrow-7 span:nth-child(2){
+    animation-delay: -0.2s;
+}
+.arrow-7 span:nth-child(3){
+    animation-delay: -0.4s;
+}
+@keyframes arrow-7 {
+    0%{
+        opacity: 0;
+        transform: translate(0,-20px) rotate(45deg);
+    }
+    50%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+        transform: translate(0,20px) rotate(45deg);
+    }
+}
 .regbox-akcii{
     display: -webkit-box;
     display: -ms-flexbox;
@@ -5234,10 +5271,10 @@ form.form-filter .selectbox-select .selectize-input input::placeholder {
     padding-top: 60px;
     text-align: center;
     font-weight: 900;
+    margin-bottom: 115px;
 }
 .row-steps{
     width: 900px;
-    padding-top: 115px;
     margin: 0 auto;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -5330,7 +5367,8 @@ form.form-filter .selectbox-select .selectize-input input::placeholder {
 }
 .row-end .reg-btn-akcii{
     display: inline-block;
-    margin-bottom: 45px;
+    margin-bottom: 45px !important;
+    margin-top: 0 !important;
     color: #fff !important;
     background-color: #ff6416;
 }
@@ -5354,7 +5392,7 @@ form.form-filter .selectbox-select .selectize-input input::placeholder {
     }
     .row-steps {
         width: 90%;
-        padding-top: 60px;
+        padding-top: 10px;
     }
     .row-end img{
         width: 100%;
@@ -5386,16 +5424,23 @@ form.form-filter .selectbox-select .selectize-input input::placeholder {
     }
     .container-akcii h2 {
         padding-top: 60px;
+        margin-bottom: 20px;
     }
     .row-steps {
         width: 90%;
-        padding-top: 60px;
+        
     }
     .steps_item {
         margin-bottom: 80px;
+        display: flex;
+        align-items: center;
+    }
+    .desc-box {
+        margin-left: 20px;
     }
     .row-steps span {
-        top: 0;
+        display: block;
+        position: static;
         font-size: 140px;
     }
     .row-steps h3 {
@@ -5425,6 +5470,10 @@ form.form-filter .selectbox-select .selectize-input input::placeholder {
     }
 }
 @media screen and (max-width: 768px){
+    .arrow-7{
+        left: 47%;
+        bottom: 30px
+    }
     .section-50r {
         margin-top: 0;
         margin-bottom: 0;
@@ -5438,6 +5487,7 @@ form.form-filter .selectbox-select .selectize-input input::placeholder {
             -ms-flex-direction: column;
                 flex-direction: column;
     }
+    
     .h1-50r {
         text-align: left;
         font-size: 18px;
@@ -5458,8 +5508,7 @@ form.form-filter .selectbox-select .selectize-input input::placeholder {
         margin-bottom: 20px;
     }
     .reg-btn-akcii {
-        padding: 5px 40px;
-        font-size: 14px;
+        
     }
     .row-steps span {
         top: 0;
