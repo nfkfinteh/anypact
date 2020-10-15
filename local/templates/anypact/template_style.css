@@ -5194,9 +5194,8 @@ form.form-filter .selectbox-select .selectize-input input::placeholder {
 }
 .h1-small{
     display: block;
-    margin-bottom: 20px;
     font-weight: 900;
-    font-size: 32px;
+    font-size: 31px;
 }
 .container-50r img{
     padding-left: 20px;
