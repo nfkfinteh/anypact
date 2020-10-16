@@ -11,11 +11,8 @@ global $USER;
         <div class="row-akcii">
             <div class="col-50r">
                 <h1 class="h1-50r">
-                    <span class="h1-big">50 рублей</span>
-                    <span class="h1-small">на телефон за 5 минут!</span>
-                    Хочешь получить?!
-                </h1>
-            </div>
+                        <span class="h1-small">Разместите объявление и получите</span><span class="h1-big">50 рублей</span>на телефон</h1>
+                </div>
             <div class="col-50r">
                 <img src="<?=SITE_TEMPLATE_PATH?>/image/iphone-50r.png" alt="">
             </div>
@@ -28,39 +25,41 @@ global $USER;
             </a>
         </div>
         <div class="regbox-akcii">
-            <span class="text-desc">Зарегистрируйся на сайте AnyPact.ru и получи деньги<br> на мобильный телефон, при выполнении указанных ниже условий.*</span>
+            <span class="text-desc">Зарегистрируйтесь на сайте AnyPact.ru и получите деньги<br> на мобильный телефон, при выполнении указанных ниже <a href="#steps">условий</a>.*</span>
             <?if(!$USER -> IsAuthorized()){?>
                 <button class="btn btn-nfk reg-btn-akcii" id="open_reg_form2">Регистрация</button>
             <?}?>
         </div>
-        <h2>Для этого необходимо<br> пройти четыре обязательных шага!</h2>
-        <div class="row-steps" id="steps">
-            <div class="steps_item">
-                <span>1</span>
-                <div class="desc-box">
-                    <h3>Регистрация</h3>
-                    <p>Регистрируемся на сайте <a href="https://anypact.ru/">AnyPact.ru</a>;</p>
+        <div class="row-steps-container" id="steps">
+            <h2>Для этого необходимо<br> пройти четыре обязательных шага!</h2>
+            <div class="row-steps">
+                <div class="steps_item">
+                    <span>1</span>
+                    <div class="desc-box">
+                        <h3>Регистрация</h3>
+                        <p>Регистрируемся на сайте <a href="https://anypact.ru/">AnyPact.ru</a>;</p>
+                    </div>
                 </div>
-            </div>
-            <div class="steps_item">
-                <span>2</span>
-                <div class="desc-box">
-                    <h3>Заполнение</h3>
-                    <p>Заполняем свой профиль в настройках (обязательно с вашим фото и актуальным номером телефона - на него и произойдет зачисление средств);</p>
+                <div class="steps_item">
+                    <span>2</span>
+                    <div class="desc-box">
+                        <h3>Заполнение</h3>
+                        <p>Заполняем свой профиль в настройках (обязательно с вашим фото и актуальным номером телефона - на него и произойдет зачисление средств);</p>
+                    </div>
                 </div>
-            </div>
-            <div class="steps_item">
-                <span>3</span>
-                <div class="desc-box">
-                    <h3>Подтверждение</h3>
-                    <p>Подтверждаем свои данные через портал ГОСУСЛУГИ;</p>
+                <div class="steps_item">
+                    <span>3</span>
+                    <div class="desc-box">
+                        <h3>Подтверждение</h3>
+                        <p>Подтверждаем свои данные через портал ГОСУСЛУГИ;</p>
+                    </div>
                 </div>
-            </div>
-            <div class="steps_item">
-                <span>4</span>
-                <div class="desc-box">
-                    <h3>Размещение</h3>
-                    <p>Размещаем объявление с изображением о реальном намерении продать или купить товар/работу/услугу.</p>
+                <div class="steps_item">
+                    <span>4</span>
+                    <div class="desc-box">
+                        <h3>Размещение</h3>
+                        <p>Размещаем объявление с изображением о реальном намерении продать или купить товар/работу/услугу.</p>
+                    </div>
                 </div>
             </div>
         </div>
