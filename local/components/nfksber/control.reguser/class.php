@@ -137,7 +137,7 @@ class ControlRegUser extends CBitrixComponent
 
         $rs = CIBlockElement::GetList (
             Array("ID" => "ASC"),
-            Array("IBLOCK_ID" => 3, "PROPERTY_PACT_USER" => $arUserIDs, "!=PROPERTY_INPUT_FILES" => false),
+        Array("IBLOCK_ID" => 3, "PROPERTY_PACT_USER" => $arUserIDs/*, "!=PROPERTY_INPUT_FILES" => false*/),
             false,
             false,
             array("ID", "IBLOCK_ID", "PROPERTY_PACT_USER", "PROPERTY_INPUT_FILES")
