@@ -202,6 +202,18 @@ class CDemoSqr extends CBitrixComponent
                     array("PROPERTY_INDEFINITELY" => 18),
                     array(">=DATE_ACTIVE_TO" => new \Bitrix\Main\Type\DateTime())
                 );
+                $arFilter[1] = array(
+                    'LOGIC' => 'OR',
+                    array("!=PROPERTY_PRIVATE_VALUE" => "Y"),
+                    array(
+                        "PROPERTY_PRIVATE_VALUE" => "Y",
+                        "=PROPERTY_ACCESS_USER" => empty( $arParams['USER_ID'] ) ? 0 : $arParams['USER_ID']
+                    ),
+                    array(
+                        "PROPERTY_PRIVATE_VALUE" => "Y",
+                        "=CREATED_BY" => empty( $arParams['USER_ID'] ) ? 0 : $arParams['USER_ID']
+                    ),
+                );
             };
 
             $res = CIBlockElement::GetList([], $arFilter);
