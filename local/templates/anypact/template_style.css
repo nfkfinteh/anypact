@@ -5267,7 +5267,7 @@ form.form-filter .selectbox-select .selectize-input input::placeholder {
     color: #FE6600;
 }
 .container-akcii h2{
-    padding-top: 60px;
+    padding-top: 50px;
     text-align: center;
     font-weight: 900;
     margin-bottom: 115px;
@@ -5371,7 +5371,14 @@ form.form-filter .selectbox-select .selectize-input input::placeholder {
     color: #fff !important;
     background-color: #ff6416;
 }
-
+.regbox-akcii p{
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 130%;
+    text-align: center;
+    color: #131313;
+    margin-bottom: 15px;
+}
 
 /* Адаптация страницы 50р*/
 @media screen and (max-width: 1440px){
