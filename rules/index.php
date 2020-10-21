@@ -1,6 +1,6 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$APPLICATION->SetTitle("AnyPact || Бесплатный сервис для дистанционного заключения сделок");
+$APPLICATION->SetTitle("AnyPact || Условия использования сайта");
 ?>
 <div class="rules-block">
     <iframe src="/upload/rules/user_rules.pdf"/></iframe>
