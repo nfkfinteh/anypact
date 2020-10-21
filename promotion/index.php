@@ -1,20 +1,20 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$APPLICATION->SetTitle("AnyPact || 50 рублей на телефон за 5 минут!");
+$APPLICATION->SetTitle("AnyPact || 100 рублей на телефон за 5 минут!");
 ?>
 <?
 global $USER;
 ?>
 </div>
-<section class="section-50r">
+<section class="section-100r">
     <div class="container-akcii">
         <div class="row-akcii">
-            <div class="col-50r">
-                <h1 class="h1-50r">
-                        <span class="h1-small">Разместите объявление и получите</span><span class="h1-big">50 рублей</span>на телефон</h1>
+            <div class="col-100r">
+                <h1 class="h1-100r">
+                        <span class="h1-small">Разместите объявление и получите</span><span class="h1-big">100 рублей</span>на телефон</h1>
                 </div>
-            <div class="col-50r">
-                <img src="<?=SITE_TEMPLATE_PATH?>/image/iphone-50r.png" alt="">
+            <div class="col-100r">
+                <img src="<?=SITE_TEMPLATE_PATH?>/image/iphone-100r.png" alt="">
             </div>
             <a href="#steps">
                 <div class="arrow-7">
