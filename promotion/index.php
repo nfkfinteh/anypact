@@ -26,9 +26,9 @@ global $USER;
         </div>
         <div class="regbox-akcii">
             <span class="text-desc">Зарегистрируйтесь на сайте AnyPact.ru и получите деньги<br> на мобильный телефон, при выполнении указанных ниже <a href="#steps">условий</a>.*</span>
-            <?if(!$USER -> IsAuthorized()){?>
+            <?/*if(!$USER -> IsAuthorized()){?>
                 <button class="btn btn-nfk reg-btn-akcii" id="open_reg_form2">Регистрация</button>
-            <?}?>
+            <?}*/?>
         </div>
         <div class="row-steps-container" id="steps">
             <h2>Для этого необходимо<br> пройти четыре обязательных шага!</h2>
