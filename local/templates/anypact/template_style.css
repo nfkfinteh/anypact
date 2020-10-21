@@ -5156,7 +5156,7 @@ form.form-filter .selectbox-select .selectize-input input::placeholder {
 
 
 /***************** Страница /promotion/ ***************/
-.section-50r{
+.section-100r{
     margin-top: 78px;
     margin-bottom: 78px;
 }
@@ -5177,7 +5177,7 @@ form.form-filter .selectbox-select .selectize-input input::placeholder {
             align-items: center;
     margin-bottom: 50px;
 }
-.h1-50r{
+.h1-100r{
     text-align: right;
     font-weight: bold;
     font-size: 24px;
@@ -5197,7 +5197,7 @@ form.form-filter .selectbox-select .selectize-input input::placeholder {
     font-weight: 900;
     font-size: 31px;
 }
-.container-50r img{
+.container-100r img{
     padding-left: 20px;
 }
 .arrow-7 {
@@ -5386,7 +5386,7 @@ form.form-filter .selectbox-select .selectize-input input::placeholder {
     .container-akcii {
         width: 90%;
     }
-    .h1-50r {
+    .h1-100r {
         text-align: left;
     }
     .row-steps {
@@ -5401,7 +5401,7 @@ form.form-filter .selectbox-select .selectize-input input::placeholder {
     .container-akcii {
         width: 90%;
     }
-    .h1-50r {
+    .h1-100r {
         text-align: left;
         font-size: 21px;
     }
@@ -5473,7 +5473,7 @@ form.form-filter .selectbox-select .selectize-input input::placeholder {
         left: 47%;
         bottom: 30px
     }
-    .section-50r {
+    .section-100r {
         margin-top: 0;
         margin-bottom: 0;
     }
@@ -5487,7 +5487,7 @@ form.form-filter .selectbox-select .selectize-input input::placeholder {
                 flex-direction: column;
     }
     
-    .h1-50r {
+    .h1-100r {
         text-align: left;
         font-size: 18px;
         margin-bottom: 40px;
