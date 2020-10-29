@@ -43,9 +43,9 @@ if ($USER->IsAuthorized() || ($_GET["change_password"] == "yes" && !empty($_GET[
                     "UF_NPASSPORT" => (int) $info['user_docs']['elements'][0]['number'],
                     "UF_DATA_PASSPORT" => $info['user_docs']['elements'][0]['issueDate'],
                     "UF_KEM_VPASSPORT" => $pass_by,
-                    "LAST_NAME" => $info['user_info']['lastName'], // Фамилия
-                    "NAME" => $info['user_info']['firstName'], // Имя
-                    "SECOND_NAME" => $info['user_info']['middleName'], // Отчество
+                    "LAST_NAME" => mb_convert_case($info['user_info']['lastName'], MB_CASE_TITLE), // Фамилия
+                    "NAME" => mb_convert_case($info['user_info']['firstName'], MB_CASE_TITLE), // Имя
+                    "SECOND_NAME" => mb_convert_case($info['user_info']['middleName'], MB_CASE_TITLE), // Отчество
                     "UF_PASSPORT" => $number_pass,
                     "UF_ESIA_ID" => $info['user_id']
                 );        
