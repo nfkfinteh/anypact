@@ -285,6 +285,10 @@ function OnBeforeUserRegisterHandler(&$arFields)
         $APPLICATION->ThrowException('Ошибка регистрации.');
         return false;
     }
+}
+AddEventHandler("main", "OnAfterUserRegister", "OnBeforeUserRegisterHandler");
+function OnAfterUserRegisterHandler(&$arFields)
+{
     CBitrixComponent::clearComponentCache('nfksber:user.list');
 }
 
