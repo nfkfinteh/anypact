@@ -286,7 +286,7 @@ function OnBeforeUserRegisterHandler(&$arFields)
         return false;
     }
 }
-AddEventHandler("main", "OnAfterUserRegister", "OnBeforeUserRegisterHandler");
+AddEventHandler("main", "OnAfterUserRegister", "OnAfterUserRegisterHandler");
 function OnAfterUserRegisterHandler(&$arFields)
 {
     CBitrixComponent::clearComponentCache('nfksber:user.list');
