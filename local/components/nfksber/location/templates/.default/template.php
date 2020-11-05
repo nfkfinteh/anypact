@@ -23,3 +23,21 @@
             </form>
     </div>
 </div>
+<?if($arResult['NEED_GEO']){?>
+    <?
+    $signer = new \Bitrix\Main\Security\Sign\Signer;
+    $signedParams = $signer->sign(base64_encode(serialize($arParams)), 'location');
+    ?>  
+    <script>
+        var L_component = {
+            params: <?=CUtil::PhpToJSObject($arParams)?>,
+            signedParamsString: '<?=CUtil::JSEscape($signedParams)?>',
+            siteID: '<?=CUtil::JSEscape($component->getSiteId())?>',
+            ajaxUrl: '<?=CUtil::JSEscape($component->getPath().'/ajax.php')?>',
+            templateFolder: '<?=CUtil::JSEscape($templateFolder)?>',
+        };
+        $(document).ready(function(){
+            getLocation();
+        });
+    </script>
+<?}?>

@@ -98,7 +98,8 @@ global $USER;
 <body class="<?=$class_container?>">
 <div id="panel"><?$APPLICATION->ShowPanel();?></div>
 <?$getGeo = $APPLICATION->IncludeComponent("nfksber:location","",Array(
-        'CACHE_TYPE'=>'Y'
+        'CACHE_TYPE'=>'Y',
+        'ACTION_VARIABLE'=>'action',
 ));?>
 <!--Окно регистрации-->
 <noindex>

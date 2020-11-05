@@ -27,43 +27,62 @@ class Location extends \CBitrixComponent
 
         return $arParams;
     }
-
+    
     public function executeComponent()
     {
-        if($this->startResultCache()){
-            $this->arResult['CITY'] = $this->getListCity();
-            $this->EndResultCache();
+        $this->checkSession = check_bitrix_sessid();
+        $this->isRequestViaAjax = $this->request->isPost() && $this->request->get('via_ajax') == 'Y';
+        if($this->checkSession && $this->isRequestViaAjax){
+            $this -> getLocation();
+            echo json_encode(array("STATUS" => "SUCCESS", "CITY_NAME" => $this->arResult['GEO']['cityName']));
+        }else{
+            if($this->startResultCache()){
+                $this->arResult['CITY'] = $this->getListCity();
+                $this->EndResultCache();
+            }
+            $this -> arResult['NEED_GEO'] = false;
+            if(!empty($_SESSION['CITY_ANYPACT'])){
+                $this->arResult['GEO']['cityName'] = $_SESSION['CITY_ANYPACT'];
+            }
+            else{
+                $this -> arResult['NEED_GEO'] = true;
+            }
+            $this->includeComponentTemplate();
+            return $this->arResult['GEO'];
         }
-        if(!empty($_COOKIE['CITY_ANYPACT'])){
-            $this->arResult['GEO']['cityName'] = $_COOKIE['CITY_ANYPACT'];
-        }
-        else{
-            // Перед запросом можно включить сохранение геоинформации в cookies
-            \Bitrix\Main\Service\GeoIp\Manager::useCookieToStoreInfo(true);
-            // Для определения местоположения требуется IP пользователя
-            $ipAddress = \Bitrix\Main\Service\GeoIp\Manager::getRealIp();
-            // Получение геоинформации по этому IP
-            global $APPLICATION;
-            // $result = file_get_contents("http://ipgeobase.ru:7020/geo?ip=".$ipAddress."&json=1");
-            // $resultstr = $APPLICATION->ConvertCharset($result, "windows-1251", "UTF-8");
-            // $result_decode = json_decode($resultstr, true)[$ipAddress];
-            // $cityName = $result_decode['city'];
-            // if(empty($result_decode['city'])){
-                $resultheader = \Bitrix\Main\Service\GeoIp\Manager::getDataResult($ipAddress, "ru", array('cityName'));
-                $cityName = \Bitrix\Main\Service\GeoIp\Manager::getcityName($ipAddress, "ru");
-            // }
-            if (empty($cityName)) $cityName = "Москва";
-            $this->arResult['GEO']['cityName'] = $cityName;
-        }
-        $this->includeComponentTemplate();
-        return $this->arResult['GEO'];
     }
 
-    public function getLocation($ipAddress)
+    private function getLocationIpGeoBase($ipAddress){
+        $httpClient = new Bitrix\Main\Web\HttpClient();
+        $httpClient -> setTimeout(1);
+        $httpClient -> setStreamTimeout(1);
+        $response = $httpClient->get("http://ipgeobase.ru:7020/geo?ip=".$ipAddress."&json=1");
+        global $APPLICATION;
+        $resultstr = $APPLICATION->ConvertCharset($response, "windows-1251", "UTF-8");
+        $result_decode = json_decode($resultstr, true)[$ipAddress];
+        return (array)$result_decode;
+    }
+
+    function getLocation()
     {
-        //$obj = GeoIp\Manager::getDataResult($ipAddress, "ru", array('cityName', 'zipCode'));
-        $geoData = ''; //$obj->getGeoData();
-        return $geoData;
+        // Перед запросом можно включить сохранение геоинформации в cookies
+        \Bitrix\Main\Service\GeoIp\Manager::useCookieToStoreInfo(true);
+
+        // Для определения местоположения требуется IP пользователя
+        $ipAddress = \Bitrix\Main\Service\GeoIp\Manager::getRealIp();
+
+        // Получение геоинформации по этому IP
+        global $APPLICATION;
+        $cityName = $this->getLocationIpGeoBase($ipAddress)['city'];
+        if(empty($cityName)){
+            $resultheader = \Bitrix\Main\Service\GeoIp\Manager::getDataResult($ipAddress, "ru", array('cityName'));
+            $cityName = \Bitrix\Main\Service\GeoIp\Manager::getcityName($ipAddress, "ru");
+        }
+        if (empty($cityName)) $cityName = "Москва";
+
+        $_SESSION['CITY_ANYPACT'] = $cityName;
+
+        $this->arResult['GEO']['cityName'] = $cityName;
     }
 
     public function getListCity(){
