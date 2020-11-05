@@ -362,7 +362,7 @@ if (!empty($arResult['arUser']['UF_ESIA_ID']) && $arResult['arUser']['UF_ESIA_AU
             <?foreach($arResult['COMPANIES'] as $key => $arCompany){?>
                 <?if($arCompany['PROPERTY_TYPE_VALUE'] == "ИП"){?>
                     <?$is_ip = true;?>
-                    <div class="col-xl-4 col-md-6 col-sm-12 <?if($key==0 || $key % 2 === 0):?>offset-xl-3<?endif?>">
+                    <div class="col-xl-4 col-md-6 col-sm-12 offset-xl-3">
                         <p><?=$arCompany['NAME']?></p>
                         <?if($arCompany['PROPERTY_DIRECTOR_ID_VALUE'] == $arResult['ID']):?>
                             <a href="/profile/ip/?id=<?=$arCompany['ID']?>" class="btn btn-aut" style="margin-bottom:15px;">Изменить ИП</a>
