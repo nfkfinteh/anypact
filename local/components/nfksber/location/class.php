@@ -41,8 +41,8 @@ class Location extends \CBitrixComponent
                 $this->EndResultCache();
             }
             $this -> arResult['NEED_GEO'] = false;
-            if(!empty($_SESSION['CITY_ANYPACT'])){
-                $this->arResult['GEO']['cityName'] = $_SESSION['CITY_ANYPACT'];
+            if(!empty($_COOKIE['CITY_ANYPACT'])){
+                $this->arResult['GEO']['cityName'] = $_COOKIE['CITY_ANYPACT'];
             }
             else{
                 $this -> arResult['NEED_GEO'] = true;
@@ -80,7 +80,8 @@ class Location extends \CBitrixComponent
         }
         if (empty($cityName)) $cityName = "Москва";
 
-        $_SESSION['CITY_ANYPACT'] = $cityName;
+        setcookie('CITY_ANYPACT', $cityName);
+        $_COOKIE['CITY_ANYPACT'] = $cityName;
 
         $this->arResult['GEO']['cityName'] = $cityName;
     }
