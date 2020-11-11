@@ -62,14 +62,14 @@ global $USER;
                         <input type="hidden" value="<?=$USER->GetEmail()?>" id="textEmail">
                     <?}else {?>
                         <div class="col-10 col-md-5 col-lg-6 offset-1 offset-lg-0">
-                            <input type="text" placeholder="ФИО" id="textFIO">
+                            <input type="text" minlength="3" placeholder="ФИО" id="textFIO">
                         </div>
                         <div class="col-10 col-md-5 col-lg-6 offset-1 offset-md-0 mt-4 mt-md-0">
                             <input type="email" placeholder="E-mail" id="textEmail">
                         </div>
                     <?}?>
                     <div class="col-10 col-lg-12 mt-4 offset-1 offset-lg-0">
-                        <textarea rows="4" id="textText"></textarea>
+                        <textarea rows="4" minlength="1" id="textText"></textarea>
                     </div>
 
                     <div class="col-10 col-lg-12 mt-3 offset-1 offset-lg-0">                            
@@ -166,9 +166,20 @@ global $USER;
         strObject[1]  = document.getElementById('textEmail').value;
         strObject[2]  = document.getElementById('textText').value;
 
-        if(strObject[2].length==0){
+        if(strObject[2].length < 1){
             preload('hide');
             showResult('#popup-error','Ошибка сохранения', 'Введите текст сообщения');
+            return;
+        }
+        if(strObject[0].length < 3){
+            preload('hide');
+            showResult('#popup-error','Ошибка сохранения', 'Введите ФИО');
+            return;
+        }
+        var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+        if(reg.test(strObject[1]) === false){
+            preload('hide');
+            showResult('#popup-error','Ошибка сохранения', 'Некорректный E-mail');
             return;
         }
 

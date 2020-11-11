@@ -319,8 +319,10 @@ global $USER;
                             )
                     );
                 ?>
-                <?$APPLICATION->IncludeComponent("nfksber:messenger_hl.unread.wiget", "", array('ACTION_VARIABLE' => 'action'));?>
-                <?$APPLICATION->IncludeComponent("nfksber:friends.incoming.wiget", "", array('ACTION_VARIABLE' => 'action'));?>
+                <?if ($USER->IsAuthorized()){?>
+                    <?$APPLICATION->IncludeComponent("nfksber:messenger_hl.unread.wiget", "", array('ACTION_VARIABLE' => 'action'));?>
+                    <?$APPLICATION->IncludeComponent("nfksber:friends.incoming.wiget", "", array('ACTION_VARIABLE' => 'action'));?>
+                <?}?>
             </div>
         </nav>
         <!--//Меню навигации-->
