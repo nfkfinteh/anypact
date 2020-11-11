@@ -14,6 +14,16 @@ $disabled = '';
 if (!empty($arResult['arUser']['UF_ESIA_ID']) && $arResult['arUser']['UF_ESIA_AUT']) {
     $disabled = 'disabled';
 }
+function hideText($text, $count_b = 3, $count_e = 2) {
+    if(empty(trim($text)))
+        return $text;
+    $text1 = substr($text, 0, $count_b);
+    $text2 = substr($text, $count_b);
+    $text1 .= str_repeat("*", strlen($text2)-$count_e);
+    if($count_e != 0)
+        $text1 .= substr($text, -$count_e);
+    return $text1;
+}
 ?>
 <!--Профиль пользователя-->
 <div class="user_profile">
@@ -50,7 +60,8 @@ if (!empty($arResult['arUser']['UF_ESIA_ID']) && $arResult['arUser']['UF_ESIA_AU
                                 <h3>Личные данные</h3>
                                 <div class="form-group">
                                     <label><?=GetMessage("LOGIN")?>:</label>
-                                    <input type="text" name="LOGIN" maxlength="50" value="<?=$arResult["arUser"]["LOGIN"]?>" disabled>
+                                    
+                                    <input type="text" name="LOGIN" maxlength="50" value="<?=hideText($arResult["arUser"]["LOGIN"])?>" disabled>
                                 </div>
                                 <div class="form-group">
                                     <label><?=GetMessage("LAST_NAME")?></label>
@@ -103,24 +114,36 @@ if (!empty($arResult['arUser']['UF_ESIA_ID']) && $arResult['arUser']['UF_ESIA_AU
                     <div class="col-xl-4 col-md-6 col-sm-12">
                         <div class="form-group left_blok_margin_ub">
                             <label><?=GetMessage("SNILS")?></label>
-                            <input type="text" id='UF_SNILS' name="UF_SNILS" maxlength="50" value="<?=$arResult["arUser"]["UF_SNILS"]?>" >
+                            <?if(!empty($arResult["arUser"]["UF_SNILS"])){?>
+                                <div class="hidden-value">
+                            <?}?>
+                            <input type="text" id='UF_SNILS' name="UF_SNILS" maxlength="50" value="<?=hideText($arResult["arUser"]["UF_SNILS"])?>" class="js-number" <?if(!empty($arResult["arUser"]["UF_SNILS"])){?>disabled<?}?>>
+                            <?if(!empty($arResult["arUser"]["UF_SNILS"])){?>
+                                </div>
+                            <?}?>
                         </div>
                         <div class="form-group">
                             <label><?=GetMessage("INN")?></label>
-                            <input type="text" name="UF_INN" maxlength="12" value="<?=$arResult["arUser"]["UF_INN"]?>" class="js-number">
+                            <?if(!empty($arResult["arUser"]["UF_SNILS"])){?>
+                                <div class="hidden-value">
+                            <?}?>
+                            <input type="text" name="UF_INN" maxlength="12" value="<?=hideText($arResult["arUser"]["UF_INN"])?>" class="js-number" <?if(!empty($arResult["arUser"]["UF_SNILS"])){?>disabled<?}?>>
+                            <?if(!empty($arResult["arUser"]["UF_SNILS"])){?>
+                                </div>
+                            <?}?>
                         </div>
                         <div class="form-group">
                             <label style="width: 100%;"><?=GetMessage("SN_PASSPORT")?></label>
-                            <input type="text" name="UF_SPASSPORT" maxlength="4" value="<?=$arResult["arUser"]["UF_SPASSPORT"]?>" style="width: 20%; float: left; margin-right: 10%;" disabled>
-                            <input type="text" name="UF_NPASSPORT" maxlength="6" value="<?=$arResult["arUser"]["UF_NPASSPORT"]?>" style="width: 70%;" disabled>
+                            <input type="text" name="UF_SPASSPORT" maxlength="4" value="<?=hideText($arResult["arUser"]["UF_SPASSPORT"], 2, 0)?>" style="width: 20%; float: left; margin-right: 10%;" disabled>
+                            <input type="text" name="UF_NPASSPORT" maxlength="6" value="<?=hideText($arResult["arUser"]["UF_NPASSPORT"], 2, 0)?>" style="width: 70%;" disabled>
                         </div>
                         <div class="form-group">
                             <label><?=GetMessage("DATA_PASSPORT")?></label>
-                            <input type="text" name="LAST_NAME" maxlength="50" value="<?=$arResult["arUser"]["UF_DATA_PASSPORT"]?>" disabled>
+                            <input type="text" name="LAST_NAME" maxlength="50" value="<?=hideText($arResult["arUser"]["UF_DATA_PASSPORT"], 2, 0)?>" disabled>
                         </div>
                         <div class="form-group">
                             <label><?=GetMessage("KEM_V_PASSPORT")?></label>
-                            <input type="text" name="LAST_NAME" maxlength="50" value="<?=$arResult["arUser"]["UF_KEM_VPASSPORT"]?>" disabled>
+                            <input type="text" name="LAST_NAME" maxlength="50" value="<?=hideText($arResult["arUser"]["UF_KEM_VPASSPORT"], 4)?>" disabled>
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-aut edit-profile__btn save_profile_button">Сохранить</button>
@@ -137,13 +160,16 @@ if (!empty($arResult['arUser']['UF_ESIA_ID']) && $arResult['arUser']['UF_ESIA_AU
                         <h3 id="lichnue_dannue_bottom">Параметры аккаунта</h3>
                         <div class="form-group">
                             <label>Текущая электронная почта:</label>
-                            <input  type="text"  maxlength="50" value="<?=$arResult["arUser"]["EMAIL"]?>" class="js-mask__email" disabled>
+                            <?
+                            $hideEmail = explode("@", $arResult["arUser"]["EMAIL"]);
+                            ?>
+                            <input  type="text"  maxlength="50" value="<?=hideText($hideEmail[0])."@".$hideEmail[1]?>" class="js-mask__email" disabled>
                         </div>
                     </div>
                     <div class="col-xl-4 col-md-6 col-sm-12">
                         <div class="form-group left_blok_margin_first">
                             <label>Изменить эл.почту:</label>
-                            <input type="text" name="EMAIL" maxlength="50" value="<?=$arResult["arUser"]["EMAIL"]?>" class="js-mask__email">
+                            <input type="text" name="EMAIL" maxlength="50" value="" class="js-mask__email">
                         </div>
                         <button type="submit" class="btn btn-aut edit-profile__btn save_profile_button">Сохранить</button>
                     </div>

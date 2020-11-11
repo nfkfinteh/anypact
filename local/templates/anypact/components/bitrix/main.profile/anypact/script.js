@@ -116,7 +116,7 @@ $(document).ready(function() {
     });
 
     //маска для елементов формы
-    $('#UF_SNILS').inputmask({ mask:'999-999-999 99'});
+    // $('#UF_SNILS').inputmask({ mask:'999-999-999 99'});
 
     //валидация для полей формы с масками
     // $(document).on('focusout keypress', '#UF_SNILS', function(){
@@ -139,10 +139,10 @@ $(document).ready(function() {
         rules: {
             UF_INN: {
                 minlength: 12,
-            },
+            }
         },
         messages: {
-            UF_INN: 'Данные введены не полностью',
+            UF_INN: 'Данные введены не полностью'
         },
         ignore: ".ignore-validate, :hidden",
         onsubmit: false,
@@ -181,5 +181,18 @@ $(document).ready(function() {
         $('#companyDeleteWarning').hide();
     });
 
+    $('.hidden-value').on('click', function(){
+        var input = $(this).children('input');
+        $(input).val('');
+        $(input).prop('disabled', false);
+        $(this).parent().append(input);
+        $(this).remove();
+        $(input).focus();
+        if($(input).attr('name') == "UF_SNILS")
+            $(input).inputmask({ mask:'999-999-999 99'});
+    });
+
+    if($('.hidden-value input[name="UF_SNILS"]').length < 1)
+        $("#UF_SNILS").inputmask({ mask:'999-999-999 99'});
 
 });
