@@ -41,6 +41,15 @@ if(!empty($data) || !empty($imgData)){
             unset($fields[$del]);
     }
 
+    $res = CUser::GetList(($by="personal_country"), ($order="desc"), array("ID" => $idUser), array('SELECT' => array("UF_ESIA_ID", "UF_ESIA_AUT"), 'FIELDS' => array("ID")));
+    if($array = $res -> fetch()){
+        if(!empty($array['UF_ESIA_ID']) && $array['UF_ESIA_AUT'] == 1){
+            unset($fields['NAME']);
+            unset($fields['LAST_NAME']);
+            unset($fields['SECOND_NAME']);
+        }
+    }
+
     #проверка на картинку
     if(!empty($imgData) && $imgData['PERSONAL_PHOTO']['size']>0){
         $fields = array_merge($fields, $imgData);
