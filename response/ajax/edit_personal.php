@@ -28,6 +28,19 @@ if(!empty($data) || !empty($imgData)){
         unset($fields['CONFIRM_PASSWORD']);
     }
 
+    $arDelFields = [
+        "LOGIN",
+        "UF_SPASSPORT",
+        "UF_NPASSPORT",
+        "UF_DATA_PASSPORT",
+        "UF_KEM_VPASSPORT",
+    ];
+
+    foreach($arDelFields as $del){
+        if(isset($fields[$del]))
+            unset($fields[$del]);
+    }
+
     #проверка на картинку
     if(!empty($imgData) && $imgData['PERSONAL_PHOTO']['size']>0){
         $fields = array_merge($fields, $imgData);

@@ -34,11 +34,10 @@ function hideText($text, $count_b = 3, $count_e = 2) {
             </div>
         </div>
     </div>
-    <div id="form__personal-data">
+    <form id="form__personal-data" class="edit-profile" action="/response/ajax/edit_personal.php">
         <!-- ФИО, Паспорт -->
         <div class="user_profile_form">
         <h3 id="lichnue_dannue_top">Личные данные</h3>
-        <form class="edit-profile" action="/response/ajax/edit_personal.php">
             <div class="user_profile_form_editdata">
                 <div class="row">
                     <div class="col-xl-7 col-md-6 col-sm-12">
@@ -61,7 +60,7 @@ function hideText($text, $count_b = 3, $count_e = 2) {
                                 <div class="form-group">
                                     <label><?=GetMessage("LOGIN")?>:</label>
                                     
-                                    <input type="text" name="LOGIN" maxlength="50" value="<?=hideText($arResult["arUser"]["LOGIN"])?>" disabled>
+                                    <input type="text" value="<?=hideText($arResult["arUser"]["LOGIN"])?>" disabled>
                                 </div>
                                 <div class="form-group">
                                     <label><?=GetMessage("LAST_NAME")?></label>
@@ -134,16 +133,16 @@ function hideText($text, $count_b = 3, $count_e = 2) {
                         </div>
                         <div class="form-group">
                             <label style="width: 100%;"><?=GetMessage("SN_PASSPORT")?></label>
-                            <input type="text" name="UF_SPASSPORT" maxlength="4" value="<?=hideText($arResult["arUser"]["UF_SPASSPORT"], 2, 0)?>" style="width: 20%; float: left; margin-right: 10%;" disabled>
-                            <input type="text" name="UF_NPASSPORT" maxlength="6" value="<?=hideText($arResult["arUser"]["UF_NPASSPORT"], 2, 0)?>" style="width: 70%;" disabled>
+                            <input type="text" value="<?=hideText($arResult["arUser"]["UF_SPASSPORT"], 2, 0)?>" style="width: 20%; float: left; margin-right: 10%;" disabled>
+                            <input type="text" value="<?=hideText($arResult["arUser"]["UF_NPASSPORT"], 2, 0)?>" style="width: 70%;" disabled>
                         </div>
                         <div class="form-group">
                             <label><?=GetMessage("DATA_PASSPORT")?></label>
-                            <input type="text" name="LAST_NAME" maxlength="50" value="<?=hideText($arResult["arUser"]["UF_DATA_PASSPORT"], 2, 0)?>" disabled>
+                            <input type="text" value="<?=hideText($arResult["arUser"]["UF_DATA_PASSPORT"], 2, 0)?>" disabled>
                         </div>
                         <div class="form-group">
                             <label><?=GetMessage("KEM_V_PASSPORT")?></label>
-                            <input type="text" name="LAST_NAME" maxlength="50" value="<?=hideText($arResult["arUser"]["UF_KEM_VPASSPORT"], 4)?>" disabled>
+                            <input type="text" value="<?=hideText($arResult["arUser"]["UF_KEM_VPASSPORT"], 4)?>" disabled>
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-aut edit-profile__btn save_profile_button">Сохранить</button>
@@ -151,9 +150,7 @@ function hideText($text, $count_b = 3, $count_e = 2) {
                     </div>
                 </div>
             </div>
-        </form>
-        <!--Пароль почта-->
-        <form class="edit-profile" action="/response/ajax/edit_personal.php">
+            <!--Пароль почта-->
             <div class="user_profile_form_fixdata" style="margin-top: 40px;">
                 <div class="row">
                     <div class="col-xl-4 col-md-6 col-sm-12 offset-xl-3">
@@ -169,14 +166,18 @@ function hideText($text, $count_b = 3, $count_e = 2) {
                     <div class="col-xl-4 col-md-6 col-sm-12">
                         <div class="form-group left_blok_margin_first">
                             <label>Изменить эл.почту:</label>
-                            <input type="text" name="EMAIL" maxlength="50" value="" class="js-mask__email">
+                            <?if(!empty($arResult["arUser"]["EMAIL"])){?>
+                                <div class="hidden-value">
+                            <?}?>
+                            <input type="text" name="EMAIL" maxlength="50" value="<?=hideText($hideEmail[0])."@".$hideEmail[1]?>" class="js-mask__email" <?if(!empty($arResult["arUser"]["UF_SNILS"])){?>disabled<?}?>>
+                            <?if(!empty($arResult["arUser"]["EMAIL"])){?>
+                                </div>
+                            <?}?>
                         </div>
                         <button type="submit" class="btn btn-aut edit-profile__btn save_profile_button">Сохранить</button>
                     </div>
                 </div>
             </div>
-        </form>
-        <form class="edit-profile" action="/response/ajax/edit_personal.php">
             <div class="user_profile_form_fixdata" style="margin-top: 0px;">
                 <div class="row">
                     <div class="col-xl-4 col-md-6 col-sm-12 offset-xl-3">
@@ -194,9 +195,7 @@ function hideText($text, $count_b = 3, $count_e = 2) {
                     </div>
                 </div>
             </div>
-        </form>
-        <!--Адрес-->
-        <form class="edit-profile" action="/response/ajax/edit_personal.php">
+            <!--Адрес-->
             <div class="user_profile_form_fixdata" style="margin-top: 40px;">
                 <div class="row">
                     <div class="col-xl-4 col-md-6 col-sm-12 offset-xl-3">
@@ -303,9 +302,7 @@ function hideText($text, $count_b = 3, $count_e = 2) {
                     </div>
                 </div>
             </div>
-        </form>
-        <!-- Банк -->
-        <form class="edit-profile" action="/response/ajax/edit_personal.php">
+            <!-- Банк -->
             <div class="user_profile_form_editdata" style="margin-bottom:50px;">
                 <div class="row">
                     <div class="col-xl-4 col-md-6 col-sm-12 offset-xl-3">
@@ -340,8 +337,8 @@ function hideText($text, $count_b = 3, $count_e = 2) {
                     </div>
                 </div>
             </div>
-        </form>
-    </div>
+        </div>
+    </form>
 <!-- Компания -->
 <div class="user_profile_form_editdata" style="margin-bottom:50px;">
     <div class="row">
