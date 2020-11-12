@@ -19,7 +19,10 @@ function newAnyPactPopUp(arData){
     if(arData.BODY.length > 0){
         var newDiv = document.createElement("div");
         $(newDiv).addClass('new-pu-body');
-        var body = $(arData.BODY).clone(true);
+        if(arData.CLONE == "N")
+            var body = $(arData.BODY);
+        else
+            var body = $(arData.BODY).clone(true);
         $(newDiv).append(body);
         $('#'+pu_id).append(newDiv);
     }

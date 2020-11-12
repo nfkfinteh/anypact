@@ -231,6 +231,54 @@ function hideText($text, $count_b = 3, $count_e = 2) {
                             <label><?=GetMessage("USER_CITY")?></label>
                             <input type="text" name="PERSONAL_CITY" maxlength="50" value="<?=$arResult["arUser"]["PERSONAL_CITY"]?>">
                         </div>*/?>
+                    </div>
+                    <div class="col-xl-4 col-md-6 col-sm-12">
+                            <div class="form-group left_blok_margin_first">
+                                    <label><?=GetMessage("USER_CITY")?></label>
+                                    <input type="text" name="PERSONAL_CITY" maxlength="50" value="<?=$arResult["arUser"]["PERSONAL_CITY"]?>">
+                                </div>
+                        <!--<div class="form-group left_blok_margin_first">
+                            <label><?=GetMessage("USER_NPUNKT")?></label>
+                            <input type="text" name="UF_N_PUNKT" maxlength="50" value="<?=$arResult["arUser"]["UF_N_PUNKT"]?>">
+                            </div>-->
+                        <div class="form-group">
+                            <label><?=GetMessage("USER_STREET")?></label>
+                            <input type="text" name="UF_STREET" maxlength="50" value="<?=$arResult["arUser"]["UF_STREET"]?>">
+                        </div>
+                        <div class="form-group">
+                            <label style="width: 100%;"><?=GetMessage("USER_HOUSE")?></label>
+                            <input type="text" name="UF_N_HOUSE" maxlength="10" value="<?=$arResult["arUser"]["UF_N_HOUSE"]?>" class="js-number" style="width: 30%; float: left; margin-right: 10%;" >
+                            <input type="text" name="UF_N_HOUSING" maxlength="10" value="<?=$arResult["arUser"]["UF_N_HOUSING"]?>" class="js-number"  style="width: 20%; float: left; margin-right: 10%;" >
+                            <input type="text" name="UF_N_APARTMENT" maxlength="10" value="<?=$arResult["arUser"]["UF_N_APARTMENT"]?>" class="js-number" style="width: 30%;" >
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Дополнительная информация-->
+            <div class="user_profile_form_editdata" style="margin-top: 40px;">
+                <div class="row">
+                    <div class="col-xl-8 col-md-12 col-sm-12 offset-xl-3">
+                        <h3 id="lichnue_dannue_bottom">Дополнительная информация</h3>
+                        <div class="row">
+                            <div class="col-xl-6 col-md-6 col-sm-12">
+                                <div class="form-group">
+                                    <label><?=GetMessage("USER_PHONE")?></label>
+                                    <input type="text" name="PERSONAL_PHONE" maxlength="225" value="<?=$arResult["arUser"]["PERSONAL_PHONE"]?>" class="js-mask__phone">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label><?=GetMessage("USER_WORK")?></label>
+                            <input type="text" name="UF_WORK" maxlength="225" value="<?=$arResult["arUser"]["UF_WORK"]?>">
+                        </div>
+                        <div class="form-group">
+                            <label><?=GetMessage("USER_EDUCATION")?></label>
+                            <input type="text" name="UF_EDUCATION" maxlength="225" value="<?=$arResult["arUser"]["UF_EDUCATION"]?>">
+                        </div>
+                        <div class="form-group">
+                            <label>О себе:</label>
+                            <textarea name="UF_ABOUT" maxlength="1000"><?=$arResult["arUser"]["UF_ABOUT"]?></textarea>
+                        </div>
                         <div class="form-group form-checkbox" style="padding-left: 21px;">
                             <input type="checkbox"
                                 <?if($arResult["arUser"]["UF_HIDE_PROFILE"]):?>checked<?endif?>
@@ -258,39 +306,14 @@ function hideText($text, $count_b = 3, $count_e = 2) {
                             <label for="UF_DISPLAY_DATE">отображать дату рождения на странице</label>
                             <input type="hidden" name="UF_DISPLAY_DATE" value="<?=$arResult["arUser"]["UF_DISPLAY_DATE"]?>" class="js-input_checkbox">
                         </div>
-                    </div>
-                    <div class="col-xl-4 col-md-6 col-sm-12">
-                            <div class="form-group left_blok_margin_first">
-                                    <label><?=GetMessage("USER_CITY")?></label>
-                                    <input type="text" name="PERSONAL_CITY" maxlength="50" value="<?=$arResult["arUser"]["PERSONAL_CITY"]?>">
-                                </div>
-                        <!--<div class="form-group left_blok_margin_first">
-                            <label><?=GetMessage("USER_NPUNKT")?></label>
-                            <input type="text" name="UF_N_PUNKT" maxlength="50" value="<?=$arResult["arUser"]["UF_N_PUNKT"]?>">
-                            </div>-->
-                        <div class="form-group">
-                            <label><?=GetMessage("USER_STREET")?></label>
-                            <input type="text" name="UF_STREET" maxlength="50" value="<?=$arResult["arUser"]["UF_STREET"]?>">
-                        </div>
-                        <div class="form-group">
-                            <label style="width: 100%;"><?=GetMessage("USER_HOUSE")?></label>
-                            <input type="text" name="UF_N_HOUSE" maxlength="10" value="<?=$arResult["arUser"]["UF_N_HOUSE"]?>" class="js-number" style="width: 30%; float: left; margin-right: 10%;" >
-                            <input type="text" name="UF_N_HOUSING" maxlength="10" value="<?=$arResult["arUser"]["UF_N_HOUSING"]?>" class="js-number"  style="width: 20%; float: left; margin-right: 10%;" >
-                            <input type="text" name="UF_N_APARTMENT" maxlength="10" value="<?=$arResult["arUser"]["UF_N_APARTMENT"]?>" class="js-number" style="width: 30%;" >
-                        </div>                    
-                        <div class="form-group">
-                            <label><?=GetMessage("USER_PHONE")?></label>
-                            <input type="text" name="PERSONAL_PHONE" maxlength="50" value="<?=$arResult["arUser"]["PERSONAL_PHONE"]?>" class="js-mask__phone">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="user_profile_form_editdata" style="margin-top: 0px;">
-                <div class="row">
-                    <div class="col-xl-8 col-md-12 col-sm-12 offset-xl-3">
-                        <div class="form-group">
-                            <label>О себе:</label>
-                            <textarea name="UF_ABOUT" maxlength="1000"><?=$arResult["arUser"]["UF_ABOUT"]?></textarea>
+                        <div class="form-group form-checkbox" style="padding-left: 21px;">
+                            <input type="checkbox"
+                                <?if($arResult["arUser"]["UF_DISPLAY_ADDRESS"]):?>checked<?endif?>
+                                id="UF_DISPLAY_ADDRESS"
+                                class="js-checkbox"
+                            >
+                            <label for="UF_DISPLAY_ADDRESS">отображать адрес на странице</label>
+                            <input type="hidden" name="UF_DISPLAY_ADDRESS" value="<?=$arResult["arUser"]["UF_DISPLAY_ADDRESS"]?>" class="js-input_checkbox">
                         </div>
                     </div>
                 </div>

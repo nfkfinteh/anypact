@@ -5259,7 +5259,8 @@ form.form-filter .selectbox-select .selectize-input input::placeholder {
     display: block;
     font-weight: 300;
     font-size: 16px;
-    color: #999999;
+    color: #131313;
+    color: #131313;
     margin-bottom: 31px;
 }
 .reg-btn-akcii{
@@ -5387,7 +5388,7 @@ form.form-filter .selectbox-select .selectize-input input::placeholder {
 }
 @media screen and (max-width: 1200px){
     .container-akcii {
-        width: 90%;
+        width: 100%;
     }
     .h1-100r {
         text-align: left;
