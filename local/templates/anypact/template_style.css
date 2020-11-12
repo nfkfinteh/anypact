@@ -4891,6 +4891,9 @@ form.form-filter .selectbox-select .selectize-input input::placeholder {
     .tablet_ver_tel_login.tablet_ver_tel_login_custom .phone {
         font-size: 1.25em;
     }
+    .navbar-expand-md .navbar-nav .nav-link {
+        font-size: 14px;
+    }
 }
 @media (max-width: 991px) {
 
@@ -5020,7 +5023,7 @@ form.form-filter .selectbox-select .selectize-input input::placeholder {
     .navbar-expand-md .navbar-nav .nav-link {
         padding-right: 0 !important;
         padding-left: 0 !important;
-        font-size: 13px;
+        font-size: 12px;
     }
     .navbar-nav>li>a {
         padding-top: 0 !important;
