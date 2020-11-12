@@ -5350,13 +5350,13 @@ form.form-filter .selectbox-select .selectize-input input::placeholder {
 .row-end .h1-big{
     margin-bottom: 23px;
 }
-.row-end p{
+.regbox-akcii p{
     font-weight: 300;
-    font-size: 16px;
+    font-size: 17px;
     line-height: 130%;
     text-align: center;
     color: #131313;
-    margin-bottom: 75px;
+    margin-bottom: 15px;
 }
 .row-end .text-desc{
     text-align: left;
@@ -5379,7 +5379,7 @@ form.form-filter .selectbox-select .selectize-input input::placeholder {
 /* Адаптация страницы 50р*/
 @media screen and (max-width: 1440px){
     .container-akcii {
-        width: 90%;
+        width: 100%;
     }
     .row-end img{
         width: 100%;
@@ -5402,7 +5402,7 @@ form.form-filter .selectbox-select .selectize-input input::placeholder {
 }
 @media screen and (max-width: 992px){
     .container-akcii {
-        width: 90%;
+        width: 100%;
     }
     .h1-100r {
         text-align: left;
