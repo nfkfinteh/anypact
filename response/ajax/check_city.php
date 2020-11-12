@@ -29,6 +29,7 @@ if($obj = $res->GetNext(true, false)){
 }
 ;
 if(!empty($result['ID'])){
+    $_SESSION['CITY_ANYPACT'] = $data['city'];
     echo json_encode([ 'VALUE'=>$result, 'TYPE'=> 'SUCCESS']);
     die();
 }

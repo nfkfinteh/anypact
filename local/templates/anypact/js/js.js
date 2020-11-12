@@ -58,6 +58,11 @@ $(document).ready(function(){
 $(document).on('click', '.city-choose-btn-city', function(){
     let city = $(this).text();
     set_cookie('CITY_ANYPACT', city);
+    $.ajax({
+        url: '/response/ajax/check_city.php',
+        type: 'POST',
+        data: {'city':city},
+    });
     window.location.reload();
 });
 

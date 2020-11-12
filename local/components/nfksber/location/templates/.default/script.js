@@ -15,6 +15,17 @@ function getLocation(){
                 if(result.STATUS == "SUCCESS"){
                     $('#header .header_item span.location').text(result.CITY_NAME);
                     set_cookie('CITY_ANYPACT', result.CITY_NAME);
+                    var city = result.CITY_NAME;
+                    var wait = setInterval(function(){
+                        if($('#map').children('ymaps').length > 0){
+                            $('#map').children('ymaps').remove();
+                            ymaps.ready(init);
+                            clearInterval(wait);
+                        }
+                    }, 100);
+                    setTimeout(function(){
+                        clearInterval(wait);
+                    },1000);
                     // window.location.reload();
                 }
             },
