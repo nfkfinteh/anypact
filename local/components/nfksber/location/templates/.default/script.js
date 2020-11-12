@@ -15,7 +15,7 @@ function getLocation(){
                 if(result.STATUS == "SUCCESS"){
                     $('#header .header_item span.location').text(result.CITY_NAME);
                     set_cookie('CITY_ANYPACT', result.CITY_NAME);
-                    window.location.reload();
+                    // window.location.reload();
                 }
             },
             onfailure: function(a, b, c){
