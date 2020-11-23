@@ -25,6 +25,16 @@ if (!$USER->IsAuthorized()){
     die();
 }
 
+function generateStr($length = 8){
+    $chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    $numChars = strlen($chars);
+    $string = '';
+    for ($i = 0; $i < $length; $i++) {
+        $string .= substr($chars, rand(1, $numChars) - 1, 1);
+    }
+    return $string;
+}
+
 #проверка доступа пользователя на создание объявления не дает создавать объявления
 /*
 if(!empty($data['MODIFIED_BY'])){
@@ -58,6 +68,14 @@ if(in_array( 1, $arGroups) || in_array( 6, $arGroups)){
         foreach($dopPicture as $key => $file){
             $image_src = $file['tmp_name'];
             $tmp_image = $_SERVER['DOCUMENT_ROOT'] . "/upload/image/" . $file['name'];
+            $file_name = explode(".", $tmp_image);
+            $tmp_image = "";
+            foreach($file_name as $key => $value){
+                if($key == (array_key_last($file_name) - 1)){
+                    $value .= generateStr(5);
+                }
+                $tmp_image .= $value;
+            }
             $resize_img = CFile::ResizeImageFile($image_src, $tmp_image, array('width'=>'730', 'height'=>'500'), BX_RESIZE_IMAGE_PROPORTIONAL, array(
                 'type' => 'image',
                 'size' => 'small',
