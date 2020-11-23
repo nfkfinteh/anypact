@@ -32,9 +32,9 @@ if(!empty($arResult["SEARCH"])){
         $arIds[] = $value['ITEM_ID'];
     }
     $rsEl = CIBlockElement::GetList(array(), array("ID" => $arIds, "IBLOCK_ID" => 3, "!PROPERTY_PRIVATE" => 10), false, false, array("ID", "PROPERTY_INPUT_FILES"));
-    while($arEl = $rsEl -> GetNext()){
+    while($arEl = $rsEl -> GetNextElement()){
         $arFields = $arEl->GetFields();
-        $arProps = $arEl->GetNextElement();
+        $arProps = $arEl->GetProperties();
         $arEls[$arFields['ID']]['ID'] = $arFields['ID'];
         $arEls[$arFields['ID']]['URL_IMG_PREVIEW'] = CFile::ResizeImageGet($arProps['INPUT_FILES']['VALUE'][0], ['width'=>500, 'height'=>500], BX_RESIZE_IMAGE_PROPORTIONAL )['src'];
         $arElIds[] = $arFields['ID'];
