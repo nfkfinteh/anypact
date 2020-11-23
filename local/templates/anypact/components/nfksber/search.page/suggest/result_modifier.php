@@ -31,7 +31,7 @@ if(!empty($arResult["SEARCH"])){
     foreach($arResult["SEARCH"] as $value){
         $arIds[] = $value['ITEM_ID'];
     }
-    $rsEl = CIBlockElement::GetList(array(), array("ID" => $arIds, "IBLOCK_ID" => 3, "!PROPERTY_PRIVATE" => 10), false, false, array("ID", "PROPERTY_INPUT_FILES"));
+    $rsEl = CIBlockElement::GetList(array(), array("ID" => $arIds, "IBLOCK_ID" => 3, "!PROPERTY_PRIVATE" => 10), false, false, array("ID", "IBLOCK_ID", "PROPERTY_INPUT_FILES"));
     while($arEl = $rsEl -> GetNextElement()){
         $arFields = $arEl->GetFields();
         $arProps = $arEl->GetProperties();
