@@ -8,21 +8,21 @@ global $USER;
 if ($USER->IsAuthorized()):
     if($_REQUEST['AJAX_SDEL'] == 'Y') $APPLICATION->RestartBuffer();?>
 
-    <div id="ajax_profile">
-        <?$APPLICATION->IncludeComponent("nfksber:user.profile",
-            "",
-            Array(
-                "IBLOCK_ID" => 3,
-                "IBLOCK_ID_COMPANY" => 8,
-                "IBLOCK_ID_DEAL" => 3,
-                "USER_ID" => $_REQUEST['ID'],
-                'CURRENT_USER'=>$USER->GetID(),
-                "CACHE_TIME"=>3600000,
-                "ITEM_COUNT"=> 9,
-                "PAGER_TEMPLATE"=>'anypact_pagination',
-                "TYPE" => $_REQUEST['type']=='company' ? 'company' : ''
-            )
-        );?>
+        <div id="ajax_profile">
+            <?$APPLICATION->IncludeComponent("nfksber:user.profile_new",
+                "",
+                Array(
+                    // "IBLOCK_ID" => 3,
+                    // "IBLOCK_ID_COMPANY" => 8,
+                    // "IBLOCK_ID_DEAL" => 3,
+                    // "USER_ID" => $_REQUEST['ID'],
+                    // 'CURRENT_USER'=>$USER->GetID(),
+                    // "CACHE_TIME"=>3600000,
+                    // "ITEM_COUNT"=> 9,
+                    // "PAGER_TEMPLATE"=>'anypact_pagination',
+                    // "TYPE" => $_REQUEST['type']=='company' ? 'company' : ''
+                )
+            );?>
         </div>
     <?if($_REQUEST['AJAX_SDEL'] == 'Y') exit();?>
 <?else:?>

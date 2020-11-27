@@ -1,7 +1,7 @@
 .global-incoming_friends-count {
     position: absolute;
     top: -11px;
-    right: 306px;
+    right: 431px;
     color: #ff6600;
     font-size: 14px;
 }
@@ -9,7 +9,13 @@
     top: 38px;
     left: 154px;
 }
-@media screen and (max-width: 1022px) {
+@media screen and (max-width: 1200px) {
+    .global-incoming_friends-count {
+        right: 383px;
+        font-size: 12px;
+    }
+}
+@media screen and (max-width: 1023px) {
     .global-incoming_friends-count {
         top: 4px;
     }
@@ -17,7 +23,7 @@
 @media screen and (max-width: 991px) {
     .global-incoming_friends-count {
         top: -6px;
-        right: 243px;
+        right: 294px;
         font-size: 10px;
     }
     .freind-count .global-incoming_friends-count {

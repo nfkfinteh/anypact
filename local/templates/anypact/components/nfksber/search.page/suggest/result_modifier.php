@@ -31,16 +31,19 @@ if(!empty($arResult["SEARCH"])){
     foreach($arResult["SEARCH"] as $value){
         $arIds[] = $value['ITEM_ID'];
     }
-    $rsEl = CIBlockElement::GetList(array(), array("ID" => $arIds, "IBLOCK_ID" => 3, "!PROPERTY_PRIVATE" => 10), false, false, array("ID", "PROPERTY_INPUT_FILES"));
-    while($arEl = $rsEl -> GetNext()){
-        $arEls[$arEl['ID']] = $arEl;
-        $arElIds[] = $arEl['ID'];
+    $rsEl = CIBlockElement::GetList(array(), array("ID" => $arIds, "IBLOCK_ID" => 3, "!PROPERTY_PRIVATE" => 10), false, false, array("ID", "IBLOCK_ID", "PROPERTY_INPUT_FILES"));
+    while($arEl = $rsEl -> GetNextElement()){
+        $arFields = $arEl->GetFields();
+        $arProps = $arEl->GetProperties();
+        $arEls[$arFields['ID']]['ID'] = $arFields['ID'];
+        $arEls[$arFields['ID']]['URL_IMG_PREVIEW'] = CFile::ResizeImageGet($arProps['INPUT_FILES']['VALUE'][0], ['width'=>500, 'height'=>500], BX_RESIZE_IMAGE_PROPORTIONAL )['src'];
+        $arElIds[] = $arFields['ID'];
     }
 
     if(!empty($arEls)){
         foreach($arResult["SEARCH"] as $key => $value){
             if(in_array($value['ITEM_ID'], $arElIds)){
-                $arResult["SEARCH"][$key]['URL_IMG_PREVIEW'] = CFile::GetPath($arEls[$value['ITEM_ID']]['PROPERTY_INPUT_FILES_VALUE']);
+                $arResult["SEARCH"][$key]['URL_IMG_PREVIEW'] = $arEls[$value['ITEM_ID']]['URL_IMG_PREVIEW'];
             }else{
                 unset($arResult["SEARCH"][$key]);
             }

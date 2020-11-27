@@ -14,6 +14,16 @@ $disabled = '';
 if (!empty($arResult['arUser']['UF_ESIA_ID']) && $arResult['arUser']['UF_ESIA_AUT']) {
     $disabled = 'disabled';
 }
+function hideText($text, $count_b = 3, $count_e = 2) {
+    if(empty(trim($text)))
+        return $text;
+    $text1 = substr($text, 0, $count_b);
+    $text2 = substr($text, $count_b);
+    $text1 .= str_repeat("*", strlen($text2)-$count_e);
+    if($count_e != 0)
+        $text1 .= substr($text, -$count_e);
+    return $text1;
+}
 ?>
 <!--Профиль пользователя-->
 <div class="user_profile">
@@ -24,11 +34,10 @@ if (!empty($arResult['arUser']['UF_ESIA_ID']) && $arResult['arUser']['UF_ESIA_AU
             </div>
         </div>
     </div>
-    <div id="form__personal-data">
+    <form id="form__personal-data" class="edit-profile" action="/response/ajax/edit_personal.php">
         <!-- ФИО, Паспорт -->
         <div class="user_profile_form">
         <h3 id="lichnue_dannue_top">Личные данные</h3>
-        <form class="edit-profile" action="/response/ajax/edit_personal.php">
             <div class="user_profile_form_editdata">
                 <div class="row">
                     <div class="col-xl-7 col-md-6 col-sm-12">
@@ -50,7 +59,8 @@ if (!empty($arResult['arUser']['UF_ESIA_ID']) && $arResult['arUser']['UF_ESIA_AU
                                 <h3>Личные данные</h3>
                                 <div class="form-group">
                                     <label><?=GetMessage("LOGIN")?>:</label>
-                                    <input type="text" name="LOGIN" maxlength="50" value="<?=$arResult["arUser"]["LOGIN"]?>" disabled>
+                                    
+                                    <input type="text" value="<?=hideText($arResult["arUser"]["LOGIN"])?>" disabled>
                                 </div>
                                 <div class="form-group">
                                     <label><?=GetMessage("LAST_NAME")?></label>
@@ -103,24 +113,36 @@ if (!empty($arResult['arUser']['UF_ESIA_ID']) && $arResult['arUser']['UF_ESIA_AU
                     <div class="col-xl-4 col-md-6 col-sm-12">
                         <div class="form-group left_blok_margin_ub">
                             <label><?=GetMessage("SNILS")?></label>
-                            <input type="text" id='UF_SNILS' name="UF_SNILS" maxlength="50" value="<?=$arResult["arUser"]["UF_SNILS"]?>" >
+                            <?if(!empty($arResult["arUser"]["UF_SNILS"])){?>
+                                <div class="hidden-value">
+                            <?}?>
+                            <input type="text" id='UF_SNILS' name="UF_SNILS" maxlength="50" value="<?=hideText($arResult["arUser"]["UF_SNILS"])?>" class="js-number" <?if(!empty($arResult["arUser"]["UF_SNILS"])){?>disabled<?}?>>
+                            <?if(!empty($arResult["arUser"]["UF_SNILS"])){?>
+                                </div>
+                            <?}?>
                         </div>
                         <div class="form-group">
                             <label><?=GetMessage("INN")?></label>
-                            <input type="text" name="UF_INN" maxlength="12" value="<?=$arResult["arUser"]["UF_INN"]?>" class="js-number">
+                            <?if(!empty($arResult["arUser"]["UF_SNILS"])){?>
+                                <div class="hidden-value">
+                            <?}?>
+                            <input type="text" name="UF_INN" maxlength="12" value="<?=hideText($arResult["arUser"]["UF_INN"])?>" class="js-number" <?if(!empty($arResult["arUser"]["UF_SNILS"])){?>disabled<?}?>>
+                            <?if(!empty($arResult["arUser"]["UF_SNILS"])){?>
+                                </div>
+                            <?}?>
                         </div>
                         <div class="form-group">
                             <label style="width: 100%;"><?=GetMessage("SN_PASSPORT")?></label>
-                            <input type="text" name="UF_SPASSPORT" maxlength="4" value="<?=$arResult["arUser"]["UF_SPASSPORT"]?>" style="width: 20%; float: left; margin-right: 10%;" disabled>
-                            <input type="text" name="UF_NPASSPORT" maxlength="6" value="<?=$arResult["arUser"]["UF_NPASSPORT"]?>" style="width: 70%;" disabled>
+                            <input type="text" value="<?=hideText($arResult["arUser"]["UF_SPASSPORT"], 2, 0)?>" style="width: 20%; float: left; margin-right: 10%;" disabled>
+                            <input type="text" value="<?=hideText($arResult["arUser"]["UF_NPASSPORT"], 2, 0)?>" style="width: 70%;" disabled>
                         </div>
                         <div class="form-group">
                             <label><?=GetMessage("DATA_PASSPORT")?></label>
-                            <input type="text" name="LAST_NAME" maxlength="50" value="<?=$arResult["arUser"]["UF_DATA_PASSPORT"]?>" disabled>
+                            <input type="text" value="<?=hideText($arResult["arUser"]["UF_DATA_PASSPORT"], 2, 0)?>" disabled>
                         </div>
                         <div class="form-group">
                             <label><?=GetMessage("KEM_V_PASSPORT")?></label>
-                            <input type="text" name="LAST_NAME" maxlength="50" value="<?=$arResult["arUser"]["UF_KEM_VPASSPORT"]?>" disabled>
+                            <input type="text" value="<?=hideText($arResult["arUser"]["UF_KEM_VPASSPORT"], 4)?>" disabled>
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-aut edit-profile__btn save_profile_button">Сохранить</button>
@@ -128,29 +150,34 @@ if (!empty($arResult['arUser']['UF_ESIA_ID']) && $arResult['arUser']['UF_ESIA_AU
                     </div>
                 </div>
             </div>
-        </form>
-        <!--Пароль почта-->
-        <form class="edit-profile" action="/response/ajax/edit_personal.php">
+            <!--Пароль почта-->
             <div class="user_profile_form_fixdata" style="margin-top: 40px;">
                 <div class="row">
                     <div class="col-xl-4 col-md-6 col-sm-12 offset-xl-3">
                         <h3 id="lichnue_dannue_bottom">Параметры аккаунта</h3>
                         <div class="form-group">
                             <label>Текущая электронная почта:</label>
-                            <input  type="text"  maxlength="50" value="<?=$arResult["arUser"]["EMAIL"]?>" class="js-mask__email" disabled>
+                            <?
+                            $hideEmail = explode("@", $arResult["arUser"]["EMAIL"]);
+                            ?>
+                            <input  type="text"  maxlength="50" value="<?=hideText($hideEmail[0])."@".$hideEmail[1]?>" class="js-mask__email" disabled>
                         </div>
                     </div>
                     <div class="col-xl-4 col-md-6 col-sm-12">
                         <div class="form-group left_blok_margin_first">
                             <label>Изменить эл.почту:</label>
-                            <input type="text" name="EMAIL" maxlength="50" value="<?=$arResult["arUser"]["EMAIL"]?>" class="js-mask__email">
+                            <?if(!empty($arResult["arUser"]["EMAIL"])){?>
+                                <div class="hidden-value">
+                            <?}?>
+                            <input type="text" name="EMAIL" maxlength="50" value="<?=hideText($hideEmail[0])."@".$hideEmail[1]?>" class="js-mask__email" <?if(!empty($arResult["arUser"]["UF_SNILS"])){?>disabled<?}?>>
+                            <?if(!empty($arResult["arUser"]["EMAIL"])){?>
+                                </div>
+                            <?}?>
                         </div>
                         <button type="submit" class="btn btn-aut edit-profile__btn save_profile_button">Сохранить</button>
                     </div>
                 </div>
             </div>
-        </form>
-        <form class="edit-profile" action="/response/ajax/edit_personal.php">
             <div class="user_profile_form_fixdata" style="margin-top: 0px;">
                 <div class="row">
                     <div class="col-xl-4 col-md-6 col-sm-12 offset-xl-3">
@@ -168,9 +195,7 @@ if (!empty($arResult['arUser']['UF_ESIA_ID']) && $arResult['arUser']['UF_ESIA_AU
                     </div>
                 </div>
             </div>
-        </form>
-        <!--Адрес-->
-        <form class="edit-profile" action="/response/ajax/edit_personal.php">
+            <!--Адрес-->
             <div class="user_profile_form_fixdata" style="margin-top: 40px;">
                 <div class="row">
                     <div class="col-xl-4 col-md-6 col-sm-12 offset-xl-3">
@@ -206,6 +231,54 @@ if (!empty($arResult['arUser']['UF_ESIA_ID']) && $arResult['arUser']['UF_ESIA_AU
                             <label><?=GetMessage("USER_CITY")?></label>
                             <input type="text" name="PERSONAL_CITY" maxlength="50" value="<?=$arResult["arUser"]["PERSONAL_CITY"]?>">
                         </div>*/?>
+                    </div>
+                    <div class="col-xl-4 col-md-6 col-sm-12">
+                            <div class="form-group left_blok_margin_first">
+                                    <label><?=GetMessage("USER_CITY")?></label>
+                                    <input type="text" name="PERSONAL_CITY" maxlength="50" value="<?=$arResult["arUser"]["PERSONAL_CITY"]?>">
+                                </div>
+                        <!--<div class="form-group left_blok_margin_first">
+                            <label><?=GetMessage("USER_NPUNKT")?></label>
+                            <input type="text" name="UF_N_PUNKT" maxlength="50" value="<?=$arResult["arUser"]["UF_N_PUNKT"]?>">
+                            </div>-->
+                        <div class="form-group">
+                            <label><?=GetMessage("USER_STREET")?></label>
+                            <input type="text" name="UF_STREET" maxlength="50" value="<?=$arResult["arUser"]["UF_STREET"]?>">
+                        </div>
+                        <div class="form-group">
+                            <label style="width: 100%;"><?=GetMessage("USER_HOUSE")?></label>
+                            <input type="text" name="UF_N_HOUSE" maxlength="10" value="<?=$arResult["arUser"]["UF_N_HOUSE"]?>" class="js-number" style="width: 30%; float: left; margin-right: 10%;" >
+                            <input type="text" name="UF_N_HOUSING" maxlength="10" value="<?=$arResult["arUser"]["UF_N_HOUSING"]?>" class="js-number"  style="width: 20%; float: left; margin-right: 10%;" >
+                            <input type="text" name="UF_N_APARTMENT" maxlength="10" value="<?=$arResult["arUser"]["UF_N_APARTMENT"]?>" class="js-number" style="width: 30%;" >
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Дополнительная информация-->
+            <div class="user_profile_form_editdata" style="margin-top: 40px;">
+                <div class="row">
+                    <div class="col-xl-8 col-md-12 col-sm-12 offset-xl-3">
+                        <h3 id="lichnue_dannue_bottom">Дополнительная информация</h3>
+                        <div class="row">
+                            <div class="col-xl-6 col-md-6 col-sm-12">
+                                <div class="form-group">
+                                    <label><?=GetMessage("USER_PHONE")?></label>
+                                    <input type="text" name="PERSONAL_PHONE" maxlength="225" value="<?=$arResult["arUser"]["PERSONAL_PHONE"]?>" class="js-mask__phone">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label><?=GetMessage("USER_WORK")?></label>
+                            <input type="text" name="UF_WORK" maxlength="225" value="<?=$arResult["arUser"]["UF_WORK"]?>">
+                        </div>
+                        <div class="form-group">
+                            <label><?=GetMessage("USER_EDUCATION")?></label>
+                            <input type="text" name="UF_EDUCATION" maxlength="225" value="<?=$arResult["arUser"]["UF_EDUCATION"]?>">
+                        </div>
+                        <div class="form-group">
+                            <label>О себе:</label>
+                            <textarea name="UF_ABOUT" maxlength="1000"><?=$arResult["arUser"]["UF_ABOUT"]?></textarea>
+                        </div>
                         <div class="form-group form-checkbox" style="padding-left: 21px;">
                             <input type="checkbox"
                                 <?if($arResult["arUser"]["UF_HIDE_PROFILE"]):?>checked<?endif?>
@@ -233,39 +306,14 @@ if (!empty($arResult['arUser']['UF_ESIA_ID']) && $arResult['arUser']['UF_ESIA_AU
                             <label for="UF_DISPLAY_DATE">отображать дату рождения на странице</label>
                             <input type="hidden" name="UF_DISPLAY_DATE" value="<?=$arResult["arUser"]["UF_DISPLAY_DATE"]?>" class="js-input_checkbox">
                         </div>
-                    </div>
-                    <div class="col-xl-4 col-md-6 col-sm-12">
-                            <div class="form-group left_blok_margin_first">
-                                    <label><?=GetMessage("USER_CITY")?></label>
-                                    <input type="text" name="PERSONAL_CITY" maxlength="50" value="<?=$arResult["arUser"]["PERSONAL_CITY"]?>">
-                                </div>
-                        <!--<div class="form-group left_blok_margin_first">
-                            <label><?=GetMessage("USER_NPUNKT")?></label>
-                            <input type="text" name="UF_N_PUNKT" maxlength="50" value="<?=$arResult["arUser"]["UF_N_PUNKT"]?>">
-                            </div>-->
-                        <div class="form-group">
-                            <label><?=GetMessage("USER_STREET")?></label>
-                            <input type="text" name="UF_STREET" maxlength="50" value="<?=$arResult["arUser"]["UF_STREET"]?>">
-                        </div>
-                        <div class="form-group">
-                            <label style="width: 100%;"><?=GetMessage("USER_HOUSE")?></label>
-                            <input type="text" name="UF_N_HOUSE" maxlength="10" value="<?=$arResult["arUser"]["UF_N_HOUSE"]?>" class="js-number" style="width: 30%; float: left; margin-right: 10%;" >
-                            <input type="text" name="UF_N_HOUSING" maxlength="10" value="<?=$arResult["arUser"]["UF_N_HOUSING"]?>" class="js-number"  style="width: 20%; float: left; margin-right: 10%;" >
-                            <input type="text" name="UF_N_APARTMENT" maxlength="10" value="<?=$arResult["arUser"]["UF_N_APARTMENT"]?>" class="js-number" style="width: 30%;" >
-                        </div>                    
-                        <div class="form-group">
-                            <label><?=GetMessage("USER_PHONE")?></label>
-                            <input type="text" name="PERSONAL_PHONE" maxlength="50" value="<?=$arResult["arUser"]["PERSONAL_PHONE"]?>" class="js-mask__phone">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="user_profile_form_editdata" style="margin-top: 0px;">
-                <div class="row">
-                    <div class="col-xl-8 col-md-12 col-sm-12 offset-xl-3">
-                        <div class="form-group">
-                            <label>О себе:</label>
-                            <textarea name="UF_ABOUT" maxlength="1000"><?=$arResult["arUser"]["UF_ABOUT"]?></textarea>
+                        <div class="form-group form-checkbox" style="padding-left: 21px;">
+                            <input type="checkbox"
+                                <?if($arResult["arUser"]["UF_DISPLAY_ADDRESS"]):?>checked<?endif?>
+                                id="UF_DISPLAY_ADDRESS"
+                                class="js-checkbox"
+                            >
+                            <label for="UF_DISPLAY_ADDRESS">отображать адрес на странице</label>
+                            <input type="hidden" name="UF_DISPLAY_ADDRESS" value="<?=$arResult["arUser"]["UF_DISPLAY_ADDRESS"]?>" class="js-input_checkbox">
                         </div>
                     </div>
                 </div>
@@ -277,9 +325,7 @@ if (!empty($arResult['arUser']['UF_ESIA_ID']) && $arResult['arUser']['UF_ESIA_AU
                     </div>
                 </div>
             </div>
-        </form>
-        <!-- Банк -->
-        <form class="edit-profile" action="/response/ajax/edit_personal.php">
+            <!-- Банк -->
             <div class="user_profile_form_editdata" style="margin-bottom:50px;">
                 <div class="row">
                     <div class="col-xl-4 col-md-6 col-sm-12 offset-xl-3">
@@ -314,8 +360,8 @@ if (!empty($arResult['arUser']['UF_ESIA_ID']) && $arResult['arUser']['UF_ESIA_AU
                     </div>
                 </div>
             </div>
-        </form>
-    </div>
+        </div>
+    </form>
 <!-- Компания -->
 <div class="user_profile_form_editdata" style="margin-bottom:50px;">
     <div class="row">
@@ -362,7 +408,7 @@ if (!empty($arResult['arUser']['UF_ESIA_ID']) && $arResult['arUser']['UF_ESIA_AU
             <?foreach($arResult['COMPANIES'] as $key => $arCompany){?>
                 <?if($arCompany['PROPERTY_TYPE_VALUE'] == "ИП"){?>
                     <?$is_ip = true;?>
-                    <div class="col-xl-4 col-md-6 col-sm-12 <?if($key==0 || $key % 2 === 0):?>offset-xl-3<?endif?>">
+                    <div class="col-xl-4 col-md-6 col-sm-12 offset-xl-3">
                         <p><?=$arCompany['NAME']?></p>
                         <?if($arCompany['PROPERTY_DIRECTOR_ID_VALUE'] == $arResult['ID']):?>
                             <a href="/profile/ip/?id=<?=$arCompany['ID']?>" class="btn btn-aut" style="margin-bottom:15px;">Изменить ИП</a>

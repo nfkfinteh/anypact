@@ -397,3 +397,9 @@ div#signpopup_close {
     cursor: pointer;
     float: right;
 }
+.hidden-value input{
+    border: 1px solid #ff6416;
+    background: #f1f4f4;
+    cursor: text!important;
+    color: rgb(33, 37, 41);
+}

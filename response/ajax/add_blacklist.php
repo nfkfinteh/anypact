@@ -169,19 +169,24 @@ if($data['action']=='add'){
     {
         $arProperty = $ob->GetProperties();
         $arEl = $ob->GetFields();
-        $key = array_search($data['UF_USER_B'], $arProperty['STAFF']['VALUE']);
-        if($key !== FALSE){
-            $arNew = array_unique($arProperty['STAFF']['VALUE']);
-            unset($arNew[$key]);
-            $arFields['STAFF'] = $arNew;
+        if(is_array($arProperty['STAFF']['VALUE'])){
+            $key = array_search($data['UF_USER_B'], $arProperty['STAFF']['VALUE']);
+            if($key !== FALSE){
+                $arNew = array_unique($arProperty['STAFF']['VALUE']);
+                unset($arNew[$key]);
+                $arFields['STAFF'] = $arNew;
+            }
         }
-        $key = array_search($data['UF_USER_B'], $arProperty['STAFF_NO_ACTIVE']['VALUE']);
-        if($key !== FALSE){
-            $arNew = array_unique($arProperty['STAFF_NO_ACTIVE']['VALUE']);
-            unset($arNew[$key]);
-            $arFields['STAFF_NO_ACTIVE'] = $arNew;
+        if(is_array($arProperty['STAFF']['VALUE'])){
+            $key = array_search($data['UF_USER_B'], $arProperty['STAFF_NO_ACTIVE']['VALUE']);
+            if($key !== FALSE){
+                $arNew = array_unique($arProperty['STAFF_NO_ACTIVE']['VALUE']);
+                unset($arNew[$key]);
+                $arFields['STAFF_NO_ACTIVE'] = $arNew;
+            }
         }
-        CIBlockElement::SetPropertyValuesEx($arEl['ID'], $arEl['IBLOCK_ID'], $arFields);
+        if(!empty($arFields) && is_array($arFields))
+            CIBlockElement::SetPropertyValuesEx($arEl['ID'], $arEl['IBLOCK_ID'], $arFields);
     }
 
     $res = CIBlockElement::GetList(Array(), array("IBLOCK_ID" => 3, "PROPERTY_PACT_USER" => $data['UF_USER_A'], "PROPERTY_ACCESS_USER" => $data['UF_USER_B']), false, false, array("ID", "IBLOCK_ID", "PROPERTY_ACCESS_USER"));

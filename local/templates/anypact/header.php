@@ -98,7 +98,8 @@ global $USER;
 <body class="<?=$class_container?>">
 <div id="panel"><?$APPLICATION->ShowPanel();?></div>
 <?$getGeo = $APPLICATION->IncludeComponent("nfksber:location","",Array(
-        'CACHE_TYPE'=>'Y'
+        'CACHE_TYPE'=>'Y',
+        'ACTION_VARIABLE'=>'action',
 ));?>
 <!--Окно регистрации-->
 <noindex>
@@ -318,8 +319,10 @@ global $USER;
                             )
                     );
                 ?>
-                <?$APPLICATION->IncludeComponent("nfksber:messenger_hl.unread.wiget", "", array('ACTION_VARIABLE' => 'action'));?>
-                <?$APPLICATION->IncludeComponent("nfksber:friends.incoming.wiget", "", array('ACTION_VARIABLE' => 'action'));?>
+                <?if ($USER->IsAuthorized()){?>
+                    <?$APPLICATION->IncludeComponent("nfksber:messenger_hl.unread.wiget", "", array('ACTION_VARIABLE' => 'action'));?>
+                    <?$APPLICATION->IncludeComponent("nfksber:friends.incoming.wiget", "", array('ACTION_VARIABLE' => 'action'));?>
+                <?}?>
             </div>
         </nav>
         <!--//Меню навигации-->
