@@ -22,7 +22,7 @@ if ($USER->IsAuthorized() || ($_GET["change_password"] == "yes" && !empty($_GET[
         // авторизуем пользователя    
         $error_ESIA = "";
         //print_r($info);
-        if( isset( $info['user_docs']['elements'] ) > 0 && $info['user_info']['trusted']){
+        if( isset( $info['user_docs']['elements'] ) > 0 && $info['user_info']['trusted'] && $info['user_docs']['elements'][0]['vrfStu'] == "VERIFIED"){
 
             $info_form = $info;
             $number_pass = $info['user_docs']['elements'][0]['series']." ".$info['user_docs']['elements'][0]['number'] ;
