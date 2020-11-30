@@ -47,7 +47,8 @@ if ($USER->IsAuthorized() || ($_GET["change_password"] == "yes" && !empty($_GET[
                     "NAME" => mb_convert_case($info['user_info']['firstName'], MB_CASE_TITLE), // Имя
                     "SECOND_NAME" => mb_convert_case($info['user_info']['middleName'], MB_CASE_TITLE), // Отчество
                     "UF_PASSPORT" => $number_pass,
-                    "UF_ESIA_ID" => $info['user_id']
+                    "UF_ESIA_ID" => $info['user_id'],
+                    "UF_ESIA_JSON" => json_encode($info),
                 );        
                 $USER->Update($USER->GetID(), $fields);
                 $arGroups[] = 6; // ID группы которые авторизовались через ЕСИА

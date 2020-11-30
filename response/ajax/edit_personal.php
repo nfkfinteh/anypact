@@ -78,6 +78,12 @@ if(!empty($data) || !empty($imgData)){
             unset($fields[$del]);
     }
 
+    if(!empty($fields['EMAIL'])){
+        if (!filter_var($fields['EMAIL'], FILTER_VALIDATE_EMAIL)) {
+            die();
+        }
+    }
+
     $res = CUser::GetList(($by="personal_country"), ($order="desc"), array("ID" => $idUser), array('SELECT' => array("UF_ESIA_ID", "UF_ESIA_AUT"), 'FIELDS' => array("ID")));
     if($array = $res -> fetch()){
         if(!empty($array['UF_ESIA_ID']) && $array['UF_ESIA_AUT'] == 1){
