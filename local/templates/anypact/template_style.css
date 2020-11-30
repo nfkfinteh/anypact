@@ -4142,7 +4142,7 @@ h4.subtitle_contract {
 }
 
 .footer p img {
-    margin-bottom: 50px;
+    margin-bottom: 35px;
 }
 
 footer .polit_link {
@@ -5382,6 +5382,23 @@ form.form-filter .selectbox-select .selectize-input input::placeholder {
     text-align: center;
     color: #131313;
     margin-bottom: 15px;
+}
+a.soc-link {
+    margin: 9px;
+}
+
+a.soc-link svg{
+    max-width: 28px;
+    max-height: 28px;
+    margin-bottom: 35px;
+}
+
+a.soc-link:hover, a.soc-link:focus{
+    text-decoration: none!important;
+}
+
+a.soc-link svg:hover{
+    fill: #ff6416;
 }
 
 /* Адаптация страницы 50р*/
