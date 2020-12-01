@@ -53,7 +53,12 @@ $arFilter = [
 			"PROPERTY_PRIVATE_VALUE" => "Y",
 			"=CREATED_BY" => empty( $USER -> GetID() ) ? 0 : $USER -> GetID()
 		),
-	)
+    ),
+    array(
+        "LOGIC" => "OR",
+        array("PROPERTY_INDEFINITELY" => 18),
+        array(">=DATE_ACTIVE_TO" => new \Bitrix\Main\Type\DateTime())
+    )
 ];
 
 $result = [
@@ -88,7 +93,7 @@ if($arItems){
             ),
             "properties" => array(
                 //'balloonContent' => '<div class="baloon-content"><a href="'.$value['FIELDS']['DETAIL_PAGE_URL'].'">'.$value['FIELDS']['NAME'].'</a></div>',
-                'balloonContent' => '<div class="baloon-content"><a href="/pacts/view_pact/?ELEMENT_ID='.$value['FIELDS']['ID'].'">'.$value['FIELDS']['NAME'].'</a></div>',
+                'balloonContent' => '<div class="baloon-content"><a href="'.$value['FIELDS']['DETAIL_PAGE_URL'].'">'.$value['FIELDS']['NAME'].'</a></div>',
 
             )
         );
