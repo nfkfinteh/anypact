@@ -73,7 +73,7 @@ if($arItems){
             ),
             "properties" => array(
                 //'balloonContent' => '<div class="baloon-content"><a href="'.$value['FIELDS']['DETAIL_PAGE_URL'].'">'.$value['FIELDS']['NAME'].'</a></div>',
-                'balloonContent' => '<div class="baloon-content"><a href="/pacts/view_pact/?ELEMENT_ID='.$value['FIELDS']['ID'].'">'.$value['FIELDS']['NAME'].'</a></div>',
+                'balloonContent' => '<div class="baloon-content"><a href="'.$value['FIELDS']['DETAIL_PAGE_URL'].'">'.$value['FIELDS']['NAME'].'</a></div>',
 
             )
         );
