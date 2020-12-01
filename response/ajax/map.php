@@ -24,11 +24,13 @@ function getCoordinate($str){
 
 $arCordinate = getCoordinate($bbox);
 
+global $USER;
 
 $arSelect = [
     'IBLOCK_ID',
     'ID',
     'NAME',
+    'DETAIL_PAGE_URL'
 ];
 $arFilter = [
     'IBLOCK_ID'=>$iblockID,
@@ -39,6 +41,19 @@ $arFilter = [
         array(">=PROPERTY_LONG" => $arCordinate['x1'], "<=PROPERTY_LONG" => $arCordinate['x3']),
         array(">=PROPERTY_LAT" => $arCordinate['y1'], "<=PROPERTY_LAT" => $arCordinate['y3']),
     ),
+    "PROPERTY_MODERATION_VALUE" => 'Y',
+	array(
+		'LOGIC' => 'OR',
+		array("!=PROPERTY_PRIVATE_VALUE" => "Y"),
+		array(
+			"PROPERTY_PRIVATE_VALUE" => "Y",
+			"=PROPERTY_ACCESS_USER" => empty( $USER -> GetID() ) ? 0 : $USER -> GetID()
+		),
+		array(
+			"PROPERTY_PRIVATE_VALUE" => "Y",
+			"=CREATED_BY" => empty( $USER -> GetID() ) ? 0 : $USER -> GetID()
+		),
+	)
 ];
 
 $result = [
