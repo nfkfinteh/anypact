@@ -143,8 +143,8 @@ $APPLICATION->SetPageProperty("description", "Заключить договор 
 		"PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
 		"PAGER_SHOW_ALL" => "N",
 		"PAGER_BASE_LINK_ENABLE" => "N",
-		"SET_STATUS_404" => "N",
-		"SHOW_404" => "N",
+		"SET_STATUS_404" => "Y",
+		"SHOW_404" => "Y",
 		"MESSAGE_404" => "",
 		"FILTER_NAME" => "arrFilter",
 		"FILTER_FIELD_CODE" => array(
@@ -159,7 +159,8 @@ $APPLICATION->SetPageProperty("description", "Заключить договор 
 			"pacts" => "",
 			"section" => "#SECTION_CODE_PATH#/",
 			"detail" => "#SECTION_CODE_PATH#/#ELEMENT_CODE#/",
-		)
+		),
+		"FILE_404" => "/404.php"
 	),
 	false
 );
