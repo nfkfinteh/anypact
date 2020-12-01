@@ -1,11 +1,10 @@
 <?
-$doc_root = "/var/www/domains/anypact.nfksber.ru";
-include_once($doc_root.'/bitrix/modules/main/include/urlrewrite.php');
+include_once($_SERVER['DOCUMENT_ROOT'].'/bitrix/modules/main/include/urlrewrite.php');
 
 CHTTP::SetStatus("404 Not Found");
 @define("ERROR_404","Y");
 
-require($doc_root."/bitrix/header.php");
+require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 
 $APPLICATION->SetTitle("404 Not Found");
 
@@ -25,4 +24,4 @@ $APPLICATION->SetTitle("404 Not Found");
             изменено или временно недоступно. <a href="/">Вернуться на главную страницу</a></p>
     </div>
 </div>
-<? require($doc_root."/bitrix/footer.php"); ?>
+<? require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php"); ?>
