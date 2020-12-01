@@ -4,6 +4,8 @@ include_once($_SERVER['DOCUMENT_ROOT'].'/bitrix/modules/main/include/urlrewrite.
 CHTTP::SetStatus("404 Not Found");
 @define("ERROR_404","Y");
 
+require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
+
 $APPLICATION->SetTitle("404 Not Found");
 
 // $APPLICATION->IncludeComponent("bitrix:main.map", ".default", Array(
@@ -14,7 +16,6 @@ $APPLICATION->SetTitle("404 Not Found");
 // 	"CACHE_TIME"	=>	"36000000"
 // 	)
 // );
-require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 ?>
     <div class="d-flex flex-column align-items-center text-center mt-5 pt-3 mb-5">
         <h1 style="font-size: 211px; font-weight: 300; color: #ff6416;">404</h1>
