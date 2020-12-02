@@ -110,6 +110,19 @@ function OnBuildGlobalMenu(&$arGlobalMenu, &$arModuleMenu)
         'items' => array()
     );
 
+    $arItems[] = array(
+        'parent_menu' => 'global_menu_anypact',
+        'section' => 'agreement_status',
+        'sort' => 10,
+        'url' => 'agreement_status.php?lang=' . LANGUAGE_ID,
+        'text' => 'Статусы договоров',
+        'title' => 'Статусы договоров',
+        'icon' => 'agreement_status_menu_icon',
+        'page_icon' => 'agreement_status_page_icon',
+        'items_id' => 'menu_agreement_status',
+        'items' => array()
+    );
+
     $arGlobalMenu[] = array(
         'menu_id' => 'anypact',
         'text' => 'AnyPact',

@@ -1,0 +1,74 @@
+.new-pu-overflow {
+    position: fixed;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.7);
+    z-index: 10000;
+}
+.new-anypact-popup {
+    background: #fff;
+    border-radius: 5px;
+    margin: auto 14px;
+}
+.new-pu-title-block {
+    padding: 20px 25px;
+    background: #ff6416;
+    color: white;
+    border-radius: 5px 5px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.new-pu-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.new-pu-body {
+    padding: 20px 25px;
+    max-height: 600px;
+    max-width: 1200px;
+    overflow: auto;
+}
+.new-pu-buttons {
+    padding: 14px 23px 14px 25px;
+    background-color: #fafbfc;
+    border-top: 1px solid #e7e8ec;
+    border-radius: 0 0 5px 5px;
+    display: flex;
+    justify-content: flex-end;
+}
+.flat_button {
+    margin-left: 10px;
+    color: #fff;
+    border: 0;
+    background: #ff6416;
+    padding: 5px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.flat_button:hover {
+    opacity: .88;
+}
+.flat_button.secondary {
+    color: #ff6416;
+    background: transparent;
+}
+.flat_button.secondary:hover {
+    background-color: #f1eae5;
+}
+.new-pu-x-button {
+    background: url(image/cross.png) no-repeat;
+    cursor: pointer;
+    width: 12px;
+    height: 12px;
+    opacity: .75;
+    outline: 0;
+}
+.new-pu-x-button:hover {
+    opacity: 1;
+}
