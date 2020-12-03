@@ -113,7 +113,7 @@ class CDemoSqr extends CBitrixComponent
             if($_SESSION['DEAL_SORT']){
                 $arSort = $_SESSION['DEAL_SORT'];
             }else{
-                $arSort = array('RAND' => 'asc');
+                $arSort = array('SORT' => 'asc', 'RAND' => 'asc');
             }
 
             $res = CIBlockElement::GetList($arSort, array_merge($arFilter, $arrFilter, $arrFilterN), false, $arNavParams, $arSelect);

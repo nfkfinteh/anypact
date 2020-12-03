@@ -127,9 +127,20 @@ if(in_array( 1, $arGroups) || in_array( 6, $arGroups)){
         }
     }
 
+    $sort = 500;
+
+    $list = CIBlockSection::GetNavChain(3, $data['IBLOCK_SECTION_ID'], array("ID"), true);
+    foreach ($list as $arSectionPath){
+        if($arSectionPath['ID'] == 62){
+            $sort = 10000;
+            break;
+        }
+    }
+
     $arLoadProductArray = Array(
         "MODIFIED_BY"    => $data['MODIFIED_BY'],
         "IBLOCK_SECTION_ID" => $data['IBLOCK_SECTION_ID'],
+        "SORT"           => $sort,
         "IBLOCK_ID"      => $data['IBLOCK_ID'],
         "PROPERTY_VALUES"=> $data['PROPERTY_VALUES'],
         "NAME"           => $data['NAME'],
