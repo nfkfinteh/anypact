@@ -71,7 +71,7 @@ $arResult['ID_SDELKA'] = $arParams['ELEMENT_ID'];
 $arResult['USER_CREATE_SDELKA'] = $this::getAuthorSdelka($arResult['ID_SDELKA']);
 
 $arResult['JS_DATA'] = [
-    'CURENT_USER'=>$arResult['CURENT_USER'],
+    'USER_ID'=>$arResult['USER_CREATE_SDELKA'],
     'IBLOCK_ID'=>$arResult['IBLOCK_ID'],
     'ID_SDELKA'=>$arResult['ID_SDELKA']
 ];

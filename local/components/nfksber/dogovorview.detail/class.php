@@ -396,6 +396,21 @@ class CDemoSqr extends CBitrixComponent
         return $resultDataProfile;
     }
 
+    private function sendEmail(){
+        $rsUser = CUser::GetList(($by="personal_country"), ($order="desc"), array("ID" => $this->arResult["PROPERTY"]['PACT_USER']['VALUE']), array("FIELDS" => array("ID", "EMAIL")));
+        if($arUser = $rsUser->Fetch()){
+            $arEventFields = array(
+                "EMAIL" => $arUser['EMAIL'],
+                "CONTRACT_ID" => $this->ID_CONTRACT,
+                "DEAL_NAME" => $this->arResult["ELEMENT"]['NAME'],
+                "DEAL_URL" => $this->arResult["ELEMENT"]['DETAIL_PAGE_URL'],
+                "USER_FIO" => $this->USER_PROPERTY['LAST_NAME']." ".$this->USER_PROPERTY['NAME']." ".$this->USER_PROPERTY['SECOND_NAME'],
+                "USER_ID" => $this->USER_PROPERTY['ID']
+            );
+            CEvent::Send("CONTRACT_SIGNATURE", SITE_ID, $arEventFields);
+        }
+    }
+
     public function executeComponent()
     {
         global $USER;
@@ -569,6 +584,7 @@ class CDemoSqr extends CBitrixComponent
                         $id_add_item = $this->sendContract(7, $Contract_params);
                     }
                     $this->arResult['SEND_CONTRACT'] = 'Y';
+                    $this -> sendEmail();
                 } else {
                     // выводим ошибку
                     $this->arResult['SEND_CONTRACT'] = 'ERR_ID';
@@ -605,6 +621,7 @@ class CDemoSqr extends CBitrixComponent
             );
             $id_add_item = $this->sendContract(7, $Contract_params);
             $this->arResult['SEND_CONTRACT'] = 'Y';
+            $this -> sendEmail();
         }
 
         $this->arResult["SIGN_DOGOVOR"] = $this->getSendContractItem($this->arResult['PROPERTY']['ID_DOGOVORA']['VALUE'], $this->arResult['USER_ID']);

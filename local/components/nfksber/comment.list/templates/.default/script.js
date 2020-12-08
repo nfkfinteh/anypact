@@ -27,7 +27,8 @@ $(function() {
 			"iblock_id" : bitrixJS.IBLOCK_ID,
 			"object" : bitrixJS.ID_SDELKA,
 			"message-text" : text,
-			"login" : bitrixJS.CURENT_USER.LOGIN,
+			"user_id" : bitrixJS.USER_ID,
+			"sessid": BX.bitrix_sessid(),
 			"active" : 'Y'
 		};
 

@@ -33,7 +33,7 @@ class CUserProfilePost extends CBitrixComponent
         if(!empty($this -> arUsers[$user_id])){
             return $this -> arUsers[$user_id];
         }else{
-            $res = CUser::GetList(($by="personal_country"), ($order="desc"), array("ID" => $user_id), array("FIELDS" => array("ID", "NAME", "LAST_NAME", "SECOND_NAME", "PERSONAL_PHOTO")));
+            $res = CUser::GetList(($by="personal_country"), ($order="desc"), array("ID" => $user_id), array("FIELDS" => array("ID", "NAME", "LAST_NAME", "SECOND_NAME", "PERSONAL_PHOTO", "EMAIL")));
             if($arUser = $res->Fetch()) {
                 $this -> arUsers[$user_id] = $arUser;
                 return $arUser;
@@ -280,6 +280,7 @@ class CUserProfilePost extends CBitrixComponent
                     $arFields['FILE_ID'] = [$arFields['FILE_ID']];
                 $this -> attachFile($arFields['FILE_ID'], $comment_id, 'HLB_'.USER_COMMENT_HLB_ID);
             }
+            $this -> sendEmail($post_id, trim($arFields['TEXT']));
             return array(
                 "ID" => $comment_id,
                 "DATE_CREATE" => $date,
@@ -452,6 +453,20 @@ class CUserProfilePost extends CBitrixComponent
             return $arResult;
 
         return array();
+    }
+
+    private function sendEmail($post_id, $comment_text){
+        if($this->arResult["CURRENT_USER"]['ID'] != $this->arResult["USER"]['ID']){
+            $arEventFields = array(
+                "EMAIL" => $this->arResult["USER"]['EMAIL'],
+                "AUTHOR_ID" => $this->arResult["USER"]['ID'],
+                "POST_ID" => $post_id,
+                "USER_FIO" => $this->arResult["CURRENT_USER"]['LAST_NAME']." ".$this->arResult["CURRENT_USER"]['NAME']." ".$this->arResult["CURRENT_USER"]['SECOND_NAME'],
+                "USER_ID" => $this->arResult["CURRENT_USER"]['ID'],
+                "COMMENT_TEXT" => $comment_text
+            );
+            CEvent::Send("POST_ADD_COMMENT", SITE_ID, $arEventFields);
+        }
     }
 
     public function executeComponent()

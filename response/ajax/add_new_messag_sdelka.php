@@ -11,8 +11,8 @@ if(empty($data['message-text'])){
     echo json_encode([ 'VALUE'=>'Не заполнено сообщение', 'TYPE'=> 'ERROR']);
     die();
 }
-if(!empty($data['login'])){
-    $rsUser = CUser::GetByLogin($data['login']);
+if(!empty($data['user_id'])){
+    $rsUser = CUser::GetByID($data['user_id']);
     $idUser = $rsUser->GetNext(true, false)['ID'];
 }
 else{
@@ -31,7 +31,7 @@ if(empty($curentUser['ID'])){
     die;
 }
 
-if (!\Bitrix\Main\Loader::includeModule('highloadblock')) {
+if (!\Bitrix\Main\Loader::includeModule('highloadblock') || !\Bitrix\Main\Loader::includeModule('iblock')) {
     echo json_encode([ 'VALUE'=>'Не подключен модуль highloadblock', 'TYPE'=> 'ERROR']);
     die();
 }
@@ -49,8 +49,8 @@ if($arData = $rsData->Fetch()){
     die;
 }
 
-$res = CUser::GetByID($curentUser['ID']);
-$curentUser['DATA'] = $res->GetNext(true, false);
+$rsUser = CUser::GetList(($by="personal_country"), ($order="desc"), array("ID" => $curentUser['ID']), array("FIELDS" => array("ID", "LAST_NAME", "NAME", "SECOND_NAME")));
+$curentUser['DATA'] = $rsUser->Fetch();
 
 
 #формируем сообщение
@@ -63,12 +63,30 @@ $entity = HL\HighloadBlockTable::compileEntity($hlblock);
 $entity_data_class = $entity->getDataClass();
 
 $data = array(
-    "UF_ID_USER"=>$idUser,
+    "UF_ID_USER"=>$curentUser['ID'],
     "UF_TEXT_MESSAGE"=>$messageText,
     "UF_STATUS"=>1,
     "UF_TIME_CREATE_MSG"=>ConvertTimeStamp(time(), "FULL"),
     "UF_ID_SLEKA"=>$data['object']
 );
+
+if($curentUser['ID'] != $idUser){
+    $rsUser = CUser::GetList(($by="personal_country"), ($order="desc"), array("ID" => $idUser), array("FIELDS" => array("ID", "EMAIL")));
+    if($arUser = $rsUser->Fetch()){
+        $rsDeal = CIBlockElement::GetList(array(), array("ID" => $data['object']), false, false, array("ID", "IBLOCK_ID", "NAME", "DETAIL_PAGE_URL"));
+        $obj = $rsDeal->GetNextElement();
+        $arDeal = $obj->GetFields();
+        $arEventFields = array(
+            "EMAIL" => $arUser['EMAIL'],
+            "DEAL_URL" => $arDeal['DETAIL_PAGE_URL'],
+            "DEAL_NAME" => $arDeal['NAME'],
+            "USER_FIO" => $curentUser['DATA']['LAST_NAME']." ".$curentUser['DATA']['NAME']." ".$curentUser['DATA']['SECOND_NAME'],
+            "USER_ID" => $curentUser['ID'],
+            "COMMENT_TEXT" => $messageText,
+        );
+        CEvent::Send("DEAL_ADD_COMMENT", SITE_ID, $arEventFields);
+    }
+}
 
 $result = $entity_data_class::add($data);
 echo json_encode([ 'VALUE'=>'', 'TYPE'=> 'SUCCESS']);
