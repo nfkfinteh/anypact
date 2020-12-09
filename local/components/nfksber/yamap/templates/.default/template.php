@@ -25,6 +25,9 @@
                         controls: ['zoomControl']
                     });
 
+                    let selectedPane = new ymaps.pane.MovablePane(myMap, {zIndex : 420});
+                    myMap.panes.append('selected', selectedPane);
+
                     urlParams = new URLSearchParams(window.location.search);
                     params = {};
 
@@ -55,20 +58,6 @@
                     myMap.controls.remove('fullscreenControl');
                     myMap.controls.remove('rulerControl');
                     myMap.behaviors.disable(['scrollZoom']);
-
-                    myMap.setBounds(myMap.geoObjects.getBounds(), {
-                        checkZoomRange: true,
-                        zoomMargin: 35,
-                    })
-                    .then(function () {
-                        if (myMap.action.getCurrentState().zoom > 14) {
-                            myMap.setZoom(14);
-                        }
-                    }, function (err) {
-                        // Не удалось показать заданный регион.
-                        // ...
-                    }, this);
-
                 });
             }
         </script>
