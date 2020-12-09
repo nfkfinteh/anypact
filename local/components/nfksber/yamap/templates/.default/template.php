@@ -34,7 +34,7 @@
 
                     var loadingObjectManager = new ymaps.LoadingObjectManager('/response/ajax/map.php'+'?bbox=%b&iblock='+iblock+'&parent='+params.PARENT_SECTION,
                         {
-                            clusterize: true,
+                            clusterize: false,
                             clusterHasBalloon: false,
                             geoObjectOpenBalloonOnClick: true,
                             geoObjectIconLayout: 'default#imageWithContent',
