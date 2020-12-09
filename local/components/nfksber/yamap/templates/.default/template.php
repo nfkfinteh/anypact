@@ -12,6 +12,26 @@
             // загрузятся все компоненты API, а также когда будет готово DOM-дерево.
             ymaps.ready(init);
             function init(){
+                urlParams = new URLSearchParams(window.location.search);
+                params = {};
+
+                urlParams.forEach((p, key) => {
+                    params[key] = p;
+                });
+
+                var loadingObjectManager = new ymaps.LoadingObjectManager('/response/ajax/map.php'+'?bbox=%b&iblock='+iblock+'&parent='+params.PARENT_SECTION,
+                {
+                    clusterize: false,
+                    clusterHasBalloon: false,
+                    geoObjectOpenBalloonOnClick: true,
+                    geoObjectIconLayout: 'default#imageWithContent',
+                    geoObjectIconImageHref: '<?=SITE_TEMPLATE_PATH//$this->__folder?>/img/map_icon.png',
+                    geoObjectIconImageSize: [30, 30],
+                    geoObjectIconImageOffset: [-15, -15],
+                    geoObjectIconContentOffset: [30, 30],
+                    //geoObjectIconContentLayout: MyIconContentLayout,
+                    //geoObjectBalloonContentBody:
+                });
                 ymaps.geocode(city, {
                     results: 1
                 }).then(function (res) {
@@ -24,30 +44,6 @@
                         zoom: 11,
                         controls: ['zoomControl']
                     });
-
-                    let selectedPane = new ymaps.pane.MovablePane(myMap, {zIndex : 420});
-                    myMap.panes.append('selected', selectedPane);
-
-                    urlParams = new URLSearchParams(window.location.search);
-                    params = {};
-
-                    urlParams.forEach((p, key) => {
-                        params[key] = p;
-                    });
-
-                    var loadingObjectManager = new ymaps.LoadingObjectManager('/response/ajax/map.php'+'?bbox=%b&iblock='+iblock+'&parent='+params.PARENT_SECTION,
-                        {
-                            clusterize: false,
-                            clusterHasBalloon: false,
-                            geoObjectOpenBalloonOnClick: true,
-                            geoObjectIconLayout: 'default#imageWithContent',
-                            geoObjectIconImageHref: '<?=SITE_TEMPLATE_PATH//$this->__folder?>/img/map_icon.png',
-                            geoObjectIconImageSize: [30, 30],
-                            geoObjectIconImageOffset: [-15, -15],
-                            geoObjectIconContentOffset: [30, 30],
-                            //geoObjectIconContentLayout: MyIconContentLayout,
-                            //geoObjectBalloonContentBody:
-                        });
 
                     myMap.geoObjects.add(loadingObjectManager);
 
