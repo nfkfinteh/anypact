@@ -20,19 +20,6 @@
                     params[key] = p;
                 });
 
-                let loadingObjectManager = new ymaps.LoadingObjectManager('/response/ajax/map.php'+'?bbox=%b&iblock='+iblock+'&parent='+params.PARENT_SECTION,
-                {
-                    clusterize: false,
-                    clusterHasBalloon: false,
-                    geoObjectOpenBalloonOnClick: true,
-                    geoObjectIconLayout: 'default#imageWithContent',
-                    geoObjectIconImageHref: '<?=SITE_TEMPLATE_PATH//$this->__folder?>/img/map_icon.png',
-                    geoObjectIconImageSize: [30, 30],
-                    geoObjectIconImageOffset: [-15, -15],
-                    geoObjectIconContentOffset: [30, 30],
-                    //geoObjectIconContentLayout: MyIconContentLayout,
-                    //geoObjectBalloonContentBody:
-                });
                 ymaps.geocode(city, {
                     results: 1
                 }).then(function (res) {
@@ -54,7 +41,8 @@
                     myMap.controls.remove('rulerControl');
                     myMap.behaviors.disable(['scrollZoom']);
                 });
-                let loadingObjectManager = new ymaps.LoadingObjectManager('/response/ajax/map.php'+'?bbox=%b&iblock='+iblock+'&parent='+params.PARENT_SECTION,
+
+                var loadingObjectManager = new ymaps.LoadingObjectManager('/response/ajax/map.php'+'?bbox=%b&iblock='+iblock+'&parent='+params.PARENT_SECTION,
                 {
                     clusterize: false,
                     clusterHasBalloon: false,
