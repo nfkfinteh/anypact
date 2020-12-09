@@ -7,6 +7,7 @@
         <script type="text/javascript">
             var iblock = <?=CUtil::PhpToJSObject($arResult['IBLOCK_ID'])?>;
             var city = "<?=$arParams['LOCATION']?>";
+            var myMap;
             if(!city) city = 'Москва';
             // Функция ymaps.ready() будет вызвана, когда
             // загрузятся все компоненты API, а также когда будет готово DOM-дерево.
@@ -19,7 +20,7 @@
                     params[key] = p;
                 });
 
-                var loadingObjectManager = new ymaps.LoadingObjectManager('/response/ajax/map.php'+'?bbox=%b&iblock='+iblock+'&parent='+params.PARENT_SECTION,
+                let loadingObjectManager = new ymaps.LoadingObjectManager('/response/ajax/map.php'+'?bbox=%b&iblock='+iblock+'&parent='+params.PARENT_SECTION,
                 {
                     clusterize: false,
                     clusterHasBalloon: false,
@@ -39,13 +40,11 @@
                     var coords = firstGeoObject.geometry.getCoordinates();
 
                     // Создание карты.
-                    var myMap = new ymaps.Map("map", {
+                    myMap = new ymaps.Map("map", {
                         center: coords,
                         zoom: 11,
                         controls: ['zoomControl']
                     });
-
-                    myMap.geoObjects.add(loadingObjectManager);
 
                     myMap.controls.remove('geolocationControl');
                     myMap.controls.remove('searchControl');
@@ -55,6 +54,20 @@
                     myMap.controls.remove('rulerControl');
                     myMap.behaviors.disable(['scrollZoom']);
                 });
+                let loadingObjectManager = new ymaps.LoadingObjectManager('/response/ajax/map.php'+'?bbox=%b&iblock='+iblock+'&parent='+params.PARENT_SECTION,
+                {
+                    clusterize: false,
+                    clusterHasBalloon: false,
+                    geoObjectOpenBalloonOnClick: true,
+                    geoObjectIconLayout: 'default#imageWithContent',
+                    geoObjectIconImageHref: '<?=SITE_TEMPLATE_PATH//$this->__folder?>/img/map_icon.png',
+                    geoObjectIconImageSize: [30, 30],
+                    geoObjectIconImageOffset: [-15, -15],
+                    geoObjectIconContentOffset: [30, 30],
+                    //geoObjectIconContentLayout: MyIconContentLayout,
+                    //geoObjectBalloonContentBody:
+                });
+                myMap.geoObjects.add(loadingObjectManager);
             }
         </script>
     <!--//YM-->
