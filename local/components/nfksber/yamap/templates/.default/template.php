@@ -22,7 +22,7 @@
                     var myMap = new ymaps.Map("map", {
                         center: coords,
                         zoom: 11,
-                        controls: ['zoomControl']
+                        //controls: ['zoomControl']
                     });
 
                     urlParams = new URLSearchParams(window.location.search);
@@ -34,14 +34,14 @@
 
                     var loadingObjectManager = new ymaps.LoadingObjectManager('/response/ajax/map.php'+'?bbox=%b&iblock='+iblock+'&parent='+params.PARENT_SECTION,
                         {
-                            clusterize: false,
+                            clusterize: true,
                             clusterHasBalloon: false,
                             geoObjectOpenBalloonOnClick: true,
                             geoObjectIconLayout: 'default#imageWithContent',
                             geoObjectIconImageHref: '<?=SITE_TEMPLATE_PATH//$this->__folder?>/img/map_icon.png',
                             geoObjectIconImageSize: [30, 30],
                             geoObjectIconImageOffset: [-15, -15],
-                            geoObjectIconContentOffset: [30, 30],
+                            geoObjectIconContentOffset: [0, 0],
                             //geoObjectIconContentLayout: MyIconContentLayout,
                             //geoObjectBalloonContentBody:
                         });
