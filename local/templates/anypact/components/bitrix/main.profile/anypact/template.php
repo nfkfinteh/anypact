@@ -191,6 +191,10 @@ function hideText($text, $count_b = 3, $count_e = 2) {
                             <label>Повторите введеный пароль:</label>
                             <input type="password" name="CONFIRM_PASSWORD" maxlength="50" value="" autocomplete="off">
                         </div>
+                        <div class="form-group">
+                            <label>Введите старый пароль:</label>
+                            <input type="password" name="OLD_PASSWORD" maxlength="50" value="" autocomplete="off">
+                        </div>
                         <button type="submit" class="btn btn-aut edit-profile__btn save_profile_button">Сохранить</button>
                     </div>
                 </div>

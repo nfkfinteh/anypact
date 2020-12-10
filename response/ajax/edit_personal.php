@@ -26,6 +26,20 @@ if(!empty($data) || !empty($imgData)){
     if ( empty($fields['PASSWORD']) ) {
         unset($fields['PASSWORD']);
         unset($fields['CONFIRM_PASSWORD']);
+    }else{
+        if(empty($fields['OLD_PASSWORD'])){
+            die(json_encode(array('TYPE' => 'ERROR', 'VALUE' => "Не введен старый пароль")));
+        }else{
+            $rsUser = CUser::GetByID($idUser);
+            $arUser = $rsUser->Fetch();
+           
+            $arAuthResult = $USER->Login($arUser['LOGIN'], $fields['OLD_PASSWORD']);
+        
+            if(isset($arAuthResult['TYPE']) && $arAuthResult['TYPE'] == 'ERROR'){
+                die(json_encode(array('TYPE' => 'ERROR', 'VALUE' => $arAuthResult['MESSAGE'])));
+            }
+        }
+        
     }
 
     $arWhiteList = [
