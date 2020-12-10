@@ -182,6 +182,18 @@ function hideText($text, $count_b = 3, $count_e = 2) {
                 <div class="row">
                     <div class="col-xl-4 col-md-6 col-sm-12 offset-xl-3">
                         <div class="form-group">
+                            <label>Введите старый пароль:</label>
+                            <input type="password" name="OLD_PASSWORD" maxlength="50" value="" autocomplete="off">
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-6 col-sm-12">
+                    </div>
+                </div>
+            </div>
+            <div class="user_profile_form_fixdata" style="margin-top: 0px;">
+                <div class="row">
+                    <div class="col-xl-4 col-md-6 col-sm-12 offset-xl-3">
+                        <div class="form-group">
                             <label>Сменить пароль:</label>
                             <input type="password" name="PASSWORD" maxlength="50" value="" autocomplete="off">
                         </div>
@@ -190,10 +202,6 @@ function hideText($text, $count_b = 3, $count_e = 2) {
                         <div class="form-group">
                             <label>Повторите введеный пароль:</label>
                             <input type="password" name="CONFIRM_PASSWORD" maxlength="50" value="" autocomplete="off">
-                        </div>
-                        <div class="form-group">
-                            <label>Введите старый пароль:</label>
-                            <input type="password" name="OLD_PASSWORD" maxlength="50" value="" autocomplete="off">
                         </div>
                         <button type="submit" class="btn btn-aut edit-profile__btn save_profile_button">Сохранить</button>
                     </div>
