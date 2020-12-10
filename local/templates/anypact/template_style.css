@@ -4141,10 +4141,6 @@ h4.subtitle_contract {
     transform: scale(1.2);
 }
 
-.footer p img {
-    margin-bottom: 35px;
-}
-
 footer .polit_link {
     color: #8f8f8f;
     text-decoration: underline;
@@ -4154,7 +4150,7 @@ footer .polit_link {
     margin-top: 0;
 }
 
-footer p {
+footer div {
     text-align: center;
     font-style: 16px;
 }
@@ -5390,7 +5386,10 @@ a.soc-link {
 a.soc-link svg{
     max-width: 28px;
     max-height: 28px;
-    margin-bottom: 35px;
+}
+
+.margin-bottom25px{
+    margin-bottom: 25px;
 }
 
 a.soc-link:hover, a.soc-link:focus{
