@@ -105,7 +105,7 @@ $tabControl->Begin();
 									</tr>
 								<?}?>
 							<?}else{?>
-								<tr><td colspan="3" class="adm-list-table-cell adm-list-table-empty">- <?=GetMessage("moderation_deal_EMPTY_DATA")?> -</td></tr>
+								<tr><td colspan="4" class="adm-list-table-cell adm-list-table-empty">- <?=GetMessage("moderation_deal_EMPTY_DATA")?> -</td></tr>
 							<?}?>
 						</tbody>
 					</table>
