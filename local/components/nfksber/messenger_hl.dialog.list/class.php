@@ -361,7 +361,7 @@ class MessengerHLDialogList extends CBitrixComponent
 
         $result = array_unique($result);
 
-        if(isset($result[array_search($user_id, $result)]))
+        if(array_search($user_id, $result) && isset($result[array_search($user_id, $result)]))
             unset($result[array_search($user_id, $result)]);
 
         return $result;
