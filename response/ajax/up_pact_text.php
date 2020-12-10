@@ -6,6 +6,62 @@ CModule::IncludeModule('iblock');
 $el = new CIBlockElement;
 $PRODUCT_ID = $_POST['id_element'];
 
+function sendEmail($user_id, $original_deal, $edit_deal, $deal_name){
+    $rsUser = CUser::GetList(($by="personal_country"), ($order="desc"), array("ID" => $user_id), array("FIELDS" => array("ID", "NAME", "LAST_NAME", "SECOND_NAME")));
+    if($arUser = $rsUser->Fetch()){
+        $arEventFields = array(
+            "USER_ID" => $arUser['ID'],
+            "USER_FIO" => $arUser['LAST_NAME']." ".$arUser['NAME']." ".$arUser['SECOND_NAME'],
+            "DEAL_ORIGINAL" => $original_deal,
+            "DEAL_EDIT" => $edit_deal,
+            "DEAL_NAME" => $deal_name
+        );
+        CEvent::Send("NEW_DEAL_EDIT", SITE_ID, $arEventFields);
+    }
+}
+
+function addEditDeal($id, $arFields = array(), $arAdditionalFields = array()){
+    $el = new CIBlockElement();
+    $res = $el -> GetList(array(), array("IBLOCK_ID" => 10, "PROPERTY_ORIGINAL_DEAL" => $id), false, false, array("ID"));
+    if($arEdit = $res -> GetNext()){
+        $el -> Update($arEdit['ID'], $arFields);
+        foreach($arAdditionalFields as $key => $value){
+            $arAdditionalFields[$key."_EDIT"] = "Y";
+        }
+        if(isset($arFields['DETAIL_TEXT']))
+            $arAdditionalFields["DETAIL_TEXT_EDIT"] = "Y";
+        $el -> SetPropertyValuesEx($arEdit['ID'], 10, $arAdditionalFields);
+        return $arEdit['ID'];
+    }else{
+        $res = $el -> GetList(array(), array("ID" => $id), false, false, array("ID", "NAME", "CODE", "PROPERTY_PACT_USER", "PROPERTY_ID_COMPANY"));
+        if($arDeal = $res -> GetNext()){
+            foreach($arAdditionalFields as $key => $value){
+                $arAdditionalFields[$key."_EDIT"] = "Y";
+            }
+            if(isset($arFields['DETAIL_TEXT']))
+                $arAdditionalFields["DETAIL_TEXT_EDIT"] = "Y";
+            $arAdditionalFields['ORIGINAL_DEAL'] = $id;
+            $arAdditionalFields['PACT_USER'] = $arDeal['PROPERTY_PACT_USER_VALUE'];
+            $arAdditionalFields['ID_COMPANY'] = $arDeal['PROPERTY_ID_COMPANY_VALUE'];
+            $arData = array(
+                "NAME" => $arDeal['NAME'],
+                "CODE" => $arDeal['CODE'],
+                "IBLOCK_ID" => 10,
+                "PROPERTY_VALUES" => $arAdditionalFields,
+                "ACTIVE" => "Y",
+                "DETAIL_TEXT_TYPE" =>"html",
+                "DETAIL_TEXT" => $arFields['DETAIL_TEXT']
+            );
+            if($edit_id = $el -> Add($arData)){
+                sendEmail($arAdditionalFields['PACT_USER'], $id, $edit_id, $arDeal['NAME']);
+                return $edit_id;
+            }
+        }
+    }
+}
+
+$resultData = "Изменения сохранены";
+
 switch ($_POST['atrr_text']) {
     case 'descript':
         $arLoadProductArray = Array(
@@ -13,7 +69,10 @@ switch ($_POST['atrr_text']) {
             "DETAIL_TEXT_TYPE" =>"html",
             "DETAIL_TEXT" => CFormatHTMLText::TextFormatting(html_entity_decode($_POST['text']))
             //"DETAIL_TEXT"    => $_POST['text']
-        );        
+        );
+        addEditDeal($PRODUCT_ID, $arLoadProductArray);
+        echo json_encode([ 'VALUE'=>$PRODUCT_ID, 'TYPE'=> 'SUCCESS', 'DATA' => "Изменения вступят в силу после модерации"]);
+        exit();
         break;
     case 'conditions':
         
@@ -25,8 +84,12 @@ switch ($_POST['atrr_text']) {
         $PROPERTY_CODE = "CONDITIONS_PACT";
         $PROPERTY_VALUE = CFormatHTMLText::TextFormatting(html_entity_decode($_POST['text']));  // значение свойства
 
-        $value="text";
-        CIBlockElement::SetPropertyValueCode($ELEMENT_ID, $PROPERTY_CODE, array("VALUE"=>array("TEXT"=>$PROPERTY_VALUE, "TYPE"=>"html")));
+        addEditDeal($PRODUCT_ID, $arLoadProductArray, array($PROPERTY_CODE => $PROPERTY_VALUE));
+        echo json_encode([ 'VALUE'=>$PRODUCT_ID, 'TYPE'=> 'SUCCESS', 'DATA' => "Изменения вступят в силу после модерации"]);
+        exit();
+
+        //$value="text";
+        //CIBlockElement::SetPropertyValueCode($ELEMENT_ID, $PROPERTY_CODE, array("VALUE"=>array("TEXT"=>$PROPERTY_VALUE, "TYPE"=>"html")));
 
         break;
     // обновление суммы
@@ -94,7 +157,12 @@ switch ($_POST['atrr_text']) {
             "MODIFIED_BY"    => $USER->GetID(),
         );
 
-        $checkUpdate = CIBlockElement::SetPropertyValuesEx($PRODUCT_ID, false, $arProperty);
+        // $checkUpdate = CIBlockElement::SetPropertyValuesEx($PRODUCT_ID, false, $arProperty);
+
+        addEditDeal($PRODUCT_ID, $arLoadProductArray, $arProperty);
+        echo json_encode([ 'VALUE' => $PRODUCT_ID, 'TYPE' => 'SUCCESS', 'DATA' => "Изменения вступят в силу после модерации"]);
+        exit();
+
         break;
     case 'up_private':
         $arProperty = [

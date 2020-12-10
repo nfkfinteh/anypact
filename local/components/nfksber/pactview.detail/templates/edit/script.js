@@ -82,7 +82,7 @@ $(document).ready(function() {
                 if(blockId !== undefined && blockId.length > 0)
                     $('#'+blockId).toggle(300);
                 preload('hide');
-                showResult('#popup-success', 'Изменения сохранены');
+                showResult('#popup-success', $result['DATA']);
             }
         }
 
@@ -116,7 +116,7 @@ $(document).ready(function() {
             }
             if($result['TYPE']=='SUCCESS'){
                 preload('hide');
-                showResult('#popup-success', 'Изменения сохранены');
+                showResult('#popup-success', $result['DATA']);
             }
         }
 
@@ -155,7 +155,7 @@ $(document).ready(function() {
             }
             if($result['TYPE']=='SUCCESS'){
                 preload('hide');
-                showResult('#popup-success', 'Изменения сохранены');
+                showResult('#popup-success', $result['DATA']);
             }
         }
 
@@ -190,7 +190,7 @@ $(document).ready(function() {
             }
             if($result['TYPE']=='SUCCESS'){
                 preload('hide');
-                showResult('#popup-success', 'Изменения сохранены');
+                showResult('#popup-success', $result['DATA']);
             }
         }
     });
@@ -222,7 +222,7 @@ $(document).ready(function() {
             }
             if($result['TYPE']=='SUCCESS'){
                 preload('hide');
-                showResult('#popup-success', 'Изменения сохранены');
+                showResult('#popup-success', $result['DATA']);
             }
         }
     });
@@ -254,7 +254,7 @@ $(document).ready(function() {
             }
             if($result['TYPE']=='SUCCESS'){
                 preload('hide');
-                showResult('#popup-success', 'Изменения сохранены');
+                showResult('#popup-success', $result['DATA']);
             }
         }
     });
@@ -373,7 +373,7 @@ $(document).ready(function() {
             }
             else{
                 preload('hide');
-                showResult('#popup-success', 'Изменения сохранены');
+                showResult('#popup-success', $result['DATA']);
                 location.reload();
             }
         });
@@ -393,13 +393,15 @@ $(document).ready(function() {
     // удаление загруженных файлов
     $(document).on('click', '.delete_unclude_file', function(){
         let id_value_el = $(this).attr('data');
+        let sub_id = $(this).attr('data-sub-id');
         let id_file = $(this).attr('data-file');
         let mainData = new Object();;
         mainData.arr = JSON.stringify({
             id_file: id_file,
             id_value: id_value_el,
             id_element: ID_Object,
-            atrr_text: 'delete_incl_file'
+            atrr_text: 'delete_incl_file',
+            sub_id: sub_id
         });
 
         preload('show');
@@ -418,7 +420,7 @@ $(document).ready(function() {
             else{
                 $('.list-dopfile').html(data);
                 preload('hide');
-                showResult('#popup-success', 'Изменения сохранены');
+                showResult('#popup-success', $result['DATA']);
             }
         }
     });
@@ -453,7 +455,8 @@ $(document).ready(function() {
                         break;
                     }
                 }
-
+                console.log(formData);
+                console.log(arFiles);
                 updateImage(formData);
             }
             //$('#cardPact-box-edit').empty();
@@ -461,9 +464,6 @@ $(document).ready(function() {
             /*for (var i = 0; i < files.length; i++) {
                 preview(files[i]);
             }*/
-
-
-            this.value = '';
         }
     });
 
@@ -509,10 +509,12 @@ $(document).ready(function() {
     $(document).on('click', '.cardPact-box-edit-rem_img',  function(){
 
         let id_value_el = $(this).attr('data-id');
+        let sub_id = $(this).attr('data-sub-id');
         let mainData = JSON.stringify({
             id_value: id_value_el,
             id_element: ID_Object,
-            atrr_text: 'delete'
+            atrr_text: 'delete',
+            sub_id: sub_id
         });
         var formData = new FormData();
 
@@ -533,7 +535,7 @@ $(document).ready(function() {
             }
             else{
                 preload('hide');
-                showResult('#popup-success', 'Изменения сохранены');
+                showResult('#popup-success', "Изменения вступят в силу после модерации");
                 let slider = $( '#my-slider' ).data( 'sliderPro' );
                 slider.destroy();
                 $('#my-slider').html(data);
@@ -836,6 +838,39 @@ $(document).ready(function() {
         }
 
     }
+
+    $("#save_location").on('click', function() {
+        var city = $("#LOCATION_CITY").val();
+        var loaction = $("#COORDINATES_AD").val();
+        preload('show');
+        if(loaction.length < 1) {
+            preload('hide');
+            showResult('#popup-error','Ошибка сохранения', 'Поле обязательно для заполнения');
+            return;
+        }
+
+        $.post(
+            "/response/ajax/up_pact_text.php", {
+                cityName: city,
+                coordinates: loaction,
+                id_element: ID_Object,
+                atrr_text: 'up_location'
+            },
+            onAjaxSuccess
+        );
+
+        function onAjaxSuccess(data) {
+            $result = JSON.parse(data);
+            if($result['TYPE']=='ERROR'){
+                preload('hide');
+                showResult('#popup-error','Ошибка сохранения', $result['VALUE']);
+            }
+            if($result['TYPE']=='SUCCESS'){
+                preload('hide');
+                showResult('#popup-success', $result['DATA']);
+            }
+        }
+    });
 
     function hideButton(){
         $('#check-button_map').hide();

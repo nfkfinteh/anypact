@@ -23,7 +23,7 @@ $this->addExternalJS(SITE_TEMPLATE_PATH."/module/trumbowyg/dist/plugins/table/tr
                                     <div class="sp-slide">
                                         <img class="sp-image" src="<?=$url_img["URL"]?>">
                                         <div class="CardPact-box-edit-block-rem_img">
-                                            <span class="cardPact-box-edit-rem_img" data-id="<?=$url_img['PROPERTY']['PROPERTY_VALUE_ID']?>">-</span>
+                                            <span class="cardPact-box-edit-rem_img" data-id="<?=$url_img['PROPERTY']['VALUE']?>">-</span>
                                         </div>
                                     </div>
                                 <?endif?>
@@ -103,6 +103,7 @@ $this->addExternalJS(SITE_TEMPLATE_PATH."/module/trumbowyg/dist/plugins/table/tr
                 </div>
                 <p id="notice" class="error_form"></p>
                 <div id="map" style="height: 400px"></div>
+                <button class="btn btn-nfk save" id="save_location">Сохранить</button>
             </div>
 
         </div>

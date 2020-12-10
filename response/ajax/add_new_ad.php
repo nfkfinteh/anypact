@@ -70,8 +70,8 @@ if(in_array( 1, $arGroups) || in_array( 6, $arGroups)){
             $tmp_image = $_SERVER['DOCUMENT_ROOT'] . "/upload/image/" . $file['name'];
             $file_name = explode(".", $tmp_image);
             $tmp_image = "";
-            foreach($file_name as $key => $value){
-                if($key == (array_key_last($file_name) - 1)){
+            foreach($file_name as $key2 => $value){
+                if($key2 == (array_key_last($file_name) - 1)){
                     $value .= generateStr(5);
                 }
                 $tmp_image .= $value;

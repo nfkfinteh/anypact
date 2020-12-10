@@ -16,10 +16,59 @@ function generateStr($length = 8){
     return $string;
 }
 
+function sendEmail($user_id, $original_deal, $edit_deal, $deal_name){
+    $rsUser = CUser::GetList(($by="personal_country"), ($order="desc"), array("ID" => $user_id), array("FIELDS" => array("ID", "NAME", "LAST_NAME", "SECOND_NAME")));
+    if($arUser = $rsUser->Fetch()){
+        $arEventFields = array(
+            "USER_ID" => $arUser['ID'],
+            "USER_FIO" => $arUser['LAST_NAME']." ".$arUser['NAME']." ".$arUser['SECOND_NAME'],
+            "DEAL_ORIGINAL" => $original_deal,
+            "DEAL_EDIT" => $edit_deal,
+            "DEAL_NAME" => $deal_name
+        );
+        CEvent::Send("NEW_DEAL_EDIT", SITE_ID, $arEventFields);
+    }
+}
+
+function addEditDeal($id, $arFields = array(), $arAdditionalFields = array()){
+    $el = new CIBlockElement();
+    $res = $el -> GetList(array(), array("IBLOCK_ID" => 10, "PROPERTY_ORIGINAL_DEAL" => $id), false, false, array("ID"));
+    if($arEdit = $res -> GetNext()){
+        $el -> Update($arEdit['ID'], $arFields);
+        foreach($arAdditionalFields as $key => $value){
+            $arAdditionalFields[$key."_EDIT"] = "Y";
+        }
+        $el -> SetPropertyValuesEx($arEdit['ID'], 10, $arAdditionalFields);
+        return $arEdit['ID'];
+    }else{
+        $res = $el -> GetList(array(), array("ID" => $id), false, false, array("ID", "NAME", "CODE", "PROPERTY_PACT_USER", "PROPERTY_ID_COMPANY"));
+        if($arDeal = $res -> GetNext()){
+            foreach($arAdditionalFields as $key => $value){
+                $arAdditionalFields[$key."_EDIT"] = "Y";
+            }
+            $arAdditionalFields['ORIGINAL_DEAL'] = $id;
+            $arAdditionalFields['PACT_USER'] = $arDeal['PROPERTY_PACT_USER_VALUE'];
+            $arAdditionalFields['ID_COMPANY'] = $arDeal['PROPERTY_ID_COMPANY_VALUE'];
+            $arData = array(
+                "NAME" => $arDeal['NAME'],
+                "CODE" => $arDeal['CODE'],
+                "IBLOCK_ID" => 10,
+                "PROPERTY_VALUES" => $arAdditionalFields,
+                "ACTIVE" => "Y"
+            );
+            if($edit_id = $el -> Add($arData)){
+                sendEmail($arAdditionalFields['PACT_USER'], $id, $edit_id, $arDeal['NAME']);
+                return $edit_id;
+            }
+        }
+    }
+}
+
 switch ($arData['atrr_text']) {
     case 'delete':
 
         $ELEMENT_ID = intval($arData['id_element']);
+        $subId = intval($arData['sub_id']);
         $arLoadProductArray = Array(
             "MODIFIED_BY"    => $USER->GetID(),
         );
@@ -29,13 +78,34 @@ switch ($arData['atrr_text']) {
             "del" => "Y",
             "MODULE_ID" => "iblock"
         );
-        $checkUpdate = CIBlockElement::SetPropertyValueCode($ELEMENT_ID, $PROPERTY_CODE, Array ($FILE_ID => ['VALUE'=>$PROPERTY_VALUE]) );
-        if($checkUpdate){
-            if(!$res = $el->Update($ELEMENT_ID, $arLoadProductArray)){
-                echo 'ERROR';
-                die();
+        // $checkUpdate = CIBlockElement::SetPropertyValueCode($ELEMENT_ID, $PROPERTY_CODE, Array ($FILE_ID => ['VALUE'=>$PROPERTY_VALUE]) );
+        if(!empty($subId)){
+            $db_props = CIBlockElement::GetProperty(10, $subId, "sort", "asc", array('CODE'=>'INPUT_FILES'));
+            while ($obj=$db_props->GetNext()){
+                if(!empty($obj["VALUE"]) && $FILE_ID != $obj["VALUE"]){
+                    $arFil[] = CFile::MakeFileArray($obj["VALUE"]);
+                }
             }
+        }else{
             $db_props = CIBlockElement::GetProperty(3, $ELEMENT_ID, "sort", "asc", array('CODE'=>'INPUT_FILES'));
+            while ($obj=$db_props->GetNext()){
+                if(!empty($obj["VALUE"]) && $FILE_ID != $obj["VALUE"]){
+                    $arFil[] = CFile::MakeFileArray($obj["VALUE"]);
+                }
+            }
+        }
+        if(!empty($arFil)){
+            $checkUpdate = addEditDeal($ELEMENT_ID, $arLoadProductArray, array($PROPERTY_CODE => $arFil));
+        }else{
+            $checkUpdate = addEditDeal($ELEMENT_ID, $arLoadProductArray, array($PROPERTY_CODE => Array($FILE_ID => ['VALUE'=>$PROPERTY_VALUE])));
+        }
+        
+        if($checkUpdate){
+            // if(!$res = $el->Update($ELEMENT_ID, $arLoadProductArray)){
+            //     echo 'ERROR';
+            //     die();
+            // }
+            $db_props = CIBlockElement::GetProperty(10, $checkUpdate, "sort", "asc", array('CODE'=>'INPUT_FILES'));
             while ($obj=$db_props->GetNext()){
                 if(!empty($obj["VALUE"])){
                     $result[] = [
@@ -54,7 +124,7 @@ switch ($arData['atrr_text']) {
                         <?if(!empty($arImg['URL'])):?>
                             <div class="sp-slide">
                                 <img class="sp-image" src="<?=$arImg['URL']?>">
-                                <span class="cardPact-box-edit-rem_img" data-id="<?=$arImg['ID']?>">-</span>
+                                <span class="cardPact-box-edit-rem_img" data-id="<?=$arImg['ID_FILE']?>" data-sub-id="<?=$checkUpdate?>">-</span>
                             </div>
                         <?endif?>
                     <?endforeach?>
@@ -71,17 +141,15 @@ switch ($arData['atrr_text']) {
                     <?}?>
                 </div>
             <?else:?>
-                <?if(count($result) < 20){?>
-                    <div class="sp-slides">
-                        <div class="sp-slide">
-                            <img class="sp-image js-add_img" src="<?=SITE_TEMPLATE_PATH?>/image/add_img.png">
-                        </div>
+                <div class="sp-slides">
+                    <div class="sp-slide">
+                        <img class="sp-image js-add_img" src="<?=SITE_TEMPLATE_PATH?>/image/add_img.png">
+                    </div>
 
-                    </div>
-                    <div class="sp-thumbnails">
-                        <img id="cardPact-box-edit-add_img" class="sp-thumbnail js-add_img" src="<?=SITE_TEMPLATE_PATH?>/image/add_img.png">
-                    </div>
-                <?}?>
+                </div>
+                <div class="sp-thumbnails">
+                    <img id="cardPact-box-edit-add_img" class="sp-thumbnail js-add_img" src="<?=SITE_TEMPLATE_PATH?>/image/add_img.png">
+                </div>
             <?endif?>
             <?
             die();
@@ -113,8 +181,8 @@ switch ($arData['atrr_text']) {
             $tmp_image = $_SERVER['DOCUMENT_ROOT'] . "/upload/image/" . $file['name'];
             $file_name = explode(".", $tmp_image);
             $tmp_image = "";
-            foreach($file_name as $key => $value){
-                if($key == (array_key_last($file_name) - 1)){
+            foreach($file_name as $key2 => $value){
+                if($key2 == (array_key_last($file_name) - 1)){
                     $value .= generateStr(5);
                 }
                 $tmp_image .= $value;
@@ -130,12 +198,13 @@ switch ($arData['atrr_text']) {
             }
         }
 
-        if($res = $el->Update($ELEMENT_ID, $arLoadProductArray)){
-            $checkUpdate = CIBlockElement::SetPropertyValueCode($ELEMENT_ID, "INPUT_FILES", $arFiles);
+        $checkUpdate = addEditDeal($ELEMENT_ID, $arLoadProductArray, array("INPUT_FILES" => $arFiles));
+        // if($res = $el->Update($ELEMENT_ID, $arLoadProductArray)){
+            //$checkUpdate = CIBlockElement::SetPropertyValueCode($ELEMENT_ID, "INPUT_FILES", $arFiles);
 
 
             if($checkUpdate){
-                $db_props = CIBlockElement::GetProperty(3, $ELEMENT_ID, "sort", "asc", array('CODE'=>'INPUT_FILES'));
+                $db_props = CIBlockElement::GetProperty(10, $checkUpdate, "sort", "asc", array('CODE'=>'INPUT_FILES'));
                 while ($obj=$db_props->GetNext()){
                     if(!empty($obj["VALUE"])){
                         $result[] = [
@@ -152,7 +221,7 @@ switch ($arData['atrr_text']) {
                         <?if(!empty($arImg['URL'])):?>
                             <div class="sp-slide">
                                 <img class="sp-image" src="<?=$arImg['URL']?>">
-                                <span class="cardPact-box-edit-rem_img" data-id="<?=$arImg['ID']?>">-</span>
+                                <span class="cardPact-box-edit-rem_img" data-id="<?=$arImg['ID_FILE']?>" data-sub-id="<?=$checkUpdate?>">-</span>
                             </div>
                         <?endif?>
                     <?endforeach?>
@@ -175,11 +244,11 @@ switch ($arData['atrr_text']) {
                 echo 'ERROR';
                 die();
             }
-        }
-        else{
-            echo 'ERROR';
-            die();
-        }
+        // }
+        // else{
+        //     echo 'ERROR';
+        //     die();
+        // }
         break;
 }
 ?>

@@ -100,7 +100,7 @@ function OnBuildGlobalMenu(&$arGlobalMenu, &$arModuleMenu)
     $arItems[] = array(
         'parent_menu' => 'global_menu_anypact',
         'section' => 'moderation_deal',
-        'sort' => 10,
+        'sort' => 20,
         'url' => 'moderation_deal.php?lang=' . LANGUAGE_ID,
         'text' => 'Модерация сделок',
         'title' => 'Модерация сделок',
@@ -113,13 +113,26 @@ function OnBuildGlobalMenu(&$arGlobalMenu, &$arModuleMenu)
     $arItems[] = array(
         'parent_menu' => 'global_menu_anypact',
         'section' => 'agreement_status',
-        'sort' => 10,
+        'sort' => 30,
         'url' => 'agreement_status.php?lang=' . LANGUAGE_ID,
         'text' => 'Статусы договоров',
         'title' => 'Статусы договоров',
         'icon' => 'agreement_status_menu_icon',
         'page_icon' => 'agreement_status_page_icon',
         'items_id' => 'menu_agreement_status',
+        'items' => array()
+    );
+
+    $arItems[] = array(
+        'parent_menu' => 'global_menu_anypact',
+        'section' => 'moderation_edit_deal',
+        'sort' => 40,
+        'url' => 'moderation_edit_deal.php?lang=' . LANGUAGE_ID,
+        'text' => 'Изменения сделок',
+        'title' => 'Изменения сделок',
+        'icon' => 'moderation_edit_deal_menu_icon',
+        'page_icon' => 'moderation_edit_deal_page_icon',
+        'items_id' => 'menu_moderation_edit_deal',
         'items' => array()
     );
 
