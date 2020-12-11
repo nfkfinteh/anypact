@@ -109,7 +109,6 @@
                     myMap.events.add('boundschange', function(e){
                         if (e.get('newZoom') !== e.get('oldZoom')) {
                             var bound = e.originalEvent.newBounds;
-                            console.log(bound);
                             $.ajax({
                                 url: YAMAP_component.ajaxUrl,
                                 method: 'POST',
