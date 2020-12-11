@@ -63,12 +63,14 @@ if($_POST['via_ajax'] == "Y" && check_bitrix_sessid() && $_POST[$arParams['ACTIO
 
         if($arItems){
             foreach($arItems as $value) {
-                $coordinates = explode(',', $value['PROPERTY']['COORDINATES_AD']['VALUE']);
-                $result[] = array(
-                    "id" => $value['FIELDS']['ID'],
-                    "geo" => array((double) $coordinates[0],(double) $coordinates[1]),
-                    'balloonContent' => '<div class="baloon-content"><a href="'.$value['FIELDS']['DETAIL_PAGE_URL'].'">'.$value['FIELDS']['NAME'].'</a></div>'
-                );
+                if(!empty($value['PROPERTY']['COORDINATES_AD']['VALUE'])){
+                    $coordinates = explode(',', $value['PROPERTY']['COORDINATES_AD']['VALUE']);
+                    $result[] = array(
+                        "id" => $value['FIELDS']['ID'],
+                        "geo" => array((double) $coordinates[0],(double) $coordinates[1]),
+                        'balloonContent' => '<div class="baloon-content"><a href="'.$value['FIELDS']['DETAIL_PAGE_URL'].'">'.$value['FIELDS']['NAME'].'</a></div>'
+                    );
+                }
             }
         }
         $arResult['POINTS'] = $result;
