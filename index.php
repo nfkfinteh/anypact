@@ -68,7 +68,8 @@ $APPLICATION->IncludeComponent(
         "IBLOCK_TYPE" => "4",
         "LOCATION" => $getGeo['cityName'],
         "MAP_HEIGHT" => "500px",
-        "MAP_WIDTH" => "100%"
+        "MAP_WIDTH" => "100%",
+        "ACTION_VARIABLE" => 'action'
     )
 );
 ?>
