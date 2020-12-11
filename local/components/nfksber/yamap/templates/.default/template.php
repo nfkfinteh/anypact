@@ -63,40 +63,73 @@
                     //     });
 
                     // myMap.geoObjects.add(loadingObjectManager);
-                    $.ajax({
-                        url: YAMAP_component.ajaxUrl,
-                        method: 'POST',
-                        dataType: 'json',
-                        data: {
-                            via_ajax: 'Y',
-                            action: 'loadPoints',
-                            sessid: BX.bitrix_sessid(),
-                            SITE_ID: YAMAP_component.siteID,
-                            signedParamsString: YAMAP_component.signedParamsString,
-                            COORDINATES: bound
-                        },
-                        success: function(result){
-                            if (result.length > 0){
-                                points = result;
-                                for (let i in points) {
-                                    myMap.geoObjects.add(new ymaps.Placemark(points[i].geo, {
-                                        balloonContent : points[i].balloonContent
-                                    }, {
-                                        iconLayout : "default#imageWithContent",
-                                        iconImageHref : '<?=SITE_TEMPLATE_PATH//$this->__folder?>/img/map_icon.png',
-                                        iconImageSize : [30, 30],
-                                        iconImageOffset : [-15, -15],
-                                        iconContentOffset : [0, 0],
-                                    }));
+                        $.ajax({
+                            url: YAMAP_component.ajaxUrl,
+                            method: 'POST',
+                            dataType: 'json',
+                            data: {
+                                via_ajax: 'Y',
+                                action: 'loadPoints',
+                                sessid: BX.bitrix_sessid(),
+                                SITE_ID: YAMAP_component.siteID,
+                                signedParamsString: YAMAP_component.signedParamsString,
+                                COORDINATES: bound
+                            },
+                            success: function(result){
+                                if (result.length > 0){
+                                    points = result;
+                                    for (let i in points) {
+                                        myMap.geoObjects.add(new ymaps.Placemark(points[i].geo, {
+                                            balloonContent : points[i].balloonContent
+                                        }, {
+                                            iconLayout : "default#imageWithContent",
+                                            iconImageHref : '<?=SITE_TEMPLATE_PATH//$this->__folder?>/img/map_icon.png',
+                                            iconImageSize : [30, 30],
+                                            iconImageOffset : [-15, -15],
+                                            iconContentOffset : [0, 0],
+                                        }));
+                                    }
+                                    $.ajax({
+                                        url: YAMAP_component.ajaxUrl,
+                                        method: 'POST',
+                                        dataType: 'json',
+                                        data: {
+                                            via_ajax: 'Y',
+                                            action: 'loadPoints',
+                                            sessid: BX.bitrix_sessid(),
+                                            SITE_ID: YAMAP_component.siteID,
+                                            signedParamsString: YAMAP_component.signedParamsString
+                                        },
+                                        success: function(result){
+                                            if (result.length > 0){
+                                                points = result;
+                                                for (let i in points) {
+                                                    myMap.geoObjects.add(new ymaps.Placemark(points[i].geo, {
+                                                        balloonContent : points[i].balloonContent
+                                                    }, {
+                                                        iconLayout : "default#imageWithContent",
+                                                        iconImageHref : '<?=SITE_TEMPLATE_PATH//$this->__folder?>/img/map_icon.png',
+                                                        iconImageSize : [30, 30],
+                                                        iconImageOffset : [-15, -15],
+                                                        iconContentOffset : [0, 0],
+                                                    }));
+                                                }
+                                            }
+                                        },
+                                        error: function(a, b, c){
+                                            console.log(a);
+                                            console.log(b);
+                                            console.log(c);
+                                        }
+                                    });
                                 }
+                            },
+                            error: function(a, b, c){
+                                console.log(a);
+                                console.log(b);
+                                console.log(c);
                             }
-                        },
-                        error: function(a, b, c){
-                            console.log(a);
-                            console.log(b);
-                            console.log(c);
-                        }
-                    });
+                        });
 
                     myMap.controls.remove('geolocationControl');
                     myMap.controls.remove('searchControl');
@@ -105,48 +138,6 @@
                     myMap.controls.remove('fullscreenControl');
                     myMap.controls.remove('rulerControl');
                     myMap.behaviors.disable(['scrollZoom']);
-
-                    myMap.events.add('boundschange', function(e){
-                        if (e.get('newZoom') !== e.get('oldZoom')) {
-                            var bound = e.originalEvent.newBounds;
-                            console.log(bound);
-                            $.ajax({
-                                url: YAMAP_component.ajaxUrl,
-                                method: 'POST',
-                                dataType: 'json',
-                                data: {
-                                    via_ajax: 'Y',
-                                    action: 'loadPoints',
-                                    sessid: BX.bitrix_sessid(),
-                                    SITE_ID: YAMAP_component.siteID,
-                                    signedParamsString: YAMAP_component.signedParamsString,
-                                    COORDINATES: bound
-                                },
-                                success: function(result){
-                                    if (result.length > 0){
-                                        points = result;
-                                        for (let i in points) {
-                                            myMap.geoObjects.add(new ymaps.Placemark(points[i].geo, {
-                                                balloonContent : points[i].balloonContent
-                                            }, {
-                                                iconLayout : "default#imageWithContent",
-                                                iconImageHref : '<?=SITE_TEMPLATE_PATH//$this->__folder?>/img/map_icon.png',
-                                                iconImageSize : [30, 30],
-                                                iconImageOffset : [-15, -15],
-                                                iconContentOffset : [0, 0],
-                                            }));
-                                        }
-                                    }
-                                },
-                                error: function(a, b, c){
-                                    console.log(a);
-                                    console.log(b);
-                                    console.log(c);
-                                }
-                            });
-                        }
-                    });
-
                 });
             }
         </script>
