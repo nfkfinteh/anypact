@@ -29,24 +29,30 @@ if($arResult["BLACKLIST"]['CLOSE']){
                 <button class="btn btn-nfk search-people__button" data-id="<?=$arResult['USER']['ID']?>">Отправить сообщение</button>
             <?endif?>
             <div <?=$BLACKLIST_display;?> class="black-list-show_hide request_sent">
-                <?if(in_array($arResult['USER']['ID'], $arResult['FRENDS'])):?>
-                    <button class="btn btn-nfk gray js-delete-frends" data-id="<?=$arResult['USER']['ID']?>">
-                        Удалить из друзей
-                    </button>
-                <?elseif(in_array($arResult['USER']['ID'], $arResult['FRIENDS_REQUEST'])):?>
-                    <button class="btn btn-nfk gray disabled" data-id="<?=$arResult['USER']['ID']?>">
-                        Заявка отправлена
-                    </button>
-                    <div class="not_auth-error">
-                        <div class="triangle" style="display: block; z-index: 1;">▲</div>
-                        <a href="#" class="js-delete-frends" data-id="<?=$arResult['USER']['ID']?>">
-                            Отменить заявку
-                        </a>
-                    </div>
-                <?elseif($arResult['CURRENT_USER'] != $arResult['USER']['ID']):?>
-                    <button class="btn btn-nfk gray js-add-frends" data-id="<?=$arResult['USER']['ID']?>">
-                        Добавить в друзья
-                    </button>
+                <?if(!empty($arResult['CURRENT_USER']) && $arResult['USER']['ID'] != $arResult['CURRENT_USER']):?>
+                    <?if(in_array($arResult['USER']['ID'], $arResult['FRENDS'])):?>
+                        <button class="btn btn-nfk gray js-delete-frends" data-id="<?=$arResult['USER']['ID']?>">
+                            Удалить из друзей
+                        </button>
+                    <?elseif(in_array($arResult['USER']['ID'], $arResult['FRIENDS_REQUEST'])):?>
+                        <button class="btn btn-nfk gray disabled" data-id="<?=$arResult['USER']['ID']?>">
+                            Заявка отправлена
+                        </button>
+                        <div class="not_auth-error">
+                            <div class="triangle" style="display: block; z-index: 1;">▲</div>
+                            <a href="#" class="js-delete-frends" data-id="<?=$arResult['USER']['ID']?>">
+                                Отменить заявку
+                            </a>
+                        </div>
+                    <?elseif($arResult['CURRENT_USER'] != $arResult['USER']['ID']):?>
+                        <button class="btn btn-nfk gray js-add-frends" data-id="<?=$arResult['USER']['ID']?>">
+                            Добавить в друзья
+                        </button>
+                    <?endif;?>
+                <?else:?>
+                    <a href="/profile/" class="btn btn-nfk gray">
+                        Редактировать профиль
+                    </a>
                 <?endif;?>
             </div>
         <?}?>

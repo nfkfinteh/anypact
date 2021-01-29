@@ -112,7 +112,7 @@ class CUserProfileInfo extends CBitrixComponent
 
         $result['FRENDS'] = array_unique($result['FRENDS']);
 
-        if(array_search($current_user, $result['FRENDS']) && isset($result['FRENDS'][array_search($current_user, $result['FRENDS'])]))
+        if(array_search($current_user, $result['FRENDS']) !== false && isset($result['FRENDS'][array_search($current_user, $result['FRENDS'])]))
             unset($result['FRENDS'][array_search($current_user, $result['FRENDS'])]);
 
         return $result;

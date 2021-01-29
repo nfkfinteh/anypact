@@ -289,6 +289,23 @@ function OnBeforeUserRegisterHandler(&$arFields)
         $APPLICATION->ThrowException('Ошибка регистрации.');
         return false;
     }
+    if(!empty($arFields['PERSONAL_PHONE'])){
+        if($_SESSION['PHONE_NUMBER_CHECK'] == "Y" && !empty($_SESSION['PHONE_NUMBER']) && $_SESSION['PHONE_NUMBER'] == str_replace(array(" ", "-", "(", ")"), "", $arFields['PERSONAL_PHONE'])){
+            $_SESSION['PHONE_NUMBER_CHECK'] = "";
+            $_SESSION['PHONE_NUMBER'] = "";
+            $user = new CUser;
+            $filter = Array("PERSONAL_PHONE" => $arFields["PERSONAL_PHONE"]);
+            $rsUser = CUser::GetList(($by="id"), ($order="desc"), $filter);
+            while($arUser = $rsUser->Fetch()){
+                $user->Update($arUser['ID'], array("PERSONAL_PHONE" => false));
+            }
+        }else{
+            $res = CUser::GetList(($by="personal_country"), ($order="desc"), array("PERSONAL_PHONE" => $arFields['PERSONAL_PHONE']), array('FIELDS' => array("ID")));
+            if($array = $res -> fetch()){
+                return false;
+            }
+        }
+    }
 }
 AddEventHandler("main", "OnAfterUserRegister", "OnAfterUserRegisterHandler");
 function OnAfterUserRegisterHandler(&$arFields)

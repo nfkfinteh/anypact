@@ -101,6 +101,7 @@ global $USER;
         'CACHE_TYPE'=>'Y',
         'ACTION_VARIABLE'=>'action',
 ));?>
+<? if (!$USER->IsAuthorized()){?>
 <!--Окно регистрации-->
 <noindex>
     <div id="regpopup_bg">
@@ -165,6 +166,7 @@ global $USER;
         </div>
     </div>
 </noindex>
+<?}?>
 <!--/Окно регистрации-->
 <div class="container">
         <!--Шапка-->

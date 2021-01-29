@@ -155,7 +155,7 @@ class CUserSelect extends CBitrixComponent
 
         $result = array_unique($result);
 
-        if(array_search($user_id, $result) && isset($result[array_search($user_id, $result)]))
+        if(array_search($user_id, $result) !== false && isset($result[array_search($user_id, $result)]))
             unset($result[array_search($user_id, $result)]);
 
         return $result;

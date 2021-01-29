@@ -27,6 +27,19 @@ switch ($data['CHECK_TYPE']) {
         }
     break;
     
+    case 'phone':
+        if($_SESSION['PHONE_NUMBER_CHECK'] == "Y")
+            die(json_encode(array('TYPE' => 'SUCCES', 'VALUE' => '')));
+        $filter = Array("PERSONAL_PHONE" => $data["CHECK_TEXT"]);
+        $rsUser = CUser::GetList(($by="id"), ($order="desc"), $filter);
+        $arUser = $rsUser->Fetch();
+        if(!empty($arUser["LOGIN"])){
+            die(json_encode(array('TYPE' => 'ERROR', 'VALUE' => 'Номер телефона занят')));
+        }else{
+            die(json_encode(array('TYPE' => 'SUCCES', 'VALUE' => '')));
+        }
+    break;
+
     default:
         
         break;

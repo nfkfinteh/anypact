@@ -1,5 +1,6 @@
 <?
 require_once($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/include/prolog_before.php");
+require_once($_SERVER["DOCUMENT_ROOT"] . "/local/class/CFormatHTMLText.php");
 
 GLOBAL $USER;
 
@@ -16,14 +17,14 @@ if(CModule::IncludeModule('iblock') && check_bitrix_sessid() && $USER -> IsAdmin
             if($arUser = $rsUser -> getNext()){
 
                 $arFields["MODIFIED_BY"] = $arData['CREATED_BY'];
-                if($arProps['DETAIL_TEXT_EDIT'] == "Y"){
+                if($arProps['DETAIL_TEXT_EDIT']['VALUE'] == "Y"){
                     $arFields["DETAIL_TEXT"] = $arData['DETAIL_TEXT'];
                 }
 
                 $arAdditionalFields = array();
-                
+
                 if($arProps['CONDITIONS_PACT_EDIT']['VALUE'] == "Y"){
-                    $arAdditionalFields['CONDITIONS_PACT'] = $arProps['CONDITIONS_PACT']['VALUE'];
+                    $arAdditionalFields['CONDITIONS_PACT'] = CFormatHTMLText::TextFormatting($arProps['CONDITIONS_PACT']['VALUE']['TEXT']);
                 }
                 if($arProps['COORDINATES_AD_EDIT']['VALUE'] == "Y"){
                     $arAdditionalFields['COORDINATES_AD'] = $arProps['COORDINATES_AD']['VALUE'];

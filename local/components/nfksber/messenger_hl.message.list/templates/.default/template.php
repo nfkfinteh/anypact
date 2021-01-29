@@ -225,19 +225,8 @@ if($arResult['TYPE'] == 'NEW_MESSAGE'){
                     </div>
                     <div class="preview-img-block">
                     </div>
-                </form>
-                <?
-                $signer = new \Bitrix\Main\Security\Sign\Signer;
-                $signedParams = $signer->sign(base64_encode(serialize($arParams)), 'messenger_hl.message.list');
-                ?>	
+                </form>	
                 <script>
-                    var MML_component = {
-                        params: <?=CUtil::PhpToJSObject($arParams)?>,
-                        signedParamsString: '<?=CUtil::JSEscape($signedParams)?>',
-                        siteID: '<?=CUtil::JSEscape($component->getSiteId())?>',
-                        ajaxUrl: '<?=CUtil::JSEscape($component->getPath().'/ajax.php')?>',
-                        templateFolder: '<?=CUtil::JSEscape($templateFolder)?>',
-                    };
                     $(function() {
                         window.emojiPicker = new EmojiPicker({
                             emojiable_selector: '[data-emojiable=true]',
@@ -249,6 +238,19 @@ if($arResult['TYPE'] == 'NEW_MESSAGE'){
                 </script>
             <?endif;?>
         </div>
+        <?
+        $signer = new \Bitrix\Main\Security\Sign\Signer;
+        $signedParams = $signer->sign(base64_encode(serialize($arParams)), 'messenger_hl.message.list');
+        ?>
+        <script>
+            var MML_component = {
+                params: <?=CUtil::PhpToJSObject($arParams)?>,
+                signedParamsString: '<?=CUtil::JSEscape($signedParams)?>',
+                siteID: '<?=CUtil::JSEscape($component->getSiteId())?>',
+                ajaxUrl: '<?=CUtil::JSEscape($component->getPath().'/ajax.php')?>',
+                templateFolder: '<?=CUtil::JSEscape($templateFolder)?>',
+            };
+        </script>
     <?}?>
 <? 
 }elseif($_GET['action'] != "new_dialog" && $arResult['PAGE'] == 1){?>

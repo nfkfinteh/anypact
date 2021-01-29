@@ -22,6 +22,13 @@ function SectionClick(id) {
 }
 
 $(document).ready(function() {
+
+    $('#save_phone_error a').click(function(e){
+        e.preventDefault;
+        sendSMSCode();
+        return false;
+    });
+
     // рамка редактирования фото
     $('.user_profile_form_editdata_foto').mouseover(function() {
         $('#edit_user_photo').css('top', '0');
@@ -45,6 +52,8 @@ $(document).ready(function() {
                     preload('hide');
                     showResult('#popup-error','Ошибка сохранения');
                     console.log($result['VALUE']);
+                    if($result['PHONE'] == 'Y')
+                        $('#save_phone_error').show();
                 }
                 if($result['TYPE']=='SUCCES'){
                     preload('hide');
@@ -191,7 +200,7 @@ $(document).ready(function() {
         if($(input).attr('name') == "UF_SNILS")
             $(input).inputmask({ mask:'999-999-999 99'});
     });
-
+    $("#param_selected_activ_date").inputmask({ mask:'99.99.9999'});
     if($('.hidden-value input[name="UF_SNILS"]').length < 1)
         $("#UF_SNILS").inputmask({ mask:'999-999-999 99'});
 

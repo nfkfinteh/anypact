@@ -139,7 +139,7 @@ class CDemoSqr extends CBitrixComponent
 
         $result = array_unique($result);
 
-        if(array_search($current_user, $result) && isset($result[array_search($current_user, $result)]))
+        if(array_search($current_user, $result) !== false && isset($result[array_search($current_user, $result)]))
             unset($result[array_search($current_user, $result)]);
 
         return $result;
@@ -173,11 +173,11 @@ class CDemoSqr extends CBitrixComponent
             $result['UF_USER_A'] = [];
         
         $result['UF_USER_B'] = array_unique($result['UF_USER_B']);
-        if(array_search($current_user, $result['UF_USER_B']) && isset($result['UF_USER_B'][array_search($current_user, $result['UF_USER_B'])]))
+        if(array_search($current_user, $result['UF_USER_B']) !== false && isset($result['UF_USER_B'][array_search($current_user, $result['UF_USER_B'])]))
             unset($result['UF_USER_B'][array_search($current_user, $result['UF_USER_B'])]);
 
         $result['UF_USER_A'] = array_unique($result['UF_USER_A']);
-        if(array_search($current_user, $result['UF_USER_A']) && isset($result['UF_USER_A'][array_search($current_user, $result['UF_USER_A'])]))
+        if(array_search($current_user, $result['UF_USER_A']) !== false && isset($result['UF_USER_A'][array_search($current_user, $result['UF_USER_A'])]))
             unset($result['UF_USER_A'][array_search($current_user, $result['UF_USER_A'])]);
 
         return $result;

@@ -5064,7 +5064,7 @@ form.form-filter .selectbox-select .selectize-input input::placeholder {
     align-items: center;
     justify-content: center;
     background: rgba(0,0,0,0.7);
-    z-index: 100;
+    z-index: 1000;
 }
 .new-anypact-popup {
     background: #fff;
@@ -5162,6 +5162,8 @@ form.form-filter .selectbox-select .selectize-input input::placeholder {
 .container-akcii{
     width: 1140px;
     margin: 0 auto;
+    padding-right: 15px;
+    padding-left: 15px;
 }
 .row-akcii{
     position: relative;
@@ -5413,8 +5415,11 @@ a.soc-link svg:hover{
     .container-akcii {
         width: 100%;
     }
-    .h1-100r {
-        text-align: left;
+    .row-end{
+        width: 100%;
+        margin: 0 auto;
+        text-align: center;
+    
     }
     .row-steps {
         width: 90%;
@@ -5422,6 +5427,9 @@ a.soc-link svg:hover{
     }
     .row-end img{
         width: 100%;
+    }
+    .row-end .text-desc {
+        margin-left: 10px;
     }
 }
 @media screen and (max-width: 992px){
@@ -5587,4 +5595,30 @@ a.soc-link svg:hover{
     width: 100%;
     height: 800px;
     border: 0;
+}
+
+
+
+.check_sms {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 300px;
+}
+input.code_input {
+    margin-bottom: 20px;
+    width: 200px;
+}
+button#send_code {
+    margin-bottom: 10px;
+}
+div#code_status {
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    color: red;
+}
+#phone_success_body{
+    max-width: 350px;
+    text-align: center;
 }

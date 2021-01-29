@@ -188,6 +188,113 @@ function checkMail(){
     }
 }
 
+function startSMSSendTimer(node, time){
+
+    time = parseInt(time); 
+
+    var timer = setInterval((function(){
+        let timeMin = Math.floor(time / 60);
+        let timeSec = time - timeMin * 60;
+        if(timeMin < 10) timeMin = '0' + timeMin;
+        if(timeSec < 10) timeSec = '0' + timeSec;
+        $(node).html(timeMin+':'+timeSec);
+        time--;
+        if(time < 0){
+            var html = $.parseHTML( '<div><a href="#">отправить код повторно</a></div>' );
+            $(html).find('a').click(function(e){
+                e.preventDefault;
+                sendSMSCode();
+                return false;
+            });
+            $('#sms_send_span').replaceWith(html);
+            clearInterval(timer);
+        }
+    }), 1000);
+
+}
+
+function sendSMSCode(reg = "N"){
+    var data = {
+        TITLE: 'Подверждение телефона',
+        BODY: '<div id="phone_success_body"><button class="flat_button">Выслать код подверждения</button><div id="code_status"></div></div>',
+        BUTTONS: [
+            {
+                NAME: 'Закрыть',
+                CLOSE: 'Y'
+            },
+        ],
+        ONLOAD: (function(){
+            $('#phone_success_body button').click(function(){
+                var phone = $('#user_personal_phone').val();
+                $.ajax({
+                    url: '/response/ajax/check_phone.php',
+                    method: 'POST',
+                    dataType: 'json',
+                    data: {
+                        sessid: BX.bitrix_sessid(),
+                        action: 'send',
+                        phone: phone
+                    },
+                    success: function(result){
+                        if(result.STATUS == 'send'){
+                            var html = $.parseHTML( result.DATA );
+                            startSMSSendTimer($(html).find('#sms_send_timer'), 60);
+                            $(html).find('#send_code').click(function(){
+                                var code = $(this).parent().find('input[name="CODE"]').val();
+                                if(code.length != 6){
+                                    $("#code_status").html("Поле кода пустое");
+                                }else{
+                                    $("#code_status").html("");
+                                    var phone = $('#user_personal_phone').val();
+                                    $.ajax({
+                                        url: '/response/ajax/check_phone.php',
+                                        method: 'POST',
+                                        dataType: 'json',
+                                        data: {
+                                            sessid: BX.bitrix_sessid(),
+                                            action: 'check',
+                                            code: code,
+                                            phone: phone
+                                        },
+                                        success: function(result){
+                                            if(result.STATUS == 'success'){
+                                                $('#phone_success_body').html("Телефонный номер прошел проверку");
+                                                $('#save_phone_error').hide();
+                                                if(reg == "Y"){
+                                                    document.getElementById('message_error_login').innerHTML = '';
+                                                    document.getElementById('submit_button_registration').disabled = false;
+                                                };
+                                            }else if(result.STATUS == 'error'){
+                                                $("#code_status").html(result.ERROR_MESSAGE);
+                                            }
+                                        },
+                                        error: function(a,b,c){
+                                            console.log(c);
+                                        }
+                                    });
+                                }
+                            });
+                            $('#phone_success_body').html(html);
+                        }else if(result.STATUS == 'wait'){
+                            var html = $.parseHTML( "<div>На этот номер телефона уже было отправлено сообщение повторная отправка возможна только через <span></span></div>" );
+                            startSMSSendTimer($(html).find('span'), result.VALUE);
+                            $("#code_status").html(html);
+                        }else if(result.STATUS == 'error'){
+                            $("#code_status").html(result.ERROR_MESSAGE);
+                        }
+                    },
+                    error: function(a,b,c){
+                        console.log(a);
+                        console.log(b);
+                        console.log(c);
+                    }
+                });
+            });
+        })
+    };
+    newAnyPactPopUp(data);
+}
+
 
 window.onload = function() {
     /*Всплывающее окно регистрации*/
@@ -313,7 +420,7 @@ window.onload = function() {
             }  */          
         };
         
-        // проверяем пароль на длинну
+        // проверяем пароль на длину
         document.getElementById('user_password_fild').onblur = function(event){
             var conpass_fild    = this; 
             window.value_fild  = this.value;
@@ -323,7 +430,7 @@ window.onload = function() {
                 con_pass_fild.disabled = false;
                 //con_pass_fild.focus();
                 errBorder(conpass_fild, 'succes');
-                document.getElementById('message_error_login').innerHTML = '<div style="color:green"">&#10004; Отлично! Пароль нужной длинны</div>';
+                document.getElementById('message_error_login').innerHTML = '<div style="color:green"">&#10004; Отлично! Пароль нужной длины</div>';
             }else {
                 errBorder(conpass_fild, 'error');
                 document.getElementById('message_error_login').innerHTML = '&#9888; Пароль должен быть не менее '+length_pass+' символов';
@@ -381,6 +488,41 @@ window.onload = function() {
                 });
             }            
         };
+
+        // проверяем уникальности телефона
+        document.getElementById('user_personal_phone').onblur = function(event){
+            var fild_phone  = this;
+            let phone       = fild_phone.value;
+            let type        = 'phone';
+            var submit_button_aut_user = document.getElementById('submit_button_registration');
+
+            if(phone.length > 0){              
+                var res = getFree(phone, type).then(function(data) {
+                    $result = JSON.parse(data);
+                    if($result['TYPE']=='ERROR'){                        
+                        var html = $.parseHTML( '&#8226; Указанный номер телефона уже используется другим пользователем<p>Это мой номер телефона - <a id="check_phone" href="#">подтвердить</a></p>' );
+                        $(html).find('#check_phone').click(function(e){
+                            e.preventDefault;
+                            sendSMSCode("Y");
+                            return false;
+                        });
+                        $('#message_error_login').html(html);
+                        submit_button_aut_user.disabled = true;
+                        
+                    }
+                    if($result['TYPE']=='SUCCES'){
+                        document.getElementById('message_error_login').innerHTML = '';
+                        errBorder(fild_phone, 'succes');
+                        submit_button_aut_user.disabled = false;                                                            
+                    }
+                });
+            }else{
+                document.getElementById('message_error_login').innerHTML = '';
+                errBorder(fild_phone, 'succes');
+                submit_button_aut_user.disabled = false;
+            }
+        };
+
         //авторизация по enter
         $("#user_aut_pass").keyup(function(event) {
             if (event.keyCode === 13) {
@@ -394,10 +536,11 @@ window.onload = function() {
             }
         });
         // авторизация пользователя и вывод ошибок
-        document.getElementById('submit_button_aut_user').onclick  = function(){
-          let login = document.getElementById('user_aut_login').value
-          let password  = document.getElementById('user_aut_pass').value
-          var res = getAutorisation(login, password).then(function(data) {
+        document.getElementById('submit_button_aut_user').onclick  = function(e){
+            e.preventDefault();
+            let login = document.getElementById('user_aut_login').value
+            let password  = document.getElementById('user_aut_pass').value
+            var res = getAutorisation(login, password).then(function(data) {
                 $result = JSON.parse(data);
                 if($result['TYPE']=='ERROR'){
                     document.getElementById('message_error_aut').innerHTML = '&#8226; '+$result['VALUE'];
@@ -408,7 +551,8 @@ window.onload = function() {
             });
         };
 
-        $(document).on('click', '#submit_button_aut_user_main', function(){
+        $(document).on('click', '#submit_button_aut_user_main', function(e){
+            e.preventDefault();
             let login = document.getElementById('user_aut_login_main').value
             let password  = document.getElementById('user_aut_pass_main').value
             var res = getAutorisation(login, password).then(function(data) {
@@ -422,7 +566,8 @@ window.onload = function() {
             });
         });
 
-        $(document).on('click', '#submit_button_aut_user_deal', function(){
+        $(document).on('click', '#submit_button_aut_user_deal', function(e){
+            e.preventDefault();
             let login = document.getElementById('user_aut_login_deal').value
             let password  = document.getElementById('user_aut_pass_deal').value
             var res = passwordSignature(login, password).then(function(data) {

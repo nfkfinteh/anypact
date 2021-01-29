@@ -98,12 +98,20 @@ if(!empty($data) || !empty($imgData)){
         }
     }
 
-    $res = CUser::GetList(($by="personal_country"), ($order="desc"), array("ID" => $idUser), array('SELECT' => array("UF_ESIA_ID", "UF_ESIA_AUT"), 'FIELDS' => array("ID")));
+    $res = CUser::GetList(($by="personal_country"), ($order="desc"), array("ID" => $idUser), array('SELECT' => array("UF_ESIA_ID", "UF_ESIA_AUT"), 'FIELDS' => array("ID", "PERSONAL_PHONE")));
     if($array = $res -> fetch()){
         if(!empty($array['UF_ESIA_ID']) && $array['UF_ESIA_AUT'] == 1){
             unset($fields['NAME']);
             unset($fields['LAST_NAME']);
             unset($fields['SECOND_NAME']);
+        }
+    }
+
+    if(!empty($fields['PERSONAL_PHONE']) && $array['PERSONAL_PHONE'] != $fields['PERSONAL_PHONE']){
+        $res = CUser::GetList(($by="personal_country"), ($order="desc"), array("PERSONAL_PHONE" => $fields['PERSONAL_PHONE']), array('FIELDS' => array("ID")));
+        if($array = $res -> fetch()){
+            echo json_encode([ 'VALUE' => "Номер телефона уже занят", 'TYPE'=> 'ERROR', 'PHONE' => 'Y']);
+            die();
         }
     }
 

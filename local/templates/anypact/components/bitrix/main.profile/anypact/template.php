@@ -275,11 +275,15 @@ function hideText($text, $count_b = 3, $count_e = 2) {
                             <div class="col-xl-6 col-md-6 col-sm-12">
                                 <div class="form-group">
                                     <label><?=GetMessage("USER_PHONE")?></label>
-                                    <input type="text" name="PERSONAL_PHONE" maxlength="225" value="<?=$arResult["arUser"]["PERSONAL_PHONE"]?>" class="js-mask__phone">
+                                    <input type="text" id="user_personal_phone" name="PERSONAL_PHONE" maxlength="225" value="<?=$arResult["arUser"]["PERSONAL_PHONE"]?>" class="js-mask__phone">
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
+                            <div id="save_phone_error">
+                                <p>Указанный номер телефона уже используется другим пользователем.</p>
+                                <p>Это мой номер телефона - <a href="#">подтвердить</a></p>
+                            </div>
                             <label><?=GetMessage("USER_WORK")?></label>
                             <input type="text" name="UF_WORK" maxlength="225" value="<?=$arResult["arUser"]["UF_WORK"]?>">
                         </div>

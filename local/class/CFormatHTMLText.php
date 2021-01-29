@@ -18,10 +18,11 @@ class CFormatHTMLText{
 		return trim($string);
 	}
 
-	public static function TextFormatting($text)
+	public static function TextFormatting($text, $removeTag = array())
 	{
+		$allowedTags = str_replace($removeTag, "", self::$yandexTurboAllowedTags);
 		$text = htmlspecialchars_decode($text);
-		$text = self::RemoveInvalidTags($text, self::$yandexTurboAllowedTags, false);
+		$text = self::RemoveInvalidTags($text, $allowedTags, false);
 		$text = preg_replace('/\s\s+/', ' ', $text);
 		$text = preg_replace('/(\r|\n|\r\n){3,}/', '', $text);
 		$text = preg_replace("/&#?[a-z0-9]+;/i","",$text);

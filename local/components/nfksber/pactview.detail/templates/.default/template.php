@@ -211,6 +211,8 @@ else{
             thumbnailWidth : 164,
             thumbnailHeight : 101,
             imageScaleMode: 'contain',
+            fullScreen: true,
+            fadeFullScreen: false,
             breakpoints: {
                 450: {
                     thumbnailWidth : 82,

@@ -95,7 +95,7 @@ $tabControl->Begin();
 							<?if($arData){
 								foreach($arData as $data){?>
 									<tr class="adm-list-table-row">
-										<td class="adm-list-table-cell align-right"><a href="https://localhost/bitrix/admin/user_edit.php?lang=ru&ID=<?=$data['CREATED_BY'];?>" target="__blank"><?=$arUser[$data['CREATED_BY']];?></a></td>
+										<td class="adm-list-table-cell align-right"><a href="/bitrix/admin/user_edit.php?lang=ru&ID=<?=$data['CREATED_BY'];?>" target="__blank"><?=$arUser[$data['CREATED_BY']];?></a></td>
 										<td class="adm-list-table-cell align-right"><a href="/bitrix/admin/iblock_element_edit.php?IBLOCK_ID=3&type=4&ID=<?=$data['PROPERTY_ORIGINAL_DEAL_VALUE'];?>&lang=ru" target="__blank"><?=$data['NAME'];?></a></td>
 										<td class="adm-list-table-cell align-right"><a href="/bitrix/admin/iblock_element_edit.php?IBLOCK_ID=10&type=4&ID=<?=$data['ID'];?>&lang=ru" target="__blank"><?=$data['NAME'];?></a></td>
 										<td class="adm-list-table-cell align-right">

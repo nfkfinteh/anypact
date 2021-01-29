@@ -282,6 +282,23 @@ $jsParams = [
     var arImg = <?=CUtil::PhpToJSObject($arResult['JS_DATA']['IMG_FILE'])?>
 </script>
 <script>
+    function removeTrumbowygTags(){
+        let el = this;
+        $(el).trumbowyg('disable');
+        $.ajax({
+            url: '/response/ajax/check_text.php',
+            method: 'POST',
+            dataType: 'json',
+            data: {
+                sessid: BX.bitrix_sessid(),
+                text: $(el).trumbowyg('html')
+            },
+            success: function(result){
+                $(el).trumbowyg('html', result);
+                $(el).trumbowyg('enable');
+            }
+        });
+    }
     $.trumbowyg.svgPath = "<?=SITE_TEMPLATE_PATH?>/module/trumbowyg/dist/ui/icons.svg";
     var editorSettings = {
         btns: [
@@ -300,4 +317,6 @@ $jsParams = [
     };
     $('#ad_descript').trumbowyg(editorSettings);
     $('#ad_condition').trumbowyg(editorSettings);
+    $('#ad_descript').trumbowyg().on('tbwpaste', removeTrumbowygTags);
+    $('#ad_condition').trumbowyg().on('tbwpaste', removeTrumbowygTags);
 </script>

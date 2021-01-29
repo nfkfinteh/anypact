@@ -66,7 +66,7 @@ global $USER;
         </div>
     </div>
     <div class="container-akcii container-akcii-bg">
-        <div class="row-end">   
+        <div class="row-end">
             <h2>
                 <span class="h1-big">
                     Всё!
@@ -78,7 +78,7 @@ global $USER;
             <?if(!$USER -> IsAuthorized()){?>
                 <button class="btn btn-nfk reg-btn-akcii" id="open_reg_form">Регистрация</button>
             <?}?>
-            <span class="text-desc">*Предложение распространяется на первую тысячу зарегистрировавшихся пользователей, при выполении указанных выше пунктов, а также при условии, что ранее Вы не регистрировались на сайте AnyPact.ru. Предложение заканчивает свое действие 31.12.2020.</span>
+            <span class="text-desc">*Предложение распространяется на первую тысячу зарегистрировавшихся пользователей, при выполении указанных выше пунктов, а также при условии, что ранее Вы не регистрировались на сайте AnyPact.ru. Предложение заканчивает свое действие 31.01.2021.</span>
         </div>
     </div>
 </section>
