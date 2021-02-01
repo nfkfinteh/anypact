@@ -1,7 +1,7 @@
 .global-incoming_friends-count {
     position: absolute;
     top: -11px;
-    right: 431px;
+    right: 305px;
     color: #ff6600;
     font-size: 14px;
 }
@@ -11,19 +11,20 @@
 }
 @media screen and (max-width: 1200px) {
     .global-incoming_friends-count {
-        right: 383px;
+        right: 271px;
         font-size: 12px;
     }
 }
 @media screen and (max-width: 1023px) {
     .global-incoming_friends-count {
         top: 4px;
+        right: 290px;
     }
 }
 @media screen and (max-width: 991px) {
     .global-incoming_friends-count {
         top: -6px;
-        right: 294px;
+        right: 258px;
         font-size: 10px;
     }
     .freind-count .global-incoming_friends-count {

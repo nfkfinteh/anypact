@@ -91,3 +91,16 @@ a#show_phone {
 .not_auth-error-phone{
     top: 70px!important;
 }
+div#my-slider {
+    position: relative;
+}
+.sp-full-screen-button {
+    width: 100%;
+    height: 456.25px;
+    transform: rotate(0deg)!important;
+    top: 0!important;
+    right: 0!important;
+}
+.sp-full-screen-button::before{
+    content: none!important;
+}

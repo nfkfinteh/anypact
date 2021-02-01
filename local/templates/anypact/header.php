@@ -52,7 +52,7 @@ global $USER;
     $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/module/jquery/jquery-3.3.1.min.js');
     $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/module/selectize/selectize.min.js');
     $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/bootstrap.min.js');
-    $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/jquery.sliderPro.min.js');
+    $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/jquery.sliderPro.js');
     $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/owl.carousel.min.js');
     $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/module/cropper/cropper.min.js');
     $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/module/jquery.hotkeys/script.js');
@@ -301,7 +301,7 @@ global $USER;
                             '/list_message/'    => 'Сообщения',
                             '/service/'         => 'О сервисе',
                             '/help/'            => 'Контакты',
-                            '/promotion/'       => 'Промоакция'
+                            // '/promotion/'       => 'Промоакция'
                         );
                     }else {
                         // неавторизованный пользователь
@@ -310,7 +310,7 @@ global $USER;
                             '/search_people/'   => 'Поиск контрагентов',
                             '/service/'         => 'О сервисе',
                             '/help/'            => 'Контакты',
-                            '/promotion/'       => 'Промоакция',
+                            // '/promotion/'       => 'Промоакция',
                             '#'                 => 'Регистрация/вход'
                         );
                     }

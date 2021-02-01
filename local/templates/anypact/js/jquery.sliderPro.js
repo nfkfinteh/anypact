@@ -1290,6 +1290,10 @@
 				'height': this.height
 			});
 
+			$('.slider-sdelka .sp-full-screen-button').css({
+				'height': this.height
+			});
+
 			if ( this.settings.allowScaleUp === false ) {
 				// reset the image to its natural size
 				this.$mainImage.css({ 'width': '', 'height': '', 'maxWidth': '', 'maxHeight': '' });

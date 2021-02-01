@@ -225,6 +225,10 @@ function sendSMSCode(reg = "N"){
         ],
         ONLOAD: (function(){
             $('#phone_success_body button').click(function(){
+                var button = $(this);
+                $(button).parent().append('<div class="preloader__image"></div>');
+                $(button).hide();
+                $(button).parent().find('#code_status').hide();
                 var phone = $('#user_personal_phone').val();
                 $.ajax({
                     url: '/response/ajax/check_phone.php',
@@ -276,10 +280,16 @@ function sendSMSCode(reg = "N"){
                             });
                             $('#phone_success_body').html(html);
                         }else if(result.STATUS == 'wait'){
+                            $(button).parent().find('.preloader__image').remove();
+                            $(button).show();
+                            $(button).parent().find('#code_status').show();
                             var html = $.parseHTML( "<div>На этот номер телефона уже было отправлено сообщение повторная отправка возможна только через <span></span></div>" );
                             startSMSSendTimer($(html).find('span'), result.VALUE);
                             $("#code_status").html(html);
                         }else if(result.STATUS == 'error'){
+                            $(button).parent().find('.preloader__image').remove();
+                            $(button).show();
+                            $(button).parent().find('#code_status').show();
                             $("#code_status").html(result.ERROR_MESSAGE);
                         }
                     },

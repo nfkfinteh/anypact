@@ -5622,3 +5622,8 @@ div#code_status {
     max-width: 350px;
     text-align: center;
 }
+#phone_success_body .preloader__image {
+    margin: 0 auto;
+    top: 0;
+    left: 0;
+}
