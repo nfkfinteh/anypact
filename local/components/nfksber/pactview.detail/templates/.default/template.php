@@ -33,7 +33,7 @@ else{
                     foreach ($arr_img as $url_img){
                         ?>
                         <?if(!empty($url_img['URL'])):?>
-                            <div class="sp-slide">
+                            <div class="sp-slide" data-src="<?=$url_img["URL"]?>">
                             <span class="gallery-img-cover" style="background-image: url('<?=$url_img["URL"]?>');"></span>
                                 <img class="sp-image" src="<?=$url_img["URL"]?>">
                                 <?if(count($arr_img) > 1){?>
@@ -211,8 +211,8 @@ else{
             thumbnailWidth : 164,
             thumbnailHeight : 101,
             imageScaleMode: 'contain',
-            fullScreen: true,
-            fadeFullScreen: false,
+            // fullScreen: true,
+            // fadeFullScreen: false,
             breakpoints: {
                 450: {
                     thumbnailWidth : 82,
@@ -222,7 +222,9 @@ else{
             init: function( event ) {
                 $('.sp-slide').each(function(index,value){
                     $(value).prepend($(value).children('.gallery-img-cover'));
-
+                });
+                $('#my-slider .sp-slides').lightGallery({
+                    download: false
                 });
             }
         });

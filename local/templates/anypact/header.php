@@ -39,6 +39,7 @@ global $USER;
     $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH.'/css/croppie.css');
     $APPLICATION->SetAdditionalCSS('https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css');
     $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH.'/css/emoji.css');
+    $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH.'/module/lightGallery-master/dist/css/lightgallery.min.css');
     ?>
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -66,6 +67,10 @@ global $USER;
     $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/util.js');
     $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/jquery.emojiarea.js');
     $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/emoji-picker.js');
+    $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/module/lightGallery-master/dist/js/lightgallery.min.js');
+    $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/module/lightGallery-master/modules/lg-zoom.min.js');
+    $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/module/lightGallery-master/modules/lg-fullscreen.min.js');
+    $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/module/lightGallery-master/modules/lg-thumbnail.min.js');
 
     CJSCore::Init(array('popup', 'date'));
 
