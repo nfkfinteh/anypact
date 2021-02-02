@@ -18,6 +18,10 @@
             };
         </script>
         <script type="text/javascript">
+            var iblock = <?=CUtil::PhpToJSObject($arResult['IBLOCK_ID'])?>;
+            var points = <?=CUtil::PhpToJSObject($arResult['POINTS'])?>;
+            var city = "<?=$arParams['LOCATION']?>";
+            if(!city) city = 'Москва';
             function init(){
                 ymaps.geocode(city, {
                     results: 1
@@ -168,10 +172,6 @@
                 });
             }
             $(document).ready(function(){
-                var iblock = <?=CUtil::PhpToJSObject($arResult['IBLOCK_ID'])?>;
-                var points = <?=CUtil::PhpToJSObject($arResult['POINTS'])?>;
-                var city = "<?=$arParams['LOCATION']?>";
-                if(!city) city = 'Москва';
                 // Функция ymaps.ready() будет вызвана, когда
                 // загрузятся все компоненты API, а также когда будет готово DOM-дерево.
                 ymaps.ready(init);
