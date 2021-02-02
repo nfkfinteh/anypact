@@ -142,7 +142,7 @@ global $USER;
                         <div class="regpopup_autorisation" id="regpopup_autarisation">
                             <h2>Авторизация</h2>
                             <?$APPLICATION->IncludeComponent("bitrix:system.auth.form",
-                            "anypact_popup",
+                            "new_anypact_auth_form",
                             Array(
                                 "REGISTER_URL" => "register.php",
                                 "FORGOT_PASSWORD_URL" => "",

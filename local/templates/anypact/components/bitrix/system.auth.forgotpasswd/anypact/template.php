@@ -39,6 +39,15 @@ CJSCore::Init();
 		<a href="#" class="regpopup_content_form_submit" id="submit_forgot_password"><?=GetMessage("AUTH_SEND")?></a>
 	</form>
 </div>
+<?
+	$open_popup = '?open_fgp_popup=Y';
+	if(!empty($_GET))
+		$open_popup = '&open_fgp_popup=Y';
+	$encodeURL = base64_encode($_SERVER['REQUEST_URI'].$open_popup);
+?>
+<?if(COption::GetOptionString("anypact", "block_gosuslugi", "Y") != "Y"){?>
+	<p class="text-center"><a href="/profile/aut_esia.php?returnurl=<?=$encodeURL?>">Не помню e-mail</a></p>
+<?}?>
 <p class="text-center">Вспомнили пароль? <a href="#" id="regpopup_btn_aut_fgpw">Войти</a></p>
 <script>
 	//воссстановлене пароля

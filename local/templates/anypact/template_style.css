@@ -587,6 +587,7 @@ select:-webkit-autofill:focus {
     border-radius: 5px;
 }
 
+#regpopup_bg .regpopup_win button.regpopup_content_form_submit,
 #regpopup_bg .regpopup_win input.regpopup_content_form_submit,
 #regpopup_bg .regpopup_win a.regpopup_content_form_submit {
     width: 100%;
@@ -600,6 +601,7 @@ select:-webkit-autofill:focus {
     text-align: center;
 }
 
+#regpopup_bg .regpopup_win button.regpopup_content_form_submit:hover,
 #regpopup_bg .regpopup_win input.regpopup_content_form_submit:hover,
 #regpopup_bg .regpopup_win a.regpopup_content_form_submit:hover {
     color: #fff;
@@ -643,6 +645,7 @@ select:-webkit-autofill:focus {
     border-radius: 5px;
 }
 
+#regpopup_bg_deal .regpopup_win button.regpopup_content_form_submit,
 #regpopup_bg_deal .regpopup_win input.regpopup_content_form_submit,
 #regpopup_bg_deal .regpopup_win a.regpopup_content_form_submit {
     width: 100%;
@@ -656,6 +659,7 @@ select:-webkit-autofill:focus {
     text-align: center;
 }
 
+#regpopup_bg_deal .regpopup_win button.regpopup_content_form_submit:hover,
 #regpopup_bg_deal .regpopup_win input.regpopup_content_form_submit:hover,
 #regpopup_bg_deal .regpopup_win a.regpopup_content_form_submit:hover {
     color: #fff;

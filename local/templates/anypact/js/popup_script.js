@@ -73,11 +73,12 @@ async function getAutorisation(login, password){
     
     var mainData = JSON.stringify({
         LOGIN  : login,
-        PASSWORD : password,        
+        PASSWORD : password
     });
 
     var formData = new FormData();
-        formData.append( 'main', mainData );
+    formData.append( 'main', mainData );
+    formData.append( 'sessid', BX.bitrix_sessid() );
 
     
     const response = await fetch(url, {
@@ -94,11 +95,12 @@ async function passwordSignature(login, password){
     
     var mainData = JSON.stringify({
         LOGIN  : login,
-        PASSWORD : password,        
+        PASSWORD : password
     });
 
     var formData = new FormData();
-        formData.append( 'main', mainData );
+    formData.append( 'main', mainData );
+    formData.append( 'sessid', BX.bitrix_sessid() );
 
     
     const response = await fetch(url, {
@@ -534,11 +536,11 @@ window.onload = function() {
         };
 
         //авторизация по enter
-        $("#user_aut_pass").keyup(function(event) {
-            if (event.keyCode === 13) {
-                $("#submit_button_aut_user").click();
-            }
-        });
+        // $("#user_aut_pass").keyup(function(event) {
+        //     if (event.keyCode === 13) {
+        //         $("#submit_button_aut_user").click();
+        //     }
+        // });
         //восстановление пароля по enter
         $("#user_email_fgpw").keyup(function(event) {
             if (event.keyCode === 13) {
@@ -546,53 +548,117 @@ window.onload = function() {
             }
         });
         // авторизация пользователя и вывод ошибок
-        document.getElementById('submit_button_aut_user').onclick  = function(e){
-            e.preventDefault();
-            let login = document.getElementById('user_aut_login').value
-            let password  = document.getElementById('user_aut_pass').value
-            var res = getAutorisation(login, password).then(function(data) {
-                $result = JSON.parse(data);
-                if($result['TYPE']=='ERROR'){
-                    document.getElementById('message_error_aut').innerHTML = '&#8226; '+$result['VALUE'];
-                }
-                if($result['TYPE']=='SUCCES'){
-                    location.reload();
-                }
-            });
-        };
+        // document.getElementById('submit_button_aut_user').onclick  = function(e){
+        //     e.preventDefault();
+        //     let login = document.getElementById('user_aut_login').value
+        //     let password  = document.getElementById('user_aut_pass').value
+        //     var res = getAutorisation(login, password).then(function(data) {
+        //         $result = JSON.parse(data);
+        //         if($result['TYPE']=='ERROR'){
+        //             document.getElementById('message_error_aut').innerHTML = '&#8226; '+$result['VALUE'];
+        //         }
+        //         if($result['TYPE']=='SUCCES'){
+        //             location.reload();
+        //         }
+        //     });
+        // };
 
-        $(document).on('click', '#submit_button_aut_user_main', function(e){
+        $('#regpopup_autarisation .regpopup_content_auform form').submit(function(e){
             e.preventDefault();
-            let login = document.getElementById('user_aut_login_main').value
-            let password  = document.getElementById('user_aut_pass_main').value
-            var res = getAutorisation(login, password).then(function(data) {
-                $result = JSON.parse(data);
-                if($result['TYPE']=='ERROR'){
-                    document.getElementById('message_error_aut_main').innerHTML = '&#8226; '+$result['VALUE'];
-                }
-                if($result['TYPE']=='SUCCES'){
-                    location.reload();
+            var $this = $(this);
+            var $form = {
+                action: $this.attr('action'),
+                post: {'sessid':BX.bitrix_sessid()}
+            };
+            $.each($('input', $this), function(){
+                if ($(this).attr('name').length) {
+                    $form.post[$(this).attr('name')] = $(this).val();
                 }
             });
+            $.ajax({
+                url: $form.action,
+                method: 'POST',
+                dataType: 'json',
+                data: $form.post,
+                success: function(result){
+                    $('input', $this).removeAttr('disabled');
+                    if (result.type !== null && result.type == 'error') {
+                        document.getElementById('message_error_aut').innerHTML = '&#8226; '+result['message'];
+                    }else{
+                        BX.reload();
+                    }
+                },
+                error: function(){
+                    BX.reload();
+                }
+            });
+            return false;
         });
 
-        $(document).on('click', '#submit_button_aut_user_deal', function(e){
+        // $(document).on('click', '#submit_button_aut_user_main', function(e){
+        //     e.preventDefault();
+        //     let login = document.getElementById('user_aut_login_main').value
+        //     let password  = document.getElementById('user_aut_pass_main').value
+        //     var res = getAutorisation(login, password).then(function(data) {
+        //         $result = JSON.parse(data);
+        //         if($result['TYPE']=='ERROR'){
+        //             document.getElementById('message_error_aut_main').innerHTML = '&#8226; '+$result['VALUE'];
+        //         }
+        //         if($result['TYPE']=='SUCCES'){
+        //             location.reload();
+        //         }
+        //     });
+        // });
+
+        $('#main_auth_form form').submit(function(e){
             e.preventDefault();
-            let login = document.getElementById('user_aut_login_deal').value
-            let password  = document.getElementById('user_aut_pass_deal').value
-            var res = passwordSignature(login, password).then(function(data) {
-                $result = JSON.parse(data);
-                if($result['TYPE']=='ERROR'){
-                    document.getElementById('message_error_aut_deal').innerHTML = '&#8226; '+$result['VALUE'];
-                }
-                if($result['TYPE']=='SUCCES'){
-                    document.location.href = document.location.href.replace(new RegExp("#",'g'), '') + '&PASSWORD_SIGNATURE=' + $result['PASSWORD_SIGNATURE'];
-                    //location.reload();
+            var $this = $(this);
+            var $form = {
+                action: $this.attr('action'),
+                post: {'sessid':BX.bitrix_sessid()}
+            };
+            $.each($('input', $this), function(){
+                if ($(this).attr('name').length) {
+                    $form.post[$(this).attr('name')] = $(this).val();
                 }
             });
+            $.ajax({
+                url: $form.action,
+                method: 'POST',
+                dataType: 'json',
+                data: $form.post,
+                success: function(result){
+                    $('input', $this).removeAttr('disabled');
+                    if (result.type !== null && result.type == 'error') {
+                        document.getElementById('message_error_aut_main').innerHTML = '&#8226; '+result['message'];
+                    }else{
+                        BX.reload();
+                    }
+                },
+                error: function(){
+                    BX.reload();
+                }
+            });
+            return false;
         });
         
     }
+
+    $(document).on('click', '#submit_button_aut_user_deal', function(e){
+        e.preventDefault();
+        let login = document.getElementById('user_aut_login_deal').value
+        let password  = document.getElementById('user_aut_pass_deal').value
+        var res = passwordSignature(login, password).then(function(data) {
+            $result = JSON.parse(data);
+            if($result['TYPE']=='ERROR'){
+                document.getElementById('message_error_aut_deal').innerHTML = '&#8226; '+$result['VALUE'];
+            }
+            if($result['TYPE']=='SUCCES'){
+                document.location.href = document.location.href.replace(new RegExp("#",'g'), '') + '&PASSWORD_SIGNATURE=' + $result['PASSWORD_SIGNATURE'];
+                //location.reload();
+            }
+        });
+    });
 
     var button_send_contract = document.getElementById('send_contract');
     var popup_send_sms = document.getElementById('send_sms');

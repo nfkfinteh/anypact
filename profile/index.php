@@ -56,7 +56,7 @@ if ($USER->IsAuthorized() || ($_GET["change_password"] == "yes" && !empty($_GET[
                 header("Refresh: 0");
             }else {            
                 $fields = Array(
-                    "UF_ESIA_ERROR" => "Пользователь использующий этот аккаунт госуслуг уже зареистрирован."
+                    "UF_ESIA_ERROR" => "Пользователь использующий этот аккаунт госуслуг уже зарегистрирован."
                 );        
                 $USER->Update($USER->GetID(), $fields);                   
             }
@@ -95,23 +95,16 @@ if ($USER->IsAuthorized() || ($_GET["change_password"] == "yes" && !empty($_GET[
                 <img src="<?=SITE_TEMPLATE_PATH?>/image/img_reg_us.png" alt="Подпись" style="max-width: 100%">
             </div>*/?>
             <div class="new-auth">
-                <div class="new-auth-block">
-                    <form name="system_auth_form" method="post" target="_top" action="">
-                        <!--<input type="hidden" name="AUTH_FORM" value="Y" />
-                        <input type="hidden" name="TYPE" value="AUTH" /> -->
-                        <div class="user_credentials"><img src="<?=SITE_TEMPLATE_PATH?>/image/icons8_user_credentials_100px.png"></div>
-                        <h2>Авторизация</h2>
-                        <!--Логин-->
-                        <p>Логин</p>
-                        <input type="text" name="USER_LOGIN_ERROR" class="regpopup_content_form_input" data-mess="" value="" id="user_aut_login_main" placeholder="" />
-                        <!--Пароль-->
-                        <p>Пароль</p>
-                        <input type="password" name="USER_PASSWORD" class="regpopup_content_form_input"  autocomplete="off" id="user_aut_pass_main" placeholder=""/>    
-                        <div id="message_error_aut_main"></div>
-                        <a href="javascript:undefined" class="regpopup_content_form_submit" id="submit_button_aut_user_main"><?=GetMessage("AUTH_LOGIN_BUTTON")?></a>
-                        <p class="text-center forgetpass-text">Забыли пароль? <a href="#" id="open_fgpw_form">Восстановить</a></p>
-                    </form>
-                </div>
+                <?$APPLICATION->IncludeComponent("bitrix:system.auth.form",
+                "anypact_auth_form",
+                Array(
+                    "REGISTER_URL" => "register.php",
+                    "FORGOT_PASSWORD_URL" => "",
+                    "PROFILE_URL" => "profile.php",
+                    "SHOW_ERRORS" => "Y",
+                    "STORE_PASSWORD" => "Y"
+                    )
+                );?>
                 <div class="lock-img">
                     <img src="<?=SITE_TEMPLATE_PATH?>/image/icons8_password_check_127px_1.png">
                 </div>

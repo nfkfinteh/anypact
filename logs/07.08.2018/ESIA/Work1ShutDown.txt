@@ -1,8 +1,0 @@
-07.08.2018 10:32:02-------------------------------------------------
-Array
-(
-    [type] => 64
-    [message] => require_once(): Failed opening required '/var/www/domains/anypact.nfksber.ru/dynamic_config.php' (include_path='.:/usr/local/zend/var/libraries/Zend_Framework_1/default/library:/usr/local/zend/share/pear')
-    [file] => /var/www/domains/anypact.nfksber.ru/esia/Core/modx.config.php
-    [line] => 9
-)

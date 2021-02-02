@@ -166,23 +166,16 @@ $APPLICATION->IncludeComponent(
                     <img src="<?=SITE_TEMPLATE_PATH?>/image/img_reg_us.png" alt="Подпись" style="max-width: 100%">
                 </div>*/?>
                 <div class="new-auth">
-                    <div class="new-auth-block">
-                        <form name="system_auth_form" method="post" target="_top" action="">
-                            <!--<input type="hidden" name="AUTH_FORM" value="Y" />
-                            <input type="hidden" name="TYPE" value="AUTH" /> -->
-                            <div class="user_credentials"><img src="<?=SITE_TEMPLATE_PATH?>/image/icons8_user_credentials_100px.png"></div>
-                            <h2>Авторизация</h2>
-                            <!--Логин-->
-                            <p>Логин</p>
-                            <input type="text" name="USER_LOGIN_ERROR" class="regpopup_content_form_input" data-mess="" value="" id="user_aut_login_main" placeholder="" />
-                            <!--Пароль-->
-                            <p>Пароль</p>
-                            <input type="password" name="USER_PASSWORD" class="regpopup_content_form_input"  autocomplete="off" id="user_aut_pass_main" placeholder=""/>    
-                            <div id="message_error_aut_main"></div>
-                            <a href="javascript:undefined" class="regpopup_content_form_submit" id="submit_button_aut_user_main"><?=GetMessage("AUTH_LOGIN_BUTTON")?></a>
-                            <p class="text-center forgetpass-text">Забыли пароль? <a href="#" id="open_fgpw_form">Восстановить</a></p>
-                        </form>
-                    </div>
+                    <?$APPLICATION->IncludeComponent("bitrix:system.auth.form",
+                    "anypact_auth_form",
+                    Array(
+                        "REGISTER_URL" => "register.php",
+                        "FORGOT_PASSWORD_URL" => "",
+                        "PROFILE_URL" => "profile.php",
+                        "SHOW_ERRORS" => "Y",
+                        "STORE_PASSWORD" => "Y"
+                        )
+                    );?>
                     <div class="lock-img">
                         <img src="<?=SITE_TEMPLATE_PATH?>/image/icons8_password_check_127px_1.png">
                     </div>
@@ -377,82 +370,82 @@ $APPLICATION->IncludeComponent(
         });
         $('[data-toggle="tooltip"]').tooltip();
         async function sendMess(strObject){
-        preload('show');
-        var url = '/response/ajax/send_mess.php'
+            preload('show');
+            var url = '/response/ajax/send_mess.php'
 
-        var mainData = JSON.stringify({
-            FIO  : strObject[0],
-            IMAIL: strObject[1],
-            TEXT : strObject[2],
-        });
+            var mainData = JSON.stringify({
+                FIO  : strObject[0],
+                IMAIL: strObject[1],
+                TEXT : strObject[2],
+            });
 
-        var formData = new FormData();
-            formData.append( 'checkin', mainData );
+            var formData = new FormData();
+                formData.append( 'checkin', mainData );
 
 
-        const response = await fetch(url, {
-            method: 'post',
-            body:formData
-        });
-        const data = await response.text();
-        return data
-    }
-
-    let empty_rules = document.getElementById('empty_rules')
-    let send_mess_button = document.getElementById('send_mess_button')
-    empty_rules.onclick = function(){
-        if(this.checked){
-            send_mess_button.disabled = false
-        }else{
-            send_mess_button.disabled = true
+            const response = await fetch(url, {
+                method: 'post',
+                body:formData
+            });
+            const data = await response.text();
+            return data
         }
 
-    }
-    send_mess_button.onclick = function(){
-        let mess_form = document.getElementById('mess_form');
-        let strObject = []
-        strObject[0]  = document.getElementById('textFIO').value;
-        strObject[1]  = document.getElementById('textEmail').value;
-        strObject[2]  = document.getElementById('textText').value;
-
-        if(strObject[2].length < 1){
-            preload('hide');
-            showResult('#popup-error','Ошибка сохранения', 'Введите текст сообщения');
-            return;
-        }
-        if(strObject[0].length < 3){
-            preload('hide');
-            showResult('#popup-error','Ошибка сохранения', 'Введите ФИО');
-            return;
-        }
-        var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
-        if(reg.test(strObject[1]) === false){
-            preload('hide');
-            showResult('#popup-error','Ошибка сохранения', 'Некорректный E-mail');
-            return;
-        }
-
-        var res = sendMess(strObject).then(function(data) {
-            preload('hide');
-            if(data == 'ERROR'){
-                showResult('#popup-error','Ошибка сохранения');
-            }
-            else{
-                //showResult('#popup-success', 'Срок объявления продлен');
-                mess_form.innerHTML = '<h3>Ваша заявка отправлена!</h3>'
+        let empty_rules = document.getElementById('empty_rules')
+        let send_mess_button = document.getElementById('send_mess_button')
+        empty_rules.onclick = function(){
+            if(this.checked){
+                send_mess_button.disabled = false
+            }else{
+                send_mess_button.disabled = true
             }
 
-       });
-    }
+        }
+        send_mess_button.onclick = function(){
+            let mess_form = document.getElementById('mess_form');
+            let strObject = []
+            strObject[0]  = document.getElementById('textFIO').value;
+            strObject[1]  = document.getElementById('textEmail').value;
+            strObject[2]  = document.getElementById('textText').value;
 
-    var mh = 0;
-    $('.deal-container').find(".card-deal").find("p").each(function () {
-        var h_block = parseInt($(this).height());
-        if(h_block > mh) {
-           mh = h_block;
-        };
-    });
-    $('.deal-container').find(".card-deal").find("p").height(mh);
+            if(strObject[2].length < 1){
+                preload('hide');
+                showResult('#popup-error','Ошибка сохранения', 'Введите текст сообщения');
+                return;
+            }
+            if(strObject[0].length < 3){
+                preload('hide');
+                showResult('#popup-error','Ошибка сохранения', 'Введите ФИО');
+                return;
+            }
+            var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+            if(reg.test(strObject[1]) === false){
+                preload('hide');
+                showResult('#popup-error','Ошибка сохранения', 'Некорректный E-mail');
+                return;
+            }
+
+            var res = sendMess(strObject).then(function(data) {
+                preload('hide');
+                if(data == 'ERROR'){
+                    showResult('#popup-error','Ошибка сохранения');
+                }
+                else{
+                    //showResult('#popup-success', 'Срок объявления продлен');
+                    mess_form.innerHTML = '<h3>Ваша заявка отправлена!</h3>'
+                }
+
+        });
+        }
+
+        var mh = 0;
+        $('.deal-container').find(".card-deal").find("p").each(function () {
+            var h_block = parseInt($(this).height());
+            if(h_block > mh) {
+            mh = h_block;
+            };
+        });
+        $('.deal-container').find(".card-deal").find("p").height(mh);
 
     })
 </script>
