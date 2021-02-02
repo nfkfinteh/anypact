@@ -64,7 +64,7 @@ if (strlen($_POST['sessid']) && check_bitrix_sessid()) {
 			<?if(COption::GetOptionString("anypact", "block_gosuslugi", "Y") != "Y"){?>
 				<div class="auth_with">Войти с помощью:
 					<?
-						$encodeURL = base64_encode($_SERVER['REQUEST_URI'].'#main_auth_form');
+						$encodeURL = base64_encode($_SERVER['REQUEST_URI']);
 					?>
 					<a href="/profile/aut_esia.php?returnurl=<?=$encodeURL?>"><img src="/local/templates/anypact/img/gosuslugi.svg"></a>
 				</div>
