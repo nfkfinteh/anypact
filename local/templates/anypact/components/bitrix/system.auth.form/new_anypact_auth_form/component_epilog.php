@@ -33,11 +33,11 @@ if ( !empty( $_GET["code"] ) ){
             header("Refresh: 0");
         } else {
             if($_GET['open_auth_popup'] == "Y")
-                echo '<script>window.onload = function() {document.getElementById("regpopup_autarisation").style.display = "block";document.getElementById("message_error_aut").innerHTML = "&#8226; Аккаунт с указанным пользователем Госуслуг не найден."; document.getElementById("message_error_aut_main").innerHTML = "&#8226; Аккаунт с указанным пользователем Госуслуг не найден.";}</script>';
+                echo '<script>document.getElementById("regpopup_bg").style.display = "block";document.getElementById("message_error_aut").innerHTML = "&#8226; Аккаунт с указанным пользователем Госуслуг не найден."; if(document.getElementById("message_error_aut_main") !== null) document.getElementById("message_error_aut_main").innerHTML = "&#8226; Аккаунт с указанным пользователем Госуслуг не найден.";</script>';
             else if($_GET['open_fgp_popup'] == "Y")
-                echo '<script>window.onload = function() {document.getElementById("regpopup_forgotpassword").style.display = "block";document.getElementById("message_error_forget_pass").innerHTML = "&#8226; Аккаунт с указанным пользователем Госуслуг не найден.";}</script>';
+                echo '<script>document.getElementById("regpopup_autarisation").style.display = "none"; document.getElementById("regpopup_btn_fgpw").style.display = "block";document.getElementById("message_error_forget_pass").innerHTML = "&#8226; Аккаунт с указанным пользователем Госуслуг не найден.";</script>';
             else
-                echo '<script>window.onload = function() {document.getElementById("message_error_aut").innerHTML = "&#8226; Аккаунт с указанным пользователем Госуслуг не найден."; document.getElementById("message_error_aut_main").innerHTML = "&#8226; Аккаунт с указанным пользователем Госуслуг не найден.";}</script>';
+                echo '<script>document.getElementById("message_error_aut").innerHTML = "&#8226; Аккаунт с указанным пользователем Госуслуг не найден."; document.getElementById("message_error_aut_main").innerHTML = "&#8226; Аккаунт с указанным пользователем Госуслуг не найден.";</script>';
         }
     }
 }
