@@ -52,6 +52,10 @@
 	<a href="#panel" class="up-arrow"></a>
 </footer>
 <?require_once($_SERVER['DOCUMENT_ROOT']."/local/include/form_modal.php");?>
+<?
+if(!$USER->IsAuthorized())
+	require_once($_SERVER['DOCUMENT_ROOT']."/local/include/gosuslugi_check.php");
+?>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 <script src="<?=SITE_TEMPLATE_PATH?>/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="<?=SITE_TEMPLATE_PATH?>/js/js.js"></script>
