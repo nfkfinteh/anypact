@@ -176,10 +176,10 @@ function custom_mail($to, $subject, $message, $additional_headers, $additional_p
 
     $message_new = explode("Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit", $message)[1];
-    
+
     list($message_alt, $message_html) = explode("Content-Type: text/html; charset=UTF-8
 Content-Transfer-Encoding: 8bit", $message_new);
-    
+
     if(empty($message_html)){
         $message_html = $message;
     }else{
@@ -200,8 +200,11 @@ Content-Transfer-Encoding: 8bit", $message_new);
 
     if (!$mail->send()) {
         AddMessage2Log($mail->ErrorInfo, 'ErrorInfo');
+        return false;
+        exit;
     } else {
         //echo 'Message sent!';
+        return true;
     }
 	$mail->clearAddresses();
 	$mail->ClearCustomHeaders();
@@ -331,7 +334,7 @@ function onEpilog() {
                     localredirect($arSect["~SECTION_PAGE_URL"], false, '301 Moved permanently');
                 }
             }
-            
+
         } elseif (!empty($_GET["ELEMENT_ID"]) && $curPage == '/pacts/view_pact/') {
             $arFilter = Array("IBLOCK_ID"=>3, "ID" => $_GET["ELEMENT_ID"]);
             $rsEl = CIBlockElement::GetList(
