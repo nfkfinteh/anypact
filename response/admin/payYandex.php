@@ -1,5 +1,8 @@
 <?php
 require_once($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/include/prolog_before.php");
+
+die();
+
 use Bitrix\Highloadblock as HL;
 use Bitrix\Main\Entity;
 include_once ('class/payYandex.php');

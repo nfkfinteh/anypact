@@ -118,14 +118,14 @@
                         <button class="btn btn-nfk" disabled>Выплата произведена</button>
                     <?}else { ?>
                         <?php
-                        $count = COption::GetOptionInt("main", "pay_count");
+                        /* $count = COption::GetOptionInt("main", "pay_count");
                         if(empty($count)){
                             $count = 1;
                         }
                         if($count <= 1000){
                         ?>
                             <button class="btn btn-nfk buttonSebdPay" data=<?=$UserRegAction["PAY_PARAMS"]?>>Выплатить вознаграждение</button>
-                        <?}?>
+                        <?} */?>
                     <?}?>
                 <? } ?>
             </td>
@@ -135,35 +135,35 @@
   </tbody>
 </table>
 <script>
-    $('.buttonSebdPay').on('click', function(){
-        let PayParams = $(this).attr("data");
-        let ButtonPay = $(this)
+    // $('.buttonSebdPay').on('click', function(){
+    //     let PayParams = $(this).attr("data");
+    //     let ButtonPay = $(this)
         
-        $.ajax({
-			type: 'POST',
-			url: '/response/admin/payYandex.php',
-			data: {'payParams': PayParams},
-			async:false,
-			success: function(result){
-                var $result = JSON.parse(result);
-                if($result['STATUS'] == "SUCCESS"){
-                    ButtonPay.prop('disabled', 'true');
-                }else{
-                    var data = {
-                        TITLE: 'Ошибка!',
-                        BODY: '<p>'+$result['DESCRIPTION']+'</p>',
-                        BUTTONS: [
-                            {
-                                NAME: 'Закрыть',
-                                CLOSE: 'Y'
-                            }
-                        ]
-                    };
-                    newAnyPactPopUp(data);
-                }
-			}
-        });        
-    });
+    //     $.ajax({
+	// 		type: 'POST',
+	// 		url: '/response/admin/payYandex.php',
+	// 		data: {'payParams': PayParams},
+	// 		async:false,
+	// 		success: function(result){
+    //             var $result = JSON.parse(result);
+    //             if($result['STATUS'] == "SUCCESS"){
+    //                 ButtonPay.prop('disabled', 'true');
+    //             }else{
+    //                 var data = {
+    //                     TITLE: 'Ошибка!',
+    //                     BODY: '<p>'+$result['DESCRIPTION']+'</p>',
+    //                     BUTTONS: [
+    //                         {
+    //                             NAME: 'Закрыть',
+    //                             CLOSE: 'Y'
+    //                         }
+    //                     ]
+    //                 };
+    //                 newAnyPactPopUp(data);
+    //             }
+	// 		}
+    //     });        
+    // });
         
 </script>
 <?
