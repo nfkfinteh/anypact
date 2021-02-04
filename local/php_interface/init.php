@@ -148,6 +148,7 @@ function OnBuildGlobalMenu(&$arGlobalMenu, &$arModuleMenu)
 
 }
 
+/*
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\SMTP;
@@ -209,6 +210,249 @@ Content-Transfer-Encoding: 8bit", $message_new);
 	$mail->clearAddresses();
 	$mail->ClearCustomHeaders();
 
+} */
+
+function custom_mail($to, $subject, $message, $additional_headers, $additional_parameters)
+{
+
+    if (!class_exists('PHPMailer'))
+    {
+        require_once ($_SERVER["DOCUMENT_ROOT"].'/local/php_interface/libraries/PHPMailer/PHPMailerAutoload.php');
+    }
+
+    $arErrorSendEmail = array();
+
+    if (stristr($additional_headers, "Content-Type: text/html") || stristr($message, "Content-Type: text/html"))
+    {
+        $isHTML=true;
+    } else
+    {
+        $isHTML=false;
+    }
+
+    $filesIDs=array();
+    $filesSRCs=array();
+    if (stristr($message,'------------'))
+    {
+        $messageArr=explode('------------',$message);
+        $messageArr2=explode('Content-Transfer-Encoding: 8bit',$messageArr[1]);
+        $messageAlt=trim($messageArr2[1]);
+        $messageArr2=explode('Content-Transfer-Encoding: 8bit',$messageArr[2]);
+        $messageHTML=trim($messageArr2[1]);
+
+        for ($i=2;$i<count($messageArr);$i++)
+        {
+            $curPart=$messageArr[$i];
+            if (stristr($curPart,'Content-ID: <'))
+            {
+                $curPartArr=explode('Content-ID: <',$curPart);
+                $curPartArr=explode('>',$curPartArr[1]);
+                $filesIDs[]=$curPartArr[0];
+            }
+        }
+    }
+    if (stristr($message,'---------'))
+    {
+        $messageArr=explode('---------',$message);
+        $messageArr2=explode('Content-Transfer-Encoding: 8bit',$messageArr[1]);
+        $messageAlt=trim($messageArr2[1]);
+        $messageArr2=explode('Content-Transfer-Encoding: 8bit',$messageArr[2]);
+        $messageHTML=trim($messageArr2[1]);
+
+        for ($i=2;$i<count($messageArr);$i++)
+        {
+            $curPart=$messageArr[$i];
+            if (stristr($curPart,'Content-ID: <'))
+            {
+                $curPartArr=explode('Content-ID: <',$curPart);
+                $curPartArr=explode('>',$curPartArr[1]);
+                $filesIDs[]=$curPartArr[0];
+            }
+        }
+    }
+
+    if(empty($messageHTML))
+        $messageHTML = $message;
+    if(empty($messageAlt))
+        $messageAlt = $messageHTML;
+
+    foreach ($filesIDs as $filesID)
+    {
+        $src=CFile::GetFileArray($filesID);
+        $filesSRCs[]=$src["SRC"];
+    }
+
+    $to = str_replace(' ','',$to);
+    $to = strtolower($to);
+
+    $fromName="AnyPact";
+
+    $host="post.nfksber.ru";
+    $port=587;
+    $user="info@anypact.ru";
+    $from="info@anypact.ru";
+    $pass="PKmR5g3k43";
+
+    preg_match('/Reply-To: (.+)\n/i', $additional_headers, $matches);
+    list(, $ReplyTo) = $matches;
+    $ReplyTo = str_replace(' ','',$ReplyTo);
+    $ReplyTo = strtolower($ReplyTo);
+    $ReplyTo=explode(",",$ReplyTo);
+
+    preg_match('/BCC: (.+)\n/i', $additional_headers, $matches);
+    list(, $bcc) = $matches;
+
+    $bcc=explode(",",$bcc);
+    $bcc2=COption::GetOptionString("main", "all_bcc");
+    $bcc2=explode(",",$bcc2);
+    $bcc=array_merge($bcc,$bcc2);
+    $bcc2=array();
+    $address = explode(',', $to);
+    foreach ($bcc as $email)
+    {
+        $mail=trim($email);
+        if (!in_array($mail,$address))
+        {
+            $bcc2[]=$mail;
+        }
+    }
+    $bcc=$bcc2;
+    $bcc=array_unique($bcc);
+
+    if ($isHTML)
+    {
+        $mail = new PHPMailer();
+        $mail->IsSMTP();
+
+        $address = explode(',', $to);
+        foreach ($address as $addr)
+        {
+            $mail->addAddress(trim($addr));
+        }
+
+        foreach ($ReplyTo as $email)
+        {
+            if (trim($email)!="")
+            {
+                $mail->AddReplyTo($email);
+            }
+        }
+
+        foreach ($bcc as $email)
+        {
+            if (trim($email)!="")
+            {
+                $mail->addBCC(trim($email));
+            }
+        }
+
+        $mail->CharSet = 'UTF-8';
+        $mail->Host = $host; // SMTP server example
+        $mail->SMTPDebug = 0; // enables SMTP debug information (for testing)
+        $mail->SMTPAuth = true; // enable SMTP authentication
+        //$mail->SMTPSecure = 'tls';
+        $mail->SMTPOptions = array(
+                'ssl' => array(
+                'verify_peer' => false,
+                'verify_peer_name' => false,
+                'allow_self_signed' => true
+            )
+        );
+        $mail->Port = $port; // set the SMTP port for server
+        $mail->Username = $user; // SMTP account username example
+        $mail->Password = $pass; // SMTP account password example
+        $mail->From = $from;
+        $mail->FromName = $fromName;
+
+        $mail->IsHTML(true);
+        $mail->Subject = $subject;
+
+        $bndr = substr(substr($messageHTML, 0, 25), -23); // А ВОТ ТУТ МУТИМ СВОЮ МАГИЮ!
+        $mail->ContentType = 'multipart/mixed; boundary="' . $bndr . '"';
+        $mail->Body = $messageHTML;
+        $mail->AltBody = strip_tags(str_replace("<br />","\n",$messageAlt));
+
+        foreach ($filesSRCs as $file)
+        {
+            $mail->AddAttachment($_SERVER["DOCUMENT_ROOT"].$file);
+        }
+
+        if (!$mail->send())
+        {
+            //file_put_contents($_SERVER["DOCUMENT_ROOT"]."/_asd","\nError: ".$mail->ErrorInfo."\n",FILE_APPEND);
+            $message = $mail->ErrorInfo;
+            // logEmailSendIblock($to, $subject, $message, $additional_headers, $additional_parameters);
+            return false;
+            exit;
+        }
+        // logEmailSendIblock($to, $subject, $message, $additional_headers, $additional_parameters);
+        return true;
+    } else
+    {
+        $mail = new PHPMailer();
+        $mail->IsSMTP();
+
+        $address = explode(',', $to);
+        foreach ($address as $addr)
+        {
+            $mail->addAddress(trim($addr));
+        }
+
+        foreach ($ReplyTo as $email)
+        {
+            if (trim($email)!="")
+            {
+                $mail->AddReplyTo(trim($email));
+            }
+        }
+
+        foreach ($bcc as $email)
+        {
+            if (trim($email)!="")
+            {
+                $mail->addBCC(trim($email));
+            }
+        }
+
+        $mail->CharSet = 'UTF-8';
+        $mail->Host = $host; // SMTP server example
+        $mail->SMTPDebug = 0; // enables SMTP debug information (for testing)
+        //$mail->SMTPSecure = 'tls';
+        $mail->SMTPOptions = array(
+                'ssl' => array(
+                'verify_peer' => false,
+                'verify_peer_name' => false,
+                'allow_self_signed' => true
+            )
+        );
+        $mail->SMTPAuth = true; // enable SMTP authentication
+        $mail->Port = $port; // set the SMTP port for the GMAIL server
+        $mail->Username = $user; // SMTP account username example
+        $mail->Password = $pass; // SMTP account password example
+        $mail->From = $from;
+        $mail->FromName = $fromName;
+
+        $mail->Subject = $subject;
+        $mail->Body = $messageHTML;
+
+        foreach ($filesSRCs as $file)
+        {
+            $mail->AddAttachment($_SERVER["DOCUMENT_ROOT"].$file);
+        }
+
+        if (!$mail->send())
+        {
+            //file_put_contents($_SERVER["DOCUMENT_ROOT"]."/_asd","\nError: ".$mail->ErrorInfo."\n",FILE_APPEND);
+            $message = $mail->ErrorInfo;
+            // logEmailSendIblock($to, $subject, $message, $additional_headers, $additional_parameters);
+            return false;
+            exit;
+        }
+        // logEmailSendIblock($to, $subject, $message, $additional_headers, $additional_parameters);
+        return true;
+    }
+    // logEmailSendIblock($to, $subject, $message, $additional_headers, $additional_parameters);
+    return false;
 }
 
 AddEventHandler("iblock", "OnBeforeIBlockElementUpdate", "SendEmailForCompanyAndDealModeration");
