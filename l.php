@@ -3,14 +3,14 @@
 global $USER;
 
 if($USER->IsAdmin()){
-    include_once($_SERVER['DOCUMENT_ROOT']."/local/php_interface/libraries/moneta-sdk-lib-master/autoload.php");
+    require_once($_SERVER['DOCUMENT_ROOT']."/local/php_interface/libraries/moneta-sdk-lib/autoload.php");
 
     $monetaSdk = new \Moneta\MonetaSdk();
     $monetaSdk->checkMonetaServiceConnection();
 
     $request = new \Moneta\Types\CreateProfileRequest();
     // группа "анонимные пользователи"
-    //$request->unitId = ********;
+    $request->unitId = 14264576;
     // тип профайла: физлица
     $request->profileType = \Moneta\Types\ProfileType::client;
 
