@@ -96,6 +96,8 @@ if(!empty($data) || !empty($imgData)){
         if (!filter_var($fields['EMAIL'], FILTER_VALIDATE_EMAIL)) {
             die();
         }
+    }else{
+        unset($fields['EMAIL']);
     }
 
     $res = CUser::GetList(($by="personal_country"), ($order="desc"), array("ID" => $idUser), array('SELECT' => array("UF_ESIA_ID", "UF_ESIA_AUT"), 'FIELDS' => array("ID", "PERSONAL_PHONE")));
