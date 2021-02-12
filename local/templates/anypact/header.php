@@ -199,7 +199,7 @@ global $USER;
                     <?else:?>
                     <span class="location">Выберите город</span>
                     <?endif?>
-                    <a href="tel:+78002008484" class="phone">8(800) 200-84-84</a>
+                    <a href="tel:+78352457711" class="phone">8(8352) 45-77-11</a>
 
                 </div>
                 <?if ( $userEsiaAut != 1 ) {?>
@@ -247,7 +247,7 @@ global $USER;
                     <div>Помощь в создании объявления</div>
                 </div>
 
-                <a href="tel:+78002008484" class="phone">8(800) 200-84-84</a>
+                <a href="tel:+78352457711" class="phone">8(8352) 45-77-11</a>
 
                 <?if(!empty($getGeo['cityName'])):?>
                 <span class="location"><?=$getGeo['cityName']?></span>
