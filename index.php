@@ -261,13 +261,13 @@ $APPLICATION->IncludeComponent(
         <div class="short-divider"></div>
         <div class="row">
             <div class="col-lg-6 contact-el">
-                <a href="tel:88352457711">
+                <a href="tel:88002008484">
                     <div class="contact-phone-icon">
                         <i class="icon-main icon-11"></i>
                     </div>
                     <div class="contact-phone">
                         <span class="contact-big-text">
-                            8 (8352) 45-77-11
+                            8 (800) 200-84-84
                         </span>
                         <span class="text-gray">
                             Менеджер ответит на Ваши вопросы по телефону
