@@ -19,7 +19,9 @@ $this->setFrameMode(true);
                 <i class="icon-main <?=$arResult['UF_FIELDS'][$section['ID']]['UF_ICON']?>"></i>
             <?endif?>
             <h5 style="min-height: 54px;"><?=$section['NAME']?></h5>
-            <?=$section['DESCRIPTION']?>
+            <p style="min-height: 160px; overflow: hidden;">
+                <?=$section['DESCRIPTION']?>
+            </p>
             <?
                 $URL_Section = $section['SECTION_PAGE_URL'];
                 // частный случай
