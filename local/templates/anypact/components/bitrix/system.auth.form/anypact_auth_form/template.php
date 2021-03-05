@@ -62,7 +62,7 @@ if (strlen($_POST['sessid']) && check_bitrix_sessid()) {
 			<div id="message_error_aut_main"><?ShowMessage($arResult['ERROR_MESSAGE']);?></div>
 			<button class="regpopup_content_form_submit" type="submit" name="Login" value="Y" id="submit_button_aut_user_main"><?=GetMessage("AUTH_LOGIN_BUTTON")?></button>
 			<?if(COption::GetOptionString("anypact", "block_gosuslugi", "Y") != "Y"){?>
-				<div class="auth_with">Войти с помощью:
+				<div class="auth_with">Войти, используя
 					<?
 						$encodeURL = base64_encode($_SERVER['REQUEST_URI']);
 					?>

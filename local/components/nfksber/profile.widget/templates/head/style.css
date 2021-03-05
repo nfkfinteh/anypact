@@ -47,18 +47,19 @@
 }
 .widget_user_profile_select {
     -webkit-user-select: none;
-       -moz-user-select: none;
-        -ms-user-select: none;
-            user-select: none;
-    box-shadow: 1px 3px 11px rgba(0, 0, 0, 0.15);
-    border-radius: 5px;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border-radius: 6px;
     /* width: 92%; */
     position: absolute;
     z-index: 100;
     background-color: white;
-    top: 63px;
+    top: 55px;
     left: 40px;
     text-align: left;
+    box-shadow: 0px 0px 8px rgb(0 0 0 / 20%);
+    white-space: nowrap;
 }
 .widget_user_profile_avatar span{
     font-weight: bold;
@@ -75,17 +76,25 @@
 }
 
 .widget_user_profile_select ul {
-    padding: 10px;
+    padding: 11px 17px;
     margin: 0;
+    border-bottom: 1px solid #F1F4F4;
 }
 
 .widget_user_profile_select ul li{
     list-style-type: none;
-    padding: 10px 16px 10px 16px;
+    padding: 9px;
+}
+
+.widget_user_profile_select a{
+    color: #131313;
+}
+
+.widget_user_profile_select a:hover{
+    color: #131313;
 }
 
 .widget_user_profile_select a.exit-profile {
-    border-top: 1px solid #F1F4F4;
     padding: 20px 26px;
 }
 
@@ -172,6 +181,13 @@
 .count_unread.active{
     display: block;
 }
+.user-info-block {
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px #ff6416 solid;
+}
 @media screen and (max-width: 767px) {
     .login-information .login-information-photo {
         margin-right: 0;
@@ -184,6 +200,18 @@
     .login-information-photo {
         width: 35px;
         height: 35px;
+    }
+    .widget_user_profile_select{
+        top: 45px;
+    }
+    .widget_user_profile_select ul{
+        padding: 10px 15px;
+    }
+    .widget_user_profile_select ul li{
+        padding: 7px;
+    }
+    .widget_user_profile_select a.exit-profile{
+        padding: 17px 22px;
     }
 }
 .link-messageList{

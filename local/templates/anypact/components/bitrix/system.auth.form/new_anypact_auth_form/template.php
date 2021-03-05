@@ -61,7 +61,7 @@ if (strlen($_POST['sessid']) && check_bitrix_sessid()) {
 			</div>
 			<button type="submit" name="Login" value="Y" class="regpopup_content_form_submit" id="submit_button_aut_user"><?=GetMessage("AUTH_LOGIN_BUTTON")?></button>
 			<?if(COption::GetOptionString("anypact", "block_gosuslugi", "Y") != "Y"){?>
-				<div class="auth_with">Войти с помощью:
+				<div class="auth_with">Войти, используя
 					<?
 						$open_popup = '?open_auth_popup=Y';
 						if(!empty($_GET))

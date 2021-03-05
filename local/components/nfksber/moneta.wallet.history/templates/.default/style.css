@@ -1,0 +1,44 @@
+#moneta_history > .date{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px -5px 0;
+}
+#moneta_history input{
+    height: 52px;
+    background: #F1F4F4;
+    border-radius: 6px;
+    border: none;
+    padding: 17px 22px;
+    font-weight: 300;
+    margin: 0 5px 11px 5px;
+}
+#moneta_history button.btn{
+    font-weight: 300;
+    background-color: #FF6600;
+    height: 52px;
+    width: 100%;
+    border-radius: 6px;
+    color: #ffffff;
+    margin: 0 5px 11px 5px;
+}
+.page-item .page-link {
+    background: none !important;
+    border: none !important;
+    color: #131313 !important;
+    font-weight: 300;
+    font-size: 16px;
+}
+
+.page-item.active .page-link {
+    color: #fd6600 !important;
+}
+
+.page-link:hover {
+    color: #fd6600 !important;
+}
+@media screen and (max-width: 420px){
+    #moneta_history > .date{
+        display: flex;
+        flex-wrap: wrap;
+    }
+}

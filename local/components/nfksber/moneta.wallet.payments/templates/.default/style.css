@@ -1,0 +1,6 @@
+form[name="cart"] input:first-of-type {
+    margin-bottom: 10px;
+}
+.bank-cards-col{
+    cursor: pointer;
+}

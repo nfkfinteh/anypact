@@ -55,6 +55,7 @@ function newAnyPactPopUp(arData){
     if(typeof (arData.ONLOAD) === "function"){
         arData.ONLOAD();
     }
+    return $('#'+pu_id);
 }
 
 function generateStr(length = 8) {

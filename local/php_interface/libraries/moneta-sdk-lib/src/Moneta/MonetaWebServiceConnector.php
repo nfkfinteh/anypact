@@ -188,6 +188,19 @@ class MonetaWebServiceConnector
 	/**
 	 * 
 	 *
+	 * @param \Moneta\Types\AsyncRequest $request
+	 *
+	 * @return \Moneta\Types\AsyncResponse
+	 */
+	public function Async(\Moneta\Types\AsyncRequest $request)
+	{
+		$request = array($request);
+		return $this->call(__FUNCTION__, $request);
+	}
+
+	/**
+	 * 
+	 *
 	 * @param \Moneta\Types\ConfirmTransactionRequest $request
 	 *
 	 * @return \Moneta\Types\ConfirmTransactionResponse
@@ -830,6 +843,19 @@ class MonetaWebServiceConnector
 	 * @return \Moneta\Types\SecureDataResponse
 	 */
 	public function SecureData(\Moneta\Types\SecureDataRequest $request)
+	{
+		$request = array($request);
+		return $this->call(__FUNCTION__, $request);
+	}
+
+	/**
+	 * 
+	 *
+	 * @param \Moneta\Types\SimplifiedIdentificationRequest $request
+	 *
+	 * @return \Moneta\Types\SimplifiedIdentificationResponse
+	 */
+	public function SimplifiedIdentification(\Moneta\Types\SimplifiedIdentificationRequest $request)
 	{
 		$request = array($request);
 		return $this->call(__FUNCTION__, $request);

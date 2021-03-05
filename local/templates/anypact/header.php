@@ -171,7 +171,13 @@ global $USER;
         </div>
     </div>
 </noindex>
-<?}?>
+<?}else if($USER->IsAdmin() || $USER->GetID() == 58){
+    $APPLICATION->IncludeComponent("nfksber:moneta.registration",
+    "",
+    Array(
+        "ACTION_VARIABLE" => "action"
+    ));
+}?>
 <!--/Окно регистрации-->
 <div class="container">
         <!--Шапка-->
@@ -194,50 +200,47 @@ global $USER;
                 ?>
             <div class="header_item tablet_ver_profile">
                 <div class="tablet_ver_tel">
-                    <?if(!empty($getGeo['cityName'])):?>
-                    <span class="location"><?=$getGeo['cityName']?></span>
-                    <?else:?>
-                    <span class="location">Выберите город</span>
-                    <?endif?>
                     <a href="tel:88002008484" class="phone">8 (800) 200-84-84</a>
-
                 </div>
                 <?if ( $userEsiaAut != 1 ) {?>
-                <div class="profile_item">
-                    <?
-                            $APPLICATION->IncludeComponent("nfksber:profile.widget",
-                            "head",
-                            Array(
-                                    'IS_PAGE_MESSAGE' => $APPLICATION->GetCurPage() == '/list_message/view_message/' ? 'Y' : 'N'
-                                )
-                            );
-                        ?>
-                </div>
-                <div class="profile_item">
-                    <div class="create-pact-btn">
-                        <a href="/first-help/"></a>
-                        <div>Помощь в создании объявления</div>
+                    <div class="profile_item">
+                        <div class="create-pact-btn">
+                            <a href="/first-help/"></a>
+                            <div>Помощь в создании объявления</div>
+                        </div>
                     </div>
+                    <div class="profile_item">
+                        <?
+                                $APPLICATION->IncludeComponent("nfksber:profile.widget",
+                                "head",
+                                Array(
+                                        'IS_PAGE_MESSAGE' => $APPLICATION->GetCurPage() == '/list_message/view_message/' ? 'Y' : 'N'
+                                    )
+                                );
+                            ?>
                 </div>
                 <?} else {?>
-                <div class="profile_item">
-                    <?
-                            $APPLICATION->IncludeComponent("nfksber:profile.widget",
-                            "head",
-                            Array(
-                                    'IS_PAGE_MESSAGE' => $APPLICATION->GetCurPage() == '/list_message/view_message/' ? 'Y' : 'N'
-                                )
-                            );
-                        ?>
-                </div>
-                <div class="profile_item">
-                    <!--Кнопка создать новое предложение-->
-                    <div class="create-pact-btn">
-                        <a href="/my_pacts/edit_my_pact/?ACTION=ADD"></a>
-                        <div>Создать предложение</div>
+                    <?if($USER->IsAdmin() || $USER->GetID() == 58){?>
+                        <?$APPLICATION->IncludeComponent("nfksber:moneta.balance","",Array());?>
+                    <?}?>
+                    <div class="profile_item">
+                        <!--Кнопка создать новое предложение-->
+                        <div class="create-pact-btn">
+                            <a href="/my_pacts/edit_my_pact/?ACTION=ADD"></a>
+                            <div>Создать предложение</div>
+                        </div>
+                        <!------------>
                     </div>
-                    <!------------>
-                </div>
+                    <div class="profile_item">
+                        <?
+                                $APPLICATION->IncludeComponent("nfksber:profile.widget",
+                                "head",
+                                Array(
+                                        'IS_PAGE_MESSAGE' => $APPLICATION->GetCurPage() == '/list_message/view_message/' ? 'Y' : 'N'
+                                    )
+                                );
+                            ?>
+                    </div>
                 <? } ?>
             </div>
             <?} else {?>
