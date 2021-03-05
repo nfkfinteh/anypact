@@ -32,5 +32,5 @@
 </div>
 <?=$arResult["NAV_STRING"]?>
 <div class="container-img">
-    <a href="https://pioneer-leasing.ru/" target="_blank"><img src="<?=SITE_TEMPLATE_PATH?>/img/pioneer_leasing_avto.png" alt="Пионер-лизинг"></a>
+    <a href="https://pioneer-leasing.ru/" target="_blank"><img src="<?=SITE_TEMPLATE_PATH?>/img/pioneer_leasing_avto.jpg" alt="Пионер-лизинг"></a>
 </div>

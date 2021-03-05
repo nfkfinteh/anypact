@@ -4,7 +4,7 @@ $APPLICATION->SetTitle("AnyPact");
 // проверяем авторизован ли пользователь
 global $USER;
 
-if ($USER->IsAuthorized() && ($USER->IsAdmin() || $USER->GetID() == 257)){
+if ($USER->IsAuthorized() && ($USER->IsAdmin() || $USER->GetID() == 257 || $USER->GetID() == 5503)){
 ?>
 <h3>Панель управления пользователями</h3>
     <? $APPLICATION->IncludeComponent(
