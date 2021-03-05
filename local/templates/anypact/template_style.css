@@ -4003,6 +4003,7 @@ h4.subtitle_contract {
     display: inline-block;
     position: relative;
     /*float: left;*/
+    margin-right: 30px;
 }
 
 .create-pact-btn a {
@@ -4336,10 +4337,6 @@ footer div {
     width: 134px !important;
 }
 
-.tablet_ver_tel .location {
-    display: none;
-}
-
 .tablet_ver_tel_login .location {
     display: none;
 }
@@ -4382,6 +4379,9 @@ footer div {
         position: initial;
         float: right;
     }
+    .create-pact-btn{
+        margin-right: 15px;
+    }
 }
 
 @media screen and (min-width: 768px) and (max-width: 991px) {
@@ -4397,7 +4397,7 @@ footer div {
     }
 
     .tablet_ver_logo .location {
-        display: none;
+        margin: 0 5px;
     }
 
     .tablet_ver_logo .manual {
@@ -4441,13 +4441,6 @@ footer div {
     .tablet_ver_tel .phone {
         margin-left: 0;
         float: none;
-    }
-
-    .tablet_ver_tel .location {
-        display: block;
-        /* position: absolute;
-        left: 120px;
-        top: 44px; */
     }
 
     .col-md-3.tablet_ver_profile {
@@ -4604,17 +4597,14 @@ footer div {
 }
 
 a.user-info {
-    height: 45px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    padding: 10px 20px;
     -webkit-box-sizing: content-box;
     box-sizing: content-box;
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    border-bottom: 1px #ff6416 solid;
 }
 
 .user-fio {
@@ -4961,7 +4951,7 @@ form.form-filter .selectbox-select .selectize-input input::placeholder {
     height: 12px;
 }
 .widget_user_profile_select{
-    left: -31px !important;
+    left: -99px !important;
 }
 .login-information {
     display: flex !important;
@@ -5074,10 +5064,16 @@ form.form-filter .selectbox-select .selectize-input input::placeholder {
     background: #fff;
     border-radius: 5px;
     margin: auto 14px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 19px;
+    color: #131313;
 }
 .new-pu-title-block {
     padding: 20px 25px;
-    background: #ff6416;
+    background: #FE6600;
     color: white;
     border-radius: 5px 5px 0 0;
     display: flex;
@@ -5104,16 +5100,16 @@ form.form-filter .selectbox-select .selectize-input input::placeholder {
     margin-left: 10px;
     color: #fff;
     border: 0;
-    background: #ff6416;
-    padding: 5px 12px;
-    border-radius: 5px;
+    background: #FE6600;
+    padding: 7px 20px;
+    border-radius: 6px;
     cursor: pointer;
 }
 .flat_button:hover {
     opacity: .88;
 }
 .flat_button.secondary {
-    color: #ff6416;
+    color: #FE6600;
     background: transparent;
 }
 .flat_button.secondary:hover {
@@ -5630,4 +5626,78 @@ div#code_status {
     margin: 0 auto;
     top: 0;
     left: 0;
+}
+
+
+/* табы */
+.profile-tabs ul {
+    display: flex;
+    flex-direction: column;
+}
+.profile-tabs .nav-item {
+    float: none;
+    margin-bottom: 5px;
+}
+.profile-tabs .nav-link {
+    padding: 14px 14px 14px 67px !important;
+    position: relative;
+    border-radius: 6px;
+    border: none;
+    color: #131313;
+    font-weight: 300;
+    display: block;
+    margin-right: 0;
+    width: 100%;
+    transition: all .3s;
+}
+.profile-tabs .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    background-color: #F1F4F4;
+}
+.profile-tabs .nav>li>a:focus, .nav>li>a:hover {
+    background-color: #F1F4F4;
+}
+.profile-tabs .nav-pills>li+li {
+    margin-left: 0;
+}
+.profile-tabs .nav-link:before {
+    content: "";
+    position: absolute;
+    top: 14px;
+    left: 23px;
+    width: 24px;
+    height: 24px;
+    background-repeat: no-repeat;
+    transition: all .3s;
+}
+.profile-tabs .nav-link.fi-rr-mode-portrait:before {
+    background-image: url(image/profile_tab/fi-rr-mode-portrait.svg);
+}
+.profile-tabs .nav-link.fi-rr-settings-sliders:before {
+    background-image: url(image/profile_tab/fi-rr-settings-sliders.svg);
+}
+.profile-tabs .nav-link.fi-rr-marker:before {
+    background-image: url(image/profile_tab/fi-rr-marker.svg);
+}
+.profile-tabs .nav-link.fi-rr-briefcase:before {
+    background-image: url(image/profile_tab/fi-rr-briefcase.svg);
+}
+.profile-tabs .nav-link.fi-rr-credit-card:before {
+    background-image: url(image/profile_tab/fi-rr-credit-card.svg);
+}
+
+/* активные иконки */
+.profile-tabs .nav-link.active.fi-rr-mode-portrait:before {
+    background-image: url(image/profile_tab/fi-rr-mode-portrait-active.svg);
+}
+.profile-tabs .nav-link.active.fi-rr-settings-sliders:before {
+    background-image: url(image/profile_tab/fi-rr-settings-sliders-active.svg);
+}
+.profile-tabs .nav-link.active.fi-rr-marker:before {
+    background-image: url(image/profile_tab/fi-rr-marker-active.svg);
+}
+.profile-tabs .nav-link.active.fi-rr-briefcase:before {
+    background-image: url(image/profile_tab/fi-rr-briefcase-active.svg);
+}
+.profile-tabs .nav-link.active.fi-rr-credit-card:before {
+    background-image: url(image/profile_tab/fi-rr-credit-card-active.svg);
 }

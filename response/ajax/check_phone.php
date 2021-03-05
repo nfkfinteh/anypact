@@ -1,6 +1,7 @@
 <?
 require_once($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/include/prolog_before.php");
 require_once($_SERVER["DOCUMENT_ROOT"] . "/local/class/CProstorSMS.php");
+require_once($_SERVER["DOCUMENT_ROOT"] . "/local/class/CMoneta.php");
 
 use Bitrix\Main\Loader,
     Bitrix\Highloadblock as HL;
@@ -129,6 +130,28 @@ if(($_POST['action'] == 'check' || $_POST['action'] == 'send') && check_bitrix_s
     }else{
         die(json_encode(array("STATUS" => "error", "ERROR_MESSAGE" => "Код неверен")));
     }
+}
+if(($_POST['action'] == 'sendMoneta' || $_POST['action'] == 'checkMoneta') && check_bitrix_sessid()){
+    global $USER;
+    $res = CUser::GetList(($by="personal_country"), ($order="desc"), array('ID' => $USER -> GetID()), array('FIELDS' => array('ID'), 'SELECT' => array('UF_MONETA_UNIT_ID', 'UF_MONETA_ACCOUNT_ID', 'UF_MONETA_CHECK_STAT')));
+    if($arUser = $res -> getNext()){
+        if(!empty($arUser['UF_MONETA_UNIT_ID']) && !empty($arUser['UF_MONETA_ACCOUNT_ID'])){
+            if($arUser['UF_MONETA_CHECK_STAT'] != 'CREATED' && $arUser['UF_MONETA_CHECK_STAT'] != 'SUCCESS'){
+                if($_POST['action'] == 'sendMoneta'){
+                    $arRes = CMoneta::sendConfimSMS($arUser['UF_MONETA_UNIT_ID']);
+                    if($arRes['STATUS'] == 'SUCCESS')
+                        die(json_encode(array("STATUS" => "send", "DATA" => '<div class="check_sms"><p><input type="text" name="CODE" class="code_input"><button class="flat_button" id="send_code">Подтвердить</button><div>Если сообщение не дошло, вы можете <span id="sms_send_span">отправить код повторно через <span id="sms_send_timer">01:00</span></span></div><div id="code_status"></div></div>')));
+                    else
+                        die(json_encode($arRes));
+                }else if($_POST['action'] == 'checkMoneta' && !empty($_POST['code']) && is_numeric($_POST['code']) && strlen($_POST['code']) == 6){
+                    die(json_encode(CMoneta::SMSCodeApply($arUser['UF_MONETA_UNIT_ID'], $_POST['code'], true)));
+                }
+            }else
+                die(json_encode(array("STATUS" => "error", "ERROR_MESSAGE" => "Ваш номер телефона уже был подтвержден")));
+        }else
+            die(json_encode(array("STATUS" => "error", "ERROR_MESSAGE" => "У вас не подключен электронный кошелек")));
+    }else
+        die(json_encode(array("STATUS" => "error", "ERROR_MESSAGE" => "Пользователь не найден")));   
 }
 die(json_encode(array("STATUS" => "error", "ERROR_MESSAGE" => "Ошибка!")));
 ?>

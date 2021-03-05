@@ -40,20 +40,23 @@ if(!empty($arResult['ACTIVE_COMPANY']['ID'])){
                 </a>
                 <div class="user-menu-overflow">
                     <div class="user-menu-block" onclick="event.stopPropagation()">
-                        <a class="user-info" href="<?=$profileURL?>">
-                        <? if(empty($arResult["PERSONAL_PHOTO"])):?>
-                            <div class="widget_user_profile_avatar container_prof">
-                                <span><?=$arResult["IN_NAME"]?></span>
-                        <?else:?>
-                            <div class="login-information-photo container_prof">
-                                <img src="<?=$arResult["PERSONAL_PHOTO"]?>">
-                        <?endif?>
-                                <div class="count_unread <?if($arResult['UNREAD_MESSAGE']>0):?>active<?endif?>"><?=$arResult['UNREAD_MESSAGE']?></div>
-                            </div>
-                            <div class="user-fio">
-                                <?if(!empty($arResult['ACTIVE_COMPANY'])):?><?=$arResult['ACTIVE_COMPANY']['NAME']?>,   <?endif?> <?=$arResult["LAST_NAME"]?> <?=$arResult["IN_NAMES"]?>
-                            </div>
-                        </a>
+                        <div class="user-info-block">
+                            <a class="user-info" href="<?=$profileURL?>">
+                            <? if(empty($arResult["PERSONAL_PHOTO"])):?>
+                                <div class="widget_user_profile_avatar container_prof">
+                                    <span><?=$arResult["IN_NAME"]?></span>
+                            <?else:?>
+                                <div class="login-information-photo container_prof">
+                                    <img src="<?=$arResult["PERSONAL_PHOTO"]?>">
+                            <?endif?>
+                                    <div class="count_unread <?if($arResult['UNREAD_MESSAGE']>0):?>active<?endif?>"><?=$arResult['UNREAD_MESSAGE']?></div>
+                                </div>
+                                <div class="user-fio">
+                                    <?if(!empty($arResult['ACTIVE_COMPANY'])):?><?=$arResult['ACTIVE_COMPANY']['NAME']?>,   <?endif?> <?=$arResult["LAST_NAME"]?> <?=$arResult["IN_NAMES"]?>
+                                </div>
+                            </a>
+                            <?$APPLICATION->IncludeComponent("nfksber:moneta.balance","",Array());?>
+                        </div>
                         <div class="user-menu">
                             <ul>
                                 <li><a href="<?=$profileURL?>">Мой профиль</a></li>
@@ -87,7 +90,7 @@ if(!empty($arResult['ACTIVE_COMPANY']['ID'])){
                 <?/*<span class="widget_user_profile_url_profile">Профиль</span>*/?>
 
                 <div class="widget_user_profile_select" style="display: none;">
-                    <span class="triangle">▲</span>
+                    <?/*?><span class="triangle">▲</span><?*/?>
                     <ul>
                         <li><a href="<?=$profileURL?>">Мой профиль</a></li>
                         <li><a href="/profile/">Редактировать профиль</a></li>

@@ -11,7 +11,7 @@ function sdk_autoloader() {
                 'MonetaSdkKomtetKassa.php', 'MonetaSdkIretailKassa.php', 'MonetaSdkOrangedataKassa.php',
 		'MonetaSdkDreamkassKassa.php');
 
-    $vendorDir = __DIR__ . "/moneta-sdk-lib/src/Moneta/";
+    $vendorDir = __DIR__ . "/src/Moneta/";
     
     foreach ($file_map AS $one_file) {
         $filepath = $vendorDir . $one_file;
@@ -24,7 +24,7 @@ function moneta_base_types_autoloader() {
     $file_map = array('Entity.php', 'EntityBatchRequestType.php', 'TransactionRequestType.php', 'VerifyTransferResponseType.php',
                       'OperationInfo.php', 'OperationInfoList.php', 'BankAccount.php', 'Document.php');
 
-    $vendorDir = __DIR__ . "/moneta-sdk-lib/src/Moneta/Types/";
+    $vendorDir = __DIR__ . "/src/Moneta/Types/";
     
     foreach ($file_map AS $one_file) {
         $filepath = $vendorDir . $one_file;
@@ -53,7 +53,7 @@ function moneta_base_types_autoloader() {
 
 
 function show_directory() {
-    $vendorDir = __DIR__ . "/moneta-sdk-lib/src/Moneta/Types/";
+    $vendorDir = __DIR__ . "/src/Moneta/Types/";
 
     if ($handle = opendir($vendorDir)) {
         while (false !== ($entry = readdir($handle))) {

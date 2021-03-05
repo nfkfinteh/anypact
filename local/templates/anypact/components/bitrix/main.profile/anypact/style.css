@@ -64,11 +64,25 @@ div.bx-auth-profile div.bx-auth-secure-unlock {
 } */
 
 .user_profile_form h3 {
-    font-size: 24px;
-    font-weight: 900;
     margin-top: 0;
     padding-top: 0;
     padding-bottom: 14px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 28px;
+
+    color: #131313;
+}
+.user_profile_form_editdata p{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #131313;
 }
 
 .user_profile_form_editdata_foto {
@@ -76,6 +90,7 @@ div.bx-auth-profile div.bx-auth-secure-unlock {
     height: 165px;
     border-radius: 83px;
     position: relative;
+    margin-bottom: 40px;
 }
 
 .user_profile_form_editdata_foto img {
@@ -83,12 +98,29 @@ div.bx-auth-profile div.bx-auth-secure-unlock {
     height: 165px;
     border-radius: 83px;
     overflow: hidden;
+    position: absolute;
+}
+
+.user_profile_form_editdata_foto img:last-of-type {
+    display: none;
+}
+
+.user_profile_form_editdata_foto:hover img:last-of-type {
+    display: block;
 }
 
 .user_profile_form_editdata label,
 .user_profile_form_fixdata label {
     padding-left: 21px;
     padding-bottom: 4px;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #131313;
 }
 
 .user_profile_form_editdata input,.user_profile_form_editdata select,
@@ -97,9 +129,14 @@ div.bx-auth-profile div.bx-auth-secure-unlock {
     margin-bottom: 6px;
     background: #f1f4f4;
     width: 100%;
-    border-radius: 5px;
-    border: 1px solid #ff6416;
+    border-radius: 6px;
+    border: 1px solid #f1f4f4;
     height: 52px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 19px;
 }
 
 .user_profile_form_editdata textarea{
@@ -108,12 +145,18 @@ div.bx-auth-profile div.bx-auth-secure-unlock {
     background: #f1f4f4;
     width: 100%;
     border-radius: 5px;
-    border: 1px solid #ff6416;
+    border: 1px solid #f1f4f4;
     height: 200px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 19px;
 }
 
 .user_profile_form_editdata input:focus {
-    outline: 1px solid #ff6416;
+    border: 1px solid #ff6416;
+    outline: none;
 }
 
 
@@ -121,17 +164,23 @@ div.bx-auth-profile div.bx-auth-secure-unlock {
 
 .user_profile_form .save_profile_button {
     width: 164px;
-    border: 1px solid #ff6416;
-    color: #ff6416;
+    border: 1px solid #FE6600;
     background: none;
     border-radius: 5px;
     padding: 10px 30px;
     float: right;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 19px;
+    
+    color: #FE6600;
 }
 
 .user_profile_form .save_profile_button:hover {
     color: #fff;
-    background: #ff6416;
+    background: #FE6600;
 }
 
 input:disabled {
@@ -142,18 +191,6 @@ input:disabled {
 #lichnue_dannue,
 #bankovskie_dannue {
     margin-top: 48px;
-}
-
-.left_blok_margin {
-    margin-top: 103px;
-}
-
-.left_blok_margin_ub {
-    margin-top: 54px;
-}
-
-.left_blok_margin_first {
-    margin-top: 54px;
 }
 
 .form-checkbox{
@@ -201,14 +238,6 @@ div.add_company{
     #lichnue_dannue_bottom {
         display: none;
     }
-    .user_profile_form_editdata_foto {
-        margin-bottom: 60px;
-        margin-left: 50%;
-        left: 2px;
-    }
-    .left_blok_margin_first {
-        margin-top: 0px;
-    }
 }
 
 @media (max-width: 992px) {
@@ -232,12 +261,6 @@ div.add_company{
         margin-left: 50%;
         left: -82px;
     }
-    .left_blok_margin {
-        margin-top: 0;
-    }
-    .left_blok_margin_ub {
-        margin-top: 0;
-    }
 }
 
 @media (max-width: 576px) {
@@ -251,12 +274,6 @@ div.add_company{
         margin-bottom: 60px;
         margin-left: 50%;
         left: -82px;
-    }
-    .left_blok_margin {
-        margin-top: 0;
-    }
-    .left_blok_margin_ub {
-        margin-top: 0;
     }
 }
 
@@ -366,13 +383,27 @@ div.add_company{
 }
 
 #button_calendar img {
-    width: 100%;
+    max-width: 100%;
+    max-height: 100%;
 }
 
 .user_profile_form_editdata a.btn {
     padding: 10px 30px;
     border-radius: 5px;
     max-width: 100%;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 19px;
+    /* identical to box height */
+
+
+    color: #FE6600;
+    border-color: #FE6600;
+}
+.user_profile_form_editdata a.btn:hover {
+    background:#FE6600;
 }
 
 #companyDeleteWarning {
@@ -398,10 +429,10 @@ div#signpopup_close {
     float: right;
 }
 .hidden-value input{
-    border: 1px solid #ff6416;
+    border: 1px solid #f1f4f4;
     background: #f1f4f4;
     cursor: text!important;
-    color: rgb(33, 37, 41);
+    color: #131313;
 }
 div#save_phone_error{
     display: none;
@@ -410,4 +441,34 @@ div#save_phone_error{
 #save_phone_error p:first-of-type {
     margin: 0;
     color: red;
+}
+
+.edit-profile{
+    display: none;
+}
+
+@media screen and (max-width: 993px){
+    .profile-tabs span{
+        display: none;
+    }
+    .profile-tabs a.nav-link {
+        height: 50px;
+        padding: 0px!important;
+        width: 70px;
+    }
+}
+
+@media screen and (max-width: 577px){
+    .profile-reverse{
+        flex-direction: column-reverse;
+    }
+    .profile-tabs ul {
+        flex-direction: row!important;
+    }
+    .profile-tabs .nav-link:before{
+        left: 15px!important;
+    }
+    .profile-tabs a.nav-link{
+        width: 52px;
+    }
 }

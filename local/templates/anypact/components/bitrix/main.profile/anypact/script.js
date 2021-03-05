@@ -194,6 +194,8 @@ $(document).ready(function() {
         var input = $(this).children('input');
         $(input).val('');
         $(input).prop('disabled', false);
+        if($(input).hasClass('js-mask__email'))
+            $(input).attr('name', 'EMAIL');
         $(this).parent().append(input);
         $(this).remove();
         $(input).focus();
