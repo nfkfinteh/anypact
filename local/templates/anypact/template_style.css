@@ -5393,15 +5393,17 @@ a.soc-link svg{
 .margin-bottom25px{
     margin-bottom: 25px;
 }
-
-a.soc-link:hover, a.soc-link:focus{
-    text-decoration: none!important;
+a.soc-link {
+    text-decoration: none;
 }
-
-a.soc-link svg:hover{
-    fill: #ff6416;
+a.soc-link .fa {
+    color: #BDBDBD;
+    font-size: 30px;
+    transition: .3s all;
 }
-
+a.soc-link .fa:hover, a.soc-link .fa:focus {
+    color: #ff6416;
+}
 /* Адаптация страницы 50р*/
 @media screen and (max-width: 1440px){
     .container-akcii {
