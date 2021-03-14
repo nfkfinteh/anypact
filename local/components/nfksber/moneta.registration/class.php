@@ -27,7 +27,7 @@ class CMonetaRegistration extends CBitrixComponent
     }
 
     private function getUserData($user_id){
-        $res = CUser::GetList(($by="personal_country"), ($order="desc"), array("ID" => $user_id), array('FIELDS' => array("ID", "PERSONAL_PHONE"), 'SELECT' => array("UF_SPASSPORT", "UF_NPASSPORT", "UF_DATA_PASSPORT", "UF_KEM_VPASSPORT", "UF_INN", "UF_SNILS")));
+        $res = CUser::GetList(($by="personal_country"), ($order="desc"), array("ID" => $user_id), array('FIELDS' => array("ID", "PERSONAL_PHONE", "EMAIL"), 'SELECT' => array("UF_SPASSPORT", "UF_NPASSPORT", "UF_DATA_PASSPORT", "UF_KEM_VPASSPORT", "UF_INN", "UF_SNILS")));
         if($arUser = $res->Fetch()) 
             foreach($arUser as $key => &$value)
                 switch ($key) {
@@ -39,6 +39,9 @@ class CMonetaRegistration extends CBitrixComponent
                     case "UF_KEM_VPASSPORT":
                         $value = self::hideText($value, 4);
                         break;
+                    case "EMAIL":
+                        $hideEmail = explode("@", $value);
+                        $value = self::hideText($hideEmail[0])."@".$hideEmail[1];
                     case "ID":
                     case "PERSONAL_PHONE":
                         $value = $value;
@@ -74,7 +77,7 @@ class CMonetaRegistration extends CBitrixComponent
         foreach($arFields as $array)
             $arData[$array['name']] = $array['value'];
 
-        $arSelect = array("UF_SPASSPORT", "UF_NPASSPORT", "UF_DATA_PASSPORT", "UF_KEM_VPASSPORT", "UF_STREET", "UF_REGION", "UF_N_HOUSE", "UF_N_HOUSING", "UF_N_APARTMENT", "UF_ESIA_AUT", "UF_ETAG_ESIA", "UF_ESIA_ID", "UF_MONETA_UNIT_ID", "UF_MONETA_ACCOUNT_ID");
+        $arSelect = array("UF_SPASSPORT", "UF_NPASSPORT", "UF_DATA_PASSPORT", "UF_KEM_VPASSPORT", "UF_ESIA_AUT", "UF_ETAG_ESIA", "UF_ESIA_ID", "UF_MONETA_UNIT_ID", "UF_MONETA_ACCOUNT_ID");
 
         if($arData["D_S"] == "Y")
             $arSelect[] = "UF_SNILS";
@@ -111,7 +114,7 @@ class CMonetaRegistration extends CBitrixComponent
         else
             return array("STATUS" => "ERROR", "ERROR_TYPE" => "wrong_pass_repeat", "ERROR_DESCRIPTION" => "Платежные пароли не совпадают");
         
-        $res = CUser::GetList(($by="personal_country"), ($order="desc"), array("ID" => $user_id), array('FIELDS' => array("ID", "EMAIL", "NAME", "LAST_NAME", "SECOND_NAME", "PERSONAL_GENDER", "PERSONAL_BIRTHDAY", "PERSONAL_ZIP", "PERSONAL_CITY", "PERSONAL_COUNTRY", "PERSONAL_STATE"), 'SELECT' => $arSelect));
+        $res = CUser::GetList(($by="personal_country"), ($order="desc"), array("ID" => $user_id), array('FIELDS' => array("ID", "EMAIL", "NAME", "LAST_NAME", "SECOND_NAME"), 'SELECT' => $arSelect));
         if($arUser = $res->Fetch()){
             foreach($arUser as $key => $value){
                 if(substr($key, 0, 3) == "UF_") 

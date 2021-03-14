@@ -23,6 +23,13 @@ use \Bitrix\Main\Localization\Loc;
                         <form action="<?=$arResult["REG_URL"]?>" method="post" name="moneta_reg_form">
                             <div class="row">
                                 <div class="col-xl-6 col-md-6 col-sm-12">
+                                    <input disabled type="text" placeholder="Дата выдачи паспорта:" value="<?=$arResult["CURRENT_USER"]["UF_DATA_PASSPORT"]?>">
+                                    <div class="form-wallet-item">
+                                        <input disabled type="text" placeholder="Серия" value="<?=$arResult["CURRENT_USER"]["UF_SPASSPORT"]?>">
+                                        <input disabled type="text" placeholder="Номер" value="<?=$arResult["CURRENT_USER"]["UF_NPASSPORT"]?>">
+                                    </div>
+                                    <input disabled type="text" placeholder="Кем выдан паспорт:" value="<?=$arResult["CURRENT_USER"]["UF_KEM_VPASSPORT"]?>">
+                                    <input disabled type="text" placeholder="E-mail" value="<?=$arResult["CURRENT_USER"]["EMAIL"]?>">
                                     <input type="text" placeholder="Код подразделения" name="DEPARTMENT" value="">
                                     <input type="text" placeholder="Телефон" class="js-mask__phone" name="PHONE" value="<?=$arResult["CURRENT_USER"]["PERSONAL_PHONE"]?>">
                                 </div>

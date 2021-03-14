@@ -28,7 +28,7 @@ define("USER_COMMENT_HLB_ID", "24");
 define("USER_LIKE_HLB_ID", "23");
 define("USER_FILE_HLB_ID", "25");
 
-define("MONETA_OPERATION_HLB_ID", "26");
-define("MONETA_USER_CARDS_HLB_ID", "27");
+define("MONETA_OPERATION_HLB_ID", "27");
+define("MONETA_USER_CARDS_HLB_ID", "28");
 
 ?>

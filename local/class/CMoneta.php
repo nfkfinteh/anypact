@@ -3,7 +3,7 @@ require_once($_SERVER['DOCUMENT_ROOT']."/local/php_interface/libraries/moneta-sd
 
 class CMoneta {
 
-    const MONETA_ASYNC_CALLBACK_URL = 'http://anypact.ru/request_log.php?check_code=3dyvhfangy8b5R84EOGFADHI';
+    const MONETA_ASYNC_CALLBACK_URL = 'https://anypact.ru/local/scripts/monetaCheckAsync.php?check_code=3dyvhfangy8b5R84EOGFADHI';
 
     private function getOperationCategoryName($category){
         $arCategory = array(

@@ -58,11 +58,7 @@ if($arResult['GET_WITHDRAWAL'] == "Y"){
             <p>Баланс</p>
             <p><span><?=number_format($arResult['USER']['UF_MONETA_BALANCE'], 2, ',', ' ');?> ₽</span></p>
         </div>
-        <div class="balance-col">
-            <div class="menu-wallet-dots">
-                <span></span>
-            </div>
-        </div>
+        
     </div>
     <div class="btn-balance-container">
         <a href="#" id="moneta_deposit_btn">Пополнить</a>
