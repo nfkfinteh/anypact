@@ -29,13 +29,13 @@ $(document).ready(function() {
         return false;
     });
 
-    // рамка редактирования фото
-    $('.user_profile_form_editdata_foto').mouseover(function() {
-        $('#edit_user_photo').css('top', '0');
-    });
-    $('.user_profile_form_editdata_foto').mouseleave(function() {
-        $('#edit_user_photo').css('top', '168px');
-    });
+    // // рамка редактирования фото
+    // $('.user_profile_form_editdata_foto').mouseover(function() {
+    //     $('#edit_user_photo').css('top', '0');
+    // });
+    // $('.user_profile_form_editdata_foto').mouseleave(function() {
+    //     $('#edit_user_photo').css('top', '168px');
+    // });
 
 
     $(document).on('submit', '.edit-profile', function(e){

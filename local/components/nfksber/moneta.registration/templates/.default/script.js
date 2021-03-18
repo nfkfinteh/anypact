@@ -196,20 +196,20 @@ $(document).ready(function(){
         return false;
     });
 
-    $('.hidden-value').on('click', function(){
-        if($(this).hasClass('hidden-value')){
-            $(this).val('');
-            $(this).prop('disabled', false);
-            $(this).focus();
-            $(this).removeClass('hidden-value');
-            if($(this).attr('name') == "SNILS"){
-                $(this).inputmask({ mask:'999-999-999 99'});
-                $(this).parent().find('input[name="D_S"]').remove();
-            }
-            if($(this).attr('name') == "INN")
-                $(this).parent().find('input[name="D_I"]').remove();
-        }
-    });
+    // $('.hidden-value').on('click', function(){
+    //     if($(this).hasClass('hidden-value')){
+    //         $(this).val('');
+    //         $(this).prop('disabled', false);
+    //         $(this).focus();
+    //         $(this).removeClass('hidden-value');
+    //         if($(this).attr('name') == "SNILS"){
+    //             $(this).inputmask({ mask:'999-999-999 99'});
+    //             $(this).parent().find('input[name="D_S"]').remove();
+    //         }
+    //         if($(this).attr('name') == "INN")
+    //             $(this).parent().find('input[name="D_I"]').remove();
+    //     }
+    // });
     if($('form[name="moneta_reg_form"] input.hidden-value[name="SNILS"]').length < 1)
         $('form[name="moneta_reg_form"] input[name="SNILS"]').inputmask({ mask:'999-999-999 99'});
 

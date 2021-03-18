@@ -102,12 +102,12 @@ div.bx-auth-profile div.bx-auth-secure-unlock {
 }
 
 .user_profile_form_editdata_foto img:last-of-type {
-    display: none;
+    /* display: none; */
 }
 
-.user_profile_form_editdata_foto:hover img:last-of-type {
+/* .user_profile_form_editdata_foto:hover img:last-of-type {
     display: block;
-}
+} */
 
 .user_profile_form_editdata label,
 .user_profile_form_fixdata label {

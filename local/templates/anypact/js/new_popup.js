@@ -14,7 +14,7 @@ function newAnyPactPopUp(arData){
     $(newDiv).attr('title', 'Закрыть');
     newDiv.onclick = (closeNewAnyPactPopUp);
     $('body').append(html);
-    $('body').css("overflow", "hidden");
+    //$('body').css("overflow", "hidden");
     $('#'+pu_id+' .new-pu-title-block').append(newDiv);
     if(arData.BODY.length > 0){
         var newDiv = document.createElement("div");

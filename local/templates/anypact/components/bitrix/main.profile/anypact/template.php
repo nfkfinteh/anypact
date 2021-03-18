@@ -60,7 +60,7 @@ function hideText($text, $count_b = 3, $count_e = 2) {
                             <div class="row">
                                 <div class="col-xl-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label><?=GetMessage("LOGIN")?>:</label>
+                                        <label><?=GetMessage("LOGIN")?></label>
                                         
                                         <input type="text" value="<?=hideText($arResult["arUser"]["LOGIN"])?>" disabled>
                                     </div>

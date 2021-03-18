@@ -84,7 +84,7 @@
     color: #131313;
 }
 .reg-wallet-form input{
-    height: 52px;
+    min-height: 52px;
     background: #F1F4F4;
     border-radius: 6px;
     border:none;
@@ -95,7 +95,10 @@
 .form-wallet-item{
     display: flex;
 }
-.form-wallet-item input:first-child{
+label {
+    font-weight: 400;
+}
+.form-wallet-item div:first-child{
     width: 92px;
     margin-right: 20px;
 }
