@@ -13,7 +13,7 @@ use \Bitrix\Main\Localization\Loc;
  */
 
 ?>
-<?if($arResult["CURRENT_USER"]['UF_MONETA_UNIT_ID'] > 0){?>
+<?if($arResult["CURRENT_USER"]['UF_MONETA_UNIT_ID'] > 0 && $arResult["CURRENT_USER"]['UF_MONETA_ACCOUNT_ID'] > 0 && $arResult["CURRENT_USER"]['UF_MONETA_DOC_ID'] > 0){?>
     <div class="wallet-header">
         <a href="/profile/wallet/">
             <div class="wallet-img">

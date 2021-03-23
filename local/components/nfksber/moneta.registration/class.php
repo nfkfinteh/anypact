@@ -27,7 +27,7 @@ class CMonetaRegistration extends CBitrixComponent
     }
 
     private function getUserData($user_id){
-        $res = CUser::GetList(($by="personal_country"), ($order="desc"), array("ID" => $user_id), array('FIELDS' => array("ID", "PERSONAL_PHONE", "EMAIL"), 'SELECT' => array("UF_SPASSPORT", "UF_NPASSPORT", "UF_DATA_PASSPORT", "UF_KEM_VPASSPORT", "UF_INN", "UF_SNILS")));
+        $res = CUser::GetList(($by="personal_country"), ($order="desc"), array("ID" => $user_id), array('FIELDS' => array("ID", "PERSONAL_PHONE", "EMAIL"), 'SELECT' => array("UF_SPASSPORT", "UF_NPASSPORT", "UF_DATA_PASSPORT", "UF_KEM_VPASSPORT", "UF_INN", "UF_SNILS", "UF_MONETA_UNIT_ID", "UF_MONETA_ACCOUNT_ID", "UF_MONETA_DOC_ID")));
         if($arUser = $res->Fetch()) 
             foreach($arUser as $key => &$value)
                 switch ($key) {
@@ -44,6 +44,9 @@ class CMonetaRegistration extends CBitrixComponent
                         $value = self::hideText($hideEmail[0])."@".$hideEmail[1];
                     case "ID":
                     case "PERSONAL_PHONE":
+                    case "UF_MONETA_UNIT_ID":
+                    case "UF_MONETA_ACCOUNT_ID":
+                    case "UF_MONETA_DOC_ID":
                         $value = $value;
                         break;
                     default:
@@ -77,7 +80,7 @@ class CMonetaRegistration extends CBitrixComponent
         foreach($arFields as $array)
             $arData[$array['name']] = $array['value'];
 
-        $arSelect = array("UF_SPASSPORT", "UF_NPASSPORT", "UF_DATA_PASSPORT", "UF_KEM_VPASSPORT", "UF_ESIA_AUT", "UF_ETAG_ESIA", "UF_ESIA_ID", "UF_MONETA_UNIT_ID", "UF_MONETA_ACCOUNT_ID");
+        $arSelect = array("UF_SPASSPORT", "UF_NPASSPORT", "UF_DATA_PASSPORT", "UF_KEM_VPASSPORT", "UF_ESIA_AUT", "UF_ETAG_ESIA", "UF_ESIA_ID", "UF_MONETA_UNIT_ID", "UF_MONETA_ACCOUNT_ID", "UF_MONETA_DOC_ID");
 
         if($arData["D_S"] == "Y")
             $arSelect[] = "UF_SNILS";

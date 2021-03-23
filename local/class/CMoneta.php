@@ -107,12 +107,16 @@ class CMoneta {
 
         $unitID = 0;
         $accountID = 0;
+        $documentId = 0;
 
         if($arData['MONETA_UNIT_ID'] > 0)
             $unitID = $arData['MONETA_UNIT_ID'];
 
         if($arData['MONETA_ACCOUNT_ID'] > 0)
             $accountID = $arData['MONETA_ACCOUNT_ID'];
+            
+        if($arData['UF_MONETA_DOC_ID'] > 0)
+            $documentId = $arData['UF_MONETA_DOC_ID'];
 
         if($arData['ESIA_AUT'] != 1 || empty($arData['ETAG_ESIA']) || intval($arData['ESIA_ID']) < 1)
             return array("STATUS" => "ERROR", "ERROR_TYPE" => "esia_auth", "ERROR_DESCRIPTION" => "Ваш аккаунт не был подтвержден через Госуслуги");
@@ -174,6 +178,8 @@ class CMoneta {
         $arFields['pass_data']['ISSUER'] = $arData['KEM_VPASSPORT'];
         $arFields['pass_data']['DEPARTMENT'] = $arData['DEPARTMENT'];
 
+        $CUser = new CUser;
+
         try {
             $monetaSdk = new \Moneta\MonetaSdk($_SERVER['DOCUMENT_ROOT'].'/block/moneta config/');
             $monetaSdk->checkMonetaServiceConnection();
@@ -203,11 +209,12 @@ class CMoneta {
 
                 // создать нового пользователя
                 $unitID = $monetaSdk->monetaService->CreateProfile($CreateProfileRequest);
+                
+                $CUser -> Update($arData['ID'], array('UF_MONETA_UNIT_ID' => $unitID));
+
             }
 
             if($unitID > 0){
-
-                $arUpdate['UF_MONETA_UNIT_ID'] = $unitID;
 
                 if($accountID == 0){
                     $CreateAccountRequest = new \Moneta\Types\CreateAccountRequest();
@@ -230,9 +237,12 @@ class CMoneta {
 
                     $accountID = $monetaSdk->monetaService->CreateAccount($CreateAccountRequest);
 
-                    if($accountID > 0){
-                        $arUpdate['UF_MONETA_ACCOUNT_ID'] = $accountID;
+                    $CUser -> Update($arData['ID'], array('UF_MONETA_ACCOUNT_ID' => $accountID));
 
+                }
+                if($accountID > 0){
+
+                    if($documentId == 0){
                         $CreateProfileDocumentRequest = new \Moneta\Types\CreateProfileDocumentRequest();
                         $CreateProfileDocumentRequest -> unitId = $unitID;
 
@@ -247,15 +257,17 @@ class CMoneta {
                         }
 
                         $documentId = (array)$monetaSdk->monetaService->CreateProfileDocument($CreateProfileDocumentRequest);
-                        if($documentId['id'] > 0){
-                            $confimPhone = self::sendConfimSMS($unitID);
-                        }
+
+                        $CUser -> Update($arData['ID'], array('UF_MONETA_DOC_ID' => $documentId['id']));
+
+                        $documentId = $documentId['id'];
+                    }
+                    if($documentId > 0){
+                        $confimPhone = self::sendConfimSMS($unitID);
                     }
                 }
             }
-            if(!empty($arUpdate)){
-                $CUser = new CUser;
-                $CUser -> Update($arData['ID'], $arUpdate);
+            if(!empty($confimPhone)){
                 return $confimPhone;
             }else{
                 return array("STATUS" => "ERROR", "ERROR_TYPE" => "moneta_error", "ERROR_DESCRIPTION" => "У вас уже есть аккаунт на Moneta");

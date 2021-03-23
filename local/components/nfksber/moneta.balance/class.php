@@ -15,7 +15,7 @@ class CMonetaBalance extends CBitrixComponent
     }
 
     private function getUserData($user_id){
-        $res = CUser::GetList(($by="personal_country"), ($order="desc"), array("ID" => $user_id), array('FIELDS' => array("ID"), 'SELECT' => array("UF_MONETA_UNIT_ID", "UF_MONETA_BALANCE")));
+        $res = CUser::GetList(($by="personal_country"), ($order="desc"), array("ID" => $user_id), array('FIELDS' => array("ID"), 'SELECT' => array("UF_MONETA_UNIT_ID", "UF_MONETA_ACCOUNT_ID", "UF_MONETA_BALANCE", "UF_MONETA_DOC_ID")));
         if($arUser = $res->Fetch()) 
             return $arUser;
         return false;

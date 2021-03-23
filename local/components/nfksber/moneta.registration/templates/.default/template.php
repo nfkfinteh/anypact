@@ -11,7 +11,7 @@ use \Bitrix\Main\Localization\Loc;
  * @var string $templateName
  * @var string $componentPath
  */
-
+if(empty($arResult['UF_MONETA_UNIT_ID']) || empty($arResult['UF_MONETA_ACCOUNT_ID']) || empty($arResult['UF_MONETA_DOC_ID'])){
 ?>
 <noindex>
     <div class="reg-wallet-overflow">
@@ -91,3 +91,4 @@ use \Bitrix\Main\Localization\Loc;
         };
     </script>
 </noindex>
+<?}?>

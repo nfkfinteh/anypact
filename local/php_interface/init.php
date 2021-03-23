@@ -379,7 +379,7 @@ function custom_mail($to, $subject, $message, $additional_headers, $additional_p
 
         if (!$mail->send())
         {
-            //file_put_contents($_SERVER["DOCUMENT_ROOT"]."/_asd","\nError: ".$mail->ErrorInfo."\n",FILE_APPEND);
+            // file_put_contents($_SERVER["DOCUMENT_ROOT"]."/_asd.log","\nError: ".$mail->ErrorInfo."\n",FILE_APPEND);
             $message = $mail->ErrorInfo;
             // logEmailSendIblock($to, $subject, $message, $additional_headers, $additional_parameters);
             return false;
@@ -442,7 +442,7 @@ function custom_mail($to, $subject, $message, $additional_headers, $additional_p
 
         if (!$mail->send())
         {
-            //file_put_contents($_SERVER["DOCUMENT_ROOT"]."/_asd","\nError: ".$mail->ErrorInfo."\n",FILE_APPEND);
+            // file_put_contents($_SERVER["DOCUMENT_ROOT"]."/_asd.log","\nError: ".$mail->ErrorInfo."\n",FILE_APPEND);
             $message = $mail->ErrorInfo;
             // logEmailSendIblock($to, $subject, $message, $additional_headers, $additional_parameters);
             return false;
