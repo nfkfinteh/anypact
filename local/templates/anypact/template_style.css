@@ -482,6 +482,7 @@ input {
 }
 
 .footer {
+    margin-top: 100px;
     width: 100%;
     padding: 50px 0;
     background-color: #f1f4f4;
@@ -5686,7 +5687,9 @@ div#code_status {
 .profile-tabs .nav-link.fi-rr-credit-card:before {
     background-image: url(image/profile_tab/fi-rr-credit-card.svg);
 }
-
+.profile-tabs .nav-link.fi-rr-company-card:before {
+    background-image: url(image/profile_tab/building.svg);
+}
 /* активные иконки */
 .profile-tabs .nav-link.active.fi-rr-mode-portrait:before {
     background-image: url(image/profile_tab/fi-rr-mode-portrait-active.svg);
@@ -5702,4 +5705,7 @@ div#code_status {
 }
 .profile-tabs .nav-link.active.fi-rr-credit-card:before {
     background-image: url(image/profile_tab/fi-rr-credit-card-active.svg);
+}
+.profile-tabs .nav-link.active.fi-rr-company-card:before {
+    background-image: url(image/profile_tab/building-active.svg);
 }
