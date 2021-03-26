@@ -460,7 +460,7 @@ function hideText($text, $count_b = 3, $count_e = 2)
                                 <a class="nav-link fi-rr-credit-card" data-toggle="pill" href="#bank_details"><span>Банковские реквизиты</span></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link fi-rr-company-card" data-toggle="pill" href="#company"><span>Огранизации</span></a>
+                                <a class="nav-link fi-rr-company-card" data-toggle="pill" href="#company"><span>Организации</span></a>
                             </li>
                         </ul>
                     </div>
