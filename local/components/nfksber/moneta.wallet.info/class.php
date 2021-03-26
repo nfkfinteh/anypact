@@ -137,7 +137,6 @@ class CMonetaWalletInfo extends CBitrixComponent
             }
         }
         CEvent::Send("INVITATION_TO_MONETA", "s1", $arSendParams);
-
         return array("STATUS" => "SUCCESS");
     }
 
