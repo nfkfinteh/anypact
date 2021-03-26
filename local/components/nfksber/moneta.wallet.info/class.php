@@ -135,8 +135,9 @@ class CMonetaWalletInfo extends CBitrixComponent
                 //$arSendParams['USER_FIO'] = $arUser['LAST_NAME']." ".$arUser['NAME']." ".$arUser['SECOND_NAME'];
                 $arSendParams['USER_EMAIL'] = $arUser['EMAIL'];
             }
-            CEvent::Send("INVITATION_TO_MONETA", "s1", $arSendParams);
         }
+        CEvent::Send("INVITATION_TO_MONETA", "s1", $arSendParams);
+
         return array("STATUS" => "SUCCESS");
     }
 
