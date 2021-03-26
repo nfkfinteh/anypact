@@ -10,7 +10,7 @@ class CMoneta {
             "DEPOSIT" => "Пополнение",
             "WITHDRAWAL" => "Вывод",
             "TRANSFER" => "Перевод",
-            "BUSINESS" => "Пополнение"//"Оплата",
+            "BUSINESS" => "Оплата",
         );
         return $arCategory[$category];
     }
@@ -445,10 +445,10 @@ class CMoneta {
                 $response['operation'][0] = $array;
             }
 
-
-
             foreach($response['operation'] as $key => $value){
                 if(is_array($value['attribute']) && !empty($value['id'])){
+                    $acc = "";
+                    $cat = "";
                     $arItems[$key]['ID'] = $value['id'];
                     foreach($value['attribute'] as $attr){
                         if($attr['key'] == 'modified'){
@@ -457,12 +457,20 @@ class CMoneta {
                         }
                         if($attr['key'] == 'category'){
                             $arItems[$key]['CATEGORY'] = self::getOperationCategoryName($attr['value']);
+                            $cat = $attr['value'];
+                            if($acc == 317 && $cat == 'BUSINESS')
+                                $arItems[$key]['CATEGORY'] = self::getOperationCategoryName('DEPOSIT');
                         }
                         if($attr['key'] == 'statusid'){
                             $arItems[$key]['STATUS'] = self::getOperationStatusName($attr['value']);
                         }
                         if($attr['key'] == 'sourceamounttotal'){
                             $arItems[$key]['AMOUNT'] = $attr['value'];
+                        }
+                        if($attr['key'] == 'targetaccountid'){
+                            $acc = $attr['value'];
+                            if($cat == 'BUSINESS' && $acc == 317)
+                                $arItems[$key]['CATEGORY'] = self::getOperationCategoryName('DEPOSIT');
                         }
                     }
                 }
@@ -520,7 +528,7 @@ class CMoneta {
             }
             $monetaTransaction->payee = $serviceId;
             $monetaTransaction->amount = $amount;
-            $monetaTransaction->description = $description;
+            // $monetaTransaction->description = $description;
             $monetaTransaction->isPayerAmount = true;
             $monetaTransaction->version = "VERSION_2";
             if (is_array($attributes) && count($attributes)) {

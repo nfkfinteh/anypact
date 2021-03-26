@@ -64,7 +64,7 @@ if($arResult['GET_WITHDRAWAL'] == "Y"){
         <a href="#" id="moneta_deposit_btn">Пополнить</a>
         <?if($arResult['USER']['UF_MONETA_CHECK_STAT'] == 'SUCCESS'){?>
             <a href="#" id="moneta_transfer_btn">Перевод</a>
-            <a href="#" id="moneta_withdrawal_btn">Запрос суммы</a>
+            <a href="#" id="moneta_withdrawal_btn">Вывод</a>
         <?}?>
     </div>
 </div>

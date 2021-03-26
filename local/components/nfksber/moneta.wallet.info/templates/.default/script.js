@@ -190,7 +190,7 @@ $(document).ready(function(){
                 onsuccess: function(result){
                     if(result['STATUS']=='SUCCESS'){
                         var withdrawalPopup = newAnyPactPopUp({
-                            TITLE: 'Запрос суммы',
+                            TITLE: 'Вывод',
                             BODY: result['HTML'],
                             BUTTONS: [
                                 {
@@ -278,7 +278,7 @@ $(document).ready(function(){
 
             var transferPopup = newAnyPactPopUp({
                 TITLE: 'Перевод',
-                BODY: '<div><form name="TRANSFER"><input type="text" class="js-number" name="acc_id" placeholder="Номер счета"><input type="text" class="js-number" name="amount" placeholder="Сумма перевода"><input type="password" placeholder="Платежный пароль" aria-invalid="true" class="js-number validate-error" name="payment_pass" value=""></form></div>',
+                BODY: '<div><form name="TRANSFER"><input type="text" class="js-number" name="acc_id" placeholder="Номер кошелька"><input type="text" class="js-number" name="amount" placeholder="Сумма перевода"><input type="password" placeholder="Платежный пароль" aria-invalid="true" class="js-number validate-error" name="payment_pass" value=""></form></div>',
                 BUTTONS: [
                     {
                         NAME: 'Отмена',

@@ -57,7 +57,7 @@ $signedParams = $signer->sign(base64_encode(serialize($arParams)), 'moneta.walle
         <?if(!empty($arResult['ITEMS'])){?>
             <?foreach($arResult['ITEMS'] as $arItem){?>
                 <tr>
-                    <td data-label="Номер"><?=$arItem['ID']?></td>
+                    <td data-label="Номер"><?if($arItem['CATEGORY'] == 'Пополнение' && $arItem['STATUS'] == "Создан"){?><a target="_blank" href="https://www.payanyway.ru/assistant.htm?operationId=<?=$arItem['ID']?>&paymentSystem.unitId=card&paymentSystem.limitIds=card&followup=true"><?=$arItem['ID']?></a><?}else{echo $arItem['ID'];}?></td>
                     <td data-label="Дата"><?=$arItem['DATE']?></td>
                     <td data-label="Тип операции"><span class="wallet-td-black"><?=$arItem['CATEGORY']?></span></td>
                     <td data-label="Статус"><?if($arItem['STATUS'] == "Выполнен"){ echo '<span class="wallet-td-active">'; }echo $arItem['STATUS']; if($arItem['STATUS'] == "Выполнен"){ echo '</span>'; }?></td>

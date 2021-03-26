@@ -26,7 +26,7 @@ class CUserProfileInfo extends CBitrixComponent
     }
 
     function getUserInfo($user_id){
-        $res = CUser::GetList(($by="personal_country"), ($order="desc"), array("ID" => $user_id), array('SELECT' => array("UF_ABOUT", "UF_DISPLAY_PHONE", "UF_DISPLAY_DATE", "UF_ESIA_AUT", "UF_WORK", "UF_EDUCATION", "UF_DISPLAY_ADDRESS", "UF_N_HOUSE", "UF_N_HOUSING", "UF_N_APARTMENT", "UF_REGION", "UF_STREET"), 'FIELDS' => array("ID", "NAME", "LAST_NAME", "SECOND_NAME", "PERSONAL_BIRTHDAY", "PERSONAL_PHONE", "PERSONAL_PHOTO", "PERSONAL_GENDER", "PERSONAL_CITY", "PERSONAL_COUNTRY", "PERSONAL_STATE", "PERSONAL_ZIP")));
+        $res = CUser::GetList(($by="personal_country"), ($order="desc"), array("ID" => $user_id), array('SELECT' => array("UF_ABOUT", "UF_DISPLAY_PHONE", "UF_DISPLAY_DATE", "UF_ESIA_AUT", "UF_WORK", "UF_EDUCATION", "UF_DISPLAY_ADDRESS", "UF_N_HOUSE", "UF_N_HOUSING", "UF_N_APARTMENT", "UF_REGION", "UF_STREET", "UF_MONETA_CHECK_STAT", "UF_MONETA_ACCOUNT_ID"), 'FIELDS' => array("ID", "NAME", "LAST_NAME", "SECOND_NAME", "PERSONAL_BIRTHDAY", "PERSONAL_PHONE", "PERSONAL_PHOTO", "PERSONAL_GENDER", "PERSONAL_CITY", "PERSONAL_COUNTRY", "PERSONAL_STATE", "PERSONAL_ZIP")));
         if($arUser = $res->Fetch()) {
             $arResult['USER'] = $arUser;
         }
@@ -59,7 +59,7 @@ class CUserProfileInfo extends CBitrixComponent
                 [
                     'IBLOCK_ID'=>$this->arParams['IBLOCK_ID_COMPANY'],
                     'ACTIVE'=>'Y',
-                    'PROPERTY_DIRECTOR_ID'=>$this->arResult['CURRENT_USER'],
+                    'PROPERTY_DIRECTOR_ID'=>$this->arResult['CURRENT_USER']['ID'],
                 ],
                 false,
                 false,
@@ -125,14 +125,14 @@ class CUserProfileInfo extends CBitrixComponent
             "order" => array("ID" => "ASC"),
             "filter" => array(array(
                 "LOGIC" => "OR",
-                array("UF_USER_A" => $this->arResult["CURRENT_USER"], "UF_USER_B" => $this->arResult["USER_ID"]),
-                array("UF_USER_A" => $this->arResult["USER_ID"], "UF_USER_B" => $this->arResult["CURRENT_USER"]),
+                array("UF_USER_A" => $this->arResult['CURRENT_USER']['ID'], "UF_USER_B" => $this->arResult["USER_ID"]),
+                array("UF_USER_A" => $this->arResult["USER_ID"], "UF_USER_B" => $this->arResult['CURRENT_USER']['ID']),
             ))
         ));
         while($arData = $rsData->Fetch()){
-            if($arData['UF_USER_A'] == $this->arResult["CURRENT_USER"]){
+            if($arData['UF_USER_A'] == $this->arResult['CURRENT_USER']['ID']){
                 $result['CLOSE'] = true;
-            }elseif($arData['UF_USER_B'] == $this->arResult["CURRENT_USER"]){
+            }elseif($arData['UF_USER_B'] == $this->arResult['CURRENT_USER']['ID']){
                 $result['CLOSED'] = true;
             }
         }
@@ -148,10 +148,13 @@ class CUserProfileInfo extends CBitrixComponent
     {
         if(CModule::IncludeModule("highloadblock")){
             global $USER;
-            $this->arResult["CURRENT_USER"] = $USER -> GetID();
+            $res = CUser::GetList(($by="personal_country"), ($order="desc"), array("ID" => $USER -> GetID()), array('SELECT' => array("UF_MONETA_CHECK_STAT")));
+            if($arUser = $res->Fetch()) {
+                $this->arResult["CURRENT_USER"] = $arUser;
+            }
             $this->arResult["USER_ID"] = $this -> arParams['USER_ID'];
             $this->arResult = array_merge($this->arResult, $this -> getUserInfo($this->arResult["USER_ID"]));
-            $arFrends = $this->getFrends($this->arResult["CURRENT_USER"]);
+            $arFrends = $this->getFrends($this->arResult["CURRENT_USER"]['ID']);
             $this->arResult = array_merge($this->arResult, $arFrends);
             $this->arResult["BLACKLIST"] = $this->getBlackList();
             $this->includeComponentTemplate();

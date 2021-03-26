@@ -15,7 +15,7 @@ class CMonetaWalletInfo extends CBitrixComponent
         return $result;
     }
 
-    private function GetEntityDataClass($HlBlockId) {
+    private static function GetEntityDataClass($HlBlockId) {
         if (empty($HlBlockId) || $HlBlockId < 1)
         {
             return false;
@@ -26,7 +26,7 @@ class CMonetaWalletInfo extends CBitrixComponent
         return $entity_data_class;
     }
 
-    private function getUserData($user_id){
+    private static function getUserData($user_id){
         $res = CUser::GetList(($by="personal_country"), ($order="desc"), array("ID" => $user_id), array('FIELDS' => array("ID"), 'SELECT' => array("UF_MONETA_ACCOUNT_ID", "UF_MONETA_BALANCE", "UF_MONETA_CHECKOP_ID", "UF_MONETA_CHECK_STAT")));
         if($arUser = $res->Fetch()){
             $balance = CMoneta::GetBalance($arUser['UF_MONETA_ACCOUNT_ID']);
@@ -40,7 +40,7 @@ class CMonetaWalletInfo extends CBitrixComponent
         return false;
     }
 
-    function getPayments($user_id){
+    static function getPayments($user_id){
         $entity_data_class = self::GetEntityDataClass(MONETA_USER_CARDS_HLB_ID);
         $rsData = $entity_data_class::getList(array(
             "select" => array("*"),
@@ -54,7 +54,7 @@ class CMonetaWalletInfo extends CBitrixComponent
         return $arPayments;   
     }
 
-    private function makeDeposit($user_id, $amount){
+    private static function makeDeposit($user_id, $amount){
         if(!is_numeric($amount) && $amount < 10)
             return array("STATUS" => "ERROR", "ERROR_DESCRIPTION" => "Сумма пополнения должна быть больше 9 рублей");
         $res = CUser::GetList(($by="personal_country"), ($order="desc"), array("ID" => $user_id), array('FIELDS' => array("ID"), 'SELECT' => array("UF_MONETA_ACCOUNT_ID", "UF_MONETA_BALANCE")));
@@ -66,7 +66,7 @@ class CMonetaWalletInfo extends CBitrixComponent
         return array("STATUS" => "ERROR", "ERROR_DESCRIPTION" => "Пользователь не найден или отсутствует счет");
     }
 
-    private function makeWithdrawal($user_id, $amount, $payment_pass, $cart_id = 0, $cart_number = 0){
+    private static function makeWithdrawal($user_id, $amount, $payment_pass, $cart_id = 0, $cart_number = 0){
         if(!is_numeric($amount) && $amount < 10)
             return array("STATUS" => "ERROR", "ERROR_DESCRIPTION" => "Сумма вывода должна быть больше 39 рублей");
         if(!is_numeric($payment_pass) && strlen($payment_pass) < 5)
@@ -104,7 +104,7 @@ class CMonetaWalletInfo extends CBitrixComponent
         return array("STATUS" => "ERROR", "ERROR_DESCRIPTION" => "Пользователь не найден или отсутствует счет или карта");
     }
 
-    private function makeTransfer($user_id, $amount, $payment_pass, $acc_id){
+    private static function makeTransfer($user_id, $amount, $payment_pass, $acc_id){
         if(!is_numeric($amount) && $amount < 10)
             return array("STATUS" => "ERROR", "ERROR_DESCRIPTION" => "Сумма вывода должна быть больше 9 рублей");
         if(!is_numeric($payment_pass) && strlen($payment_pass) < 5)
@@ -120,6 +120,24 @@ class CMonetaWalletInfo extends CBitrixComponent
         }
 
         return array("STATUS" => "ERROR", "ERROR_DESCRIPTION" => "Пользователь не найден или отсутствует счет");
+    }
+
+    private static function sendMail($current_user_id, $user_id){
+        $res = CUser::GetList(($by="personal_country"), ($order="desc"), array("ID" => $current_user_id." | ".$user_id), array('FIELDS' => array("ID", "EMAIL", "NAME", "LAST_NAME", "SECOND_NAME")));
+        while($arUser = $res->Fetch()){
+            if($current_user_id == $arUser['ID']){
+                $arSendParams['SEND_ID'] = $arUser['ID'];
+                $arSendParams['SEND_FIO'] = $arUser['LAST_NAME']." ".$arUser['NAME']." ".$arUser['SECOND_NAME'];
+                //$arSendParams['SEND_EMAIL'] = $arUser['EMAIL'];
+            }
+            if($user_id == $arUser['ID']){
+                //$arSendParams['USER_ID'] = $arUser['ID'];
+                //$arSendParams['USER_FIO'] = $arUser['LAST_NAME']." ".$arUser['NAME']." ".$arUser['SECOND_NAME'];
+                $arSendParams['USER_EMAIL'] = $arUser['EMAIL'];
+            }
+            CEvent::Send("INVITATION_TO_MONETA", "s1", $arSendParams);
+        }
+        return array("STATUS" => "SUCCESS");
     }
 
     public function executeComponent()
@@ -143,6 +161,8 @@ class CMonetaWalletInfo extends CBitrixComponent
                     echo json_encode(self::makeWithdrawal($USER -> GetID(), $_REQUEST['amount'], $_REQUEST['payment_pass'], $_REQUEST['cart_id'], $_REQUEST['cart_number']));
                 }else if($this->request->get('action') == 'makeTransfer'){
                     echo json_encode(self::makeTransfer($USER -> GetID(), $_REQUEST['amount'], $_REQUEST['payment_pass'], $_REQUEST['acc_id']));
+                }else if($this->request->get('action') == 'sendMail'){
+                    echo json_encode(self::sendMail($USER -> GetID(), $_REQUEST['user_id']));
                 }
             }else{
                 $this->arResult['USER'] = self::getUserData($USER -> GetID());
