@@ -190,7 +190,7 @@ $(document).ready(function(){
                 onsuccess: function(result){
                     if(result['STATUS']=='SUCCESS'){
                         var withdrawalPopup = newAnyPactPopUp({
-                            TITLE: 'Вывод',
+                            TITLE: 'Вывод средств',
                             BODY: result['HTML'],
                             BUTTONS: [
                                 {
