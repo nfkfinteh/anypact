@@ -20,3 +20,5 @@ Thumbs.db
 *.log
 Icon.
 *.pdf
+.xml
+local/templates/anypact/img/logo3.png_new.tmp
