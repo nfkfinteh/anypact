@@ -85,7 +85,7 @@ class CMonetaWalletInfo extends CBitrixComponent
                     ));
                     if($arCart = $rsData->Fetch()){
                         if($arCart['ID'] == $cart_id){
-                            return CMoneta::makeWithdrawal($arUser['UF_MONETA_ACCOUNT_ID'], $payment_pass, 332, $amount, $arCart['UF_CARD_NUMBER']);
+                            return CMoneta::makeWithdrawal($arUser['UF_MONETA_ACCOUNT_ID'], $payment_pass, 'card', $amount, $arCart['UF_CARD_NUMBER']);
                         }
                     }
                 }
@@ -93,7 +93,7 @@ class CMonetaWalletInfo extends CBitrixComponent
                 $cart_number = str_replace(" ", "", $cart_number);
                 
                 if(is_numeric($cart_number) && strlen($cart_number) == 16){
-                    return CMoneta::makeWithdrawal($arUser['UF_MONETA_ACCOUNT_ID'], $payment_pass, 332, $amount, $cart_number);
+                    return CMoneta::makeWithdrawal($arUser['UF_MONETA_ACCOUNT_ID'], $payment_pass, 'card', $amount, $cart_number);
                 }else{
                     return array("STATUS" => "ERROR", "ERROR_DESCRIPTION" => "Не заполнен номер карты");
                 }
