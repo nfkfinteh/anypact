@@ -168,7 +168,7 @@ class CMoneta {
         $arFields['phone'] = $phone;
         $arFields['cell_phone'] = $phone;
         // $arFields['sex'] = ($arData['PERSONAL_GENDER'] == "M" ? "MALE" : "FEMALE");
-        $arFields['date_of_birth'] = self::formateDate($arData['PERSONAL_BIRTHDAY_DATE'], 'Y-m-d');
+        // $arFields['date_of_birth'] = self::formateDate($arData['PERSONAL_BIRTHDAY_DATE'], 'Y-m-d');
         $arFields['inn'] = $arData['INN'];
         $arFields['snils'] = $arData['SNILS'];
         $arFields['ui_language'] = "RU";
