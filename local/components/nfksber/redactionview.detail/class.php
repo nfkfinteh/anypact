@@ -413,6 +413,8 @@ class CDemoSqr extends CBitrixComponent
                 "USER_FIO" => $this->arResult["USER_PROP"]['LAST_NAME']." ".$this->arResult["USER_PROP"]['NAME']." ".$this->arResult["USER_PROP"]['SECOND_NAME'],
                 "USER_ID" => $this->arResult["USER_ID"]
             );
+            $CNotification = new CNotification();
+            $CNotification -> Add(array("USER_ID" => $arUser['ID'], "TEXT" => "Пользователь подписал ваш дорогор [URL=https://anypact.ru/my_pacts/send_redaction/?ID=".$arEventFields['CONTRACT_ID']."]".$arEventFields['CONTRACT_ID']."[/URL] по сделке [URL=https://anypact.ru".$arEventFields['DEAL_URL']."]".$arEventFields['DEAL_NAME']."[/URL] с изменениями", "FROM_USER" => $arEventFields['USER_ID']));
             CEvent::Send("CONTRACT_SIGNATURE_EDIT", SITE_ID, $arEventFields);
         }
     }

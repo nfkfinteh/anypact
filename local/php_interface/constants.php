@@ -31,4 +31,6 @@ define("USER_FILE_HLB_ID", "25");
 define("MONETA_OPERATION_HLB_ID", "27");
 define("MONETA_USER_CARDS_HLB_ID", "28");
 
+define("NOTIFICATION_HBL_ID", "29");
+
 ?>

@@ -177,6 +177,11 @@ global $USER;
     Array(
         "ACTION_VARIABLE" => "action"
     ));
+    $APPLICATION->IncludeComponent("nfksber:notification.list","",
+        Array(
+            "ACTION_VARIABLE" => "action"
+        )
+    );
 }?>
 <!--/Окно регистрации-->
 <div class="container">

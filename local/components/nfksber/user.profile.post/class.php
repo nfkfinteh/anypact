@@ -465,6 +465,8 @@ class CUserProfilePost extends CBitrixComponent
                 "USER_ID" => $this->arResult["CURRENT_USER"]['ID'],
                 "COMMENT_TEXT" => $comment_text
             );
+            $CNotification = new CNotification();
+            $CNotification -> Add(array("USER_ID" => $arEventFields['AUTHOR_ID'], "TEXT" => "Пользователь оставил комментарий в вашей [URL=https://anypact.ru/profile_user/?ID=".$arEventFields['AUTHOR_ID']."&post_id=".$arEventFields['POST_ID']."]публикации №".$arEventFields['POST_ID']."[/URL][BR]Текст комментария: ".$arEventFields['USER_ID'], "FROM_USER" => $arEventFields['USER_ID']));
             CEvent::Send("POST_ADD_COMMENT", SITE_ID, $arEventFields);
         }
     }

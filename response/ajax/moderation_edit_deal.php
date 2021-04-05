@@ -73,6 +73,8 @@ if(CModule::IncludeModule('iblock') && check_bitrix_sessid() && $USER -> IsAdmin
                     "DEAL_ID" => $arProps['ORIGINAL_DEAL']['VALUE'],
                     "DEAL_NAME" => $arData['NAME']
                 );
+                $CNotification = new CNotification();
+                $CNotification -> Add(array("USER_ID" => $arUser['ID'], "TEXT" => "Изменения вашей сделки [URL=https://anypact.ru/my_pacts/edit_my_pact/?ELEMENT_ID=".$arEventFields['DEAL_ID']."&ACTION=EDIT]".$arEventFields['DEAL_NAME']."[/URL] приняты", "IS_SYSTEM" => "Y"));
                 CEvent::Send("DEAL_EDIT_MODERATION_ACCEPT", SITE_ID, $arEventFields);
                 echo json_encode(array("TYPE" == "SUCCESS"));
             }
@@ -88,6 +90,8 @@ if(CModule::IncludeModule('iblock') && check_bitrix_sessid() && $USER -> IsAdmin
                     "DEAL_ID" => $arData['PROPERTY_ORIGINAL_DEAL_VALUE'],
                     "DEAL_NAME" => $arData['NAME']
                 );
+                $CNotification = new CNotification();
+                $CNotification -> Add(array("USER_ID" => $arUser['ID'], "TEXT" => "Изменения вашей сделки [URL=https://anypact.ru/my_pacts/edit_my_pact/?ELEMENT_ID=".$arEventFields['DEAL_ID']."&ACTION=EDIT]".$arEventFields['DEAL_NAME']."[/URL] отвергнуты, поля сделки остались прежними", "IS_SYSTEM" => "Y"));
                 CEvent::Send("DEAL_EDIT_MODERATION_DENIED", SITE_ID, $arEventFields);
                 echo json_encode(array("TYPE" == "SUCCESS"));
             }

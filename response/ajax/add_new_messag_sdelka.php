@@ -84,6 +84,8 @@ if($curentUser['ID'] != $idUser){
             "USER_ID" => $curentUser['ID'],
             "COMMENT_TEXT" => $messageText,
         );
+        $CNotification = new CNotification();
+        $CNotification -> Add(array("USER_ID" => $arUser['ID'], "TEXT" => "Пользователь оставил комментарий в сделке [URL=https://anypact.ru".$arEventFields['DEAL_URL']."]".$arEventFields['DEAL_NAME']."[/URL][BR]Текст комментария: ".$arEventFields['COMMENT_TEXT'], "FROM_USER" => $arEventFields['USER_ID']));
         CEvent::Send("DEAL_ADD_COMMENT", SITE_ID, $arEventFields);
     }
 }

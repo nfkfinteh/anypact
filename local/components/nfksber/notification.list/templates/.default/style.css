@@ -1,0 +1,232 @@
+.right-menu {
+    position: fixed;
+    display: flex;
+    right: -366px;
+    transition: all .7s;
+    top: 40%;
+    z-index: 101;
+}
+.right-menu .tabs .point {
+    padding: 20px;
+    background: white;
+    box-shadow: 0px 0px 8px rgb(0 0 0 / 20%);
+    position: relative;
+    border-bottom-left-radius: 6px;
+    border-top-left-radius: 6px;
+    cursor: pointer;
+    position: relative;
+}
+.right-menu .tabs .point::after {
+    content: "";
+    height: 72px;
+    background: white;
+    position: absolute;
+    width: 8px;
+    right: -8px;
+    top: 0;
+}
+.right-menu .content{
+    background: white;
+    border-bottom-left-radius: 6px;
+    width: 366px;
+}
+.right-menu.open{
+    right: 0;
+}
+.right-menu.open .content{
+    box-shadow: 0px 0px 8px rgb(0 0 0 / 20%);
+}
+.notification-header {
+    position: relative;
+    display: flex;
+}
+.notification-img {
+    display: flex;
+}
+.no-notification {
+    padding: 30px;
+    text-align: center;
+}
+.notification_count {
+    position: absolute;
+    z-index: 1;
+    top: -1px;
+    right: -3px;
+    background: #ff6600;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+}
+.list-person-conversation .person-conversation {
+    list-style: none;
+    display: flex;
+    text-decoration: none;
+    color: #0a0a0a;
+    padding: 15px;
+}
+.list-person-conversation .person-conversation-photo {
+    border-radius: 50%;
+    margin-right: 15px;
+    overflow: hidden;
+}
+.list-person-conversation .person-conversation-photo.system {
+    border-radius: 0;
+}
+.list-person-conversation{
+    overflow: auto;
+    max-height: 370px;
+}
+.person-conversation {
+    padding: 0 12px;
+}
+.list-person-conversation div.person-conversation.not-read{
+    background-color:rgb(247, 248, 250);
+    color: inherit;
+}
+.notification-block{
+    max-width: 265px;
+    width: 100%;
+}
+.person-conversation-name {
+    overflow: hidden;
+    max-width: 65%;
+    width: 67%;
+    text-overflow: ellipsis;
+    display: inline-block;
+    vertical-align: top;
+}
+.person-conversation-name strong{
+    white-space: nowrap;
+}
+.person-conversation-date {
+    text-align: right;
+    display: inline-block;
+    vertical-align: top;
+    width: 81px;
+}
+.person-conversation-message {
+    overflow: hidden;
+    max-width: 100%;
+    width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.person-conversation-message span {
+    white-space: nowrap;
+}
+.avatar-name-block {
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 20px;
+    position: relative;
+}
+#notification_list .list-person-conversation .person-conversation{
+    border-bottom: 1px solid #E8E8E8;
+}
+#notification_list .list-person-conversation .person-conversation.active{
+    border-bottom: none;
+}
+#notification_list .list-person-conversation .person-conversation:last-of-type{
+    border-bottom: none;
+}
+#notification_list .list-person-conversation .person-conversation-photo{
+    width: 50px;
+    min-width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#notification_list .list-person-conversation .person-conversation-photo img{
+    max-width: 100%;
+}
+#notification_list .list-person-conversation .person-conversation-photo.system img {
+    max-width: 90%;
+}
+#notification_list a.person-conversation.active, a.person-conversation.active:hover {
+    background: #F1F4F4;
+    border-radius: 6px;
+}
+#notification_list .person-conversation-name{
+    color: #131313;
+}
+#notification_list .person-conversation-message, .person-conversation-date{
+    color: #999999;
+    font-weight: 300;
+}
+#notification_list .person-conversation-date{
+    font-size: 14px;
+}
+.no-notification p {
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 28px;
+    color: #131313;
+}
+#notification_list .person-conversation-name.system{
+    color: #999999;
+}
+.notification-message-block {
+    font-size: 14px;
+    color: #131313;
+    font-weight: 300;
+}
+.notification-name-date a:hover{
+    text-decoration: none;
+}
+.notification-name-date a:hover strong{
+    color: #ff6416;
+}
+.delete-all {
+    padding: 0 15px;
+    text-align: right;
+    color: #ff6416;
+    font-weight: 300;
+}
+.delete-all > div, .notification-block .not-delete{
+    display: inline-block;
+    cursor: pointer;
+}
+.notification-block .delete {
+    text-align: right;
+    color: #ff6416;
+    font-weight: 300;
+    font-size: 14px;
+    padding-top: 10px;
+}
+@media screen and (max-width: 991px) {
+    .notification-block {
+        max-width: 235px;
+    }
+    .person-conversation-name {
+        max-width: 64%;
+        width: 64%;
+    }
+}
+@media screen and (max-width: 767px) {
+    #notification_list .list-person-conversation {
+        max-width: 420px;
+        margin: 0 auto;
+    }
+    .notification-block {
+        max-width: 325px;
+        font-size: 16px!important;
+    }
+}
+@media screen and (max-width: 450px) {
+    #notification_list .list-person-conversation {
+        max-width: 290px;
+    }
+    .notification-block {
+        max-width: 195px;
+    }
+    .person-conversation-name {
+        max-width: 56%;
+        width: 56%;
+    }
+}

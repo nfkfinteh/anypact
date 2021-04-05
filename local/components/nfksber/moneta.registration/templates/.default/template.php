@@ -58,7 +58,7 @@ if(empty($arResult['UF_MONETA_UNIT_ID']) || empty($arResult['UF_MONETA_ACCOUNT_I
                                     <label>Повторите пароль:</label>
                                     <input type="password" placeholder="Повторите платежный пароль" aria-invalid="true" class="js-number validate-error" name="PAYMENT_PASS_REPEAT" value="">
                                     <p class="moneta_p">Пароль должен состоять только из цифр, минимум пять символов</p>
-                                    <p class="moneta_p">При нажатии на кнопку "Открыть" вы соглашаетесь передать свои персональные данные  сервиву Монета, а так же соглашаетесь с правилами использования сервиса Монета</p>
+                                    <p class="moneta_p">При нажатии на кнопку "Открыть" вы соглашаетесь передать свои персональные данные  сервиcу <a href="https://www.moneta.ru/" target="__blank">Монета</a>, а так же соглашаетесь с правилами использования сервиса <a href="https://www.moneta.ru/" target="__blank">Монета</a></p>
                                     <button class="btn btn-reg-wallet" type="submit" name="SUBMIT" value="Открыть">Открыть</button>
                                 </div>
                             </div>

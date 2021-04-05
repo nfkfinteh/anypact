@@ -4,6 +4,9 @@ include_once 'function.php';
 if(file_exists($_SERVER['DOCUMENT_ROOT']."/local/php_interface/constants.php"))
   require_once($_SERVER['DOCUMENT_ROOT']."/local/php_interface/constants.php");
 
+if(file_exists($_SERVER['DOCUMENT_ROOT']."/local/class/CNotification.php"))
+  require_once($_SERVER['DOCUMENT_ROOT']."/local/class/CNotification.php");
+
 $eventManager = \Bitrix\Main\EventManager::getInstance();
 $eventManager->addEventHandler("main", "OnAfterEpilog", "Prefix_FunctionName");
 
@@ -487,6 +490,13 @@ function SendEmailForCompanyAndDealModeration(&$arFields){
                 $rsUser = CUser::GetList($order = array('LAST_NAME' => 'asc', 'NAME'=> 'asc'), $tmp = "asc", array("ID" => $el['CREATED_BY']), [ 'FIELDS' => ['ID', 'EMAIL']]);
                 if($user = $rsUser->getNext())
                 {
+                    $CNotification = new CNotification();
+                    if($type == "ваше предложение успешно размещено"){
+                        $not_text = "Ваше [URL=$link]предложение[/URL] опубликовано";
+                    }else{
+                        $not_text = "Ваша [URL=$link]компания/ИП[/URL] прошла проверку";
+                    }
+                    $CNotification -> Add(array("USER_ID" => $user['ID'], "TEXT" => $not_text, "IS_SYSTEM" => "Y"));
                     CEvent::Send("MODERATION_COMPLETE", "s1", array("EMAIL" => $user['EMAIL'], "TYPE" => $type, "LINK" => $link, "THEME" => $theme));
                 }
             }
@@ -501,6 +511,8 @@ function SendEmailForCompanyAndDealModeration(&$arFields){
                     $rsUser = CUser::GetList($order = array('LAST_NAME' => 'asc', 'NAME'=> 'asc'), $tmp = "asc", array("ID" => $El['CREATED_BY']), [ 'FIELDS' => ['ID', 'EMAIL']]);
                     if($user = $rsUser->getNext())
                     {
+                        $CNotification = new CNotification();
+                        $CNotification -> Add(array("USER_ID" => $user['ID'], "TEXT" => "Ваша [URL=https://anypact.ru/profile_user/?ID=".$arFields['ID']."&type=company]компания/ИП[/URL] прошла проверку", "IS_SYSTEM" => "Y"));
                         CEvent::Send("MODERATION_COMPLETE", "s1", array("EMAIL" => $user['EMAIL'], "TYPE" => "ваша компания/ИП успешно размещена", "LINK" => "https://anypact.ru/profile_user/?ID=".$arFields['ID']."&type=company", "THEME" => "Ваша компания/ИП прошла проверку"));
                     }
                 }
@@ -520,7 +532,9 @@ function SendEmailForDealModeration($ELEMENT_ID, $IBLOCK_ID, $PROPERTY_VALUES, $
                     $rsUser = CUser::GetList($order = array('LAST_NAME' => 'asc', 'NAME'=> 'asc'), $tmp = "asc", array("ID" => $El['CREATED_BY']), [ 'FIELDS' => ['ID', 'EMAIL']]);
                     if($user = $rsUser->getNext())
                     {
-                        CEvent::Send("MODERATION_COMPLETE", "s1", array("EMAIL" => $user['EMAIL'], "TYPE" => "ваше предложение успешно размещено", "LINK" => "https://anypact.ru/pacts/view_pact/?ELEMENT_ID=".$arFields['ID'], "THEME" => "Ваше предложение опубликовано"));
+                        $CNotification = new CNotification();
+                        $CNotification -> Add(array("USER_ID" => $user['ID'], "TEXT" => "Ваше [URL=https://anypact.ru/pacts/view_pact/?ELEMENT_ID=".$El['ID']."]предложение[/URL] опубликовано", "IS_SYSTEM" => "Y"));
+                        CEvent::Send("MODERATION_COMPLETE", "s1", array("EMAIL" => $user['EMAIL'], "TYPE" => "ваше предложение успешно размещено", "LINK" => "https://anypact.ru/pacts/view_pact/?ELEMENT_ID=".$El['ID'], "THEME" => "Ваше предложение опубликовано"));
                     }
                 }
             }
