@@ -81,7 +81,7 @@ function bindNotEvents(node){
                         var func = function (result) {
                             if (result !== false) {
                                 if (result == 0)
-                                    $('#notification_list .list-person-conversation').html('<div class="no-notification"><img src="/local/templates/anypact/image/dont_chat.png" alt="Уведомления отсутсвуют"><p>Уведомления отсутсвуют</p></div>');
+                                    $('#notification_list .list-person-conversation').html('<div class="no-notification"><img src="/local/templates/anypact/image/dont_chat.png" alt="Уведомления отсутствуют"><p>Уведомления отсутствуют</p></div>');
                                 else
                                     $el.remove();
                                 if($('#notification_list .list-person-conversation').find('.person-conversation').length < 5 && result >= 5)
@@ -114,7 +114,7 @@ $(document).ready(function () {
                     CALLBACK: (function () {
                         var func = function (result) {
                             if (result !== false)
-                                $('#notification_list .list-person-conversation').html('<div class="no-notification"><img src="/local/templates/anypact/image/dont_chat.png" alt="Уведомления отсутсвуют"><p>Уведомления отсутсвуют</p></div>');
+                                $('#notification_list .list-person-conversation').html('<div class="no-notification"><img src="/local/templates/anypact/image/dont_chat.png" alt="Уведомления отсутствуют"><p>Уведомления отсутствуют</p></div>');
                         };
                         sendAjax('deleteNotificAll', func, {}, 'POST', '?nav-notification=1');
                     })

@@ -83,8 +83,8 @@
                 <? }
             } elseif ($arResult['PAGE'] == 1) { ?>
                 <div class="no-notification">
-                    <img src="/local/templates/anypact/image/dont_chat.png" alt="Уведомления отсутсвуют" />
-                    <p>Уведомления отсутсвуют</p>
+                    <img src="/local/templates/anypact/image/dont_chat.png" alt="Уведомления отсутствуют" />
+                    <p>Уведомления отсутствуют</p>
                 </div>
             <? } ?>
             <? if ($arResult['PAGE'] == 1 && $arResult['VIA_AJAX'] != "Y") { ?>
