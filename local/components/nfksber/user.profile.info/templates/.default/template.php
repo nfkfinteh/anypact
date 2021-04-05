@@ -49,17 +49,17 @@ if($arResult["BLACKLIST"]['CLOSE']){
                             Добавить в друзья
                         </button>
                     <?endif;?>
-                    <?if($arResult['CURRENT_USER']['UF_MONETA_CHECK_STAT'] == "SUCCESS"):?>
-                        <button class="btn btn-nfk gray js-send-money" data-id="<?=$arResult['USER']['ID']?>">
-                            Перевести деньги
-                        </button>
-                    <?endif;?>
                 <?else:?>
                     <a href="/profile/" class="btn btn-nfk gray">
                         Редактировать профиль
                     </a>
                 <?endif;?>
             </div>
+            <?if($arResult['CURRENT_USER']['UF_MONETA_CHECK_STAT'] == "SUCCESS"):?>
+                <button <?=$BLACKLIST_display;?> class="btn btn-nfk gray js-send-money black-list-show_hide" data-id="<?=$arResult['USER']['ID']?>">
+                    Перевести деньги
+                </button>
+            <?endif;?>
         <?}?>
         <?if($arResult['CURRENT_USER']['ID'] != $arResult['USER']['ID']){?>
             <?if(!$arResult["BLACKLIST"]['CLOSE']):?>
