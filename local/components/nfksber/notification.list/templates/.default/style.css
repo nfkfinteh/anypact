@@ -3,7 +3,7 @@
     display: flex;
     right: -366px;
     transition: all .7s;
-    top: 40%;
+    top: 20%;
     z-index: 101;
 }
 .right-menu .tabs .point {
