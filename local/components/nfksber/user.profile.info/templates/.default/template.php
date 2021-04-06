@@ -44,6 +44,10 @@ if($arResult["BLACKLIST"]['CLOSE']){
                                 Отменить заявку
                             </a>
                         </div>
+                    <?elseif(in_array($arResult['USER']['ID'], $arResult['SUBSCRIPTION'])):?>
+                        <button class="btn btn-nfk gray js-delete-frends" data-id="<?=$arResult['USER']['ID']?>">
+                            Отписаться
+                        </button>
                     <?elseif($arResult['CURRENT_USER']['ID'] != $arResult['USER']['ID']):?>
                         <button class="btn btn-nfk gray js-add-frends" data-id="<?=$arResult['USER']['ID']?>">
                             Добавить в друзья

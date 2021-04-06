@@ -98,7 +98,9 @@ class CUserProfileInfo extends CBitrixComponent
         while($arData = $rsData->Fetch()){
             if($arData["UF_USER_A"] == $current_user && $arData['UF_ACCEPT'] == HLB_USER_FRIENDS_ACCEPT_A){
                 $result['FRIENDS_REQUEST'][] = $arData["UF_USER_B"];
-            }else{
+            }else if($arData["UF_USER_A"] == $current_user && $arData['UF_ACCEPT'] == HLB_USER_FRIENDS_ACCEPT_N){
+                $result['SUBSCRIPTION'][] = $arData["UF_USER_B"];
+            } else {
                 $result['FRENDS'][] = $arData["UF_USER_A"];
                 $result['FRENDS'][] = $arData["UF_USER_B"];
             }
@@ -109,11 +111,20 @@ class CUserProfileInfo extends CBitrixComponent
         if(empty($result['FRIENDS_REQUEST'])){
             $result['FRIENDS_REQUEST'] = [];
         }
+        if(empty($result['SUBSCRIPTION'])){
+            $result['SUBSCRIPTION'] = [];
+        }
 
         $result['FRENDS'] = array_unique($result['FRENDS']);
+        $result['FRIENDS_REQUEST'] = array_unique($result['FRIENDS_REQUEST']);
+        $result['SUBSCRIPTION'] = array_unique($result['SUBSCRIPTION']);
 
         if(array_search($current_user, $result['FRENDS']) !== false && isset($result['FRENDS'][array_search($current_user, $result['FRENDS'])]))
             unset($result['FRENDS'][array_search($current_user, $result['FRENDS'])]);
+        if(array_search($current_user, $result['FRIENDS_REQUEST']) !== false && isset($result['FRIENDS_REQUEST'][array_search($current_user, $result['FRIENDS_REQUEST'])]))
+            unset($result['FRIENDS_REQUEST'][array_search($current_user, $result['FRIENDS_REQUEST'])]);
+        if(array_search($current_user, $result['SUBSCRIPTION']) !== false && isset($result['SUBSCRIPTION'][array_search($current_user, $result['SUBSCRIPTION'])]))
+            unset($result['SUBSCRIPTION'][array_search($current_user, $result['SUBSCRIPTION'])]);
 
         return $result;
     }
