@@ -29,15 +29,21 @@ class CMonetaWalletInfo extends CBitrixComponent
     private static function getUserData($user_id){
         $res = CUser::GetList(($by="personal_country"), ($order="desc"), array("ID" => $user_id), array('FIELDS' => array("ID"), 'SELECT' => array("UF_MONETA_ACCOUNT_ID", "UF_MONETA_BALANCE", "UF_MONETA_CHECKOP_ID", "UF_MONETA_CHECK_STAT")));
         if($arUser = $res->Fetch()){
+            return $arUser;
+        }
+        return false;
+    }
+
+    private static function updateBalance($user_id){
+        $res = CUser::GetList(($by="personal_country"), ($order="desc"), array("ID" => $user_id), array('FIELDS' => array("ID"), 'SELECT' => array("UF_MONETA_ACCOUNT_ID", "UF_MONETA_BALANCE", "UF_MONETA_CHECKOP_ID", "UF_MONETA_CHECK_STAT")));
+        if($arUser = $res->Fetch()){
             $balance = CMoneta::GetBalance($arUser['UF_MONETA_ACCOUNT_ID']);
             if($balance['STATUS'] == "SUCCESS" && $arUser['UF_MONETA_BALANCE'] != $balance['DATA']){
                 $CUser = new CUser;
                 $CUser -> Update($arUser['ID'], array("UF_MONETA_BALANCE" => $balance['DATA'], "UF_DATE_MODIFY" => date("d.m.Y H:i:s")));
                 $arUser['UF_MONETA_BALANCE'] = $balance['DATA'];
             }
-            return $arUser;
         }
-        return false;
     }
 
     static function getPayments($user_id){
@@ -60,7 +66,9 @@ class CMonetaWalletInfo extends CBitrixComponent
         $res = CUser::GetList(($by="personal_country"), ($order="desc"), array("ID" => $user_id), array('FIELDS' => array("ID"), 'SELECT' => array("UF_MONETA_ACCOUNT_ID", "UF_MONETA_BALANCE")));
         if($arUser = $res->Fetch()){
             if(!empty($arUser['UF_MONETA_ACCOUNT_ID'])){
-                return CMoneta::makeDeposit($arUser['UF_MONETA_ACCOUNT_ID'], $amount);
+                $deposite = CMoneta::makeDeposit($arUser['UF_MONETA_ACCOUNT_ID'], $amount);
+                self::updateBalance($user_id);
+                return $deposite;
             }
         }
         return array("STATUS" => "ERROR", "ERROR_DESCRIPTION" => "Пользователь не найден или отсутствует счет");
@@ -85,7 +93,9 @@ class CMonetaWalletInfo extends CBitrixComponent
                     ));
                     if($arCart = $rsData->Fetch()){
                         if($arCart['ID'] == $cart_id){
-                            return CMoneta::makeWithdrawal($arUser['UF_MONETA_ACCOUNT_ID'], $payment_pass, 'card', $amount, $arCart['UF_CARD_NUMBER']);
+                            $withdrawal = CMoneta::makeWithdrawal($arUser['UF_MONETA_ACCOUNT_ID'], $payment_pass, 'card', $amount, $arCart['UF_CARD_NUMBER']);
+                            self::updateBalance($user_id);
+                            return $withdrawal;
                         }
                     }
                 }
@@ -93,7 +103,9 @@ class CMonetaWalletInfo extends CBitrixComponent
                 $cart_number = str_replace(" ", "", $cart_number);
                 
                 if(is_numeric($cart_number) && strlen($cart_number) == 16){
-                    return CMoneta::makeWithdrawal($arUser['UF_MONETA_ACCOUNT_ID'], $payment_pass, 'card', $amount, $cart_number);
+                    $withdrawal = CMoneta::makeWithdrawal($arUser['UF_MONETA_ACCOUNT_ID'], $payment_pass, 'card', $amount, $cart_number);
+                    self::updateBalance($user_id);
+                    return $withdrawal;
                 }else{
                     return array("STATUS" => "ERROR", "ERROR_DESCRIPTION" => "Не заполнен номер карты");
                 }
@@ -115,7 +127,9 @@ class CMonetaWalletInfo extends CBitrixComponent
         $res = CUser::GetList(($by="personal_country"), ($order="desc"), array("ID" => $user_id, "UF_MONETA_CHECK_STAT" => "SUCCESS"), array('FIELDS' => array("ID"), 'SELECT' => array("UF_MONETA_ACCOUNT_ID")));
         if($arUser = $res->Fetch()){
             if(!empty($arUser['UF_MONETA_ACCOUNT_ID'])){
-                return CMoneta::makeTransfer($arUser['UF_MONETA_ACCOUNT_ID'], $payment_pass, $acc_id, $amount);
+                $tranfer = CMoneta::makeTransfer($arUser['UF_MONETA_ACCOUNT_ID'], $payment_pass, $acc_id, $amount);
+                self::updateBalance($user_id);
+                return $tranfer;
             }
         }
 
