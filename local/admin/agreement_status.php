@@ -99,15 +99,9 @@ if(CModule::IncludeModule('highloadblock') && CModule::IncludeModule('iblock')){
         
     }
 
-    define("LOG_FILENAME", $_SERVER["DOCUMENT_ROOT"]."/__wtfArgStatus.log");
-
-    AddMessage2Log($arContractsIds, "arContractsIds");
-
     $arUsersIds = array_unique($arUsersIds);
     $arContractsIds = array_unique($arContractsIds);
     $arCompanyIds = array_unique($arCompanyIds);
-
-    AddMessage2Log($arContractsIds, "arContractsIds2");
 
     if(!empty($arUsersIds)){
         $rsUser = CUser::GetList($by="personal_country", $order="desc", array('ID' => $arUsersIds), array('FIELDS' => array('ID', 'LOGIN', 'NAME', 'LAST_NAME', 'SECOND_NAME')));
@@ -137,7 +131,6 @@ if(CModule::IncludeModule('highloadblock') && CModule::IncludeModule('iblock')){
             $arDeal[$arFields['PROPERTY_ID_DOGOVORA_VALUE']] = array("ID" => $arFields['ID'], "NAME" => $arFields['NAME']);
         }
     }
-    AddMessage2Log($arDeal, "arDeal");
 
     if(!empty($arCompanyIds)){
         $res = CIBlockElement::GetList(Array(), array("PROPERTY_ID_DOGOVORA" => $arCompanyIds, "IBLOCK_ID" => 8), false, false, array("ID", "IBLOCK_ID", "NAME"));
