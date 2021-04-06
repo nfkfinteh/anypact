@@ -614,19 +614,19 @@ function onEpilog() {
 
 
 // Монета пополнение счета, обновление баланса
-if($_REQUEST['SuccessfulDebit'] == "Y" && !empty($_REQUEST['MNT_ID']) && !empty($_REQUEST['MNT_OPERATION_ID']) && !empty($_REQUEST['MNT_TRANSACTION_ID'])){
-    require_once($_SERVER['DOCUMENT_ROOT']."/local/class/CMoneta.php");
-    $res = CUser::GetList(($by="personal_country"), ($order="desc"), array("UF_MONETA_ACCOUNT_ID" => $_REQUEST['MNT_ID']), array('FIELDS' => array("ID")));
-    if($arUser = $res->Fetch()){
-        $balance = CMoneta::GetBalance($arUser['UF_MONETA_ACCOUNT_ID']);
-        if($balance['STATUS'] == "SUCCESS" && $arUser['UF_MONETA_BALANCE'] != $balance['DATA']){
-            $CUser = new CUser;
-            $CUser -> Update($arUser['ID'], array("UF_MONETA_BALANCE" => $balance['DATA'], "UF_DATE_MODIFY" => date("d.m.Y H:i:s")));
-        }
-    }
-    CMoneta::updateHLOperation($_REQUEST['MNT_TRANSACTION_ID'], "SUCCESS");
-}
-if($_REQUEST['FailedDebit'] == "Y" && !empty($_REQUEST['MNT_ID']) && !empty($_REQUEST['MNT_OPERATION_ID']) && !empty($_REQUEST['MNT_TRANSACTION_ID'])){
-    require_once($_SERVER['DOCUMENT_ROOT']."/local/class/CMoneta.php");
-    CMoneta::updateHLOperation($_REQUEST['MNT_TRANSACTION_ID'], "ERROR");
-}
+// if($_REQUEST['SuccessfulDebit'] == "Y" && !empty($_REQUEST['MNT_ID']) && !empty($_REQUEST['MNT_OPERATION_ID']) && !empty($_REQUEST['MNT_TRANSACTION_ID'])){
+//     require_once($_SERVER['DOCUMENT_ROOT']."/local/class/CMoneta.php");
+//     $res = CUser::GetList(($by="personal_country"), ($order="desc"), array("UF_MONETA_ACCOUNT_ID" => $_REQUEST['MNT_ID']), array('FIELDS' => array("ID")));
+//     if($arUser = $res->Fetch()){
+//         $balance = CMoneta::GetBalance($arUser['UF_MONETA_ACCOUNT_ID']);
+//         if($balance['STATUS'] == "SUCCESS" && $arUser['UF_MONETA_BALANCE'] != $balance['DATA']){
+//             $CUser = new CUser;
+//             $CUser -> Update($arUser['ID'], array("UF_MONETA_BALANCE" => $balance['DATA'], "UF_DATE_MODIFY" => date("d.m.Y H:i:s")));
+//         }
+//     }
+//     CMoneta::updateHLOperation($_REQUEST['MNT_TRANSACTION_ID'], "SUCCESS");
+// }
+// if($_REQUEST['FailedDebit'] == "Y" && !empty($_REQUEST['MNT_ID']) && !empty($_REQUEST['MNT_OPERATION_ID']) && !empty($_REQUEST['MNT_TRANSACTION_ID'])){
+//     require_once($_SERVER['DOCUMENT_ROOT']."/local/class/CMoneta.php");
+//     CMoneta::updateHLOperation($_REQUEST['MNT_TRANSACTION_ID'], "ERROR");
+// }
