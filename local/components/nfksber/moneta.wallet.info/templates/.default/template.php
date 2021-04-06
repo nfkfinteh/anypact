@@ -11,8 +11,6 @@ use \Bitrix\Main\Localization\Loc;
  * @var string $templateName
  * @var string $componentPath
  */
-define("LOG_FILENAME", $_SERVER["DOCUMENT_ROOT"]."/__Moneta.log");
-AddMessage2Log($_REQUEST, "request");
 ?><?
 if($arResult['GET_WITHDRAWAL'] == "Y"){
     ?>
