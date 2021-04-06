@@ -205,20 +205,21 @@ class CDemoSqr extends CBitrixComponent
         $rsUser = CUser::GetList(($by="personal_country"), ($order="desc"), array("ID" => $this->arResult["PROPERTY"]['PACT_USER']['VALUE']), array("FIELDS" => array("ID", "EMAIL")));
         if($arUser = $rsUser->Fetch()){
             $rsDeal = CIBlockElement::GetList(array(), array("ID" => $this->arResult["ELEMENT_ID"]), false, false, array("ID", "IBLOCK_ID", "NAME", "DETAIL_PAGE_URL"));
-            $obj = $rsDeal->GetNextElement();
-            $arDeal = $obj->GetFields();
-            $arEventFields = array(
-                "EMAIL" => $arUser['EMAIL'],
-                "PDF" => $this->arResult["PDF"],
-                "CONTRACT_ID" => $contract_id,
-                "DEAL_URL" => $arDeal["DETAIL_PAGE_URL"],
-                "DEAL_NAME" => $arDeal["NAME"],
-                "USER_FIO" => $this->arResult['USER']['LAST_NAME']." ".$this->arResult['USER']['NAME']." ".$this->arResult['USER']['SECOND_NAME'],
-                "USER_ID" => $this->arResult['ID_USER']
-            );
-            $CNotification = new CNotification();
-            $CNotification -> Add(array("USER_ID" => $arUser['ID'], "TEXT" => "Договор [URL=https://anypact.ru/my_pacts/send_redaction/?ID=".$arEventFields['CONTRACT_ID']."]".$arEventFields['CONTRACT_ID']."[/URL] по сделке [URL=https://anypact.ru".$arEventFields['DEAL_URL']."]".$arEventFields['DEAL_NAME']."[/URL] с пользователем был подписан. [URL=".$arEventFields['PDF']."]Ссылка на договор[/URL]", "FROM_USER" => $arEventFields['USER_ID']));
-            CEvent::Send("CONTRACT_SIGNATURE_COMPLITE", SITE_ID, $arEventFields);
+            if($obj = $rsDeal->GetNextElement()){
+                $arDeal = $obj->GetFields();
+                $arEventFields = array(
+                    "EMAIL" => $arUser['EMAIL'],
+                    "PDF" => $this->arResult["PDF"],
+                    "CONTRACT_ID" => $contract_id,
+                    "DEAL_URL" => $arDeal["DETAIL_PAGE_URL"],
+                    "DEAL_NAME" => $arDeal["NAME"],
+                    "USER_FIO" => $this->arResult['USER']['LAST_NAME']." ".$this->arResult['USER']['NAME']." ".$this->arResult['USER']['SECOND_NAME'],
+                    "USER_ID" => $this->arResult['ID_USER']
+                );
+                $CNotification = new CNotification();
+                $CNotification -> Add(array("USER_ID" => $arUser['ID'], "TEXT" => "Договор [URL=/my_pacts/edit_my_contract/?ID=".$arEventFields['CONTRACT_ID']."]".$arEventFields['CONTRACT_ID']."[/URL] по сделке [URL=".$arEventFields['DEAL_URL']."]".$arEventFields['DEAL_NAME']."[/URL] с пользователем был подписан. [URL=".$arEventFields['PDF']."]Ссылка на договор[/URL]", "FROM_USER" => $arEventFields['USER_ID']));
+                CEvent::Send("CONTRACT_SIGNATURE_COMPLITE", SITE_ID, $arEventFields);
+            }
         }
     }
 

@@ -136,6 +136,8 @@ class CMonetaWalletInfo extends CBitrixComponent
                 $arSendParams['USER_EMAIL'] = $arUser['EMAIL'];
             }
         }
+        $CNotification = new CNotification();
+        $CNotification -> Add(array("USER_ID" => $user_id, "TEXT" => "Пользователь приглашает вас зарегистрировать кошелек на сервисе AnyPact", "FROM_USER" => $current_user_id));
         CEvent::Send("INVITATION_TO_MONETA", "s1", $arSendParams);
         return array("STATUS" => "SUCCESS");
     }

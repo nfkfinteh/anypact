@@ -35,8 +35,8 @@ class CDemoSqr extends CBitrixComponent
         if(CModule::IncludeModule("iblock"))
             {
                 $res = CIBlockElement::GetByID($id_element);
-                if($ar_res = $res->GetNext()){
-                    return $ar_res;
+                if($ar_res = $res->GetNextElement()){
+                    return $ar_res->GetFields();
                 }
                 
             }        
@@ -414,7 +414,7 @@ class CDemoSqr extends CBitrixComponent
                 "USER_ID" => $this->arResult["USER_ID"]
             );
             $CNotification = new CNotification();
-            $CNotification -> Add(array("USER_ID" => $arUser['ID'], "TEXT" => "Пользователь подписал ваш договор [URL=https://anypact.ru/my_pacts/send_redaction/?ID=".$arEventFields['CONTRACT_ID']."]".$arEventFields['CONTRACT_ID']."[/URL] по сделке [URL=https://anypact.ru".$arEventFields['DEAL_URL']."]".$arEventFields['DEAL_NAME']."[/URL] с изменениями", "FROM_USER" => $arEventFields['USER_ID']));
+            $CNotification -> Add(array("USER_ID" => $arUser['ID'], "TEXT" => "Пользователь подписал ваш договор [URL=/my_pacts/send_redaction/?ID=".$arEventFields['CONTRACT_ID']."]".$arEventFields['CONTRACT_ID']."[/URL] по сделке [URL=".$arEventFields['DEAL_URL']."]".$arEventFields['DEAL_NAME']."[/URL] с изменениями", "FROM_USER" => $arEventFields['USER_ID']));
             CEvent::Send("CONTRACT_SIGNATURE_EDIT", SITE_ID, $arEventFields);
         }
     }
