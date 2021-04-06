@@ -101,11 +101,13 @@ if(CModule::IncludeModule('highloadblock') && CModule::IncludeModule('iblock')){
 
     define("LOG_FILENAME", $_SERVER["DOCUMENT_ROOT"]."/__wtfArgStatus.log");
 
+    AddMessage2Log($arContractsIds, "arContractsIds");
+
     $arUsersIds = array_unique($arUsersIds);
     $arContractsIds = array_unique($arContractsIds);
     $arCompanyIds = array_unique($arCompanyIds);
 
-    AddMessage2Log($arContractsIds, "arContractsIds");
+    AddMessage2Log($arContractsIds, "arContractsIds2");
 
     if(!empty($arUsersIds)){
         $rsUser = CUser::GetList($by="personal_country", $order="desc", array('ID' => $arUsersIds), array('FIELDS' => array('ID', 'LOGIN', 'NAME', 'LAST_NAME', 'SECOND_NAME')));
@@ -113,8 +115,6 @@ if(CModule::IncludeModule('highloadblock') && CModule::IncludeModule('iblock')){
             $arUser[$array['ID']] = empty(trim($array['LAST_NAME'].$array['NAME'].$array['SECOND_NAME'])) ? $array['LOGIN'] : $array['LAST_NAME']." ".$array['NAME']." ".$array['SECOND_NAME'];
         }
     }
-
-    AddMessage2Log($arUser, "arUser");
 
     if(!empty($arAgreIds)){
         $entity_data_class = GetEntityDataClass(7);
