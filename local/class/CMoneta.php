@@ -495,11 +495,27 @@ class CMoneta {
             $monetaSdk = new \Moneta\MonetaSdk($_SERVER['DOCUMENT_ROOT'].'/block/moneta config/');
             $monetaSdk->checkMonetaServiceConnection();
 
-            $res = $monetaSdk->sdkMonetaCreateInvoice(317, $accountID, $amount, $opId);
+            $invoiceRequest = new \Moneta\Types\InvoiceRequest();
 
-            self::updateHLOperation($opId, "SUCCESS", $res);
+            $invoiceRequest->payer = 317;
 
-            return array("STATUS" => "SUCCESS", "DATA" => $res);
+            $invoiceRequest->payee = $accountID;
+            $invoiceRequest->amount = $amount;
+            $invoiceRequest->clientTransaction = $opId;
+
+            $invoiceResponse = $monetaSdk->monetaService->Invoice($invoiceRequest);
+
+            if (is_object($invoiceResponse)) {
+                $transactionId = $invoiceResponse->transaction;
+            } else if (is_array($invoiceResponse) && isset($invoiceResponse['transaction'])) {
+                $transactionId = $invoiceResponse['transaction'];
+            }
+
+            // $res = $monetaSdk->sdkMonetaCreateInvoice(317, $accountID, $amount, $opId);
+
+            self::updateHLOperation($opId, "SUCCESS", $transactionId);
+
+            return array("STATUS" => "SUCCESS", "DATA" => $transactionId);
         }
         catch (Exception $e) {
 
