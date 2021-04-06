@@ -99,6 +99,9 @@ if(CModule::IncludeModule('highloadblock') && CModule::IncludeModule('iblock')){
         
     }
 
+    define("LOG_FILENAME", $_SERVER["DOCUMENT_ROOT"]."/__wtfArgStatus.log");
+    AddMessage2Log($arAgre, "arAgre");
+
     $arUsersIds = array_unique($arUsersIds);
     $arContractsIds = array_unique($arContractsIds);
     $arCompanyIds = array_unique($arCompanyIds);
@@ -109,6 +112,8 @@ if(CModule::IncludeModule('highloadblock') && CModule::IncludeModule('iblock')){
             $arUser[$array['ID']] = empty(trim($array['LAST_NAME'].$array['NAME'].$array['SECOND_NAME'])) ? $array['LOGIN'] : $array['LAST_NAME']." ".$array['NAME']." ".$array['SECOND_NAME'];
         }
     }
+
+    AddMessage2Log($arUser, "arUser");
 
     if(!empty($arAgreIds)){
         $entity_data_class = GetEntityDataClass(7);
@@ -131,6 +136,7 @@ if(CModule::IncludeModule('highloadblock') && CModule::IncludeModule('iblock')){
             $arDeal[$arFields['PROPERTY_ID_DOGOVORA_VALUE']] = array("ID" => $arFields['ID'], "NAME" => $arFields['NAME']);
         }
     }
+    AddMessage2Log($arDeal, "arDeal");
 
     if(!empty($arCompanyIds)){
         $res = CIBlockElement::GetList(Array(), array("PROPERTY_ID_DOGOVORA" => $arCompanyIds, "IBLOCK_ID" => 8), false, false, array("ID", "IBLOCK_ID", "NAME"));
@@ -194,6 +200,7 @@ $tabControl->Begin();
                                     if(empty($arUser[$data['USER_AUTHOR']]) || $data['USER_AUTHOR'] == 1) unset($arAgre[$key]);
                                     if(empty($arUser[$data['USER_CONTRACTOR']]) || $data['USER_CONTRACTOR'] == 1) unset($arAgre[$key]);
                                 }
+                                AddMessage2Log($arAgre, "arAgre2");
                                 $arAgre = paginator($arAgre,20);
                                 foreach($arAgre['ITEMS'] as $data){
                                     ?>
