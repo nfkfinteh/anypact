@@ -125,11 +125,22 @@ if(CModule::IncludeModule('highloadblock') && CModule::IncludeModule('iblock')){
     }
 
     if(!empty($arContractsIds)){
-        $res = CIBlockElement::GetList(Array(), array("PROPERTY_ID_DOGOVORA" => $arContractsIds, "IBLOCK_ID" => 3), false, false, array("ID", "IBLOCK_ID", "NAME", "PROPERTY_ID_DOGOVORA"));
+        $res = CIBlockElement::GetList(Array(), array("ID" => $arContractsIds, "!PROPERTY_ID_PACT" => "", "IBLOCK_ID" => 6), false, false, array("ID", "IBLOCK_ID", "NAME", "PROPERTY_ID_PACT"));
         while($arFields = $res->GetNext())
         {
-            $arDeal[$arFields['PROPERTY_ID_DOGOVORA_VALUE']] = array("ID" => $arFields['ID'], "NAME" => $arFields['NAME']);
+            $arDealIds[] = $arFields['PROPERTY_ID_PACT_VALUE'];
+            $arEdit[$arFields['PROPERTY_ID_PACT_VALUE']] = $arFields['ID'];
         }
+        if(!empty($arDealIds)){
+            $arDealIds = array_unique($arDealIds);
+            $res = CIBlockElement::GetList(Array(), array("ID" => $arDealIds, "IBLOCK_ID" => 3), false, false, array("ID", "IBLOCK_ID", "NAME", "PROPERTY_ID_DOGOVORA"));
+            while($arFields = $res->GetNext())
+                $arDeal[$arEdit[$arFields['ID']]] = array("ID" => $arFields['ID'], "NAME" => $arFields['NAME']);
+        }
+        $arContractsIds = array_unique($arContractsIds);
+        $res = CIBlockElement::GetList(Array(), array("PROPERTY_ID_DOGOVORA" => $arContractsIds, "IBLOCK_ID" => 3), false, false, array("ID", "IBLOCK_ID", "NAME", "PROPERTY_ID_DOGOVORA"));
+        while($arFields = $res->GetNext())
+            $arDeal[$arFields['PROPERTY_ID_DOGOVORA_VALUE']] = array("ID" => $arFields['ID'], "NAME" => $arFields['NAME']);
     }
 
     if(!empty($arCompanyIds)){
