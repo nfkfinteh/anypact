@@ -100,11 +100,12 @@ if(CModule::IncludeModule('highloadblock') && CModule::IncludeModule('iblock')){
     }
 
     define("LOG_FILENAME", $_SERVER["DOCUMENT_ROOT"]."/__wtfArgStatus.log");
-    AddMessage2Log($arAgre, "arAgre");
 
     $arUsersIds = array_unique($arUsersIds);
     $arContractsIds = array_unique($arContractsIds);
     $arCompanyIds = array_unique($arCompanyIds);
+
+    AddMessage2Log($arContractsIds, "arContractsIds");
 
     if(!empty($arUsersIds)){
         $rsUser = CUser::GetList($by="personal_country", $order="desc", array('ID' => $arUsersIds), array('FIELDS' => array('ID', 'LOGIN', 'NAME', 'LAST_NAME', 'SECOND_NAME')));
