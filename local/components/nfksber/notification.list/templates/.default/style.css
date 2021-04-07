@@ -104,7 +104,6 @@
     white-space: nowrap;
 }
 .person-conversation-date {
-    text-align: right;
     display: inline-block;
     vertical-align: top;
     width: 81px;
@@ -200,33 +199,26 @@
     padding-top: 10px;
 }
 @media screen and (max-width: 991px) {
-    .notification-block {
-        max-width: 235px;
-    }
-    .person-conversation-name {
-        max-width: 64%;
-        width: 64%;
-    }
 }
 @media screen and (max-width: 767px) {
-    #notification_list .list-person-conversation {
-        max-width: 420px;
-        margin: 0 auto;
-    }
     .notification-block {
-        max-width: 325px;
         font-size: 16px!important;
     }
 }
 @media screen and (max-width: 450px) {
-    #notification_list .list-person-conversation {
-        max-width: 290px;
+    .right-menu {
+        right: -230px;
     }
-    .notification-block {
-        max-width: 195px;
+    .right-menu .content{
+        width: 230px;
     }
-    .person-conversation-name {
-        max-width: 56%;
-        width: 56%;
+    .list-person-conversation .person-conversation{
+        padding: 10px;
+    }
+    .list-person-conversation .person-conversation-photo{
+        margin-right: 10px;
+    }
+    .notification-message-block{
+        font-size: 13px;
     }
 }
