@@ -59,7 +59,7 @@ if($arResult["BLACKLIST"]['CLOSE']){
                     </a>
                 <?endif;?>
             </div>
-            <?if($arResult['CURRENT_USER']['UF_MONETA_CHECK_STAT'] == "SUCCESS"):?>
+            <?if($arResult['CURRENT_USER']['UF_MONETA_CHECK_STAT'] == "SUCCESS" && $arResult['CURRENT_USER']['ID'] != $arResult['USER']['ID']):?>
                 <button <?=$BLACKLIST_display;?> class="btn btn-nfk gray js-send-money black-list-show_hide" data-id="<?=$arResult['USER']['ID']?>">
                     Перевести деньги
                 </button>
