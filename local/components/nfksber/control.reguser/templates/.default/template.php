@@ -117,15 +117,7 @@
                     <?if($UserRegAction["UF_PAY_YANDEX"] == "Y"){ ?>
                         <button class="btn btn-nfk" disabled>Выплата произведена</button>
                     <?}else { ?>
-                        <?php
-                        /* $count = COption::GetOptionInt("main", "pay_count");
-                        if(empty($count)){
-                            $count = 1;
-                        }
-                        if($count <= 1000){
-                        ?>
-                            <button class="btn btn-nfk buttonSebdPay" data=<?=$UserRegAction["PAY_PARAMS"]?>>Выплатить вознаграждение</button>
-                        <?} */?>
+                        <button class="btn btn-nfk buttonSebdPay" data=<?=$UserRegAction["PAY_PARAMS"]?>>Выплатить вознаграждение</button>
                     <?}?>
                 <? } ?>
             </td>

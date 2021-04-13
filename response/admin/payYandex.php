@@ -1,8 +1,6 @@
 <?php
 require_once($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/include/prolog_before.php");
 
-die();
-
 use Bitrix\Highloadblock as HL;
 use Bitrix\Main\Entity;
 include_once ('class/payYandex.php');
@@ -11,10 +9,10 @@ $count = COption::GetOptionInt("main", "pay_count");
 if(empty($count)){
     $count = 0;
 }
-if($count > 1000){
-    echo json_encode(array("STATUS" => "ERROR", "DESCRIPTION" => "Достигнут лимит в 1000 выплат"));
-    die();
-}
+// if($count > 1000){
+//     echo json_encode(array("STATUS" => "ERROR", "DESCRIPTION" => "Достигнут лимит в 1000 выплат"));
+//     die();
+// }
 
 // классы для соединения с посредником платежной системы.
 $ConnectPayYandex = new payYandex();
