@@ -1,6 +1,10 @@
 <?php
 require_once($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/include/prolog_before.php");
 
+if(COption::GetOptionInt("main", "promotion_on") == 0){
+    die();
+}
+
 use Bitrix\Highloadblock as HL;
 use Bitrix\Main\Entity;
 include_once ('class/payYandex.php');

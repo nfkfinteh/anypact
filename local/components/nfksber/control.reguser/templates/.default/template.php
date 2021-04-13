@@ -116,7 +116,7 @@
                 <? if($UserRegAction["UF_ESIA_AUT"] == 1 && $UserRegAction["PERSONAL_PHOTO"] !='' && $UserRegAction['PERSONAL_PHONE'] !='' && $UserRegAction['DEAL_WITH_PHOTOS'] == "Y"){ ?>
                     <?if($UserRegAction["UF_PAY_YANDEX"] == "Y"){ ?>
                         <button class="btn btn-nfk" disabled>Выплата произведена</button>
-                    <?}else { ?>
+                    <?}else if(COption::GetOptionInt("main", "promotion_on") != 0){ ?>
                         <button class="btn btn-nfk buttonSebdPay" data=<?=$UserRegAction["PAY_PARAMS"]?>>Выплатить вознаграждение</button>
                     <?}?>
                 <? } ?>
@@ -126,6 +126,7 @@
     <?}?>    
   </tbody>
 </table>
+<?if(COption::GetOptionInt("main", "promotion_on") != 0){?>
 <script>
     $('.buttonSebdPay').on('click', function(){
         let PayParams = $(this).attr("data");
@@ -158,6 +159,7 @@
     });
         
 </script>
+<?}?>
 <?
 $APPLICATION->IncludeComponent(
    "bitrix:main.pagenavigation",

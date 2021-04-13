@@ -319,19 +319,23 @@ global $USER;
                             '/friends/'         => 'Мои друзья',
                             '/list_message/'    => 'Сообщения',
                             '/service/'         => 'О сервисе',
-                            '/help/'            => 'Контакты',
-                            '/promotion/'       => 'Промоакция'
+                            '/help/'            => 'Контакты'
                         );
+                        if(COption::GetOptionInt("main", "promotion_on") != 0){
+                            $arUrlMenu['/promotion/'] = 'Промоакция';
+                        }
                     }else {
                         // неавторизованный пользователь
                         $arUrlMenu = array(
                             '/pacts/'           => 'Все предложения',
                             '/search_people/'   => 'Поиск контрагентов',
                             '/service/'         => 'О сервисе',
-                            '/help/'            => 'Контакты',
-                            '/promotion/'       => 'Промоакция',
-                            '#'                 => 'Регистрация/вход'
+                            '/help/'            => 'Контакты'
                         );
+                        if(COption::GetOptionInt("main", "promotion_on") != 0){
+                            $arUrlMenu['/promotion/'] = 'Промоакция';
+                        }
+                        $arUrlMenu['#'] = 'Регистрация/вход';
                     }
                     $APPLICATION->IncludeComponent("nfksber:navmenu.head",
                     "",
