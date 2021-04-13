@@ -127,35 +127,35 @@
   </tbody>
 </table>
 <script>
-    // $('.buttonSebdPay').on('click', function(){
-    //     let PayParams = $(this).attr("data");
-    //     let ButtonPay = $(this)
+    $('.buttonSebdPay').on('click', function(){
+        let PayParams = $(this).attr("data");
+        let ButtonPay = $(this)
         
-    //     $.ajax({
-	// 		type: 'POST',
-	// 		url: '/response/admin/payYandex.php',
-	// 		data: {'payParams': PayParams},
-	// 		async:false,
-	// 		success: function(result){
-    //             var $result = JSON.parse(result);
-    //             if($result['STATUS'] == "SUCCESS"){
-    //                 ButtonPay.prop('disabled', 'true');
-    //             }else{
-    //                 var data = {
-    //                     TITLE: 'Ошибка!',
-    //                     BODY: '<p>'+$result['DESCRIPTION']+'</p>',
-    //                     BUTTONS: [
-    //                         {
-    //                             NAME: 'Закрыть',
-    //                             CLOSE: 'Y'
-    //                         }
-    //                     ]
-    //                 };
-    //                 newAnyPactPopUp(data);
-    //             }
-	// 		}
-    //     });        
-    // });
+        $.ajax({
+			type: 'POST',
+			url: '/response/admin/payYandex.php',
+			data: {'payParams': PayParams},
+			async:false,
+			success: function(result){
+                var $result = JSON.parse(result);
+                if($result['STATUS'] == "SUCCESS"){
+                    ButtonPay.prop('disabled', 'true');
+                }else{
+                    var data = {
+                        TITLE: 'Ошибка!',
+                        BODY: '<p>'+$result['DESCRIPTION']+'</p>',
+                        BUTTONS: [
+                            {
+                                NAME: 'Закрыть',
+                                CLOSE: 'Y'
+                            }
+                        ]
+                    };
+                    newAnyPactPopUp(data);
+                }
+			}
+        });        
+    });
         
 </script>
 <?
