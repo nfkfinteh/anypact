@@ -1,0 +1,136 @@
+.cardDogovor {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    color: #131313;
+}
+.cardDogovor h3 {
+    font-weight: 400;
+}
+.cardDogovor h5 {
+    font-weight: bolder;
+}
+.cardDogovor .new-btn {
+    border: 1px solid #FE6600;
+    background: none;
+    border-radius: 5px;
+    padding: 10px 30px;
+    float: right;
+    line-height: 19px;
+    color: #FE6600;
+    width: 100%;
+    margin-bottom: 30px;
+    white-space: normal;
+}
+.cardDogovor .new-btn:hover {
+    color: #fff;
+    background: #FE6600;
+}
+ul.list-document {
+    padding: 0;
+}
+ul.list-document li:last-child {
+    border: none;
+}
+ul.list-document li {
+    border-bottom: 2px solid #f2f2f2;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    flex-wrap: wrap;
+    padding-top: 20px;
+    padding-bottom: 22px;
+    transition: all 1s ease;
+}
+ul.list-document li::before {
+    content: "";
+    background-image: url(/local/components/nfksber/sendcontract.view/templates/signed/img/icon-document-sprite.png);
+    background-repeat: no-repeat;
+    display: inline-block;
+    width: 22px;
+    height: 28px;
+    background-position: -5px -5px;
+    margin-right: 23px;
+    margin-left: 23px;
+}
+.cardDogovor-boxTool{
+    margin: 17px auto;
+}
+label.new-btn {
+    font-weight: 300;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 10px;
+}
+.view {
+    background-color: #f1f4f4;
+    min-height: 400px;
+    max-height: 800px;
+    margin: 17px auto;
+    overflow: hidden auto;
+}
+.view-text {
+    padding: 20px 10px 10px 30px;
+    overflow: hidden auto;
+    height: 100%;
+}
+.tree {
+    display: block;
+    text-align: left;
+    margin-bottom: 10px;
+}
+.link_template{
+    cursor: pointer;
+    height: 100%;
+}
+.link_template img, .tree-element img {
+    width: 35px;
+    margin-right: 15px;
+}
+.deep_lvl-1{
+    padding-left: 0px;
+}
+.deep_lvl-2{
+    padding-left: 35px;
+}
+.deep_lvl-3{
+    padding-left: 70px;
+}
+.deep_lvl-4{
+    padding-left: 75px;
+}
+.deep_lvl-5{
+    padding-left: 110px;
+}
+.cardDogovor .tree-back{
+    color: #FE6600;
+    width: 100%;
+}
+.trumbowyg-editor {
+    max-height: 800px;
+}
+.steps .t {
+    width: 100%;
+    border: 1px solid #FE6600;
+    padding: 15px;
+    cursor: pointer;
+    position: relative;
+    border-radius: 5px;
+    display: inline-block;
+    margin-bottom: 30px;
+}
+.sign-text{
+    max-width: 520px;
+}
+.final-title {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 17px;
+}
+button.btn-img {
+    border: none;
+    background: transparent;
+    margin-left: 15px;
+}

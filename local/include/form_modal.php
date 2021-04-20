@@ -7,6 +7,7 @@
         right: 0;
         width: 300px;
         display:none;
+        z-index: 1000000;
     }
     .toast .toast-card{
         position: relative;

@@ -43,6 +43,11 @@
                         <div class="person-conversation-photo<? if ($value['UF_IS_SYSTEM']) { ?> system<? } ?>">
                             <? if ($value['UF_IS_SYSTEM']) { ?>
                                 <img src="<?= SITE_TEMPLATE_PATH ?>/img/map_icon.png">
+                            <? } elseif (!empty($value['UF_FROM_COMPANY']['PREVIEW_PICTURE'])) { ?>
+                                <? $renderImage = CFile::ResizeImageGet($value['UF_FROM_COMPANY']['PREVIEW_PICTURE'], array("width" => 50, "height" => 50), BX_RESIZE_IMAGE_EXACT, false); ?>
+                                <a href="/profile_user/?ID=<?= $value['UF_FROM_COMPANY']['ID']; ?>">
+                                    <img src="<?= $renderImage['src'] ?>">
+                                </a>
                             <? } elseif (!empty($value['UF_FROM_USER']['PERSONAL_PHOTO'])) { ?>
                                 <? $renderImage = CFile::ResizeImageGet($value['UF_FROM_USER']['PERSONAL_PHOTO'], array("width" => 50, "height" => 50), BX_RESIZE_IMAGE_EXACT, false); ?>
                                 <a href="/profile_user/?ID=<?= $value['UF_FROM_USER']['ID']; ?>">
@@ -56,6 +61,10 @@
                             <div class="notification-name-date">
                                 <? if ($value['UF_IS_SYSTEM']) { ?>
                                     <div class="person-conversation-name system"><strong>Система</strong></div>
+                                <? } elseif (!empty($value['UF_FROM_COMPANY']['NAME'])) { ?>
+                                    <a href="/profile_user/?ID=<?= $value['UF_FROM_COMPANY']['ID']; ?>&type=company">
+                                        <div class="person-conversation-name"><strong><? echo $value['UF_FROM_COMPANY']['NAME'];?></strong></div>
+                                    </a>
                                 <? } elseif (!empty($value['UF_FROM_USER']['LAST_NAME']) || !empty($value['UF_FROM_USER']['NAME']) || !empty($value['UF_FROM_USER']['SECOND_NAME'])) { ?>
                                     <a href="/profile_user/?ID=<?= $value['UF_FROM_USER']['ID']; ?>">
                                         <div class="person-conversation-name"><strong><? echo $value['UF_FROM_USER']['NAME'] . " " . $value['UF_FROM_USER']['LAST_NAME']; ?></strong></div>

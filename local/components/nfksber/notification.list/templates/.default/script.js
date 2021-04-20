@@ -1,7 +1,7 @@
 var inProgress = false;
 var page = 2;
 
-function sendAjax(action, success, data = {}, type = 'POST', additionalURL = '', dataType = 'json') {
+function sendAjaxNotification(action, success, data = {}, type = 'POST', additionalURL = '', dataType = 'json') {
 
     var beginData = {
         via_ajax: 'Y',
@@ -43,7 +43,7 @@ function loadMoreNotification(not_scroll = false) {
                 $('#notification_list .list-person-conversation').off('scroll', loadMoreNotification);
             page++;
         };
-        sendAjax('loadMoreNotification', func, {}, 'POST', '?nav-notification=page-' + page);
+        sendAjaxNotification('loadMoreNotification', func, {}, 'POST', '?nav-notification=page-' + page);
     }
 }
 
@@ -61,7 +61,7 @@ function bindNotEvents(node){
                     $('#notification_btn .notification_count span').text(result);
             }
         };
-        sendAjax('readNotific', func, { id: $el.data('id') });
+        sendAjaxNotification('readNotific', func, { id: $el.data('id') });
     });
     $(node).find('.not-delete').click(function () {
         var $el = $(this).parents('.person-conversation');
@@ -88,7 +88,7 @@ function bindNotEvents(node){
                                     loadMoreNotification(true);
                             }
                         };
-                        sendAjax('deleteNotific', func, { id: $el.data('id') });
+                        sendAjaxNotification('deleteNotific', func, { id: $el.data('id') });
                     })
                 }
             ]
@@ -116,7 +116,7 @@ $(document).ready(function () {
                             if (result !== false)
                                 $('#notification_list .list-person-conversation').html('<div class="no-notification"><img src="/local/templates/anypact/image/dont_chat.png" alt="Уведомления отсутствуют"><p>Уведомления отсутствуют</p></div>');
                         };
-                        sendAjax('deleteNotificAll', func, {}, 'POST', '?nav-notification=1');
+                        sendAjaxNotification('deleteNotificAll', func, {}, 'POST', '?nav-notification=1');
                     })
                 }
             ]

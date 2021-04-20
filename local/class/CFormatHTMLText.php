@@ -1,7 +1,7 @@
 <?
 class CFormatHTMLText{
 
-    private static $yandexTurboAllowedTags = '<p><a><br><hr><h1><h2><h3><h4><h5><h6><ul><ol><li><table><tbody><thead><th><tr><td><b><strong><i><em><sup><sub><ins><del><small><big><pre><blockquote><figure><img><figcaption>';
+    private static $yandexTurboAllowedTags = '<p><span><a><br><hr><h1><h2><h3><h4><h5><h6><ul><ol><li><table><tbody><thead><th><tr><td><b><strong><i><em><sup><sub><ins><del><small><big><pre><blockquote><figure><img><figcaption>';
 
     public static function RemoveInvalidTags($string, $allowedTags = false, $removeBreaks = false)
 	{

@@ -63,7 +63,9 @@ class CNotification {
             "UF_DATE_CREATE" => $date,
             "UF_TEXT" => $arFields['TEXT'],
             "UF_IS_SYSTEM" => ($arFields['IS_SYSTEM'] == "Y") ? 1 : 0,
-            "UF_FROM_USER" => $arFields['FROM_USER']
+            "UF_FROM_USER" => $arFields['FROM_USER'],
+            "UF_COMPANY_ID" => $arFields['COMPANY_ID'],
+            "UF_FROM_COMPANY" => $arFields['FROM_COMPANY']
         ));
         $notification_id = $result->getId();
 
@@ -84,13 +86,16 @@ class CNotification {
             $arUpdate['UF_READED'] = ($arFields['READED'] == "Y") ? 1 : 0;
         }
         if(isset($arFields['TEXT'])){
-            $arUpdate['UF_TEXT'] = ($arFields['TEXT'] == "Y") ? 1 : 0;
+            $arUpdate['UF_TEXT'] = $arFields['TEXT'];
         }
         if(isset($arFields['IS_SYSTEM'])){
             $arUpdate['UF_IS_SYSTEM'] = ($arFields['IS_SYSTEM'] == "Y") ? 1 : 0;
         }
         if(isset($arFields['FROM_USER'])){
-            $arUpdate['UF_FROM_USER'] = ($arFields['FROM_USER'] == "Y") ? 1 : 0;
+            $arUpdate['UF_FROM_USER'] = $arFields['FROM_USER'];
+        }
+        if(isset($arFields['FROM_COMPANY'])){
+            $arUpdate['UF_FROM_COMPANY'] = $arFields['FROM_COMPANY'];
         }
 
         $entity_data_class = self::GetEntityDataClass(NOTIFICATION_HBL_ID);
@@ -144,9 +149,15 @@ class CNotification {
         return $arResult;
     }
 
-    public static function GetUnreadCount($user_id){
+    public static function GetUnreadCount($user_id, $company_id = 0){
         if(!\Bitrix\Main\Loader::includeModule('highloadblock'))
             return false;
+
+        if(!empty($company_id))
+            $arFilter["UF_COMPANY_ID"] = $company_id;
+        else if(!empty($user_id))
+            $arFilter["UF_USER_ID"] = $user_id;
+        else return 0;
 
         $entity_data_class = self::GetEntityDataClass(NOTIFICATION_HBL_ID);
         $rsData = $entity_data_class::getList(array(
@@ -154,16 +165,22 @@ class CNotification {
             "order" => array(),
             "limit" => 1,
             "count_total" => true,
-            "filter" => array("UF_READED" => 0, "UF_USER_ID" => $user_id)
+            "filter" => array_merge(array("UF_READED" => 0), $arFilter)
         ));
         
         return $rsData->getCount();
     }
 
 
-    public static function getCount($user_id){
+    public static function getCount($user_id, $company_id = 0){
         if(!\Bitrix\Main\Loader::includeModule('highloadblock'))
             return false;
+
+        if(!empty($company_id))
+            $arFilter["UF_COMPANY_ID"] = $company_id;
+        else if(!empty($user_id))
+            $arFilter["UF_USER_ID"] = $user_id;
+        else return 0;
 
         $entity_data_class = self::GetEntityDataClass(NOTIFICATION_HBL_ID);
         $rsData = $entity_data_class::getList(array(
@@ -171,7 +188,7 @@ class CNotification {
             "order" => array(),
             "limit" => 1,
             "count_total" => true,
-            "filter" => array("UF_USER_ID" => $user_id)
+            "filter" => $arFilter
         ));
         
         return $rsData->getCount();

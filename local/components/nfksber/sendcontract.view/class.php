@@ -97,47 +97,54 @@ class CDemoSqr extends CBitrixComponent
             $rsUser = CUser::GetByID($arSendItem['UF_ID_USER_B']);
             $arUser_B = $rsUser->Fetch();
         }
-        $hash_B = md5($arSendItem['UF_VER_CODE_USER_B']);
-        
-        $Send_text = '<table style="width:100%; margin 50px 0;">';
-        $Send_text .= '<tr>';
-        $Send_text .= '<td style="width:44%">';
-        $Send_text .= '<b>Подписано простой электронной подписью:</b>';
-        if(!empty($arCompany_A)){
-            //компания
-            $Send_text .= '<br>'.$arCompany_A['NAME'];
-            $Send_text .= '<br>'.$arCompany_A['PROPERTY_INN_VALUE'];
+       //статус подписи
+       if(!empty($arSendItem['UF_VER_CODE_USER_B'])){
+            $hash_B = md5($arSendItem['UF_VER_CODE_USER_B']);
         }
-        else{
-            //пользователь
-            $Send_text .= '<br>'.$arUser_A['LAST_NAME'].' '.$arUser_A['NAME'].' '.$arUser_A['SECOND_NAME'];
-            $Send_text .= '<br>#'.$arUser_A['UF_PASSPORT'];
-        }
-        $Send_text .= '<br>'.$arSendItem["UF_TIME_SEND_USER_A"]->format("Y-m-d H:i:s");
-        $Send_text .= '<br>'.$hash_A;
-        $Send_text .= '</td>';
-        $Send_text .= '<td style="width:2%"></td>';
-        $Send_text .= '<td style="width:44%">';
-        $Send_text .= '<b>Подписано простой электронной подписью:</b>';
-        if(!empty($arCompany_B)) {
-            //компания
-            $Send_text .= '<br>'.$arCompany_B['NAME'];
-            $Send_text .= '<br>'.$arCompany_B['PROPERTY_INN_VALUE'];
-        }
-        else{
-            //пользователь
-            $Send_text .= '<br>'.$arUser_B['LAST_NAME'].' '.$arUser_B['NAME'].' '.$arUser_B['SECOND_NAME'];
-            $Send_text .= '<br>#'.$arUser_B['UF_PASSPORT'];
-        }
+        if(!empty($hash_A) && !empty($hash_B)){
+            $Send_text = '<table style="width:100%; margin 50px 0;">';
+            $Send_text .= '<tr>';
+            $Send_text .= '<td style="width:44%">';
+            if(!empty($arSendItem["UF_TIME_SEND_USER_A"])){
+                $Send_text .= '<b>Подписано простой электронной подписью:</b>';
+                if(!empty($arCompany_A)){
+                    //компания
+                    $Send_text .= '<br>'.$arCompany_A['NAME'];
+                    $Send_text .= '<br>'.$arCompany_A['PROPERTY_INN_VALUE'];
+                }
+                else{
+                    //пользователь
+                    $Send_text .= '<br>'.$arUser_A['LAST_NAME'].' '.$arUser_A['NAME'].' '.$arUser_A['SECOND_NAME'];
+                    $Send_text .= '<br>#'.$arUser_A['UF_PASSPORT'];
+                }
+                $Send_text .= '<br>'.$arSendItem["UF_TIME_SEND_USER_A"]->format("Y-m-d H:i:s");
+                $Send_text .= '<br>'.$hash_A;
+            }
+            $Send_text .= '</td>';
+            $Send_text .= '<td style="width:2%"></td>';
+            $Send_text .= '<td style="width:44%">';
+            if(!empty($arSendItem["UF_TIME_SEND_USER_B"])){
+                $Send_text .= '<b>Подписано простой электронной подписью:</b>';
+                if(!empty($arCompany_B)) {
+                    //компания
+                    $Send_text .= '<br>'.$arCompany_B['NAME'];
+                    $Send_text .= '<br>'.$arCompany_B['PROPERTY_INN_VALUE'];
+                }
+                else{
+                    //пользователь
+                    $Send_text .= '<br>'.$arUser_B['LAST_NAME'].' '.$arUser_B['NAME'].' '.$arUser_B['SECOND_NAME'];
+                    $Send_text .= '<br>#'.$arUser_B['UF_PASSPORT'];
+                }
 
-        $Send_text .= '<br>'.$arSendItem["UF_TIME_SEND_USER_A"]->format("Y-m-d H:i:s");
-        $Send_text .= '<br>'.$hash_B;
-        $Send_text .= '</td>';
-        $Send_text .= '</tr>';
-        $Send_text .= '</table>';
+                $Send_text .= '<br>'.$arSendItem["UF_TIME_SEND_USER_B"]->format("Y-m-d H:i:s");
+                $Send_text .= '<br>'.$hash_B;
+            }
+            $Send_text .= '</td>';
+            $Send_text .= '</tr>';
+            $Send_text .= '</table>';
 
-        $arSend['TEXT'] = $Send_text;
-        $arSend['ID']   = $status_send_a;
+            $arSend['TEXT'] = $Send_text;
+        }
 
         $this->arResult['DATA_DOGOVOR'] = $arSendItem;
         $this->arResult['DOGOVOR_ID'] = $arSendItem['UF_ID_CONTRACT'];

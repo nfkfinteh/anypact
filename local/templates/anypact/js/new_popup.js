@@ -45,7 +45,7 @@ function newAnyPactPopUp(arData){
             }
         }
     }
-    $('#'+pu_id).parent('.new-pu-overflow').on('click', function(event){
+    $('#'+pu_id).parent('.new-pu-overflow').on('mousedown', function(event){
         if ($(event.target).closest("#"+pu_id).length) return;
         if ($(event.target).closest(".delete-img").length) return;
         if ($(event.target).closest(".name-allow-change").length) return;

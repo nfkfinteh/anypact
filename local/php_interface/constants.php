@@ -1,4 +1,9 @@
 <?
+define("DEALS_IB_ID", "3");
+define("CONTRACTS_IB_ID", "4");
+define("CONTRACT_PATTERN_IB_ID", "5");
+define("COMPANY_IB_ID", "8");
+
 define("HLB_USER_FRIENDS_ACCEPT_Y", "1");
 define("HLB_USER_FRIENDS_ACCEPT_N", "2");
 define("HLB_USER_FRIENDS_ACCEPT_A", "3");
@@ -32,5 +37,10 @@ define("MONETA_OPERATION_HLB_ID", "27");
 define("MONETA_USER_CARDS_HLB_ID", "28");
 
 define("NOTIFICATION_HBL_ID", "29");
+
+define("CONTRACT_SIGNED_HBL_ID", "3");
+define("CONTRACT_TEXT_HBL_ID", "7");
+define("CONTRACT_REDACTION_HLB_ID", "30");
+
 
 ?>
