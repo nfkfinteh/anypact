@@ -221,13 +221,11 @@ $this->addExternalJS(SITE_TEMPLATE_PATH."/module/trumbowyg/dist/plugins/table/tr
                 if (!empty($arResult["PROPERTY"]["ID_DOGOVORA"]["VALUE"])){
                     echo '<div style="margin-bottom: 15px;"><img src="'.SITE_TEMPLATE_PATH.'/image/doc_ready_ico.png" style="max-width: 40px;"><span>Договор загружен</span></div>';
                     $text_btn_dogovor = 'Редактировать договор';
-                    $action_dogovor = 'EDIT=EDIT';
                 } else {
                     $text_btn_dogovor = 'Добавить договор';
-                    $action_dogovor = 'EDIT=ADD';
                 }
                 ?>
-            <a class="btn btn-nfk" href="/my_pacts/add_my_dogovor/?ELEMENT_ID=<?=$arResult["ELEMENT"]["ID"]?>&<?=$action_dogovor?>"><?=$text_btn_dogovor?></a>            
+            <a class="btn btn-nfk" href="/contract/?ID=<?=$arResult["ELEMENT"]["ID"]?>"><?=$text_btn_dogovor?></a>
             <!--Автоматическое удаление объявления-->
             <div class="form-group form-checkbox" style="padding-left: 21px;">            
                 <? if($arResult["PROPERTY"]["AV_DELETE"]["VALUE"] == "Y"){ ?>

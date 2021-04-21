@@ -271,8 +271,19 @@ class CContractAction extends CBitrixComponent
         if(Loader::includeModule("highloadblock"))
         {
             
-            if(!empty($company_id))
-                $user_id = 0;
+            if(!empty($company_id)){
+                $arFilter = array(
+                    "LOGIC" => "OR",
+                    array("UF_ID_COMPANY_A" => $company_id),
+                    array("UF_ID_COMPANY_B" => $company_id)
+                );
+            }else{
+                $arFilter = array(
+                    "LOGIC" => "OR",
+                    array("UF_ID_USER_A" => $user_id),
+                    array("UF_ID_USER_B" => $user_id),
+                );
+            }
 
             $entity_data_class = self::GetEntityDataClass(CONTRACT_SIGNED_HBL_ID);
             $rsData = $entity_data_class::getList(array(
@@ -280,13 +291,7 @@ class CContractAction extends CBitrixComponent
                 "order" => array("ID" => "ASC"),
                 "filter" => array(
                     "ID" => $id,
-                    array(
-                        "LOGIC" => "OR",
-                        array("UF_ID_USER_A" => $user_id),
-                        array("UF_ID_USER_B" => $user_id),
-                        array("UF_ID_COMPANY_A" => $company_id),
-                        array("UF_ID_COMPANY_B" => $company_id),
-                    )
+                    $arFilter
                 )
             ));
             if($arSigned = $rsData->Fetch()){
@@ -446,6 +451,7 @@ class CContractAction extends CBitrixComponent
     }
 
     private function createContract($arFields){
+        $arRes = array();
         if(Loader::includeModule("iblock"))
         {
             if(empty($arFields['USER_A']) || !is_numeric($arFields['USER_A'])){
@@ -841,10 +847,12 @@ class CContractAction extends CBitrixComponent
     private static function getDeal($id, $user_id, $company_id = 0){
         if(Loader::includeModule("iblock"))
         {
+            if(empty($id))
+                return false;
             if(!empty($company_id))
                 $user_id = 0;
             $arFilter = array(
-                "ID" => $id, 
+                "=ID" => $id, 
                 "IBLOCK_ID" => DEALS_IB_ID, 
                 array(
                     "LOGIC" => "OR",
@@ -1116,6 +1124,7 @@ class CContractAction extends CBitrixComponent
 
                                         if($arRes['STATUS'] == "SUCCESS") 
                                         {
+                                            
                                             $arRedaction['ID'] = $arRes['REDACTION_ID'];
                                             $this -> arResult['CONTRACT'] = $arRedaction;
                                             $this -> arResult['CONTACT_TYPE'] = "REDACTION";
@@ -1127,8 +1136,10 @@ class CContractAction extends CBitrixComponent
 
                                         if($this -> arResult['CONTACT_TYPE'] == "REDACTION")
                                             $arRes = $this -> updateRedaction($this -> arResult['CONTRACT']['ID'], $this -> arResult['CURRENT_USER']['ID'], $contract_text);
-                                        else
+                                        else{
                                             $arRes = self::updateContract($this -> arResult['CONTRACT']['ID'], $contract_text);
+                                            $arRes['SCRIPT'] = 'document.location.href = "/my_pacts/edit_my_pact/?ELEMENT_ID='.$this -> arResult['DEAL']['ID'].'&ACTION=EDIT"';
+                                        }
                                         
                                         if($arRes['STATUS'] == "SUCCESS") 
                                         {
@@ -1245,6 +1256,7 @@ class CContractAction extends CBitrixComponent
                                     }
                                     else
                                     {
+                                        $arRes['SCRIPT'] = 'document.location.href = "/my_pacts/edit_my_pact/?ELEMENT_ID='.$this -> arResult['DEAL']['ID'].'&ACTION=EDIT"';
                                         $arContract['ID'] = $arRes['CONTRACT_ID'];
                                         $this -> arResult['CONTRACT'] = $arContract;
                                         $this -> arResult['CONTACT_TYPE'] = "ORIGINAL";

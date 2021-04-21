@@ -35,7 +35,7 @@ if($arResult['VIA_AJAX'] != "Y"){
 <?} else if($arResult['NOT_DEAL'] == "Y"){?>
     <div class="error-mess">
         <img src="/local/templates/anypact/image/err_send.png" alt="Нет договора">
-        <p class="title">Сделка недоступена</p>
+        <p class="title">Сделка недоступна</p>
         <p class="text">Сделка отсутсвует или у вас нет к нему доступа вернитесь на <a href="/">главную</a> или <a href="/my_pacts/edit_my_pact/?ACTION=ADD">создайте свою сделку</a></p>
     </div>
 <?} else if($arResult['NOT_CONTRACT'] == "Y" || $arResult['NOT_COMPLETE'] == "Y"){?>

@@ -276,10 +276,10 @@ $this->addExternalJS(SITE_TEMPLATE_PATH."/module/trumbowyg/dist/plugins/table/tr
                 </div>
                 <div class="cardPact__item">
                     <?if(empty($arResult['DOGOVOR'])):?>
-                        <button class="btn btn-nfk" id="add_dogovor" data-url="/my_pacts/add_new_dogovor/?ADD=ADD">Добавить договор</button>
+                        <button class="btn btn-nfk" id="add_dogovor" data-url="/contract/?NEW_DEAL=Y">Добавить договор</button>
                     <?else:?>
                         <div style="margin-bottom: 15px;"><img src="<?=SITE_TEMPLATE_PATH;?>/image/doc_ready_ico.png" style="max-width: 40px;"><span>Договор загружен</span></div>
-                        <button class="btn btn-nfk" id="add_dogovor" data-url="/my_pacts/add_new_dogovor/?ADD=ADD">Заменить договор</button>
+                        <button class="btn btn-nfk" id="add_dogovor" data-url="/contract/?NEW_DEAL=Y">Заменить договор</button>
                         <input type="hidden" id="DOGOVOR_KEY" value="<?=$arResult['DOGOVOR_KEY_CASHE']?>">
                     <?endif?>
                 </div>
