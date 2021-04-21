@@ -134,3 +134,26 @@ button.btn-img {
     background: transparent;
     margin-left: 15px;
 }
+.error-mess{
+    display: flex;
+    align-items: center;
+    padding-top: 70px;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    max-width: 500px;
+    margin: 0 auto;
+}
+.error-mess .title{
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 28px;
+    color: #131313;
+}
+.error-mess .text{
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 19px;
+    color: #131313;
+    text-align: center;
+}

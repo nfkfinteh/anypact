@@ -20,19 +20,31 @@ if($arResult['VIA_AJAX'] != "Y"){
  * @var string $componentPath
  */
 ?>
-<?
-if($arResult['NOT_AUTH'] == "Y"){
-
-} else if($arResult['NOT_ESIA'] == "Y"){
-
-} else if($arResult['NOT_DEAL'] == "Y"){
-
-} else if($arResult['NOT_COMPLETE'] == "Y"){
-
-} else if($arResult['NOT_CONTRACT'] == "Y"){
-
-}else{
-?>
+<?if($arResult['NOT_AUTH'] == "Y"){?>
+    <div class="error-mess">
+        <img src="/local/templates/anypact/image/forbidden.png" alt="Неавторизован">
+        <p class="title">Необходимо авторизоваться</p>
+        <p class="text">Вам необходимо зарегистрироваться, чтобы увидеть данную страницу. Авторизуйтесь или вернитесь на <a href="/">главную</a></p>
+    </div>
+<?} else if($arResult['NOT_ESIA'] == "Y"){?>
+    <div class="error-mess">
+        <img src="/local/templates/anypact/image/forbidden.png" alt="Отсутсвуют госуслуги">
+        <p class="title">Вы не авторизованы через госуслуги</p>
+        <p class="text">Нет доступа к договору вернитесь на <a href="/">главную</a> или <a href="/profile/#aut_esia">подтвердите свой аккаунт с помощью учетной записи портала Госуслуг</a></p>
+    </div>
+<?} else if($arResult['NOT_DEAL'] == "Y"){?>
+    <div class="error-mess">
+        <img src="/local/templates/anypact/image/err_send.png" alt="Нет договора">
+        <p class="title">Сделка недоступена</p>
+        <p class="text">Сделка отсутсвует или у вас нет к нему доступа вернитесь на <a href="/">главную</a> или <a href="/my_pacts/edit_my_pact/?ACTION=ADD">создайте свою сделку</a></p>
+    </div>
+<?} else if($arResult['NOT_CONTRACT'] == "Y" || $arResult['NOT_COMPLETE'] == "Y"){?>
+    <div class="error-mess">
+        <img src="/local/templates/anypact/image/err_send.png" alt="Нет договора">
+        <p class="title">Договор недоступен или не найден</p>
+        <p class="text">Договор отсутсвует или у вас нет к нему доступа вернитесь на <a href="/">главную</a> или <a href="/my_pacts/edit_my_pact/?ACTION=ADD">создайте свою сделку</a></p>
+    </div>
+<?}else{?>
 <div class="tender cardDogovor">
     <div class="row">
         <div class="col-lg-3 col-md-3 col-sm-12" id="contract_menu">
@@ -208,9 +220,14 @@ if($arResult['NOT_AUTH'] == "Y"){
             templateFolder: '<?= CUtil::JSEscape($templateFolder) ?>',
         };
         var userData = <?= CUtil::PhpToJSObject($arResult['CURRENT_USER']) ?>;
+        <?if(COption::GetOptionString("anypact", "block_gosuslugi", "Y") == "Y"){?>
+            var sign_text = '<div class="sign-text">Внимание!<p>Удостоверьтесь в том, что Вам полностью понятны условия, подписываемых Вами Документов!</p> <p>Нажимая кнопку «Подписать», Вы безусловно соглашаетесь с условиями сделки.</p> <p>Ваша простая электронная подпись будет сформирована с помощью сервиса «Госуслуги». Успешная авторизация на Госуслугах будет означать выражение Вашей воли на подписание документов и совершение сделки (сделок) в понимании ст. 160 ГК РФ.</p><p>Примечание: если в недавнем времени вы проходили авторизацию на сайте Госуслуг, то дальнейшая авторизация может не требовать введения Вами логина/пароля от Госуслуг.</p></div>';
+        <?}else{?>
+            var sign_text = '<div class="sign-text">Внимание!<p>Удостоверьтесь в том, что Вам полностью понятны условия, подписываемых Вами Документов!</p> <p>Нажимая кнопку «Подписать», Вы безусловно соглашаетесь с условиями сделки.</p> <p>Ваша простая электронная подпись будет сформирована с помощью сервиса «Госуслуги». Успешная авторизация на сайте будет означать выражение Вашей воли на подписание документов и совершение сделки (сделок) в понимании ст. 160 ГК РФ.</p></div>';
+        <?}?>
         var jsText = {
             DELETE_REDACTION: {TITLE: "Вы уверены?", TEXT: "<p>Вы действительно хотите это сделать?<br><br>Отменить это действие будет <b>невозможно</b>.</p>", BUTTON: "Да"}, 
-            SIGN_CONTRACT: {TITLE: "Подписание договора", TEXT: '<div class="sign-text">Внимание!<p>Удостоверьтесь в том, что Вам полностью понятны условия, подписываемых Вами Документов!</p> <p>Нажимая кнопку «Подписать», Вы безусловно соглашаетесь с условиями сделки.</p> <p>Ваша простая электронная подпись будет сформирована с помощью сервиса «Госуслуги». Успешная авторизация на Госуслугах будет означать выражение Вашей воли на подписание документов и совершение сделки (сделок) в понимании ст. 160 ГК РФ.</p><p>Примечание: если в недавнем времени вы проходили авторизацию на сайте Госуслуг, то дальнейшая авторизация может не требовать введения Вами логина/пароля от Госуслуг.</p></div>', BUTTON: "Подписать"}, 
+            SIGN_CONTRACT: {TITLE: "Подписание договора", TEXT: sign_text, BUTTON: "Подписать"}, 
             CLOSE: "Отмена"
         };
         <?if(!empty($arResult['MESSAGE'])){?>
