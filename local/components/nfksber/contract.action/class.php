@@ -1001,8 +1001,9 @@ class CContractAction extends CBitrixComponent
                             $this -> getContract();
 
                             // Подписание договора
-                            if($this->checkSession && !$this->request->isPost() && $this->request->get('via_ajax') == 'Y' && $this->request->get($this -> arParams['ACTION_VARIABLE']) == 'esiaSign')
+                            if(!$this->request->isPost() && $this->request->get('via_ajax') == 'Y' && $this->request->get($this -> arParams['ACTION_VARIABLE']) == 'esiaSign')
                             {
+                                
                                 if($this -> arResult['TYPE'] == "VIEW")
                                 {
                                     if(($this -> arResult['DEAL']['OWNER_ID'] == $this -> arResult['CURRENT_USER']['ID'] || (!empty($this -> arResult['CURRENT_USER']['COMPANY_ID']) && $this -> arResult['DEAL']['COMPANY_ID'] == $this -> arResult['CURRENT_USER']['COMPANY_ID'])) && $this -> arResult['CONTACT_TYPE'] == "ORIGINAL")
@@ -1016,6 +1017,7 @@ class CContractAction extends CBitrixComponent
                                     {
                                         if ( !empty( $_REQUEST["code"] ) )
                                         {
+                                            
                                             $urlEsia = $_SERVER['DOCUMENT_ROOT']."/esia_test";
                                             include $urlEsia."/Esia.php";
                                             include $urlEsia."/EsiaOmniAuth.php";
@@ -1025,7 +1027,7 @@ class CContractAction extends CBitrixComponent
                                         
                                             $esia = new EsiaOmniAuth($config_esia->config);
                                             $info   = array();
-                                            $token  = $esia->get_token($_GET['code']);
+                                            $token  = $esia->get_token($_REQUEST['code']);
                                             $info   = $esia->get_info($token);
 
                                             if( isset( $info['user_docs']['elements'] ) > 0 && $info['user_info']['trusted'] && $info['user_docs']['elements'][0]['vrfStu'] == "VERIFIED")
