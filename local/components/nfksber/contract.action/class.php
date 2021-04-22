@@ -1032,13 +1032,18 @@ class CContractAction extends CBitrixComponent
 
                                             if( isset( $info['user_docs']['elements'] ) > 0 && $info['user_info']['trusted'] && $info['user_docs']['elements'][0]['vrfStu'] == "VERIFIED")
                                             {
+                                                define("LOG_FILENAME", $_SERVER["DOCUMENT_ROOT"]."/vnndsf34rwefasdxc.log");
+
+                                                AddMessage2Log($info, "info");
 
                                                 $ob = \Bitrix\Main\UserTable::getList(array(
                                                     'select' => array("ID"), 
                                                     "order" => array("ID" => "ASC"),
                                                     'filter' => array("UF_ESIA_ID" => $info['user_id'])
                                                 ));
-                                                if($esiaUser = $ob->Fetch() && $esiaUser['ID'] == $this -> arResult['CURRENT_USER']['ID'])
+                                                $esiaUser = $ob->Fetch();
+                                                AddMessage2Log($esiaUser, "esiaUser");
+                                                if($esiaUser && $esiaUser['ID'] == $this -> arResult['CURRENT_USER']['ID'])
                                                 {
                                                     $hashKey = hash('md5', $info['user_info']['eTag'] . time());
                                                     if($this -> arResult['CONTACT_TYPE'] == "SIGNED")
@@ -1055,7 +1060,7 @@ class CContractAction extends CBitrixComponent
                                                     $this -> arResult['MESSAGE'] = "Ошибка! Неверный пользователь или вы неавторизованы через Госуслуги";
                                                 }
                                             }
-                                        }elseif($_REQUEST['PASSWORD_SIGNATURE'] && COption::GetOptionString("anypact", "block_gosuslugi", "Y") == "Y"){
+                                        }elseif($this->checkSession && $_REQUEST['PASSWORD_SIGNATURE'] && COption::GetOptionString("anypact", "block_gosuslugi", "Y") == "Y"){
                                             $arPassSign = unserialize(base64_decode($_REQUEST['PASSWORD_SIGNATURE']));
                                             if($this -> arResult['CONTACT_TYPE'] == "SIGNED")
                                             {
