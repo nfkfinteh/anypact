@@ -1206,7 +1206,7 @@ class CContractAction extends CBitrixComponent
                                                 if(!empty($this -> arResult['USER']['ID']))
                                                     $link .= '&USER_ID='.$this -> arResult['USER']['ID'];
                                                 $link = base64_encode($link);
-                                                $arRes['SCRIPT'] = 'document.location.href = "/profile/aut_esia.php?returnurl='.$link;
+                                                $arRes['SCRIPT'] = 'document.location.href = "/profile/aut_esia.php?returnurl='.$link.'"';
                                             }
                                         }
                                     }
