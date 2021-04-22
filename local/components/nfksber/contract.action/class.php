@@ -1032,17 +1032,12 @@ class CContractAction extends CBitrixComponent
 
                                             if( isset( $info['user_docs']['elements'] ) > 0 && $info['user_info']['trusted'] && $info['user_docs']['elements'][0]['vrfStu'] == "VERIFIED")
                                             {
-                                                define("LOG_FILENAME", $_SERVER["DOCUMENT_ROOT"]."/vnndsf34rwefasdxc.log");
-
-                                                AddMessage2Log($info, "info");
-
                                                 $ob = \Bitrix\Main\UserTable::getList(array(
                                                     'select' => array("ID"), 
                                                     "order" => array("ID" => "ASC"),
                                                     'filter' => array("UF_ESIA_ID" => $info['user_id'])
                                                 ));
                                                 $esiaUser = $ob->Fetch();
-                                                AddMessage2Log($esiaUser, "esiaUser");
                                                 if($esiaUser && $esiaUser['ID'] == $this -> arResult['CURRENT_USER']['ID'])
                                                 {
                                                     $hashKey = hash('md5', $info['user_info']['eTag'] . time());
