@@ -1202,7 +1202,7 @@ class CContractAction extends CBitrixComponent
                                             // Госуслуги
                                             else
                                             {
-                                                $link = 'https://anypact.ru/?via_ajax=Y&sessid='.bitrix_sessid_get().'&action=esiaSign&ID='.$this -> arResult['DEAL']['ID'];
+                                                $link = '/contract/?via_ajax=Y&sessid='.bitrix_sessid_get().'&action=esiaSign&ID='.$this -> arResult['DEAL']['ID'];
                                                 if(!empty($this -> arResult['USER']['ID']))
                                                     $link .= '&USER_ID='.$this -> arResult['USER']['ID'];
                                                 $link = base64_encode($link);
