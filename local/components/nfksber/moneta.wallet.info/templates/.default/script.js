@@ -202,17 +202,17 @@ $(document).ready(function(){
                                     NAME: 'Снять',
                                     CALLBACK: (function(){
                                         var amount = $('form[name="WITHDRAWAL"] input[name="amount"]').val();
-                                        var payment_pass = $('form[name="WITHDRAWAL"] input[name="payment_pass"]').val();
+                                        // var payment_pass = $('form[name="WITHDRAWAL"] input[name="payment_pass"]').val();
                                         var cart_number = $('form[name="WITHDRAWAL"] input[name="cart_number"]').val();
                                         var cart_id = $('form[name="WITHDRAWAL"] select[name="cart_id"]').val();
                                         if(amount < 40){
                                             showResult('#popup-error','Ошибка! Сумма вывода должна быть больше 39 рублей');
                                             return false;
                                         }
-                                        if(payment_pass.length < 5){
-                                            showResult('#popup-error','Неверный платежный пароль');
-                                            return false;
-                                        }
+                                        // if(payment_pass.length < 5){
+                                        //     showResult('#popup-error','Неверный платежный пароль');
+                                        //     return false;
+                                        // }
                                         BX.ajax({
                                             url: MWI_component.ajaxUrl,
                                             method: 'POST',
@@ -224,7 +224,7 @@ $(document).ready(function(){
                                                 SITE_ID: MWI_component.siteID,
                                                 signedParamsString: MWI_component.signedParamsString,
                                                 amount: amount,
-                                                payment_pass: payment_pass,
+                                                // payment_pass: payment_pass,
                                                 cart_number: cart_number,
                                                 cart_id: cart_id,
                                             },
@@ -278,7 +278,7 @@ $(document).ready(function(){
 
             var transferPopup = newAnyPactPopUp({
                 TITLE: 'Перевод',
-                BODY: '<div><form name="TRANSFER"><input type="text" class="js-number" name="acc_id" placeholder="Номер кошелька"><input type="text" class="js-number" name="amount" placeholder="Сумма перевода"><input type="password" placeholder="Платежный пароль" aria-invalid="true" class="js-number validate-error" name="payment_pass" value=""></form></div>',
+                BODY: '<div><form name="TRANSFER"><input type="text" class="js-number" name="acc_id" placeholder="Номер кошелька"><input type="text" class="js-number" name="amount" placeholder="Сумма перевода"></form></div>',
                 BUTTONS: [
                     {
                         NAME: 'Отмена',
@@ -289,16 +289,16 @@ $(document).ready(function(){
                         NAME: 'Перевести',
                         CALLBACK: (function(){
                             var amount = $('form[name="TRANSFER"] input[name="amount"]').val();
-                            var payment_pass = $('form[name="TRANSFER"] input[name="payment_pass"]').val();
+                            // var payment_pass = $('form[name="TRANSFER"] input[name="payment_pass"]').val();
                             var acc_id = $('form[name="TRANSFER"] input[name="acc_id"]').val();
                             if(amount < 10){
                                 showResult('#popup-error','Ошибка! Сумма перевода должна быть больше 9 рублей');
                                 return false;
                             }
-                            if(payment_pass.length < 5){
-                                showResult('#popup-error','Неверный платежный пароль');
-                                return false;
-                            }
+                            // if(payment_pass.length < 5){
+                            //     showResult('#popup-error','Неверный платежный пароль');
+                            //     return false;
+                            // }
                             if(acc_id.length < 2){
                                 showResult('#popup-error','Неверный номер счета');
                                 return false;
@@ -314,7 +314,7 @@ $(document).ready(function(){
                                     SITE_ID: MWI_component.siteID,
                                     signedParamsString: MWI_component.signedParamsString,
                                     amount: amount,
-                                    payment_pass: payment_pass,
+                                    // payment_pass: payment_pass,
                                     acc_id: acc_id,
                                 },
                                 onsuccess: function(result){

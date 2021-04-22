@@ -51,6 +51,7 @@ $(document).ready(function(){
             $(form).find('input[name="DEPARTMENT"]').css('border', 'none');
         }
 
+        /*
         if($(form).find('input[name="PAYMENT_PASS"]').val().length < 5){
             errorBorder($(form).find('input[name="PAYMENT_PASS"]'));
             showResult('#popup-error','Ошибка! Поле Платежный пароль должен состоять только из цифр, минимум из пяти');
@@ -66,6 +67,7 @@ $(document).ready(function(){
         }else{
             $(form).find('input[name="PAYMENT_PASS_REPEAT"]').css('border', 'none');
         }
+        */
 
         preload('show');
         $.ajax({
@@ -92,10 +94,12 @@ $(document).ready(function(){
                         errorBorder($(form).find('input[name="PHONE"]'));
                     if($result['ERROR_TYPE'] == "not_full_department")
                         errorBorder($(form).find('input[name="DEPARTMENT"]'));
+                    /*
                     if($result['ERROR_TYPE'] == "wrong_pass_data")
                         errorBorder($(form).find('input[name="PAYMENT_PASS"]'));
                     if($result['ERROR_TYPE'] == "wrong_pass_repeat")
                         errorBorder($(form).find('input[name="PAYMENT_PASS_REPEAT"]'));
+                    */
                 }else if($result['STATUS']=='SUCCESS'){
                     preload('hide');
                     $(".reg-wallet-overflow_close").click();

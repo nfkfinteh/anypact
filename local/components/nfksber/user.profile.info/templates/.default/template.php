@@ -323,7 +323,7 @@ if($arResult["BLACKLIST"]['CLOSE']){
     if($arResult['USER']['UF_MONETA_CHECK_STAT'] == "SUCCESS"){?>
             var sendMonetaPopup = newAnyPactPopUp({
                 TITLE: 'Перевод',
-                BODY: '<div><form name="TRANSFER"><input type="hidden" name="acc_id" value="<?=$arResult['USER']['UF_MONETA_ACCOUNT_ID']?>"><input type="text" class="js-number" name="amount" placeholder="Сумма перевода"><input type="password" placeholder="Платежный пароль" aria-invalid="true" class="js-number validate-error" name="payment_pass" value=""></form></div>',
+                BODY: '<div><form name="TRANSFER"><input type="hidden" name="acc_id" value="<?=$arResult['USER']['UF_MONETA_ACCOUNT_ID']?>"><input type="text" class="js-number" name="amount" placeholder="Сумма перевода"></form></div>',
                 BUTTONS: [
                     {
                         NAME: 'Отмена',
@@ -334,16 +334,16 @@ if($arResult["BLACKLIST"]['CLOSE']){
                         NAME: 'Перевести',
                         CALLBACK: (function(){
                             var amount = $('form[name="TRANSFER"] input[name="amount"]').val();
-                            var payment_pass = $('form[name="TRANSFER"] input[name="payment_pass"]').val();
+                            // var payment_pass = $('form[name="TRANSFER"] input[name="payment_pass"]').val();
                             var acc_id = $('form[name="TRANSFER"] input[name="acc_id"]').val();
                             if(amount < 10){
                                 showResult('#popup-error','Ошибка! Сумма перевода должна быть больше 9 рублей');
                                 return false;
                             }
-                            if(payment_pass.length < 5){
-                                showResult('#popup-error','Неверный платежный пароль');
-                                return false;
-                            }
+                            // if(payment_pass.length < 5){
+                            //     showResult('#popup-error','Неверный платежный пароль');
+                            //     return false;
+                            // }
                             if(acc_id.length < 2){
                                 showResult('#popup-error','Неверный номер счета');
                                 return false;
@@ -359,7 +359,7 @@ if($arResult["BLACKLIST"]['CLOSE']){
                                     SITE_ID: MWI_component.siteID,
                                     signedParamsString: MWI_component.signedParamsString,
                                     amount: amount,
-                                    payment_pass: payment_pass,
+                                    // payment_pass: payment_pass,
                                     acc_id: acc_id,
                                 },
                                 onsuccess: function(result){

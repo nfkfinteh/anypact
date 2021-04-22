@@ -77,8 +77,8 @@ class CMonetaWalletInfo extends CBitrixComponent
     private static function makeWithdrawal($user_id, $amount, $payment_pass, $cart_id = 0, $cart_number = 0){
         if(!is_numeric($amount) && $amount < 10)
             return array("STATUS" => "ERROR", "ERROR_DESCRIPTION" => "Сумма вывода должна быть больше 39 рублей");
-        if(!is_numeric($payment_pass) && strlen($payment_pass) < 5)
-            return array("STATUS" => "ERROR", "ERROR_DESCRIPTION" => "Неверный платежный пароль");
+        // if(!is_numeric($payment_pass) && strlen($payment_pass) < 5)
+        //     return array("STATUS" => "ERROR", "ERROR_DESCRIPTION" => "Неверный платежный пароль");
 
         $res = CUser::GetList(($by="personal_country"), ($order="desc"), array("ID" => $user_id, "UF_MONETA_CHECK_STAT" => "SUCCESS"), array('FIELDS' => array("ID"), 'SELECT' => array("UF_MONETA_ACCOUNT_ID")));
         if($arUser = $res->Fetch()){
@@ -119,8 +119,8 @@ class CMonetaWalletInfo extends CBitrixComponent
     private static function makeTransfer($user_id, $amount, $payment_pass, $acc_id){
         if(!is_numeric($amount) && $amount < 10)
             return array("STATUS" => "ERROR", "ERROR_DESCRIPTION" => "Сумма вывода должна быть больше 9 рублей");
-        if(!is_numeric($payment_pass) && strlen($payment_pass) < 5)
-            return array("STATUS" => "ERROR", "ERROR_DESCRIPTION" => "Неверный платежный пароль");
+        // if(!is_numeric($payment_pass) && strlen($payment_pass) < 5)
+        //     return array("STATUS" => "ERROR", "ERROR_DESCRIPTION" => "Неверный платежный пароль");
         if(!is_numeric($acc_id) && strlen($acc_id) < 2)
             return array("STATUS" => "ERROR", "ERROR_DESCRIPTION" => "Неверный номер счета");
 

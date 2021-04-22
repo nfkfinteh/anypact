@@ -75,7 +75,7 @@ class CMonetaRegistration extends CBitrixComponent
         return $APPLICATION->GetCurPageParam("moneta_reg=yes", $arParamsToDelete);
     }
 
-    private function registerMoneta($user_id, $arFields){
+    private static function registerMoneta($user_id, $arFields){
 
         foreach($arFields as $array)
             $arData[$array['name']] = $array['value'];
@@ -107,6 +107,7 @@ class CMonetaRegistration extends CBitrixComponent
         else
             return array("STATUS" => "ERROR", "ERROR_TYPE" => "not_full_department", "ERROR_DESCRIPTION" => "Поле Код подразделения не заполнен");
 
+        /*
         if(is_numeric($arData['PAYMENT_PASS']) && strlen($arData['PAYMENT_PASS']) > 4)
             $arSendData["PAYMENT_PASS"] = $arData["PAYMENT_PASS"];
         else
@@ -116,6 +117,7 @@ class CMonetaRegistration extends CBitrixComponent
             $arSendData["PAYMENT_PASS_REPEAT"] = $arData["PAYMENT_PASS_REPEAT"];
         else
             return array("STATUS" => "ERROR", "ERROR_TYPE" => "wrong_pass_repeat", "ERROR_DESCRIPTION" => "Платежные пароли не совпадают");
+        */
         
         $res = CUser::GetList(($by="personal_country"), ($order="desc"), array("ID" => $user_id), array('FIELDS' => array("ID", "EMAIL", "NAME", "LAST_NAME", "SECOND_NAME"), 'SELECT' => $arSelect));
         if($arUser = $res->Fetch()){

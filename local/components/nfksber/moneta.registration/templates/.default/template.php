@@ -53,11 +53,13 @@ if(empty($arResult['UF_MONETA_UNIT_ID']) || empty($arResult['UF_MONETA_ACCOUNT_I
                                     <input disabled type="text" placeholder="E-mail" value="<?=$arResult["CURRENT_USER"]["EMAIL"]?>">
                                     <label>Телефон:</label>
                                     <input type="text" placeholder="Телефон" class="js-mask__phone" name="PHONE" value="<?=$arResult["CURRENT_USER"]["PERSONAL_PHONE"]?>">
+                                    <?/*
                                     <label>Пароль:</label>
                                     <input type="password" placeholder="Платежный пароль" aria-invalid="true" class="js-number validate-error" name="PAYMENT_PASS" value="">
                                     <label>Повторите пароль:</label>
                                     <input type="password" placeholder="Повторите платежный пароль" aria-invalid="true" class="js-number validate-error" name="PAYMENT_PASS_REPEAT" value="">
                                     <p class="moneta_p">Пароль должен состоять только из цифр, минимум пять символов</p>
+                                    */?>
                                     <p class="moneta_p">При нажатии на кнопку "Открыть" вы соглашаетесь передать свои персональные данные  сервиcу <a href="https://www.moneta.ru/" target="__blank">Монета</a>, а так же соглашаетесь с правилами использования сервиса <a href="https://www.moneta.ru/" target="__blank">Монета</a></p>
                                     <button class="btn btn-reg-wallet" type="submit" name="SUBMIT" value="Открыть">Открыть</button>
                                 </div>

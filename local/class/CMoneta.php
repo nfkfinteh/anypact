@@ -129,8 +129,8 @@ class CMoneta {
             return array("STATUS" => "ERROR", "ERROR_TYPE" => "wrong_email", "ERROR_DESCRIPTION" => "В вашем профиле неверный e-mail. Пример: your-email@mail.com");
         if(!is_numeric($arData['SPASSPORT']) || strlen($arData['SPASSPORT']) != 4 || !is_numeric($arData['NPASSPORT']) || strlen($arData['NPASSPORT']) != 6 || !self::validateDate($arData['DATA_PASSPORT'], 'd.m.Y') || strlen($arData['KEM_VPASSPORT']) < 11 || !is_numeric(str_replace("-", "", $arData['DEPARTMENT'])) || strlen($arData['DEPARTMENT']) != 7)
             return array("STATUS" => "ERROR", "ERROR_TYPE" => "wrong_pass_data", "ERROR_DESCRIPTION" => "Неверные паспортные данные");
-        if(!is_numeric($arData['PAYMENT_PASS']) || strlen($arData['PAYMENT_PASS']) < 5)
-            return array("STATUS" => "ERROR", "ERROR_TYPE" => "wrong_pass_data", "ERROR_DESCRIPTION" => "Поле Платежный пароль должен состоять только из цифр, минимум из пяти");
+        // if(!is_numeric($arData['PAYMENT_PASS']) || strlen($arData['PAYMENT_PASS']) < 5)
+        //     return array("STATUS" => "ERROR", "ERROR_TYPE" => "wrong_pass_data", "ERROR_DESCRIPTION" => "Поле Платежный пароль должен состоять только из цифр, минимум из пяти");
         if($arData['PAYMENT_PASS'] != $arData['PAYMENT_PASS_REPEAT'])
             return array("STATUS" => "ERROR", "ERROR_TYPE" => "wrong_pass_data", "ERROR_DESCRIPTION" => "Платежные пароли не совпадают");
 
@@ -154,7 +154,7 @@ class CMoneta {
         else
             $phone = "";
 
-        $paymentPassword = $arData['PAYMENT_PASS'];
+        // $paymentPassword = $arData['PAYMENT_PASS'];
 
         $arFields['last_name'] = $arData['LAST_NAME'];
         $arFields['first_name'] = $arData['NAME'];
@@ -222,8 +222,8 @@ class CMoneta {
 
                     $CreateAccountRequest->type = 2;
                     $CreateAccountRequest->currency = "RUB";
-                    $CreateAccountRequest->paymentPasswordType = "STATIC";
-                    $CreateAccountRequest->paymentPassword = $paymentPassword;
+                    // $CreateAccountRequest->paymentPasswordType = "STATIC";
+                    // $CreateAccountRequest->paymentPassword = $paymentPassword;
                     $CreateAccountRequest->paymentPasswordExpirationDate = true;
 
                     $CreateAccountRequest->unitId = $unitID;
@@ -605,7 +605,7 @@ class CMoneta {
             $PaymentRequest -> payee = $sendID;
             $PaymentRequest -> amount = number_format($amount, 2, '.', '');
             $PaymentRequest -> isPayerAmount = true;
-            $PaymentRequest -> paymentPassword = $paymentPass;
+            // $PaymentRequest -> paymentPassword = $paymentPass;
             $PaymentRequest -> paymentPasswordChallenge = true;
             $PaymentRequest -> clientTransaction = $opId;
 
@@ -618,7 +618,7 @@ class CMoneta {
                 $PaymentRequest -> payee = $sendID;
                 $PaymentRequest -> amount = number_format($amount, 2, '.', '');
                 $PaymentRequest -> isPayerAmount = true;
-                $PaymentRequest -> paymentPassword = $paymentPass;
+                // $PaymentRequest -> paymentPassword = $paymentPass;
                 $PaymentRequest -> paymentPasswordChallenge = true;
                 $PaymentRequest -> clientTransaction = $opId;
     

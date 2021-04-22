@@ -28,7 +28,7 @@ if($arResult['GET_WITHDRAWAL'] == "Y"){
                 <?
             }?>
             <input type="text" name="cart_number" value="" placeholder="Номер карты" inputmode="text">
-            <input type="password" placeholder="Платежный пароль" aria-invalid="true" class="js-number validate-error" name="payment_pass" value="">
+            <?/*<input type="password" placeholder="Платежный пароль" aria-invalid="true" class="js-number validate-error" name="payment_pass" value="">*/?>
             <input type="text" class="js-number validate-error" aria-invalid="true" name="amount" placeholder="Сумма пополнения">
         </form>
     </div>
