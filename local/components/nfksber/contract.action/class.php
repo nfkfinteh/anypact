@@ -637,7 +637,7 @@ class CContractAction extends CBitrixComponent
         }
     }
 
-    private function deleteRedaction($id){
+    private function deleteRedaction($id, $notify = true){
         if(Loader::includeModule("highloadblock"))
         {
             if(empty($id) || !is_numeric($id)){
@@ -646,16 +646,18 @@ class CContractAction extends CBitrixComponent
             $entity_data_class = self::GetEntityDataClass(CONTRACT_REDACTION_HLB_ID);
             $entity_data_class::Delete($id);
 
-            if($this -> arResult['CONTRACT']['USER_A'] == $this -> arResult['CURRENT_USER']['ID'])
-                $arUser = $this -> arResult['USER'];
-            else
-                $arUser = self::getUser($this -> arResult['CONTRACT']['USER_A']);
+            if($notify){
+                if($this -> arResult['CONTRACT']['USER_A'] == $this -> arResult['CURRENT_USER']['ID'])
+                    $arUser = $this -> arResult['USER'];
+                else
+                    $arUser = self::getUser($this -> arResult['CONTRACT']['USER_A']);
 
-            $this -> sendNotification(
-                $arUser, 
-                "Пользователь удалил редакцию договора №[URL=/contract/?ID=#DEAL_ID#]#DEAL_CONTRACT_ID#[/URL] по сделке [URL=#DEAL_URL#]#DEAL_NAME#[/URL]", 
-                "REDACTION_DELETED"
-            );
+                $this -> sendNotification(
+                    $arUser, 
+                    "Пользователь удалил редакцию договора №[URL=/contract/?ID=#DEAL_ID#]#DEAL_CONTRACT_ID#[/URL] по сделке [URL=#DEAL_URL#]#DEAL_NAME#[/URL]", 
+                    "REDACTION_DELETED"
+                );
+            }
 
             return array("STATUS" => "SUCCESS", "MESSAGE" => "Редакция была удалена");
         }
@@ -778,6 +780,10 @@ class CContractAction extends CBitrixComponent
             $this -> arResult['CONTRACT'] = $this -> getContractFinal($this -> arParams['ELEMENT_ID'], $this -> arResult['CURRENT_USER']['ID']);
             $this -> arResult['MESSAGE'] = "Договор заключен";
 
+            $arRedaction = $this -> getContractEdit($this -> arResult['DEAL']['ID'], $this -> arResult['CURRENT_USER']['ID'], $this -> arResult['USER']['ID'], $this -> arResult['CURRENT_USER']['COMPANY_ID'], $this -> arResult['USER']['COMPANY_ID']);
+            if($arRedaction['ID'])
+                $this -> deleteRedaction($arRedaction['ID'], false);
+
             if($U == "A")
                 $arUser = $this -> arResult['USER'];
             else
@@ -892,7 +898,6 @@ class CContractAction extends CBitrixComponent
     }
 
     private function getContract($type = "SIGNED"){
-
         $this -> arResult['CONTACT_TYPE'] = $type;
 
         if($this -> arResult['CONTACT_TYPE'] == "SIGNED")
@@ -998,7 +1003,10 @@ class CContractAction extends CBitrixComponent
                             // Получаем договора
                             // Есть 3 вида договора, оригинальзый(ORIGINAL), редакция(REDACTION), подписанный(SIGNED)
                             // Все они хранятся в разных сущностях
-                            $this -> getContract();
+                            if($this -> arResult['DEAL']['OWNER_ID'] == $this -> arResult['CURRENT_USER']['ID'] && empty($this -> arResult['USER']['ID']))
+                                $this -> getContract("ORIGINAL");
+                            else
+                                $this -> getContract();
 
                             // Подписание договора
                             if(!$this->request->isPost() && $this->request->get('via_ajax') == 'Y' && $this->request->get($this -> arParams['ACTION_VARIABLE']) == 'esiaSign')
