@@ -26,6 +26,11 @@
 </footer>
 <?require_once($_SERVER['DOCUMENT_ROOT']."/local/include/form_modal.php");?>
 <?
+if(empty($_COOKIE['PROMOTION_POPUP']) && empty($_SESSION['PROMOTION_POPUP'])){
+	require_once($_SERVER['DOCUMENT_ROOT']."/local/include/promotion_popup.php");
+}
+?>
+<?
 if(!$USER->IsAuthorized())
 	require_once($_SERVER['DOCUMENT_ROOT']."/local/include/gosuslugi_check.php");
 ?>
