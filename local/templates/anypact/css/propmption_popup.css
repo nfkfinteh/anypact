@@ -11,6 +11,7 @@
 .propmption_popup .block{
     position: relative;
     padding: 16px;
+    margin: 10px;
 }
 .propmption_popup .body{
     background: #FFFFFF;
@@ -19,9 +20,18 @@
     padding: 58px 45px 0;
     color: #2C353D;
     font-weight: 300;
+    display: flex;
+    flex-wrap: wrap;
 }
 .propmption_popup .img{
     margin-right: 15px;
+    display: flex;
+    align-items: flex-end;
+}
+.propmption_popup .img{
+    margin-right: 15px;
+    display: flex;
+    align-items: flex-end;
 }
 .propmption_popup .content{
     margin-left: 15px;
@@ -37,7 +47,7 @@
     line-height: 23.4px;
 }
 .propmption_popup .button{
-    margin-top: 40px;
+    margin: 40px 0;
     width: 100%;
     height: 52px;
     background: #FF6600;
@@ -79,4 +89,21 @@
 }
 .propmption_popup .close::after {
     transform: rotate(-45deg);
+}
+@media screen and (max-width: 840px){
+    .propmption_popup .body{
+        padding: 40px 30px 0;
+    }
+    .propmption_popup .img{
+        display: none;
+    }
+    .propmption_popup .content{
+        margin-left: 0;
+    }
+}
+@media screen and (max-width: 345px){
+    .propmption_popup .title{
+        font-size: 32px;
+        line-height: 35.19px;
+    }
 }

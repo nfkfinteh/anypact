@@ -26,7 +26,7 @@
 </footer>
 <?require_once($_SERVER['DOCUMENT_ROOT']."/local/include/form_modal.php");?>
 <?
-if(empty($_COOKIE['PROMOTION_POPUP']) && empty($_SESSION['PROMOTION_POPUP'])){
+if((empty($_COOKIE['PROMOTION_POPUP']) && empty($_SESSION['PROMOTION_POPUP'])) || ($_COOKIE['PROMOTION_POPUP'] < date('Ymd') && $_SESSION['PROMOTION_POPUP'] < date('Ymd'))){
 	require_once($_SERVER['DOCUMENT_ROOT']."/local/include/promotion_popup.php");
 }
 ?>
