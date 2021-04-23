@@ -1,26 +1,26 @@
 .global-unread-message-count {
     position: absolute;
     top: -11px;
-    right: 192px;
+    right: 320px;
     color: #ff6600;
     font-size: 14px;
 }
 @media screen and (max-width: 1200px) {
     .global-unread-message-count {
-        right: 172px;
+        right: 282px;
         font-size: 12px;
     }
 }
 @media screen and (max-width: 1023px) {
     .global-unread-message-count {
         top: 4px;
-        right: 191px;
+        right: 284px;
     }
 }
 @media screen and (max-width: 991px) {
     .global-unread-message-count {
         top: -6px;
-        right: 181px;
+        right: 217px;
         font-size: 10px;    
     }
 }
