@@ -224,7 +224,7 @@ class CMoneta {
                     $CreateAccountRequest->currency = "RUB";
                     // $CreateAccountRequest->paymentPasswordType = "STATIC";
                     // $CreateAccountRequest->paymentPassword = $paymentPassword;
-                    $CreateAccountRequest->paymentPasswordExpirationDate = true;
+                    // $CreateAccountRequest->paymentPasswordExpirationDate = true;
 
                     $CreateAccountRequest->unitId = $unitID;
 
