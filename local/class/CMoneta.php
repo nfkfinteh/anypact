@@ -131,8 +131,8 @@ class CMoneta {
             return array("STATUS" => "ERROR", "ERROR_TYPE" => "wrong_pass_data", "ERROR_DESCRIPTION" => "Неверные паспортные данные");
         // if(!is_numeric($arData['PAYMENT_PASS']) || strlen($arData['PAYMENT_PASS']) < 5)
         //     return array("STATUS" => "ERROR", "ERROR_TYPE" => "wrong_pass_data", "ERROR_DESCRIPTION" => "Поле Платежный пароль должен состоять только из цифр, минимум из пяти");
-        if($arData['PAYMENT_PASS'] != $arData['PAYMENT_PASS_REPEAT'])
-            return array("STATUS" => "ERROR", "ERROR_TYPE" => "wrong_pass_data", "ERROR_DESCRIPTION" => "Платежные пароли не совпадают");
+        // if($arData['PAYMENT_PASS'] != $arData['PAYMENT_PASS_REPEAT'])
+        //     return array("STATUS" => "ERROR", "ERROR_TYPE" => "wrong_pass_data", "ERROR_DESCRIPTION" => "Платежные пароли не совпадают");
 
         $adress = "";
         if(!empty($arData['REGION'])) $adress .= $arData['REGION']." район";
