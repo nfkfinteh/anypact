@@ -20,10 +20,6 @@ if(!empty($_GET['ID_SENDITEM'])){
 
 //echo "вернуться на ".$URL_REF;
 
-define("LOG_FILENAME", $_SERVER["DOCUMENT_ROOT"]."/__returnURL.log");
-
-AddMessage2Log($URL_REF, "URL_REF");
-
 $UserTest = 1;
 //if ($USER->IsAuthorized()){
 if ( $UserTest == 1 ) {
