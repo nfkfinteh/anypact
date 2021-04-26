@@ -18,7 +18,7 @@ if(!empty($_GET['ID_SENDITEM'])){
     $URL_REF = $ReturnURL;
 }
 
-//echo "вернуться на ".$URL_REF;
+echo "вернуться на ".$URL_REF;
 
 $UserTest = 1;
 //if ($USER->IsAuthorized()){
