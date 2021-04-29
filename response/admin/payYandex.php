@@ -42,9 +42,9 @@ if(is_array($arResult) && $arResult['STATUS'] == "SUCCESS"){
     COption::SetOptionInt("main", "pay_count", $count);
     // обновляем запись у пользователя при успешном платеже
     $user = new CUser;
-    $fields = Array( 
-        "UF_PAY_YANDEX" => "Y", 
-    ); 
+    $fields = Array(
+        "UF_PAY_YANDEX" => "Y",
+    );
     $user->Update($ID_USER_PAY, $fields);
 
 
@@ -68,7 +68,7 @@ if(is_array($arResult) && $arResult['STATUS'] == "SUCCESS"){
     $EncodeData = base64_encode($arrJsonParamsUserPayYandex);
     // зашифрованные данные отправляем
 
-    // получаем ответ 
+    // получаем ответ
 
     // полученный ответ пишем в лог
 }

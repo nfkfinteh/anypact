@@ -26,7 +26,7 @@
 </footer>
 <?require_once($_SERVER['DOCUMENT_ROOT']."/local/include/form_modal.php");?>
 <?
-if($_COOKIE['PROMOTION_POPUP'] == "Y" || $_SESSION['PROMOTION_POPUP'] == "Y" || (empty($_COOKIE['PROMOTION_POPUP']) && empty($_SESSION['PROMOTION_POPUP'])) || ($_COOKIE['PROMOTION_POPUP'] < date('Ymd') && $_SESSION['PROMOTION_POPUP'] < date('Ymd'))){
+if(!$USER->IsAuthorized() && $_COOKIE['PROMOTION_POPUP'] == "Y" || $_SESSION['PROMOTION_POPUP'] == "Y" || (empty($_COOKIE['PROMOTION_POPUP']) && empty($_SESSION['PROMOTION_POPUP'])) || ($_COOKIE['PROMOTION_POPUP'] < date('Ymd') && $_SESSION['PROMOTION_POPUP'] < date('Ymd'))){
 	require_once($_SERVER['DOCUMENT_ROOT']."/local/include/promotion_popup.php");
 }
 ?>

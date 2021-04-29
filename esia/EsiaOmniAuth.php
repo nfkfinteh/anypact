@@ -84,18 +84,18 @@ class EsiaOmniAuth {
     $params["access_type"] = 'online';
 
     //signing params
-    $client_secret = $this->sign( $params );    
+    $client_secret = $this->sign( $params );
 
     if($client_secret){
       $params["client_secret"] = $client_secret;
       //get code
       $_SESSION['esia_oauth_state'] = $this->uuid;
       $url = $this->config['site'] . "aas/oauth2/ac?" . http_build_query($params);
-     
+
       exit("<meta http-equiv='refresh' content='0; url= {$url}'>");
 
       //$this->redirect($url);
-      
+
 
     }else{
       if(!$client_secret)
@@ -172,24 +172,24 @@ class EsiaOmniAuth {
     //get user info
     $info_url = $this->config["site"] . "/rs/prns/${user_id}";
     $user_info = json_decode($this->get($info_url, $header), true);
-	
+
 	//get user addess
     $info_url = $this->config["site"] . "/rs/prns/${user_id}/docs?embed=(elements)";
     $user_docs = json_decode($this->get($info_url, $header), true);
-	
+
 	$info_url = $this->config["site"] . "/rs/prns/${user_id}/addrs?embed=(elements)";
     $user_addr = json_decode($this->get($info_url, $header), true);
     return array(
 	              'user_id' => $user_id,
 	              'user_info' => $user_info,
                   'user_contacts' => $user_contacts,
-				  'user_docs' => $user_docs, 
+				  'user_docs' => $user_docs,
 				  'user_addr' => $user_addr
                 );
   }
 
-  
-  
+
+
 
 
   /********** Private area **********/
@@ -210,16 +210,17 @@ class EsiaOmniAuth {
     $infile = $this->for_sign_file();
 
     $dir_sign = "/var/www/domains/new.nfksber.ru/esiafast/esia/temp";
-   
-    $command = "/opt/cprocsp/bin/amd64/cryptcp -sign -thumbprint 3509fb1f924cf8a0a34fa5ef35e56f3ffb330db2 -cert -strict -detached -der {$infile} {$outfile}";
-    
+
+    //$command = "/opt/cprocsp/bin/amd64/cryptcp -sign -thumbprint 3509fb1f924cf8a0a34fa5ef35e56f3ffb330db2 -cert -strict -detached -der {$infile} {$outfile}";
+    $command = "/opt/cprocsp/bin/amd64/cryptcp -sign -thumbprint c3963f40062db4002d56185f70ebb98235156635 -cert -strict -detached -der {$infile} {$outfile}";
+
     // первый параметр входящий   второй исходящий зашифрованный
     exec($command, $report);
 
     if(file_exists($outfile)){
-      $StrCode = file_get_contents($outfile);  
-      $encoded = base64_encode($StrCode);     
-      return urlencode($this->url_data_encode($encoded));      
+      $StrCode = file_get_contents($outfile);
+      $encoded = base64_encode($StrCode);
+      return urlencode($this->url_data_encode($encoded));
     }else{
       echo "Неудачно!";
       return false;
@@ -323,7 +324,7 @@ class EsiaOmniAuth {
 	 */
 	public function redirect($url, $exit = true) {
 
-    header("Location: $url", true, 301);    
+    header("Location: $url", true, 301);
     if ($exit) {
 			exit();
     }

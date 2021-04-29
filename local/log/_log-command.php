@@ -1,0 +1,1 @@
+/opt/cprocsp/bin/amd64/cryptcp -sign -thumbprint c3963f40062db4002d56185f70ebb98235156635 -cert -strict -detached -der /var/www/domains/anypact.nfksber.ru/esia_test/temp/for-sign-5dd8b08c-9215-507b-5975-54ff6323d9f0 /var/www/domains/anypact.nfksber.ru/esia_test/temp/signed-5dd8b08c-9215-507b-5975-54ff6323d9f0
