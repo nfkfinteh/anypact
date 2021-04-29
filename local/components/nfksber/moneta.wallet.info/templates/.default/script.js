@@ -27,6 +27,7 @@ $(document).ready(function(){
                 {
                     NAME: 'Пополнить',
                     CALLBACK: (function(){
+                        preload('show');
                         var amount = $('.new-pu-body input[name="amount"]').val();
                         if(amount >= 10){
                             BX.ajax(
@@ -43,16 +44,16 @@ $(document).ready(function(){
                                         amount: amount,
                                     },
                                     onsuccess: function(result){
-                                        if(result['STATUS']=='ERROR'){
+
+                                        preload('hide');
+                                        newPop.parent('.new-pu-overflow').remove();
+                                        if($('.new-pu-overflow').length < 1)
+                                            $('body').css("overflow", "auto");
+
+                                        if(result['STATUS']=='ERROR')
                                             showResult('#popup-error','Ошибка! ', result['ERROR_DESCRIPTION']);
-                                            newPop.parent('.new-pu-overflow').remove();
-                                            if($('.new-pu-overflow').length < 1)
-                                                $('body').css("overflow", "auto");
-                                        }
-                                        if(result['STATUS']=='SUCCESS'){
-                                            newPop.parent('.new-pu-overflow').remove();
-                                            if($('.new-pu-overflow').length < 1)
-                                                $('body').css("overflow", "auto");
+
+                                        if(result['STATUS']=='SUCCESS')
                                             newAnyPactPopUp({
                                                 TITLE: 'Пополнить счет',
                                                 BODY: '<div>Для пополнения счета перейдите по <a href="https://www.payanyway.ru/assistant.htm?operationId='+result['DATA']+'&paymentSystem.unitId=card&paymentSystem.limitIds=card&followup=true&return_to_shop=https%3A%2F%2Fnew-anypact.ru%2Fprofile%2Fwallet%2F%3FSuccessfulDebit%3DY%26operationId%3D'+result['DATA']+'">ссылке</a></div>',
@@ -64,7 +65,6 @@ $(document).ready(function(){
                                                     }
                                                 ]
                                             });
-                                        }
                                     },
                                     onfailure: function(a, b, c){
                                         console.log(a);
@@ -201,6 +201,9 @@ $(document).ready(function(){
                                 {
                                     NAME: 'Снять',
                                     CALLBACK: (function(){
+
+                                        preload('show');
+
                                         var amount = $('form[name="WITHDRAWAL"] input[name="amount"]').val();
                                         // var payment_pass = $('form[name="WITHDRAWAL"] input[name="payment_pass"]').val();
                                         var cart_number = $('form[name="WITHDRAWAL"] input[name="cart_number"]').val();
@@ -229,6 +232,7 @@ $(document).ready(function(){
                                                 cart_id: cart_id,
                                             },
                                             onsuccess: function(result){
+                                                preload('hide');
                                                 withdrawalPopup.parent('.new-pu-overflow').remove();
                                                 if($('.new-pu-overflow').length < 1)
                                                     $('body').css("overflow", "auto");
@@ -288,6 +292,9 @@ $(document).ready(function(){
                     {
                         NAME: 'Перевести',
                         CALLBACK: (function(){
+
+                            preload('show');
+
                             var amount = $('form[name="TRANSFER"] input[name="amount"]').val();
                             // var payment_pass = $('form[name="TRANSFER"] input[name="payment_pass"]').val();
                             var acc_id = $('form[name="TRANSFER"] input[name="acc_id"]').val();
@@ -318,6 +325,7 @@ $(document).ready(function(){
                                     acc_id: acc_id,
                                 },
                                 onsuccess: function(result){
+                                    preload('hide');
                                     transferPopup.parent('.new-pu-overflow').remove();
                                     if($('.new-pu-overflow').length < 1)
                                         $('body').css("overflow", "auto");

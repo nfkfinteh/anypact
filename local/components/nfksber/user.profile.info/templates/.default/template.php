@@ -333,6 +333,9 @@ if($arResult["BLACKLIST"]['CLOSE']){
                     {
                         NAME: 'Перевести',
                         CALLBACK: (function(){
+
+                            preload('show');
+
                             var amount = $('form[name="TRANSFER"] input[name="amount"]').val();
                             // var payment_pass = $('form[name="TRANSFER"] input[name="payment_pass"]').val();
                             var acc_id = $('form[name="TRANSFER"] input[name="acc_id"]').val();
@@ -363,6 +366,7 @@ if($arResult["BLACKLIST"]['CLOSE']){
                                     acc_id: acc_id,
                                 },
                                 onsuccess: function(result){
+                                    preload('hide');
                                     sendMonetaPopup.parent('.new-pu-overflow').remove();
                                     if($('.new-pu-overflow').length < 1)
                                         $('body').css("overflow", "auto");
