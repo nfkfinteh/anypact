@@ -222,9 +222,9 @@ class CMoneta {
 
                     $CreateAccountRequest->type = 2;
                     $CreateAccountRequest->currency = "RUB";
-                    // $CreateAccountRequest->paymentPasswordType = "STATIC";
-                    // $CreateAccountRequest->paymentPassword = $paymentPassword;
-                    // $CreateAccountRequest->paymentPasswordExpirationDate = true;
+                    $CreateAccountRequest->paymentPasswordType = "STATIC";
+                    $CreateAccountRequest->paymentPassword = "345435782";
+                    $CreateAccountRequest->paymentPasswordExpirationDate = false;
 
                     $CreateAccountRequest->unitId = $unitID;
 
@@ -539,9 +539,10 @@ class CMoneta {
             $amount = number_format($amount, 2, '.', '');
             $monetaTransaction = new \Moneta\Types\PaymentRequest();
             $monetaTransaction->payer = $accountID;
-            if ($paymentPass) {
-                $monetaTransaction->paymentPassword = $paymentPass;
-            }
+            // if ($paymentPass) {
+            //     $monetaTransaction->paymentPassword = $paymentPass;
+            // }
+            $monetaTransaction->paymentPassword = "345435782";
             $monetaTransaction->payee = $serviceId;
             $monetaTransaction->amount = $amount;
             // $monetaTransaction->description = $description;
@@ -606,6 +607,7 @@ class CMoneta {
             $PaymentRequest -> amount = number_format($amount, 2, '.', '');
             $PaymentRequest -> isPayerAmount = true;
             // $PaymentRequest -> paymentPassword = $paymentPass;
+            $PaymentRequest -> paymentPassword = "345435782";
             $PaymentRequest -> paymentPasswordChallenge = true;
             $PaymentRequest -> clientTransaction = $opId;
 
@@ -619,6 +621,7 @@ class CMoneta {
                 $PaymentRequest -> amount = number_format($amount, 2, '.', '');
                 $PaymentRequest -> isPayerAmount = true;
                 // $PaymentRequest -> paymentPassword = $paymentPass;
+                $PaymentRequest -> paymentPassword = "345435782";
                 $PaymentRequest -> paymentPasswordChallenge = true;
                 $PaymentRequest -> clientTransaction = $opId;
     
