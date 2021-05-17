@@ -1003,7 +1003,7 @@ class CContractAction extends CBitrixComponent
                             // Получаем договора
                             // Есть 3 вида договора, оригинальзый(ORIGINAL), редакция(REDACTION), подписанный(SIGNED)
                             // Все они хранятся в разных сущностях
-                            if($this -> arResult['DEAL']['OWNER_ID'] == $this -> arResult['CURRENT_USER']['ID'] && empty($this -> arResult['USER']['ID']))
+                            if($this -> arResult['DEAL']['OWNER_ID'] == $this -> arResult['CURRENT_USER']['ID'] && empty($this -> arResult['USER']['ID']) && empty($this -> arResult['COMPANY']['ID']))
                                 $this -> getContract("ORIGINAL");
                             else
                                 $this -> getContract();

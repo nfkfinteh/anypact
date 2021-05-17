@@ -436,7 +436,7 @@ class CDemoSqr extends CBitrixComponent
     }
 
     private static function getCompany($id){
-        if(empty($id))
+        if(!empty($id))
             if(Loader::includeModule('iblock')){
                 $arFilter = [
                     'IBLOCK_ID' => COMPANY_IB_ID, 
