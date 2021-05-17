@@ -18,7 +18,7 @@ function GetEntityDataClass($HlBlockId) {
     {
         return false;
     }
-    $hlblock = Bitrix\Highloadblock\HighloadBlockTable::getById($HlBlockId)->fetch();   
+    $hlblock = Bitrix\Highloadblock\HighloadBlockTable::getById($HlBlockId)->fetch();
     $entity = Bitrix\Highloadblock\HighloadBlockTable::compileEntity($hlblock);
     $entity_data_class = $entity->getDataClass();
     return $entity_data_class;
@@ -42,16 +42,16 @@ function paginator($data,$countOnPage = 10){
     );
 }
 
-$arJsConfig = array( 
-    'new_anypact_popup' => array( 
-        'js' => '/local/templates/anypact/js/new_popup.js', 
-        'css' => '/local/templates/anypact/css/new_popup.css', 
-        'rel' => array('jquery2'), 
-    ) 
+$arJsConfig = array(
+    'new_anypact_popup' => array(
+        'js' => '/local/templates/anypact/js/new_popup.js',
+        'css' => '/local/templates/anypact/css/new_popup.css',
+        'rel' => array('jquery2'),
+    )
 );
 
-foreach ($arJsConfig as $ext => $arExt) { 
-    \CJSCore::RegisterExt($ext, $arExt); 
+foreach ($arJsConfig as $ext => $arExt) {
+    \CJSCore::RegisterExt($ext, $arExt);
 }
 
 CJSCore::Init(array("new_anypact_popup"));
@@ -96,7 +96,7 @@ if(CModule::IncludeModule('highloadblock') && CModule::IncludeModule('iblock')){
             "AUTHOR_SIGNATUR" => $arFields['UF_VER_CODE_USER_A'],
             "CONTRACTOR_SIGNATUR" => $arFields['UF_VER_CODE_USER_B'],
         );
-        
+
     }
 
     $arUsersIds = array_unique($arUsersIds);
@@ -121,7 +121,7 @@ if(CModule::IncludeModule('highloadblock') && CModule::IncludeModule('iblock')){
             $arContract[$arFields['UF_ID_SEND_ITEM']] = array("ID" => $arFields['ID'], "TEXT" => $arFields['UF_TEXT_CONTRACT']);
         }
 
-        
+
     }
 
     if(!empty($arContractsIds)){
@@ -224,7 +224,13 @@ $tabControl->Begin();
                                                 Отменен/Отказ
                                             <?}?>
                                         </td>
-										<td class="adm-list-table-cell align-left"><?=$data['DATE_SIGNATURES']->format("d.m.Y H:i:s")?></td>
+										<td class="adm-list-table-cell align-left">
+                                            <?
+                                            if ($data['DATE_SIGNATURES']) {
+                                                echo $data['DATE_SIGNATURES']->format("d.m.Y H:i:s");
+                                            }
+                                            ?>
+                                        </td>
 										<td class="adm-list-table-cell align-left"><a href="/bitrix/admin/iblock_element_edit.php?IBLOCK_ID=8&type=sprav&ID=<?=$arCompany[$data['COMPANY_AUTHOR']]['ID'];?>&lang=ru&find_section_section=-1&WF=Y" target="__blank"><?=$arCompany[$data['COMPANY_AUTHOR']]['NAME'];?></a></td>
 										<td class="adm-list-table-cell align-left"><a href="/bitrix/admin/iblock_element_edit.php?IBLOCK_ID=8&type=sprav&ID=<?=$arCompany[$data['COMPANY_CONTRACTOR']]['ID'];?>&lang=ru&find_section_section=-1&WF=Y" target="__blank"><?=$arCompany[$data['COMPANY_CONTRACTOR']]['NAME'];?></a></td>
 										<td class="adm-list-table-cell align-right">
