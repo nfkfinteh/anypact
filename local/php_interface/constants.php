@@ -42,5 +42,19 @@ define("CONTRACT_SIGNED_HBL_ID", "3");
 define("CONTRACT_TEXT_HBL_ID", "7");
 define("CONTRACT_REDACTION_HLB_ID", "30");
 
+//Типы инфоблоков
+define('CONTENT_IBLOCK_TYPE', 'Content'); //Контент
 
+//Инфоблоки
+define('VIDEOS_IBLOCK_ID', 11); //Видео
+
+//Фильтры
+define('SERVICE_SHOW_FILTER_NAME', 'ServieShowFilter'); //фильтр для страницы О сервисе
+$GLOBALS[SERVICE_SHOW_FILTER_NAME] = ['PROPERTY_POSITION' => 19,];
+
+define('UNLIMITED_COUNT', 99999);
+define('CACHE_TYPE', 'A');
+define('CACHE_TIME', 86400);
+define('CACHE_FILTER', 'A');
+define('CACHE_GROUPS', 'A');
 ?>
