@@ -1,15 +1,18 @@
-.video_block {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: end;
-        -ms-flex-pack: end;
-            justify-content: flex-end;
-}
 video {
+    height: 312px;
+    max-height: 100%;
     cursor: pointer;
     max-width: 100%;
-    width: 418px;
-    max-height: 226px;
+    /* width: 418px; */
+    /* max-height: 226px; */
     border-radius: 6px;
+}
+@media screen and (max-width:768px) {
+    .video_block {
+        margin-top: 20px;
+    
+    }
+    video {
+        height: 200px;
+    }
 }
