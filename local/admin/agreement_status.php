@@ -13,6 +13,8 @@ $APPLICATION->SetTitle(GetMessage("agreement_status"));
 
 require_once($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/include/prolog_admin_after.php");
 
+require_once($_SERVER["DOCUMENT_ROOT"]."/response/ajax/class/get_pdf.php");
+
 function GetEntityDataClass($HlBlockId) {
     if (empty($HlBlockId) || $HlBlockId < 1)
     {
@@ -118,7 +120,7 @@ if(CModule::IncludeModule('highloadblock') && CModule::IncludeModule('iblock')){
             "filter" => array("UF_ID_SEND_ITEM" => $arAgreIds, "!UF_TEXT_CONTRACT" => "")
         ));
         while($arFields = $rsData->Fetch()){
-            $arContract[$arFields['UF_ID_SEND_ITEM']] = array("ID" => $arFields['ID'], "TEXT" => $arFields['UF_TEXT_CONTRACT']);
+            $arContract[$arFields['UF_ID_SEND_ITEM']] = array("ID" => $arFields['ID'], "TEXT" => $arFields['UF_TEXT_CONTRACT'] . GetPdf::getSendContractItem($arFields['UF_ID_SEND_ITEM'], true)['TEXT']);
         }
 
 
@@ -255,8 +257,8 @@ $tabControl->Begin();
                                             <?if(!empty($data['AUTHOR_SIGNATUR'])){?>
                                                 <script>
                                                     var AUTHOR_SIGNATUR_<?=$data['ID']?> = {
-                                                        TITLE: "Просмотр текста договора",
-                                                        BODY: '<p><?=$data['AUTHOR_SIGNATUR']?></p>',
+                                                        TITLE: "Просмотр подписи автора",
+                                                        BODY: '<p><?=md5($data['AUTHOR_SIGNATUR'])?></p>',
                                                         BUTTONS: [
                                                             {
                                                                 NAME: 'Закрыть',
@@ -273,8 +275,8 @@ $tabControl->Begin();
                                             <?if(!empty($data['CONTRACTOR_SIGNATUR'])){?>
                                                 <script>
                                                     var CONTRACTOR_SIGNATUR_<?=$data['ID']?> = {
-                                                        TITLE: "Просмотр текста договора",
-                                                        BODY: '<p><?=$data['CONTRACTOR_SIGNATUR']?></p>',
+                                                        TITLE: "Просмотр подписи контрагента",
+                                                        BODY: '<p><?=md5($data['CONTRACTOR_SIGNATUR'])?></p>',
                                                         BUTTONS: [
                                                             {
                                                                 NAME: 'Закрыть',

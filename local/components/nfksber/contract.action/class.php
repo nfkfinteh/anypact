@@ -312,11 +312,11 @@ class CContractAction extends CBitrixComponent
                     if($obj=$res->GetNext(true, false)){
                         $arCompany_A = $obj;
                     }
-                } else {
-                    //пользователь
-                    $rsUser = CUser::GetByID($arSigned['UF_ID_USER_A']);
-                    $arUser_A = $rsUser->Fetch();
                 }
+                //пользователь
+                $rsUser = CUser::GetByID($arSigned['UF_ID_USER_A']);
+                $arUser_A = $rsUser->Fetch();
+                
                 //статус подписи
                 if(!empty($arSigned['UF_VER_CODE_USER_A'])){
                     $hash_A = md5($arSigned['UF_VER_CODE_USER_A']);
@@ -330,11 +330,10 @@ class CContractAction extends CBitrixComponent
                         $arCompany_B = $obj;
                     }
                 }
-                else{
-                    //пользователь
-                    $rsUser = CUser::GetByID($arSigned['UF_ID_USER_B']);
-                    $arUser_B = $rsUser->Fetch();
-                }
+                //пользователь
+                $rsUser = CUser::GetByID($arSigned['UF_ID_USER_B']);
+                $arUser_B = $rsUser->Fetch();
+                
                 //статус подписи
                 if(!empty($arSigned['UF_VER_CODE_USER_B'])){
                     $hash_B = md5($arSigned['UF_VER_CODE_USER_B']);
@@ -347,11 +346,14 @@ class CContractAction extends CBitrixComponent
                     if(!empty($arCompany_A)){
                         //компания
                         $signed_text .= '<br>'.$arCompany_A['NAME'];
-                        $signed_text .= '<br>'.$arCompany_A['PROPERTY_INN_VALUE'];
                     }
-                    else{
+
+                    $signed_text .= '<br>'.$arUser_A['LAST_NAME'].' '.$arUser_A['NAME'].' '.$arUser_A['SECOND_NAME'];
+
+                    if (!empty($arCompany_A)) {
+                        $signed_text .= '<br>'.$arCompany_A['PROPERTY_INN_VALUE'];
+                    } else{
                         //пользователь
-                        $signed_text .= '<br>'.$arUser_A['LAST_NAME'].' '.$arUser_A['NAME'].' '.$arUser_A['SECOND_NAME'];
                         $signed_text .= '<br>#'.$arUser_A['UF_PASSPORT'];
                     }
                     $DateTime = new DateTime($arSigned["UF_TIME_SEND_USER_A"]);
@@ -364,13 +366,17 @@ class CContractAction extends CBitrixComponent
                     if(!empty($arCompany_B)) {
                         //компания
                         $signed_text .= '<br>'.$arCompany_B['NAME'];
-                        $signed_text .= '<br>'.$arCompany_B['PROPERTY_INN_VALUE'];
                     }
-                    else{
+
+                    $signed_text .= '<br>'.$arUser_B['LAST_NAME'].' '.$arUser_B['NAME'].' '.$arUser_B['SECOND_NAME'];
+
+                    if(!empty($arCompany_B)) {
+                        $signed_text .= '<br>'.$arCompany_B['PROPERTY_INN_VALUE'];
+                    } else {
                         //пользователь
-                        $signed_text .= '<br>'.$arUser_B['LAST_NAME'].' '.$arUser_B['NAME'].' '.$arUser_B['SECOND_NAME'];
                         $signed_text .= '<br>#'.$arUser_B['UF_PASSPORT'];
                     }
+
                     $DateTime = new DateTime($arSigned["UF_TIME_SEND_USER_B"]);
                     $signed_text .= '<br>'.$DateTime->format("Y-m-d H:i:s");
                     $signed_text .= '<br>'.$hash_B;
